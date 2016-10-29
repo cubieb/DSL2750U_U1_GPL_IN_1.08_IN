@@ -1,0 +1,23 @@
+
+<InternetGatewayDevice type="object">
+	<X_TELEFONICA-ES_IPv6Layer3Forwarding type="object">
+		<DefaultConnectionService type="string"></DefaultConnectionService>
+		<MAXForwardNumberOfEntries type="unsignedInt" Writable="0">30</MAXForwardNumberOfEntries>
+		<ForwardNumberOfEntries type="unsignedInt" Writable="0"></ForwardNumberOfEntries>
+		<IPv6Forwarding type="object" CurNode="ForwardNumberOfEntries" MaxNode="MAXForwardNumberOfEntries">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<Status type="string" Writable="0">Disabled</Status>
+				<Type type="string">Network</Type>
+				<DestIPv6Address type="string"></DestIPv6Address>
+				<DestPrefixLength type="unsignedInt"></DestPrefixLength>
+				<SourceIPv6Address type="string"></SourceIPv6Address>
+				<SourcePrefixLength type="unsignedInt"></SourcePrefixLength>
+				<GatewayIPv6Address type="string"></GatewayIPv6Address>
+				<Interface type="string"></Interface>
+				<ForwardingMetric type="unsignedInt"></ForwardingMetric>
+				<MTU type="unsignedInt"></MTU>
+			</i>
+		</IPv6Forwarding>
+	</X_TELEFONICA-ES_IPv6Layer3Forwarding>
+</InternetGatewayDevice>

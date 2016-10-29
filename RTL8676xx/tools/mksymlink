@@ -1,0 +1,91 @@
+#!/bin/sh
+
+if [ $# -ne 2 ]; then
+  echo "create a shadow link of source"
+  echo "usage: $0 svn_source_dir destination_dir"
+  exit 1
+fi
+
+if [ ! -d $1 ]; then
+  echo "$1 is not a directory"
+  exit 1
+fi
+
+if [ ! -d $2 ]; then
+  echo "$2 is not a directory"
+  exit 1
+fi
+
+ignorepath="*.svn*"
+ignoresslpath="*blp*openssl-0.9.8_wapi*"
+
+#remove last '\'
+current_dir=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"` 
+
+#get $1's absolutly path
+#param1 remove last '\'
+cd $1
+param1=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"`
+
+#return original path
+cd $current_dir
+
+#get $2's absolutly path
+cd $2
+#param2 remove last '\'
+param2=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"`
+
+sign='-/|\'
+signflag=1
+#return original path
+cd $current_dir
+counter=0
+printf "Creating Directory Structure: -"
+# search all directory in svn_sourcd_dir exclude .svn 
+find $param1 -type d \( -path ${ignorepath} -prune -o -path ${ignoresslpath} -prune -o -print \) | while read param; do
+  name=`expr "$param" : "$param1/\(.*\)"`
+  if [ "-$name" != "-" ]; then
+    mkdir -p "$param2/${name}"
+    if [ $? -ne 0 ]; then
+      echo "mkdir -p $param2/${name}     FAILED!!!!!!!!!!!!!!"
+      
+#      exit 1
+    else
+      counter=`expr $counter + 1`
+      if [ $counter -gt 100 ]; then
+        printf "\b%c" `expr substr $sign $signflag 1`
+        signflag=`expr $signflag  % 4 + 1`
+        counter=0
+      fi
+    fi
+  fi
+done 
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+signflag=1
+counter=0
+printf "\nCreate symbolic link: -"
+find $param1 -type d -path ${ignorepath} -prune -o -path ${ignoresslpath} -prune -o ! -type d -print | while read param; do
+  name=`expr "$param" : "$param1/\(.*\)"`
+  if [ ! -e "$param2/${name}" ]; then
+#    if [ -L "$param" ]; then
+#      cp -f -P "$param" "$param2/${name}"
+#    else
+      ln -s "$param" "$param2/${name}"
+      if [ $? -ne 0 ]; then
+        echo "ln -s \"${param}\" \"$param2/${name}\"    FAILED!!!!!!!! "`test ! -L "$param2/${name}"` 
+#        exit 1
+      else
+        counter=`expr $counter + 1`
+        if [ $counter -gt 100 ]; then
+          printf "\b%c" `expr substr $sign $signflag 1`
+          signflag=`expr $signflag % 4 + 1`
+          counter=0
+        fi
+      fi
+#    fi
+  fi
+done
+printf "\nCreated a shadow Successfully!\n"
+

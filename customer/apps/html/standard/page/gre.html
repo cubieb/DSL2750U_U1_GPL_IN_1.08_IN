@@ -1,0 +1,93 @@
+<style type="text/css"><!-- 
+	.div_left { width:260px;}
+ --></style>
+<td>
+	<div class="config2">
+		<p class="do bk_black" id="lang_tunnel_global">GRE Configuration</p>
+		<div class="div_orange">
+			<p>
+			GRE is used to encapsulate an arbitrary layer protocol over another arbitrary layer protocol. In general, GRE allows a tunnel to be created using a certain protocol, which then hides the contents of another protocol carried within the tunnel.
+			</p>
+			<p>
+			For now only support ipv4 stack.
+			</p>
+	    </div>
+		<div id="TunnelSetting">
+		<p class="do bk_black" id="lang_TunnelSetting">GreTunnel</p>
+		<div class="div_black">
+			<table class="td_table_s" id="Iptunnel_table">
+				<tr class="tr_bold">
+					<td></td>
+					<td>Tunnel Name</td>
+					<td>Wan interface</td>
+					<td>Remote Address</td>
+					<td>PeerLocalAddress</td>
+					<td>PeerRemoteAddress</td>
+					<td>PrivateTunnelAddress</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button"><input type='button' id='addTunnel' name='addTunnel' onClick='AddTunnel()' value=' Add '>
+			<input type="button" id="editTunnel" name="editTunnel"  onClick="EditTunnel()" value=" Edit ">
+			<input type="button" id="removeTunnel" name="removeTunnel" onClick="RemoveTunnel()" value=" Delete ">
+		</div>
+		</div>
+		
+		<div id="tunnel_setup" style="display:none">
+			<p class="do bk_black">Add Tunnel Items </p>
+			<div class="div_black">
+				<div class="div_left">Tunnel Name : </div>
+				<div class="div_right">
+					<input type="text" id="INPUT_TunnelName">
+				</div>
+
+				<div class="div_left">Wan Interface : </div>
+				<div class="div_right">
+					<select id="SELECT_WanInterface"></select>
+				</div>
+				<div class="div_left">Remote Address : </div>
+				<div class="div_right">
+					<input type="text" id="INPUT_RemoteAddress">
+				</div>
+				<div class="div_left">Peer Local Address : </div>
+				<div class="div_right">
+					<input type="text" id="INPUT_PeerLocalAddress">
+					for example, 10.0.0.1
+				</div>
+				<div class="div_left">Peer Remote Address : </div>
+				<div class="div_right">
+					<input type="text" id="INPUT_PeerRemoteAddress">
+					for example, 10.0.0.2
+				</div>
+				<div class="div_left">Pritvate Tunnel Address : </div>
+				<div class="div_right">
+					<input type="text" id="INPUT_PeerIPv4Address">
+					for example, 192.168.1.0 or 192.168.1.2
+				</div>
+				<div class="div_left">Pritvate Tunnel Mask Len : </div>
+				<div class="div_right">
+					<input type="text" id="INPUT_PeerIPv4MaskLen">
+					for example, 24 or 32
+				</div>
+			</div>
+			<div class="div_button">
+				<input type="button" id="submit" value="Apply" onClick="uiTunnelSubmit()">
+				<input type='button' value="Cancel" onClick='uiPageRefresh()' id="CancelEdit">
+			</div>
+		</div>
+
+
+
+	</div>
+</td>
+
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc0">It is an IP tunnel configuration.</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

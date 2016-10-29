@@ -1,0 +1,28 @@
+#####################
+config OPENSOURCE_DLNA
+	bool 'Support DLNA'
+	default y 
+	depends on OPENSOURCE
+  	help 
+      	Support DMS(DLNA)
+
+choice
+  prompt "DLNA Version"
+  default OPENSOURCE_DLNA_BCM
+  depends on OPENSOURCE_DLNA
+  help
+    There are 3 version DLNA intel and broadcom
+    dlna_intel 
+    dlna_usb 
+    dlna_bcm  
+ 
+config OPENSOURCE_DLNA_INTEL
+  bool "Intel version"
+
+config OPENSOURCE_DLNA_USB
+  bool "Broadcom usb version"
+
+config OPENSOURCE_DLNA_BCM
+  bool "Broadcom version"
+
+endchoice

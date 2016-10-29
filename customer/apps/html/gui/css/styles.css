@@ -1,0 +1,852 @@
+@charset "UTF-8";
+
+/*========================================================================================================
+	REMOVE DEFAULT BROWSERS STYLES 
+========================================================================================================*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-weight: inherit;
+font-style: inherit;
+font-size: 100%;
+font-family: inherit;
+vertical-align: baseline;
+}
+:focus {
+outline: 0;
+}
+body {
+line-height: 1;
+color: black;
+background: white;
+-moz-user-select: none;
+user-select: none;
+-khtml-user-select: none;
+}
+body a{
+color:#4f4f4f;
+text-decoration: none;
+}
+ol, ul {
+list-style: none;
+}
+table {
+border-collapse: separate;
+border-spacing: 0;
+}
+caption, th, td {
+text-align: left;
+font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: "";
+}
+blockquote, q {
+quotes: "" "";
+}
+
+/*========================================================================================================
+	GENERAL 
+========================================================================================================*/
+
+body {	
+	font-family: Verdana, Geneva, sans-serif;
+	background: url(../images/background.png) repeat-x;	
+	margin: 0;
+    padding: 0;	
+	text-align:center;		
+	font-size: 11px;	
+	line-height: 14px;	
+	color: #515559;
+}
+
+#panel_general {
+	width: 944px;
+    height: 720px;
+	margin:0 auto;
+	text-align:left;
+	padding: 0;
+	background: url(../images/background.png) repeat-x;
+}
+
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.centred{
+	text-align: center;
+	margin: 8px 0;
+}
+.hand{
+	cursor: pointer;
+}
+.txt_hover{
+	color: #7091a7!important;
+	text-decoration: underline;
+}
+/*========================================================================================================
+	HEADER
+========================================================================================================*/
+
+#panel_header {
+	width: 944px;
+	height: 131px;	
+	/*font-size:10px;*/	
+	visibility: hidden;
+}
+
+.header_content{
+	height: 131px;
+	padding: 38px 40px;	
+}
+.header_left{
+	width: 439px;
+	float: left;
+}
+
+.home_station{
+	width: 239px;
+	height: 29px;
+	display: block;
+}
+
+.network_map{		
+	margin-top: 18px;
+	width: 124px;
+	height: 21px;
+	display: block;		
+}
+.movistar{
+	width: 221px;
+	height: 49px;
+	float: right;
+}
+
+.options_menu {
+	width: 904px;
+	position: absolute;		
+	margin-top: -60px;			
+}
+.line{	
+	background-color:#515559;
+	width: 1px;
+	height: 9px;
+	margin: 4px 12px;		
+}
+.line_small{
+	background-color:#a0a5a9;
+	width: 1px;
+	height: 5px;
+	margin: 6px 10px;
+}
+
+.password_ico{
+	background: url(../images/password_blue_light.gif) no-repeat;
+	width: 20px;
+	height: 10px;
+	padding-right: 8px;
+	margin-top:3px;
+}
+.password_ico.hover{background: url(../images/password_blue.gif) no-repeat;}
+.faq_ico{
+	background: url(../images/faq_blue_light.png) no-repeat;
+	width: 17px;
+	height: 17px;
+	padding-right: 8px; 
+}
+.faq_ico.hover{background: url(../images/faq_blue.png) no-repeat;}
+.languages a{		
+	color:#a0a5a9;	
+	float:right;	
+}
+.languages a:hover{		
+	color:#7091a7;
+	text-decoration: underline;	
+}
+
+/*========================================================================================================
+	FOOTER
+========================================================================================================*/
+
+.footer{
+	height:34px;	
+}
+#panel_footer a{
+	color: #006093;
+	cursor: pointer;
+}
+.imgFooter{
+	float: left;
+	width:200px; 
+	height:34px;
+	background-image: url(../images/footerImgO2.png);
+	display: none;
+	margin-left: 36px;
+}
+.txtFooter{
+	float: left;
+	padding-top:10px;
+}
+
+/*========================================================================================================
+	CONTENT	
+========================================================================================================*/
+
+#panel_content {
+	height: 551px;
+	margin-right: 10px;	
+}
+.disabled_opacity{
+	opacity:0.4;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+}
+/*========================================================================================================
+	JQUERY UI DIALOG
+========================================================================================================*/
+.ui-widget-overlay { background: #4f4f4f; opacity: .80; filter:Alpha(Opacity=80);z-index:1 }
+
+.ui-dialog { position: absolute; overflow: hidden; z-index:1;  }
+.ui-dialog .ui-dialog-titlebar { 
+	position: relative; 
+	height: 49px; 
+	color: #fff; 
+	z-index:1;
+	font-weight: bold;
+}
+
+.ui-dialog .ui-dialog-title { 
+	float: left; 
+	font-size: 12px; 
+	line-height:14px; 
+	padding:20px 0 0 19px; 
+	z-index:1;
+} 
+.ui-dialog .ui-dialog-titlebar-close { 
+	float:right;
+
+	width: 22px;
+	height: 22px;	 
+	margin-top: 16px;
+	margin-right: 19px;
+	margin-left: 8px;	
+	cursor: pointer;
+}
+.ui-dialog .ui-dialog-titlebar-close:hover {	
+	
+}
+.ui-dialog .ui-dialog-content {
+	 border: 0px;	 
+	 background: #fff;
+	 overflow: hidden; 
+	 color: #666666;
+	 text-align: left;
+	 line-height: 16px;	 
+	/* zoom: 1; */
+}
+
+/*========================================================================================================
+	JQUERY UI DIALOG FOR WARNING
+========================================================================================================*/
+#dialogWarning .ui-dialog { 
+	position: absolute; overflow: hidden; z-index:1;
+	  
+}
+#dialogWarning{
+	border: solid #0086c3 2px;
+	padding: 18px 10px 0 10px;
+}
+
+#dialogWarning.warnning{
+	border: solid #FF8400 2px;
+}
+
+#dialogWarning .warning_text{
+	
+	float: left;
+	width:223px;
+	padding: 0px 0px 0 10px;
+}
+
+.warning_icon{
+	float: left;
+	background: url(../images/dialog/information.png) no-repeat;
+	
+	width:42px;
+	height:42px;
+	margin-left: 14px;
+}
+
+#dialogWarning.warnning .warning_icon{
+	background: url(../images/dialog/exclamation.png) no-repeat;
+}
+
+/*========================================================================================================
+	DIALOG
+========================================================================================================*/
+.dialog{	
+	display: none;	
+}
+.help_dialog{
+}
+.dialog_faq{	
+	width: 23px;
+	height: 22px;	 
+	margin-top: -33px;	
+	margin-left: 376px;
+	z-index:2;	
+	position: absolute;
+	cursor: pointer;
+}
+.dialog_faq:hover{
+ 
+}
+.line_grey{
+	background-color: #e5e5e5;
+	width:100%;
+	height:1px;
+	clear:both;
+}
+input{
+	margin: 6px auto;
+	padding-left: 7px;
+	
+	width: 157px; 
+	height: 16px;
+	border: #cfcfcf 1px solid;
+		
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px!important;	
+	color:#515559;
+}
+
+.buttons_space{
+	margin-left:50px;
+}
+.accept, .cancel{	
+	text-align: center;
+	height: 21px;	
+	line-height: 21px;
+	display: inline;	
+}
+.accept_icon, .cancel_icon{
+	width: 22px;
+	height: 22px;		
+	display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    *display: inline;
+}
+.accept_icon{
+	background: url(../images/dialog/cancel_sprite.png) no-repeat;
+	background-position: -88px 0;
+}
+.accept_icon.hover{
+	background-position: -110px 0;		  	
+}
+
+
+.cancel_icon{
+	background: url(../images/dialog/cancel_sprite.png) no-repeat;
+	background-position: -22px 0;
+}
+.cancel_icon.hover{
+	background-position: 0 0;
+}
+.accept_txt, .continue_txt, .cancel_txt {	
+	padding-left:3px;
+	*padding-left: 5px;
+	display: inline-block;	
+}
+
+.title_grey{
+	font-weight: bold;
+	float: left;
+}
+.edit_icon{
+	background: url(../images/dialog/edit_icon.png);
+	width: 27px;
+	height: 16px;	
+	margin-left: 10px;	
+	float: left;
+}
+.edit_iconLittle{
+	background: url(../images/dialog/edit_little_blue_light.png);
+	width: 23px;
+	height: 14px;	
+	margin:9px 0 0 10px;	
+	float: left;
+}
+.edit_iconLittle.hover{
+	background: url(../images/dialog/edit_little_blue.png);
+}
+.edit_iconLittle:hover{
+	background: url(../images/dialog/edit_little_blue.png);
+}
+.plus_icon{
+	background: url(../images/dialog/cancel_sprite.png) no-repeat;
+	background-position: -198px -2px;
+	width: 18px;
+	height: 17px;	
+	float: right;
+	margin-right: 6px;	
+	cursor: pointer;
+}
+.plus_icon:hover,.plus_icon.hover{
+	background-position: -176px -2px;
+}
+
+.plus_icon_txt{
+	float:right;
+	line-height: 16px;
+	cursor: pointer;
+}
+.minus_icon{
+	background: url(../images/dialog/cancel_sprite.png) no-repeat;
+	background-position: -154px -2px;
+	width: 18px;
+	height: 17px;		
+	float: left;
+	cursor: pointer;
+}
+.minus_icon.hover, .minus_icon:hover{
+	background-position: -132px -2px;
+}
+
+.css_sized_container .iPhoneCheckContainer {
+	width: 100px; 
+	float: left;
+	margin-right:10px;	
+}
+.css_sized_container .iPhoneCheckHandle{
+	width: 50px; 
+}
+/*========================================================================================================
+	LOGIN DIALOG
+========================================================================================================*/
+
+.login{		
+	padding: 17px;
+}
+.password_txt2{
+	font-size: 10px;
+}
+.password_form{
+	padding-top: 20px;
+	text-align: center;
+}
+.textLogin{
+	float:left;
+	width:293px;
+	margin-top:30px;
+}
+.passTop{
+	margin-top:10px;
+}
+
+#forget>.passTop img{
+	margin-top: -20px;
+	}
+
+.divLogin{
+	width:430px; 
+	height:103px;
+	margin-top:20px;
+}
+.txtForget{
+	margin-left:20px; 
+	margin-bottom:10px;
+	width: 348px;
+}
+.exclamationForget{
+	margin: 15px 0 0 20px;
+}
+.password_change_form{
+	padding-top: 15px;
+	margin-left: 45px;
+}
+.password_settings{
+	margin-left: 128px;
+	color: #7091a7;
+	font-size: 10px;
+}
+.password_settings_a{
+	color: #7091a7;
+	text-decoration: underline;
+}
+.inputChange{
+	width:350px; 
+	height:30px;
+}
+
+.gateway_reset_ico{
+	width:100px; 
+	height:113px;
+	background-image: url(../images/brd_movistar/reset_m.png);
+}
+
+.imgStiker{
+	float: left;
+	width:100px; 
+	/*height:81px;*/
+	height:81px;
+	margin-top: -27px; 
+	margin-left: 10px; 
+	display:none;
+	background-image: url(../images/brd_movistar/gateway_sticker.png);
+}
+
+.imgDefaultStiker{
+	width:100px; 
+	height:81px;
+	/*height:150px;*/
+	background-image: url(../images/brd_movistar/gateway_sticker_m.png);
+}
+
+.password_txt1{
+	margin-top:10px;
+	width: 165px;
+}
+.dialog_security_img {
+	background-image: url(../images/dialog/password_level.png);
+	background-repeat:no-repeat;
+	width: 70px;
+	height: 5px;
+	margin-top: 8px;
+	/** Cada -10px cambiamos a una imagen que significa contraseña más segura **/
+	background-position: 0 0px;
+}
+.changeWarning{
+	color: #c50000;
+}
+/*========================================================================================================
+	WELCOME SPLASH
+========================================================================================================*/
+.welcome_splash{	
+	width:1024px;
+	height:720px;	
+}
+#welcome_gateway{
+	background: url(../images/brd_movistar/router_g_m.png);
+	width: 217px;
+	height: 270px;
+	margin: 54px 63px 0 40px;
+	float:left;	
+}
+#welcome_content{
+	width:590px;
+	float:left;
+	margin-top:54px;
+}
+#welcome_content_txt{
+	height:264px;
+}
+.welcome_cont_txt1{
+	font-size:16px;
+}
+.welcome_cont_txt2{
+	font-size:13px;
+	margin:20px 0 16px 0;
+	line-height: 18px;
+}
+.welcome_cont_txt3{
+	margin-left:30px;
+	margin-top:5px;
+	line-height:25px;
+}
+.divUrlMHS{
+	line-height:18px;
+	height:50px; 
+	margin-top:10px;
+}
+.welcome_pantalla{
+	width:300px;
+	float:left;
+	margin-left:-20px;
+}
+.welcomepan_home{	
+	text-align: center;
+	cursor: pointer;
+	margin-top: 60px;
+	margin-bottom: 10px;
+	height: 189px;	
+}
+.welcomepan_icon{
+/*	background: url(../images/welcome_pantalla.png) no-repeat;*/	
+	width: 265px;
+	height: 189px;		
+	display: -moz-inline-stack;
+    	display: inline-block;
+    	vertical-align: middle;
+    	zoom: 1;
+    	*display: inline;    
+}
+.welcomepan_icon:hover{
+	/*background: url(../images/welcome_pantalla.png)  270px 0px;*/	
+	/*opacity:0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);	*/
+}
+#welcome_favorites{
+	width:250px;
+	float:left;	
+}
+.welcome_fav_home{	
+	margin: 60px 0;	
+	height: 54px;	
+}
+.welcome_fav_icon{
+	background: url(../images/favoritos.png) no-repeat;	
+	width: 217px;
+	height: 54px;	
+}
+.welcome_fav_icon.hover{
+	background: url(../images/favoritos.png)  217px 0px;	
+}
+.welcome_fav_txt{	
+	margin: -35px 0 0 55px;	
+	display: block;	
+}
+#welcome_btn{
+	margin-left:10px;
+	background-image:url(../images/favoritos.png);
+	width:217px;
+	height:54px;
+}
+#welcome_home{	
+	margin: 50px 0 10px 10px;
+	height: 26px;	
+}
+.welcome_home_icon{
+	background: url(../images/home.png) no-repeat;	
+	width: 25px;
+	height: 26px;		
+	display: -moz-inline-stack;
+    	display: inline-block;
+    	vertical-align: middle;
+    	zoom: 1;
+    	*display: inline;    
+}
+.welcome_home_icon.hover{
+	background: url(../images/home2.png) no-repeat;	
+}
+
+.welcome_txt{	
+	display: inline;
+	margin-left:10px;
+	white-space: nowrap;
+	text-align:left;
+}
+
+#welcome_back{	
+	margin: 10px 0 10px 14px;	
+	height: 21px;	
+}
+.welcome_back_icon{
+	background: url(../images/volver.png) no-repeat;	
+	width: 22px;
+	height: 21px;		
+	display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    *display: inline;    
+}
+.welcome_back_icon.hover{  
+	background: url(../images/volver1.png) no-repeat;	
+}
+.welcome_back_txt{	
+	display: inline;
+	margin-left:8px;
+	white-space: nowrap;
+	text-align:left;
+}
+
+.welcome_link{
+	text-decoration:underline;
+	white-space: nowrap;
+	color:#7091a7;
+}
+.welcome_link:hover{
+	text-decoration:underline;
+	white-space: nowrap;
+	color:#0086c3;
+}
+
+/* HELP DIALOG */
+
+#help_dialog{
+	border: 3px solid #197bb3;
+	border-top-width: 0;
+	width: 674px!important;	
+}
+.help_menu{
+	width: 150px;
+	height: 385px;
+	float:left;
+	/*margin-top:15px;	*/
+}
+#navi {
+	font-size:10px;
+	list-style:none;
+	margin-left:10px;
+	/*margin-top:10px;*/
+	color:#7091a7;
+	line-height:25px;
+	}
+#navi li a{
+	color:#7091a7;
+	font-weight:normal;
+	}
+#navi li a:hover {
+	color:#0086c3;
+	font-weight:bold;
+}
+.help_menuentry {    
+    cursor: pointer;
+}
+.help_menuentry:hover{
+	font-weight: bold;
+	color: #0086c3;
+}
+.help_menuentry_selec {
+    font-weight:bold;	
+    cursor:auto;
+	color:#7091a7!important;
+}
+
+.help_cont {
+    width:524px;
+    float:left;	
+}
+
+.help_header{
+	width: 616px;
+	height: 35px;
+	/*float:left;	*/
+	text-align: right;
+	margin-left:150px;
+}
+.help_vert{
+	width: 1px;
+	height: 35px;
+	background-image:url(../images/help_fnd0.png);
+	float:left;
+	display:inline;
+	/*margin-left:15px;*/
+}
+.help_line{	
+	width: 498px;
+	height: 35px;
+	background-image:url(../images/help_fnd1.png);	
+	float:left;
+	display:inline;
+	z-index: 0;  
+	/*margin-left: 16px;*/	
+}
+.help_tit{		
+	height: 35px;	
+	float: right;
+	position:relative;
+	top:16px;
+	/*left:-20px;*/
+	/*margin-right:10px;*/
+	padding-left:10px;
+	/*margin: 15px 6px 0 0px;*/
+	font-weight:bold;
+	z-index: 1;
+	display:inline;
+	background-color: white;
+	/*padding:0 10px 0 10px;  */
+}	
+
+.help_contents{
+	height:339px;
+}
+.help_vertline{
+	/*margin-left:15px;*/
+	width: 1px;
+	height: 340px;
+	float:left;
+	background-color:#e0e0e0;
+}
+.help_contents_scroll{	
+	float:left;	
+	margin-top:15px;
+	overflow:hidden;
+}
+
+#help_scroll{	
+	width: 496px;/*484px;*/
+	height: 300px;
+}
+.help_topic_hidden{ display:none;}
+.help_topic_shown{ display:block;}
+
+.help_title_num{	
+	font-size:12px;
+	font-weight:bold;
+	color: #7091a7;
+	float:left;
+	margin:10px 0 0 10px;	
+}
+.help_title_topic{
+	float:left;
+	width: 430px;
+	margin-bottom:10px;
+	margin-left:6px;
+	margin-top:10px;
+	float:left;
+	
+	font-size:10px;
+	font-weight:bold;	
+	color:#7091a7;
+	cursor:pointer;	
+}
+.help_title_topic:hover{
+	color:#0086c3;
+	cursor:pointer;	
+}
+.help_title_line{	
+	margin-left:32px;
+	width: 437px;/*426px;*/
+	height: 1px;
+	float:left;
+	background-color:#e0e0e0;
+	margin-top:-8px;	
+}
+.help_topic_txt{	
+	font-size:10px;
+	/*float:left;*/
+	margin-left:34px;
+	width:426px;	
+}
+
+.help_content_pie{
+	/*margin:0 0 0 15px;*/
+	width: 497px;/*486px;*/
+	height: 1px;
+	float:left;
+	background-color:#e0e0e0;	
+}
+
+.help_link {
+    color:#7091a7;
+    text-decoration:underline;
+    font-weight:normal;
+}
+.help_link:hover {
+    font-weight:bold;
+}

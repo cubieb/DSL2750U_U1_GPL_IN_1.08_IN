@@ -1,0 +1,48 @@
+#chmod +x sar
+#chmod +x sadc
+
+echo "Installing Modules.. \n"
+
+insmod adf.ko
+
+#sleep 1
+insmod hif_usb.ko
+
+#sleep 1
+insmod hst_htc.ko
+
+#sleep 1
+insmod hst_hal.ko
+
+#sleep 1
+insmod hst_wlan.ko
+
+#sleep 1
+insmod hst_rate.ko
+
+#sleep 1
+insmod hst_ath.ko countrycode=0x1ff
+
+#sleep 1
+insmod if_ath_usb.ko
+
+
+
+insmod hst_ccmp.ko
+insmod hst_scansta.ko
+insmod hst_scanap.ko
+insmod hst_xauth.ko
+insmod hst_wep.ko
+insmod hst_tkip.ko
+
+
+
+#chmod +x vap_usb.sh
+#chmod +x athcfg
+
+sleep 3
+
+# Start the VAP
+
+#echo " Starting the AP...\n "
+#sh ./vap_usb.sh

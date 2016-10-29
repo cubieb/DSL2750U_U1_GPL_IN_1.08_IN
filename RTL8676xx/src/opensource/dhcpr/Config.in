@@ -1,0 +1,9 @@
+#####################
+config OPENSOURCE_DHCPR
+	bool 'DHCP Relay(dhcp-fwd)'
+	default y
+	depends on OPENSOURCE
+  	help 
+		This program is used to forward DHCP and BOOTP messages 
+		between two networks with different broadcast domains.
+

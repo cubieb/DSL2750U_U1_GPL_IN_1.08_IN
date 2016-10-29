@@ -1,0 +1,91 @@
+/* Copyright (C) 2006 Ikanos Communications
+ * See IKANOS_PROP_LICENSE.txt for license information. */
+
+//======================================================================
+// File Name	:	indmcast.h
+// Description	:	System independent multicast address manager
+//                      which handles multiple occurances of the same
+//                      address (by reference counting)
+// CVS ID	:	$Id: indmcast.h_,v 1.1 2005/03/09 13:25:31 sadiq Exp $
+//======================================================================
+
+//======================================================================
+// History
+//
+// Date		Author	        	Comment
+// 04/21/2000   Darren Hutchinson       Initial version
+//======================================================================
+
+#ifndef _INDMCASTT_
+#define _INDMCASTT_
+
+//	Include files
+
+extern "C"
+{
+    #include <ethdriver/common/indmacaddr.h>
+    #include <ethdriver/common/ethport.h>
+}
+
+// Library-specific constant definitions
+
+// Library-specific type and variable definitions
+
+// Class definition(s)
+
+//======================================================================
+// Type Name	:	IndMCastMgrT
+// Description	:	Manager class for multicast addresses. Adds value
+//                      to the services provided by EthPort so that clients
+//                      can register addresses multiple times and 
+//                      not have to worry about use counting.
+//======================================================================
+class IndMCastMgrT
+{
+public:
+    // Create / destroy multicast manager. It is attached to the
+    // ethernet port
+    IndMCastMgrT(eth_port_t *thePort);
+    ~IndMCastMgrT();
+
+    // Add / remove addresses from the multicast list. Note that they
+    // are reference counted so that to truly remove and address it must be
+    // removed as many times as it was added.
+    //
+    // Note that the address can be specified either as 6 bytes, or an
+    // a ind_mac_addr_t. It is an error to remove an address which isn't currently
+    // active
+    eth_result_e  addAddress(UINT8 *address);
+    eth_result_e  addAddress(const ind_mac_addr_t& address);
+
+    eth_result_e  removeAddress(UINT8 *address);
+    eth_result_e  removeAddress(const ind_mac_addr_t& address);
+
+    // Detect initialization errors
+    int initError(void);
+
+protected:
+private:
+
+    int                 maxAddress;     // Maximum multicast addresses
+                                        // supported by the port.
+
+    eth_port_t          *port;          // The port we're managing addresses for
+
+    // Class to hold information about addresses
+    class IndMCastAddrT
+    {
+    public:
+        IndMCastAddrT() { useCount = 0; };
+        ind_mac_addr_t     address;
+        int             useCount;
+    };
+
+    IndMCastAddrT       **addressList;
+
+    // Find an instance of an address (if any)
+    IndMCastAddrT *find(const ind_mac_addr_t &addr, int& index);
+};
+
+#endif /* _INDMCASTT_ */
+

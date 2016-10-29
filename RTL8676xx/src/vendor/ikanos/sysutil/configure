@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+#   Copyright (C) 2001 Analog Devices Inc. All rights reserved
+#
+#   The information and source code contained herein is the exclusive property
+#   of Analog Devices and may not be disclosed, examined or reproduced in whole
+#   or in part without the explicit written authorization from Analog Devices.
+
+#   Description  : Setup the ant build process to compile with or without
+#                  vod libraries
+
+
+function help_sysutil
+{
+   echo " Great !!"
+}
+
+
+# Process the options specified on the command line. Any unrecognised options
+# will get the usage message, as will specifying no options
+if [ $# -lt 2 ]
+then
+        help_sysutil
+        exit 1
+fi
+
+echo "$1" > 1
+echo "$2" >> 1
+echo "$3" >> 1
+
+echo "ATM_HEADERS=$1" > ./Makefile
+echo "#########" >> ./Makefile
+echo "" >> ./Makefile
+echo "CC=$2" >> ./Makefile
+echo "#########" >> ./Makefile
+echo "" >> ./Makefile
+#echo "KERNEL_HEADERS=$3" >> ./Makefile
+#echo "#########" >> ./Makefile
+#echo "" >> ./Makefile
+cat ./Makefile.in >> ./Makefile 
+exit 0

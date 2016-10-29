@@ -1,0 +1,58 @@
+#  
+# Copyright (C) 2002-2008 Atheros Communications Inc.
+# Kbuild File for pktlog
+#
+#Build targets supported
+#
+#make bld-mod=pktlog
+#make bld-mod=pktlog clean <only clean pktlog>
+
+#
+# Paths
+# XXX: This builds only for HOST or Single CPU based pktlog'es
+#
+#
+
+mod_pktlog             = pktlog
+
+config_pktlog          := $(bld_cfg-pktlog)
+
+ccflags-y           += -DAH_BYTE_ORDER=AH_BIG_ENDIAN 
+#ccflags-y           += -DAH_BYTE_ORDER=AH_BIG_ENDIAN 
+
+ccflags-y           += -I$(PWD)/$(pktlog_path)
+ccflags-y           += -I$(hst_path)/madwifi/
+ccflags-y           += -I$(hal_path)/main
+ccflags-y           += -I$(ath_path)
+ccflags-y        += -I$(PWD)/$(hst_incl)
+ccflags-y       += -I$(PWD)/$(split_incl)
+
+
+ccflags-y    += -funit-at-a-time
+ccflags-y    += -D__WORDSIZE=32 -D__DECONST
+ccflags-y    += -I$(PWD)/$(hst-hal_path)/main
+ccflags-y    += -I$(PWD)/$(hst-hal_path)/main/linux
+ccflags-y    += -I$(PWD)/$(hst-hal_path)/main/$(mac)
+ccflags-y    += -I$(PWD)/$(hst-hal_path)/main/linux/obj/$(arch)
+
+ccflags-y    += -DATH_CHAINMASK_SELECT -DATH_CWM
+ccflags-y    += -I$(PWD)/$(hst-ath_path)
+
+ccflags-y += -I$(PWD)/$(hst-wlan_path)
+ccflags-y   += -DATH_FULL_APSCAN=1
+
+ccflags-y += -I$(PWD)/$(hst-dfs_path)
+ccflags-y += -I$(PWD)/$(hst-rate_path)
+
+ccflags-y    += -I$(PWD)/$(hst-htc_path)/inc
+ccflags-y    += -I$(PWD)/$(hst-htc_path)/hif
+ccflags-y    += -I$(PWD)/$(hst-htc_path)/htc
+ccflags-y    += -I$(PWD)/$(hst-htc_path)/wmi
+ccflags-y    += -I$(PWD)/$(hst-htc_path)/miscdrv
+
+
+obj-$(config_pktlog)   := $(mod_pktlog).o
+$(mod_pktlog)-objs     += $(pktlog_path)/pktlog.o
+
+#rm_files      := $(if $(config_pktlog),$($(mod_pktlog)-objs))
+#rm_files      += $(call __del_cmd,$(rm_files))

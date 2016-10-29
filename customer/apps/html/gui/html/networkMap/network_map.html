@@ -1,0 +1,72 @@
+<div class="house">
+	<div id="internet" class="divInternet">
+		<div class="internet" id="iconInternet" INTERNET_STATUS="NO_INTERNET" />
+		<div class="internet_txt">
+			<span class="trad" key="MAP_INTERNET"></span>
+			<span class="internet_des trad" key="MAP_NO_INT_ACCESS" id="internetAlert"></span>
+		</div>
+	</div>
+	<div id="threeG" class="threeG hand trad" style="display:none">
+		<div class="threeG_ico" id="iconThreeG" power3g="-1" ></div>
+		<span class="threeG_txt hand trad" key="MAP_3G"></span>
+	</div>
+	<div id="adsl" adslactive="false" class="adsl trad">
+		<div class="adsl_ico" id="iconAdsl" powerAdsl="down"></div>
+		<span class="adsl_txt trad" key="MAP_ADSL"></span>
+	</div>
+	<div id="wifi" class="hand disabled">
+		<div class="wifi_ico" color="grey"></div>
+		<span class="gateway"></span>
+		<span class="wifi_txt trad" key="MAP_WIFI_DISABLED"></span>
+	</div>
+	
+	<div class="scroll">
+		<div id="home_content"></div>
+	</div>
+	<div id="applications" class="hand disabled disabled_opacity">
+		<div class="applications_ico"></div>
+		<span class="applications_txt trad" key="MAP_CONFIG_APPLICATIONS"></span>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/networkMap/network_map.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	listDevices(showDevices);
+	getInternetInfo(showInternetStatus);
+	getWifiInfo(updateWifiInNetworkmap);
+
+	if (CONFIG.Supported3G==true) $("#threeG").show();
+	if(CONFIG.ManualPPPoE){
+		$('#adsl').attr("adslConfigurable",true);
+		$('#adsl').addClass("hand");
+		
+		$('#adsl').unbind("click");
+		$('#adsl').click(function() {
+			loadAdsl();
+		});
+	}
+
+	$('#wifi').click(function() {
+		loadWifi();
+	});
+	$('#applications').click(function() {
+		loadApplications();
+	});		
+	$('#password').click(function() {
+		loadPassword();
+	});
+	$('#threeG').click(function() {
+		loadThreeG();
+	});
+	/*$('#adsl').click(function() {
+		loadDialog("html/networkMap/internet_error.html",_("INTERNET_ERROR_TITLE"),450);
+	});*/	
+	effectHover('applications', 'applications_ico');
+	effectHover('wifi', 'wifi_ico');
+	effectHover('threeG', 'threeG_ico');
+	effectHover('adsl', 'adsl_ico');
+	
+	startBagUpdaterThread();
+});
+</script>

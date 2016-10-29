@@ -1,0 +1,8 @@
+#####################
+config APPS_SUPP
+	bool '802.1x supplicant'
+	default n
+	depends on APPS
+	help 
+      	Enable 802.1x supplicant 
+

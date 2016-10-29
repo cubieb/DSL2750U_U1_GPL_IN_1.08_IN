@@ -1,0 +1,64 @@
+#
+#
+#  Broadcom UPNP Library Make File. 
+#  MIPS Version. 
+#
+
+BCUPNPLIB_STATIC = libbcupnp.a
+BCUPNPLIB_NAME = libbcupnp.so
+MAJORV=1
+MINORV=0
+BCLIB_SL=$(BCUPNPLIB_NAME).$(MAJORV)
+BCUPNPLIB=$(BCUPNPLIB_NAME).$(MAJORV).$(MINORV)
+
+ROOTDIR = ../../..
+SRCPATH = $(ROOTDIR)/upnp/src
+#
+# ROOTDIR points to the parent of dms directory
+# We use that as base and define the paths 
+# accordingly.
+#
+INCLUDES += -I$(ROOTDIR)/upnp/src
+INCLUDES += -I$(ROOTDIR)/upnp/include
+INCLUDES += -I$(TOOLCHAINS_SYSROOT)/usr/include
+
+CPPFLAGS = ${INCLUDES} 
+CPPFLAGS += -MD -DHAVE_DLNA -DLINUX -DDEBUG -D_GNU_SOURCE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+CPPFLAGS += -s -Os -fomit-frame-pointer -Wall -fPIC
+
+LDFLAGS = -shared -Wl,-soname,${BCUPNPLIB_NAME}	-Wl,-rpath,/lib:/lib/public:/lib/private
+LDFLAGS += 	-L $(TOOLCHAINS_SYSROOT)/lib \
+			-L $(TOOLCHAINS_SYSROOT)/usr/lib -lpthread -shared-libgcc
+
+SRCFILES =	$(SRCPATH)/action.c \
+		$(SRCPATH)/bsocket.c \
+		$(SRCPATH)/controlpoint.c \
+		$(SRCPATH)/cstring.c \
+		$(SRCPATH)/debug.c \
+		$(SRCPATH)/device.c \
+		$(SRCPATH)/gena.c \
+		$(SRCPATH)/http.c \
+		$(SRCPATH)/nanoxml.c \
+		$(SRCPATH)/linux/osl.c \
+		$(SRCPATH)/service.c \
+		$(SRCPATH)/soap.c \
+		$(SRCPATH)/ssdp.c \
+		$(SRCPATH)/subscription.c \
+		$(SRCPATH)/timer.c \
+		$(SRCPATH)/upnp.c \
+		$(SRCPATH)/url.c \
+		$(SRCPATH)/heap.c \
+		$(SRCPATH)/variable.c
+
+OBJFILES=${SRCFILES:.c=.o}
+All:    $(OBJFILES) 
+	$(CC) -v $(CPPFLAGS) $(OBJFILES) $(LDFLAGS) -o $(BCUPNPLIB_NAME)
+	$(AR) -cvq -s $(BCUPNPLIB_STATIC) ${OBJFILES}
+
+.PHONY: clean
+clean:
+	rm -f $(BCUPNPLIB_STATIC)
+	rm -f $(BCUPNPLIB_NAME) $(OBJFILES) $(SRCPATH)/*.d
+	rm -f *.map *.list
+	
+	

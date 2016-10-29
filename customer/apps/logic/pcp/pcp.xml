@@ -1,0 +1,93 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnection type="object" CurNode="WANIPConnectionNumberOfEntries">
+						<i type="object">
+							<X_TWSZ-COM_MaxPcpEntries type="unsignedInt" Standard="0" Writable="0">8</X_TWSZ-COM_MaxPcpEntries>
+							<X_TWSZ-COM_PcpNumberOfEntries type="unsignedInt" Writable="0">0</X_TWSZ-COM_PcpNumberOfEntries>
+							<X_TWSZ-COM_PCP type="object" MaxNode="X_TWSZ-COM_MaxPcpEntries" CurNode="X_TWSZ-COM_PcpNumberOfEntries">
+								<i type="object">
+									<ServerName type="string"></ServerName>
+									<PcpPid type="int[-1:]">-1</PcpPid>
+									<MaxMapEntries type="unsignedInt" Standard="0" Writable="0">8</MaxMapEntries>
+									<MapNumberOfEntries type="unsignedInt" Writable="0">0</MapNumberOfEntries>
+									<MaxPeerEntries type="unsignedInt" Standard="0" Writable="0">8</MaxPeerEntries>
+									<PeerNumberOfEntries type="unsignedInt" Writable="0">0</PeerNumberOfEntries>
+									<Map type="object" MaxNode="MaxMapEntries" CurNode="MapNumberOfEntries">
+										<i type="object">
+											<Protocol type="string">TCP</Protocol>
+											<InternalPort type="unsignedInt" >0</InternalPort>
+											<ExternalAddr6 type="string"></ExternalAddr6>
+											<ExternalPort type="unsignedInt">0</ExternalPort>
+											<Lifetime type="int[-1:]">3600</Lifetime>
+											<State type="string" Writable="0"></State>
+											<ThirdPartyAddr6 type="string"></ThirdPartyAddr6>
+											<PreferFailure type="boolean" >0</PreferFailure>
+										</i>
+									</Map>
+									<Peer type="object" MaxNode="MaxPeerEntries" CurNode="PeerNumberOfEntries">
+										<i type="object">
+											<Protocol type="string">TCP</Protocol>
+											<InternalPort type="unsignedInt" >0</InternalPort>
+											<ExternalAddr6 type="string"></ExternalAddr6>
+											<ExternalPort type="unsignedInt">0</ExternalPort>
+											<RemoteAddr6 type="string"></RemoteAddr6>
+											<RemotePort type="unsignedInt">0</RemotePort>
+											<Lifetime type="int[-1:]">3600</Lifetime>
+											<State type="string" Writable="0"></State>
+											<ThirdPartyAddr6 type="string"></ThirdPartyAddr6>
+										</i>
+									</Peer>
+								</i>
+							</X_TWSZ-COM_PCP>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object">
+						<i type="object">
+							<X_TWSZ-COM_MaxPcpEntries type="unsignedInt" Standard="0" Writable="0">8</X_TWSZ-COM_MaxPcpEntries>
+							<X_TWSZ-COM_PcpNumberOfEntries type="unsignedInt" Writable="0">0</X_TWSZ-COM_PcpNumberOfEntries>
+							<X_TWSZ-COM_PCP type="object" MaxNode="X_TWSZ-COM_MaxPcpEntries" CurNode="X_TWSZ-COM_PcpNumberOfEntries">
+								<i type="object">
+									<ServerName type="string"></ServerName>
+									<PcpPid type="int[-1:]">-1</PcpPid>
+									<MaxMapEntries type="unsignedInt" Standard="0" Writable="0">8</MaxMapEntries>
+									<MapNumberOfEntries type="unsignedInt" Writable="0">0</MapNumberOfEntries>
+									<MaxPeerEntries type="unsignedInt" Standard="0" Writable="0">8</MaxPeerEntries>
+									<PeerNumberOfEntries type="unsignedInt" Writable="0">0</PeerNumberOfEntries>
+									<Map type="object" MaxNode="MaxMapEntries" CurNode="MapNumberOfEntries">
+										<i type="object">
+											<Protocol type="string">TCP</Protocol>
+											<InternalPort type="unsignedInt" >0</InternalPort>
+											<ExternalAddr6 type="string"></ExternalAddr6>
+											<ExternalPort type="unsignedInt">0</ExternalPort>
+											<Lifetime type="int[-1:]">3600</Lifetime>
+											<State type="string" Writable="0"></State>
+											<ThirdPartyAddr6 type="string"></ThirdPartyAddr6>
+											<PreferFailure type="boolean" >0</PreferFailure>
+										</i>
+									</Map>
+									<Peer type="object" MaxNode="MaxPeerEntries" CurNode="PeerNumberOfEntries">
+										<i type="object">
+											<Protocol type="string">TCP</Protocol>
+											<InternalPort type="unsignedInt" >0</InternalPort>
+											<ExternalAddr6 type="string"></ExternalAddr6>
+											<ExternalPort type="unsignedInt">0</ExternalPort>
+											<RemoteAddr6 type="string"></RemoteAddr6>
+											<RemotePort type="unsignedInt">0</RemotePort>
+											<Lifetime type="int[-1:]">3600</Lifetime>
+											<State type="string" Writable="0"></State>
+											<ThirdPartyAddr6 type="string"></ThirdPartyAddr6>
+										</i>
+									</Peer>
+								</i>
+							</X_TWSZ-COM_PCP>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

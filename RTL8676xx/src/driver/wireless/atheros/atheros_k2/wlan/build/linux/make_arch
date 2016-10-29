@@ -1,0 +1,182 @@
+#!/bin/bash
+##################################################
+##################################################
+##  Copyright (c) 2002- 2009                    ##
+##  Atheros Communications Inc.                 ##
+##################################################
+##################################################
+
+
+
+WLAN_DIR=$PWD/../..
+TGT_DIR=$PWD/../../../tgt
+
+type_arch=${ARCH:?"export ARCH=<your arch>"}
+type_bld=${1/bld=/}
+type_tgt=${2/tgt=/}
+type_hif=${3/hif=/}
+type_chip=${4/chip=/}
+
+valid_arch=$ARCH
+valid_bld="build clean"
+valid_tgt="host target"
+valid_hif="pci usb gmac"
+valid_chip="magpie k2"
+
+ROM_VER=1_0
+
+ERROR_CODE=1
+return_val=
+
+##################################################
+################# FUNCTIONS ######################
+##################################################
+
+
+####################
+# Build the driver #
+####################
+set_path ()
+{
+    TGT_BUILD=${TGT_DIR}/build/${type_chip}_${ROM_VER}/image/${type_chip}_ram/
+	TGT_FW=${WLAN_DIR}/host/fwd
+    TGT_FW_NAME="fwu_${type_chip}_${type_hif}"
+
+	if [[ ${type_hif} == "usb" ]]
+	then
+		TGT_FW=${WLAN_DIR}/host/htc/hif/usb
+        TGT_FW_NAME="fwu_${type_chip}_rom_usb"
+	fi
+
+}
+build_driver () 
+{
+
+    echo "============================="
+    echo " Building ............. $1"
+    echo "============================="
+    
+    set_path
+
+    case "$1" in
+        "target" )
+        
+		cd ${TGT_BUILD}
+        source builds.ram ${type_hif} 
+        make
+        make MAGPIE_IF=${type_hif} build
+        cp -v fwu.c ${TGT_FW}/${TGT_FW_NAME}.c
+        
+		;;
+        
+        "host" )
+
+        cd ${WLAN_DIR}/build/linux
+		make arch=${type_arch} hif=${type_hif} tgt=${type_chip} bld-mod=pktlog
+        make arch=${type_arch} hif=${type_hif} tgt=${type_chip} bld-mod=adf
+        make arch=${type_arch} bld-mod=adf
+        make arch=${type_arch} hif=${type_hif} tgt=${type_chip} bld-mod=hst
+        make arch=${type_arch} hif=${type_hif} tgt=${type_chip} bld-mod=hst-fwd
+        
+		;;
+
+        * )
+        echo "Nothing to build ..."
+        ;;
+
+    esac
+}
+
+clean_driver ()
+{
+
+    set_path 
+
+    echo "============================="
+    echo "Cleaning ............. $1"
+    echo "============================="
+
+    case "$1" in
+
+        "host" )
+        cd ${WLAN_DIR}/build/linux
+        make clean
+        ;;
+
+        "target" )
+        cd ${TGT_BUILD}
+        source builds.ram
+        make clean
+        ;;
+        * )
+        echo "Nothing to clean ..."
+        ;;
+
+    esac
+}
+
+help_driver()
+{
+	echo "--------------------------------------"
+	echo "[BASH Script] usage:"
+	echo "  make_arch {bld} {tgt} {hif} {chip}" 
+	echo "  Where, bld = build or clean "
+	echo "  Where, tgt = host or target   "
+	echo "  Where, hif = pci, usb or gmac "
+	echo "  Where, chip = magpie or k2 "
+	echo "--------------------------------------"
+	
+	exit 0
+}
+
+################################################
+### Check whether the inputs are valid or not ##
+################################################
+
+check_valid()
+{
+	eval CURSOR=\${valid_${1/type_/}}
+
+	for j in $CURSOR
+	do
+		if [[ $j == $2 ]]
+		then
+            return 0
+		fi
+	done
+
+    return 1
+}
+
+###############################
+## Check the variables       ##
+###############################
+check_var()
+{
+    for i in ${!type_*}
+    do
+        eval STATUS=\$$i
+
+		check_valid $i $STATUS
+        return_val=$?
+
+        if [[ "$return_val" -eq "$ERROR_CODE" ]]
+        then
+            STATUS=""
+            type_bld="help"
+        fi
+
+		echo "Checking ${i/type_/}		............. ${STATUS:-"***Failed***"}"
+
+    done
+
+}
+
+
+############################
+########## MAIN ############
+############################
+
+check_var
+${type_bld}_driver ${type_tgt}
+

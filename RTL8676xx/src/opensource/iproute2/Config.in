@@ -1,0 +1,316 @@
+menuconfig OPENSOURCE_IPROUTE2
+        bool 'iproute2'
+        default y
+        depends on OPENSOURCE
+        help
+        iproute2, provide tc and ip command tool.
+
+######################################################
+menuconfig OPENSOURCE_IP_UTIL
+		bool 'ip'
+		default y
+		depends on OPENSOURCE_IPROUTE2
+		help
+
+config OPENSOURCE_IP_LINK
+		bool 'ip link'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_ADDR
+		bool 'ip addr'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_RT_TAB
+		bool 'ip route'
+		default y
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_RT_RULE
+		bool 'ip rule'
+		default y
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_TUNNEL
+		bool 'ip tunnel'
+		default y
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_NEIGH
+		bool 'ip neigh'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_NTAB
+		bool 'ip ntable'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help 
+
+config OPENSOURCE_IP_MADDR
+		bool 'ip maddr'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_MROUTE
+		bool 'ip mroute'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_MONITOR 
+		bool 'ip monitor'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+
+config OPENSOURCE_IP_XFRM
+		bool 'ip xfrm'
+		default n
+		depends on OPENSOURCE_IP_UTIL
+		help
+ 
+######################################################################
+menuconfig OPENSOURCE_TC_UTIL
+		bool 'tc'
+		default y
+		depends on OPENSOURCE_IPROUTE2
+		help
+
+
+comment "Queueing/Scheduling"
+depends on OPENSOURCE_TC_UTIL
+
+config OPENSOURCE_TC_QSFQ
+        bool 'SFQ'
+        default y
+        depends on OPENSOURCE_TC_UTIL
+        help
+        
+config OPENSOURCE_TC_QTBF
+        bool 'TBF'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QFIFO
+        bool 'FIFO'
+        default y
+        depends on OPENSOURCE_TC_UTIL && OPENSOURCE_TC_QPRIO
+        help
+
+config OPENSOURCE_TC_QPRIO
+        bool 'PRIO'
+        default y
+        depends on OPENSOURCE_TC_UTIL
+        help 
+
+config OPENSOURCE_TC_QCBQ
+        bool 'CBQ'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QRED
+        bool 'RED'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QGRED
+        bool 'GRED'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help     
+
+config OPENSOURCE_TC_QHTB   
+        bool 'HTB'
+        default y
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QDSMARK   
+        bool 'DSMARK'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QINGRESS
+        bool 'INGRESS'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QHFSC
+        bool 'HFSC'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+        
+config OPENSOURCE_TC_QNETEM
+        bool 'NETEM'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_QATM
+		bool 'ATM'
+		default n
+		depends on OPENSOURCE_TC_UTIL
+		help
+
+#######################################################
+comment "Classification"
+depends on OPENSOURCE_TC_UTIL
+
+config OPENSOURCE_TC_FBASIC
+        bool 'BASIC'
+        default n
+        depends on OPENSOURCE_TC_UTIL && OPENSOURCE_TC_EMATCH
+        help
+        
+config OPENSOURCE_TC_FU32
+        bool 'U32'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_FROUTE
+        bool 'ROUTE'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+        
+config OPENSOURCE_TC_FFW
+        bool 'FW'
+        default y
+        depends on OPENSOURCE_TC_UTIL
+        help
+        
+config OPENSOURCE_TC_FTCINDEX
+        bool 'TCINDEX'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+        
+config OPENSOURCE_TC_FRSVP
+        bool 'RSVP'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help        
+###########################################
+menuconfig OPENSOURCE_TC_EMATCH
+        bool 'Extended Matches'
+        default n
+        depends on OPENSOURCE_TC_UTIL
+        help
+
+config OPENSOURCE_TC_EM_CMP
+        bool 'Simple packet data comparison'
+        default n
+        depends on OPENSOURCE_TC_EMATCH
+        help
+
+config OPENSOURCE_TC_EM_NBYTE
+        bool 'Multi byte comparison'
+        default n
+        depends on OPENSOURCE_TC_EMATCH
+        help
+
+config OPENSOURCE_TC_EM_U32
+        bool 'U32 key'
+        default n
+        depends on OPENSOURCE_TC_EMATCH
+        help
+
+config OPENSOURCE_TC_EM_META
+        bool 'Metadata'
+        default n
+        depends on OPENSOURCE_TC_EMATCH
+        help
+        
+###########################################
+menuconfig OPENSOURCE_TC_ACT
+        bool "Actions"
+        default n
+        depends on OPENSOURCE_TC_UTIL
+		#select OPENSOURCE_TC_ESTIMATOR
+        help
+
+config OPENSOURCE_TC_ACT_POLICE
+		bool "Traffic policing"
+		depends on OPENSOURCE_TC_ACT
+		help
+        
+config OPENSOURCE_TC_ACT_GACT
+        bool 'Generic actions'
+        default n
+        depends on OPENSOURCE_TC_ACT
+        help
+
+config OPENSOURCE_TC_ACT_MIRRED
+        bool 'Redirecting and Mirroring'
+        default n
+        depends on OPENSOURCE_TC_ACT
+        help
+        
+config OPENSOURCE_TC_ACT_IPT
+        bool 'IPtables targets'
+        default n
+        depends on OPENSOURCE_TC_ACT
+        help
+        
+config OPENSOURCE_TC_ACT_PEDIT
+        bool 'Packet Editing'
+        default n
+        depends on OPENSOURCE_TC_ACT
+        help
+
+#########################################
+config OPENSOURCE_TC_ACT_PEDIT_IP
+        bool 'ipv4/v6 header'
+        default n
+        depends on OPENSOURCE_TC_ACT_PEDIT
+
+config OPENSOURCE_TC_ACT_PEDIT_TCP
+        bool 'tcp header'
+        default n
+        depends on OPENSOURCE_TC_ACT_PEDIT
+        
+config OPENSOURCE_TC_ACT_PEDIT_UDP
+        bool 'udp header'
+        default n
+        depends on OPENSOURCE_TC_ACT_PEDIT
+
+config OPENSOURCE_TC_ACT_PEDIT_ICMP
+        bool 'icmp header'
+        default n
+        depends on OPENSOURCE_TC_ACT_PEDIT
+
+#############################################
+config OPENSOURCE_TC_POLICE
+		bool 'traffic policing(deprecate)'
+		depends on OPENSOURCE_TC_UTIL
+		depends on OPENSOURCE_TC_ACT_POLICE != y
+		#select OPENSOURCE_TC_ESTIMATOR
+		help
+
+config OPENSOURCE_TC_ESTIMATOR
+		bool 'rate estimator'
+		depends on OPENSOURCE_TC_UTIL
+		help
+
+config OPENSOURCE_TC_MONITOR
+		bool 'Monitor'
+		depends on OPENSOURCE_TC_UTIL
+		help
+
+

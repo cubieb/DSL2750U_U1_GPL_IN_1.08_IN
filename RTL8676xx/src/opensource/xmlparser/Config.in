@@ -1,0 +1,9 @@
+#####################
+config OPENSOURCE_XMLPASER
+	bool 'XML Paser(expat & scew)'
+	default y
+	depends OPENSOURCE
+  	help 
+      	Xml Paser (expat & scew)
+
+

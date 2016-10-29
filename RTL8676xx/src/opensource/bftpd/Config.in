@@ -1,0 +1,6 @@
+config OPENSOURCE_BFTPD
+	bool 'FTP UpGrader'
+	default y
+	depends on OPENSOURCE
+	help
+	Enable external ftpupgrader

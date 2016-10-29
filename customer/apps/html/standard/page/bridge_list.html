@@ -1,0 +1,129 @@
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<td>
+    <div class="config2">
+        <p class="bk_orange"   id="lang_bridgefilter">bridge filtering</p>
+		<div class="div_orange">
+			<p id="lang_dsc1">Bridge Filtering is effective only on ATM PVCs configured in Bridge mode. ALLOW means that all MAC layer frames can be transmitted. DENY means that all MAC layer frames except those matching a rule in the following list can not be transmitted.</p>
+			<p id="lang_dsc2">Specify at least one condition to create a filter for identify the MAC layer frames. If you specify several conditions, all of them take effect simultaneously. Click "Apply" to save the filter and enable it.</p>
+			<p><b><font color='red' id="lang_dsc3">WARNING: Changing from one global policy to another automatically REMOVEs all the existing rules. You will need to create new rules for the new policy.</font></b></p>
+			<p></p>
+			
+			<div><b id="lang_BridgeFilteringGlobal">Bridge Filtering Global Policy:</b></div>
+			
+			<input type='radio' name='macFltGP' value="Allow"  id=macFltGP1 />
+			<b>
+			<font color='green' id="lang_ALLOW1">ALLOW</font></b><span id="lang_allpacketsbut"> all packets but </span> <b>
+			<font color='red' id="lang_DENY1">DENY</font></b><span id="lang_thosematching1"> MAC addresses that match a rule in the list</span></label>
+			
+			<br>
+			<input type='radio' name='macFltGP' value="Deny"   id=macFltGP2 ><b>
+			<font color='red' id="lang_DENY2">DENY</font></b><span id="lang_allpackets2"> all packets but</span> <b>
+			<font color='green' id="lang_ALLOW2">ALLOW</font></b><span id="lang_thosematching"> MAC addresses that match a rule in the list</span></label>
+			
+			
+			<div class="SecLevel div_button" id = "select_mode">
+				<input type='button' name="apply"   value='Apply' onClick="MacModeApply()"  id="lang_Apply">
+				<input type="button" value="Cancel" onClick='uiPageRefresh()' id="lang_uiPageRefresh" />
+			</div>
+		</div>
+		
+		<p class="do bk_black" id="lang_displaylist">display list</p>
+		<div class="div_black">
+			<table class="td_table_s" id='BridgeList'>
+				<tr class="tr_bold">
+					<td></td>
+                    <td id="lang_VPIVCI">VPI/VCI</td>
+                    <td id="lang_protocol">protocol</td>
+                    <td id="lang_DMAC">DMAC</td>
+                    <td id="lang_SMAC">SMAC</td>
+                    <td id="lang_PRIO">Prio</td>
+                    <td id="lang_vlanID">vlanID</td>
+                    <td id="lang_DIR">DIR</td>
+                    <td id="lang_TIME">TIME</td>
+				</tr>
+			</table>
+		</div> 
+
+		<div class="SecLevel div_button" id = "apply_rule">
+			<input type='button' onClick='addClick()' value='Add'  id="lang_Add">
+			<input type='button' onClick='EditClick()' value='Edit' id="lang_Edit">
+			<input type='button' onClick='DeleteClick()' value='Delete' id="lang_Delete">
+		</div>
+		
+		<div id="aa">
+			<p class="do bk_black" id="lang_AddBridgeFilte">Add Bridge Filter</p>
+			<div class="div_black">
+				<div class="div_left" id="lang_ProtocolType">Protocol Type:</div>
+				<div class="div_right">
+					<select name='protocol' id='protocol' onChange = 'protocolChange(this.value)' style="width:180px">
+								<option value="0" selected>(Click to Select)
+							   <!-- <option value="8">802.1Q-->
+								<option value="1">PPPoE
+								<option value="2">IPv4
+								<option value="3">IPv6
+								<option value="4">AppleTalk
+								<option value="5">IPX
+								<option value="6">NetBEUI
+								</option>
+					</select>
+				</div>
+				<div class="div_left" id="lang_DestinationMACAddr">Destination MAC Address:</div>
+				<div class="div_right">
+					<input type='text' name="destMac" id="destMac" style="width:180px"/>
+				</div>
+				
+				<div class="div_left" id="lang_ourceMACAddr">Source MAC Address:</div>
+				<div class="div_right">
+					<input type='text' name="srcMac" id="srcMac" style="width:180px"/>
+				</div>
+		
+				<div class="div_left" id="lang_userPriority">User Priority:</div>
+				<div class="div_right">
+					<input type='text' maxlength="1" name="userPriority" id="userPriority" style="width:180px"/>(0-7)
+				</div>
+				<div class="div_left" id="lang_vlanID">vlanID:</div>
+				<div class="div_right">
+					<input type='text' maxlength="4" name="vlanID" id="vlanID" style="width:180px"/>(0-4095)
+				</div>
+				
+				<div class="div_left" id="lang_FrameDirect">Frame Direction:</div>
+				<div class="div_right"><select name='direction' id = "direction" style="width:180px">
+											<option value="1" selected>WAN=&gt;LAN
+											<option value="2">LAN=&gt;WAN
+											</option>
+										</select>
+				</div>
+				
+				<div class="div_left" id="lang_Timeschedule">Time schedule:</div>
+				<div class="div_right"><select name='time_schedule' id = "time_schedule" style="width:180px"></select>&nbsp;&nbsp;
+					<a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=schedules">
+					<u id="lang_ViewAvailable">View Available Schedules</u></a>
+				</div>
+				
+				<div class="div_left" id="lang_Wannterface">Wan interface:</div>
+				<div class="div_right"><select name="select_wan" id = "select_wan" style="width:180px"></select></div>
+		
+				<div class="SecLevel div_button" id = "set_value">
+					<input type='button' name="add" onClick='return AddApply()' value='Apply'  id="lang_Apply2">
+					<input type='button' onClick='uiPageRefresh()' value='Cancel' id="lang_Cancel2">
+				</div>
+			</div>				
+		</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>	
+	</div>
+</td>	
+
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+		<p id="lang_helpdsc">
+		Helpful Hints... 
+Create a list of MAC addresses that you would like to either allow or refuse to access to your network depending on the current global policy.
+More¡­
+		</p></div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>
+
+

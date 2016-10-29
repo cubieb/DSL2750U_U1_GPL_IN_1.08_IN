@@ -1,0 +1,7 @@
+config HAL_WLAN
+	bool 'HAL_WLAN'
+	default n
+	depends DRIVER_HAL
+	help
+		Wlan Hal module
+

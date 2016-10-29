@@ -1,0 +1,6 @@
+config OPENSOURCE_ATM
+	bool '2684 interface config tool(EOA and IPOA)'
+	default y
+	depends on OPENSOURCE
+  	help 
+	  	

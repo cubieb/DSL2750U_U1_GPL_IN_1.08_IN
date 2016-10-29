@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Loading led modules"
+modprobe led-tbscore
+modprobe leds-rtl8676
+

@@ -1,0 +1,18 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_FTPD type="object" Writable="0">
+		<Enable Writable="1" type="boolean">0</Enable>
+		<WANAccessEnable Writable="1" type="boolean">0</WANAccessEnable>
+		<Port Writable="1" type="unsignedInt">2121</Port>
+			<Status Writable="1" type="boolean">0</Status>
+			<Account type="object">
+				<i type="object">
+					<UserName Writable="1" type="string(16)">ftpusername</UserName>
+					<Password Writable="1" type="string(16)">ftppassword</Password>
+					<EnableList Writable="1" type="boolean">0</EnableList>
+					<EnableUpload Writable="1" type="boolean">0</EnableUpload>
+					<EnableDownload Writable="1" type="boolean">0</EnableDownload>
+				</i>
+			</Account>
+	</X_TWSZ-COM_FTPD>
+</InternetGatewayDevice>

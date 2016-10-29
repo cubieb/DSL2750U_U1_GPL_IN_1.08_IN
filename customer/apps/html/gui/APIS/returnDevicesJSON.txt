@@ -1,0 +1,25 @@
+{
+	"RETURN":{
+		"success":<? if eq "<?error found?>" "0"  `true`  `false` ?> 
+   	},
+   	
+	"DEVICES":[
+	<?objget :InternetGatewayDevice.X_TWSZ-COM_Device_list.Customer_Device. "IdDevice NameDevice IdIcon Interfacetype Type IPAddress MACAddress Connected "
+	`
+	<?if eq "<?echo $var:needComma?>" "1" `,` ?>
+	{
+		"idDevice": "<?echo $11?>",
+		"nameDevice": "<?echo $12?>",
+		"idIcon": "<?echo $13?>",
+		"interfaceType": "<?echo $14?>",
+		"type": "<?echo $15?>",
+		"ipAddress": "<?echo $16?>",
+		"macAddress": "<?echo $17?>",
+		"connected": <? if eq "<?echo $28?>" "disconnected"  `false`  `true`?>,
+		"unknown": false,
+		"blacklisted": false
+	}
+	<?setvaronce var:needComma 1?>
+	`?>
+	]
+}

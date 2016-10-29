@@ -1,0 +1,9 @@
+#####################
+config OPENSOURCE_ETHTOOL
+	bool 'Eth tool'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	ETH Tool
+
+

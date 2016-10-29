@@ -1,0 +1,28 @@
+#!/bin/sh
+##
+# 1. pci_prn_mask
+#       PRN_DMA_CHAN0 = (1 << 0), /* RX0 */
+#       PRN_DMA_CHAN1 = (1 << 1), /* RX1 */
+#       PRN_DMA_CHAN2 = (1 << 2), /* TX0 */
+#       PRN_DMA_CHAN3 = (1 << 3), /* TX1 */
+#       PRN_DMA_CHAN4 = (1 << 4), /* TX2 */
+#       PRN_DMA_CHAN5 = (1 << 5), /* TX3 */
+#       PRN_DMA_THR   = (1 << 6), /* Throughput*/
+#       PRN_PCI_INTR  = (1 << 7), /* PCI Interrupts*/
+#       PRN_Q_STOP    = (1 << 8)  /* TX Ring is empty*/
+# 2. hif_pci_intm = 0 or 1 for rx interrupt mitigation on and off
+# 3. hif_pci_debug = 0 or 1 for debug prints
+# 
+#
+#
+#
+#
+
+
+
+LOOP_DIR=/lib/modules/2.6.15/net/11n
+
+insmod $LOOP_DIR/adf.ko
+insmod $LOOP_DIR/hif_pci.ko hif_pci_intm=0 hif_pci_debug=1 pci_prn_mask=0x4A 
+insmod $LOOP_DIR/hst_fwd.ko fw_exec_addr=0x00904000
+insmod $LOOP_DIR/hif_loop.ko

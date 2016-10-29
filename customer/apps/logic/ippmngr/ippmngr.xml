@@ -1,0 +1,12 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_IPPD type="object" Writable="0">
+			<IppdEnable Writable="1" type="boolean">0</IppdEnable>
+			<PrinterName Writable="1" type="string(16)">PrinterName</PrinterName>
+			<MakeModel Writable="0" type="string"></MakeModel>
+			<Manufacturer Writable="0" type="string"></Manufacturer>
+			<Model Writable="0" type="string"></Model>
+			<CMD Writable="0" type="string"></CMD>
+			<FWVer Writable="0" type="string"></FWVer>
+	</X_TWSZ-COM_IPPD>
+</InternetGatewayDevice>

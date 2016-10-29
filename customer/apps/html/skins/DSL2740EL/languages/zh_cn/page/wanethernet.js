@@ -1,0 +1,60 @@
+var data_language = {
+	innerHTML : {
+		lang_internet_config : '因特网设置',
+		lang_introduction : '您可以在本页配置以太网上行通道并选择服务类型。',
+		lang_atm_config : 'ATM PVC配置',
+		lang_service : '服务类型：',
+		lang_pcr : '最大信元速率：',
+		lang_scr : '最小信元速率：',
+		lang_mbs : '最大突发速率：',
+		lang_type_config : '连接类型',
+		lang_protocol : '协议：',
+		lang_encap : '封装方式：',
+		lang_vlan : '(0 = 不使用, 1 - 4094)',
+		lang_PPP_config : 'PPP用户名和密码',
+		lang_ppp_name : 'PPP用户名：',
+		lang_ppp_password : 'PPP密码：',
+		lang_ppp_conf_password : 'PPP确认密码：',
+		lang_auth : '认证方式：',
+		lang_dialup : '拨号模式：',
+		lang_timeout : '超时：',
+		lang_second : '([60-65535]秒)',
+		lang_MRU : 'MRU :',
+		lang_alive : '保持活跃：',
+		lang_static_enable : '使用静态IP地址：',
+		lang_static_IP : 'IP地址：',
+		lang_ip_config : '广域网IP设置',
+		lang_ip_auto : '自动获取IP地址',
+		lang_ip_static : '使用以下IP地址：',
+		lang_ip_ip : 'IP地址：',
+		lang_ip_mask : '子网掩码：',
+		lang_ip_gw :'默认网关：',
+		lang_lcpechointerval : 'LCP间隔时间(秒)：',
+		lang_lcpechoretry  : 'LCP失败：',
+		lang_ip_auto_dns  : '自动获取DNS',
+		lang_ip_static_dns : '使用以下DNS:',
+		lang_ip_dns1 : '主DNS服务器：',
+		lang_ip_dns2 : '次DNS服务器：',
+		lang_net_config : '网络地址配置',
+		lang_nat_enable : '使用NAT:',
+		lang_nat_type : 'NAT类型：',
+		lang_WAN_service : '使用广域网服务：',
+		lang_bridge_enable : '使用桥接服务：',
+		lang_service_name : '服务名称：',
+		lang_help_hint : '帮助...',
+		lang_help1 : '在配置路由器访问因特网时，请确保在列表中选中正确的<b>封装方式</b>。',
+		lang_help2 : '在输入<b>用户名</b>和<b>密码</b>时，请特别注意它们对大小写敏感。大部分连接的问题都是用于错误的<b>用户名</b>或<b>密码</b>所导致的。',
+		lang_more : '更多...',
+		lang_disable45 : '(0 = 禁用, 1 - 4094)'
+	},
+
+	value : {
+		Apply : '应用',
+		Cancel : '取消'
+	},
+	
+	option_text:{
+		SELECT_AuthMethod : ['自动','PAP','CHAP','MS-CHAP'],
+		SELECT_DialupMode : ['手动','永远在线','按需拨号']
+	}
+}

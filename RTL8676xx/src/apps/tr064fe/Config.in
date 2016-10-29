@@ -1,0 +1,6 @@
+config ALP_CC_TR064FE
+	bool 'TR064FE'
+	default y
+	depends on APPS
+  	help 
+        tr064 front end

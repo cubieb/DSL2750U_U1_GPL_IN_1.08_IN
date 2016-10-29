@@ -1,0 +1,6 @@
+config OPENSOURCE_NTFS
+	bool 'NTFS'
+	default n
+	depends on OPENSOURCE
+	help
+	Enable NTFS filesystem

@@ -1,0 +1,110 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_Firewall type="object">
+		<IPFilterEnable type="boolean">1</IPFilterEnable>
+		<SecurityLevel type="unsignedInt">1</SecurityLevel>
+		<CurrentLANFilterTable type="unsignedInt">2</CurrentLANFilterTable>
+		<CurrentWANFilterTable type="unsignedInt">3</CurrentWANFilterTable>
+		<MaxFilterNumberOfEntries type="unsignedInt" Writable="0">20</MaxFilterNumberOfEntries>
+		<WanBlackFilterNumberOfEntries type="unsignedInt" Writable="0">0</WanBlackFilterNumberOfEntries>
+		<WanWhiteFilterNumberOfEntries type="unsignedInt" Writable="0">0</WanWhiteFilterNumberOfEntries>
+		<LanBlackFilterNumberOfEntries type="unsignedInt" Writable="0">0</LanBlackFilterNumberOfEntries>
+		<LanWhiteFilterNumberOfEntries type="unsignedInt" Writable="0">0</LanWhiteFilterNumberOfEntries>
+		<WanBlackFilter type="object" CurNode="WanBlackFilterNumberOfEntries" MaxNode="MaxFilterNumberOfEntries">
+			<i type="object">
+				<DevPath type="string"></DevPath>
+				<Cache_DeviceName type="string" Writable="0"> </Cache_DeviceName>
+				<SrcIP type="string"></SrcIP>
+				<DestIP type="string"></DestIP>
+				<SrcPort type="string"></SrcPort>
+				<DestPort type="string"></DestPort>
+				<Protocol type="string"></Protocol>
+				<SrcMask type="string"></SrcMask>
+				<DstMask type="string"></DstMask>
+				<Description type="string"></Description>
+				<Enable type="boolean">1</Enable>
+				<SrcIPType type="string"></SrcIPType>
+				<DestIPType type="string"></DestIPType>
+				<SrcStartIP type="string"></SrcStartIP>
+				<SrcEndIP type="string"></SrcEndIP>
+				<DestStartIP type="string"></DestStartIP>
+				<DestEndIP type="string"></DestEndIP>
+				<SrcPortType type="string"></SrcPortType>
+				<DestPortType type="string"></DestPortType>
+				<SchedulePath type="string">Always</SchedulePath>
+			</i>
+		</WanBlackFilter>
+		<WanWhiteFilter type="object" CurNode="WanWhiteFilterNumberOfEntries" MaxNode="MaxFilterNumberOfEntries">
+			<i type="object">
+				<DevPath type="string"></DevPath>
+				<Cache_DeviceName type="string" Writable="0"> </Cache_DeviceName>
+				<SrcIP type="string"></SrcIP>
+				<DestIP type="string"></DestIP>
+				<SrcPort type="string"></SrcPort>
+				<DestPort type="string"></DestPort>
+				<Protocol type="string"></Protocol>
+				<SrcMask type="string"></SrcMask>
+				<DstMask type="string"></DstMask>
+				<Description type="string"></Description>
+				<Enable type="boolean">1</Enable>
+				<SrcIPType type="string"></SrcIPType>
+				<DestIPType type="string"></DestIPType>
+				<SrcStartIP type="string"></SrcStartIP>
+				<SrcEndIP type="string"></SrcEndIP>
+				<DestStartIP type="string"></DestStartIP>
+				<DestEndIP type="string"></DestEndIP>
+				<SrcPortType type="string"></SrcPortType>
+				<DestPortType type="string"></DestPortType>
+				<SchedulePath type="string">Always</SchedulePath>
+			</i>
+		</WanWhiteFilter>
+		<LanBlackFilter type="object" CurNode="LanBlackFilterNumberOfEntries" MaxNode="MaxFilterNumberOfEntries">
+			<i type="object">
+				<DevPath type="string"></DevPath>
+				<Cache_DeviceName type="string" Writable="0"> </Cache_DeviceName>
+				<SrcIP type="string"></SrcIP>
+				<DestIP type="string"></DestIP>
+				<SrcPort type="string"></SrcPort>
+				<DestPort type="string"></DestPort>
+				<Protocol type="string"></Protocol>
+				<SrcMask type="string"></SrcMask>
+				<DstMask type="string"></DstMask>
+				<Description type="string"></Description>
+				<Enable type="boolean">1</Enable>
+				<SrcIPType type="string"></SrcIPType>
+				<DestIPType type="string"></DestIPType>
+				<SrcStartIP type="string"></SrcStartIP>
+				<SrcEndIP type="string"></SrcEndIP>
+				<DestStartIP type="string"></DestStartIP>
+				<DestEndIP type="string"></DestEndIP>
+				<SrcPortType type="string"></SrcPortType>
+				<DestPortType type="string"></DestPortType>
+				<SchedulePath type="string">Always</SchedulePath>
+			</i>
+		</LanBlackFilter>
+		<LanWhiteFilter type="object" CurNode="LanWhiteFilterNumberOfEntries" MaxNode="MaxFilterNumberOfEntries">
+			<i type="object">
+				<DevPath type="string"></DevPath>
+				<Cache_DeviceName type="string" Writable="0"> </Cache_DeviceName>
+				<SrcIP type="string"></SrcIP>
+				<DestIP type="string"></DestIP>
+				<SrcPort type="string"></SrcPort>
+				<DestPort type="string"></DestPort>
+				<Protocol type="string"></Protocol>
+				<SrcMask type="string"></SrcMask>
+				<DstMask type="string"></DstMask>
+				<Description type="string"></Description>
+				<Enable type="boolean">1</Enable>
+				<SrcIPType type="string"></SrcIPType>
+				<DestIPType type="string"></DestIPType>
+				<SrcStartIP type="string"></SrcStartIP>
+				<SrcEndIP type="string"></SrcEndIP>
+				<DestStartIP type="string"></DestStartIP>
+				<DestEndIP type="string"></DestEndIP>
+				<SrcPortType type="string"></SrcPortType>
+				<DestPortType type="string"></DestPortType>
+				<SchedulePath type="string">Always</SchedulePath>
+			</i>
+		</LanWhiteFilter>
+	</X_TWSZ-COM_Firewall>
+</InternetGatewayDevice>

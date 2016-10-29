@@ -1,0 +1,31 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnection type="object">
+						<i type="object">
+							<NATEnabled type="boolean">1</NATEnabled>
+							<Natipaddr type="string">0.0.0.0</Natipaddr>
+							<X_TELEFONICA-ES_NATType type="string" Standard="0">full cone</X_TELEFONICA-ES_NATType>
+							<X_TWSZ-COM_DMZEnabled type="boolean" Standard="0">0</X_TWSZ-COM_DMZEnabled>
+							<X_TWSZ-COM_DMZHost type="string" Standard="0"></X_TWSZ-COM_DMZHost>
+							<X_TWSZ-COM_SvcType type="string"></X_TWSZ-COM_SvcType>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object">
+						<i type="object">
+							<NATEnabled type="boolean">1</NATEnabled>
+							<Natipaddr type="string">0.0.0.0</Natipaddr>
+							<X_TELEFONICA-ES_NATType type="string" Standard="0">full cone</X_TELEFONICA-ES_NATType>
+							<X_TWSZ-COM_DMZEnabled type="boolean" Standard="0">0</X_TWSZ-COM_DMZEnabled>
+							<X_TWSZ-COM_DMZHost type="string" Standard="0"></X_TWSZ-COM_DMZHost>
+							<X_TWSZ-COM_SvcType type="string"></X_TWSZ-COM_SvcType>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

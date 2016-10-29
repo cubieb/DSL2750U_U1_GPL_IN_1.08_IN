@@ -1,0 +1,48 @@
+<div class="dialog_faq dialog_faq_int dialog_faq_3g"></div>
+<div class="threeg_dialog" >
+	<div class="threeg_parte">
+		<div class="threeg_line">
+			<div style="display: none;">			
+				<div class="threeg_label trad" key="ADSL_TYPE" style="width:70px;"></div>
+				<div class="threeg_input" id="adslType" style="width:150px;margin-left:10px">PPPoE</div>
+			</div>
+		</div>
+		<div class="threeg_line">
+			<div style="display: block;">			
+				<div class="threeg_label trad" key="ADSL_USER" style="width:70px;"></div>
+				<div class="threeg_input"><input type="text" id="adslUser" disabled=true style="width:160px;"></div>
+			</div>
+		</div>
+		<div class="threeg_line">
+			<div style="display: block;">			
+				<div class="threeg_label trad" key="ADSL_PASS" style="width:70px;"></div>
+				<div class="threeg_input"><input type="password" id="adslPass" disabled=true style="width:160px;"></div>
+			</div>
+		</div>
+		<div class="threeg_line"></div>
+	</div>		
+	<div class="line_grey" style="width: 450px;margin-top:26px;"></div>
+    
+	<div class="centred">
+		<div id="cancel" class="cancel hand">
+			<div class="cancel_icon"></div>			
+			<span class="trad cancel_txt" key="COMMON_CANCEL"></span>
+		</div>
+		<div id="acceptDev" class="accept buttons_space hand">
+			<div class="accept_icon"></div>			
+			<span id="aceptAdsl" class="trad accept_txt" key="COMMON_ACCEPT"></span>		
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/networkMap/adsl.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#aceptAdsl').click(function() {
+		setAdslData();
+	});
+	$('.dialog_faq_3g').click(function() {
+		loadHelpDialog(_('HELP_TITLE'), function() { linkContent(2,3); });
+	});
+	setTimeout("getInternetInfo(adslDataReceived);",0);
+});
+ </script>

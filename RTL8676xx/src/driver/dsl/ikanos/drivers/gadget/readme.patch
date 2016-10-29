@@ -1,0 +1,18 @@
+1. Have a old copy of gadget directory and rename it to gadget_old 
+2. Rename the working copy of gadget directory to gadget_new. Remove *.o
+   *.ko,all hidden files,*.cmd and any other unnecessary files	
+3. Issue the command 
+   diff -Naru gadget_old gadget_new > {data_of_creation}_vox160gadget.patch 
+   e.g. diff -Naru gadget_old gadget_new > 20060424_vox160gadget.patch 
+4. Combine all the patch to create a single unified patch using combinediff
+   command.Note that the diff files must be listed in the order that they are 
+   to be applied. So list the patch file with old data as first argument and 
+   so  on. Also Note that the two patches must be in strict incremental or-
+   der
+   e.g combinediff 20060424_vox160gadget.patch 20060426_vox160gadget.patch >
+       vox160gadget_unified.patch
+5. Only unified patch should be applied to the gadget directory of linux kernel
+   source tree.  
+   e.g cd gadget
+   patch -p1 < 20060426_vox160gadget_unified.patch
+	

@@ -1,0 +1,234 @@
+#include <sys/select.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include <signal.h>
+#include <errno.h>
+#include <string.h>
+
+#include <stdlib.h> //zlg
+typedef unsigned short u16;
+typedef unsigned int u32;
+typedef unsigned char u8;
+typedef unsigned long u64;
+#include <linux/ethtool.h>
+#include <linux/sockios.h>
+#include <errno.h>
+
+#include "main.h"
+#include "statemachine.h"
+#include "cardif.h"
+
+
+
+struct config_data config_info;
+void init_config(int argc, char** argv){
+	if(argc!=3){
+		printf("invald args\n");
+		exit(0);
+	}
+	if(strlen(argv[1])>MAX_NAME_SIZE){
+		printf("name length too long\n");
+		exit(0);
+	}
+	if(strlen(argv[2])>MAX_PASSWD_SIZE){
+		printf("name length too long\n");
+		exit(0);
+	}
+	strcpy(config_info.name,argv[1]);
+	strcpy(config_info.passwd,argv[2]);
+	printf("config_info.name=%s\n",config_info.name);
+	printf("config_info.passwd=%s\n",config_info.passwd);
+	return;
+	
+}
+//zlg
+int detect_mii(int skfd, char *ifname)
+{
+        struct ifreq ifr;
+        unsigned short *data, mii_val;
+        unsigned phy_id;
+        /* Get the vitals from the interface. */
+        strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
+        if (ioctl(skfd, SIOCGMIIPHY, &ifr) < 0)
+        {
+                printf("SIOCGMIIPHY on %s failed: %s\n", ifname, strerror(errno));
+               // (void) close(skfd);
+                return 2;
+        }
+        data = (unsigned short *)(&ifr.ifr_data);
+        phy_id = data[0];
+        data[1] = 1;
+        if (ioctl(skfd, SIOCGMIIREG, &ifr) < 0)
+        {
+                printf("SIOCGMIIREG on %s failed: %s\n", ifr.ifr_name, strerror(errno));
+                return 2;
+        }
+        mii_val = data[3];
+        return(((mii_val & 0x0016) == 0x0004) ? 0 : 1);
+}
+
+int detect_ethtool(int skfd, char *ifname)
+{
+        struct ifreq ifr;
+        struct ethtool_value edata;
+        memset(&ifr, 0, sizeof(ifr));
+        edata.cmd = ETHTOOL_GLINK;
+        strncpy(ifr.ifr_name, ifname, sizeof(ifr.ifr_name)-1);
+        ifr.ifr_data = (char *) &edata;
+        if (ioctl(skfd, SIOCETHTOOL, &ifr) == -1)
+        {
+                printf("ETHTOOL_GLINK failed: %s\n", strerror(errno));
+                return 2;
+        }
+        return (edata.data ? 0 : 1);
+}
+//zlg
+
+void logstart(){
+   int ret;
+   int skfd;
+    /* struct ifreq ifr;
+
+	if(( skfd = socket(PF_INET,SOCK_DGRAM,0)) < 0 )
+	{
+		printf("socket error\n");
+		return;
+	}
+
+       memset(&ifr,0,sizeof(ifr));
+       strncpy((char*)&ifr.ifr_name,"eth1",strlen("eth1"));
+       	ret=ioctl(skfd,SIOCGIFFLAGS,&ifr);
+
+        if(ret<0){
+            printf("bad ioctl\n");
+        }
+
+        if(ifr.ifr_flags & IFF_UP){
+            printf("IFF_UP Ok....\n");
+		//return;
+        }else{
+            printf("IFF_UP Fail....\n");
+        }
+
+        if(ifr.ifr_flags & IFF_LOWER_UP){
+            printf("IFF_LOWER_UP Ok....\n");
+		//return;
+        }else{
+            printf("IFF_LOWER_UP Fail....\n");
+        }
+
+	if(ifr.ifr_flags & IFF_RUNNING){
+            printf("IFF_RUNNING Ok....\n");
+                //return;
+        }else{
+            printf("IFF_RUNNING Fail....\n");
+        }
+
+	if (ifr.ifr_flags & (IFF_NOARP | IFF_LOOPBACK)) {
+	    printf("Interface eth1 is not ARPable");
+	}else
+	    printf("have ARPable");
+
+           if (( skfd = socket( AF_INET, SOCK_DGRAM, 0 ) ) < 0 )
+        if(ifr.ifr_flags & IFF_LOWER_UP){
+            printf("IFF_LOWER_UP Ok....\n");
+                //return;
+        }else{
+            printf("IFF_LOWER_UP Fail....\n");
+        }
+{
+                printf("socket error\n");
+                return;
+        }
+*/
+    ret = detect_ethtool(skfd, "eth1");
+    if (ret == 2)
+                ret = detect_mii(skfd, "eth1");
+   
+    if (ret == 2)
+                printf("Could not determine status\n");
+    if (ret == 1)
+                printf("Link down\n");
+    if (ret == 0)
+                printf("Link up\n");
+
+
+  /*  ret = detect_ethtool(skfd, "eth0");
+    if (ret == 2)
+                ret = detect_mii(skfd, "eth0");
+   
+    if (ret == 2)
+                printf("eth0 Could not determine status\n");
+    if (ret == 1)
+                printf("eth0 Link down\n");
+    if (ret == 0)
+                printf("eth0 Link up\n");
+
+*/
+    close(skfd);
+
+
+
+
+	if(state.eap_req==TRUE){
+        return;
+	}
+
+//zlg	if(state.start_count>=state.max_start){
+//		return;
+//	}
+//zlg	state.start_count++;
+	send_logstart_frame();
+//zlg	alarm(state.start_count*2);
+	alarm(1); //zlg
+	return;
+		
+}
+void main(int argc, char** argv){
+	struct timeval t;
+	int ret,size;
+	fd_set fd;
+	int maxfd;
+	t.tv_sec=2;
+	t.tv_usec=0;
+#if 0
+	test_MD5();
+	return;
+#endif
+	init_config(argc, argv);
+	init_cardif();
+	init_statemachine();
+	init_crc32_table();
+	alarm(1);
+	signal(SIGALRM,logstart);
+	printf("freesupplicant running....\n");
+
+    system("ifconfig wlan0 down");    //ZLG
+    usleep(500);
+    printf("wlan0 down....\n");
+
+	while(1){
+		FD_ZERO(&fd);
+		FD_SET(cardif.sock,&fd);
+		maxfd=cardif.sock+1;
+		ret=select(maxfd,&fd,NULL,NULL,NULL);
+		if(ret<=0){
+            if(state.eap_req==TRUE){
+                state.eap_req=FALSE;
+                alarm(1);
+                 printf("state.eap_req changed\n");
+            }else{
+                printf("bad select:errno=%d,%s\n",errno,strerror(errno));			
+            }
+			continue;
+		}else 
+            printf("good select\n");
+
+		if(FD_ISSET(cardif.sock,&fd)){
+			size=cardif_getframe();
+			run_statemachine();
+		}
+	}
+	return;
+	
+}

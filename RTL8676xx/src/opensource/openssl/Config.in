@@ -1,0 +1,26 @@
+#####################
+menuconfig OPENSOURCE_OPENSSL
+  bool "OpenSSL"
+  depends on OPENSOURCE 
+
+choice
+  prompt "OpenSSL Version"
+  default OPENSOURCE_OPENSSL_097
+  depends on OPENSOURCE_OPENSSL
+  help
+    There are 2 version Openssl 0.9.7 and 0.9.8
+    0.9.7 has smaller size,but not support WAPI
+    0.9.7 EAPTLS can support hostapd with EAPTLS
+    0.9.8 has bigger size,can support WAPI 
+ 
+
+config OPENSOURCE_OPENSSL_097
+  bool "0.9.7"
+
+config OPENSOURCE_OPENSSL_097_EAPTLS
+  bool "0.9.7(with EAP/TLS)"
+
+config OPENSOURCE_OPENSSL_098 
+  bool "0.9.8(WAPI)"
+
+endchoice

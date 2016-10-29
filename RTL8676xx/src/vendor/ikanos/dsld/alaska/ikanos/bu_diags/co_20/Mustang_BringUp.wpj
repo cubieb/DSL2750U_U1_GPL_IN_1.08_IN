@@ -1,0 +1,275 @@
+Document file - DO NOT EDIT
+
+<BEGIN> BUILD_PPC860gnu_BUILDRULE
+archive
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_AR
+arppc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_ARCHIVE
+$(PRJ_DIR)/PPC860gnu/Mustang_BringUp.a
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_AS
+ccppc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_CC
+ccppc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_CFLAGS
+-g \
+	-mcpu=860 \
+	-nostdinc \
+	-DRW_MULTI_THREAD \
+	-D_REENTRANT \
+	-fvolatile \
+	-fno-builtin \
+	-fno-for-scope \
+	-I. \
+	-IW:/newHost/target/ikanos/include \
+	-IW:/newHost/target/ikanos/apps/elm \
+	-IW:/newHost/target/ikanos/apps/rfm \
+	-IW:/newHost/target/ikanos/apps \
+	-IW:/newHost/target/ikanos/ipos/include/dapi \
+	-IW:/newHost/target/ikanos/ipos/include/api \
+	-IW:/newHost/target/ikanos/ipos/include/osshim \
+	-IW:/newHost/target/ikanos/ipos/iniapi/p2co \
+	-IW:/newHost/target/proj/co_20 \
+	-IW:/newHost/target/ikanos/diags/fast_track/include \
+	-IW:/newHost/target/ikanos/diags \
+	-IW:/newHost/target/config/hsiMdpPro8xxT \
+	-IW:/newHost/target/h \
+	-IW:/newHost/target/config/comps/src \
+	-IW:/newHost/target/ikanos/system \
+	-I$(WIND_BASE)/target/h \
+	-DCPU=PPC860 \
+	-DCO_20 \
+	-DCO_20_DIAGS
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_CFLAGS_AS
+-g \
+	-mcpu=860 \
+	-ansi \
+	-nostdinc \
+	-fvolatile \
+	-fno-builtin \
+	-fno-for-scope \
+	-P \
+	-x \
+	assembler-with-cpp \
+	-I. \
+	-I$(WIND_BASE)/target/h \
+	-DCPU=PPC860
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_CPP
+ccppc -E -P -xc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_LD
+ldppc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_LDDEPS
+
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_LDFLAGS
+-X -N
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_LD_PARTIAL_FLAGS
+-X -r
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_NM
+nmppc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_OPTION_DEFINE_MACRO
+-D
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_OPTION_INCLUDE_DIR
+-I
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_POST_BUILD_RULE
+
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_PRJ_LIBS
+
+<END>
+
+<BEGIN> BUILD_PPC860gnu_MACRO_SIZE
+sizeppc
+<END>
+
+<BEGIN> BUILD_PPC860gnu_RO_DEPEND_PATH
+{$(WIND_BASE)/target/h/} {$(WIND_BASE)/target/src/} {$(WIND_BASE)/target/config/}
+<END>
+
+<BEGIN> BUILD_PPC860gnu_TC
+::tc_PPC860gnu
+<END>
+
+<BEGIN> BUILD_RULE_Mustang_BringUp.out
+
+<END>
+
+<BEGIN> BUILD_RULE_archive
+
+<END>
+
+<BEGIN> BUILD_RULE_objects
+
+<END>
+
+<BEGIN> BUILD__CURRENT
+PPC860gnu
+<END>
+
+<BEGIN> BUILD__LIST
+PPC860gnu
+<END>
+
+<BEGIN> CORE_INFO_TYPE
+::prj_vxApp
+<END>
+
+<BEGIN> CORE_INFO_VERSION
+2.0
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/afe_rw.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/afe_rw.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/afe_rw.c_objects
+afe_rw.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/afe_rw.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/basic_dma_test.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/basic_dma_test.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/basic_dma_test.c_objects
+basic_dma_test.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/basic_dma_test.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/common_bup.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/common_bup.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/common_bup.c_objects
+common_bup.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/common_bup.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/hic.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/hic.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/hic.c_objects
+hic.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/hic.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/memTest.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/memTest.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/memTest.c_objects
+memTest.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/memTest.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/sdram.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/sdram.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/sdram.c_objects
+sdram.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/sdram.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/uart.c_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/uart.c_dependencies
+
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/uart.c_objects
+uart.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/uart.c_tool
+C/C++ compiler
+<END>
+
+<BEGIN> PROJECT_FILES
+$(PRJ_DIR)/common_bup.c \
+	$(PRJ_DIR)/sdram.c \
+	$(PRJ_DIR)/basic_dma_test.c \
+	$(PRJ_DIR)/uart.c \
+	$(PRJ_DIR)/hic.c \
+	$(PRJ_DIR)/afe_rw.c \
+	$(PRJ_DIR)/memTest.c
+<END>
+
+<BEGIN> userComments
+<Enter description here>
+<END>
+

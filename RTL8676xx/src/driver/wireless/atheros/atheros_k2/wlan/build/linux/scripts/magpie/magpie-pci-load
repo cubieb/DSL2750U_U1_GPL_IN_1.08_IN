@@ -1,0 +1,31 @@
+#!/bin/sh
+
+ATH_MOD_PATH=/lib/modules/2.6.15/net/11n/magpie_pci
+
+#Create a symbolic link to unload script as reboot command invokes
+# killVAP script
+
+#ln -sf /etc/ath/magpie-pci-unload /etc/ath/killVAP
+
+#Export Environment Variables
+#. /etc/ath/magpie-apcfg
+
+
+insmod ${ATH_MOD_PATH}/adf.ko
+insmod ${ATH_MOD_PATH}/hif_pci.ko
+insmod ${ATH_MOD_PATH}/hst_fwd.ko
+
+insmod ${ATH_MOD_PATH}/hst_htc.ko
+
+insmod ${ATH_MOD_PATH}/hst_hal.ko
+insmod ${ATH_MOD_PATH}/hst_wlan.ko
+insmod ${ATH_MOD_PATH}/hst_scansta.ko
+insmod ${ATH_MOD_PATH}/hst_rate.ko
+insmod ${ATH_MOD_PATH}/hst_ath.ko
+insmod ${ATH_MOD_PATH}/hst_scanap.ko
+insmod ${ATH_MOD_PATH}/hst_xauth.ko
+insmod ${ATH_MOD_PATH}/hst_wep.ko
+insmod ${ATH_MOD_PATH}/hst_tkip.ko
+insmod ${ATH_MOD_PATH}/hst_ccmp.ko
+
+sleep 1

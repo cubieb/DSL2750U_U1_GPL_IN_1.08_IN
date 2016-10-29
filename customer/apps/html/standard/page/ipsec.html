@@ -1,0 +1,273 @@
+<!-- config -->
+<style type="text/css">
+	.div_left { width:240px;}
+</style>
+
+	<td>
+		<div class="config2">
+			<p class="bk_orange" id="lang_config">IPSEC</p>
+			<div class="div_orange">
+				<p id = "lang_introdection">
+				Add or delete IPsec tunnel connections in this page.
+				</p>
+			</div>
+
+			<p class="do bk_black" id="lang_config1">IPsec Tunnel Mode Connections.</p>
+			<div class="div_black">
+				<div class="div_left"></div>
+				<div class="div_middle">&nbsp;
+					<input type="checkbox" name="IPSECEnabled" id="IPSECEnabled" value="" onClick="uiIPSECEnabled();" />
+					<b><span id = "lang_Enable">Enable IPsec</span></b>
+				</div>
+				<br>
+
+				<table class="td_table_s" id="IPSecList">
+					<tr>
+						<td>&nbsp;</td>
+						<td id="lang_name"><b>Name</b></td>
+						<td id="lang_remotegw"><b>Remote Gateway</b></td>
+						<td id="lang_localaddr"><b>Local Addresses</b></td>
+						<td id="lang_remoteaddr"><b>Remote Addresses</b></td>
+						<td id="lang_interface"><b>Interface</b></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="div_button do">
+				<input type="button" name="add" id="add" value="Add" onclick="uiAdd();" />&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" name="edit" id="edit" value="Edit" onclick="uiEdit();" />&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" name="del" id="del" value="Delete" onClick="uiDelete();" />
+			</div>
+
+			<div id="IPSecSet" style="display:none">
+				<p class="do bk_black" id = "lang_config_set">IPsec Settings</p>
+
+				<div class="div_black">
+					<div class="div_left">
+						<span id="lang_config_name">IPsec Connection Name : </span>
+					</div>
+					<div class="div_right">
+						<input type="text" maxlength="15" name="ipsecname" id="ipsecname" value="" />
+					</div>
+
+					<div class="div_left">
+						<span id="lang_config_mode">Tunnel Mode : </span>
+					</div>
+					<div class="div_right">
+						<select name="tunnelmode" class="hold" id="tunnelmode">
+							<option></option>
+						</select>
+					</div>
+
+					<div class="div_left">
+						<span id="lang_config_gw">Remote IPsec Gateway Address : </span>
+					</div>
+					<div class="div_right">
+						<input type="text" maxlength="75" name="gw" id="gw" value="" />
+					</div>
+
+					<br>
+					<div class="div_left">
+						<span id="lang_config_localaddr">Tunnel access from local IP address : </span>
+					</div>
+					<div class="div_right">
+						<select name="TunnelLocalAddr" class="hold" id="TunnelLocalAddr" onClick="doLocalIP();">
+							<option></option>
+						</select>
+					</div>
+
+					<div class="div_left">
+						<span id="lang_config_localIP">IP Address for VPN : </span>
+					</div>
+					<div class="div_right">
+						<input type="text" maxlength="15" name="LocalIP" id="LocalIP" value="" />
+					</div>
+
+					<div id="LocalVPN">
+						<div class="div_left">
+							<span id="lang_config_localMask">IP Subnetmask : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" maxlength="15" name="LocalMask" id="LocalMask" value="" />
+						</div>
+					</div>
+
+					<br>
+					<div class="div_left">
+						<span id="lang_config_remoteaddr">Tunnel access from remote IP address : </span>
+					</div>
+					<div class="div_right">
+						<select name="TunnelRemoteAddr" class="hold" id="TunnelRemoteAddr" onClick="doRemoteIP();">
+							<option></option>
+						</select>
+					</div>
+
+					<div class="div_left">
+						<span id="lang_config_remoteIP">IP Address for VPN : </span>
+					</div>
+					<div class="div_right">
+						<input type="text" maxlength="15" name="RemoteIP" id="RemoteIP" value="" />
+					</div>
+
+					<div id="RemoteVPN">
+						<div class="div_left">
+							<span id="lang_config_remoteMask">IP Subnetmask : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" maxlength="15" name="RemoteMask" id="RemoteMask" value="" />
+						</div>
+					</div>
+
+					<br>
+					<div class="div_left">
+						<span id="lang_config_KeyExchangeMethod">Key Exchange Method : </span>
+					</div>
+					<div class="div_right">
+						<select name="KeyMethod" class="hold" id="KeyMethod" onClick="doKeyMethod();">
+							<option></option>
+						</select>
+					</div>
+
+					<div id="KeyAuto">
+						<div class="div_left">
+							<span id="lang_config_shardkey">Pre-Shared Key : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" maxlength="15" name="ShardKey" id="ShardKey" value="" />
+						</div>
+
+						<p id="lang_IKESet"><b>IKE Settings</b></p>
+						<p id="lang_phase1"><b>Phase 1</b></p>
+
+						<div class="div_left">
+							<span id="lang_config_mode">Mode : </span>
+						</div>
+						<div class="div_right">
+							<select name="Mode" class="hold" id="Mode">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_encryalg1">Encryption Algorithm : </span>
+						</div>
+						<div class="div_right">
+							<select name="EncryAlg1" class="hold" id="EncryAlg1">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_integralg1">Integrity Alogorithm : </span>
+						</div>
+						<div class="div_right">
+							<select name="IntegrAlg1" class="hold" id="IntegrAlg1">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_groupkey1">Diffie-Hellman Group Key Exchange : </span>
+						</div>
+						<div class="div_right">
+							<select name="GroupKey1" class="hold" id="GroupKey1">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_keylifetime1">Key Life Time : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" maxlength="15" name="KeyLifeTime1" id="KeyLifeTime1" value="" />
+						</div>
+
+						<p id = "lang_phase2"><b>Phase 2</b></p>
+						<div class="div_left">
+							<span id="lang_config_encryalg2">Encryption Algorithm : </span>
+						</div>
+						<div class="div_right">
+							<select name="EncryAlg2" class="hold" id="EncryAlg2">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_integralg2">Integrity Alogorithm : </span>
+						</div>
+						<div class="div_right">
+							<select name="IntegrAlg2" class="hold" id="IntegrAlg2">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_keylifetime2">Key Life Time : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" maxlength="15" name="KeyLifeTime2" id="KeyLifeTime2" value="" />
+						</div>
+					</div>
+
+					<div id = "KeyManual">
+						<div class="div_left">
+							<span id="lang_config_encryalg3">Encryption Algorithm : </span>
+						</div>
+						<div class="div_right">
+							<select name="EncryAlg3" class="hold" id="EncryAlg3">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_EncryKey">Encryption Key : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" style="width:200px" maxlength="48" name="EncryKey" id="EncryKey" value="" />
+							DES:16,3DES:48(Digit Hex)
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_authalg">Authentication Alogorithm : </span>
+						</div>
+						<div class="div_right">
+							<select name="AuthAlg" class="hold" id="AuthAlg">
+								<option></option>
+							</select>
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_AuthKey">Authentication Key : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" style="width:250px" maxlength="40" name="AuthKey" id="AuthKey" value="" />
+							MD5:32,SHA1:40(Digit Hex)
+						</div>
+
+						<div class="div_left">
+							<span id="lang_config_SPI">SPI : </span>
+						</div>
+						<div class="div_right">
+							<input type="text" maxlength="15" name="SPI" id="SPI" value="" />
+							Hex 100-FFFFFFFF
+						</div>
+					</div>
+
+					<div class="div_left">
+						<span id="lang_config_interface">Use Interface : </span>
+					</div>
+					<div class="div_right">
+						<select name="selectConnectionName" class="hold" id="selectConnectionName">
+							<option></option>
+						</select>
+					</div>
+
+					<div class="div_button do">
+						<input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();">&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" name="Cancel" id="cancel" value="cancel" onClick="uiPageRefresh();">
+					</div>
+				</div>
+			</div>
+		</div>
+	</td>
+</table>

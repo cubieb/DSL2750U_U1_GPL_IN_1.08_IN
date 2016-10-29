@@ -1,0 +1,65 @@
+﻿var data_language = {
+	innerHTML : {
+		deviceinfo : 'Información del dispositivo',
+		SerialNumber:'Número de Serie :',
+		WanServiceType:'Tipo de servicio de Red de Área Extensa:',
+		WanServiceType1:'Tipo de servicio de Red de Área Extensa:',
+		Thisinformation : 'Esto indica el estado actual de todas las conexiones.',
+		systeminfo : 'información del sistema',
+		ModelName : 'Nombre del Módem :',
+		TimeandDate : 'Hora y Fecha :',
+		HardwareVersion : 'Versión del Hardware :',
+		SoftwareVersion : 'Versión del Programa :',
+		FirmwareVersion: 'Versión del firmware:',
+		UpTime : 'Tiempo operativo del sistema :',
+		InternetInfo : 'Información de Internet',
+		InternetConnectionStatus : 'Estado de conexión a Internet:',
+		InternetConnectionStatus1 : 'Estado de conexión a Internet:',
+		DefaultGateway : 'Puerta de Enlace Predeterminada:',
+		PreferredDnsServer : 'Servidor DNS Preferido:',
+		AlternateDnsServer : 'Servidor DNS Alternativo:',
+		DownstreamLineRate : 'Tasa de Línea de Descendente (Kbps):',
+		UpstreamLineRate : 'Tasa de Línea de Ascendente (Kbps):',
+		InternetConnectionStatus2 : 'Estado de conexión a Internet:',
+		DownstreamLineRate2 : 'Tasa de Línea de Descendente (Kbps):',
+		UpstreamLineRate2 : 'Tasa de Línea Ascendente(Kbps):',
+		DataTimeCounter : 'Contador de Datos de Tiempo (Segundo):',
+		lang_EnabledWANConnections : 'Conexiones WAN Habilitadas :',
+		lang_ServiceName : 'Nombre de Servicio',
+		lang_Protocol : 'Protocolo',
+		lang_IGMP : 'IGMP',
+		lang_QoS : 'QoS',
+		lang_IPAddress2 : 'Dirección IP',
+		lang_wirelessInfo : 'Información Inalámbrica',
+		lang_selectwireless : 'Seleccionar inalámbrica :',
+		lang_MACAddress1 : 'Dirección MAC:',
+		lang_NetworkName : 'Nombre de Red (SSID):',
+		lang_Visibility : 'Visibilidad:',
+		lang_Status2 : 'Estado:',
+		lang_SecurityMode : 'Modo de Seguridad:',
+		lang_localinfo : 'Información de red local',
+		lang_MACAddress : 'Dirección MAC :',
+		lang_IPAddress : 'Dirección IP:',
+		lang_SubnetMask : 'Máscara de Subred :',
+		lang_DHCPServer : 'Servidor DHCP :',
+		lang_help : 'Consejos útiles ...',
+		lang_helpdec : 'Esta página muestra un resumen del estado del enrutador, incluyendo la versión del programa y el resumen de la configuración de Internet, tal como la conexión inalámbrica y de Ethernet.',
+		lang_more : 'Más...'
+	},
+	
+	dynamic : {
+		disconnection : 'Desconectado',
+		connection : 'Conectado',
+		enalbe : 'Habilitar',
+		disable : 'Deshabilitar',
+		visable : 'Visible',
+		hide : 'Ocultar',
+		none : 'Nada',
+		modename : 'Enrutador T&W'
+	},
+    
+	value : {
+		clear_time_counter : 'Limpiar'
+	}
+
+}

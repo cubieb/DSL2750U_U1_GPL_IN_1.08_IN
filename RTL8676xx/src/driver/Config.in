@@ -1,0 +1,8 @@
+menuconfig DRIVERS
+	bool 'Drivers'
+	default y
+	help 
+	Driver
+
+source driver/wireless/Config.in
+source driver/dsl/Config.in

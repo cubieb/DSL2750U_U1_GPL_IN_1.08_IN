@@ -1,0 +1,92 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_QoS type="object" Writable="0" Standard="0">
+		<Enable type="boolean" Writable="1">1</Enable>
+		<EnAverage type="boolean" Writable="1">0</EnAverage>
+		<WanBand type="string" Writable="1">0</WanBand>
+		<IPFlowBandSum type="unsignedInt" Writable="0">0</IPFlowBandSum>
+		<MaxInterfaceEntries type="unsignedInt" Writable="0">8</MaxInterfaceEntries>
+		<MaxQueueEntries type="unsignedInt" Writable="0">24</MaxQueueEntries>
+		<MaxClassificationEntries type="unsignedInt" Writable="0">24</MaxClassificationEntries>
+		<MaxIPFlowEntries type="unsignedInt" Writable="0">4</MaxIPFlowEntries>
+		<InterfaceNumberOfEntries type="unsignedInt" Writable="0">0</InterfaceNumberOfEntries>
+		<QueueNumberOfEntries type="unsignedInt" Writable="0">0</QueueNumberOfEntries>
+		<ClassificationNumberOfEntries type="unsignedInt" Writable="0">0</ClassificationNumberOfEntries>
+		<Interface type="object" MaxNode="MaxInterfaceEntries" CurNode="InterfaceNumberOfEntries" Writable="0">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<InterfacePath typ="string" Writable="0"></InterfacePath>
+				<InterfaceType type="string" Writable="0"></InterfaceType>
+				<Attribute type="string" Writable="0"></Attribute>
+				<InterfaceName type="string" Writable="0"></InterfaceName>
+				<UpStreamShapingRate type="int">-1</UpStreamShapingRate>
+				<DownStreamShapingRate type="int">-1</DownStreamShapingRate>
+				<QueueSchedulerAlgorithm type="string" Writable="0">SP</QueueSchedulerAlgorithm>
+				<QueueWeightSum type="unsignedInt" Writable="0">0</QueueWeightSum>
+				<InterfaceState type="boolean" NeedSave="0">0</InterfaceState>
+			</i>
+		</Interface>
+		<Queue type="object" MaxNode="MaxQueueEntries" CurNode="QueueNumberOfEntries">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<QueueInterface type="int">-1</QueueInterface>
+				<QueueLength type="unsignedInt">30</QueueLength>
+				<QueueLengthType type="string">packet</QueueLengthType>
+				<QueueWeight type="unsignedInt">1</QueueWeight>
+				<ShareBandwidthEnable type="boolean">0</ShareBandwidthEnable>
+				<QueuePrecedence type="unsignedInt">1</QueuePrecedence>
+				<DropAlgorithm type="string">DT</DropAlgorithm>
+				<UpStreamLimitRate type="int">-1</UpStreamLimitRate>
+			</i>
+		</Queue>
+		<Classification type="object" MaxNode="MaxClassificationEntries" CurNode="ClassificationNumberOfEntries">
+			<i type="object">
+				<Description type="string"></Description>
+				<Enable type="boolean">0</Enable>
+				<ClassificationType type="unsignedInt">0</ClassificationType>
+				<ClassInterface type="string"></ClassInterface>
+				<SourceMACAddress type="string"></SourceMACAddress>
+				<SourceMACMask type="string"></SourceMACMask>
+				<DestMACAddress type="string"></DestMACAddress>
+				<DestMACMask type="string"></DestMACMask>
+				<Ethertype type="int">-1</Ethertype>
+				<EthernetPriorityCheck type="int">-1</EthernetPriorityCheck>
+				<EthernetPriorityMark type="int">-1</EthernetPriorityMark>
+				<VLANIDCheck type="int">-1</VLANIDCheck>
+				<SourceIP type="string"></SourceIP>
+				<SourceMask type="string"></SourceMask>
+				<DestIP type="string"></DestIP>
+				<DestMask type="string"></DestMask>
+				<IPLengthMin type="int">-1</IPLengthMin>
+				<IPLengthMax type="int">-1</IPLengthMax>
+				<DSCPCheck type="int">-1</DSCPCheck>
+				<DSCPMark type="int">-1</DSCPMark>
+				<Protocol type="int">-1</Protocol>
+				<SourcePort type="int">-1</SourcePort>
+				<SourcePortRangeMax type="int">-1</SourcePortRangeMax>
+				<DestPort type="int">-1</DestPort>
+				<DestPortRangeMax type="int">-1</DestPortRangeMax>
+				<ClassQueue type="int">-1</ClassQueue>
+				<ClassQueueBindState type="boolean" NeedSave="0" Writable="0">0</ClassQueueBindState>
+				<EtherPrioMarkState type="boolean" NeedSave="0" Writable="0">0</EtherPrioMarkState>
+				<DscpMarkState type="boolean" NeedSave="0" Writable="0">0</DscpMarkState>
+			</i>
+		</Classification>
+		<IPFlow type="object" MaxNode="MaxQueueEntries" CurNode="QueueNumberOfEntries">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<LanIntf type="string" Writable="1"></LanIntf>
+				<RateMax type="unsignedInt" Writable="1">200</RateMax>
+				<RateMin type="unsignedInt" Writable="1">40</RateMin>
+				<SrcStartIP type="string"></SrcStartIP>
+				<SrcEndIP type="string"></SrcEndIP>
+				<ScheduleName type="string">Always</ScheduleName>
+				<EnableAllDays type="boolean">1</EnableAllDays>
+				<Days type="string">Sun,Mon,Tue,Wed,Thu,Fri,Sat</Days>
+				<EnableAllTimes type="boolean">1</EnableAllTimes>
+				<StartTime type="string">00:00</StartTime>
+				<EndTime type="string">23:59</EndTime>
+			</i>
+		</IPFlow>
+	</X_TWSZ-COM_QoS>
+</InternetGatewayDevice>

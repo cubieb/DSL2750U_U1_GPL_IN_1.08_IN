@@ -1,0 +1,217 @@
+		<td class="td_menu">
+			<div class="sub_menu">
+			    <div id="Menu">
+			<!-- setup -->
+			<?if eq `$var:menu` `setup`
+			`	<p class="ThdLevel"><a id="<?if eq `$var:page` `wizard` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wizard"><span id = "lang_wizard">Wizard</span></a></p>
+				<p class="ThdLevel"><a id="<?if eq `$var:page` `wancfg` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wancfg"><span id = "lang_internet">Internet Setup</a></span></p>
+				<p><a id="<?if eq `$var:page` `wireless` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wireless" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id = "lang_wireless">Wireless Setup</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wireless&var:subpage=wlbasic"><span id = "lang_wireless_basic">Wireless Basic</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wireless&var:subpage=wlsecurity"><span id = "lang_wireless_security">Wireless Security</span></a></li>
+				</ul>
+				<p><a id="<?if eq `$var:page` `lan` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=lan"><span id = "lang_net">Local Network</span></a></p>
+				<?if eq $var:G_IPv6Enable 1
+				`	<p><a id="<?if eq `$var:page` `ipv6_lan` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=ipv6_lan"><span id = "lang_lan_ipv6">LAN IPv6</span></a></p>
+				`?>
+				<p><a id="<?if eq `$var:page` `date` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=date"><span id = "lang_time">Time and Date</span></a></p>
+				<p><a id="<?if eq `$var:page` `logout` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=logout"><span id = "lang_logout1">Logout</span></a></p>
+			`?>
+			<!-- advanced -->
+			<?if eq `$var:menu` `advanced`
+			`	<p><a id="<?if eq `$var:page` `wadvance` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id = "lang_wiress_advanced">Advanced Wireless</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance&var:subpage=wladvanced"><span id = "lang_advanced_1">Advanced Settings</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance&var:subpage=wlmacfilter"><span id = "lang_wlmacfilter">MAC Filtering</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance&var:subpage=wlsecurity"><span id = "lang_security">Security Settings</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance&var:subpage=wps"><span id = "lang_wps">WPS Settings</span></a></li>
+					<?if eq 1 $var:mod_WDS
+					`
+					<li id="<?if eq `wireless_repeater` $var:subpage `up`?>" class="Adv"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance&var:subpage=wireless_repeater"><span id = "lang_wps">WDS Settings</span></a></li>
+					`?>					
+				</ul>
+				<!-- portforwarding -->
+				<p><a id="<?if eq `$var:page` `portforwd` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=portforwd"><span id = "lang_port_forward">Port Forwarding</span></a></p>
+				<?if eq 1 $var:mod_PORTTRIGGER
+				`	<p><a id="<?if eq `$var:page` `porttrigger` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=porttrigger"><span id = "lang_port_Trigger">Port Trigger</span></a></p>
+				`?>
+				<!-- dmz -->
+				<p><a id="<?if eq `$var:page` `dmz` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=dmz"><span id="lang_menu_dmz">DMZ</span></a></p>
+				<!-- samba -->
+				<?if eq 1 $var:mod_TW_SAMBA
+				`	<p><a id="<?if eq `$var:page` `samba` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=samba">SAMBA</a></p>
+				`?>
+				<?if eq 1 $var:mod_TF_SAMBA
+				`	<p><a id="<?if eq `$var:page` `tf_samba` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=tf_samba">SAMBA</a></p>
+				`?>
+				<!-- 3g -->
+				<?if eq 1 $var:mod_USBPIN
+				`	<p><a id="<?if eq `$var:page` `Usb_pin_puk` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=Usb_pin_puk"><span id = "lang_3G">3G configuration</span></a></p>
+				`?>
+				<?if eq 1 $var:mod_NEW3G
+				`	<p><a id="<?if eq `$var:page` `wan3gview` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wan3gview"><span id = "lang_3G">3G Configuration</span></a></p>
+				`?>
+				<!-- parentalctrl -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `parentalctrl` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=parent_control" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id = "lang_parental">Parental Control</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=parentalctrl&var:subpage=URLFilter"><span id = "lang_websit_block">Block Website</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=parentalctrl&var:subpage=block_macaddress_dl"><span id = "lang_mac_block">MAC Filter</span></a></li>
+				</ul>
+				<!-- firewall -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `firmwall` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=filtering_options" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id = "lang_filter_option">Filtering Options</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+				<?if eq 1 $var:mod_FIREWALL
+				`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=filtering_options&var:subpage=ip_list"><span id = "ip_list">IP Filtering</span></a></li>
+				`?>
+				<?if eq 1 $var:mod_TF_FIREWALL
+				`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=filtering_options&var:subpage=tf_ipsecurity"><span id="ip_filtering">IP Filtering</span></a></li>
+				`?>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=filtering_options&var:subpage=bridge_list"><span id="lang_bridge">Bridge Filtering</span></a></li>
+				</ul>
+				<!-- qos -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `qos_config` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=qos_config" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id="lang_QOSConfig">QoS Configuration</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<!--li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=qos_config&var:subpage=qos_global"><span id="lang_QOSGlobalOptions">QoS Global Options</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=qos_config&var:subpage=qos_interface_queue"><span id="lang_QOSInterfaceQueue">QoS Queue Config</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=qos_config&var:subpage=qos_classification"><span id="lang_QOSClassificationMenu">QoS Classification</span></a></li-->
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=qos_config&var:subpage=qos_flux_ctrl"><span id="lang_QOSFluxContrl">QoS Flux Contrl</span></a></li>
+				</ul>
+				<!-- dos -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `dos` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=dos"><span id="lang_firewall">Firewall Settings</span></a></p>
+				<p class="SecLevel"><a id="<?if eq `$var:page` `shareprotection` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=shareprotection"><span id = "lang_shareprotection">Share Protection</span></a></p>
+				<!-- dns -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `dns` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=dns"><span id= "lang_menu_dns">DNS</span></a></p>
+				<!-- ddns -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `ddns` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=ddns"><span id = "lang_dynamic">Dynamic DNS</span></a></p>
+				<!-- nwtools -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `nwtools` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id="lang_net_tools">Network Tools</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=portmapping"><span id="lang_port_map">Port Mapping</span></a></li>
+					<?if eq 1 $var:mod_IGMP
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=igmp"><span id="lang_igmpAgent">IGMP Proxy</span></a></li>
+						<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=igmp_snooping"><span id="lang_snooping">IGMP Snooping</span></a></li>
+					`?>
+					<?if eq 1 $var:mod_TF_IGMP
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=tf_igmp"><span id="lang_igmpAgent">IGMP Proxy</span></a></li>
+						<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=tf_igmp_snooping"><span id="lang_snooping">IGMP Snooping</span></a></li>
+					`?>
+					<?if eq 1 $var:mod_STATIC_IGMP
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=igmp_static"><span id="lang_igmpStatic">Static IGMP</span></a></li>
+					`?>
+					<?if eq 1 $var:G_IPv6Enable
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=mld_cfg"><span id="lang_mldCfg">MLD Configuration</span></a></li>
+					`?>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=upnp"><span id="lang_upnp">UPnP</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=adslset"><span id="lang_adsl">ADSL</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=pvcsearch"><span id="lang_adsl">Defalt PVC</span></a></li>
+					<?if eq 1 $var:mod_SNMPC
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=snmp"><span id="lang_snmp">SNMP</span></a></li>
+					`?>
+					<?if eq 1 $var:mod_TR064BE
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=tr064"><span id="lang_tr064">TR-064</span></a></li>
+					`?>
+					<?if eq 1 $var:mod_TR069
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=tr069"><span id="lang_tr069">TR-069</span></a></li>
+						<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=certificate"><span id="lang_certificate">Certificates</span></a></li>
+					`?>
+					<?if eq 1 $var:mod_IPPMNGR
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=print"><span id="lang_printer">Printer</span></a></li>
+					`?>
+					<?if eq 1 $var:mod_LAN_PORT_VLAN
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nwtools&var:subpage=lpvlan"><span id="lang_lanPortVlan">Lan Port Vlan</span></a></li>
+					`?>
+				</ul>
+				<!-- route -->
+				<p class="SecLevel"><a id="<?if eq `$var:page` `route` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id="lang_route">Routing</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route&var:subpage=staticroute"><span id="lang_staticRouting">Static Route</span></a></li>
+					<?if eq 1 $var:G_IPv6Enable
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route&var:subpage=v6Sroute"><span id="lang_v6staticRouting">IPv6 Static Route</span></a></li>
+					`?>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route&var:subpage=policyroute"><span id="lang_policyRouting">Policy Route</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route&var:subpage=defaultgw"><span id="lang_defaultgw">Default Gateway</span></a></li>
+					<?if eq 1 $var:mod_DROUTE
+					`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route&var:subpage=rip"><span id="lang_rip">RIP</span></a></li>
+						<?if eq 1 $var:G_IPv6Enable
+						`	<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route&var:subpage=ripng"><span id="lang_ripnp">RIPng</span></a></li>
+						`?>
+					`?>
+				</ul>
+				<!-- schedules -->
+				<p><a id="<?if eq `$var:page` `schedules` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=schedules"><span id = "lang_schedules">Schedules</span></a></p>
+				<!-- nat -->
+				<?if eq 1 $var:mod_TRADITIONALNAT
+				`	<p><a id="<?if eq `$var:page` `nat` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=nat"><span id="lang_nat">NAT</span></a></p>
+				`?>
+				<!-- ftpd -->
+				<?if eq 1 $var:mod_FTPD
+				`	<p><a id="<?if eq `$var:page` `ftpd_setting` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=ftpd_setting"><span id="lang_ftpd_setting_title">FTPD Setting</span></a></p>
+					<p><a id="<?if eq `$var:page` `ftpd_count_manager` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=ftpd_count_manager"><span id="lang_ftpd_account_menu">FTPD Acount</span></a></p>
+				`?>
+				<!-- dlna -->
+				<?if eq 1 $var:mod_DLNA
+				`	<p><a id="<?if eq `$var:page` `dlna` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=dlna"><span id="lang_dlna">DLNA</span></a></p>
+				`?>
+				<!-- iptunnel -->
+				<?if eq 1 $var:G_IPv6Enable
+				`	<p><a id="<?if eq `$var:page` `iptunnel` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=iptunnel" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id="lang_iptunnel">IP Tunnel</span></a></p>
+					<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+						<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=iptunnel&var:subpage=dslite"><span id="lang_dslite">4in6 Tunnel</span></a></li>
+						<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=iptunnel&var:subpage=ipv6rd"><span id = "lang_ipv6rd">6in4 Tunnel</span></a></li>
+					</ul>
+				`?>
+				<?if eq $var:mod_GRE 1
+				`	<p><a id="<?if eq `$var:page` `gre` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=gre"><span id="lang_gre">GRE</span></a></p>
+				`?>
+				<!-- macclone -->
+				<p><a id="<?if eq `$var:page` `mac_clone` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=mac_clone"><span id = "lang_mac_clone">MAC Clone</span></a></p>
+				<p><a id="<?if eq `$var:page` `logout` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=logout"><span id = "lang_logout2">Logout</span></a></p>
+			`?>
+			<!-- maintenance -->
+			<?if eq `$var:menu` `maintenance`
+			`	
+				<?if eq $var:mod_IPV6 1
+				`	<p><a id="<?if eq `$var:page` `globalipv6` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=globalipv6"><span id = "lang_system_globalipv6">Global IPv6</span></a></p>
+				`?>
+				<p><a id="<?if eq `$var:page` `system` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=system"><span id = "lang_system_management">System</span></a></p>
+				<p class="SecLevel"><a id="<?if eq `$var:page` `firmwareupdate` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=firmwareupdate"><span id = "lang_firmware_update">Firmware Update</span></a></p>
+				<p><a id="<?if eq `$var:page` `accessctrl` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=accessctrl" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id = "lang_access_control">Access Controls</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=accessctrl&var:subpage=accountpsd"><span id = "lang_user_management">Account Password</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=accessctrl&var:subpage=services"><span id = "lang_service">Services</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=accessctrl&var:subpage=ipaddrs"><span id = "lang_IP_acl">IP Address</span></a></li>
+				</ul>
+				<p class="SecLevel"><a id="<?if eq `$var:page` `diagnostics` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=diagnostics" onmouseover="onShowMenu(this)" onmouseout="onCloseMenu()"><span id="lang_dgn">Diagnostics</span></a></p>
+				<ul class="thirdMenu" onmouseover="onClearTimeOut()" onmouseout="onHiddenMenu(event)">
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=diagnostics&var:subpage=DSLtest"><span id="lang_DSLtest">DSLtest</span></a></li>
+					<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=diagnostics&var:subpage=traceroute"><span id="lang_traceroute">Traceroute</span></a></li>
+				</ul>
+				<p class="SecLevel"><a id="<?if eq `$var:page` `syslog` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=syslog"><span id = "lang_log">System Log</span></a></p>
+				<p><a id="<?if eq `$var:page` `logout` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=logout"><span id = "lang_logout3">Logout</span></a></p>
+			`?>
+			<!-- status -->
+			<?if eq `$var:menu` `status`
+			`	<p><a id="<?if eq `$var:page` `deviceinfo` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=deviceinfo"><span id = "lang_dev_info">Device Info</span></a></p>
+				<p><a id="<?if eq `$var:page` `wlclients` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=wlclients"><span id = "lang_wireless_client">Wireless Clients</span></a></p>
+				<p><a id="<?if eq `$var:page` `dhcpclients` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=dhcpclients"><span id = "lang_dhcp_info">DHCP Clients</span></a></p>
+				<?if eq $var:G_IPv6Enable 1
+				`	<p><a id="<?if eq `$var:page` `ipv6_status` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=ipv6_status"><span id = "lang_ipv6_status">IPv6 Status</span></a></p>
+				`?>
+				<p><a id="<?if eq `$var:page` `logview` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=logview"><span id = "lang_log_view">Logs</span></a></p>
+				<p><a id="<?if eq `$var:page` `securitylogview` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=securitylogview"><span id = "lang_firewall_log">Firewall Logs</span></a></p>
+				<p><a id="<?if eq `$var:page` `statistics` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=statistics"><span id = "lang_statis">Statistics</span></a></p>
+				<p><a id="<?if eq `$var:page` `routeinfo` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=routeinfo"><span id = "lang_route_info">Route Info</span></a></p>
+				<p><a id="<?if eq `$var:page` `logout` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=logout"><span id = "lang_logout4">Logout</span></a></p>
+			`?>
+			<!-- help -->
+			<?if eq `$var:menu` `help`
+			`	<p><a id="<?if eq `$var:page` `helpmenu` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmenu"><span id = "lang_menu_help">Menu</span></a></p>
+				<p><a id="<?if eq `$var:page` `helpsetup` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup"><span id = "lang_setup_help">Setup</span></a></p>
+				<p><a id="<?if eq `$var:page` `helpadv` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv"><span id = "lang_advanced_help">Advanced</span></a></p>
+				<p><a id="<?if eq `$var:page` `helpmain` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain"><span id = "lang_mainten_help">Maintenance</span></a></p>
+				<p><a id="<?if eq `$var:page` `helpstatus` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus"><span id = "lang_status_help">Status</span></a></p>
+				<p><a href="http://www.dlink.com.cn/support/Apps/"><span id = "lang_support_help">Support</span></a></p>
+			`?>
+			</div>
+		 </div>
+		</td>

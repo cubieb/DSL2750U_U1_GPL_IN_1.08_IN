@@ -1,0 +1,7 @@
+#!/bin/bash
+ifconfig sn0 down
+ifconfig sn1 down
+
+rmmod -v ./apd-test.ko
+rmmod -v ./adf-test.ko
+

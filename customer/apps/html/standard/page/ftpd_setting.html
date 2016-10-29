@@ -1,0 +1,54 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="lang_FtpSetting">FTP</p>
+		<div class="div_orange">
+			<p id="lang_dsc">In this page, you can enable or disable the FTP server, and set the FTP port.
+</p>
+		</div>
+		<p class="do bk_black">Ftp Server Setting</p>
+		<div class="div_black">
+			<div class="div_left" id="lang_ftpd_option">Ftp Server Status :</div>
+			<div class="div_right">
+				<select name="SELECT_ftpd_server_status" id="SELECT_ftpd_server_status" disabled="disabled" style="width:40px">
+					<option value="0">Off</option>
+					<option value="1">On</option>
+				</select>
+			</div>
+			<div class="div_left" id="lang_ftpd_en" >Enable Ftp Server :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_FtpdServerEnable" id="INPUT_FtpdServerEnable" value="" onClick="display_wan()"/></div>
+			
+			<div id = "ftp_for_wan" style = "display:none">
+				<div class="div_left" id="lang_ftpd_wan_access_en" >Enable FtpServer for WAN:</div>
+				<div class="div_right"><input type="checkbox" name="INPUT_FtpdWANAccessEnable" id="INPUT_FtpdWANAccessEnable" value="" /></div>
+			</div>
+			
+			<div class="div_left" id="lang_ftpd_port" >Ftp server port :</div>
+			<div class="div_right"><input type="text" name="INPUT_FtpdMonitorPort" id="INPUT_FtpdMonitorPort" value="" style="width:40px"/></div>	
+		</div>
+		
+		<div class="div_button">
+		    <input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/> 	            
+		    <input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+		</div>	
+
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc">
+                    <input type="hidden" name="getpage" value="html/index.html" id="uipostGetPage">
+                    <input type="hidden" name="errorpage" value="html/index.html" id="uipostErrPage">
+             </form>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc">
+				In this page, you can enable or disable the FTP server, and set the FTP port.
+<h5><a href="#"  id="AdvancedPorForwarding">Advanced -> Port Forwarding</a></h5> <span id="section">section.</span>
+			</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>
+	

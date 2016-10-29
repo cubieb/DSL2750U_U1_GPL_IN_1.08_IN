@@ -1,0 +1,14 @@
+Makefile.RPM
+makefile
+makefile.sunos5
+make_smbcodepage
+make_printerdef
+nmbd
+nmblookup
+smbclient
+smbd
+smbpasswd
+smbrun
+smbstatus
+testparm
+testprns

@@ -1,0 +1,12 @@
+menuconfig VENDOR_INFINEON 
+  bool "Infineon Applications"
+  depends on VENDOR
+  default n
+
+config INFINEON_DSL_APP
+	bool 'Infineon dsl app'
+	default y
+	depends on INFINEON_DSL_DRIVERS && VENDOR_INFINEON
+	help
+		Infineon dsl app
+

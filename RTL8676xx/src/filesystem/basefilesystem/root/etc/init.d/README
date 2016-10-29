@@ -1,0 +1,18 @@
+This directory includes some shell scripts for initializing TBS configution!
+
+1. filesystem.rc,  this file is for mounting filesystems such as proc, var etc;
+2. usb.rc,  this file is for installing usb driver and initializing USB configuration etc;
+3. wlan.rc, this file is for installing wlan driver and initalizing WLAN configuration etc;
+4. dsl.rc,  this file if for installing dsl(adsl/vdsl) driver and initializing DSL configuration etc;
+5. network.rc, this file is for initializing network relatted configuration etc; 
+6. daemon.rc,   this file if for starting daemon process;
+7. env.rc,  this file is for initializing environment variables configuration;
+8. private.rc, this file is for initializing other configuration relatted to special product;
+9. rcS, this file will be called by /sbin/init process at the very beginning stage of system initialization, 
+   and it will call other stript files described upon; 
+
+
+Note: usb.rc, wlan.rc, dsl.rc, network.rc and private.rc, these files shoud not be modified in this directory, 
+      and you should create the corresponding *.rc script files in '$(ROOTDIR)/product/$(PRODUCT_NAME)/init.d '
+      directory, and in the "make rootfs" process, these scripts will be copied to 
+      '$(ROOTDIR)/buile/romfs/rootfs/etc/init.d/ ' directory to cover the default scripts files;   

@@ -1,0 +1,12 @@
+{
+	"RETURN":{
+		"success": true
+      },
+      
+	"INTERFACES": [
+		{"interfaceName":"any"},
+		{"interfaceName":"wan"},
+		{"interfaceName":"lan"},
+		{"interfaceName":"dmz"}
+	]
+}

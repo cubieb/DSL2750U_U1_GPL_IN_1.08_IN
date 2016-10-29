@@ -1,0 +1,137 @@
+include ../../../buildroot/.config
+#KERNEL_HEADERS=-I/home/sathesh/fusiv_linux-2.6_v1.0/buildroot/toolchain_build_mips_nofpu/linux
+
+#ATM_HEADERS=-I/home/sathesh/fusiv_linux-2.6_v1.0/buildroot/build_mips_nofpu/linux-atm-2.4.1/src/include
+
+#CC=/home/sathesh/fusiv_linux-2.6_v1.0/buildroot/build_mips_nofpu/staging_dir/bin/mips-linux-uclibc-gcc
+
+ifdef CONFIG_USER_SYSUTIL_COMPDECOMP
+ZLIB_HEADERS = -I../../../buildroot/build_mips_nofpu/zlib-1.2.3
+
+ZLIB_DEPS = ../../../buildroot/build_mips_nofpu/zlib-1.2.3/libz.so
+endif
+
+CFLAGS= -Wall -Os -pipe 
+LDFLAGS=
+INCLUDE=$(ATM_HEADERS) $(KERNEL_HEADERS) $(ZLIB_HEADERS)
+
+prefix=/usr
+exec_prefix=/usr
+bindir=/usr/bin
+sbindir=/usr/sbin
+mandir=/usr/man
+
+INSTALL=/usr/bin/install -c
+
+
+common_SOURCES= utilmain.c aputil.c linkstate.c ethphyrw.c
+ifdef CONFIG_USER_SYSUTIL_ADSLUTILS
+common_SOURCES += adslatmutil.c adslatmutilhelp.c adslutils.c 
+endif
+ifdef CONFIG_USER_SYSUTIL_XDSL_LINE_MNGR
+common_SOURCES += xdsl_line_mgr.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SENDOAMLB
+common_SOURCES += sendoamlb.c setllid.c showllid.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SHOWATMCONN
+common_SOURCES += showatmconn.c bmsession.c
+endif
+ifdef CONFIG_USER_ADI_PPPOE_RELAY
+common_SOURCES += ppprelaycli.c ppprelayios.c
+endif
+ifdef CONFIG_USER_SYSUTIL_IGMPSNOOP
+common_SOURCES += igmpsnoop.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SWITCH_CONFIG
+common_SOURCES += switchvlan.c
+common_SOURCES += switchconf.c
+endif
+ifdef  CONFIG_USER_SYSUTIL_APQOS
+common_SOURCES += qosutil.c
+endif
+ifdef CONFIG_USER_SYSUTIL_POLICY_VLAN
+common_SOURCES += vlanclassify.c
+endif
+ifdef  CONFIG_USER_SYSUTIL_GPON
+common_SOURCES += gponcli.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SET_ETH_FRAME_READ_CNT
+common_SOURCES += setethframereadcnt.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SET_ATM_FRAME_READ_CNT
+common_SOURCES += setatmframereadcnt.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SET_PERI_FRAME_READ_CNT
+common_SOURCES += setperiframereadcnt.c
+endif
+ifdef CONFIG_USER_SYSUTIL_SET_VDSL_FRAME_READ_CNT
+common_SOURCES += setvdslframereadcnt.c
+endif
+
+#ifdef CONFIG_USER_ACL_FILTER
+common_SOURCES += acll2Filter.c acll3Filter.c
+#endif
+
+ifdef CONFIG_FUSIV_USER_ROCSYS
+LDFLAGS += -L ../fwlib/ -lattacksOper
+endif
+
+ifdef CONFIG_USER_SYSUTIL_SRM
+ifdef CONFIG_FUSIV_USER_ACCUTILLIB
+SRMDEPS = ../acc_utillib/miscutillib.a \
+        ../../../buildroot/build_mips_nofpu/bridge-utils-1.0.6/libbridge/libbridge.a \
+        srm/srm.a
+endif
+endif
+
+ifdef CONFIG_FUSIV_USER_TFTPCLIENT
+TFTPLIB_PATH  = ../tftp-hpa-0.21/tftp/
+LINK_TFTPLIB = -L$(TFTPLIB_PATH) -ltftp
+endif
+
+ifdef  CONFIG_USER_SYSUTIL_COMPDECOMP
+common_SOURCES += compdecomp.c
+endif
+
+sysutil_SOURCES=  $(common_SOURCES)
+
+common_OBJECTS= $(common_SOURCES:.c=.o)
+sysutil_OBJECTS= $(sysutil_SOURCES:.c=.o)
+
+OBJECTS= $(sysutil_OBJECTS)
+
+PROGRAMS= sysutil 
+
+
+all:	$(PROGRAMS)
+
+install: $(PROGRAMS)
+	mkdir -p $(DESTDIR)$(sbindir)
+	$(INSTALL) -m 755 $(PROGRAMS) $(DESTDIR)$(sbindir)
+
+sysutil:$(sysutil_OBJECTS) ../../../buildroot/.config
+ifdef CONFIG_USER_SYSUTIL_SRM
+ifdef CONFIG_FUSIV_USER_ACCUTILLIB
+	make -C srm
+endif
+endif
+
+ifdef CONFIG_USER_SYSUTIL_COMPDECOMP
+	$(CC) $(LDFLAGS) $(sysutil_OBJECTS) $(SRMDEPS) $(ZLIB_DEPS) -o sysutil $(SRMDEPS) $(LINK_TFTPLIB) $(ZLIB_DEPS)
+else
+	$(CC) $(LDFLAGS) $(sysutil_OBJECTS) $(SRMDEPS) -o sysutil $(SRMDEPS) $(LINK_TFTPLIB)
+endif
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< 
+
+clean:
+	rm -f *.o sysutil core
+	rm -f 1 .configured
+ifdef CONFIG_USER_SYSUTIL_SRM
+ifdef CONFIG_FUSIV_USER_ACCUTILLIB
+	(cd srm; make clean;);
+endif
+endif
+

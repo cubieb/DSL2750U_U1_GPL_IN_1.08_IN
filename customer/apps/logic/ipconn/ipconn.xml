@@ -1,0 +1,58 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnectionNumberOfEntries type="unsignedInt" Writable="0">0</WANIPConnectionNumberOfEntries>
+					<MaxIPConnectionNumberOfEntries type="unsignedInt" Writable="0">1</MaxIPConnectionNumberOfEntries>
+					<WANIPConnection type="object" CurNode="WANIPConnectionNumberOfEntries" MaxNode="MaxIPConnectionNumberOfEntries">
+						<i type="object">
+							<Enable type="boolean">0</Enable>
+							<Reset type="boolean" Writable="1">0</Reset>
+							<ConnectionStatus type="string" Writable="0"></ConnectionStatus>
+							<X_TELEFONICA-ES_IPv4Enabled type="boolean">1</X_TELEFONICA-ES_IPv4Enabled>
+							<PossibleConnectionTypes type="string" Writable="0">IP_Routed</PossibleConnectionTypes>
+							<ConnectionTime type="string" Writable="0">0</ConnectionTime>
+							<ConnectionType type="string">IP_Routed</ConnectionType>
+							<Name type="string(256)">WANConnection</Name>
+							<Uptime type="unsignedInt" Writable="0"></Uptime>
+							<X_TWSZ-COM_ProtocolClass type="string" Standard="0" Writable="0">IPv4</X_TWSZ-COM_ProtocolClass>
+							<X_TWSZ-COM_ConnectedDeviceName type="string" Writable="0" Standard="0"></X_TWSZ-COM_ConnectedDeviceName>
+							<LastConnectionError type="string" Writable="0">ERROR_NONE</LastConnectionError>
+							<RSIPAvailable type="boolean" Writable="0"></RSIPAvailable>
+							<AddressingType type="string"></AddressingType>
+							<ExternalIPAddress type="string" Notification="2"></ExternalIPAddress>
+							<SubnetMask type="string"></SubnetMask>
+							<DefaultGateway type="string"></DefaultGateway>
+							<MACAddress type="string"></MACAddress>
+							<ConnectionTrigger type="string">OnDemand</ConnectionTrigger>
+							<X_TWSZ-COM_DomainName type="string" Standard="0"></X_TWSZ-COM_DomainName>
+							<X_TWSZ-COM_GetNTPServers type="boolean" Standard="0">0</X_TWSZ-COM_GetNTPServers>
+							<X_TWSZ-COM_NTPServers type="string" Standard="0"></X_TWSZ-COM_NTPServers>
+							<X_TWSZ-COM_ProtocolType type="string" Standard="0" Writable="0">IP</X_TWSZ-COM_ProtocolType>
+							<Stats type="object" Writable="0">
+								<EthernetBytesSent type="unsignedInt" Writable="0"></EthernetBytesSent>
+								<EthernetBytesReceived type="unsignedInt" Writable="0"></EthernetBytesReceived>
+								<EthernetPacketsSent type="unsignedInt" Writable="0"></EthernetPacketsSent>
+								<EthernetPacketsReceived type="unsignedInt" Writable="0"></EthernetPacketsReceived>
+								<EthernetErrorsSent type="unsignedInt" Writable="0"></EthernetErrorsSent>
+								<EthernetErrorsReceived type="unsignedInt" Writable="0"></EthernetErrorsReceived>
+								<EthernetUnicastPacketsSent type="unsignedInt" Writable="0"></EthernetUnicastPacketsSent>
+								<EthernetUnicastPacketsReceived type="unsignedInt" Writable="0"></EthernetUnicastPacketsReceived>
+								<EthernetDiscardPacketsSent type="unsignedInt" Writable="0"></EthernetDiscardPacketsSent>
+								<EthernetDiscardPacketsReceived type="unsignedInt" Writable="0"></EthernetDiscardPacketsReceived>
+								<EthernetMulticastPacketsSent type="unsignedInt" Writable="0"></EthernetMulticastPacketsSent>
+								<EthernetMulticastPacketsReceived type="unsignedInt" Writable="0"></EthernetMulticastPacketsReceived>
+								<EthernetBroadcastPacketsSent type="unsignedInt" Writable="0"></EthernetBroadcastPacketsSent>
+								<EthernetBroadcastPacketsReceived type="unsignedInt" Writable="0">0</EthernetBroadcastPacketsReceived>
+								<EthernetUnknownProtoPacketsReceived type="unsignedInt" Writable="0">0</EthernetUnknownProtoPacketsReceived>
+							</Stats>
+							<Backup3G type="string" Writable="1">1</Backup3G>
+						</i>
+					</WANIPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

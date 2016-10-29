@@ -1,0 +1,431 @@
+<html>
+<head>
+ <title>831II</title>
+ <!--link rel="stylesheet" href='guidecolors.css' type='text/css'-->
+  <!--meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--meta http-equiv="refresh" content="5"-->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- hide
+  <meta http-equiv="refresh" content="2">
+  -->
+<style type="text/css">
+body { background:#081273;}
+.STYLE1 {color: #FFFFFF}
+</style>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/secboot.js"></script>
+
+<script language="javascript">
+<!-- hide
+var userLevel   = "1";
+removeListeners(TopSelfMenu);
+removeListeners(initSubMenu);
+
+var G_Wireless = [];
+var m = 0;
+<?objget :InternetGatewayDevice.LANDevice.1.WLANConfiguration. "Enable SSID SSIDAdvertisementEnabled Channel BeaconType WEPEncryptionLevel"
+`	G_Wireless[m] =	['InternetGatewayDevice.LANDevice.1.WLANConfiguration.$00.', //path
+						 '$01', //Enable
+						 '$02', //SSID
+						 '$03', //SSIDAdvertisementEnabled
+						 '$04', //Channel
+						 '$05',  //auth
+						 '$06'  //auth_bit
+				 	];
+	m++;
+`?>
+
+//var G_WirelessEnable   = "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Enable?>";
+
+//alert('auth---'+G_Wireless[0][6]);
+switch(G_Wireless[0][5])
+{
+	case 'None' : 
+		G_Wireless[0][5]='None';
+		break;
+	case 'Basic' :
+		if(G_Wireless[0][6]=='40-bit')
+			G_Wireless[0][5]='WEP_64';
+		else
+			G_Wireless[0][5]='WEP_128';
+		break;
+	case '11i' :
+		G_Wireless[0][5]='11i';
+		break;
+}
+//alert('auth---'+G_Wireless[0][5]);
+
+var Cache_data = '<?echo $var:data?>';
+//var wireless_name = "<?get :InternetGatewayDevice.DeviceInfo.Manufacturer?>";
+var page_flag;
+function uiOnload(){
+	var Wlan = [], pppoe = [], new_data;
+	//Cache_data='A';
+	if(Cache_data != '-'){
+		Cache_data = Base64.Decode(Cache_data);
+		new_data = eval('({' +Cache_data + '})');
+		//alert("new_data---"+new_data);
+		Wlan = new_data['wlan'];
+		//alert("Wlan---"+Wlan);
+		pppoe = new_data['pppoe'];
+		//alert("pppoe---"+pppoe);
+	}
+
+	setJSONValue({
+		'INPUT_WlanEnable'	: Wlan && Wlan['INPUT_WlanEnable'] || G_Wireless[0][1],
+		'INPUT_SSID'			: Wlan && Wlan['INPUT_SSID'] || G_Wireless[0][2],
+//		'vb_status'			: Wlan && Wlan['vb_status'] || G_Wireless[0][3] || '0',
+        'vb_status'			: Wlan && Wlan['vb_status'] || G_Wireless[0][3] && '0',
+		'wlan_channel'			: Wlan && Wlan['wlan_channel'] || G_Wireless[0][4] || '0',
+		'select_security'		: Wlan && Wlan['auth'] || G_Wireless[0][5],
+		'INPUT_KEY'			: Wlan && Wlan['INPUT_KEY'] || '22583'
+	});
+	//alert(Cache_data);
+	//alert(pppoe);
+	//alert(pppoe['Servicios']);
+	page_flag=pppoe['Servicios'];
+
+	//ctrlSecType();
+}
+
+function ctrJsonData(){
+	var _json = ',wlan:{';
+	var nodes_isp = $('INPUT_WlanEnable','INPUT_SSID','vb_status','INPUT_KEY');
+
+	switch($('select_security').value){
+		case 'None' : 
+			_json += 'auth:"' + $('select_security').value + '",';
+			break;
+		case 'WEP_64' :
+			if($('INPUT_KEY').value.length)
+			_json += 'auth:"' + $('select_security').value + '",';
+			_json += 'INPUT_KEY:"' + nodes_isp[3].value + '",';
+			_json += 'WEPEncryptionLevel:"40-bit",';
+			break;
+		case 'WEP_128' :
+			_json += 'auth:"' + $('select_security').value + '",';
+			_json += 'INPUT_KEY:"' + nodes_isp[3].value + '",';
+			_json += 'WEPEncryptionLevel:"104-bit",';
+			break;
+		case '11i' :
+			_json += 'auth:"' + $('select_security').value + '",';
+			_json += 'INPUT_KEY:"' + nodes_isp[3].value + '",';
+			break;
+	}
+	//enable wireless
+	_json += 'INPUT_WlanEnable:"' + (nodes_isp[0].checked ? '1' : '0') + '",';
+	//wireless ssid
+	_json += 'INPUT_SSID:"' + nodes_isp[1].value + '",';
+	//hide wireless
+	_json += 'vb_status:"' + (nodes_isp[2].checked ? '1' : '0') + '",';
+	//wireless channel
+	_json += 'wlan_channel:"' + $('wlan_channel').value + '"}';
+	//alert(_json);
+
+	if(Cache_data == '-')
+	{
+		return '';
+	}
+	else {
+		var _wlan = Cache_data.indexOf('wlan');
+		
+		if(_wlan > -1)
+		{
+			var _data  = Cache_data.substr(0,_wlan - 1);
+		}
+		else
+		{
+			return Cache_data + _json;
+		}
+		return _data + _json;
+	}
+}
+
+/*function isRegisterUserName(s)   
+{   
+	var patrn=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;   
+	if (!patrn.exec(s)) return false   
+	return true   
+}*/
+
+function isInputChar_5(s)   
+{   
+	var patrn=/^([a-zA-Z0-9]|[._]){5}$/;   
+	if (!patrn.exec(s)) return false;
+	return true;
+}
+
+function isInputHex_10(s)   
+{   
+	var patrn=/^([A-F0-9]|[._]){10}$/;   
+	if (!patrn.exec(s)) return false;
+	return true;
+}
+
+function isInputChar_13(s)   
+{   
+	var patrn=/^([a-zA-Z0-9]|[._]){13}$/;   
+	if (!patrn.exec(s)) return false;
+	return true;
+}
+
+function isInputHex_26(s)   
+{   
+	var patrn=/^([A-F0-9]|[._]){26}$/;   
+	if (!patrn.exec(s)) return false;
+	return true;
+}
+
+
+function isInputChar_WPA(s)   
+{   
+	var patrn=/^([a-zA-Z0-9]|[._]){8,63}$/;   
+	if (!patrn.exec(s)) return false;
+	return true;
+}
+
+function check_value(){
+	switch($('select_security').value){
+		case 'None' : 
+			break;
+		case 'WEP_64' :
+			if(($('INPUT_KEY').value.length != 5) && ($('INPUT_KEY').value.length != 10))
+			{
+				alert('password number error');
+				return false;
+			}
+			if($('INPUT_KEY').value.length == 5)
+			{
+				if(isInputChar_5($('INPUT_KEY').value) == false)
+				{
+					alert('5 password should be 0-9 a-z A-Z');
+					return false;
+				}
+			}
+			if($('INPUT_KEY').value.length == 10)
+			{
+				if(isInputHex_10($('INPUT_KEY').value) == false)
+				{
+					alert('10 password should be 0-9 A-F');
+					return false;
+				}
+			}
+			break;
+		case 'WEP_128' :
+			if(($('INPUT_KEY').value.length != 13) && ($('INPUT_KEY').value.length != 26))
+			{
+				alert('password number error');
+				return false;
+			}
+			if($('INPUT_KEY').value.length == 13)
+			{
+				if(isInputChar_13($('INPUT_KEY').value) == false)
+				{
+					alert('13 password should be 0-9 a-z A-Z');
+					return false;
+				}
+			}
+			if($('INPUT_KEY').value.length == 26)
+			{
+				if(isInputHex_26($('INPUT_KEY').value) == false)
+				{
+					alert('26 password should be 0-9 A-F');
+					return false;
+				}
+			}
+			break;
+		case '11i' :
+			if(($('INPUT_KEY').value.length < 8) || ($('INPUT_KEY').value.length > 63))
+			{
+				alert('password number error');
+				return false;
+			}
+			if(isInputChar_WPA($('INPUT_KEY').value) == false)
+			{
+				alert('8-63 password should be 0-9 a-z A-Z');
+				return false;
+			}
+			break;
+	}
+}
+
+function closeWin()
+{
+    if(window.confirm("Salir?")) {
+        top.close();
+    }
+}
+
+function uiToNextPage()
+{
+	if(check_value()==false)
+		return false;
+	//var temp=ctrJsonData();
+	//alert(temp);
+	
+   	$H({
+		'getpage' : 'html/wizard/guidelast.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		'var:data'  : Base64.Encode(ctrJsonData()),
+	//	'var:data'  : ctrJsonData(),
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function uiToPrevPage()
+{
+	if(page_flag == 1)
+	{
+	   	$H({
+			'getpage' : 'html/wizard/guidethird.html',
+			'var:page' : '*',
+			'obj-action':'auth',
+			':username' :'user',
+			':password' :'user',
+			':action'   :'login',
+			//'var:data'  : ctrJsonData(),
+			'var:data'  : Base64.Encode(ctrJsonData()),
+			':sessionid':'<?echo $var:sessionid?>'
+		},true);
+		$('uiPostForm').submit();
+	}
+	else
+	{
+	   	$H({
+			'getpage' : 'html/wizard/guidesecond.html',
+			'var:page' : '*',
+			'obj-action':'auth',
+			':username' :'user',
+			':password' :'user',
+			':action'   :'login',
+			//'var:data'  : ctrJsonData(),
+			'var:data'  : Base64.Encode(ctrJsonData()),
+			':sessionid':'<?echo $var:sessionid?>'
+		},true);
+		$('uiPostForm').submit();
+	}
+}
+
+function uiToLoginPage(){
+	$H({
+		'getpage' : 'html/main.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		//'var:data'  : Base64.Encode(ctrJsonData()),
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+addListeners(uiOnload);
+
+// -->
+</script>
+</head>
+
+<body>
+<table width="100%">
+<tr><td width="178" height="90"><!--img src="/html/wizard/logo.jpg" width="178" height="90"--></td></tr>
+  <tr>
+    <td><strong><font Bienvenido</font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade></td>
+  </tr>
+</table>
+<table width="75%"  align="center">
+	<tr>
+	<td colspan="2"><font color=white size=4>A continuación configure su red inalambrica</font></td>
+	</tr>
+	<tr>
+	<td width="171"><input type="checkbox" id="INPUT_WlanEnable" /></td>
+	<td width="395"><font color=white size=3>Habilitar red inalambrica</font></td>
+	</tr>
+	<br>
+	<tr>
+	  <td><span class="STYLE1">SSID</span></td>
+      <td><input name="SSID" type="text" id="INPUT_SSID" maxlength="32"></td>
+  </tr>
+	<tr>
+      <td><input name="checkbox" type="checkbox" id="vb_status" /></td>
+	  <td><font color=white size=3>Ocultar SSID </font></td>
+  </tr>
+	<tr>
+	  <td><span class="STYLE1">Selección del Canal </span></td>
+      <td><select id="wlan_channel">
+        <option value="0">Auto</option>
+        <option value="1">CH1</option>
+        <option value="2">CH2</option>
+        <option value="3">CH3</option>
+        <option value="4">CH4</option>
+        <option value="5">CH5</option>
+        <option value="6">CH6</option>
+        <option value="7">CH7</option>
+        <option value="8">CH8</option>
+        <option value="9">CH9</option>
+        <option value="10">CH10</option>
+        <option value="11">CH11</option>
+      </select>&nbsp;</td>
+  </tr>
+	<tr>
+      <td><span class="STYLE1">Mecanismo de seguridad</span></td>
+	  <td><select id="select_security">
+        <option name ="auth" value="None">Deshabilitado</option>
+        <option name ="auth" value="WEP_64">64-bit WEP</option>
+        <option name ="auth" value="WEP_128">128-bit WEP</option>
+        <option name ="auth" value="11i">WPA and WPA2</option>
+              </select>
+	    &nbsp;</td>
+  </tr>
+	<tr>
+      <td><span class="STYLE1">Clave</span></td>
+	  <td><input type="text" id="INPUT_KEY"></td>
+  </tr>
+  <tr><td><br></td></tr>
+	<tr>
+      <td colspan="2"><font color="white" size="3">64-bit WEP:Ingrese 5 caracteres alfanuméricos o 10 dígitos hexadecimales ("0-9", "A-F").<br>128-bit WEP:Ingrese 13 caracteres alfanuméricos o 26 dígitos hexadecimales ("0-9", "A-F").<br>256-bit WEP: Ingrese 29 caracteres alfanuméricos o 58 dígitos hexadecimales ("0-9", "A-F").<br>WPA y WPA2:  Ingrese de 8 a 63 caracteres alafanuméricos.</font></td>
+  </tr>
+	<tr>
+	<td colspan="2">
+	<br><br>
+	<center >
+	<input type="button" value="Siguiente"  onClick="uiToNextPage()" >
+	&nbsp;
+	<input type="button" value="Cancelar"  onClick="uiToPrevPage()" >
+	&nbsp;
+	<input type="button" value="Configuración avanzada" onClick="uiToLoginPage()">
+	&nbsp;
+	</center>	</td>
+	</tr>
+	<br>
+</table>
+<table width="100%">
+<tr><td width="178" height="40"></td></tr>
+  <tr>
+    <td><strong><font Bienvenido</font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade size=1></td>
+  </tr>
+</table>
+<table width="75%" align="center">
+  <tr>
+    <td><font Bienvenido color=white>Copyright @ 2010 All Right Reserved</font></td>
+  </tr>
+</table>
+<table id='Content'></table>
+<table id='Menu'></table>
+<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

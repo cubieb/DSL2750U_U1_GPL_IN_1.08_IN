@@ -1,0 +1,57 @@
+﻿var data_language = {
+	innerHTML : {
+		lang_title :'Configuración global de QoS',
+		lang_num : 'Número',
+		lang_queueName : 'Nombre',
+		lang_name : 'Nombre de la interfaz',
+		lang_enable : 'Habilitar',
+		lang_qosEnable :'Habilitar',
+		lang_type : 'Administración ancho de banda de Interfaz',
+		lang_queue : 'Modo de programación de Cola de Interfaz',
+		lang_Operation : 'Operación',
+		lang_direction : 'Dirección',
+		lang_uplink : 'Flujo Ascendente(Lan -> Wan)',
+		lang_downLink : 'Flujo Descendente(Wan -> Lan)',
+		lang_qosEnable : 'Habilitar',
+		lang_qosBandwidth : 'Ancho de banda Ascendente',
+		lang_qosScheduling : 'Estrategia de Programación',
+		lang_enableDSCPMark : 'Habilitar marca DSCP/TC',
+		lang_enableCOSMark : 'Habilitar marca 802.1',
+		lang_queueConfig : 'Configuración de cola de envío',
+		lang_bandWidth : 'Ancho de banda (Kbps)',
+		lang_upNote : '(0 significa que no hay ancho de banda límite)',
+		lang_schedulingNote : '(Nota: Cambio de la política de planificación)'
+	},
+	value : {
+		add : 'Agregar cola',
+		submit  : 'Enviar',
+		refresh : 'Actualizar'
+	},
+	dynamic : {
+		lang_comm_rate : 'Tasa de Compromiso',
+		lang_peak_rate : 'Tasa máxima',
+		lang_peak_burst_size : 'Tamaño de ráfaga máxima',
+		apply    : 'Aplicar',
+		edit : 'Editar',
+		del  : 'Borrar',
+		priority : 'Prioridad',
+		precedence : 'Precedencia',
+		shaping : 'Control de Flujo',
+		lang_up : 'ARRIBA_',
+		lang_down : 'ABAJO_',
+		lang_namePrefix : 'Q_',
+		lang_bandwidthEnforcement : 'Aplicación de ancho de banda',
+		lang_weight : 'Peso (%)',
+		lang_highest : 'Mayor',
+		lang_high : 'Alto',
+		lang_medium : 'Medio',
+		lang_low : 'Bajo',
+		lang_uplinkBandwidth : 'Ancho de banda de flujo ascendente',
+		lang_downlinkBandwidth : 'Ancho de banda de flujo descendente',
+		lang_uplinkQueueConfiguration : 'Configuración de cola de envío',
+		lang_queueInterface : 'Interfaz de salida',
+		lang_allInterfaces   		: 'Todas las interfaces',
+		lang_downlinkQueueConfiguration : 'Configuración de cola de descarga'
+	}
+}
+

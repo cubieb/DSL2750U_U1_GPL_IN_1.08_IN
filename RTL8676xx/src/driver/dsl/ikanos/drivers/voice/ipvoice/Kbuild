@@ -1,0 +1,130 @@
+#!/bin/sh
+
+temp1 = $(PWD)
+space :=
+remove := /fusiv_src/kernel/drivers/voice/ipvoice
+temp2  := $(subst $(remove),$(space),$(temp1))
+remove :=  linux-2.6.18
+temp2  := $(subst $(remove),$(space),$(temp2))
+ifeq "$(FUSIV_SRCDIR)" ""
+VOICE_LINUX_KERNEL_PATH := $(temp2)/fusiv_src/kernel/drivers/voice/ipvoice/include
+else
+VOICE_LINUX_KERNEL_PATH := $(FUSIV_SRCDIR)/kernel/drivers/voice/ipvoice/include
+endif
+
+LEGERITY_API_MAKE := 1
+SILABS_API_MAKE := 0
+EXTRA_CFLAGS += -I$(VOICE_LINUX_KERNEL_PATH)
+
+DSPLIB_OBJ :=\
+	dsplib/JitMain.o\
+	dsplib/AJBCli.o\
+	dsplib/AJBDelayEst.o\
+	dsplib/AJBStat.o\
+	dsplib/CidGeneration.o\
+	dsplib/ToneGen.o\
+	dsplib/ToneGenApi.o\
+	dsplib/SinGen.o\
+	dsplib/HDtmfrxDet.o\
+	dsplib/HDtmfrxVar.o\
+	dsplib/G711PLCMain.o\
+	dsplib/G711PLC_AddHist.o\
+	dsplib/G711PLC_Pitch.o\
+	dsplib/G711PlcLib.o\
+	dsplib/G711Table.o\
+	dsplib/G711plc.o\
+	dsplib/ToneFourCad.o\
+	dsplib/CidRxMain.o\
+	dsplib/rc8096.o\
+	dsplib/clprgDet.o\
+	dsplib/G711PLCBasic_op.o\
+	dsplib/rxvaddspFunc.o\
+	dsplib/rxvadMain.o\
+	dsplib/rxvadVar.o\
+	dsplib/rxvadFunc.o\
+        dsplib/v21/v21agc.o\
+        dsplib/v21/v21data.o\
+        dsplib/v21/v21det.o\
+        dsplib/v21/v21detmem.o\
+        dsplib/v21/v21filter.o\
+        dsplib/v21/v21rtcnv.o\
+        dsplib/v21/v21main.o\
+        dsplib/v21/PtrInit.o\
+        dsplib/v21/v21signal.o
+
+
+CONF_OBJ := conf/voicelib.o
+
+DSPIPC_OBJ :=\
+	dspipc/dspinit.o\
+	dspipc/dspnw.o\
+	dspipc/dspdect.o\
+	dspipc/dectsample.o\
+	dspipc/dspipc.o
+        
+OSDEP_OBJ :=\
+	osdep/oswrapper.o\
+	osdep/dspdrv.o
+
+SLIC_OBJ := slic/slicapi.o \
+	slic/voicespi.o \
+	slic/silabs/si3050.o \
+	slic/legerityapi/legerityrw.o \
+	slic/legerity/legerity78d11.o
+ifeq ($(SILABS_API_MAKE), 0)
+SILABS_OBJ := slic/silabs/si3216.o 
+else
+SILABS_OBJ := slic/silabsapi/proslic_api/proslic.o \
+        slic/silabsapi/proslic_api/proslic_spigci_codec.o \
+        slic/silabsapi/proslic_api/proslic_timer_intf.o \
+        slic/silabsapi/proslic_api/si3226_patch.o \
+        slic/silabsapi/proslic_api/si321x_constants.o \
+        slic/silabsapi/proslic_api/si321x_intf.o \
+        slic/silabsapi/proslic_api/si3226_constants.o \
+        slic/silabsapi/proslic_api/si3226_intf.o \
+        slic/silabsapi/silabsinterface.o
+endif
+ifeq ($(LEGERITY_API_MAKE), 0)
+LEG_OBJ := slic/legerity/legeritycoeff.o \
+	slic/legerity/legerity88241.o \
+	slic/legerity/legerity88221.o \
+	slic/legerity/legerity88111.o \
+	slic/legerity/legerity88010.o 
+else
+LEG_OBJ := slic/legerityapi/profiles8.o \
+	slic/legerity/legerity88010.o \
+	slic/legerityapi/legerity88series.o \
+	slic/legerityapi/common/boot_common.o \
+	slic/legerityapi/common/hbi_common.o \
+	slic/legerityapi/common/vp_api.o \
+	slic/legerityapi/common/vp_api_common.o \
+	slic/legerityapi/common/vp_api_cslac_seq.o \
+	slic/legerityapi/common/vp_debug.o \
+	slic/legerityapi/common/sys_service.o \
+	slic/legerityapi/common/vp_pcm_compute.o \
+	slic/legerityapi/vp880_api/apicnt.o \
+	slic/legerityapi/vp880_api/apiInit.o \
+	slic/legerityapi/vp880_api/apiquery.o \
+	slic/legerityapi/vp880_api/apiseq.o \
+	slic/legerityapi/vp880_api/apiCal.o
+endif
+
+KRTP_OBJ :=\
+	krtp/rtpapi.o\
+	krtp/rtpmsg.o\
+	krtp/rtpxport.o\
+	krtp/rtpdrv.o\
+	krtp/rtcp.o
+
+
+obj-m :=  dspvoice.o 
+dspvoice-objs := $(DSPLIB_OBJ)
+dspvoice-objs += $(CONF_OBJ)
+dspvoice-objs += $(DSPIPC_OBJ)
+dspvoice-objs += $(OSDEP_OBJ)
+dspvoice-objs += $(SLIC_OBJ)
+dspvoice-objs += $(SILABS_OBJ)
+dspvoice-objs += $(LEG_OBJ)
+dspvoice-objs += $(KRTP_OBJ)
+
+

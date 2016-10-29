@@ -1,0 +1,121 @@
+		<style type="text/css"><!-- 
+			.div_left { width:240px;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id="lang_AdvancedSettings" >Advanced Settings</p>
+				<div class="div_orange">
+					<p id="lang_dsc">
+						These options are for users who wish to change the behavior of their 802.11g wireless radio from the standard setting. It is not recommended to modify these settings from the factory defaults. Incorrect settings may affect your wireless performance. The default settings usually provide the best wireless performance in most environments.
+					</p>
+				</div>
+				<p class="do bk_black" id="lang_AdvancedWireless">Advanced Wireless Settings</p>
+				<div class="div_black">
+					<div class="div_left" id="lang_TransmissionRate">Transmission Rate :</div><div class="div_right"><select id="SELECT_MaxBitRate" style="width:110px"><option> </option></select></div>
+					<div class="div_left" id="lang_MulticastRate">Multicast Rate :</div><div class="div_right"><select id="SELECT_MulRate"  style="width:110px">
+																							<option value="0">Lower</option>
+																							<option value="1">Higher</option>
+																					   </select>
+					</div>
+					<div class="div_left" id="lang_TransmitPower">Transmit Power :</div><div class="div_right"><select id="SELECT_Power"  style="width:110px">
+																							<option value="100">100%</option>
+																							<option value="80">80%</option>
+																							<option value="60">60%</option>
+																							<option value="40">40%</option>
+																							<option value="20">20%</option>
+																					   </select>
+					</div>
+					<div class="div_left" id="lang_BeaconPeriod">Beacon Period :</div><div class="div_right"><input type="text" id="INPUT_BeaconPeriod"  style="width:100px"/> (20 ~ 1000)</div>
+					<div class="div_left" id="lang_RTSThreshold">RTS Threshold :</div><div class="div_right"><input type="text" id="INPUT_RTSThreshold"  style="width:100px"/> (256 ~ 2346)</div>
+					<div class="div_left" id="lang_FragmentationThreshold">Fragmentation Threshold :</div><div class="div_right"><input type="text" id="INPUT_FragThres"  style="width:100px"/> (256 ~ 2346)</div>
+					<div class="div_left" id="lang_DTIMInterval">DTIM Interval :</div><div class="div_right"><input type="text" id="INPUT_DTIM"  style="width:100px"/> (1 ~ 255)</div>
+					<div class="div_left" id="lang_PreambleType">Preamble Type :</div><div class="div_right"><select id="SELECT_PreType"  style="width:110px">
+																						<option value="0">long</option>
+																						<option value="1">short</option>
+																					  </select>
+					</div>
+				</div>
+				<p class="do bk_black" id="lang_SSID5">SSID</p>
+				<div class="div_black">
+					<div class="div_left" id="lang_EnableWireless5">Enable Wireless :</div><div class="div_right"><input type="checkbox" id="INPUT_Enable"/></div>
+					<div class="div_left" id="lang_WirelessNetworkName5">Wireless Network Name (SSID) :</div><div class="div_right"><input type="text" id="INPUT_SSID" maxlength="32"  style="width:100px"/></div>
+					<div class="div_left"><label for="INPUT_Visible" id="lang_VisibilityStatus5">Visibility Status :</label></div><div class="div_right"><input type="radio" name="vb_status" id="INPUT_Visible" value="1" /> <label for="INPUT_Visible" id="lang_Visible5">Visible</label> <input type="radio" name="vb_status" id="INPUT_Invisible" value="0" /> <label for="INPUT_Invisible" id="lang_Invisible5">Invisible </label></div>
+					<div class="div_left" id="lang_UserIsolation5">User Isolation :</div><div class="div_right"><select id="SELECT_UserIsolation"  style="width:110px">
+																							<option value="0">Off</option>
+																							<option value="1">On</option>
+																					   </select>
+					</div>
+					<div class="div_left" id="lang_DisableWMMAdvertise5">WMM Advertise :</div><div class="div_right"><select id="SELECT_WMMAdv"  style="width:110px" disabled>
+																								<!-- <option value="0">Off</option>  -->
+																								<option value="1">On</option>
+																							  </select>
+					</div>
+					<div class="div_left" id="lang_MaxClients4">Max Clients :</div><div class="div_right"><input type="text" id="INPUT_MaxClients"  style="width:100px"/> 
+					(1 ~ 31)</div>
+				</div>
+				<div class="div_black" id="access_point1">
+				    <p class="do bk_black" id="lang_GuestVirtua4">Guest/Virtual Access Point-1</p>
+					<div class="div_left" id="lang_EnableWirelessGue4">Enable Wireless Guest Network :</div><div class="div_right"><input type="checkbox" id="INPUT_Enable_1"/></div>
+					<div class="div_left" id="lang_GuestSSID4">Guest SSID :</div><div class="div_right"><input type="text" id="INPUT_GuestSSID_1" maxlength="32"  style="width:100px"/></div>
+					<div class="div_left" id="lang_VisibilityStatus4">Visibility Status :</div><div class="div_right"><input type="radio" name="vs_status_1" value="1"/> <label for="" id="lang_Visible4">Visible</label> <input type="radio" name="vs_status_1" value="0"/> <label for="" id="lang_Invisible4" d="lang_Invisible4" >Invisible</label></div>
+					<div class="div_left" id="lang_User4Isolation4">User Isolation :</div><div class="div_right"><select id="SELECT_UserIso_1"  style="width:110px">
+																							<option value="0">Off</option>
+																							<option value="1">On</option>
+																					   </select>
+					</div>
+					<div class="div_left" id="lang_DisableWMMAdvertise4">WMM Advertise :</div><div class="div_right"><select id="SELECT_WMMAdv_1"  style="width:110px" disabled>
+																							<!--	<option value="0">Off</option>  -->
+																								<option value="1">On</option>																							  		
+																							  </select>
+					</div>
+					<div class="div_left" id="lang_MaxClients3">Max Clients :</div><div class="div_right"><input type="text" id="INPUT_MaxClients_1"  style="width:100px"/> 
+					(1 ~ 31)</div>
+				</div>
+				<div class="div_black" id="access_point2">
+				    <p class="do bk_black" id="lang_GuestVirtualAcc3">Guest/Virtual Access Point-2</p>
+					<div class="div_left" id="lang_EnableWirelessuest3">Enable Wireless Guest Network :</div><div class="div_right"><input type="checkbox" id="INPUT_Enable_2"/></div>
+					<div class="div_left" id="lang_GuestSSID3">Guest SSID :</div><div class="div_right"><input type="text" id="INPUT_GuestSSID_2" maxlength="32"  style="width:100px"/></div>
+					<div class="div_left" id="lang_VisibilityStatus3">Visibility Status :</div><div class="div_right"><input type="radio" name="vs_status_2" value="1"/> <label for="" id="lang_Visible3">Visible</label> <input type="radio" name="vs_status_2" value="0"/> <label for="" id="lang_Invisible3">Invisible</label></div>
+					<div class="div_left" id="lang_UserIsolation3">User Isolation :</div><div class="div_right"><select id="SELECT_UserIso_2"  style="width:110px">
+																							<option value="0">Off</option>
+																							<option value="1">On</option>
+																					   </select>
+					</div>
+					<div class="div_left" id="lang_DisableWMMAdvertiseW">WMM Advertise :</div><div class="div_right"><select id="SELECT_WMMAdv_2"  style="width:110px" disabled>
+																							<!--	<option value="0">Off</option> -->
+																								<option value="1">On</option>																							  		
+																							  </select>
+					</div>
+					<div class="div_left" id="lang_MaxClient1">Max Clients :</div><div class="div_right"><input type="text" id="INPUT_MaxClients_2"  style="width:100px"/> 
+					(1 ~ 31)</div>
+				</div>
+				<div class="div_black" id="access_point3">
+				    <p class="do bk_black" id="lang_GuestirtualAccess">Guest/Virtual Access Point-3</p>
+					<div class="div_left" id="lang_EnableWirelessGuest">Enable Wireless Guest Network :</div><div class="div_right"><input type="checkbox" id="INPUT_Enable_3"/></div>
+					<div class="div_left" id="lang_GuestSSID">Guest SSID :</div><div class="div_right"><input type="text" id="INPUT_GuestSSID_3" maxlength="32"  style="width:100px"/></div>
+					<div class="div_left" id="lang_VisibilityStatus">Visibility Status :</div><div class="div_right"><input type="radio" name="vs_status_3" value="1"/> <label for="" id="lang_Visible">Visible</label> <input type="radio" name="vs_status_3" value="0"/> <label for="" id="lang_VInvisible">Invisible</label></div>
+					<div class="div_left" id="lang_UserIsolation">User Isolation :</div><div class="div_right"><select id="SELECT_UserIso_3"  style="width:110px">
+																							<option value="0">Off</option>
+																							<option value="1">On</option>
+																					   </select>
+					</div>
+					<div class="div_left" id="lang_DisableWMMAdvertise">WMM Advertise :</div><div class="div_right"><select id="SELECT_WMMAdv_3"  style="width:110px" disabled>
+																							<!--	<option value="0">Off</option> -->
+																								<option value="1">On</option>																							  		
+																							  </select>
+					</div>
+					<div class="div_left" id="lang_MaxClients">Max Clients :</div><div class="div_right"><input type="text" id="INPUT_MaxClients_3"  style="width:100px"/> 
+					(1 ~ 31)</div>
+				</div>
+				<div class="SecLevel div_button"><input type="submit" id="submit" value="Apply" onClick="uiSubmit()" /> <input type="reset" value="Cancel" onClick="uiPageRefresh()" id="lang_uiPageRefresh" /></div>
+			</div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5 id="lang_help">Helpful Hints...</h5>
+				<p id="lang_helpdsc">
+					You do not need to modify the default settings for the router to operate with wireless. Transmit Power indicates the strength of the wireless signal. If you add a new high-gain antenna, you need to decrease the power, as it will exceed the operating limits.
+				</p>
+				<h5><a href="#" id="lang_help_more">More...</a></h5>				
+			</div>
+		</td>

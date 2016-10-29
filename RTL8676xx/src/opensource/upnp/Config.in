@@ -1,0 +1,26 @@
+#####################
+menuconfig OPENSOURCE_UPnP
+	bool 'UPnP'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	UPnP IGD 
+choice
+	prompt "Miniupnpd Version"
+	default OPENSOURCE_UPnP_15
+	depends on OPENSOURCE && OPENSOURCE_UPnP
+	help
+	UPnP version
+
+config OPENSOURCE_UPnP_12
+	bool 'miniupnpd-1.2'
+	depends on OPENSOURCE_UPnP
+  	help 
+      	miniupnpd-1.2 
+      	
+config OPENSOURCE_UPnP_15
+	bool 'miniupnpd-1.5'
+	depends on OPENSOURCE_UPnP
+  	help 
+      	miniupnpd-1.5
+endchoice

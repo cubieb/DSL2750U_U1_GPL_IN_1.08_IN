@@ -1,0 +1,104 @@
+#!/bin/sh
+
+if [ $# -ne 2 ]; then
+  echo "create a shadow link of source"
+  echo "usage: $0 svn_source_dir destination_dir"
+  exit 1
+fi
+
+if [ ! -d $1 ]; then
+  echo "$1 is not a directory"
+  exit 1
+fi
+
+if [ ! -d $2 ]; then
+  echo "$2 is not a directory"
+  exit 1
+fi
+
+ignorepath="*.svn*"
+ignoresslpath="*blp*openssl-0.9.8_wapi*"
+
+#remove last '\'
+current_dir=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"` 
+
+#get $1's absolutly path
+#param1 remove last '\'
+cd $1
+param1=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"`
+
+#return original path
+cd $current_dir
+
+#get $2's absolutly path
+cd $2
+#param2 remove last '\'
+param2=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"`
+
+sign='-/|\'
+signflag=1
+#return original path
+cd $current_dir
+signflag=1
+counter=0
+html_top_dir=$(echo $1|awk -F'/' '{print $NF}')
+if [ -f $param2/image ]; then
+	rm -f $param2/image
+fi
+if [ -f $param2/index ]; then
+	rm -f $param2/index
+fi
+if [ -f $param2/tmp_index ]; then
+	rm -f $param2/tmp_index
+fi
+
+#///////////
+# -rf $param1 $param2
+cd $param2/$(echo $param1|awk -F'/' '{print $NF}')
+pwd
+param1=`expr match "$PWD" "\(\(/[^/]\{1,\}\)*\)"`
+#///////////
+unset LANG
+:>> $param2/image
+:>> $param2/tmp_index
+find $param1 -type d -path ${ignorepath} -prune -o -path ${ignoresslpath} -prune -o ! -type d -print | while read param; do
+	name=`expr "$param" : "$param1/\(.*\)"`
+	if [ -e $param ]; then
+#		echo $param2/${name}
+	   # ln -s "$param" "$param2/${name}"
+#	   echo $param
+		file_name=$(echo $param|sed "s;$param2/;;g")
+
+#			echo $file_name
+	#   file_type=$(echo $param|cut -d "." -f 2)
+		file_type=$(echo $param|awk -F'.' '{print $NF}')
+		if [ $file_type == "css" -o $file_type == "html" -o $file_type == "js" ]; then
+#		if [ $file_type == "html" -o $file_type == "js" ]; then
+#		if [ $file_type == "css" -o $file_type == "html" ]; then
+			image_size=$(wc -c $param2/image|cut -d " " -f 1)
+			dos2unix $param >/dev/null 2>&1
+sed -i "/^[ \t]*\/\//d" $param
+sed -i 's/\/\/[^"]*$//' $param
+#------#sed -i "s/\/\/[^\"]*//" $param2/image
+sed -i "s/\/\*.*\*\///" $param
+sed -i "/\/\*/,/.*\*\//d" $param
+sed -i "s/<\!--.*-->//" $param
+#sed -i "/<\!--/,/.*-->/d" $param2/image
+
+			cat $param >> $param2/image	
+			length=$(wc -c $param|cut -d " " -f 1)
+			echo $file_name $image_size $length>> $param2/index
+			rm -rf $param
+		fi
+	fi
+
+done
+
+#------#sed -i "/^[ \t]*\/\//d" $param2/image
+#------#sed -i "s/\/\/[^\"]*//" $param2/image
+#------#sed -i "/\/\*/,/.*\*\//d" $param2/image
+#------#sed -i "/<\!--/,/.*-->/d" $param2/image
+#sort -n $param2/tmp_index > $param2/index
+rm -rf $param2/tmp_index 
+printf "successfully!\n"
+

@@ -1,0 +1,103 @@
+
+<InternetGatewayDevice type="object">
+	<LANDevice type="object" Writable="0" CurNode="LANDeviceNumberOfEntries">
+		<i type="object">
+			<LANHostConfigManagement type="object">
+				<DHCPServerEnable type="boolean">1</DHCPServerEnable>
+				<DHCPRelay type="boolean" Writable="0">0</DHCPRelay>
+				<X_TWSZ-COM_DHCPRelayAddress type="string">192.168.0.200</X_TWSZ-COM_DHCPRelayAddress>
+				<ClientIPPoolSize type="unsignedInt">98</ClientIPPoolSize>
+				<MinAddress type="string">192.168.1.2</MinAddress>
+				<MaxAddress type="string">192.168.1.100</MaxAddress>
+				<!--X_TWSZ-COM_ClientClassNumberofEntries type="unsignedInt" Standard="0" Writable="0">0</X_TWSZ-COM_ClientClassNumberofEntries-->
+				<DHCPConditionalPoolNumberOfEntries type="unsignedInt" Writable="0">0</DHCPConditionalPoolNumberOfEntries>
+				<X_TWSZ-COM_ClientClassesMaxEntries type="unsignedInt" Standard="0" Writable="0">16</X_TWSZ-COM_ClientClassesMaxEntries>
+				<!--X_TWSZ-COM_ClientClasses type="object" Standard="0" MaxNode="X_TWSZ-COM_ClientClassesMaxEntries" CurNode="X_TWSZ-COM_ClientClassNumberofEntries">
+					<i type="object">
+						<ClassIdentifier type="string">[IAL]</ClassIdentifier>
+						<MinAddress type="string">192.168.2.110</MinAddress>
+						<MaxAddress type="string">192.168.2.120</MaxAddress>
+						<Dns type="string">192.168.2.120</Dns>
+					</i>
+				</X_TWSZ-COM_ClientClasses-->
+				<DHCPOptionNumberOfEntries type="unsignedInt" Writable="0">0</DHCPOptionNumberOfEntries>
+				<DHCPOption type="object" CurNode="DHCPOptionNumberOfEntries">
+					<i type="object">
+						<Enable type="boolean">0</Enable>
+						<Tag type="unsignedInt"></Tag>
+						<Value type="base64(340)"></Value>
+					</i>
+				</DHCPOption>
+				<DHCPConditionalServingPool type="object" MaxNode="X_TWSZ-COM_ClientClassesMaxEntries" CurNode="DHCPConditionalPoolNumberOfEntries">
+					<i type="object">
+						<Enable type="boolean">0</Enable>
+						<PoolOrder type="unsignedInt" Writable="1">1</PoolOrder>
+                        <SourceInterface type="string(1024)" Writable="1"></SourceInterface>
+						<VendorClassID type="string">[IAL]</VendorClassID>
+						<VendorClassIDExclude type="boolean" Writable="1">false</VendorClassIDExclude>
+                        <VendorClassIDMode type="string" Writable="1">Exact</VendorClassIDMode>
+	                    <ClientID type="string(256)" Writable="1"></ClientID>
+						<Chaddr type="string" Writable="1"></Chaddr>
+                        <LocallyServed type="boolean" Writable="1">true</LocallyServed>
+                        <ReservedAddresses type="string(512)" Writable="1"></ReservedAddresses>
+                        <SubnetMask type="string" Writable="1"></SubnetMask>
+                        <IPRouters type="string(64)" Writable="1"></IPRouters>
+						<MinAddress type="string">192.168.1.10</MinAddress>
+						<MaxAddress type="string">192.168.1.20</MaxAddress>
+						<DNSServers type="string">192.168.1.1</DNSServers>
+						<DHCPLeaseTime type="int[-1:]">86400</DHCPLeaseTime>
+						<UseAllocatedWAN type="string">Normal</UseAllocatedWAN>
+						<DHCPOptionNumberOfEntries type="unsignedInt" Writable="0">0</DHCPOptionNumberOfEntries>
+						<DHCPOption type="object" CurNode="DHCPOptionNumberOfEntries">
+						<i type="object">
+							<Enable type="boolean">0</Enable>
+							<Tag type="unsignedInt"></Tag>
+							<Value type="base64(340)"></Value>
+						</i>
+						</DHCPOption>
+					</i>
+				</DHCPConditionalServingPool>				
+				<SubnetMask type="string">255.255.255.0</SubnetMask>
+				<DomainName type="string(64)">DLink.com</DomainName>
+				<IPRouters type="string(64)">192.168.1.1</IPRouters>
+				<DHCPLeaseTime type="int[-1:]">86400</DHCPLeaseTime>
+				<UseAllocatedWAN type="string">Normal</UseAllocatedWAN>
+				<X_TWSZ-COM_DHCPFilter type="object" Standard="0">
+					<Enabled type="boolean">0</Enabled>
+					<WhiteList type="object" Standard="0">
+						<i type="object">
+						    <PerEnabled type="boolean">0</PerEnabled>
+							<FilterIP type="string" Writable="1">1.0.0.1</FilterIP>
+							<FilterPCName type="string" Writable="1">wc</FilterPCName>
+							<FilterMAC type="string" Writable="1">00:11:22:33:44:55</FilterMAC>
+						</i>
+					</WhiteList>
+					<BlackList type="object" Standard="0">
+						<i type="object">
+							<FilterMAC type="string" Writable="1">00:11:22:33:44:56</FilterMAC>
+						</i>
+					</BlackList>
+				</X_TWSZ-COM_DHCPFilter>
+                             <ReservedAddresses type="string(256)" Writable="1"></ReservedAddresses>
+			</LANHostConfigManagement>
+			<Hosts type="object">
+				<HostNumberOfEntries type="unsignedInt" Writable="0">0</HostNumberOfEntries>
+				<Host type="object" Writable="0">
+					<i type="object">
+						<IPAddress type="string" Writable="0"></IPAddress>
+						<AddressSource type="string" Writable="0"></AddressSource>
+						<LeaseTimeRemaining type="int[-1:]" Writable="0"></LeaseTimeRemaining>
+						<X_TWSZ-COM_LeaseTimeExpire type="unsignedInt" Standard="0" Writable="0"></X_TWSZ-COM_LeaseTimeExpire>
+						<!--X_TWSZ-COM_ClassIdentifier type="string" Standard="0" Writable="0"></X_TWSZ-COM_ClassIdentifier-->
+						<VendorClassID type="string" Writable="0"></VendorClassID>
+						<MACAddress type="string" Writable="0"></MACAddress>
+						<HostName type="string" Writable="0" NeedSave="0"></HostName>
+						<Layer2Interface type="string(256)" Writable="0"></Layer2Interface>
+						<InterfaceType type="string" Writable="0"></InterfaceType>
+						<Active type="boolean" Writable="1"></Active>						
+					</i>
+				</Host>
+			</Hosts>
+		</i>
+	</LANDevice>
+</InternetGatewayDevice>

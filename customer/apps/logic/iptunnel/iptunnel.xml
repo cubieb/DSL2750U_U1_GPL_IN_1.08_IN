@@ -1,0 +1,37 @@
+<InternetGatewayDevice type="object">
+    <X_TWSZ-COM_IPTunnelNumberOfEntries type="unsignedInt" Writable="0">0</X_TWSZ-COM_IPTunnelNumberOfEntries>
+	<X_TELEFONICA-ES_IPTunnel type="object" CurNode="X_TWSZ-COM_IPTunnelNumberOfEntries">
+	    <i type="object">
+		    <Activated type="boolean">0</Activated>
+		    <TunnelName type="string"></TunnelName>
+			<TunnelCounter type="unsignedInt" Writable="0">0</TunnelCounter>
+			<Mode type="string"></Mode>
+			<AssociatedWanIfName type="string(256)"></AssociatedWanIfName>
+			<AssociatedLanIfName type="string(256)"></AssociatedLanIfName>
+            <4in6TunnelNumberOfEntries type="unsignedInt" Writable="0">0</4in6TunnelNumberOfEntries>
+			<6in4TunnelNumberOfEntries type="unsignedInt" Writable="0">0</6in4TunnelNumberOfEntries>
+			<MAX4in6TunnelNumberOfEntries type="unsignedInt" Writable="0">8</MAX4in6TunnelNumberOfEntries>
+			<MAX6in4TunnelNumberOfEntries type="unsignedInt" Writable="0">8</MAX6in4TunnelNumberOfEntries>
+            <4in6Tunnel type="object" MaxNode="MAX4in6TunnelNumberOfEntries" CurNode="4in6TunnelNumberOfEntries">
+			    <i type="object">
+				     <ConnStatus type="string" Writable="0">Disconnected</ConnStatus>
+					 <Mechanism type="string"></Mechanism>
+					 <Dynamic type="boolean">0</Dynamic>
+                     <RemoteIpv6Address type="string(256)"></RemoteIpv6Address>
+					 <Select type="boolean">0</Select>
+				</i>
+            </4in6Tunnel>
+			<6in4Tunnel type="object" MaxNode="MAX6in4TunnelNumberOfEntries" CurNode="6in4TunnelNumberOfEntries">
+			    <i type="object">
+				     <ConnStatus type="string" Writable="0">Disconnected</ConnStatus>
+					 <Mechanism type="string"></Mechanism>
+					 <Dynamic type="boolean">0</Dynamic>
+					 <IPv4MaskLen type="unsignedInt">0</IPv4MaskLen>
+                     <Prefix type="string"></Prefix>
+                     <BorderRelayAddress type="string"></BorderRelayAddress>
+					 <Select type="boolean">0</Select>
+				</i>
+            </6in4Tunnel>
+		</i>
+	</X_TELEFONICA-ES_IPTunnel>
+</InternetGatewayDevice>

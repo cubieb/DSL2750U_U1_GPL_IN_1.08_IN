@@ -1,0 +1,9 @@
+{	"RETURN":{
+		"success": true
+	},
+	
+	"STATUS":{
+		"LOGGED": true,
+		"USER": "<?get :InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList.1.UserName?>"
+	}
+}

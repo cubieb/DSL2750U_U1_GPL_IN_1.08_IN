@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_UPDATEDD
+	bool 'Updatedd'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	Dynamic DNS

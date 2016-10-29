@@ -1,0 +1,10 @@
+{"FIREWALL_Rule": {
+	"idRule":"",
+    "priority":"",
+    "sourceInterface":"any",
+    "sourceIP":"any",
+    "destinationInterface":"any",
+    "destinationIP":"10.95.80.10",
+    "service":"smtp",
+    "target":"deny"
+}

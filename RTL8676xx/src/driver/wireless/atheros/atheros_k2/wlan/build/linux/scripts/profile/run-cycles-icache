@@ -1,0 +1,7 @@
+opcontrol --shutdown &> /dev/null
+
+opcontrol --reset
+opcontrol --vmlinux=/root/prof/kernel/vmlinux
+opcontrol --event=CYCLES:2000000:0:1:0 --event=ICACHE_MISSES:7500:0:1:1 
+opcontrol --callgraph=3
+

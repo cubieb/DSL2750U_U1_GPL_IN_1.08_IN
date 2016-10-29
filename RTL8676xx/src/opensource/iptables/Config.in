@@ -1,0 +1,52 @@
+
+menuconfig OPENSOURCE_IPTABLES
+	bool 'iptables'
+	default y
+	depends on OPENSOURCE
+  	help
+        iptables
+choice
+        prompt "iptables version"
+	depends on OPENSOURCE && OPENSOURCE_IPTABLES
+        default IPTABLES_1_4_6
+config	IPTABLES_1_3_3
+	bool "iptables-1.3.3"
+	depends on OPENSOURCE && OPENSOURCE_IPTABLES
+	help
+		iptables version 1.3.3
+	
+config	IPTABLES_1_4_4
+	bool "iptables-1.4.4"
+	depends on OPENSOURCE && OPENSOURCE_IPTABLES
+	help
+		iptables version 1.4.4
+
+config	IPTABLES_1_4_6
+	bool "iptables-1.4.6"
+	depends on OPENSOURCE && OPENSOURCE_IPTABLES
+	help
+		iptables version 1.4.6
+endchoice
+
+menuconfig OPENSOURCE_IPT_V4
+	bool 'iptables for ipv4'
+	default y
+	depends on OPENSOURCE_IPTABLES
+	help
+		iptables for ipv4
+
+if OPENSOURCE_IPT_V4=y
+source opensource/iptables/Config.in.4
+endif
+
+menuconfig OPENSOURCE_IPT_V6
+	bool 'iptables for ipv6'
+	default n
+	depends on OPENSOURCE_IPTABLES && TBS_SUPPORT_IPV6
+	help
+		iptables for ipv6
+
+if OPENSOURCE_IPT_V6=y
+source opensource/iptables/Config.in.6
+endif
+

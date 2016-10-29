@@ -1,0 +1,47 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_StaticIGMP">Static IGMP</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">In this page, you can add a multicast group upon user request or without user request. Even if the requesting user leaves the group, the static multicast group will not be deleted.</p></div>
+		<p class="do bk_black" id = "lang_config">Static IGMP SETUP</p>
+		<div class="div_black">
+			<table class="td_table_s" id="td_MulticastGroupList">
+				<tr class="tr_bold">
+					<td></td>
+					<td id = "lang_ISP">Service Name</td>
+					<td id = "lang_multicastIP">Multicast Group IP</td>
+					<td id = "lang_STBclientIP">STB IP</td>
+					<td id = "lang_STBclientMac">STB MAC</td>
+					<td id = "lang_LocalPort">Lan Port</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button">
+			<input type="button" name="addIP" id="addIP" value=" Add " onClick="uiAddEntry();"/>
+			<input type="button" name="deleteIP" id="deleteIP" value=" Delete " onClick="uiRemoveEntry()" />
+		</div>
+	</div>
+
+	<div id="EntryInfo" style="display:none">
+		<p class="do bk_black" id="lang_config1">Add Static IGMP Group</p>
+		<div class="div_black">
+			<div class="div_left" id="lang_ISP1">Service Name: </div>
+			<div class="div_right"><input type="text" id="GroupName" maxlength="15"></div>
+			<div class="div_left" id="lang_multicastIP1">Multicast Group IP: </div>
+			<div class="div_right"><input type="text" id="MulticastIP" maxlength="15"></div>
+			<div class="div_left" id="lang_STBclientIP1">STB IP: </div>
+			<div class="div_right"><input type="text" id="STBClientIP" maxlength="15"></div>
+			<div class="div_left" id="lang_STBclientMac1">STB MAC: </div>
+			<div class="div_right"><input type="text" id="STBClientMac" maxlength="17"></div>
+			<div class="div_left" id="lang_LocalPort1">Lan Port: </div>
+			<div class="div_right"><select id="Select_Lan_Port" name="Select_Lan_Port"></select></div>
+		</div>
+		<div class="div_button">
+			<input type="button" id="submit" value="Apply" onClick="uiSubmit()">
+			<input type="button" id="cancel" value="Cancel" onClick="uiPageRefresh()">
+		</div>
+	</div>
+</td>
+
+

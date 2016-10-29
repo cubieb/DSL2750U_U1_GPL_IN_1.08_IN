@@ -1,0 +1,63 @@
+menuconfig OPENSOURCE
+        bool "Open Source"
+        default y
+
+#source opensource/xmlpaser/Config.in
+source opensource/busybox/Config.in
+source opensource/brctl/Config.in
+source opensource/openssl/Config.in
+source opensource/httpd/Config.in
+source opensource/ppp-pppoe/Config.in
+source opensource/ipsec/Config.in
+source opensource/dproxy/Config.in
+source opensource/iptables/Config.in
+source opensource/ebtables/Config.in
+source opensource/atm/Config.in
+source opensource/ethtool/Config.in
+source opensource/udhcp/Config.in
+source opensource/dhcpv6/Config.in
+source opensource/radvd/Config.in
+source opensource/updatedd/Config.in
+source opensource/inadyn/Config.in
+source opensource/dhcpr/Config.in
+source opensource/libnfnetlink/Config.in
+source opensource/libnetfilter_conntrack/Config.in
+source opensource/igmpproxy/Config.in
+source opensource/mld/Config.in
+source opensource/l2tpd/Config.in
+source opensource/pptp/Config.in
+source opensource/snmp/Config.in
+source opensource/iproute2/Config.in
+source opensource/dropbear/Config.in
+source opensource/zebra/Config.in
+source opensource/msntp/Config.in
+source opensource/ping/Config.in
+source opensource/bftpd/Config.in
+source opensource/ftpd/Config.in
+source opensource/ippd/Config.in
+source opensource/samba/Config.in
+source opensource/ntfs/Config.in
+source opensource/upnp/Config.in
+source opensource/hostapd-0.4.8/Config.in
+source opensource/wpa_supplicant-0.5.5/Config.in
+source opensource/wireless_tools/Config.in
+source opensource/siproxd/Config.in
+source opensource/nanocom/Config.in
+source opensource/peanuthullclient/Config.in
+source opensource/dlna/Config.in
+source opensource/libpng/Config.in
+source opensource/qrencode/Config.in
+source opensource/fon/Config.in
+source opensource/wput/Config.in
+menuconfig OPENSOURCE_DEBUGTOOLS 
+        bool "Debug Tools"
+        default n
+        depends on OPENSOURCE
+        help
+        Debug Tools
+
+if OPENSOURCE_DEBUGTOOLS=y
+source opensource/tcpdump/Config.in
+source opensource/ttcp/Config.in
+source opensource/gdb/Config.in
+endif

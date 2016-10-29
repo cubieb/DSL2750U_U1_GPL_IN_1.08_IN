@@ -1,0 +1,6 @@
+<InternetGatewayDevice type="object">
+    <DeviceConfig type="object" Writable="0">
+	<PersistentData type="string(64)" Writable="1"> </PersistentData>
+	<ConfigFile type="string(32K)" Writable="1" NeedSave="0" Cache="1"> </ConfigFile>
+    </DeviceConfig>
+</InternetGatewayDevice>

@@ -1,0 +1,7 @@
+#use . <space> ./exp to source it
+
+export PATH=$PATH:/root/prof/lib
+export PATH=$PATH:/root/prof/bin
+export LD_LIBRARY_PATH=/root/prof/lib
+export OPROFILE_EVENTS_DIR=/root/prof/share/oprofile/
+

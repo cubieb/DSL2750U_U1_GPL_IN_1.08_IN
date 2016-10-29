@@ -1,0 +1,22 @@
+CC=$(TOOLPREFIX)gcc
+
+CFLAGS += -MMD
+CFLAGS += -Wall -g 
+CFLAGS +=-D OS_TYPE_LINUX
+#CFLAGS +=-D OS_TYPE_LINUX -DOMNI_MX_LED
+
+
+LDFLAGS += -lm 
+#LDFLAGS += $(PWD)../../../build/gcc-3.4.4-2.16.1/toolchain_build_mips/uClibc-0.9.28.3/libm/libm.a -static
+
+OBJS= athcfg.o 
+
+all: athcfg
+
+clean:
+	rm -f *.o
+	rm -f athcfg
+
+athcfg: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o athcfg $(LDFLAGS)
+

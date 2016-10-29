@@ -1,0 +1,74 @@
+		<style type="text/css"><!-- 
+			.div_left { width:210px;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_wps_config">Wireless Wps</p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						WPS: You can select different authentication modes in the "Security Setting" page, and broadcast the SSID. The PIN code is saved when you click the PIN button.
+					</p>
+				</div> 
+				
+				<p class="do bk_black">WPS</p>
+				<div class="div_black">
+					<div id="wps_enchk">
+					<div class="div_left" id = "lang_WPS_enabled">Enabled :</div><div class="div_right"><input type="checkbox" id="INPUT_WpsEnable" /></div>
+					</div>
+					<div class="div_left"  id="lang_SelectSSID">SSID :</div><div class="div_right"><input type="text" id="INPUT_SSID" maxlength="32" style="width:150px"/></div>
+			  <?if eq 1 $var:mod_WPS2X
+			  `	
+					<div class="div_left"  id="lang_SelectMode">WPS Version :</div>
+					<div class="div_right">
+						<select name="SELECT_Version" id="SELECT_Version"   style="width:100px">
+							<option value='1'>1.0</option>
+							<option value='2'>2.0</option>
+						</select>
+					</div>
+			   `?>		
+					<div class="div_left"  id="lang_SelectMode">Select Mode :</div>
+					<div class="div_right">
+						<select name="SELECT_Mode" id="SELECT_Mode" onChange="onChgApRole()"  style="width:100px">
+							<option value='Enrollee'>Enrollee</option>
+							<option value='Registrar'>Registrar</option>
+						</select>
+					</div>
+					<div class="div_left"  id="lang_ConfigurationState">Configuration State :</div>
+					<div class="div_right">
+						<select name="SELECT_ConfigurationState" id="SELECT_ConfigurationState"  style="width:100px">
+							<option value='Configured'>Configured</option>
+							<option value='Not configured'>Unconfigured</option>
+						</select>
+					</div>
+			<!--		<div class="div_left"  id="lang_wps_auth">Auth Mode :</div><div class="div_right"><input type='text' name="wps_auth" id="wps_auth" disabled="disabled"/></div> -->
+
+					<!-- WPS Enable -->
+					<div id="wps_enable">
+						<div id="wps_registrar">
+							<div class="div_left" id="lang_Generate">Generate PIN :</div>
+							<div class="div_right"><span id="SPAN_CrtlyPin">1234567890</span> <input type="button" id="INPUT_NewPin" value="New PIN" onClick="newPin()" /></div>
+                                   		<!--<div class="div_left">Generate PIN Status :</div><div class="div_right" style="color:red; padding-top:3px;"><span id="SPAN_GenPinSt"></span></div>-->
+							<div class="div_left"><span id = "lang_button_pin">Pin Station :</span></div><div class="div_right"><input type="button" id="INPUT_EnablePin_dev" value="PIN" onClick="enabledPinDev()" /></div>
+						</div>
+						<div id="wps_enrollee">
+							<div class="div_left"><span id = "lang_button">Push Button :</span></div><div class="div_right"><input type="button" id="INPUT_WpsEnabled" value="PBC" onClick="enabledPbc()" /></div> 
+							<div class="div_left"><span id = "lang_pin">Input Station PIN :</span></div><div class="div_right"><input type="text" id="INPUT_DevicePin"  style="width:90px"/> <input type="button" id="INPUT_EnabledPin" value="PIN" onClick="enabledPin()" /></div>
+						</div>
+						<div class="div_left"><span id = "lang_wps_status">WPS Session Status :</span></div><div class="div_right" style="color:red; padding-top:3px;"><span id="SPAN_WpsSessionSt"></span></div>
+						<!-- <div class="div_left"><span id = "lang_button_oob">Reset WiFi :</span></div><div class="div_right"><input type="button" id="Resetoob" value="Reset OOB" onClick="uiResetOOB()" /></div>-->
+						
+					</div>
+				</div>
+	
+			</div>
+			<div class="SecLevel div_button"><input type="submit" id = "Apply" value="Apply" onClick="uiSubmit()" /> <input type="button" id = "Cancel" value="Cancel" onClick="uiPageRefresh()" /></div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5><span id = "lang_help_hint">Helpful Hints...</span></h5>
+				<p id = "lang_help1">
+					If you enable wireless security, ensure that you remember the <b>encryption key</b>configured. You need to enter the information on any wireless device that you connect to the wireless network.
+				</p>
+				<h5><a href="#"><span id = "lang_more">More...</sapn></a></h5>
+			</div>
+		</td>

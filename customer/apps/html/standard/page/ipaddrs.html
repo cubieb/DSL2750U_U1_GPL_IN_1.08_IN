@@ -1,0 +1,49 @@
+<!-- config -->
+    <td>
+		<div class="config2">
+			<p class="bk_orange" id = "lang_config">IP Address</p>
+			<div class="div_orange">
+				<p id = "lang_introduction">
+				If you enable the IP Address Access Control mode, IP addresses contained in the Access Control List can access the local management services. If the Access Control mode is disabled, the system does not validate IP addresses of incoming packets. Services are the system applications listed in the Service Control List.
+                </p>
+				<p id = "lang_introduction1">
+				Enter the IP address of the management station allowed to access the local management services, and click "Apply".
+				</p>
+			</div>
+			<p class="do bk_black" id = "lang_config1">Access Control -- IP Addresses </p>
+			<div class="div_black">
+		        <div class="div_left" ></div><div class="SecLevel div_middle">&nbsp;<input type="checkbox" name="ACLEnabled" id="ACLEnabled" value="" onClick= "uiEnabled();" /> <b><span id = "lang_mode">Enable Access Control Mode</span></b></div>
+             <br>
+			 <br>   
+					<table class="td_table_s" id='td_ACLlist'>
+				    <tr>
+					    <td >&nbsp;</td><td><span id="lang_IPAddr">IP</span></td>
+				    </tr>
+			        </table>
+			</div>
+			<div class="SecLevel div_button do"><input type="button" id="Add"  value="Add" onClick="uiAdd();">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="Delete" value="Delete" onClick="uiDelete();"></div>
+   
+			<div id="ACLAddIP" style="display:none">
+			   <p class="do bk_black" id = "lang_config2">IP Address </p>
+	           <div class="div_black">		   
+			       <div class="div_left" ><span id = "lang_IP">IP Address :</span></div><div class="div_middle">&nbsp;<input type="text" maxlength=15 name="SrcIP" id="SrcIP" value=""/></div><div class="div_right">&nbsp;</div>
+		         	<div class="SecLevel div_button do"><input type="button" id = "submit" value="Apply" onClick="uiSubmit();">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button"  id = "cancel" value="Cancel" onClick="uiPageRefresh();"></div>
+			    </div>	
+	</td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5><span id = "lang_help_hint">Helpful Hints...</span></h5>
+				<div>
+				<p id = "lang_help">
+					You can specify IP addresses to set specific users to be able access the local management services.
+				</p>
+				<p id = "lang_help1">
+				    Note: Before enabling the service, remember to add your IP address to the list.
+				</p>
+				</div>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>
+	</tr>
+</table>		

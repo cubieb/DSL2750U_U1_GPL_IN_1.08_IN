@@ -1,0 +1,51 @@
+ifeq "$(ROOTDIR)" ""
+	export ROOTDIR=$(shell while true; do if [ -f BaseVar.mk ]; then pwd;exit; else cd ..;fi;done;)
+endif
+
+include $(ROOTDIR)/.config
+include $(ROOTDIR)/BaseVar.mk
+.PHONY: configure all build clean distclean 
+SRCDIR=$(CURDIR)/iptables-1.4.4
+#export CFLAGS=-DNO_SHARED_LIBS
+
+ifndef CONFIG_OPENSOURCE_IPT_V4
+ENABLE_IPV4_TRUE="#"
+else 
+ENABLE_IPV4_TRUE=
+endif 
+
+ifndef CONFIG_OPENSOURCE_IPT_V4
+ENABLE_IPV6_TRUE="#"
+else 
+ENABLE_IPV4_TRUE=
+endif 
+
+all: configure build
+
+build:
+	make -C $(SRCDIR) all install 
+	
+configure:
+	cd $(SRCDIR);\
+	./configure \
+	--prefix=$(TMPDISTDIR) \
+	--host=$(TARGET) \
+	--with-ksource=$(KERNEL_DIR) \
+	--enable-static enable_shared=no
+	touch configure
+
+clean:
+	cd $(SRCDIR); \
+	make clean
+distclean:	
+	cd $(SRCDIR); \
+	make distclean
+	rm -f configure
+	
+install:
+#	cp -Prf $(TMPDISTDIR)/lib/libiptc.so* $(FSROOT)/lib/
+#	cp -Prf $(TMPDISTDIR)/lib/libxtables.so* $(FSROOT)/lib/
+#	cp -Prf $(TMPDISTDIR)/libexec/xtables $(FSROOT)/lib/
+	cp $(TMPDISTDIR)/sbin/iptables-static $(FSROOT)/sbin/iptables
+	cp $(TMPDISTDIR)/sbin/ip6tables-static $(FSROOT)/sbin/ip6tables
+	$(STRIP) $(FSROOT)/sbin/ip6tables $(FSROOT)/sbin/iptables

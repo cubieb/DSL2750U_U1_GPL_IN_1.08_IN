@@ -1,0 +1,40 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_MAC_Filter type="object" Standard="0">
+		<MaxWhiteListEntryNumber type="unsignedInt" Writable="0">20</MaxWhiteListEntryNumber>
+		<WhiteListEntryNumber type="unsignedInt" Writable="0">0</WhiteListEntryNumber>
+		<MaxBlackListEntryNumber type="unsignedInt" Writable="0">20</MaxBlackListEntryNumber>
+		<BlackListEntryNumber type="unsignedInt" Writable="0">0</BlackListEntryNumber>
+		<Enable type="boolean">0</Enable>
+		<Type type="string" Writable="0">Deny,Allow</Type>
+		<FilterMode type="string">Deny</FilterMode>
+		<WhiteList type="object" MaxNode="MaxWhiteListEntryNumber" CurNode="WhiteListEntryNumber">
+			<i type="object">
+				<Enable type="boolean" Writable="0">0</Enable>
+			    <Description type="string">WhiteList_1</Description>
+				<MACAddress type="string">00:00:12:34:56:78</MACAddress>
+				<ScheduleMode type="string">Select</ScheduleMode>
+				<SchedulePath type="string">Always</SchedulePath>
+				<EnableAllDays type="boolean">1</EnableAllDays>
+				<Days type="string">Sun,Mon,Tue,Wed,Thu,Fri,Sat</Days>
+				<EnableAllTimes type="boolean">1</EnableAllTimes>
+				<StartTime type="string">00:00</StartTime>
+				<EndTime type="string">23:59</EndTime>
+			</i>
+		</WhiteList>
+		<BlackList type="object" MaxNode="MaxBlackListEntryNumber" CurNode="BlackListEntryNumber">
+			<i type="object">
+				<Enable type="boolean" Writable="0">0</Enable>
+			    <Description type="string">BlackList_1</Description>
+				<MACAddress type="string">00:00:12:34:56:78</MACAddress>
+				<ScheduleMode type="string">Select</ScheduleMode>
+				<SchedulePath type="string">Always</SchedulePath>
+				<EnableAllDays type="boolean">1</EnableAllDays>
+				<Days type="string">Sun,Mon,Tue,Wed,Thu,Fri,Sat</Days>
+				<EnableAllTimes type="boolean">1</EnableAllTimes>
+				<StartTime type="string">00:00</StartTime>
+				<EndTime type="string">23:59</EndTime>
+			</i>
+		</BlackList>
+	</X_TWSZ-COM_MAC_Filter>
+</InternetGatewayDevice>

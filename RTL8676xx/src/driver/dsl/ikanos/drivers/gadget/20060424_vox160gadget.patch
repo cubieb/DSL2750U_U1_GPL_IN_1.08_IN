@@ -1,0 +1,3170 @@
+-/Kconfig/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/Makefile/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/config.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/dummy_hcd.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/epautoconf.c/1.1.1.1/Mon Apr 24 23:05:25 2006//
+-/ether.c/1.1.1.1/Mon Apr 24 23:05:27 2006//
+-/file_storage.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/gadget_chips.h/1.1.1.1/Mon Apr 24 23:05:27 2006//
+-/goku_udc.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/goku_udc.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/inode.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/lh7a40x_udc.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/lh7a40x_udc.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/ndis.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/net2280.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/net2280.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/omap_udc.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/omap_udc.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/pxa2xx_udc.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/pxa2xx_udc.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/rndis.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/rndis.h/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/serial.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/usbstring.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
+-/zero.c/1.1.1.1/Mon Apr 24 23:03:21 2006//
++/config.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/dummy_hcd.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/file_storage.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/goku_udc.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/goku_udc.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/inode.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/lh7a40x_udc.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/lh7a40x_udc.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/ndis.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/net2280.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/net2280.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/omap_udc.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/omap_udc.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/pxa2xx_udc.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/pxa2xx_udc.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/rndis.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/rndis.h/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/serial.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/usbstring.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/zero.c/1.1.1.1/Thu Dec  1 11:53:50 2005//
++/Kconfig/1.1.1.1/Mon Apr 24 22:43:46 2006//
++/Makefile/1.1.1.1/Mon Apr 24 22:43:46 2006//
++/epautoconf.c/1.1.1.1/Mon Apr 24 22:43:46 2006//
++/ether.c/1.1.1.1/Mon Apr 24 22:43:47 2006//
++/gadget_chips.h/1.1.1.1/Mon Apr 24 22:43:47 2006//
+ D
+diff -Naur gadget_old/epautoconf.c gadget_new/epautoconf.c
+--- gadget_old/epautoconf.c	2006-04-24 16:05:25.842640000 -0700
++++ gadget_new/epautoconf.c	2006-04-24 16:03:25.292440000 -0700
+@@ -275,6 +275,21 @@
+ 		if (ep && ep_matches (gadget, ep, desc))
+ 			return ep;
+ 	}
++        else if (gadget_is_vox160 (gadget)) {
++                if(USB_ENDPOINT_XFER_BULK == type) {
++                        ep = find_ep (gadget, "ep2in-bulk");
++                        if (ep && ep_matches (gadget, ep, desc))
++                                return ep;
++                        ep = find_ep (gadget, "ep3out-bulk");
++                        if (ep && ep_matches (gadget, ep, desc))
++                                return ep;
++                } else if (USB_ENDPOINT_XFER_INT == type) {
++                        /* single buffering is enough */
++                        ep = find_ep (gadget, "ep1in-int");
++                        if (ep && ep_matches (gadget, ep, desc))
++                                return ep;
++                }
++        }
+ 
+ 	/* Second, look at endpoints until an unclaimed one looks usable */ 
+ 	list_for_each_entry (ep, &gadget->ep_list, ep_list) {
+diff -Naur gadget_old/ether.c gadget_new/ether.c
+--- gadget_old/ether.c	2006-04-24 16:05:27.417561000 -0700
++++ gadget_new/ether.c	2006-04-24 16:03:25.312441000 -0700
+@@ -416,7 +416,7 @@
+ 	.bLength =		sizeof device_desc,
+ 	.bDescriptorType =	USB_DT_DEVICE,
+ 
+-	.bcdUSB =		__constant_cpu_to_le16 (0x0200),
++	.bcdUSB =		__constant_cpu_to_le16 (0x0110),
+ 
+ 	.bDeviceClass =		USB_CLASS_COMM,
+ 	.bDeviceSubClass =	0,
+@@ -784,7 +784,7 @@
+ 	.bLength =		sizeof dev_qualifier,
+ 	.bDescriptorType =	USB_DT_DEVICE_QUALIFIER,
+ 
+-	.bcdUSB =		__constant_cpu_to_le16 (0x0200),
++	.bcdUSB =		__constant_cpu_to_le16 (0x0110),
+ 	.bDeviceClass =		USB_CLASS_COMM,
+ 
+ 	.bNumConfigurations =	1,
+@@ -923,6 +923,9 @@
+ 	if (device_desc.bNumConfigurations == 2 && index == 0) {
+ 		config = &rndis_config;
+ 		function = which_fn (rndis);
++        } else if (device_desc.bNumConfigurations == 1 && index == 0) {
++                config = &rndis_config;
++                function = which_fn (rndis);
+ 	} else
+ #endif
+ 	{
+@@ -1174,6 +1177,10 @@
+ 	}
+ 	eth_reset_config (dev);
+ 
++        if (gadget_is_vox160 (gadget) ) {
++                number = DEV_RNDIS_CONFIG_VALUE;
++        }
++
+ 	/* default:  pass all packets, no multicast filtering */
+ 	dev->cdc_filter = DEFAULT_FILTER;
+ 
+@@ -1581,6 +1588,8 @@
+ 		req->length = value;
+ 		req->zero = value < wLength
+ 				&& (value % gadget->ep0->maxpacket) == 0;
++                if(req->length > 160)
++                        WARN(dev,"rec 0x%0x que 0x%0x \n",wLength,req->length);
+ 		value = usb_ep_queue (gadget->ep0, req, GFP_ATOMIC);
+ 		if (value < 0) {
+ 			DEBUG (dev, "ep_queue --> %d\n", value);
+@@ -1975,6 +1984,14 @@
+ 	if (dev->rndis) {
+ 		struct sk_buff	*skb_rndis;
+ 
++                /* If skbuff do not contain minimum sized ethernet
++                 * frame,pad extra bytes. The minimum ethernet frame size
++                 * is 64 bytes but we ignore ethernet CRC field which is
++                 * 4 byte.
++                 */
++                if(skb->len < 60)
++                        skb->len = 60;
++
+ 		skb_rndis = skb_realloc_headroom (skb,
+ 				sizeof (struct rndis_packet_msg_type));
+ 		if (!skb_rndis)
+@@ -2303,6 +2320,10 @@
+ 		device_desc.bcdDevice = __constant_cpu_to_le16 (0x0212);
+ 	} else if (gadget_is_at91(gadget)) {
+ 		device_desc.bcdDevice = __constant_cpu_to_le16 (0x0213);
++        } else if (gadget_is_vox160(gadget)) {
++                device_desc.bcdDevice = __constant_cpu_to_le16 (0x0214);
++                /* hardware can't write zlps */
++                zlp = 0;
+ 	} else {
+ 		/* can't assume CDC works.  don't want to default to
+ 		 * anything less functional on CDC-capable hardware,
+@@ -2410,8 +2431,14 @@
+ 	}
+ 
+ 	/* For now RNDIS is always a second config */
+-	if (rndis)
+-		device_desc.bNumConfigurations = 2;
++        if (rndis) {
++                if (gadget_is_vox160 (gadget) ) {
++                        device_desc.bNumConfigurations = 1;
++                        rndis_config.bConfigurationValue = DEV_CONFIG_VALUE;
++                }
++                else
++                        device_desc.bNumConfigurations = 2;
++        }
+ 
+ #ifdef	CONFIG_USB_GADGET_DUALSPEED
+ 	if (rndis)
+diff -Naur gadget_old/gadget_chips.h gadget_new/gadget_chips.h
+--- gadget_old/gadget_chips.h	2006-04-24 16:05:27.437561000 -0700
++++ gadget_new/gadget_chips.h	2006-04-24 16:03:25.414440000 -0700
+@@ -86,6 +86,13 @@
+ #define gadget_is_at91(g)	0
+ #endif
+ 
++#ifdef CONFIG_USB_GADGET_VOX160
++#define gadget_is_vox160(g)     !strcmp("vox160-udc", (g)->name)
++#else
++#define gadget_is_vox160(g)     0
++#endif
++
++
+ // CONFIG_USB_GADGET_SX2
+ // CONFIG_USB_GADGET_AU1X00
+ // ...
+diff -Naur gadget_old/Kconfig gadget_new/Kconfig
+--- gadget_old/Kconfig	2006-04-24 16:03:21.393600000 -0700
++++ gadget_new/Kconfig	2006-04-24 16:04:09.437680000 -0700
+@@ -168,6 +168,16 @@
+ 	depends on USB_GADGET_OMAP
+ 	default USB_GADGET
+ 
++config USB_GADGET_VOX160
++	boolean "ADI VOX160"
++	help
++    This driver provides USB Device Controller driver for ADI's VOX160 
++
++config USB_VOX160
++	tristate
++	depends on USB_GADGET_VOX160
++	default USB_GADGET
++
+ config USB_OTG
+ 	boolean "OTG Support"
+ 	depends on USB_GADGET_OMAP && ARCH_OMAP_OTG && USB_OHCI_HCD
+diff -Naur gadget_old/Makefile gadget_new/Makefile
+--- gadget_old/Makefile	2006-04-24 16:03:21.395600000 -0700
++++ gadget_new/Makefile	2006-04-24 16:04:06.236811000 -0700
+@@ -7,6 +7,7 @@
+ obj-$(CONFIG_USB_GOKU)		+= goku_udc.o
+ obj-$(CONFIG_USB_OMAP)		+= omap_udc.o
+ obj-$(CONFIG_USB_LH7A40X)	+= lh7a40x_udc.o
++obj-$(CONFIG_USB_VOX160)	+= vox160_udc.o
+ 
+ #
+ # USB gadget drivers
+diff -Naur gadget_old/vox160_udc.c gadget_new/vox160_udc.c
+--- gadget_old/vox160_udc.c	1969-12-31 16:00:00.000000000 -0800
++++ gadget_new/vox160_udc.c	2006-04-24 16:04:34.907681000 -0700
+@@ -0,0 +1,2467 @@
++/*
++ * Analog Devices vox160  USB Device Controller driver
++ *
++ * Copyright (C) 2000-2002 Lineo
++ *      by Stuart Lynne, Tom Rushworth, and Bruce Balden
++ * Copyright (C) 2002 Toshiba Corporation
++ * Copyright (C) 2003 MontaVista Software (source@mvista.com)
++ * Copyright (C) 2003 Analog Devices Inc 
++ *
++ * This file is licensed under the terms of the GNU General Public
++ * License version 2.  This program is licensed "as is" without any
++ * warranty of any kind, whether express or implied.
++ */
++
++/*
++ * This device has ep0 and three endpoints.
++ * Endpoint numbering is fixed: ep0-control,ep1-interrupt ep{2,3}-bulk
++ */
++
++#include <linux/config.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/delay.h>
++#include <linux/ioport.h>
++#include <linux/sched.h>
++#include <linux/slab.h>
++#include <linux/smp_lock.h>
++#include <linux/errno.h>
++#include <linux/init.h>
++#include <linux/timer.h>
++#include <linux/list.h>
++#include <linux/interrupt.h>
++#include <linux/proc_fs.h>
++#include <linux/device.h>
++#include <linux/usb_ch9.h>
++#include <linux/usb_gadget.h>
++
++#include <asm/byteorder.h>
++#include <asm/io.h>
++#include <asm/irq.h>
++#include <asm/system.h>
++#include <asm/unaligned.h>
++#include <linux/dma-mapping.h>
++#include <linux/jiffies.h>
++
++#define DEBUG
++//#define VERBOSE
++
++#include <asm/mach-adi_fusiv/vox160usb.h>
++#include "vox160_udc.h"
++#include "vox160_udc_fw.h"
++
++struct timer_list usbd_timer;
++
++static const char usbd_name[] = "vox160_usbd";
++
++#define	DRIVER_DESC		"VOX160 USB Device Controller"
++#define	DRIVER_VERSION		"30-Oct 2003"
++
++#define	DMA_ADDR_INVALID	(~(dma_addr_t)0)
++
++static const char driver_name[] = "vox160-udc";
++static const char driver_desc[] = DRIVER_DESC;
++
++MODULE_AUTHOR("vivek.dharmadhikari@analog.com");
++MODULE_DESCRIPTION(DRIVER_DESC);
++MODULE_LICENSE("GPL");
++
++static void nuke(struct vox160_ep *, int status);
++static int start_in_xfer(struct vox160_ep *ep, u8 * buf, int len);
++static int start_out_xfer(struct vox160_ep *ep, u8 * buf, int len);
++static int read_fifo(struct vox160_ep *ep, struct vox160_request *req);
++static int read_ep0_fifo(struct vox160_ep *ep, struct vox160_request *req);
++static u16 usbd_read_ep_intr_reg(struct vox160_udc *dev, int epnum);
++static void done(struct vox160_ep *ep, struct vox160_request *req, int status);
++static void vox160_counter_reset(void);
++
++static int
++vox160_ep_enable(struct usb_ep *_ep, const struct usb_endpoint_descriptor *desc)
++{
++	struct vox160_udc *dev;
++	struct vox160_ep *ep;
++	u32 flags;
++	u16 maxpacket;
++	u32 tmp;
++
++	ep = container_of(_ep, struct vox160_ep, ep);
++	if (!_ep || !desc || ep->desc
++	    || desc->bDescriptorType != USB_DT_ENDPOINT)
++		return -EINVAL;
++	dev = ep->dev;
++
++	/* This function do not handle ep0 */
++	if (ep == &dev->ep[0])
++		return -EINVAL;
++
++	if (!dev->driver || dev->gadget.speed == USB_SPEED_UNKNOWN)
++		return -ESHUTDOWN;
++	if (ep->num != (desc->bEndpointAddress & 0x0f))
++		return -EINVAL;
++
++	maxpacket = le16_to_cpu(desc->wMaxPacketSize);
++	tmp = desc->bmAttributes & USB_ENDPOINT_XFERTYPE_MASK;
++	/* 
++	 * Endpoint 1 can not do anything but interrupt transfers
++	 * while endpoints 2 and 3 can do only bulk in and out respectively
++	 */
++	switch (tmp) {
++	case USB_ENDPOINT_XFER_INT:
++		if ((ep->num != 1) && (maxpacket > 64))
++			goto bogus_max;
++		break;
++	case USB_ENDPOINT_XFER_BULK:
++		switch (maxpacket) {
++		case 8:
++		case 16:
++		case 32:
++		case 64:
++			goto ok;
++		}
++	      bogus_max:
++		DBG(dev, "bogus maxpacket %d \n", maxpacket);
++		return EINVAL;
++	}
++      ok:
++	spin_lock_irqsave(&ep->dev->lock, flags);
++
++	/* Initialize the endpoint to match this descriptor */
++	ep->is_in = (desc->bEndpointAddress & USB_DIR_IN) != 0;
++	ep->stopped = 0;
++	ep->desc = desc;
++	ep->ep.maxpacket = maxpacket;
++
++	VDBG(dev, "enable %s %s %s maxpacket %u\n", ep->ep.name,
++	     ep->is_in ? "IN" : "OUT",
++	     ep->dma ? "dma" : "pio", ep->ep.maxpacket);
++	spin_unlock_irqrestore(&ep->dev->lock, flags);
++
++	return 0;
++}
++
++static void
++vox160_ep_reset(struct vox160_ep *ep)
++{
++	struct vox160_udc *dev = ep->dev;
++	unsigned short result;
++
++	/* mask endpoint interrupts */
++	writew(USBD_EP_MASK_ALL, &dev->usbd_mask[ep->num]->reg);
++
++	/* clear pending interrupts */
++	result = readw(&dev->usbd_intr[ep->num]->reg);
++	writew(result, &dev->usbd_intr[ep->num]->reg);
++
++	/* disarm endpoints except ep0 */
++	if (ep->num) {
++		writew(0x0, &dev->usbd_epcfg[ep->num]->reg);
++	}
++
++	/* reset epadr register */
++	writew(0x0, &dev->usbd_epadr[ep->num]->reg);
++
++	/* reset eplen register */
++	writew(0x0, &dev->usbd_eplen[ep->num]->reg);
++	dev->ep[ep->num].current_max_buffer_len = 0x0;
++
++	//ep->ep.maxpacket = 0;
++	ep->desc = NULL;
++	ep->stopped = 1;
++	ep->irqs = 0;
++	ep->dma = 0;
++}
++
++static int
++vox160_ep_disable(struct usb_ep *_ep)
++{
++	struct vox160_ep *ep;
++	struct vox160_udc *dev;
++	unsigned long flags;
++
++	ep = container_of(_ep, struct vox160_ep, ep);
++	if (!_ep || !ep->desc)
++		return -ENODEV;
++	dev = ep->dev;
++	VDBG(dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++	if (dev->ep0state == EP0_SUSPEND)
++		return -EBUSY;
++
++	spin_lock_irqsave(&dev->lock, flags);
++	/* nuke all previous transfers */
++	nuke(ep, -ESHUTDOWN);
++	vox160_ep_reset(ep);
++	spin_unlock_irqrestore(&dev->lock, flags);
++
++	return 0;
++}
++
++static struct usb_request *
++vox160_alloc_request(struct usb_ep *_ep, int gfp_flags)
++{
++	struct vox160_request *req;
++
++	if (!_ep)
++		return NULL;
++
++	req = kcalloc(1, sizeof (struct vox160_request), gfp_flags);
++	if (!req)
++		return NULL;
++
++	req->req.dma = DMA_ADDR_INVALID;
++	INIT_LIST_HEAD(&req->queue);
++	return &req->req;
++}
++
++static void
++vox160_free_request(struct usb_ep *_ep, struct usb_request *_req)
++{
++	struct vox160_request *req;
++
++	if (!_ep || !_req)
++		return;
++
++	req = container_of(_req, struct vox160_request, req);
++
++	BUG_ON(!list_empty(&req->queue));
++	kfree(req);
++}
++
++/*-------------------------------------------------------------------------*/
++static void *
++vox160_alloc_buffer(struct usb_ep *_ep, unsigned bytes,
++		    dma_addr_t * dma, int gfp_flags)
++{
++	*dma = ~0;
++	return kmalloc(bytes, gfp_flags);
++}
++
++static void
++vox160_free_buffer(struct usb_ep *_ep, void *buf, dma_addr_t dma,
++		   unsigned bytes)
++{
++	kfree(buf);
++}
++
++/*-------------------------------------------------------------------------*/
++static void
++done(struct vox160_ep *ep, struct vox160_request *req, int status)
++{
++	struct vox160_udc *dev;
++	unsigned stopped = ep->stopped;
++
++	list_del_init(&req->queue);
++
++	if (likely(req->req.status == -EINPROGRESS))
++		req->req.status = status;
++	else
++		status = req->req.status;
++
++	dev = ep->dev;
++	if (req->req.status != 0)
++		VDBG(dev, "(%s:%d):complete %s req %p stat %d len %u/%u\n",
++		     __FUNCTION__, __LINE__,
++		     ep->ep.name, &req->req, req->req.status,
++		     req->req.actual, req->req.length);
++
++	if (req->mapped) {
++		req->req.dma = DMA_ADDR_INVALID;
++		req->mapped = 0;
++	}
++
++	if (status && status != -ESHUTDOWN)
++		VDBG(dev, "complete %s req %p stat %d len %u/%u\n",
++		     ep->ep.name, &req->req, status,
++		     req->req.actual, req->req.length);
++
++	/* don't modify queue heads during completion callback */
++	ep->stopped = 1;
++	spin_unlock(&dev->lock);
++	req->req.complete(&ep->ep, &req->req);
++	spin_lock(&dev->lock);
++	ep->stopped = stopped;
++}
++
++/*-------------------------------------------------------------------------*/
++
++static int
++start_in_xfer(struct vox160_ep *ep, u8 * buf, int len)
++{
++	struct vox160_udc *dev = ep->dev;
++	u16 tmp;
++
++	/* copy the data to be written into usb local memory */
++	if (buf)
++		memcpy(dev->dma_base_address + ep->dma_offset, buf, len);
++
++	/* reset the ep2 configuration register */
++	if (ep->num == USBD_BULK_IN_EP)
++		writew(0, &dev->usbd_epcfg[ep->num]->reg);
++
++	/* clear the following ep interrupts before we begin */
++	tmp =
++	    USBD_INTR_BCSTAT | USBD_INTR_MERR | USBD_INTR_PC | USBD_INTR_MSETUP;
++	writew(tmp, &dev->usbd_intr[ep->num]->reg);
++
++	/* program the buffer offset */
++	writew(ep->dma_offset, &dev->usbd_epadr[ep->num]->reg);
++
++	/* program the buffer length */
++	writew(len, &dev->usbd_eplen[ep->num]->reg);
++	ep->current_max_buffer_len = len;
++
++	/* unmask USBD_BCSTAT,USBD_PC,USBD_TC interrupts */
++	writew(~(ep->ep_intr_list), &dev->usbd_mask[ep->num]->reg);
++
++	/* set the direction bit and arm the endpoints */
++	writew((ep->cfg_attribs | USBD_EPCFG_DIR_IN | USBD_EPCFG_ARM),
++	       &dev->usbd_epcfg[ep->num]->reg);
++
++	return 0;
++}
++
++static int
++start_out_xfer(struct vox160_ep *ep, u8 * buf, int len)
++{
++	struct vox160_udc *dev = ep->dev;
++
++	/* data transfer in progress */
++	u16 tmp;
++
++	/* clear the interrupts before we begin */
++	tmp =
++	    USBD_INTR_BCSTAT | USBD_INTR_MERR | USBD_INTR_PC | USBD_INTR_MSETUP;
++	writew(tmp, &dev->usbd_intr[ep->num]->reg);
++
++	/* I don't understand this step */
++	writew(0, &dev->usbd_eplen[ep->num]->reg);
++	ep->current_max_buffer_len = 0;
++
++	/* program the buffer offset */
++	writew(ep->dma_offset, &dev->usbd_epadr[ep->num]->reg);
++
++	/* unmask USBD_BCSTAT,USBD_PC,USBD_TC interrupts */
++	writew(~(ep->ep_intr_list), &dev->usbd_mask[ep->num]->reg);
++
++	/* Yes, we arm and then set the length. This is due to a bug in the
++	 * hardware.By doing the initialization this way, we should be safe                     * from the bug
++	 */
++
++	/* set the direction bit and arm the endpoints */
++	writew((ep->cfg_attribs | USBD_EPCFG_DIR_OUT | USBD_EPCFG_ARM),
++	       &dev->usbd_epcfg[ep->num]->reg);
++
++	/* program the buffer length */
++	writew(len, &dev->usbd_eplen[ep->num]->reg);
++	ep->current_max_buffer_len = len;
++
++	return 0;
++}
++
++static int
++vox160_queue(struct usb_ep *_ep, struct usb_request *_req, int gfp_flags)
++{
++	struct vox160_request *req;
++	struct vox160_ep *ep;
++	struct vox160_udc *dev;
++	unsigned long flags;
++	int status = 0;
++	unsigned int total = 0;
++
++	req = container_of(_req, struct vox160_request, req);
++	ep = container_of(_ep, struct vox160_ep, ep);
++
++	if (strcmp(_ep->name, "ep1in-int") == 0
++	    && (((u8 *) req->req.buf)[0] == 0x1)) {
++		req->req.actual = req->req.length;
++		done(ep, req, 0);
++		return 1;
++	}
++
++	dev = ep->dev;
++
++	if (unlikely(!dev->driver || dev->gadget.speed == USB_SPEED_UNKNOWN))
++		return -ESHUTDOWN;
++
++	/* can't touch registers when suspended */
++	if (dev->ep0state == EP0_SUSPEND)
++		return -EBUSY;
++
++	if ((ep->num != 0) && (ep->num != 1)) {
++		VDBG(dev, "(%s:%d):%s %p len %d act %d \n",
++		     __FUNCTION__, __LINE__, _ep->name, &req->req,
++		     req->req.length, req->req.actual);
++	}
++
++	spin_lock_irqsave(&dev->lock, flags);
++
++	_req->status = -EINPROGRESS;
++	_req->actual = 0;
++
++	/* kickstart this i/o queue? */
++	status = 0;
++	/* 
++	 * If this control request has a non empty DATA stage,
++	 * this will start this stage. 
++	 * If the data stage is empty,then this starts a successful 
++	 * IN/STATUS stage
++	 */
++	total = min(ep->max_buffer_len,
++		    (u16) (req->req.length - req->req.actual));
++
++	if (list_empty(&ep->queue) && likely(!ep->stopped)) {
++		/* status = 0 still running,1 = completed error otherwise */
++		switch (ep->num) {
++		case USBD_CONTROL_EP:
++			if (ep->is_in)
++				status = start_in_xfer(ep, req->req.buf, total);
++			else
++				status =
++				    start_out_xfer(ep, req->req.buf, total);
++			break;
++		case USBD_BULK_IN_EP:
++			status = start_in_xfer(ep, req->req.buf, total);
++			break;
++		case USBD_BULK_OUT_EP:
++			status = start_out_xfer(ep, req->req.buf, total);
++			break;
++		}
++
++		if (status != 0) {
++			if (status > 0)
++				status = 0;
++			req = NULL;
++		}
++
++	}
++	/* else pio or dma irq handler advances the queue. */
++	if (req != 0)
++		list_add_tail(&req->queue, &ep->queue);
++
++	spin_unlock_irqrestore(&dev->lock, flags);
++
++	return status;
++}
++
++/* dequeue ALL requests */
++static void
++nuke(struct vox160_ep *ep, int status)
++{
++	struct vox160_request *req;
++	VDBG(ep->dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++
++	ep->stopped = 1;
++	if (list_empty(&ep->queue))
++		return;
++
++	while (!list_empty(&ep->queue)) {
++		req = list_entry(ep->queue.next, struct vox160_request, queue);
++		done(ep, req, status);
++	}
++}
++
++/* dequeue JUST ONE request */
++static int
++vox160_dequeue(struct usb_ep *_ep, struct usb_request *_req)
++{
++	struct vox160_request *req;
++	struct vox160_ep *ep;
++	struct vox160_udc *dev;
++	unsigned long flags;
++
++	ep = container_of(_ep, struct vox160_ep, ep);
++	if (!_ep || !_req || (!ep->desc && ep->num != 0))
++		return -EINVAL;
++	dev = ep->dev;
++	VDBG(dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++	if (!dev->driver)
++		return -ESHUTDOWN;
++
++	/* we can't touch (dma) registers when suspended */
++	if (dev->ep0state == EP0_SUSPEND)
++		return -EBUSY;
++
++	VDBG(dev, "%s %s %s %s %p\n", __FUNCTION__, _ep->name,
++	     ep->is_in ? "IN" : "OUT", ep->dma ? "dma" : "pio", _req);
++
++	spin_lock_irqsave(&dev->lock, flags);
++
++	/* make sure it's actually queued on this endpoint */
++	list_for_each_entry(req, &ep->queue, queue) {
++		if (&req->req == _req)
++			break;
++	}
++	if (&req->req != _req) {
++		spin_unlock_irqrestore(&dev->lock, flags);
++		return -EINVAL;
++	}
++
++	done(ep, req, -ECONNRESET);
++	spin_unlock_irqrestore(&dev->lock, flags);
++
++	return 0;
++}
++
++/*-------------------------------------------------------------------------*/
++static int
++vox160_set_halt(struct usb_ep *_ep, int value)
++{
++	struct vox160_ep *ep;
++	struct vox160_udc *dev;
++	int retval = 0;
++
++	if (!_ep)
++		return -ENODEV;
++	ep = container_of(_ep, struct vox160_ep, ep);
++	dev = ep->dev;
++
++	VDBG(dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++	if (value) {
++		switch (ep->num) {
++		case USBD_CONTROL_EP:
++			ep->dev->ep[USBD_CONTROL_EP].stopped = 1;
++			writew(USBD_CTRL_EP0STALL, &dev->gen_regs->usbd_ctrl);
++			break;
++		case USBD_INTERRUPT_EP:
++			ep->dev->ep[USBD_INTERRUPT_EP].stopped = 1;
++			writew(USBD_CTRL_EP1STALL, &dev->gen_regs->usbd_ctrl);
++			break;
++		case USBD_BULK_IN_EP:
++			ep->dev->ep[USBD_BULK_IN_EP].stopped = 1;
++			writew(USBD_CTRL_EP2STALL, &dev->gen_regs->usbd_ctrl);
++			break;
++		case USBD_BULK_OUT_EP:
++			ep->dev->ep[USBD_BULK_OUT_EP].stopped = 1;
++			writew(USBD_CTRL_EP3STALL, &dev->gen_regs->usbd_ctrl);
++			break;
++		default:
++			break;
++		}
++	}
++
++	return retval;
++}
++
++static int
++vox160_fifo_status(struct usb_ep *_ep)
++{
++	struct vox160_ep *ep;
++	u32 size = 0;
++
++	if (!_ep)
++		return -ENODEV;
++	ep = container_of(_ep, struct vox160_ep, ep);
++
++	VDBG(ep->dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++	/* size is only reported sanely for OUT */
++	if (ep->is_in)
++		return -EOPNOTSUPP;
++
++	/* Fill in the contents here */
++
++	return size;
++}
++
++static void
++vox160_fifo_flush(struct usb_ep *_ep)
++{
++	struct vox160_ep *ep;
++
++	if (!_ep)
++		return;
++	ep = container_of(_ep, struct vox160_ep, ep);
++	VDBG(ep->dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++
++	/* don't change EPxSTATUS_EP_INVALID to READY */
++	if (!ep->desc && ep->num != 0) {
++		VDBG(ep->dev, "%s %s inactive?\n", __FUNCTION__, ep->ep.name);
++		return;
++	}
++
++	/* Fill in contents here */
++
++	return;
++}
++
++static struct usb_ep_ops vox160_ep_ops = {
++	.enable = vox160_ep_enable,
++	.disable = vox160_ep_disable,
++
++	.alloc_request = vox160_alloc_request,
++	.free_request = vox160_free_request,
++
++	.alloc_buffer = vox160_alloc_buffer,
++	.free_buffer = vox160_free_buffer,
++
++	.queue = vox160_queue,
++	.dequeue = vox160_dequeue,
++
++	.set_halt = vox160_set_halt,
++	.fifo_status = vox160_fifo_status,
++	.fifo_flush = vox160_fifo_flush,
++};
++
++/* ---------------------------------------------------------------------------
++ *      device-scoped parts of the api to the usb controller hardware
++ *      which do not involve end points 
++ * ---------------------------------------------------------------------------
++ */
++
++static void
++set_gpio_value(struct vox160_udc *dev, int gpio_pin, int value)
++{
++
++	if (value)
++		writew((0x1 << gpio_pin), dev->gpio_flag_set);
++	else
++		writew((0x1 << gpio_pin), dev->gpio_flag_clear);
++}
++
++static int
++get_gpio_value(struct vox160_udc *dev, int gpio_pin)
++{
++	u16 gpio_flag_set_value = readw(dev->gpio_flag_set);
++
++	return ((gpio_flag_set_value >> gpio_pin) & 0x1);
++}
++
++static void
++pullup(struct vox160_udc *dev, int is_on)
++{
++	if (is_on) {
++		set_gpio_value(dev, VOX160_PULLUP_GPIO_PIN, 1);
++	} else {
++		set_gpio_value(dev, VOX160_PULLUP_GPIO_PIN, 0);
++	}
++}
++
++static int
++vox160_get_frame(struct usb_gadget *gadget)
++{
++	int result = 0;
++	struct vox160_udc *dev =
++	    container_of(gadget, struct vox160_udc, gadget);
++	result = (int) readw(&dev->gen_regs->usbd_frm);
++	return (result & USBD_FRM_MASK);
++}
++
++int
++vox160_set_selfpowered(struct usb_gadget *gadget, int value)
++{
++	if (value)
++		return 0;
++	return -EOPNOTSUPP;
++}
++
++int
++vox160_vbus_session(struct usb_gadget *gadget, int is_active)
++{
++	struct vox160_udc *dev =
++	    container_of(gadget, struct vox160_udc, gadget);
++	unsigned long flags;
++
++	local_irq_save(flags);
++	dev->vbus = (is_active != 0);
++	pullup(dev, is_active);
++	local_irq_restore(flags);
++	return 0;
++}
++
++int
++vox160_pullup(struct usb_gadget *gadget, int is_on)
++{
++	struct vox160_udc *dev =
++	    container_of(gadget, struct vox160_udc, gadget);
++	unsigned long flags;
++
++	local_irq_save(flags);
++	dev->enabled = is_on = !!is_on;
++	pullup(dev, is_on);
++	local_irq_restore(flags);
++	return 0;
++}
++static const struct usb_gadget_ops vox160_ops = {
++	.get_frame = vox160_get_frame,
++	// no remote wakeup
++	// is selfpowered
++	.set_selfpowered = vox160_set_selfpowered,
++	.vbus_session = vox160_vbus_session,
++	.pullup = vox160_pullup,
++};
++
++/*
++ * download_ep_buffer_data - end point usbd buf initialization
++ * This routine download endpoint buffer data in usbd core.
++ */
++
++int
++download_ep_buffer_data(struct vox160_udc *dev)
++{
++	int jj, bytes_downloaded;
++	for (bytes_downloaded = 0; bytes_downloaded < NUM_EPBUF_BYTES;) {
++		/*
++		 * wait for the USBD_RDY bit to be 1
++		 */
++		for (jj = 0; jj < MAX_EPBUF_WAIT; jj++) {
++			if (readw(&dev->gen_regs->usbd_encfg_dl_cor) &
++			    USBD_EPBUF_RDY)
++				break;
++		}
++		if (jj >= MAX_EPBUF_WAIT) {
++			printk("USBD_EPBUF_RDY low after %d bytes\n\r",
++			       bytes_downloaded);
++			break;
++		}
++		/*
++		 * write one byte of the endpoint buffer to the
++		 * USBD_UPDOWN field
++		 */
++
++		if (bytes_downloaded < udc_fw_data_element)
++			writew(udc_fw_data[bytes_downloaded],
++			       &dev->gen_regs->usbd_encfg_dl_cor);
++		else
++			writew(0, &dev->gen_regs->usbd_encfg_dl_cor);
++
++		++bytes_downloaded;
++
++		/*
++		 * after all bytes have been written, the USBD_EPBUF_CFG bit
++		 * switches from 1 to 0, indicating that the UDC has received
++		 * all the bytes expected.
++		 */
++
++		if (!
++		    (readw(&dev->gen_regs->usbd_encfg_dl_cor) & USBD_EPBUF_CFG))
++		{
++			break;
++		}
++	}
++	return ((bytes_downloaded == NUM_EPBUF_BYTES) ? 0 : -1);
++}
++
++/* Do a hard reset for vox160 udc */
++static void
++vox160udc_hard_reset(struct vox160_udc *dev)
++{
++	struct vox160udc_gen_regs __iomem *regs = dev->gen_regs;
++
++	/* Assert reset */
++	writew(USBD_CTRL_UDCRST, &regs->usbd_ctrl);
++	udelay(1);
++
++	/* De-assert reset */
++	writew(0, &regs->usbd_ctrl);
++
++	/* 1. Program the UDC module's endpoint buffers. */
++	if (download_ep_buffer_data(dev) == -1) {
++		DBG(dev, "ERROR:ep buffer download not done  \n");
++	}
++}
++
++/* usb_dmamaster_init - This routine initializes the DMA engine. */
++
++int
++usb_dmamaster_init(struct vox160_udc *dev)
++{
++	VDBG(dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++
++	/* 
++	 * Program DMA master interface with USB modules local mem base
++	 * address. 
++	 */
++	writew((0xffff & USBD_MEM_BASE), &dev->dma_regs->usbd_dmabl);
++	writew((0xffff & (USBD_MEM_BASE >> 16)), &dev->dma_regs->usbd_dmabh);
++
++	/* Clear DMA buffer. A write of 0 must follow before normal resumes */
++	writew(USBD_DMACFG_DMABC, &dev->dma_regs->usbd_dmacfg);
++	writew(0, &dev->dma_regs->usbd_dmacfg);
++
++	/* enable DMA FIFO and interrupt on error */
++	writew((USBD_DMACFG_DMAEN | USBD_DMACFG_IOE),
++	       &dev->dma_regs->usbd_dmacfg);
++
++	dma_map_single(&dev->gadget.dev, ioremap(USBD_MEM_BASE, 1),
++		       USBD_DMA_BUFSIZE, DMA_FROM_DEVICE);
++
++	return 0;
++}
++
++/* timer callback */
++
++static int setupcnt = 0;
++
++static void
++vox160_vbus_timer_function(unsigned long ptr)
++{
++	struct vox160_udc *dev = (struct vox160_udc *) ptr;
++	static int oldstate = 0, newstate = 0;
++
++	oldstate = newstate;
++	newstate = get_gpio_value(dev, VOX160_VBUS_GPIO_PIN);
++	if (newstate != oldstate) {
++		if (newstate) {
++			VDBG(dev, "Cable Connected ----\n");
++			vox160_vbus_session(&dev->gadget, 1);
++		} else {
++			VDBG(dev, "Cable dis-connected ----\n");
++			vox160_vbus_session(&dev->gadget, 0);
++		}
++	}
++
++	/* restart the timer */
++	mod_timer(&usbd_timer, jiffies + VOX160_VBUS_GPIO_PIN_POLL_RATE);
++}
++
++int
++vox160_usbd_init(struct vox160_udc *dev)
++{
++	u16 result;
++	int i = 0;
++	static int firstcall = 1;
++
++	/* 
++	 * clear pending interrupts USBD_GINTR is Write-1-to-clear W1C register 
++	 */
++	result = readw(&dev->gen_regs->usbd_gintr);
++	writew(result, &dev->gen_regs->usbd_gintr);
++
++	for (i = 0; i < VOX160_UDC_MAX_EP; i++) {
++		/* USBD_INTRn is W1C register */
++		result = readw(&dev->usbd_intr[i]->reg);
++		writew(result, &dev->usbd_intr[i]->reg);
++	}
++
++	/* 
++	 * The vbus sensing which is tied to  gpio pin 9 can be done using
++	 * interrupt.But we are not using interrupt and instead polling the 
++	 * gpio pin for the vbus sensing. Start polling the gpio 9 by 
++	 *  kicking off a timer.
++	 */
++	if (firstcall) {
++		/* Set the PULLUP GPIO pin in output mode */
++		result = readw(dev->gpio_dir_reg);
++		result |= (1 << VOX160_PULLUP_GPIO_PIN);
++		writew(result, dev->gpio_dir_reg);
++
++		init_timer(&usbd_timer);
++		usbd_timer.function = vox160_vbus_timer_function;
++		usbd_timer.data = (unsigned long) dev;
++		usbd_timer.expires = jiffies + VOX160_VBUS_GPIO_PIN_POLL_RATE;
++		add_timer(&usbd_timer);
++	}
++
++	/* I don't  know what is being done here. I guess memory grant */
++	*(volatile unsigned short *) 0xb9160198 = 0x10;
++
++	if (dev->dma_base_address) {
++		memset(dev->dma_base_address, '\0', USBD_DMA_BUFSIZE);
++		usb_dmamaster_init(dev);
++	}
++
++	/* Setup the Control Endpoint, ready to receive a setup token */
++	writew(dev->ep[USBD_CONTROL_EP].dma_offset,
++	       &dev->usbd_epadr[USBD_CONTROL_EP]->reg);
++
++	writew(dev->ep[USBD_CONTROL_EP].max_packet_size,
++	       &dev->usbd_eplen[USBD_CONTROL_EP]->reg);
++	dev->ep[USBD_CONTROL_EP].current_max_buffer_len =
++	    dev->ep[USBD_CONTROL_EP].max_packet_size;
++
++	writew((USBD_INTR_MERR | USBD_INTR_MSETUP),
++	       &dev->usbd_mask[USBD_CONTROL_EP]->reg);
++
++	writew(dev->ep[USBD_CONTROL_EP].
++	       cfg_attribs | USBD_EPCFG_DIR_OUT | USBD_EPCFG_ARM,
++	       &dev->usbd_epcfg[USBD_CONTROL_EP]->reg);
++
++	/* Setup the Interrupt IN endpoint. */
++	writew(dev->ep[USBD_INTERRUPT_EP].dma_offset,
++	       &dev->usbd_epadr[USBD_INTERRUPT_EP]->reg);
++	memset(dev->dma_base_address + dev->ep[USBD_INTERRUPT_EP].dma_offset,
++	       0x0, dev->ep[USBD_INTERRUPT_EP].max_buffer_len);
++	memset(dev->dma_base_address + dev->ep[USBD_INTERRUPT_EP].dma_offset,
++	       0x1, 1);
++	writew(dev->ep[USBD_INTERRUPT_EP].max_buffer_len,
++	       &dev->usbd_eplen[USBD_INTERRUPT_EP]->reg);
++	dev->ep[USBD_INTERRUPT_EP].current_max_buffer_len =
++	    dev->ep[USBD_INTERRUPT_EP].max_packet_size;
++	writew((USBD_MASK_SETUP | USBD_MASK_MSETUP),
++	       &dev->usbd_mask[USBD_INTERRUPT_EP]->reg);
++	writew(dev->ep[USBD_INTERRUPT_EP].
++	       cfg_attribs | USBD_EPCFG_DIR_IN | USBD_EPCFG_ARM,
++	       &dev->usbd_epcfg[USBD_INTERRUPT_EP]->reg);
++
++	/* Setup the BULK IN endpoint. */
++	writew(dev->ep[USBD_BULK_IN_EP].dma_offset,
++	       &dev->usbd_epadr[USBD_BULK_IN_EP]->reg);
++	writew(dev->ep[USBD_BULK_IN_EP].max_buffer_len,
++	       &dev->usbd_eplen[USBD_BULK_IN_EP]->reg);
++	dev->ep[USBD_BULK_IN_EP].current_max_buffer_len =
++	    dev->ep[USBD_BULK_IN_EP].max_packet_size;
++	writew((USBD_MASK_SETUP | USBD_MASK_MSETUP),
++	       &dev->usbd_mask[USBD_BULK_IN_EP]->reg);
++	writew(dev->ep[USBD_BULK_IN_EP].cfg_attribs | USBD_EPCFG_DIR_IN,
++	       &dev->usbd_epcfg[USBD_BULK_IN_EP]->reg);
++
++	/* Setup the BULK OUT endpoint. */
++	writew(dev->ep[USBD_BULK_OUT_EP].dma_offset,
++	       &dev->usbd_epadr[USBD_BULK_OUT_EP]->reg);
++	writew(dev->ep[USBD_BULK_OUT_EP].max_buffer_len,
++	       &dev->usbd_eplen[USBD_BULK_OUT_EP]->reg);
++	dev->ep[USBD_BULK_OUT_EP].current_max_buffer_len =
++	    dev->ep[USBD_BULK_OUT_EP].max_packet_size;
++	writew((USBD_MASK_SETUP | USBD_MASK_MSETUP),
++	       &dev->usbd_mask[USBD_BULK_OUT_EP]->reg);
++	writew(dev->ep[USBD_BULK_OUT_EP].cfg_attribs | USBD_EPCFG_DIR_OUT,
++	       &dev->usbd_epcfg[USBD_BULK_OUT_EP]->reg);
++
++	/* enable non-endpoint interrupts */
++	result = ~(USBD_GINTR_SOF | USBD_GINTR_CFG | USBD_GINTR_MSOF |
++		   USBD_GINTR_RST | USBD_GINTR_SUSP | USBD_GINTR_RESUME |
++		   USBD_GINTR_FRMMAT | USBD_GINTR_DMAIRQ |
++		   USBD_GINTR_EP0INT | USBD_GINTR_EP2INT | USBD_GINTR_EP3INT);
++	writew(result, &dev->gen_regs->usbd_gmask);
++
++	/* enable the USB module */
++	writew(USBD_CTRL_ENA, &dev->gen_regs->usbd_ctrl);
++
++	firstcall = 0;
++
++	return (0);
++}
++
++static void
++vox160udc_reinit(struct vox160_udc *dev)
++{
++	unsigned i;
++
++	dev->ep0state = EP0_IDLE;
++
++	/* basic endpoint records init */
++	for (i = 0; i < VOX160_UDC_NUM_EP; i++) {
++		struct vox160_ep *ep = &dev->ep[i];
++		INIT_LIST_HEAD(&ep->queue);
++		vox160_ep_reset(ep);
++	}
++
++	dev->ep[USBD_CONTROL_EP].ep.maxpacket = PACKET_8;
++	dev->ep[USBD_INTERRUPT_EP].ep.maxpacket = PACKET_16;
++	dev->ep[USBD_BULK_IN_EP].ep.maxpacket = PACKET_64;
++	dev->ep[USBD_BULK_OUT_EP].ep.maxpacket = PACKET_64;
++
++	/* vox160 udc initialization */
++	vox160_usbd_init(dev);
++	dev->ep0state = EP0_READY;
++}
++
++static void
++vox160udc_enable(struct vox160_udc *dev)
++{
++	vox160udc_reinit(dev);
++}
++
++/*-------------------------------------------------------------------------*/
++
++static struct vox160_udc *the_controller;
++
++/* 
++ * when a driver is successfully registered, it will receive
++ * control requests including set_configuration(), which enables
++ * non-control requests.  then usb traffic follows until a
++ * disconnect is reported.  then a host may connect again, or
++ * the driver might get unbound.
++ */
++int
++usb_gadget_register_driver(struct usb_gadget_driver *driver)
++{
++	struct vox160_udc *dev = the_controller;
++	int retval;
++
++	if (!driver
++	    || driver->speed != USB_SPEED_FULL
++	    || !driver->bind
++	    || !driver->unbind || !driver->disconnect || !driver->setup)
++		return -EINVAL;
++	if (!dev)
++		return -ENODEV;
++	if (dev->driver)
++		return -EBUSY;
++
++	/* hook up the driver */
++	driver->driver.bus = NULL;
++	dev->driver = driver;
++	dev->gadget.dev.driver = &driver->driver;
++	retval = driver->bind(&dev->gadget);
++	if (retval) {
++		VDBG(dev, "bind to driver %s --> error %d\n",
++		     driver->driver.name, retval);
++		dev->driver = NULL;
++		dev->gadget.dev.driver = NULL;
++		return retval;
++	}
++
++	/* 
++	 * then enable host detection and ep0; and we're ready
++	 * for set_configuration as well as eventual disconnect.
++	 */
++	vox160udc_enable(dev);
++
++	return 0;
++}
++
++EXPORT_SYMBOL(usb_gadget_register_driver);
++
++static void usbd_soft_reset(struct vox160_udc *dev);
++static void
++stop_activity(struct vox160_udc *dev, struct usb_gadget_driver *driver)
++{
++	unsigned i;
++
++	setupcnt = 0;
++
++	if (dev->gadget.speed == USB_SPEED_UNKNOWN)
++		driver = NULL;
++
++	/* quiesce the hardware first */
++	usbd_soft_reset(dev);
++
++	/* prevent new request submissions, kill any outstanding requests */
++	for (i = 0; i < VOX160_UDC_NUM_EP; i++) {
++		dev->ep[i].stopped = 1;
++		nuke(&dev->ep[i], -ESHUTDOWN);
++	}
++	if (driver) {
++		spin_unlock(&dev->lock);
++		driver->disconnect(&dev->gadget);
++		spin_lock(&dev->lock);
++	}
++
++	/* reinit the hardware */
++	if (dev->driver)
++		vox160udc_enable(dev);
++}
++
++int
++usb_gadget_unregister_driver(struct usb_gadget_driver *driver)
++{
++	struct vox160_udc *dev = the_controller;
++	unsigned long flags;
++
++	if (!dev)
++		return -ENODEV;
++	if (!driver || driver != dev->driver)
++		return -EINVAL;
++
++	spin_lock_irqsave(&dev->lock, flags);
++	dev->driver = NULL;
++	stop_activity(dev, driver);
++	spin_unlock_irqrestore(&dev->lock, flags);
++
++	driver->unbind(&dev->gadget);
++
++	return 0;
++}
++
++EXPORT_SYMBOL(usb_gadget_unregister_driver);
++
++/*-------------------------------------------------------------------------*/
++#include <linux/seq_file.h>
++
++static const char proc_filename[] = "driver/udc";
++
++static int
++proc_udc_show(struct seq_file *s, void *unused)
++{
++	u16 tmp;
++	struct vox160_udc *udc = s->private;
++	unsigned long flags;
++	int i = 0;
++
++	spin_lock_irqsave(&udc->lock, flags);
++
++	seq_printf(s, "%s, version: %s\n\n", driver_name, DRIVER_VERSION);
++
++	tmp = readw(udc->gpio_dir_reg);
++	seq_printf(s, "gpio_dir_reg  0x%04x\n", tmp);
++
++	tmp = readw(udc->gpio_flag_set);
++	seq_printf(s, "gpio_flag_reg  0x%04x\n", tmp);
++
++	tmp = readw(udc->gpio_flag_clear);
++	seq_printf(s, "gpio_flag_clear  0x%04x\n\n", tmp);
++
++	tmp = readw(&udc->gen_regs->usb_id);
++	seq_printf(s, "usbd_id  0x%04x\n", tmp);
++
++	tmp = readw(&udc->gen_regs->usbd_frm);
++	seq_printf(s, "usbd_frm  0x%04x\n", tmp);
++
++	tmp = readw(&udc->gen_regs->usbd_frmt);
++	seq_printf(s, "usbd_frmat  0x%04x\n", tmp);
++
++	tmp = readw(&udc->gen_regs->usbd_stat);
++	seq_printf(s,
++		   "usbd_stat  0x%04x %s%s%s%s usbd_ep=%x usbd_aif=%x usbd_if=%x usbd_cfg=%x usbd_token=%x \n",
++		   tmp, (tmp & USBD_STAT_SUSPENDED) ? "usbd_suspend_ed" : "",
++		   (tmp & USBD_STAT_RSTSIG) ? "usbd_rstsig" : "",
++		   (tmp & USBD_STAT_SIP) ? "usbd_sip" : "",
++		   (tmp & USBD_STAT_SIP) ? "usbd_sip" : "",
++		   (tmp & USBD_STAT_EP), (tmp & USBD_STAT_AIF),
++		   (tmp & USBD_STAT_IF), (tmp & USBD_STAT_CFG),
++		   (tmp & USBD_STAT_TOKEN)
++	    );
++	tmp = readw(&udc->gen_regs->usbd_ctrl);
++	seq_printf(s, "usbd_ctrl  0x%04x %s%s%s%s%s%s%s%s%s \n", tmp,
++		   (tmp & USBD_CTRL_ENA) ? "usbd_ena" : "",
++		   (tmp & USBD_CTRL_UDCRST) ? "usbd_udcrst" : "",
++		   (tmp & USBD_CTRL_EP0STALL) ? "usbd_epostall" : "",
++		   (tmp & USBD_CTRL_EP1STALL) ? "usbd_ep1stall" : "",
++		   (tmp & USBD_CTRL_EP2STALL) ? "usbd_ep2stall" : "",
++		   (tmp & USBD_CTRL_EP3STALL) ? "usbd_ep3stall" : "",
++		   (tmp & USBD_CTRL_EP4STALL) ? "usbd_ep4stall" : "",
++		   (tmp & USBD_CTRL_EP5STALL) ? "usbd_ep5stall" : "",
++		   (tmp & USBD_CTRL_EP6STALL) ? "usbd_ep6stall" : "");
++	tmp = readw(&udc->gen_regs->usbd_gintr);
++	seq_printf(s, "usbd_gintr  0x%04x %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s \n",
++		   tmp, (tmp & USBD_GINTR_SOF) ? ",usbd_sof" : "",
++		   (tmp & USBD_GINTR_CFG) ? ",usbd_cfg" : "",
++		   (tmp & USBD_GINTR_MSOF) ? ",usbd_msof" : "",
++		   (tmp & USBD_GINTR_RST) ? ",usbd_rst" : "",
++		   (tmp & USBD_GINTR_SUSP) ? ",usbd_susp" : "",
++		   (tmp & USBD_GINTR_RESUME) ? ",usbd_resume" : "",
++		   (tmp & USBD_GINTR_FRMMAT) ? ",usbd_frmat" : "",
++		   (tmp & USBD_GINTR_DMAIRQ) ? ",usbd_dmairq" : "",
++		   (tmp & USBD_GINTR_EP0INT) ? ",usbd_ep0int" : "",
++		   (tmp & USBD_GINTR_EP1INT) ? ",usbd_ep1int" : "",
++		   (tmp & USBD_GINTR_EP2INT) ? ",usbd_ep2int" : "",
++		   (tmp & USBD_GINTR_EP3INT) ? ",usbd_ep3int" : "",
++		   (tmp & USBD_GINTR_EP4INT) ? ",usbd_ep4int" : "",
++		   (tmp & USBD_GINTR_EP5INT) ? ",usbd_ep5int" : "",
++		   (tmp & USBD_GINTR_EP6INT) ? ",usbd_ep6int" : "");
++	tmp = readw(&udc->gen_regs->usbd_gmask);
++	seq_printf(s, "usbd_gmask  0x%04x %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s \n",
++		   tmp, (tmp & USBD_GMASK_SOFM) ? "usbd_sofm" : "",
++		   (tmp & USBD_GMASK_CFGM) ? ",usbd_cfgm" : "",
++		   (tmp & USBD_GMASK_MSOFM) ? ",usbd_msofm" : "",
++		   (tmp & USBD_GMASK_RSTM) ? ",usbd_rstm" : "",
++		   (tmp & USBD_GMASK_SUSPM) ? ",usbd_suspm" : "",
++		   (tmp & USBD_GMASK_RESUMEM) ? ",usbd_resumem" : "",
++		   (tmp & USBD_GMASK_FRMMATM) ? ",usbd_frmatm" : "",
++		   (tmp & USBD_GMASK_DMAIRQM) ? ",usbd_dmairqm" : "",
++		   (tmp & USBD_GMASK_EP0MSK) ? ",usbd_ep0intm" : "",
++		   (tmp & USBD_GMASK_EP1MSK) ? ",usbd_ep1intm" : "",
++		   (tmp & USBD_GMASK_EP2MSK) ? ",usbd_ep2intm" : "",
++		   (tmp & USBD_GMASK_EP3MSK) ? ",usbd_ep3intm" : "",
++		   (tmp & USBD_GMASK_EP4MSK) ? ",usbd_ep4intm" : "",
++		   (tmp & USBD_GMASK_EP5MSK) ? ",usbd_ep5intm" : "",
++		   (tmp & USBD_GMASK_EP6MSK) ? ",usbd_ep6intm" : "");
++	tmp = readw(&udc->dma_regs->usbd_dmacfg);
++	seq_printf(s, "usbd_dma_cfg 0x%0x\n", tmp);
++	tmp = readw(&udc->dma_regs->usbd_dmabl);
++	seq_printf(s, "usbd_dma_bl 0x%0x\n", tmp);
++	tmp = readw(&udc->dma_regs->usbd_dmabh);
++	seq_printf(s, "usbd_dma_bh 0x%0x\n", tmp);
++	tmp = readw(&udc->dma_regs->usbd_dmact);
++	seq_printf(s, "usbd_dma_cnt 0x%0x\n", tmp);
++	tmp = readw(&udc->dma_regs->usbd_dmairq);
++	seq_printf(s, "usbd_dma_irq 0x%0x\n\n", tmp);
++
++	/* Print endpoint registers */
++	for (i = 0; i < VOX160_UDC_NUM_EP; i++) {
++		tmp = readw(&udc->usbd_intr[i]->reg);
++		seq_printf(s, "usbd_intr[%d]  0x%04x %s%s%s%s%s%s\n", i, tmp,
++			   (tmp & USBD_INTR_TC) ? ",usbd_tc" : "",
++			   (tmp & USBD_INTR_PC) ? ",usbd_pc" : "",
++			   (tmp & USBD_INTR_BCSTAT) ? ",usbd_bcstat" : "",
++			   (tmp & USBD_INTR_SETUP) ? ",usbd_setup" : "",
++			   (tmp & USBD_INTR_MSETUP) ? ",usbd_msetup" : "",
++			   (tmp & USBD_INTR_MERR) ? ",usbd_merror" : "");
++		tmp = readw(&udc->usbd_mask[i]->reg);
++		seq_printf(s, "usbd_mask[%d]  0x%x %s%s%s%s%s%s\n", i, tmp,
++			   (tmp & USBD_MASK_TC) ? ",usbd_tc" : "",
++			   (tmp & USBD_MASK_PC) ? ",usbd_pc" : "",
++			   (tmp & USBD_MASK_BCSTAT) ? ",usbd_bcstat" : "",
++			   (tmp & USBD_MASK_SETUP) ? ",usbd_setup" : "",
++			   (tmp & USBD_MASK_MSETUP) ? ",usbd_msetup" : "",
++			   (tmp & USBD_MASK_MERR) ? ",usbd_merror" : "");
++		tmp = readw(&udc->usbd_epcfg[i]->reg);
++		seq_printf(s, "usbd_epcfg[%d]  0x%x %s%s%s%s\n", i, tmp,
++			   (tmp & USBD_EPCFG_ARM) ? ",usbd_arm" : "",
++			   (tmp & USBD_EPCFG_DIR_IN) ? ",usbd_dir=in" :
++			   ",usbd_dir=out", ( {
++					     char *s = NULL;
++					     switch ((tmp >> 2) & 0x0003) {
++case 0:
++s = ",usbd_typ=control"; break; case 1:
++s = ",usbd_typ=bulk"; break; case 2:
++s = ",usbd_typ=interrupt"; break; case 3:
++					     s = ",usbd_typ=isochronus"; break;}
++					     s;}
++			   ), ( {
++			       char *s = NULL; switch ((tmp >> 4) & 0x0003) {
++case 0:
++s = ",usbd_max=8 bytes"; break; case 1:
++s = ",usbd_max=16 bytes"; break; case 2:
++s = ",usbd_max=32 bytes"; break; case 3:
++			       s = ",usbd_max=64 bytes"; break;}
++			       s;}
++			   )
++		    ) ;
++		tmp = readw(&udc->usbd_epadr[i]->reg);
++		seq_printf(s, "usbd_epadr[%d]  0x%04x \n", i, (tmp & 0x0fff));
++		tmp = readw(&udc->usbd_eplen[i]->reg);
++		seq_printf(s, "usbd_eplen[%d]  0x%x \n\n", i, (tmp));
++	}
++	seq_printf(s, "Total irqs  %ld \n", udc->irqs);
++	if (udc->sof_irqs)
++		seq_printf(s, "SOF irqs  %ld \n", udc->sof_irqs);
++	if (udc->cfg_irqs)
++		seq_printf(s, "CFG irqs  %ld \n", udc->cfg_irqs);
++	if (udc->msof_irqs)
++		seq_printf(s, "MSOF irqs  %ld \n", udc->msof_irqs);
++	if (udc->rst_irqs)
++		seq_printf(s, "RST irqs  %ld \n", udc->rst_irqs);
++	if (udc->susp_irqs)
++		seq_printf(s, "SUSP irqs  %ld \n", udc->susp_irqs);
++	if (udc->resume_irqs)
++		seq_printf(s, "RESUME irqs  %ld \n", udc->resume_irqs);
++	if (udc->frmmat_irqs)
++		seq_printf(s, "FRMMAT irqs  %ld \n", udc->frmmat_irqs);
++	if (udc->dma_irqs)
++		seq_printf(s, "DMA irqs  %ld \n", udc->dma_irqs);
++	if (udc->ep0_irqs)
++		seq_printf(s, "EP0 irqs  %ld \n", udc->ep0_irqs);
++	if (udc->ep1_irqs)
++		seq_printf(s, "EP1 irqs  %ld \n", udc->ep1_irqs);
++	if (udc->ep2_irqs)
++		seq_printf(s, "EP2 irqs  %ld \n", udc->ep2_irqs);
++	if (udc->ep3_irqs)
++		seq_printf(s, "EP3 irqs  %ld \n", udc->ep3_irqs);
++	seq_printf(s, "setup packet rcv  %d \n", setupcnt);
++	seq_printf(s, "ep0 state  %s \n", ep0statename[udc->ep0state]);
++	spin_unlock_irqrestore(&udc->lock, flags);
++	return 0;
++}
++
++static int
++proc_udc_open(struct inode *inode, struct file *file)
++{
++	return single_open(file, proc_udc_show, PDE(inode)->data);
++}
++
++static struct file_operations proc_ops = {
++	.open = proc_udc_open,
++	.read = seq_read,
++	.llseek = seq_lseek,
++	.release = single_release,
++};
++
++static void
++create_proc_file(struct vox160_udc *dev)
++{
++	struct proc_dir_entry *pde;
++
++	pde = create_proc_entry(proc_filename, 0, NULL);
++	if (pde) {
++		pde->proc_fops = &proc_ops;
++		pde->data = dev;
++	}
++}
++
++static void
++remove_proc_file(struct vox160_udc *dev)
++{
++	remove_proc_entry(proc_filename, 0);
++}
++
++unsigned short usb_fusiv_masks =
++    ~(USBD_GINTR_SOF | USBD_GINTR_CFG | USBD_GINTR_MSOF | USBD_GINTR_RST |
++      USBD_GINTR_SUSP | USBD_GINTR_RESUME | USBD_GINTR_FRMMAT |
++      USBD_GINTR_DMAIRQ | USBD_GINTR_EP0INT | USBD_GINTR_EP2INT |
++      USBD_GINTR_EP3INT);
++/* usb_ep_go_idle - This routine resets the end point */
++
++static int
++usb_ep_go_idle(struct vox160_udc *dev, int ep)
++{
++	unsigned short result;
++	VDBG(dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++
++	/* mask endpoint interrupts */
++	writew(USBD_EP_MASK_ALL, &dev->usbd_mask[ep]->reg);
++
++	/* clear pending interrupts */
++	result = readw(&dev->usbd_intr[ep]->reg);
++	writew(result, &dev->usbd_intr[ep]->reg);
++
++	/* disarm endpoint */
++	writew(0x0, &dev->usbd_epcfg[ep]->reg);
++
++	writew(0x0, &dev->usbd_epadr[ep]->reg);
++
++	writew(0x0, &dev->usbd_eplen[ep]->reg);
++	dev->ep[ep].current_max_buffer_len = 0x0;
++
++	return 0;
++}
++
++/*
++ * usbSoftReset - This routine soft resets the USB.
++ */
++
++static void
++usbd_soft_reset(struct vox160_udc *dev)
++{
++	unsigned short result;
++
++	/* mask USBD_GINTR interrupts */
++	writew(0xffff, &dev->gen_regs->usbd_gmask);
++
++	/* clear pending interrupts */
++	result = readw(&dev->gen_regs->usbd_gintr);
++	writew(result, &dev->gen_regs->usbd_gintr);
++
++	/* Disable USBD module */
++	writew(0x0, &dev->gen_regs->usbd_ctrl);
++
++	usb_ep_go_idle(dev, USBD_BULK_IN_EP);
++	usb_ep_go_idle(dev, USBD_BULK_OUT_EP);
++
++}
++
++/*
++ * usb_suspend_handler - This routine handles the suspend interrupt which 
++ * basically cleans up and reinitializes the usb.
++ */
++
++static void
++usbd_suspend_handler(struct vox160_udc *dev)
++{
++	unsigned short result;
++
++	/* clear the interrupt */
++	writew(USBD_GINTR_SUSP, &dev->gen_regs->usbd_gintr);
++
++	/* reset the usb */
++	usbd_soft_reset(dev);
++	vox160_usbd_init(dev);
++	dev->ep0state = EP0_READY;
++
++	/* unmask the interrupt */
++	result = readw(&dev->gen_regs->usbd_gmask);
++	result ^= USBD_GMASK_SUSPM;
++	writew(result, &dev->gen_regs->usbd_gmask);
++
++	if (dev->driver && dev->driver->suspend)
++		dev->driver->suspend(&dev->gadget);
++}
++
++static void
++usbd_dma_handler(struct vox160_udc *dev)
++{
++	unsigned short result;
++
++	result = readw(&dev->dma_regs->usbd_dmairq);
++	if (result & USBD_DMAIRQ_ERR) {
++		VDBG(dev, "usbDmaHandler(): dma error\n\r");
++		/* clear dma buffer */
++		result = readw(&dev->dma_regs->usbd_dmacfg);
++		result |= USBD_DMACFG_DMABC;
++		writew(result, &dev->dma_regs->usbd_dmacfg);
++	}
++
++	/* clear dma irq register */
++	result = readw(&dev->dma_regs->usbd_dmairq);
++	writew(result, &dev->dma_regs->usbd_dmairq);
++
++	/* clear the interrupt */
++	result = readw(&dev->dma_regs->usbd_dmairq);
++	writew(result, &dev->gen_regs->usbd_gintr);
++
++	/* unmask the interrupt */
++	result = readw(&dev->gen_regs->usbd_gmask);
++	result ^= USBD_GMASK_DMAIRQM;
++	writew(result, &dev->gen_regs->usbd_gmask);
++}
++
++union setup {
++	u8 raw[8];
++	struct usb_ctrlrequest r;
++};
++
++u8 set_config_packet[] = { 0x0, 0x9, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0 };
++
++/* read SETUP packet and enter DATA stage if required */
++static int
++handle_setup(struct vox160_udc *dev, struct vox160_ep *ep)
++{
++	union setup pkt;
++	int status = 0;
++
++	memcpy(&pkt.r, dev->dma_base_address + ep->dma_offset,
++	       ep->ep.maxpacket);
++
++	pkt.r.wIndex = le16_to_cpu(pkt.r.wIndex);
++	pkt.r.wValue = le16_to_cpu(pkt.r.wValue);
++	pkt.r.wLength = le16_to_cpu(pkt.r.wLength);
++
++	/* set the directon of EP0 */
++	if (likely(pkt.r.bRequestType & USB_DIR_IN)) {
++		dev->ep[0].is_in = 1;
++		dev->ep0state = EP0_IN;
++	} else {
++		dev->ep[0].is_in = 0;
++		dev->ep0state = EP0_OUT;
++	}
++
++	VDBG(dev, "SETUP %02x.%02x v%04x i%04x l%04x\n",
++	     pkt.r.bRequestType, pkt.r.bRequest,
++	     pkt.r.wValue, pkt.r.wIndex, pkt.r.wLength);
++
++	/* pass request up to the gadget driver */
++	status = dev->driver->setup(&dev->gadget, &pkt.r);
++	if (status < 0) {
++		DBG(dev, "req %02x.%02x protocol STALL; stat %d\n",
++		    pkt.r.bRequestType, pkt.r.bRequest, status);
++
++		writew(USBD_CTRL_EP0STALL, &dev->gen_regs->usbd_ctrl);
++		//vox160_set_halt(ep, 1);
++	}
++	return status;
++}
++
++static u16
++usbd_read_ep_intr_reg(struct vox160_udc *dev, int epnum)
++{
++	u16 epn_intr_stat;
++
++	/* Ack the epn interrupts */
++	epn_intr_stat = readw(&dev->usbd_intr[epnum]->reg);
++	writew(epn_intr_stat, &dev->usbd_intr[epnum]->reg);
++
++	/* Ack the ep0 interrupt in top tier register */
++	writew((USBD_GINTR_EP0INT << epnum), &dev->gen_regs->usbd_gintr);
++
++	return epn_intr_stat;
++}
++
++int reset_occured = 0;
++int cfg_chg_occured = 0;
++
++static void
++vox160_counter_reset(void)
++{
++	struct vox160_udc *dev = the_controller;
++
++	if (dev) {
++		dev->sof_irqs = dev->cfg_irqs =
++		    dev->msof_irqs = dev->rst_irqs =
++		    dev->susp_irqs = dev->resume_irqs =
++		    dev->frmmat_irqs = dev->dma_irqs =
++		    dev->ep0_irqs = dev->ep1_irqs =
++		    dev->ep2_irqs = dev->ep3_irqs =
++		    cfg_chg_occured = reset_occured = setupcnt = 0;
++	}
++}
++
++static void
++handle_ep0(struct vox160_udc *dev)
++{
++	struct vox160_ep *ep0 = &dev->ep[0];
++	struct vox160_request *req = NULL;
++	u16 result, ep0_int_status;
++	int prestate = dev->ep0state;
++	unsigned length;
++	unsigned max = ep0->ep.maxpacket;
++
++	dev->ep0_irqs++;
++
++	if (list_empty(&ep0->queue))
++		req = NULL;
++	else
++		req = list_entry(ep0->queue.next, struct vox160_request, queue);
++
++	/* What can we do if usbd module is suspended */
++	result = readw(&dev->gen_regs->usbd_stat);
++	if (unlikely(result & USBD_STAT_SUSPENDED)) {
++		nuke(ep0, -EPROTO);
++		VDBG(dev, "(%s:%d):%s\n", __FUNCTION__, __LINE__,
++		     "usbd ep0 stalled");
++	}
++
++	switch (dev->ep0state) {
++	case EP0_IDLE:
++		/* Rearm the ep0 to receive 8 bytes of data */
++		start_out_xfer(ep0, NULL, ep0->ep.maxpacket);
++		dev->ep0state = EP0_READY;
++
++		dev->frame_number = dev->sof_irqs;
++		if (dev->ep0state != prestate) {
++			VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__,
++			     __LINE__, ep0statename[prestate],
++			     ep0statename[dev->ep0state], setupcnt);
++		}
++		break;
++	case EP0_READY:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		if (ep0_int_status & USBD_INTR_SETUP) {
++			setupcnt++;
++			VDBG(dev, "epo int status got setup intr \n");
++
++			/* nuke all previous transfers */
++			nuke(ep0, 0);
++			ep0->stopped = 0;
++			if (handle_setup(dev, ep0) < 0) {
++				dev->ep0state = EP0_STALL;
++			}
++			if (dev->ep0state != prestate)
++				VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__,
++				     __LINE__, ep0statename[prestate],
++				     ep0statename[dev->ep0state], setupcnt);
++		} else if (reset_occured && cfg_chg_occured) {
++			/* 
++			 * Pretend as if we received set_configuration from 
++			 * the host.In reality, the set_configuration is 
++			 * decoded by the usb core and as a result not seen 
++			 * by the driver 
++			 */
++
++			setupcnt++;
++			memcpy(dev->dma_base_address + ep0->dma_offset,
++			       set_config_packet, ep0->ep.maxpacket);
++			nuke(ep0, 0);
++			if (handle_setup(dev, ep0) < 0) {
++				dev->ep0state = EP0_STALL;
++			} else {
++				dev->ep0state = EP0_IDLE;
++				reset_occured = 0;
++				cfg_chg_occured = 0;
++			}
++		}
++		dev->frame_number = dev->sof_irqs;
++		break;
++	case EP0_OUT:
++		if (req) {
++			result = read_ep0_fifo(ep0, req);
++			if (result == 1) {
++				/* Rearm the end point for status phase */
++				start_in_xfer(ep0, NULL, 0);
++				dev->ep0state = EP0_OUT_STATUS;
++			}
++		}
++		dev->frame_number = dev->sof_irqs;
++		break;
++	case EP0_IN:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		if (ep0_int_status & USBD_INTR_PC) {
++			length = min((req->req.length - req->req.actual), max);
++			req->req.actual += length;
++			dev->frame_number = dev->sof_irqs;
++		}
++
++		if (ep0_int_status & USBD_INTR_BCSTAT) {
++			req->req.actual = req->req.length;
++
++			done(ep0, req, 0);
++			if (ep0_int_status & USBD_INTR_TC) {
++
++				if (!(req->req.zero)) {
++					dev->ep0state = EP0_STATUS;
++				} else {
++					/* so send a zlp */
++					if (ep0->is_in) {
++						start_in_xfer(ep0, NULL, 0);
++					} else {
++						start_out_xfer(ep0, NULL, 0);
++					}
++					dev->ep0state = EP0_WAIT_ZLP;
++					req->req.zero = 0;
++				}
++				dev->frame_number = dev->sof_irqs;
++			} else {
++				if (req) {
++					if ((req->req.actual == req->req.length)
++					    && !(req->req.zero)) {
++						dev->ep0state = EP0_STATUS;
++					} else {
++						/* so send a zlp */
++						if (ep0->is_in) {
++							start_in_xfer(ep0,
++								      NULL, 0);
++						} else {
++							start_out_xfer(ep0,
++								       NULL, 0);
++						}
++						req->req.zero = 0;
++						dev->ep0state = EP0_WAIT_ZLP;
++					}
++					dev->frame_number = dev->sof_irqs;
++				}
++			}
++		}
++		//timeout logic
++		if (dev->sof_irqs > dev->frame_number + 100) {
++			dev->frame_number = dev->sof_irqs;
++			VDBG(dev, "(%s:%d):TIMEOUT %s setupcnt %d\n",
++			     __FUNCTION__, __LINE__,
++			     ep0statename[dev->ep0state], setupcnt);
++			dev->ep0state = EP0_IDLE;
++		}
++		if (dev->ep0state != prestate)
++			VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__, __LINE__,
++			     ep0statename[prestate],
++			     ep0statename[dev->ep0state], setupcnt);
++		break;
++	case EP0_WAIT_ZLP:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		/* Initiate the status stage now */
++		if (ep0_int_status & USBD_INTR_TC) {
++			dev->ep0state = EP0_IN_STATUS;
++			if (ep0->is_in) {
++				start_out_xfer(ep0, NULL, 0);
++			} else {
++				start_in_xfer(ep0, NULL, 0);
++			}
++		}
++		if (ep0_int_status & USBD_INTR_SETUP) {
++			VDBG(dev, "(%s:%d): setup in ZLP \n", __FUNCTION__,
++			     __LINE__);
++		}
++
++		{
++			//timeout logic
++			if (dev->sof_irqs > dev->frame_number + 100) {
++				dev->frame_number = dev->sof_irqs;
++				VDBG(dev, "(%s:%d):TIMEOUT in %s\n",
++				     __FUNCTION__, __LINE__,
++				     ep0statename[dev->ep0state]);
++				dev->ep0state = EP0_WAIT_HANDSHAKE;
++				start_out_xfer(ep0, NULL, ep0->ep.maxpacket);
++			}
++		}
++		if (dev->ep0state != prestate)
++			VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__, __LINE__,
++			     ep0statename[prestate],
++			     ep0statename[dev->ep0state], setupcnt);
++		break;
++	case EP0_WAIT_HANDSHAKE:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		if (ep0_int_status & USBD_INTR_SETUP) {
++			VDBG(dev, "(%s:%d):got setup in %s %d\n",
++			     __FUNCTION__, __LINE__,
++			     ep0statename[dev->ep0state], setupcnt);
++		}
++
++		if (ep0_int_status & USBD_INTR_TC) {
++			VDBG(dev, "(%s:%d):got tc in %s %d\n",
++			     __FUNCTION__, __LINE__,
++			     ep0statename[dev->ep0state], setupcnt);
++			dev->ep0state = EP0_IDLE;
++		}
++		break;
++	case EP0_STATUS:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		if (ep0_int_status & USBD_INTR_TC) {
++			dev->ep0state = EP0_IDLE;
++			if (ep0->is_in) {
++				start_out_xfer(ep0, NULL, 0);
++			} else {
++				start_in_xfer(ep0, NULL, 0);
++			}
++		} else {
++			dev->ep0state = EP0_IDLE;
++			if (ep0->is_in) {
++				start_out_xfer(ep0, NULL, 0);
++			} else {
++				start_in_xfer(ep0, NULL, 0);
++			}
++		}
++
++		if (dev->ep0state != prestate) {
++			VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__,
++			     __LINE__, ep0statename[prestate],
++			     ep0statename[dev->ep0state], setupcnt);
++		}
++		break;
++	case EP0_IN_STATUS:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		if (ep0_int_status & USBD_INTR_TC) {
++			dev->ep0state = EP0_IDLE;
++		} else {
++			dev->ep0state = EP0_IDLE;
++		}
++
++		if (dev->ep0state != prestate) {
++			VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__,
++			     __LINE__, ep0statename[prestate],
++			     ep0statename[dev->ep0state], setupcnt);
++		}
++		break;
++	case EP0_OUT_STATUS:
++		ep0_int_status = usbd_read_ep_intr_reg(dev, 0);
++		if ((USBD_INTR_SETUP & ep0_int_status)) {
++			VDBG(dev, "(%s:%d):ERR\n", __FUNCTION__, __LINE__);
++		}
++
++		if (ep0_int_status & USBD_INTR_TC) {
++			dev->ep0state = EP0_IDLE;
++		}
++
++		if (dev->ep0state != prestate)
++			VDBG(dev, "(%s:%d):%s->%s %d\n", __FUNCTION__, __LINE__,
++			     ep0statename[prestate],
++			     ep0statename[dev->ep0state], setupcnt);
++		break;
++	case EP0_STALL:
++		dev->ep0state = EP0_IDLE;
++		break;
++	default:
++		VDBG(dev, "unknown state\n");
++		break;
++	}
++
++	VDBG(dev, "(%s:%d)\n", __FUNCTION__, __LINE__);
++}
++
++/* send packet data from the endpoint's fifo */
++static int
++write_fifo(struct vox160_ep *ep, struct vox160_request *req)
++{
++	unsigned int is_done = 0, total;
++	struct vox160_udc *dev = ep->dev;
++	u16 ep_int_status, eplen;
++	int status = 0;
++	int count = 0;
++
++	ep_int_status = usbd_read_ep_intr_reg(dev, ep->num);
++	eplen = readw(&dev->usbd_eplen[ep->num]->reg);
++
++	/* 
++	 * If all the data in end point DMA buffer is transfered,
++	 * copy the remaining data from gadget driver buffer to
++	 * endpoint DMA buffer
++	 */
++	if (ep_int_status & USBD_INTR_BCSTAT && !(ep_int_status & USBD_INTR_TC)) {
++		count = ep->current_max_buffer_len - eplen;
++		req->req.actual += count;
++
++		/* 
++		 * If we have sent all the data, send a zlp which will 
++		 * trigger TC interrupt. For USB packets that are naturally 
++		 * short,usb core will generate TC interrupt.
++		 */
++		if ((req->req.actual == req->req.length)
++		    && !(req->req.length % ep->ep.maxpacket)) {
++			VDBG(dev, "(%s:%d):%s %p BC/ZLP len %d act %d\n",
++			     __FUNCTION__, __LINE__, ep->ep.name, &req->req,
++			     req->req.length, req->req.actual);
++
++			start_in_xfer(ep, NULL, 0);
++			return is_done;
++		}
++
++		/* 
++		 * We are not done yet with data transfer. 
++		 * Program the usb core again for IN transfer
++		 */
++
++		total =
++		    min(ep->max_buffer_len,
++			(u16) (req->req.length - req->req.actual));
++		status =
++		    start_in_xfer(ep, req->req.buf + req->req.actual, total);
++		VDBG(dev, "(%s:%d):%s %p BC len %d act %d\n", __FUNCTION__,
++		     __LINE__, ep->ep.name, &req->req, req->req.length,
++		     req->req.actual);
++
++		return is_done;
++	}
++
++	/* Tell the gadget driver that IN transfer is done using callback */
++	if (ep_int_status & USBD_INTR_TC) {
++		req->req.actual += (req->req.length - req->req.actual);
++
++		VDBG(dev, "(%s:%d):%s %p TC len %d act %d\n", __FUNCTION__,
++		     __LINE__, ep->ep.name, &req->req, req->req.length,
++		     req->req.actual);
++
++		done(ep, req, 0);
++	}
++	return is_done;
++}
++
++static int
++read_ep0_fifo(struct vox160_ep *ep, struct vox160_request *req)
++{
++	u8 *buf;
++	unsigned int count, bufferspace, is_done = 0;
++	struct vox160_udc *dev = ep->dev;
++	u16 ep_int_status, eplen, epcfg;
++	int status = 0;
++
++	if (ep->num != 0)
++		return -EINVAL;;
++
++	buf = req->req.buf + req->req.actual;
++	bufferspace = req->req.length - req->req.actual;
++	ep_int_status = usbd_read_ep_intr_reg(dev, ep->num);
++	eplen = readw(&dev->usbd_eplen[ep->num]->reg);
++
++	epcfg = readw(&dev->usbd_epcfg[USBD_CONTROL_EP]->reg);
++	if ((0 == eplen) && (0 == ep_int_status) && (USBD_EPCFG_ARM & epcfg)) {
++		VDBG(dev, "(%s:%d):ERR\n", __FUNCTION__, __LINE__);
++		return -EAGAIN;
++	}
++	if ((USBD_INTR_SETUP & ep_int_status)) {
++		VDBG(dev, "(%s:%d):ERR\n", __FUNCTION__, __LINE__);
++		return -EAGAIN;
++	}
++
++	/* there might be nothing to read if ep_queue() calls us */
++	if ((0 == eplen) && (0 == ep_int_status))
++		return -EAGAIN;
++
++	if (ep_int_status & USBD_INTR_BCSTAT && !(ep_int_status & USBD_INTR_TC)) {
++		count = ep->current_max_buffer_len - eplen;
++		VDBG(dev, "(%s:%d):count %d len %d act %d bufspace %d\n",
++		     __FUNCTION__, __LINE__, count, req->req.length,
++		     req->req.actual, bufferspace);
++		memcpy(buf, dev->dma_base_address + ep->dma_offset, count);
++
++		if ((req->req.actual + count) > req->req.length)
++			req->req.actual += (req->req.length - req->req.actual);
++		else
++			req->req.actual += count;
++
++		if (req->req.actual == req->req.length)
++			is_done = 1;
++		else {
++			status =
++			    start_out_xfer(ep, NULL,
++					   min((int) ep->ep.maxpacket,
++					       (int) (req->req.length -
++						      req->req.actual)));
++		}
++
++		VDBG(dev, "(%s:%d):%s %p out/%d%s BC\n", __FUNCTION__, __LINE__,
++		     ep->ep.name, &req->req, count, is_done ? " (done)" : "");
++	} else if ((ep_int_status & USBD_INTR_TC)) {
++		count = ep->current_max_buffer_len - eplen;
++		memcpy(buf, dev->dma_base_address + ep->dma_offset, count);
++
++		req->req.actual += count;
++		if (req->req.status != 0)
++			VDBG(dev,
++			     "(%s:%d):complete %s req %p stat %d len %u/%u\n",
++			     __FUNCTION__, __LINE__, ep->ep.name, &req->req,
++			     status, req->req.actual, req->req.length);
++		done(ep, req, 0);
++		VDBG(dev, "(%s:%d):count %d len %d act %d bufspace %d TC \n",
++		     __FUNCTION__, __LINE__, count, req->req.length,
++		     req->req.actual, bufferspace);
++		is_done = 1;
++	}
++
++	return is_done;
++}
++
++static int
++read_fifo(struct vox160_ep *ep, struct vox160_request *req)
++{
++	u8 *buf;
++	unsigned int count, bufferspace, is_done = 0;
++	struct vox160_udc *dev = ep->dev;
++	u16 ep_int_status, eplen;
++	int status = 0;
++	struct vox160_request r;
++
++	buf = req->req.buf + req->req.actual;
++	bufferspace = req->req.length - req->req.actual;
++	ep_int_status = usbd_read_ep_intr_reg(dev, ep->num);
++	eplen = readw(&dev->usbd_eplen[ep->num]->reg);
++
++	/* there might be nothing to read if ep_queue() calls us */
++	if ((0 == eplen) && (0 == ep_int_status))
++		return 0;
++
++	/* 
++	 * If the endpoint DMA buffer is full,copy the data to gadget 
++	 * driver buffer and be ready for the next data 
++	 */
++
++	if (ep_int_status & USBD_INTR_BCSTAT && !(ep_int_status & USBD_INTR_TC)) {
++		count = ep->current_max_buffer_len - eplen;
++		memcpy(buf, dev->dma_base_address + ep->dma_offset, count);
++
++		if ((req->req.actual + count) > req->req.length)
++			req->req.actual += (req->req.length - req->req.actual);
++		else
++			req->req.actual += count;
++
++		VDBG(dev, "(%s:%d):%s %p BC len %d act %d max %d eplen %d \n",
++		     __FUNCTION__, __LINE__, ep->ep.name, &req->req,
++		     req->req.length, req->req.actual,
++		     ep->current_max_buffer_len, eplen);
++
++		r.req.length = ep->current_max_buffer_len;
++		status =
++		    start_out_xfer(ep, NULL,
++				   min(ep->current_max_buffer_len,
++				       ep->max_buffer_len));
++		return is_done;
++	}
++
++	/* Tell the gadget driver that OUT transfer is done using callback */
++	if (ep_int_status & USBD_INTR_TC) {
++		count = ep->current_max_buffer_len - eplen;
++
++		if (count > bufferspace) {
++			VDBG(dev, "(%s:%d):%s buffer overflow\n", __FUNCTION__,
++			     __LINE__, ep->ep.name);
++			req->req.status = -EOVERFLOW;
++			count = bufferspace;
++		}
++		memcpy(buf, dev->dma_base_address + ep->dma_offset, count);
++
++		req->req.actual += count;
++		is_done = 1;
++
++		VDBG(dev, "(%s:%d):%s %p TC len %d act %d max %d eplen %d \n",
++		     __FUNCTION__, __LINE__, ep->ep.name, &req->req,
++		     req->req.length, req->req.actual,
++		     ep->current_max_buffer_len, eplen);
++
++		r.req.length = ep->max_buffer_len;
++		status = start_out_xfer(ep, NULL, ep->max_buffer_len);
++		done(ep, req, 0);
++	}
++
++	return is_done;
++}
++
++static int
++handle_ep(struct vox160_ep *ep)
++{
++	struct vox160_request *req = NULL;
++	int result = 0;
++
++	if (list_empty(&ep->queue))
++		req = NULL;
++	else
++		req = list_entry(ep->queue.next, struct vox160_request, queue);
++
++	if (req) {
++		if (ep->is_in)
++			result = write_fifo(ep, req);
++		else
++			result = read_fifo(ep, req);
++	}
++	return result;
++}
++
++static irqreturn_t
++vox160udc_irq(int irq, void *_dev, struct pt_regs *regs)
++{
++	struct vox160_udc *dev = (struct vox160_udc *) _dev;
++	u16 gintr_reg;
++	u16 gmask_reg;
++	int flags;
++
++	spin_lock_irqsave(&dev->lock, flags);
++	dev->irqs++;
++
++	/* Read global interrupt register */
++	gintr_reg = readw(&dev->gen_regs->usbd_gintr);
++
++	/* Read global interrupt mask register */
++	gmask_reg = readw(&dev->gen_regs->usbd_gmask);
++
++	/* 
++	 * A 1 bit in the mask register means that particular interrupt is      
++	 * masked. Since we are only interested in interrupts that are not  
++	 * masked,find out about non-masked interrupts by toggling gmask reg 
++	 */
++	gmask_reg ^= 0xFFFF;
++
++	/* find out which interrupts has occured as indicated by gmask reg */
++	gintr_reg &= gmask_reg;
++
++	/* Mask all the interrupts */
++	writew(0xFFFF, &dev->gen_regs->usbd_gmask);
++
++	if (gintr_reg & USBD_GINTR_SOF) {
++		/* gintr_reg ^= USBD_GINTR_SOF; */
++
++		/* 
++		 * clear the SOF interrupt bit in interrupt register. Note that 
++		 * interrupt register is W1C 
++		 */
++		writew(USBD_GINTR_SOF, &dev->gen_regs->usbd_gintr);
++
++		dev->sof_irqs++;
++	}
++
++	if (gintr_reg & USBD_GINTR_CFG) {
++		cfg_chg_occured = 1;
++
++		/* We currently do no special processing for CFG  */
++		gintr_reg ^= USBD_GINTR_CFG;
++
++		/* 
++		 * clear the CFG interrupt bit in interrupt register. Note that 
++		 * interrupt register is W1C 
++		 */
++		writew(USBD_GINTR_CFG, &dev->gen_regs->usbd_gintr);
++
++		dev->cfg_irqs++;
++	}
++
++	if (gintr_reg & USBD_GINTR_MSOF) {
++
++		/* We currently do no special processing for MSOF interrupt */
++		gintr_reg ^= USBD_GINTR_MSOF;
++
++		/* 
++		 * clear the MSOF interrupt bit in interrupt register. Note 
++		 * that interrupt register is W1C 
++		 */
++		writew(USBD_GINTR_MSOF, &dev->gen_regs->usbd_gintr);
++		dev->msof_irqs++;
++
++	}
++
++	if (gintr_reg & USBD_GINTR_FRMMAT) {
++
++		/* We currently do no special processing for FRMMAT interrupt */
++		gintr_reg ^= USBD_GINTR_FRMMAT;
++		/* 
++		 * clear the FRMAT interrupt bit in interrupt register. Note 
++		 * that interrupt register is W1C 
++		 */
++		writew(USBD_GINTR_FRMMAT, &dev->gen_regs->usbd_gintr);
++		dev->frmmat_irqs++;
++
++	}
++
++	if (gintr_reg & USBD_GINTR_RESUME) {
++
++		/* We currently do no special processing for RESUME interrupt */
++		gintr_reg ^= USBD_GINTR_RESUME;
++		/* 
++		 * clear the RESUME interrupt bit in interrupt register. Note 
++		 * that interrupt register is W1C 
++		 */
++		writew(USBD_GINTR_RESUME, &dev->gen_regs->usbd_gintr);
++		if (dev->driver && dev->driver->resume)
++			dev->driver->resume(&dev->gadget);
++		dev->resume_irqs++;
++	}
++
++	if (gintr_reg & USBD_GINTR_RST) {
++
++		vox160_counter_reset();
++		reset_occured = 1;
++
++		/* Reset Interrupt */
++		gintr_reg ^= USBD_GINTR_RST;
++
++		/* 
++		 * If RST interrupt occurs,the system should terminate all 
++		 * activities currently in progress and prepare for the device
++		 * to be re-enumerated by the USB host. The system does not
++		 * need to re-download USB endpoint buffer data nor 
++		 * re-initialize the device
++		 */
++		stop_activity(dev, dev->driver);
++
++		dev->rst_irqs++;
++	}
++
++	if (gintr_reg & USBD_GINTR_SUSP) {
++
++		/* Suspend Interrupt */
++		gintr_reg ^= USBD_GINTR_SUSP;
++		usbd_suspend_handler(dev);
++		dev->susp_irqs++;
++	}
++
++	if (gintr_reg & USBD_GINTR_DMAIRQ) {
++
++		/* DMA Interrupt */
++		gintr_reg ^= USBD_GINTR_DMAIRQ;
++		usbd_dma_handler(dev);
++		dev->dma_irqs++;
++	}
++
++	if ((gintr_reg & USBD_GINTR_EP0INT) || gintr_reg) {
++
++		gintr_reg ^= USBD_GINTR_EP0INT;
++		/* Handle end point 0 interrupts */
++		handle_ep0(dev);
++	}
++
++	if ((gintr_reg & USBD_GINTR_EP2INT)) {
++
++		gintr_reg ^= USBD_GINTR_EP2INT;
++		dev->ep2_irqs++;
++		/* Handle BULK in end point interrupts */
++		handle_ep(&dev->ep[2]);
++	}
++
++	if ((gintr_reg & USBD_GINTR_EP3INT)) {
++
++		gintr_reg ^= USBD_GINTR_EP3INT;
++		dev->ep3_irqs++;
++		/* Handle BULK out end point interrupts */
++		handle_ep(&dev->ep[3]);
++	}
++
++	writew(usb_fusiv_masks, &dev->gen_regs->usbd_gmask);
++
++	writew(gintr_reg, &dev->gen_regs->usbd_gintr);
++
++	spin_unlock_irqrestore(&dev->lock, flags);
++
++	return IRQ_HANDLED;
++}
++
++/*-------------------------------------------------------------------------*/
++
++static void
++gadget_release(struct device *_dev)
++{
++	struct vox160_udc *dev = dev_get_drvdata(_dev);
++
++	kfree(dev);
++}
++
++/* tear down the binding  */
++
++static int
++vox160udc_remove(struct device *_dev)
++{
++	struct platform_device *pdev = to_platform_device(_dev);
++	struct vox160_udc *dev = the_controller;
++	unsigned long rsrc_len = 0;
++
++	/* start with the driver above us */
++	if (dev->driver) {
++		pr_debug(dev, "remove, driver '%s' is still registered\n",
++			 dev->driver->driver.name);
++		usb_gadget_unregister_driver(dev->driver);
++	}
++
++	remove_proc_file(dev);
++
++	/* release mem for usbd General Registers */
++	rsrc_len = pdev->resource[1].end - pdev->resource[1].start + 1;
++	release_mem_region(pdev->resource[1].start, rsrc_len);
++	iounmap(dev->gen_regs);
++
++	/* release mem for usbd DMA registers */
++	rsrc_len = pdev->resource[2].end - pdev->resource[2].start + 1;
++	release_mem_region(pdev->resource[2].start, rsrc_len);
++	iounmap(dev->dma_regs);
++
++	/* release mem for USBD_INTRN registers */
++	rsrc_len = pdev->resource[3].end - pdev->resource[3].start + 1;
++	release_mem_region(pdev->resource[3].start, rsrc_len);
++	iounmap(dev->usbd_intr[0]);
++
++	/* release mem for usbd USBD_MASKn registers */
++	rsrc_len = pdev->resource[4].end - pdev->resource[4].start + 1;
++	release_mem_region(pdev->resource[4].start, rsrc_len);
++	iounmap(dev->usbd_mask[0]);
++
++	/* release mem for usbd USBD_EPCFGn registers */
++	rsrc_len = pdev->resource[5].end - pdev->resource[5].start + 1;
++	release_mem_region(pdev->resource[5].start, rsrc_len);
++	iounmap(dev->usbd_epcfg[0]);
++
++	/* release mem for USBD_EPADRn registers */
++	rsrc_len = pdev->resource[6].end - pdev->resource[6].start + 1;
++	release_mem_region(pdev->resource[6].start, rsrc_len);
++	iounmap(dev->usbd_epadr[0]);
++
++	/* release mem for USBD_EPLEN registers */
++	rsrc_len = pdev->resource[7].end - pdev->resource[7].start + 1;
++	release_mem_region(pdev->resource[7].start, rsrc_len);
++	iounmap(dev->usbd_eplen[0]);
++
++	iounmap(dev->gpio_dir_reg);
++	iounmap(dev->gpio_flag_set);
++	iounmap(dev->gpio_flag_clear);
++
++	iounmap(dev->dma_base_address);
++
++	del_timer(&usbd_timer);
++
++	free_irq(pdev->resource[0].start, dev);
++
++	if (dev->registered)
++		device_unregister(&dev->gadget.dev);
++
++	the_controller = NULL;
++	kfree(dev);
++
++	return 0;
++}
++
++static int
++vox160udc_probe(struct device *dev)
++{
++	struct platform_device *pdev = to_platform_device(dev);
++	struct vox160_udc *vox160dev = NULL;
++	unsigned long rsrc_len = 0;
++	void __iomem *usbd_intrn_base;
++	void __iomem *usbd_maskn_base;
++	void __iomem *usbd_epcfgn_base;
++	void __iomem *usbd_epadrn_base;
++	void __iomem *usbd_eplen_base;
++	int i = 0;
++
++	vox160dev = kmalloc(sizeof (*vox160dev), GFP_KERNEL);
++	if (!vox160dev)
++		return -ENOMEM;
++
++	memset(vox160dev, 0, sizeof (*vox160dev));
++	spin_lock_init(&vox160dev->lock);
++
++	/* offset 0 contains USBD IRQ info */
++	if (pdev->resource[0].flags != IORESOURCE_IRQ) {
++		pr_debug("resource[0] is not IORESOURCE_IRQ");
++		return -ENOMEM;
++	}
++
++	/* offset 1 contains base address of usbd General Registers */
++	rsrc_len = pdev->resource[1].end - pdev->resource[1].start + 1;
++
++	if (!request_mem_region(pdev->resource[1].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++
++	vox160dev->gen_regs = ioremap(pdev->resource[1].start, rsrc_len);
++	if (!vox160dev->gen_regs) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	/* offset 2 contains base address of usbd DMA registers */
++	rsrc_len = pdev->resource[2].end - pdev->resource[2].start + 1;
++
++	if (!request_mem_region(pdev->resource[2].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++
++	vox160dev->dma_regs = ioremap(pdev->resource[2].start, rsrc_len);
++	if (!vox160dev->dma_regs) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	/* offset 3 contains base address of USBD_INTRN registers */
++	rsrc_len = pdev->resource[3].end - pdev->resource[3].start + 1;
++
++	if (!request_mem_region(pdev->resource[3].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++
++	usbd_intrn_base = ioremap(pdev->resource[3].start, rsrc_len);
++	if (!usbd_intrn_base) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	/* offset 4 contains base address of usbd USBD_MASKn registers */
++	rsrc_len = pdev->resource[4].end - pdev->resource[4].start + 1;
++
++	if (!request_mem_region(pdev->resource[4].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++	usbd_maskn_base = ioremap(pdev->resource[4].start, rsrc_len);
++	if (!usbd_maskn_base) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	/* offset 5 contains base address of usbd USBD_EPCFGn registers */
++	rsrc_len = pdev->resource[5].end - pdev->resource[5].start + 1;
++
++	if (!request_mem_region(pdev->resource[5].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++	usbd_epcfgn_base = ioremap(pdev->resource[5].start, rsrc_len);
++	if (!usbd_epcfgn_base) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	/* offset 6 contains base address of USBD_EPADRn registers */
++	rsrc_len = pdev->resource[6].end - pdev->resource[6].start + 1;
++
++	if (!request_mem_region(pdev->resource[6].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++	usbd_epadrn_base = ioremap(pdev->resource[6].start, rsrc_len);
++	if (!vox160dev->dma_regs) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	/* offset 7 base address of contains USBD_EPLEN registers */
++	rsrc_len = pdev->resource[7].end - pdev->resource[7].start + 1;
++
++	if (!request_mem_region(pdev->resource[7].start, rsrc_len, usbd_name)) {
++		pr_debug("request_mem_region failed");
++		return -EBUSY;
++	}
++	usbd_eplen_base = ioremap(pdev->resource[7].start, rsrc_len);
++	if (!usbd_eplen_base) {
++		pr_debug("ioremap failed");
++		return -ENOMEM;
++	}
++
++	for (i = 0; i < VOX160_UDC_MAX_EP; i++) {
++		vox160dev->usbd_intr[i] = usbd_intrn_base + (0x14 * i);
++		vox160dev->usbd_mask[i] = usbd_maskn_base + (0x14 * i);
++		vox160dev->usbd_epcfg[i] = usbd_epcfgn_base + (0x14 * i);
++		vox160dev->usbd_epadr[i] = usbd_epadrn_base + (0x14 * i);
++		vox160dev->usbd_eplen[i] = usbd_eplen_base + (0x14 * i);
++	}
++
++	/* Config GPIO registers */
++	vox160dev->gpio_dir_reg = ioremap(0x19040000, 1);
++	vox160dev->gpio_flag_set = ioremap(0x19040006, 1);
++	vox160dev->gpio_flag_clear = ioremap(0x19040004, 1);
++
++	/* config dma base address */
++	vox160dev->dma_base_address = ioremap(USBD_MEM_BASE, 1);
++
++	/* Initialize UDC */
++	vox160dev->enabled = 1;
++	dev_set_drvdata(dev, vox160dev);
++
++	/* ops represent hardware specific function pointers */
++	vox160dev->gadget.ops = &vox160_ops;
++
++	vox160dev->gadget.ep0 = &vox160dev->ep[0].ep;
++
++	/* Initialize the endpoint list */
++	INIT_LIST_HEAD(&vox160dev->gadget.ep_list);
++	for (i = 0; i < VOX160_UDC_NUM_EP; i++) {
++		struct vox160_ep *ep = &vox160dev->ep[i];
++
++		ep->num = i;
++		ep->ep.name = ep_name[i];
++		ep->dev = vox160dev;
++		ep->ep.ops = &vox160_ep_ops;
++		/* Endpoint 0 is not on the UDC's list of endpoints */
++		if (i)
++			list_add_tail(&ep->ep.ep_list,
++				      &vox160dev->gadget.ep_list);
++	}
++	vox160dev->ep[USBD_CONTROL_EP].ep.maxpacket = PACKET_8;
++	vox160dev->ep[USBD_INTERRUPT_EP].ep.maxpacket = PACKET_16;
++	vox160dev->ep[USBD_BULK_IN_EP].ep.maxpacket = PACKET_64;
++	vox160dev->ep[USBD_BULK_OUT_EP].ep.maxpacket = PACKET_64;
++
++	/* control end point */
++	vox160dev->ep[USBD_CONTROL_EP].max_packet_size = PACKET_8;
++	vox160dev->ep[USBD_CONTROL_EP].max_buffer_len = BUFFER_160;
++	vox160dev->ep[USBD_CONTROL_EP].cfg_attribs = EP_CONTROL_OUT_ATTRIBS;
++	vox160dev->ep[USBD_CONTROL_EP].dma_offset = OFFSET_0;
++	vox160dev->ep[USBD_CONTROL_EP].ep_intr_list =
++	    USBD_INTR_TC | USBD_INTR_BCSTAT | USBD_INTR_SETUP | USBD_INTR_PC;
++	vox160dev->ep[USBD_CONTROL_EP].is_in = 0;
++
++	/* interrupt end point */
++	vox160dev->ep[USBD_INTERRUPT_EP].max_packet_size = PACKET_16;
++	vox160dev->ep[USBD_INTERRUPT_EP].max_buffer_len = BUFFER_16;
++	vox160dev->ep[USBD_INTERRUPT_EP].cfg_attribs = EP_INTERRUPT_ATTRIBS;
++	vox160dev->ep[USBD_INTERRUPT_EP].dma_offset = OFFSET_160;
++	vox160dev->ep[USBD_INTERRUPT_EP].ep_intr_list = 0;
++	vox160dev->ep[USBD_INTERRUPT_EP].is_in = 1;
++
++	/* bulk in end point */
++	vox160dev->ep[USBD_BULK_IN_EP].max_packet_size = PACKET_64;
++	vox160dev->ep[USBD_BULK_IN_EP].max_buffer_len = BUFFER_896;
++	vox160dev->ep[USBD_BULK_IN_EP].cfg_attribs = EP_BULK_IN_ATTRIBS;
++	vox160dev->ep[USBD_BULK_IN_EP].dma_offset = OFFSET_192;
++	vox160dev->ep[USBD_BULK_IN_EP].ep_intr_list =
++	    USBD_INTR_TC | USBD_INTR_BCSTAT | USBD_INTR_PC;
++	vox160dev->ep[USBD_BULK_IN_EP].is_in = 1;
++
++	/* bulk out end point */
++	vox160dev->ep[USBD_BULK_OUT_EP].max_packet_size = PACKET_64;
++	vox160dev->ep[USBD_BULK_OUT_EP].max_buffer_len = BUFFER_896;
++	vox160dev->ep[USBD_BULK_OUT_EP].cfg_attribs = EP_BULK_OUT_ATTRIBS;
++	vox160dev->ep[USBD_BULK_OUT_EP].dma_offset = OFFSET_1152;
++	vox160dev->ep[USBD_BULK_OUT_EP].ep_intr_list =
++	    USBD_INTR_TC | USBD_INTR_BCSTAT | USBD_INTR_PC;
++	vox160dev->ep[USBD_BULK_OUT_EP].is_in = 0;
++
++	vox160dev->gadget.speed = USB_SPEED_FULL;
++	vox160dev->gadget.name = driver_name;
++	strcpy(vox160dev->gadget.dev.bus_id, "gadget");
++	vox160dev->gadget.dev.parent = dev;
++	vox160dev->gadget.dev.release = gadget_release;
++	vox160dev->gadget.dev.dma_mask = pdev->dev.dma_mask;
++
++	/* setup irqs */
++	if (request_irq(pdev->resource[0].start, vox160udc_irq, SA_INTERRUPT,
++			driver_name, vox160dev) != 0) {
++		dev_err(dev, "request interrupt %ld failed\n",
++			pdev->resource[0].start);
++		return -EBUSY;
++	}
++
++	vox160dev->got_irq = 1;
++
++	/* Do a hard reset of the devic and reinit it */
++	vox160udc_hard_reset(vox160dev);
++	vox160udc_reinit(vox160dev);
++
++	create_proc_file(vox160dev);
++
++	/* done */
++	the_controller = vox160dev;
++	device_register(&vox160dev->gadget.dev);
++	vox160dev->registered = 1;
++
++	DBG(vox160dev,
++	    "VOX160 UDC driver successufully probed and initialized %s \n",
++	    __TIME__);
++	return 0;
++}
++
++struct device_driver vox160udc_platform_driver = {
++	.name = (char *) driver_name,
++	.bus = &platform_bus_type,
++	.probe = vox160udc_probe,
++	.remove = vox160udc_remove
++	    /* FIXME power management support */
++	    /* .suspend = ... disable UDC */
++	    /* .resume = ... re-enable UDC */
++};
++
++static int __init
++vox160udc_init(void)
++{
++	return driver_register(&vox160udc_platform_driver);
++}
++
++module_init(vox160udc_init);
++
++static void __exit
++vox160udc_exit(void)
++{
++	driver_unregister(&vox160udc_platform_driver);
++}
++
++module_exit(vox160udc_exit);
+diff -Naur gadget_old/vox160_udc_fw.h gadget_new/vox160_udc_fw.h
+--- gadget_old/vox160_udc_fw.h	1969-12-31 16:00:00.000000000 -0800
++++ gadget_new/vox160_udc_fw.h	2006-04-24 16:04:39.664480000 -0700
+@@ -0,0 +1,24 @@
++static short udc_fw_data[] = {
++	/* endpoint 0: control, 16 byte, configuration 0 */
++	0x00, 0x00, 0x10, 0x00, 0x00,
++
++	/* 
++	 * endpoint 1: interrupt IN, 16 byte, 
++	 * configuration 1 interface/alternate 0 
++	 */
++	0x14, 0x38, 0x10, 0x00, 0x71,
++
++	/* 
++	 * endpoint 2: bulk IN, 64 byte, 
++	 * configuration 1 interface/alternate 0
++	 */
++	0x24, 0x28, 0x80, 0x00, 0x52,	// 128 byte
++
++	/* 
++	 * endpoint 3: bulk OUT, 128 byte, 
++	 * configuration 1 interface/alternate 0
++	 */
++	0x34, 0x20, 0x80, 0x00, 0x43	// 128 byte
++};
++
++long udc_fw_data_element = (sizeof (udc_fw_data) / sizeof (short));
+diff -Naur gadget_old/vox160_udc.h gadget_new/vox160_udc.h
+--- gadget_old/vox160_udc.h	1969-12-31 16:00:00.000000000 -0800
++++ gadget_new/vox160_udc.h	2006-04-24 16:04:37.121600000 -0700
+@@ -0,0 +1,410 @@
++/*
++ * Analog Devices USB Device Controller driver
++ *
++ * Copyright (C) 2000-2002 Lineo
++ *      by Stuart Lynne, Tom Rushworth, and Bruce Balden
++ * Copyright (C) 2006 Analog Devices Inc 
++ * Copyright (C) 2003 MontaVista Software (source@mvista.com)
++ *
++ * This file is licensed under the terms of the GNU General Public
++ * License version 2.  This program is licensed "as is" without any
++ * warranty of any kind, whether express or implied.
++ */
++
++static const char ep0name[] = "ep0";
++
++static const char *const ep_name[] = {
++	ep0name,		/* everyone has ep0 */
++	"ep1in-int",		/* interrupt IN */
++	"ep2in-bulk",		/* bulk IN */
++	"ep3out-bulk",		/* bulk OUT */
++};
++
++#define VOX160_UDC_NUM_EP (4)
++#define VOX160_UDC_MAX_EP (7)
++
++#define STALL_CLEARED (0)
++#define STALL_EXIST    (1)
++
++struct vox160udc_gen_regs {
++	/* USB Device ID Register:offset 0x00 */
++	u16 usb_id;
++	u16 reserved1;
++	/* Current USB Frame # Register:offset 0x04 */
++	u16 usbd_frm;
++	u16 reserved2;
++#define USBD_FRM_MASK 0x07ff
++	/* USB Frame Number Register:offset 0x08 */
++	u16 usbd_frmt;
++	u16 reserved3;
++	/* Enable download into USB core resigster:offset 0x0c */
++	u16 usbd_encfg_dl_cor;
++#define USBD_EPBUF_RDY  0x4000	/* 1 - ready to accept byte */
++#define USBD_EPBUF_CFG  0x8000	/* 1 - waiting for endpoint buffer data */
++	u16 reserved4;
++	/* USB Module Status Register:offset 0x10 */
++	u16 usbd_stat;
++#define USBD_STAT_SUSPENDED  0x0001	/* USB suspended */
++#define USBD_STAT_RSTSIG     0x0002	/* USB reset signalling in progress */
++#define USBD_STAT_SIP        0x0004	/* USB setup packet in progress */
++#define USBD_STAT_PIP        0x0008	/* USB packet in progress */
++#define USBD_STAT_EP         0x0070	/* Currently accessed endpoint */
++#define USBD_STAT_AIF        0x0380	/* USB alternate interface number */
++#define USBD_STAT_IF         0x0c00	/* USB interface number */
++#define USBD_STAT_CFG        0x3000	/* USB configuration number */
++#define USBD_STAT_TOKEN      0xc000	/* Last token received on USB */
++	u16 reserved5;
++	/* USB module control register:offset 0x14 */
++	u16 usbd_ctrl;
++#define USBD_CTRL_ENA        0x0001	/* 1 - USBD module enabled */
++#define USBD_CTRL_UDCRST     0x0002	/* 1 - execute hard reset for USBD */
++#define USBD_CTRL_EP0STALL   0x0100	/* 1 - assert a stall request */
++#define USBD_CTRL_EP1STALL   0x0200	/* 1 - assert a stall request */
++#define USBD_CTRL_EP2STALL   0x0400	/* 1 - assert a stall request */
++#define USBD_CTRL_EP3STALL   0x0800	/* 1 - assert a stall request */
++#define USBD_CTRL_EP4STALL   0x1000	/* 1 - assert a stall request */
++#define USBD_CTRL_EP5STALL   0x2000	/* 1 - assert a stall request */
++#define USBD_CTRL_EP6STALL   0x4000	/* 1 - assert a stall request */
++#define USBD_CTRL_EP7STALL   0x8000	/* 1 - assert a stall request */
++	u16 reserved6;
++	/* Global Interrupt Register:offset 0x18 */
++	u16 usbd_gintr;
++#define USBD_GINTR_SOF        0x0001
++#define USBD_GINTR_CFG        0x0002
++#define USBD_GINTR_MSOF       0x0004
++#define USBD_GINTR_RST        0x0008
++#define USBD_GINTR_SUSP       0x0010
++#define USBD_GINTR_RESUME     0x0020
++#define USBD_GINTR_FRMMAT     0x0040
++#define USBD_GINTR_DMAIRQ     0x0080
++#define USBD_GINTR_EP0INT     0x0100
++#define USBD_GINTR_EP1INT     0x0200
++#define USBD_GINTR_EP2INT     0x0400
++#define USBD_GINTR_EP3INT     0x0800
++#define USBD_GINTR_EP4INT     0x1000
++#define USBD_GINTR_EP5INT     0x2000
++#define USBD_GINTR_EP6INT     0x4000
++#define USBD_GINTR_EP7INT     0x8000
++	u16 reserved7;
++	/* Global Interrupt Mask Register:offset 0x1c */
++	u16 usbd_gmask;
++#define USBD_GMASK_SOFM       0x0001
++#define USBD_GMASK_CFGM       0x0002
++#define USBD_GMASK_MSOFM      0x0004
++#define USBD_GMASK_RSTM       0x0008
++#define USBD_GMASK_SUSPM      0x0010
++#define USBD_GMASK_RESUMEM    0x0020
++#define USBD_GMASK_FRMMATM    0x0040
++#define USBD_GMASK_DMAIRQM    0x0080
++#define USBD_GMASK_EP0MSK     0x0100
++#define USBD_GMASK_EP1MSK     0x0200
++#define USBD_GMASK_EP2MSK     0x0400
++#define USBD_GMASK_EP3MSK     0x0800
++#define USBD_GMASK_EP4MSK     0x1000
++#define USBD_GMASK_EP5MSK     0x2000
++#define USBD_GMASK_EP6MSK     0x4000
++#define USBD_GMASK_EP7MSK     0x8000
++	u16 reserved8;
++} __attribute__ ((packed));
++
++struct vox160udc_dma_regs {
++	/* DMA Master Channel Configuration Register */
++	u16 usbd_dmacfg;
++#define USBD_DMACFG_DMAEN      0x0001	/* 1 - DMA master channel enabled */
++#define USBD_DMACFG_IOC        0x0004	/* 1 - interrupt concurrent with */
++	/*     each DMA burst of 4 words */
++#define USBD_DMACFG_DMABC      0x0080	/* 1 - clear DMA buffer */
++#define USBD_DMACFG_IOE	       0x0100	/* 1 enable interrupt on error */
++	u16 reserved1;
++	/* DMA Master Channel Base Address Low Register */
++	u16 usbd_dmabl;
++	u16 reserved2;
++	/* DMA Master Channel Base Address High Register */
++	u16 usbd_dmabh;
++	u16 reserved3;
++	/* DMA Master Channel Count Register */
++	u16 usbd_dmact;
++	u16 reserved4;
++	/* DMA Master Channel DMA Interrupt Register */
++	u16 usbd_dmairq;
++#define USBD_DMAIRQ_ERR		0x0001
++#define USBD_DMAIRQ_COMP	0x0002
++	u16 reserved5;
++} __attribute__ ((packed));
++
++struct vox160udc_ep_regs {
++	u16 reg;
++	u16 reserved;
++} __attribute__ ((packed));
++
++#ifndef USB_VENDOR_ID
++#define USB_VENDOR_ID   0x1110	/* vendor ID for Analog Devices, Inc. */
++#endif
++#ifndef USB_PRODUCT_ID
++#define USB_PRODUCT_ID  0x6489	/* product ID for AD6489 */
++#endif
++
++#define USBD_SOFT_RESET  (0)
++#define USBD_HARD_RESET  (1)
++
++#define VOX160_PULLUP_GPIO_PIN 	  (8)
++#define VOX160_VBUS_GPIO_PIN 	  (9)
++
++#define VOX160_VBUS_GPIO_PIN_POLL_RATE (50)
++
++/* DMA buffer is 2K bytes */
++
++#define USBD_MEM_BASE           (0x19168000)	/* Base address USBD local mem */
++#define USBD_DMA_BUFSIZE     	2048
++
++/* The hardware has been set up for a total of 64 endpoints buffer,all of which 
++ * must be allocated.
++ */
++#define NUM_EPBUF_BYTES 	(64 * 5)
++#define MAX_EPBUF_WAIT  	(500)
++
++#define PACKET_0   0
++#define PACKET_8   8
++#define PACKET_16 16
++#define PACKET_32 32
++#define PACKET_64 64
++
++#define BUFFER_0       0
++#define BUFFER_8       8
++#define BUFFER_16      16
++#define BUFFER_128   128
++#define BUFFER_160   160
++#define BUFFER_192   192
++#define BUFFER_256   256
++#define BUFFER_832   832
++#define BUFFER_896   896
++#define BUFFER_960   960
++#define BUFFER_1600 1600
++
++#define OFFSET_0       0
++#define OFFSET_128   128
++#define OFFSET_160   160
++#define OFFSET_192   192
++#define OFFSET_256   256
++#define OFFSET_1088 1088
++#define OFFSET_1152 1152
++#define OFFSET_1792 1792
++
++#define FRAMES_0    0
++#define FRAMES_3    3
++
++#define USBD_CONTROL_EP   (0)
++#define USBD_INTERRUPT_EP (1)
++#define USBD_BULK_IN_EP   (2)
++#define USBD_BULK_OUT_EP  (3)
++
++#define EP_CONTROL_OUT_ATTRIBS ((0x00 << 2)|(0x00 << 4))
++#define EP_INTERRUPT_ATTRIBS   ((0x02 << 2)|(0x01 << 4))
++
++#define EP_BULK_IN_ATTRIBS     ((0x01 << 2)|(0x03 << 4))
++
++#define EP_BULK_OUT_ATTRIBS    ((0x01 << 2)|(0x03 << 4))
++
++/*-------------------------------------------------------------------------*/
++
++/* DRIVER DATA STRUCTURES and UTILITIES */
++
++struct vox160_ep {
++	/* Public endpoint structure */
++	struct usb_ep ep;
++
++	/* Parent device */
++	struct vox160_udc *dev;
++
++	unsigned long irqs;
++
++	/* Endpoint number */
++	unsigned num:8;
++
++	/* Whether this endpoint supports dma */
++	unsigned dma:1;
++
++	/* 1 if endpoint is INput (e.g. TX from UDC point of view) */
++
++	unsigned is_in:1;
++	/* 1 if endpoint is stopped */
++
++	unsigned stopped:1;
++
++	/* A chained list of vox160_request structures */
++	struct list_head queue;
++
++	/* Endpoint descriptor */
++	const struct usb_endpoint_descriptor *desc;
++
++	/* Maximum USB packet size for this end point */
++	unsigned short max_packet_size;
++
++	/* Maximum EPLEN */
++	unsigned short max_buffer_len;
++	/* Currently Programmed value in EPLEN */
++	unsigned short current_max_buffer_len;
++
++	/* Attributes to program into EPCFG */
++	unsigned short cfg_attribs;
++
++	/* Offset into DMA from DMA_BASE_ADDR */
++	unsigned short dma_offset;
++
++	/* Current Offset into DMA Memory */
++	unsigned short cur_offset;
++
++	/* ep interrupts list that we are interested in */
++	unsigned short ep_intr_list;
++};
++
++struct vox160_request {
++	/* The public request structure */
++	struct usb_request req;
++	/* The chained list to link requests belonging to one endpoint */
++	struct list_head queue;
++	unsigned mapped:1;
++};
++
++enum ep0state {
++	EP0_DISCONNECT,		/* no host */
++	EP0_IDLE,		/* between STATUS ack and SETUP report */
++	EP0_IN, EP0_OUT,	/* data stage */
++	EP0_STATUS,		/* status stage */
++	EP0_OUT_STATUS,		/* status stage */
++	EP0_IN_STATUS,		/* status stage */
++	EP0_STALL,		/* data or status stages */
++	EP0_SUSPEND,		/* usb suspend */
++	EP0_WAIT_ZLP,		/* usb suspend */
++	EP0_READY,		/* usb suspend */
++	EP0_WAIT_HANDSHAKE,	/* usb suspend */
++};
++
++char *ep0statename[] = {
++	"EP0_DISCONNECT",	/* no host */
++	"EP0_IDLE",		/* between STATUS ack and SETUP report */
++	"EP0_IN", "EP0_OUT",	/* data stage */
++	"EP0_STATUS",		/* status stage */
++	"EP0_OUT_STATUS",	/* status stage */
++	"EP0_IN_STATUS",	/* status stage */
++	"EP0_STALL",		/* data or status stages */
++	"EP0_SUSPEND",		/* usb suspend */
++	"EP0_WAIT_ZLP",		/* usb suspend */
++	"EP0_READY",		/* usb suspend */
++	"EP0_WAIT_HANDSHAKE",	/* usb suspend */
++};
++
++struct vox160_udc {
++	/* Public gadget structure which represents a usb slave device */
++	struct usb_gadget gadget;
++	/* Spinlock for accessing the UDC */
++	spinlock_t lock;
++
++	/* All of UDC endpoints */
++	struct vox160_ep ep[VOX160_UDC_NUM_EP];
++
++	/* A pointer to bound gadget driver */
++	struct usb_gadget_driver *driver;
++
++	/* Current endpoint 0 state */
++	enum ep0state ep0state;
++
++	/* AD6489 USBD General Registers */
++	struct vox160udc_gen_regs __iomem *gen_regs;
++	/* DMA Registers */
++	struct vox160udc_dma_regs __iomem *dma_regs;
++	/* USB Endpoint(n) Interrupt Register (USBD_INTRn) */
++	struct vox160udc_ep_regs __iomem *usbd_intr[VOX160_UDC_MAX_EP];
++#define USBD_INTR_TC         0x0001
++#define USBD_INTR_PC         0x0002
++#define USBD_INTR_BCSTAT     0x0004
++#define USBD_INTR_SETUP      0x0008
++#define USBD_INTR_MSETUP     0x0010
++#define USBD_INTR_MERR       0x0020
++
++	/* USB Endpoint(n) Mask Register (USBD_MASKn) */
++	struct vox160udc_ep_regs __iomem *usbd_mask[VOX160_UDC_MAX_EP];
++#define USBD_MASK_TC         0x0001
++#define USBD_MASK_PC         0x0002
++#define USBD_MASK_BCSTAT     0x0004
++#define USBD_MASK_SETUP      0x0008
++#define USBD_MASK_MSETUP     0x0010
++#define USBD_MASK_MERR       0x0020
++#define USBD_EP_MASK_ALL     0x003f
++
++	/* USB Endpoint(n) Control Register (USBD_EPCFGn) */
++	struct vox160udc_ep_regs __iomem *usbd_epcfg[VOX160_UDC_MAX_EP];
++#define USBD_EPCFG_ARM        0x0001	/* 1 - arm endpoint */
++#define USBD_EPCFG_DIR_OUT    0x0000	/* transfer direction out */
++#define USBD_EPCFG_DIR_IN     0x0002	/* transfer direction in */
++#define USBD_EPCFG_MAX_8      0x0000
++#define USBD_EPCFG_MAX_16     (0x01 << 4)
++#define USBD_EPCFG_MAX_32     (0x02 << 4)
++#define USBD_EPCFG_MAX_64     (0x03 << 4)
++
++	/* USB Endpoint(n) Address Offset Register (USBD_EPADRn) */
++	struct vox160udc_ep_regs __iomem *usbd_epadr[VOX160_UDC_MAX_EP];
++	/* USB Endpoint(n) Buffer Length Register (USBD_EPLENn) */
++	struct vox160udc_ep_regs __iomem *usbd_eplen[VOX160_UDC_MAX_EP];
++
++	/* VOx160 USBD GPIO registers */
++	void __iomem *gpio_dir_reg;
++	void __iomem *gpio_flag_set;
++	void __iomem *gpio_flag_clear;
++
++	/* USBD dma base address */
++	void __iomem *dma_base_address;
++
++	/* The following is used for device cleanup */
++
++	/* Number of IRQs requested so far */
++	unsigned got_irq:2;
++	/* 1 if the UDC is enabled */
++	unsigned enabled:1;
++	unsigned vbus:1;
++	/* 1 if device has been registered with the kernel */
++	unsigned registered:1;
++	unsigned fake_config:1;
++
++	/* statistics... */
++	unsigned long irqs;	/* total interrupt rcvd */
++	unsigned long sof_irqs;	/* No of SOF interrupt rcvd */
++	unsigned long cfg_irqs;	/* No of SOF interrupt rcvd */
++	unsigned long msof_irqs;	/* No of MSOF interrupt rcvd */
++	unsigned long rst_irqs;	/* No of RST interrupt rcvd */
++	unsigned long susp_irqs;	/* No of SUSP interrupt rcvd */
++	unsigned long resume_irqs;	/* No of RESUME interrupt rcvd */
++	unsigned long frmmat_irqs;	/* No of FRMMAT interrupt rcvd */
++	unsigned long dma_irqs;	/* No of DMA interrupt rcvd */
++	unsigned long ep0_irqs;	/* No of EP0 interrupt rcvd */
++	unsigned long ep1_irqs;	/* No of EP1 interrupt rcvd */
++	unsigned long ep2_irqs;	/* No of EP2 interrupt rcvd */
++	unsigned long ep3_irqs;	/* No of EP3 interrupt rcvd */
++	unsigned long frame_number;	/* No of EP3 interrupt rcvd */
++};
++
++/*-------------------------------------------------------------------------*/
++#define xprintk(dev,level,fmt,args...) \
++	printk(level "%s:" fmt,dev->gadget.name , ## args)
++
++#ifdef DEBUG
++#define DBG(dev,fmt,args...) \
++	xprintk(dev , KERN_CRIT , fmt , ## args)
++#else
++#define DBG(dev,fmt,args...) \
++	do { } while (0)
++#endif				/* DEBUG */
++
++#ifdef VERBOSE
++#define VDBG DBG
++#else
++#define VDBG(dev,fmt,args...) \
++	do { } while (0)
++#endif				/* VERBOSE */
++
++#define ERROR(dev,fmt,args...) \
++	xprintk(dev , KERN_ERR , fmt , ## args)
++#define WARN(dev,fmt,args...) \
++	xprintk(dev , KERN_WARNING , fmt , ## args)
++#define INFO(dev,fmt,args...) \
++	xprintk(dev , KERN_INFO , fmt , ## args)
+diff -Naur gadget_old/zero.c gadget_new/zero.c
+--- gadget_old/zero.c	2006-04-24 16:03:21.529600000 -0700
++++ gadget_new/zero.c	2006-04-24 23:21:27.236201000 -0700
+@@ -218,7 +218,7 @@
+  * This device advertises two configurations; these numbers work
+  * on a pxa250 as well as more flexible hardware.
+  */
+-#define	CONFIG_SOURCE_SINK	3
++#define	CONFIG_SOURCE_SINK	1
+ #define	CONFIG_LOOPBACK		2
+ 
+ static struct usb_device_descriptor
+@@ -226,7 +226,7 @@
+ 	.bLength =		sizeof device_desc,
+ 	.bDescriptorType =	USB_DT_DEVICE,
+ 
+-	.bcdUSB =		__constant_cpu_to_le16 (0x0200),
++	.bcdUSB =		__constant_cpu_to_le16 (0x0110),
+ 	.bDeviceClass =		USB_CLASS_VENDOR_SPEC,
+ 
+ 	.idVendor =		__constant_cpu_to_le16 (DRIVER_VENDOR_NUM),
+@@ -234,7 +234,7 @@
+ 	.iManufacturer =	STRING_MANUFACTURER,
+ 	.iProduct =		STRING_PRODUCT,
+ 	.iSerialNumber =	STRING_SERIAL,
+-	.bNumConfigurations =	2,
++	.bNumConfigurations =	1,
+ };
+ 
+ static struct usb_config_descriptor
+@@ -1197,6 +1197,8 @@
+ 		device_desc.bcdDevice = __constant_cpu_to_le16 (0x0212);
+ 	} else if (gadget_is_at91(gadget)) {
+ 		device_desc.bcdDevice = __constant_cpu_to_le16 (0x0213);
++        } else if (gadget_is_vox160(gadget)) {
++                device_desc.bcdDevice = __constant_cpu_to_le16 (0x0214);
+ 	} else {
+ 		/* gadget zero is so simple (for now, no altsettings) that
+ 		 * it SHOULD NOT have problems with bulk-capable hardware.

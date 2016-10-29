@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+sleep 20
+brctl delif br0 wlan0-vap1
+killall chilli
+chilli -c /tmp/chilli.conf

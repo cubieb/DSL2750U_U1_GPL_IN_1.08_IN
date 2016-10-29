@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_NANOCOM
+	bool 'Nanocom for 3g sim card AT code'
+	default y
+	depends on OPENSOURCE
+  	help 
+		This program is used to send AT code to 3G sim card.

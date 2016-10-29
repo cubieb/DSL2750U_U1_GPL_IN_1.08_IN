@@ -1,0 +1,160 @@
+#!/bin/bash
+
+WLAN_DIR=$PWD/../..
+TGT_DIR=$PWD/../../../tgt
+TGT_BUILD=${TGT_DIR}/build/magpie_1_0/image/magpie_ram/
+
+CLEAN_TYPE=
+HIF_TYPE=
+TGT_TYPE=
+
+##################################################
+################# FUNCTIONS ######################
+##################################################
+
+
+build_driver () 
+{
+    case "$1" in
+        "target" )
+        
+		cd ${TGT_BUILD}
+        source builds.ram ${HIF_TYPE} 
+        make
+        make MAGPIE_IF=${HIF_TYPE} build
+        cp -v fwu.c ${WLAN_DIR}/host/fwd/fwu_${TGT_TYPE}_${HIF_TYPE}.c
+        
+		;;
+        
+        "host" )
+
+        cd ${WLAN_DIR}/build/linux
+		make arch=i386 hif=${HIF_TYPE} tgt=${TGT_TYPE} bld-mod=pktlog
+        make arch=i386 hif=${HIF_TYPE} tgt=${TGT_TYPE} bld-mod=adf
+        make arch=i386 bld-mod=adf
+        make arch=i386 hif=${HIF_TYPE} tgt=${TGT_TYPE} bld-mod=hst
+        make arch=i386 hif=${HIF_TYPE} tgt=${TGT_TYPE} bld-mod=hst-fwd
+        
+		;;
+
+        * )
+        echo "Nothing to build ..."
+        ;;
+
+    esac
+}
+
+clean_driver ()
+{
+    case "$1" in
+
+        "host" )
+        cd ${WLAN_DIR}/build/linux
+        make clean
+        ;;
+
+        "target" )
+        cd ${TGT_BUILD}
+        source builds.ram
+        make clean
+        ;;
+        * )
+        echo "Nothing to clean ..."
+        ;;
+
+    esac
+}
+
+invoke_build ()
+{
+    case "$1" in
+        "host" )
+        build_driver "host"
+        ;;
+
+        "target" )
+        build_driver "target"
+        ;;
+
+        * )
+        build_driver "target"
+	    build_driver "host"
+        ;;
+
+	    esac
+}
+
+parse_input()
+{
+	case "$1" in
+		"clean" ) # Clean start
+    
+	    case "$2" in # 2nd arg parsing starts 
+	        "target" )
+	        CLEAN_TYPE="target"
+	        ;;
+
+	        "host" )
+	        CLEAN_TYPE="host"
+	        ;;
+
+	        * )
+	        CLEAN_TYPE="host"
+	        ;; 
+	
+	    esac #2nd arg parsing ends
+	
+		echo "Cleaning ${CLEAN_TYPE}...."
+
+	    clean_driver ${CLEAN_TYPE}
+		;; #Clean ends
+	
+		"pci" ) #Build PCI
+		
+	    echo "Building Magpie PCI ..."
+    
+	    TGT_TYPE=magpie
+	    HIF_TYPE=pci
+		
+		invoke_build "$2"
+	
+		;; #End Build PCI
+	
+		"usb" ) #Build USB
+		
+		HIF_TYPE=usb
+
+		case "$2" in
+			"k2" )
+			TGT_TYPE=k2
+			;;
+
+			* )
+			TGT_TYPE=magpie
+			;;
+	
+		esac
+
+		invoke_build "$3"
+	
+		;; #End Build USB
+		
+		"gmac" )
+		echo "Building Magpie GMAC ..."
+	    build_driver
+		;;
+		
+		* )
+		echo "[BASH Script] usage:"
+		echo "	make_i386 <pci/gmac> <host/target>"
+		echo "	make_i386 <usb> <magpie/k2> <host/target>"
+
+		;;
+	esac
+
+}
+############################
+########## MAIN ############
+############################
+
+parse_input $1 $2

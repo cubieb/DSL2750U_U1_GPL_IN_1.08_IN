@@ -1,0 +1,162 @@
+
+<!-- config -->
+<td>
+<div class="config2">
+	<p class="bk_orange" id="lang_flux"> FLUX</p>
+	<div class="div_orange">
+		<p id="lang_fluxdsc">Port Flux control can Auto division bandwidth depend on user's requirement, and user can set it. </p>
+		<div class="div_button">
+			<input type="button" id="submit" name="submit" value="Save" onClick="uiSubmit();">
+			<input type="button" id="cancle" name="cancle" value="Cancel" onClick="uiPageRefresh()">
+		</div>
+	</div>
+	<p class="do bk_black" id="lang_fluxset">Setting Config</p>
+	<div class="div_black">
+		<div class="div_left" id="lang_fluxenable1">Flux Control Enable :</div>
+		<div class="div_right"><input type="checkbox" id="flux_control_enable" name="flux_control_enable" value=""/></div>
+
+    	<div class="div_left" id="lang_fluxenable2">Auto division bandwidth :</div>
+		<div class="div_right"><input type="checkbox" id="auto_div_bandwidth" name="auto_div_bandwidth" value="" onClick="aclick()"/></div>
+		
+		<div class="div_left" id="lang_fluxinterface">Wan port bandwidth:</div>
+		<div class="div_right"> <input type="text" id="port_bandwidth"  name="port_bandwidth" value="0"/><span> Kbps </span></div>	
+
+		<div class="div_left" id="lang_fluxenable3">Idle Wan port bandwidth:</div>
+		<div class="div_right"> <input type="text" id="idle_port_bandwidth"  name="idle_port_bandwidth" value="0"/><span> Kbps </span></div>	
+	</div>
+	
+	 <div class="div_black">
+	<p class="do bk_black" id="lang_fluxrule">Rule</p>
+		<table class="td_table_s" id="td_vlan">
+			<tr>
+			    	<td id = "lang_serv"> </td>
+			    	<td id = "lang_IP_Range">IP Range</td>
+			    	<td id  = "lang_Run_Interface">Run Interface</td>
+		    		<td id  = "lang_Bodewidth">BandWidthRange( Kbps )</td>
+				<td id  = "lang_dispatch">dispatch</td>
+			</tr>
+			<tr>
+				<td id="r1"><div class="div_right"><input type="checkbox" id="First_enable"  name="First_enable" value=""></div></td>
+				<td id="r11" >
+				<div align="center" >  
+					<input type="text" id="First_IPstart" size="10" maxlength="15" >
+					<span>~</span> 
+					<input type="text" id="First_IPend" name="text" size="10" maxlength="15" >
+                           </div>
+                           </td>
+				<td ><select id="First_run_interface"></select></td>
+				<td id="r111">
+				<div align="center" > 
+	                		<input type="text" id="First_Rate_min" size="2" >
+	                		<span>~</span>
+	                		<input type="text" id="First_Rate_max" size="2" >
+	                	</div>
+	                	</td>
+                		<td>	
+                		<div><select id="First_Schedule">
+                    			<option ></option>
+                    		</select>
+                    	</div>
+				<div> 
+					<input type="button" name="submit_1" id="submit_1" value="Schedule" onClick="Select_shedule();">
+				</div>
+				</td>
+			<tr>
+			<tr>
+				<td id="r2"><div class="div_right"><input type="checkbox" id="Second_enable"  name="First_enable" value=""></div></td>
+				<td id="22">
+				<div align="center" >  
+					<input type="text" id="Second_IPstart" size="10" maxlength="15" >
+					<span>~</span> 
+					<input type="text" id="Second_IPend" name="text" size="10" maxlength="15" >
+                           </div>
+                           </td>
+				<td ><select id="Second_run_interface"></select></td>
+	                		<td id="r222">
+					<div align="center" > 
+		                		<input type="text" id="Second_Rate_min" size="2" >
+		                		<span>~</span>
+		                		<input type="text" id="Second_Rate_max" size="2" >
+		                	</div>
+		                	</td>	
+                		<td>
+                		<div><select id="Second_Schedule">
+                    			<option ></option>
+                    		</select>
+                    	</div>
+				<div> 
+					<input type="button" name="submit_2" id="submit_2" value="Schedule" onClick="Select_shedule();">
+				</div>
+				</td>
+			<tr>
+			<tr>
+				<td id="r3"><div class="div_right"><input type="checkbox" id="Three_enable"  name="First_enable" value=""></div></td>
+				<td id="r33" >
+				<div align="center" >  
+					<input type="text" id="Three_IPstart" size="10" maxlength="15" >
+					<span>~</span> 
+					<input type="text" id="Three_IPend" name="text" size="10" maxlength="15" >
+                           </div>
+                           </td>
+				<td ><select id="Three_run_interface"></select></td>
+	                	<td id="r333">
+					<div align="center" > 
+		                		<input type="text" id="Three_Rate_min" size="2" >
+		                		<span>~</span>
+		                		<input type="text" id="Three_Rate_max" size="2" >
+		                	</div>
+		                	</td>	
+                		<td>
+                		<div><select id="Three_Schedule">
+                    			<option ></option>
+                    		</select>
+                    	</div>
+				<div> 
+					<input type="button" name="submit_3" id="submit_3" value="Schedule" onClick="Select_shedule();">
+				</div>
+				</td>
+			<tr>
+			<tr>
+				<td id="r4"><div class="div_right"><input type="checkbox" id="Four_enable"  name="First_enable" value=""></div></td>
+				<td id="r44" >
+				<div align="center" >  
+					<input type="text" id="Four_IPstart" size="10" maxlength="15" >
+					<span>~</span> 
+					<input type="text" id="Four_IPend" name="text" size="10" maxlength="15" >
+                           </div>
+                           </td>
+				<td >
+				<select id="Four_run_interface">
+				</select>
+				</td>
+	                	<td id="r444">
+					<div align="center" > 
+		                		<input type="text" id="Four_Rate_min" size="2" >
+		                		<span>~</span>
+		                		<input type="text" id="Four_Rate_max" size="2" >
+		                	</div>
+		             </td>	
+                		<td>
+                		<div><select id="Four_Schedule">
+                    			<option ></option>
+                    		</select>
+                    	</div>
+				<div> 
+					<input type="button" name="submit_4" id="submit_4" value="Schedule" onClick="Select_shedule();">
+				</div>
+				</td>
+			<tr>
+        </table>
+     	</div>
+   	 <div id = "lang_Rule_IP_1" style="display:none;">Rule 1 : First Ip is null</div>
+	 <div id = "lang_Rule_BodeWidth_1" style="display:none;">Rule 1 : BodeWidth is null</div>
+	 <div id = "lang_Rule_IP_2" style="display:none;">Rule 2 : First Ip is null</div>
+	 <div id= "lang_Rule_BodeWidth_2" style="display:none;">Rule 2 : BodeWidth is null</div>
+	 <div id = "lang_Rule_IP_3" style="display:none;">Rule 3 : First Ip is null</div>
+	 <div id = "lang_Rule_BodeWidth_3" style="display:none;">Rule 3 : BodeWidth is null</div>
+	 <div id = "lang_Rule_IP_4" style="display:none;">Rule 4 : First Ip is null</div>
+	 <div id = "lang_Rule_BodeWidth_4" style="display:none;">Rule 4 : BodeWidth is null</div>
+	 <div id = "lang_Rule_IP_5" style="display:none;">Rule 5 : First Ip is null</div>
+	 <div id = "lang_Rule_BodeWidth_5" style="display:none;">Rule 5 : BodeWidth is null</div>
+</div>
+</td>

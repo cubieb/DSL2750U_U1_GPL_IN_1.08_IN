@@ -1,0 +1,596 @@
+menuconfig TBS_DEBUG
+    bool "Enable TBS Debug Options"
+    default n
+    help
+      Setting TBS Debug Options
+
+if TBS_DEBUG
+menuconfig TBS_LOWLEVEL_DEBUG
+	bool "TBS lowlevel function debug"
+	default n
+	help
+		Debug information for lowlevel function
+		such as flash led eth button etc.
+
+config BOOTLOADER_DEBUG
+        boolean "Bootloader debug"
+        default n
+	depends on TBS_DEBUG && TBS_LOWLEVEL_DEBUG
+        help
+                Debug information for bootloader.
+
+config BOOTLOADER_ETH_DEBUG
+        boolean "Bootloader ethernet debug"
+        default n
+	depends on TBS_DEBUG && TBS_LOWLEVEL_DEBUG
+        help
+                Debug information for bootloader.
+
+config FLASH_DEBUG
+        boolean "Flash layout debug"
+        default n
+	depends on TBS_DEBUG && TBS_LOWLEVEL_DEBUG
+        help
+                Debug information for flash_layout.
+
+config LED_DEBUG
+	boolean "LEDS debug"
+	default n
+	depends on TBS_DEBUG && TBS_LOWLEVEL_DEBUG
+	help
+		Debug information for leds.
+
+config BUTTON_DEBUG
+        boolean "Buttons debug"
+        default n
+        depends on TBS_DEBUG && TBS_LOWLEVEL_DEBUG
+        help
+                Debug information for Buttons.
+
+config KERNEL_INITCALL_DEBUG
+	boolean "Linux Kernel initcall debug"
+	default n
+	depends on TBS_DEBUG && TBS_LOWLEVEL_DEBUG
+	help
+		Debug information for kernel initcall
+	 	boot commandline as initcall_debug=1
+
+menuconfig TBS_APPS_DEBUG
+    bool "TBS Application Debug"
+    default n
+    depends on TBS_DEBUG
+    help
+      Setting TBS Application Debug Options
+
+config TBS_APPS_DEBUG_SYSCMD
+    bool "TBSSYSTEM"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      System call module debug
+
+config TBS_APPS_DEBUG_MSG
+    bool "MSG"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      MSG module debug
+      
+config TBS_APPS_DEBUG_FON
+    bool "FON"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      FON module debug
+
+config TBS_APPS_DEBUG_CFG
+    bool "CFG"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      CFG module debug
+
+config TBS_APPS_DEBUG_PC
+    bool "PC"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      PC module debug
+
+config TBS_APPS_DEBUG_MALLOC
+    bool "MALLOC"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      MALLOC module debug
+
+config TBS_APPS_DEBUG_CMM
+    bool "CMM"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      CMM module debug
+
+config TBS_APPS_DEBUG_TIMER
+    bool "TIMER"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      TIMER module debug
+
+config TBS_APPS_DEBUG_LAN
+    bool "LAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      LAN module debug
+
+config TBS_APPS_DEBUG_LVLAN
+    bool "LVLAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      LVLAN module debug
+
+config TBS_APPS_DEBUG_LANPORT_VLAN
+    bool "LanPortVLAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      Lan Port VLAN module debug
+      
+config TBS_APPS_DEBUG_WAN
+    bool "WAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      WAN module debug
+
+config TBS_APPS_DEBUG_PUBLIC_ETH
+	bool "PUBLIC_ETH"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  Public eth debug
+
+config TBS_APPS_DEBUG_ETHLAN
+    bool "ETHLAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      ETHLAN module debug
+
+config TBS_APPS_DEBUG_ETHWAN
+    bool "ETHWAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      ETHWAN module debug
+
+config TBS_APPS_DEBUG_ACL
+    bool "ACL"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      ACL module debug
+
+config TBS_APPS_DEBUG_ALG
+    bool "ALG"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      ALG module debug
+
+config TBS_APPS_DEBUG_DEVCONFIG
+    bool "DEVCONFIG"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DEVCONFIG module debug
+
+config TBS_APPS_DEBUG_ANTIATTACK
+    bool "ANTIATTACK"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      ANTIATTACK module debug
+
+config TBS_APPS_DEBUG_ATM
+    bool "ATM"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      ATM module debug
+
+config TBS_APPS_DEBUG_AUTH
+    bool "AUTH"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      AUTH module debug
+
+config TBS_APPS_DEBUG_DEVINFO
+    bool "DEVINFO"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DEVINFO module debug
+
+config TBS_APPS_DEBUG_DHCPR
+    bool "DHCPR"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DHCPR module debug
+
+config TBS_APPS_DEBUG_DHCPS
+    bool "DHCPS"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DHCPS module debug
+
+config TBS_APPS_DEBUG_DNS
+    bool "DNS"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DNS module debug
+
+config TBS_APPS_DEBUG_DHCP6S
+	bool "DHCP6S"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	   DHCP6S module debug
+
+config TBS_APPS_DEBUG_V6CONN
+	bool "V6CONN"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	   V6CONN module debug
+
+config TBS_APPS_DEBUG_RADVD
+	bool "RADVD"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	   RADVD module debug
+
+config TBS_APPS_DEBUG_DSL
+    bool "DSL"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DSL module debug
+
+config TBS_APPS_DEBUG_DROUTE
+    bool "DROUTE"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      DROUTE module debug
+
+config TBS_APPS_DEBUG_FIREWALL
+    bool "FIREWALL"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      FIREWALL module debug
+
+config TBS_APPS_DEBUG_IGMP
+    bool "IGMP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      IGMP module debug
+
+config TBS_APPS_DEBUG_FIREWALLLOG
+    bool "FIREWALLLOG"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      FIREWALLLOG module debug
+      
+config TBS_APPS_DEBUG_MLD
+    bool "MLD"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      MLD module debug
+config TBS_APPS_DEBUG_IPCONN
+    bool "IPCONN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      IPCONN module debug
+
+config TBS_APPS_DEBUG_IPT
+    bool "IPT"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      IPT module debug
+
+config TBS_APPS_DEBUG_GRE
+    bool "GRE"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      GRE module debug
+
+config TBS_APPS_DEBUG_IP6MON
+	bool 'IP6MON'
+	default n
+	depends on TBS_APPS_DEBUG && TBS_SUPPORT_IPV6
+	help
+	  IP6Mon module debug
+
+config TBS_APPS_DEBUG_IP6AAC
+	bool 'IP6AAC'
+	default n
+	depends on TBS_APPS_DEBUG && TBS_SUPPORT_IPV6
+	help
+	  IP6AAC module debug
+
+config TBS_APPS_DEBUG_LOGGER
+    bool "LOGGER"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      LOGGER module debug
+
+config TBS_APPS_DEBUG_PING
+    bool "PING"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      PING module debug
+
+config TBS_APPS_DEBUG_DIAG
+    bool "Diagnostics"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      PING module debug
+
+config TBS_APPS_DEBUG_PORTMAP
+    bool "PORTMAP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      PORTMAP module debug
+
+config TBS_APPS_DEBUG_PCP
+    bool "PCP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      PCP module debug
+
+config TBS_APPS_DEBUG_PPPOE
+    bool "PPPOE"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      PPPOE module debug
+
+config TBS_APPS_DEBUG_QOS
+    bool "QOS"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      QOS module debug
+
+config TBS_APPS_DEBUG_SNMP
+    bool "SNMP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      SNMP module debug
+
+config TBS_APPS_DEBUG_SAMBA
+    bool "SAMBA"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      SAMBA module debug
+
+config TBS_APPS_DEBUG_USBPIN
+    bool "USB3GPin"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      3G pin module debug
+
+config TBS_APPS_DEBUG_SNTP
+    bool "SNTP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      SNTP module debug
+
+config TBS_APPS_DEBUG_SROUTE
+    bool "SROUTE"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      SROUTE module debug
+config TBS_APPS_DEBUG_V6SROUTE
+    bool "V6StaticRouting"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      debug for IPv6 static routing
+
+config TBS_APPS_DEBGU_SUPP
+    bool "SUPP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      SUPP module debug
+
+config TBS_APPS_DEBUG_TR069BE
+    bool "TR069BE"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      TR069BE module debug
+
+config TBS_APPS_DEBUG_TRACERT
+    bool "TRACEROUTE"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      TRACEROUTE module debug
+
+config TBS_APPS_DEBUG_UPNP
+    bool "UPNP"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      UPNP module debug
+
+config TBS_APPS_DEBUG_URLFILTER
+    bool "URLFILTER"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      URLFILTER module debug
+
+config TBS_APPS_DEBUG_WLAN
+    bool "WLAN"
+    default n
+    depends on TBS_APPS_DEBUG
+    help
+      WLAN module debug
+
+config TBS_APPS_DEBUG_WPS
+    bool "WPS"
+    default n
+    depends on TBS_APPS_DEBUG_WLAN
+    help
+      WPS module debug
+
+config TBS_APPS_DEBUG_VDSL
+	bool "VDSL"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  VDSL module debug
+
+config TBS_APPS_DEBUG_WEBP
+	bool "WEBProxy"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  WEB proxy module debug
+
+config TBS_APPS_DEBUG_DDNS
+	bool "DDNS"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  DDNS module debug
+
+config TBS_APPS_DEBUG_WANSELECT
+	bool "WANSELECT"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  WANSELECT module debug
+
+config TBS_APPS_DEBUG_MACFILTER
+	bool "MACFILTER"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  MACFILTER module debug
+
+config TBS_APPS_DEBUG_PORTTRIGGER
+	bool "PORTTRIGGER"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  MACFILTER module debug
+
+config TBS_APPS_DEBUG_TF_PORTMAPPING 
+	bool "TF_PORTMAPPING"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  port-bind function for wizard-web
+
+config TBS_APPS_DEBUG_SCHEDULE
+	bool 'SCHEDULE'
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+		schedule module debug.
+
+config TBS_APPS_DEBUG_TR069HOLD
+	bool 'TR069HOLD'
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+		tr069hold module debug.
+
+config TBS_APPS_DEBUG_MACCLONE
+	bool 'MACCLONE'
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+		MACCLONE module debug
+
+##################################################
+config TBS_APPS_DEBUG_PUBLIC_WAN
+	bool "PUBLIC_WAN"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  Public wan debug
+
+config TBS_APPS_DEBUG_PUBLIC_LAYER2BR
+	bool "PUBLIC_LAYER2BR"
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+	  Public layer2br debug
+
+config TBS_APPS_DEBUG_PUBLIC_SCHEDULE
+	bool 'PUBLIC_SCHEDULE'
+	default n
+	depends on TBS_APPS_DEBUG
+	help
+		public schedule module.
+
+##################################################
+
+config TBS_GDB_DEBUG
+    bool "TBS debug using GDB"
+    default n
+    depends on TBS_DEBUG
+    help
+      Setting TBS debug using GDB inside product
+
+
+config TBS_LOGIC_DUMP_STACK
+    bool "TBS debug loigic dumpstack"
+    default n   
+    depends on TBS_DEBUG
+    help
+      Setting TBS debug support dumpstack
+
+choice
+        depends on TBS_LOGIC_DUMP_STACK
+        prompt "platform type"
+	default TBS_PLATFORM_IS_MIPS
+config  TBS_PLATFORM_IS_MIPS
+                bool "MIPS"
+config  TBS_PLATFORM_IS_ARM
+                bool "ARM"
+endchoice
+
+endif
+

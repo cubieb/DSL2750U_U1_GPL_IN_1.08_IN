@@ -1,0 +1,8 @@
+#####################
+config OPENSOURCE_UDHCP
+	bool 'UDHCP Server(udhcpd)'
+	default y
+	depends on OPENSOURCE
+  	help 
+		uDHCPd is a DHCP server geared primarily toward embedded systems,
+		while striving to be fully functional and RFC compliant

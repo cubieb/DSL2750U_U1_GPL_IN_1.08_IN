@@ -1,0 +1,7 @@
+config OPENSOURCE_SAMBA
+        bool 'SAMBA'
+        default n
+        depends on OPENSOURCE
+        help
+	for NAS Application.
+

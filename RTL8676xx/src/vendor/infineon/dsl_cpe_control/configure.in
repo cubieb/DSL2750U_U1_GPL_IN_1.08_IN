@@ -1,0 +1,569 @@
+AC_REVISION($Revision: 1.54 $)
+
+AC_INIT([DSL CPE Control application],[3.3.2],[],[dsl_cpe_control])
+AC_CONFIG_SRCDIR(src/Makefile.am)
+AM_INIT_AUTOMAKE
+
+# Checks for programs.
+AC_PROG_CC
+
+# Checks for libraries.
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h limits.h netdb.h netinet/in.h stdlib.h string.h strings.h sys/ioctl.h sys/socket.h sys/time.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_CONST
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+AC_STRUCT_TM
+AC_C_VOLATILE
+
+# Checks for library functions.
+#AC_PROG_GCC_TRADITIONAL
+#AC_FUNC_MKTIME
+#AC_FUNC_SELECT_ARGTYPES
+#AC_FUNC_STRFTIME
+#AC_FUNC_STRTOD
+#AC_CHECK_FUNCS([ftime gethostbyname gettimeofday localtime_r memset select socket strchr strerror strstr strtoull])
+
+#
+# save the configure arguments
+#
+CONFIGURE_OPTIONS="$ac_configure_args"
+AC_SUBST(CONFIGURE_OPTIONS)
+
+dnl Set target application cflags
+AM_CONDITIONAL(ADD_APPL_CFLAGS_SET, false)
+AC_ARG_ENABLE(add-appl-cflags,
+   AS_HELP_STRING(--enable-add-appl-cflags=x,Set add appl cflags),
+   [
+      if test -n "$enableval"; then
+         echo Set add appl compile flags = $enableval
+         AM_CONDITIONAL(ADD_APPL_CFLAGS_SET, true)
+         AC_SUBST([ADD_APPL_CFLAGS],[$enableval])
+      fi
+   ]
+)
+
+dnl Set target application ldflags
+AM_CONDITIONAL(ADD_APPL_LDFLAGS_SET, false)
+AC_ARG_ENABLE(add-appl-ldflags,
+   AS_HELP_STRING(--enable-add-appl-ldflags=x,Set add appl ldflags),
+   [
+      if test -n "$enableval"; then
+         echo Set add appl ldflags = $enableval
+         AM_CONDITIONAL(ADD_APPL_LDFLAGS_SET, true)
+         AC_SUBST([ADD_APPL_LDFLAGS],[$enableval])
+      fi
+   ]
+)
+
+AC_ARG_ENABLE(static,
+   AS_HELP_STRING(--enable-static,Enable static linking of the application),
+   [
+      if test "$enableval" = yes; then
+         AM_CONDITIONAL(DSL_CPE_STATIC_LINKING, true)
+      else
+         AM_CONDITIONAL(DSL_CPE_STATIC_LINKING, false)
+      fi
+   ],
+   [
+      AM_CONDITIONAL(DSL_CPE_STATIC_LINKING, false)
+   ]
+)
+
+dnl set DSL DRIVER driver include path
+DEFAULT_DSL_DRIVER_INCL_PATH=''
+AC_ARG_ENABLE(driver-include,
+   AC_HELP_STRING(--enable-driver-include=-I/path/to/your/driver,Set the DSL DRIVER driver include path),
+   [
+    if test -n "$enableval"; then
+       echo Set the DSL CE API driver include path to $enableval
+       AC_SUBST([DSL_DRIVER_INCL_PATH],[$enableval])
+    else
+       echo Set the default DSL DRIVER driver include path $DEFAULT_DSL_DRIVER_INCL_PATH
+       AC_SUBST([DSL_DRIVER_INCL_PATH],[$DEFAULT_DSL_DRIVER_INCL_PATH])
+    fi
+   ]
+)
+
+dnl set DSL DEVICE DRIVER driver include path
+DEFAULT_DSL_DEVICE_DRIVER_INCL_PATH=''
+AC_ARG_ENABLE(device-driver-include,
+   AC_HELP_STRING(--enable-device-driver-include=-I/path/to/your/driver,Set the DSL DEVICE DRIVER driver include path),
+   [
+    if test -n "$enableval"; then
+       echo Set the DSL DEVICE driver include path to $enableval
+       AC_SUBST([DSL_DEVICE_DRIVER_INCL_PATH],[$enableval])
+    else
+       echo Set the default DSL DEVICE DRIVER driver include path $DEFAULT_DSL_DEVICE_DRIVER_INCL_PATH
+       AC_SUBST([DSL_DEVICE_DRIVER_INCL_PATH],[$DEFAULT_DSL_DEVICE_DRIVER_INCL_PATH])
+    fi
+   ]
+)
+
+dnl Enable all debug printouts
+AC_ARG_ENABLE(debug-prints,
+   AS_HELP_STRING(
+      [--enable-debug-prints],[Enable debug printouts (default).]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_SUBST([DSL_CPE_DEBUG_DISABLE],[no])
+      else
+         AC_DEFINE(DSL_CPE_DEBUG_DISABLE,,[Disabled debug prints])
+         AC_SUBST([DSL_CPE_DEBUG_DISABLE],[yes])
+      fi
+   ],
+   [
+      AC_DEFINE(DSL_CPE_DEBUG_DISABLE,,[Disabled debug prints])
+      AC_SUBST([DSL_CPE_DEBUG_DISABLE],[yes])
+   ]
+)
+
+dnl enable PM support
+AM_CONDITIONAL(INCLUDE_DSL_PM, false)
+AC_ARG_ENABLE(dsl_pm,
+   AC_HELP_STRING(
+      [--enable-dsl-pm],[Include DSL PM support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_PM,,[Include DSL PM support])
+         AM_CONDITIONAL(INCLUDE_DSL_PM, true)
+         AC_SUBST([INCLUDE_DSL_PM],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_PM],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_PM],[no])
+   ]
+)
+
+dnl enable PM channel counters support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS, false)
+AC_ARG_ENABLE(dsl_pm_channel_counters,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-channel-counters],[Include DSL PM channel counters support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS,,[Include DSL PM channel counters support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS],[no])
+   ]
+)
+
+dnl enable PM datapath counters support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS, false)
+AC_ARG_ENABLE(dsl_pm_datapath_counters,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-datapath-counters],[Include DSL PM datapath counters support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS,,[Include DSL PM datapath counters support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS],[no])
+   ]
+)
+
+dnl enable PM line counters support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_LINE_COUNTERS, false)
+AC_ARG_ENABLE(dsl_pm_line_counters,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-line-counters],[Include DSL PM line counters support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_LINE_COUNTERS,,[Include DSL PM line counters support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_LINE_COUNTERS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_LINE_COUNTERS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_LINE_COUNTERS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_LINE_COUNTERS],[no])
+   ]
+)
+
+dnl enable PM channel thresholds support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS, false)
+AC_ARG_ENABLE(dsl_pm_channel_thresholds,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-channel-thresholds],[Include DSL PM channel thresholds support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS,,[Include DSL PM channel thresholds support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS],[no])
+   ]
+)
+
+dnl enable PM datapath thresholds support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS, false)
+AC_ARG_ENABLE(dsl_pm_datapath_thresholds,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-datapath-thresholds],[Include DSL PM datapath thresholds support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS,,[Include DSL PM datapath thresholds support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS],[no])
+   ]
+)
+
+dnl enable PM line thresholds support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS, false)
+AC_ARG_ENABLE(dsl_pm_line_thresholds,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-line-thresholds],[Include DSL PM line thresholds support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS,,[Include DSL PM line thresholds support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS],[no])
+   ]
+)
+
+dnl enable PM total counters support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS, false)
+AC_ARG_ENABLE(dsl_pm_total,
+	AC_HELP_STRING(
+		[--enable-dsl-pm-total],[Include DSL PM total counters support]
+	),
+	[
+		if test "$enableval" = yes; then
+			AC_DEFINE(INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS,,[Include DSL PM total counters support])
+			AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS, true)
+			AC_SUBST([INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS],[yes])
+		else
+			AC_SUBST([INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS],[no])
+		fi
+	],
+	[
+		AC_SUBST([INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS],[no])
+	]
+)
+
+dnl enable PM history support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_HISTORY, false)
+AC_ARG_ENABLE(dsl_pm_history,
+	AC_HELP_STRING(
+		[--enable-dsl-pm-history],[Include DSL PM history support]
+	),
+	[
+		if test "$enableval" = yes; then
+			AC_DEFINE(INCLUDE_DSL_CPE_PM_HISTORY,,[Include DSL PM history support])
+			AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_HISTORY, true)
+			AC_SUBST([INCLUDE_DSL_CPE_PM_HISTORY],[yes])
+		else
+			AC_SUBST([INCLUDE_DSL_CPE_PM_HISTORY],[no])
+		fi
+	],
+	[
+		AC_SUBST([INCLUDE_DSL_CPE_PM_HISTORY],[no])
+	]
+)
+
+dnl enable PM showtime counters support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS, false)
+AC_ARG_ENABLE(dsl_pm_showtime,
+	AC_HELP_STRING(
+		[--enable-dsl-pm-showtime],[Include DSL PM showtime counters support]
+	),
+	[
+		if test "$enableval" = yes; then
+			AC_DEFINE(INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS,,[Include DSL PM showtime counters support])
+			AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS, true)
+			AC_SUBST([INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS],[yes])
+		else
+			AC_SUBST([INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS],[no])
+		fi
+	],
+	[
+		AC_SUBST([INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS],[no])
+	]
+)
+
+dnl enable PM optional parameters support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS, false)
+AC_ARG_ENABLE(dsl_pm_optional_parameters,
+   AC_HELP_STRING(
+      [--enable-dsl-pm-optional-parameters],[Include DSL PM optional parameters support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS,,[Include DSL PM optional parameters support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS, true)
+         AC_SUBST([INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS],[no])
+   ]
+)
+
+dnl enable the SOAP support
+AC_ARG_ENABLE(soap-support,
+   AS_HELP_STRING(
+      [--enable-soap-support],[Enable SOAP support.]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_SOAP_SUPPORT,,[Enable SOAP support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_SOAP_SUPPORT, true)
+         AC_SUBST([INCLUDE_DSL_CPE_SOAP_SUPPORT],[yes])
+      else
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_SOAP_SUPPORT, false)
+         AC_SUBST([INCLUDE_DSL_CPE_SOAP_SUPPORT],[no])
+      fi
+   ],
+   [
+      AM_CONDITIONAL(INCLUDE_DSL_CPE_SOAP_SUPPORT, false)
+      AC_SUBST([INCLUDE_DSL_CPE_SOAP_SUPPORT],[no])
+   ]
+)
+
+dnl enable CMV test scripts parser support
+AC_ARG_ENABLE(cmv-scripts,
+   AS_HELP_STRING(
+      [--enable-cmv-scripts],[Enable CMV scripts parser support.]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT,,[Enable CMV scripts parser support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT, true)
+         AC_SUBST([INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT],[yes])
+      else
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT, false)
+         AC_SUBST([INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT],[no])
+      fi
+   ],
+   [
+      AM_CONDITIONAL(INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT, false)
+      AC_SUBST([INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT],[no])
+   ]
+)
+
+dnl enable script notification support
+AC_ARG_ENABLE(script-notification,
+   AS_HELP_STRING(
+      [--enable-script-notification],[Enable script notification support.]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_SCRIPT_NOTIFICATION,,[Enable script notification support])
+         AM_CONDITIONAL(INCLUDE_SCRIPT_NOTIFICATION, true)
+         AC_SUBST([INCLUDE_SCRIPT_NOTIFICATION],[yes])
+      else
+         AM_CONDITIONAL(INCLUDE_SCRIPT_NOTIFICATION, false)
+         AC_SUBST([INCLUDE_SCRIPT_NOTIFICATION],[no])
+      fi
+   ],
+   [
+      AM_CONDITIONAL(INCLUDE_SCRIPT_NOTIFICATION, false)
+      AC_SUBST([INCLUDE_SCRIPT_NOTIFICATION],[no])
+   ]
+)
+
+dnl enable the CLI support
+AC_ARG_ENABLE(cli-support,
+   AS_HELP_STRING(
+      [--enable-cli-support],[Enable CLI support.]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_CLI_SUPPORT,,[Enable CLI support])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_CLI_SUPPORT, true)
+         AC_SUBST([INCLUDE_DSL_CPE_CLI_SUPPORT],[yes])
+      else
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_CLI_SUPPORT, false)
+         AC_SUBST([INCLUDE_DSL_CPE_CLI_SUPPORT],[no])
+      fi
+   ],
+   [
+      AM_CONDITIONAL(INCLUDE_DSL_CPE_CLI_SUPPORT, false)
+      AC_SUBST([INCLUDE_DSL_CPE_CLI_SUPPORT],[no])
+   ]
+)
+
+dnl enable DANUBE support
+AM_CONDITIONAL(DRIVER_DANUBE, false)
+dnl enable DANUBE support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_API_DANUBE, false)
+AC_ARG_ENABLE(danube,
+   AC_HELP_STRING(
+      [--enable-danube],[Add DANUBE support.]
+   ),
+   [
+      AC_DEFINE(INCLUDE_DSL_CPE_API_DANUBE,,[Add DANUBE support])
+      AM_CONDITIONAL(INCLUDE_DSL_CPE_API_DANUBE, true)
+      AC_SUBST([DSL_DEVICE_NAME],[Danube])
+   ]
+)
+
+dnl enable AMAZON_SE support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_API_AMAZON_SE, false)
+AC_ARG_ENABLE(amazon_se,
+    AC_HELP_STRING(
+        [--enable-amazon-se],[Add AMAZON_SE support.]
+    ),
+    [
+        AC_DEFINE(INCLUDE_DSL_CPE_API_AMAZON_SE,,[Add AMAZON_SE support])
+        AM_CONDITIONAL(INCLUDE_DSL_CPE_API_AMAZON_SE, true)
+        AC_SUBST([DSL_DEVICE_NAME],[Amazon_se])
+    ]
+)
+
+dnl enable VINAX support
+AM_CONDITIONAL(INCLUDE_DSL_CPE_API_VINAX, false)
+AC_ARG_ENABLE(vinax,
+   AC_HELP_STRING(
+      [--enable-vinax],[Add VINAX support.]
+   ),
+   [
+      AC_DEFINE(INCLUDE_DSL_CPE_API_VINAX,,[Add VINAX support])
+      AM_CONDITIONAL(INCLUDE_DSL_CPE_API_VINAX, true)
+      AC_SUBST([DSL_DEVICE_NAME],[Vinax])
+   ]
+)
+
+dnl set the number of channels per line
+AC_ARG_WITH(channels-per-line,
+   AS_HELP_STRING(
+      [--with-channels-per-line=value],[Channels per line to support.]
+   ),
+   [
+      if test "$withval" = yes; then
+         AC_MSG_ERROR([ Please provide a value for the channels per line ]);
+      fi
+      AC_DEFINE_UNQUOTED(DSL_CHANNELS_PER_LINE,$withval, [Channels per line to support])
+      AC_SUBST([DSL_CHANNELS_PER_LINE],[$withval])
+   ]
+)
+
+dnl enable TCP debug support
+AM_CONDITIONAL(DSL_DEBUG_TOOL_INTERFACE, false)
+AC_ARG_ENABLE(debug-tool-interface,
+   AC_HELP_STRING(
+      [--enable-debug-tool-interface],[Include DSL TCP debug support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(DSL_DEBUG_TOOL_INTERFACE,,[Include DSL TCP debug support])
+         AM_CONDITIONAL(DSL_DEBUG_TOOL_INTERFACE, true)
+         AC_SUBST([DSL_DEBUG_TOOL_INTERFACE],[yes])
+      else
+         AC_SUBST([DSL_DEBUG_TOOL_INTERFACE],[no])
+      fi
+   ],
+   [
+      AC_SUBST([DSL_DEBUG_TOOL_INTERFACE],[no])
+   ]
+)
+
+dnl enable DSL CEOC support
+AM_CONDITIONAL(INCLUDE_DSL_CEOC, false)
+AC_ARG_ENABLE(dsl-ceoc,
+	AC_HELP_STRING(
+		[--enable-dsl-ceoc],[Include DSL CEOC support]
+	),
+	[
+		if test "$enableval" = yes; then
+			AC_DEFINE(INCLUDE_DSL_CEOC,,[Include DSL CEOC support])
+			AM_CONDITIONAL(INCLUDE_DSL_CEOC, true)
+			AC_SUBST([INCLUDE_DSL_CEOC],[yes])
+		else
+			AC_SUBST([INCLUDE_DSL_CEOC],[no])
+		fi
+	],
+	[
+		AC_SUBST([INCLUDE_DSL_CEOC],[no])
+	]
+)
+
+dnl Set the configure params for dist check
+
+AC_SUBST([DISTCHECK_CONFIGURE_PARAMS],[$CONFIGURE_OPTIONS])
+
+AC_CONFIG_COMMANDS_PRE([
+echo -e "------------------------------------------------------------------------"
+echo -e " Configuration for dsl_cpe_control:"
+echo -e "  Source code location:           $srcdir"
+echo -e "  Compiler:                       $CC"
+echo -e "  Compiler flags:                 $CFLAGS"
+echo -e "  Host System Type:               $host"
+echo -e "  Install path:                   $prefix"
+echo -e "  Driver Include Path             $DSL_DRIVER_INCL_PATH"
+echo -e "  Device Driver Include Path      $DSL_DEVICE_DRIVER_INCL_PATH"
+echo -e "  DSL device:                     $DSL_DEVICE_NAME"
+echo -e "  Channels per line:              $DSL_CHANNELS_PER_LINE"
+echo -e "  Disable debug prints:           $DSL_CPE_DEBUG_DISABLE"
+echo -e "  Enable static build:            $DSL_CPE_STATIC_LINKING"
+echo -e "  Include SOAP support:           $INCLUDE_DSL_CPE_SOAP_SUPPORT"
+echo -e "  Include CMV scripts:            $INCLUDE_DSL_CPE_CMV_SCRIPTS_SUPPORT"
+echo -e "  Include scripts notification:   $INCLUDE_SCRIPT_NOTIFICATION"
+echo -e "  Include CLI:                    $INCLUDE_DSL_CPE_CLI_SUPPORT"
+echo -e "  Include CEOC:                   $INCLUDE_DSL_CEOC"
+echo -e "  Include PM:                     $INCLUDE_DSL_PM"
+echo -e "  Include PM total:               $INCLUDE_DSL_CPE_PM_TOTAL_COUNTERS"
+echo -e "  Include PM history:             $INCLUDE_DSL_CPE_PM_HISTORY"
+echo -e "  Include PM showtime:            $INCLUDE_DSL_CPE_PM_SHOWTIME_COUNTERS"
+echo -e "  Include PM optional:            $INCLUDE_DSL_CPE_PM_OPTIONAL_PARAMETERS"
+echo -e "  Include PM line:                $INCLUDE_DSL_CPE_PM_LINE_COUNTERS"
+echo -e "  Include PM channel:             $INCLUDE_DSL_CPE_PM_CHANNEL_COUNTERS"
+echo -e "  Include PM data path:           $INCLUDE_DSL_CPE_PM_DATA_PATH_COUNTERS"
+echo -e "  Include PM line threshold:      $INCLUDE_DSL_CPE_PM_LINE_THRESHOLDS"
+echo -e "  Include PM channel threshold:   $INCLUDE_DSL_CPE_PM_CHANNEL_THRESHOLDS"
+echo -e "  Include PM data path threshold: $INCLUDE_DSL_CPE_PM_DATA_PATH_THRESHOLDS"
+echo -e "  Include TCP debug support:      $DSL_DEBUG_TOOL_INTERFACE"
+echo -e ""
+echo -e " Settings:"
+echo -e "  Configure options:              $CONFIGURE_OPTIONS"
+echo -e "------------------------------------------------------------------------"
+])
+
+AC_CONFIG_FILES([Makefile src/Makefile])
+AC_OUTPUT
+

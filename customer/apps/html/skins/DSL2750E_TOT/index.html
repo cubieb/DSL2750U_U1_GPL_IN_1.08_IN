@@ -1,0 +1,81 @@
+<?setvaronce var:menu status?>
+<?setvaronce var:page system_msg?>
+<?setvaronce var:subpage 0?>
+<?setvaronce var:errorpage 0?>
+<?setvaronce var:style skin?>
+<?setvaronce var:language en_us?>
+<?setvaronce var:tbsversion dlink0003?>
+<? if eq 0 $var:subpage
+`	<? setvar var:realpage $var:page?>
+	<?if eq 1 <?error found?>
+	`	<?setvar var:realpage $var:errorpage?>`
+	?>
+`
+`	<? if eq 0 <?error found?>
+	`	<?setvar var:realpage $var:subpage?>`
+	`	<?setvar var:realpage $var:errorpage?>
+	`?>
+`?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="No-cache" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<meta http-equiv="Expires" content="-1" />
+<title>ADSL Router</title>
+<link type="text/css" rel="stylesheet" href="/html/<?echo $var:style?>/common.css?v=<?echo $var:tbsversion ?>" media="screen" />
+<? include html/js/language.js ?>
+<script type="text/javascript" src="/html/js/boot.js?v=<?echo $var:tbsversion?>"></script>
+<script type="text/javascript" src="/html/js/secboot.js?v=<?echo $var:tbsversion?>"></script>
+<script type="text/javascript">
+<!--
+<? include html/js/global.js ?>
+<? include html/page/$var:realpage.js ?>
+-->
+</script>
+<!--<script for=window event=onbeforeunload>  
+  if(event.clientX > document.body.clientWidth && event.clientY < 0 || event.altKey)  
+  uiLogout('<?echo $var:sessionid?>');
+</script>-->
+
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+	<!-- title -->
+	<div class="title">
+		<div class="product"><span id="lang_product">Product Page</span>: DSL-2750E</div><div class="firmware"><span id = "lang_firmware">Firmware Version</span>:<?get :InternetGatewayDevice.DeviceInfo.ModemFirmwareVersion?></div>
+	</div>
+	<!-- logo -->
+	<div class="logo"><img src="/html/skin/logo.gif" alt="logo"/></div>
+</div>
+<!-- main menu -->
+<div class="main_menu">
+	<div class="model"><img src="/html/skin/DSL-2750E.gif" alt="dsl-2750e" /></div>
+	<ul>
+		<li><a id="<?if eq `$var:menu` `setup` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wizard"><span id="lang_setup">setup</span></a></li>
+		<li><a id="<?if eq `$var:menu` `advanced` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance"><span id="lang_advanced">advanced</span></a></li>
+		<li><a id="<?if eq `$var:menu` `maintenance` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=system"><span id="lang_management">maintenance</span></a></li>
+		<li><a id="<?if eq `$var:menu` `status` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=deviceinfo"><span id="lang_status">status</span></a></li>
+		<li><a id="<?if eq `$var:menu` `help` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmenu"><span id="lang_help_menu">help</span></a></li>
+	</ul>
+</div>
+<!-- Content -->
+<table class="content" id="Content">
+	<tr>
+	<!-- sub menu-->
+	<?include html/menu.html?>
+	<!-- config -->
+	<?include html/page/$var:realpage.html?>
+	</tr>
+</table>
+<!-- footer -->
+<div class="footer"><img src="/html/skin/broadband.gif" /></div>
+<!-- copyright -->
+<p id="copyright">Copyright @ 2013-2015 D-Link Systems, Inc.</p>
+<!-- form -->
+<form id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

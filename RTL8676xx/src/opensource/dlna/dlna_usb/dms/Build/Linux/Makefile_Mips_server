@@ -1,0 +1,85 @@
+#
+#
+#  Broadcom "Digital Media Server" Make File. 
+#  MIPS Version. 
+#
+
+ROOTDIR = ../../..
+SRCPATH = $(ROOTDIR)/dms
+LIBDLNASRC = $(ROOTDIR)/libs/LibDLNA
+
+IP_APPLIB_TEST_LIB_FLAGS += -lm -lpthread 
+
+# Always build with debug
+CFLAGS += -MD -s -Os -fomit-frame-pointer -DBDBG_DEBUG_BUILD=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+
+#
+# ROOTDIR points to the parent of dms directory
+# We use that as base and define the paths 
+# accordingly.
+#
+INCLUDES  += -I$(ROOTDIR)/upnp/src
+INCLUDES  += -I$(ROOTDIR)/upnp/include
+INCLUDES  += -I$(ROOTDIR)/core/include
+INCLUDES  += -I$(ROOTDIR)/dms
+INCLUDES  += -I$(ROOTDIR)/dms/LinuxOSL
+INCLUDES  += -I$(ROOTDIR)/libs/LibDLNA
+INCLUDES  += -I$(ROOTDIR)/libs/AVCodecHeaders/libavcodec
+INCLUDES  += -I$(ROOTDIR)/libs/AVCodecHeaders/libavutil
+INCLUDES  += -I$(ROOTDIR)/libs/AVCodecHeaders/libavformat
+INCLUDES  += -I$(TOOLCHAINS_SYSROOT)/usr/include
+
+TARGET := dlna_usb
+
+CFLAGS += ${INCLUDES} -DHAVE_DLNA -DLINUX -D_GNU_SOURCE=1  -DCOMPILE_AS_EXECUTABLE
+LDFLAGS += 	-Wl,-rpath,/lib:/lib/public:/lib/private \
+			-L . \
+			-L $(TOOLCHAINS_SYSROOT)/lib \
+			-L $(TOOLCHAINS_SYSROOT)/usr/mips-linux-uclibc/lib \
+			-L $(TOOLCHAINS_SYSROOT)/usr/lib \
+			-lavformat -lavcodec -lavutil -lpthread -shared-libgcc
+C_ONLY_FLAGS = -pedantic -std=c89 -Wall -W -Wstrict-prototypes -Wno-unused-value 
+
+SRC := 	$(LIBDLNASRC)/audio_aac.c \
+	$(LIBDLNASRC)/audio_ac3.c \
+	$(LIBDLNASRC)/audio_amr.c \
+	$(LIBDLNASRC)/audio_atrac3.c \
+	$(LIBDLNASRC)/audio_g726.c \
+	$(LIBDLNASRC)/audio_lpcm.c \
+	$(LIBDLNASRC)/audio_mp2.c \
+	$(LIBDLNASRC)/audio_mp3.c \
+	$(LIBDLNASRC)/audio_wma.c \
+	$(LIBDLNASRC)/av_mpeg1.c \
+	$(LIBDLNASRC)/av_mpeg2.c \
+	$(LIBDLNASRC)/av_mpeg4_part10.c \
+	$(LIBDLNASRC)/av_mpeg4_part2.c \
+	$(LIBDLNASRC)/av_wmv9.c \
+	$(LIBDLNASRC)/containers.c \
+	$(LIBDLNASRC)/image_jpeg.c \
+	$(LIBDLNASRC)/image_png.c \
+	$(LIBDLNASRC)/profiles.c \
+	$(SRCPATH)/buffer.c \
+	$(SRCPATH)/CDS.c \
+	$(SRCPATH)/CDS_Iface.c \
+	$(SRCPATH)/CMS.c \
+	$(SRCPATH)/CMS_Iface.c \
+	$(SRCPATH)/dirdbase.c \
+	$(SRCPATH)/DMS.c \
+	$(SRCPATH)/Http_streamer.c \
+	$(SRCPATH)/LinuxOSL/ScanDir.c \
+	$(SRCPATH)/supported_mimes.c \
+	$(SRCPATH)/trace.c \
+	$(SRCPATH)/cmsutil.c
+
+OBJFILES=${SRC:.c=.o}
+
+all: 
+	$(CC) $(filter-out $(C_ONLY_FLAGS), $(CFLAGS)) -o $(TARGET) $(SRC) $(LDFLAGS) $(IP_APPLIB_TEST_LIB_FLAGS) libbcupnp.a 
+	
+.PHONY: clean
+clean:
+	rm -f *.o
+	rm -f $(OBJFILES) $(TARGET)
+	rm -f *.map *.list
+	
+	

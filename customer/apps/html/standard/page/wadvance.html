@@ -1,0 +1,49 @@
+		<td>
+			<div class="config1">
+				<p class="bk_black" id="lang_AdvancedWireless">Advanced Wireless -- Advanced Settings</p>
+				<div class="div_black">
+					<p id="lang_configureadvanced">
+						You can configure advanced features of the wireless LAN interface.
+					</p>
+					<div class="div_button"><input type="button" id="advSettings1" value="Advanced Settings" onClick="advSettings()"/></div>
+				</div>
+				
+				
+				<p class="do bk_black" id="lang_MACFiltering">Advanced Wireless -- MAC Filtering</p>
+				<div class="div_black">
+					<p id="lang_configurewireless">
+						You can configure wireless firewall by denying or allowing designated MAC addresses.
+					</p>
+					<div class="div_button"><input type="button" id="macFiltering1" value="MAC Filtering" onClick="macFiltering()"/></div>
+				</div>
+				
+
+				<p class="do bk_black" id="lang_SecuritySettings">Advanced Wireless -- Security Settings</p>
+				<div class="div_black">
+					<p id="lang_configuresecurity">
+						You can configure security features of the wireless LAN interface.
+					</p>
+					<div class="div_button"><input type="button" id="secSettings1" value="Security Settings" onClick="secSettings()"/></div>
+				</div>
+				
+				<p class="do bk_black" id="lang_WPS_setting">Advanced Wireless -- WPS Setting</p>
+				<div class="div_black">
+					<p id="lang_configureWPS">
+						You can configure the wireless WPS.
+					</p>
+					<div class="div_button"><input type="button" id="WPS_Setting1" value="WPS Setting" onClick="wpsSetting()"/></div>
+				</div>
+				
+				<?if eq 1 $var:mod_WDS
+				`
+				<p class="do bk_black" id="lang_WDS_setting">Advanced Wireless -- WDS Setting</p>
+				<div class="div_black">
+					<p id="lang_configureWPS">
+						You can configure WDS.
+					</p>
+					<div class="div_button"><input type="button"  value="WDS Setting" onClick="wdsSetting()"/></div>
+				</div>
+				`?>	
+				
+			</div>
+		</td>

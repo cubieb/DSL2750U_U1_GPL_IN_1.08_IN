@@ -1,0 +1,14 @@
+######################################
+#
+#
+######################################
+menuconfig VENDOR
+  bool "Vendor Applications"
+  default y
+
+
+#
+#TBS-TAG:by ouyangdi 2008-11-29
+#
+
+source vendor/realtek/Config.in

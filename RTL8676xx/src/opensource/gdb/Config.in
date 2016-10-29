@@ -1,0 +1,15 @@
+#####################
+config OPENSOURCE_GDB
+	bool 'Cross GDB for debug only'
+	default n 
+	depends on OPENSOURCE
+  	help 
+      	GDB 
+
+config OPENSOURCE_GDB_SERVER
+	bool 'GDB Server for debug only'
+	default y
+	depends on OPENSOURCE_GDB
+  	help 
+      	GDB Server
+

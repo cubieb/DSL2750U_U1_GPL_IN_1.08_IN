@@ -1,0 +1,51 @@
+	<style type="text/css"><!-- 
+		input.Port { width:51px;}
+	 --></style>
+<td>
+	<div class="config2">
+		<div class="Embody">
+			<div class="div_left" id="lang_WanConnection">WAN连接</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_WanConnection" id="INPUT_WanConnection" maxlength="256"></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_ServerName">服务器IP</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_ServerName" id="INPUT_ServerName" maxlength="15" value="" /></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_Protocol">协议</div>
+			<div class="div_middle">&nbsp;<select name="SELECT_Protocol" id="SELECT_Protocol"><option value='TCP'>TCP</option><option value='UDP'>UDP</option><option value='TCP/UDP'>TCP/UDP</option></select></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_InternalPort">LAN端主机端口</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_InternalPort" id="INPUT_InternalPort" class="Port" maxlength="5" value=""/></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_ExternalAddr6">外部公共IP</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_ExternalAddr6" id="INPUT_ExternalAddr6" maxlength="15"></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_ExternalPort">外部公共端口</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_ExternalPort" id="INPUT_ExternalPort" class="Port" maxlength="5" value=""></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_Lifetime">有效期(秒)</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_Lifetime" id="INPUT_Lifetime" class="Port" maxlength="8" value=""></div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_ThirdPartyEnable">代理第三方主机</div>
+			<div class="div_middle">&nbsp;<input type="checkbox" name="INPUT_ThirdPartyEnable" id="INPUT_ThirdPartyEnable" onChange="ctrlThirdPartyEnable()"></div>
+			<div class="div_right">&nbsp;</div>
+
+            <div class="div_left" id="lang_ThirdPartyAddr6">第三方主机IP</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_ThirdPartyAddr6" id="INPUT_ThirdPartyAddr6" maxlength="15"></div>
+            <div class="div_right">&nbsp;</div>
+
+            <div class="div_left" id="lang_PreferFailure">允许资源冲突时不开启映射</div>
+            <div class="div_middle">&nbsp;<input type="checkbox" name="INPUT_PreferFailure" id="INPUT_PreferFailure"></div>
+            <div class="div_right">&nbsp;</div>
+
+			<div class="div_button do"><input type="button" name="submit" id="submit" onClick="uiSubmit()"> <input type="button" name="refresh" id="refresh" onClick="uiPageRefresh()"></div>
+		</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+	</div>
+</td>

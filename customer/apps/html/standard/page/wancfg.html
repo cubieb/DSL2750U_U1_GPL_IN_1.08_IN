@@ -1,0 +1,106 @@
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+             <meta http-equiv='refresh' content='10'>
+		<td>
+			<div class="config1">
+				<p class="bk_orange" id = "lang_config">Internet Setup</p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						Choose "Add", "Edit", or "Delete" to configure WAN interfaces.
+					</p>
+			        <?if eq 1 $var:mod_ETHWAN
+			         `	
+					<p id = "lang_introduction1">
+						If you want to change WAN access type, you can click on "Ethernet" or "DSL".
+					</p>
+					<p id = "lang_introduction3" style="color:red;" >
+						note : If you select the WAN access type is "Ethernet", Please send line to LAN4 port!
+					</p>
+					<div class="div_left" style="width:270px;"><span id = "lang_wan_type">WAN Access Type :</span></div>
+					<div class="div_right">
+						<input type="radio" name="INPUT_WanAcsType" value="1" onClick="changetypeSelect(1)" />
+						<span id = "lang_ethernet">Ethernet </span>
+						<input type="radio" name="INPUT_WanAcsType" value="0" onClick="changetypeSelect(0)"/>DSL
+				    </div>
+			        `?>
+			   </div>
+			   <br>
+				<p class="bk_black" id = "lang_config_DSL">DSL Setup</p>
+				<div class="div_black">
+					<table class="td_table_l" id="wan_conns_list">
+						<tr class="tr_bold">
+							<td>&nbsp;</td>
+							<td id="lang_pvc">VPI/VCI</td>
+							<td>VLAN ID</td>
+							<td id = "lang_encap_dsl">ENCAP</td>
+							<td id = "lang_name_dsl">Service Name</td>
+							<td id = "lang_protocol_dsl">Protocol</td>
+							<td id = "lang_state_dsl">State</td>
+							<td id = "lang_status_dsl">Status</td>
+							<!- scb+ 2012-8-1  -!>
+							<?if eq 1 $var:mod_NEW3G
+							`
+							<td id = "lang_Backup3G">Backup3G</td>
+							`?>
+							<td id = "lang_action_dsl">Action</td>
+						</tr>
+					</table>
+				</div>
+			    <?if eq 1 $var:mod_ETHWAN
+			       `
+				<br>
+				<p class="bk_black" id = "lang_config_Eth">Ethernet Setup </p>
+				<div class="div_black">
+					<table class="td_table_s" id="wan_eth_conns_list">
+						<tr class="tr_bold">
+							<td>&nbsp;</td>
+							<td>VLAN ID</td>
+							<td id = "lang_name_eth">Service Name</td>
+							<td id = "lang_protocol_eth">Protocol</td>
+							<td id = "lang_state_eth">State</td>
+							<td id = "lang_status_eth">Status</td>
+							<td id = "lang_action_eth">Action</td>
+						</tr>
+					</table>
+				</div>
+			  `?>
+			 </div>
+			  	<div class="div_button" >
+					<input type="button" id = "add" value="Add" onClick="uiAdd()" />
+					<input type="button" id = "edit" value="Edit" onClick="uiEdit()" />
+					<input type="button" id = "del" value="Delete" onClick="uiDelete()" />
+				</div>
+				<div class="div_orange" id="3g1">
+					<p id = "lang_introduction2">
+						Choose "Add", "Edit", or "Delete" to configure 3G WAN interfaces.<br>
+						If your 3G WAN is not connected, please check your 3G's <a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=Usb_pin_puk">sim card status</a>, if it is locked, unlock it first.
+					</p>
+					<!--
+					<p id = "lang_introduction1">
+						If you want to change WAN access type, you can click on "Ethernet" or "DSL".
+					</p>
+					<div class="div_left" style="width:270px;"><span id = "lang_wan_type">WAN Access Type :</span></div><div class="div_right"><input type="radio" name="INPUT_WanAcsType" value="2" /><span id = "lang_ethernet">Ethernet </span><input type="radio" name="INPUT_WanAcsType" value="1" />DSL</div>
+					-->
+				</div>
+			<!--	<div class="div_button"><input type="button" id = "Apply" value="Apply" onClick="uiSubmit()" /> <input type="button" id = "Cancel" value="Cancel" onClick="uiPageRefresh()" /></div>
+			-->
+				<p class="do bk_black" id = "lang_config2">3G Wan Setup</p>
+				<div class="div_black" id="3g2">
+					<table class="td_table_l" id="wan_conns_list_3g">
+						<tr class="tr_bold">
+							<td>&nbsp;</td>					
+							<td id = "lang_name_3g">Service Name</td>
+							<td id = "lang_protocol_3g">Protocol</td>
+							<td id = "lang_state_3g">State</td>
+							<td id = "lang_status1_3g">Status</td>
+							<td id = "lang_defaultgw_3g">Default Gateway</td>
+							<td id = "lang_action_3g">Action</td>
+						</tr>
+					</table>
+				</div>
+				<div class="div_button" id="3g3">
+					<input type="button"  id = "add_3g" value="Add" onClick="uiAdd3g()" />
+					<input type="button" id = "edit_3g" value="Edit" onClick="uiEdit3g()" />
+					<input type="button" id = "del_3g" value="Delete" onClick="uiDelete3g()" />
+				</div>
+			</div>
+		</td>

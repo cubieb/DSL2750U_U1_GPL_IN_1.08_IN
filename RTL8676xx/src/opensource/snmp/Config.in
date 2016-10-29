@@ -1,0 +1,48 @@
+config OPENSOURCE_SNMPA
+        bool 'SNMPAgent'
+        default y
+        depends on OPENSOURCE
+        help
+        SNMP agent (snmpd) from Net-SNMP.
+
+config ZTE_HOT_AP_SNMP_TRAP
+		bool 'ZTE_HOT_AP_SNMP_IF'
+		default y
+		depends on OPENSOURCE_SNMPA
+		help
+		ZTE private trap .
+		
+config TBS_SNMP_APP
+		bool 'TBS_SNMP_APP'
+		default y
+		depends on OPENSOURCE_SNMPA
+		help
+		tw private trap .
+
+config OPENSOURCE_SNMPA_ENTERPRISE_OID
+		string "Enterprise OID"
+		default "33003"
+                depends on OPENSOURCE_SNMPA
+                help
+                  Enterprise OID, default OID 33003 belongs to TWSZ.		
+config OPENSOURCE_SNMPA_PRIVATE_WLAN
+		bool 'PrivateWLAN'
+		default y 
+		depends on OPENSOURCE_SNMPA
+		help
+		WLan nodes for tbs wireless.
+
+ 
+config OPENSOURCE_SNMPA_PUBLIC_NODES
+		bool 'PublicNodes'
+		default n
+		depends on OPENSOURCE_SNMPA
+		help
+		Public nodes come from net-snmp itself.
+		
+config OPENSOURCE_STREAMRATE
+		bool 'Adslrate'
+		default y
+		depends on OPENSOURCE_SNMPA
+		help
+		ADSL TRANSLATE RATE CONTRL.

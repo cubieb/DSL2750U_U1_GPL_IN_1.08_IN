@@ -1,0 +1,8 @@
+config OPENSOURCE_FTPD
+        bool 'FTP Daemon'
+        default n
+        depends on OPENSOURCE
+        help
+	FTP Server, a file-level data storage (such as USB storage class) connected to a network 
+	providing data access to heterogeneous network clients.
+

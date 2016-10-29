@@ -1,0 +1,21 @@
+# dms input channel text file
+# each section starts with Tuner Name ,number of channels
+# Channnel info is the order
+# type of channel(IP/QAM),type of protocol(UDP/RTP) or QAM mode,ip address:port or Freq, channle ID,channle name,program name
+
+Tuner_IP,3
+
+IP,UDP,10.21.81.208:1234,1,nbc,friends
+
+IP,UDP,10.21.81.208:1235,2,abc,news
+
+IP,UDP,10.21.81.208:1236,3,fox,30Rock
+
+Tuner_QAM,3
+
+QAM,QAM256,561,2,cnbc,Cramer
+
+QAM,QAM256,561,3,msnbc,news
+
+QAM,QAM256,581,1,kqid,huhu
+

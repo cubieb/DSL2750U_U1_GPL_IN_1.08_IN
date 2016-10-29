@@ -1,0 +1,66 @@
+<InternetGatewayDevice type="object">
+    <WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+	    <i type="object">
+		    <X_TWSZ-COM_WAN3GInterfaceConfig type="object" Standard="0">
+                <Enable type="boolean">1</Enable>
+		    <CountryNum type="string" Writable="1">-1</CountryNum>
+				<ProfileNum type="string" Writable="1">-1</ProfileNum>
+				<DialNumber type="string(64)">*99#</DialNumber>
+				<APN type="string(64)"></APN>
+				<BackupInterval type="unsignedInt">60</BackupInterval>
+				<RecoveryInterval type="unsignedInt">60</RecoveryInterval>
+				<Status type="string" Writable="0">NoDongle</Status>
+		        <defaultwan type="string" Writable="1" Standard="0">dsl</defaultwan>
+		        <manualdial type="boolean" Writable="1" Standard="0">0</manualdial>
+				<pingenble type="boolean" Writable="1" Standard="0">0</pingenble>
+		        <pingintf type="string" Writable="1" Standard="0"></pingintf>
+		        <pingaddr type="string" Writable="1" Standard="0">8.8.8.8</pingaddr>
+		        <pingperiod type="string" Writable="1" Standard="0">1</pingperiod>
+		        <pingtimeout type="string" Writable="1" Standard="0">1</pingtimeout>
+		        <pingtolerance type="string" Writable="1" Standard="0">1</pingtolerance>	
+		        <ping_connstatus type="string" Writable="1" Standard="0"></ping_connstatus>	
+		        <action type="string" Writable="0" Standard="0"></action>
+		        <driver type="string" Writable="0" Standard="0"></driver>
+		        <dialaction type="string" Writable="0" Standard="0"></dialaction>
+		        <hotplugdelay type="string" Writable="1" Standard="0">20</hotplugdelay>
+		        <switchdelay type="string" Writable="1" Standard="0">20</switchdelay>               
+				<PIN type="string(64)"></PIN>
+				<PUK type="string(64)"></PUK>
+				<OldPinCode type="string" Standard="0" Wirtable="0"></OldPinCode>
+				<NewPinCode type="string" Standard="0" Wirtable="0"></NewPinCode>
+				<RemaindPINRetryTimes type="unsignedInt" Writable="0"></RemaindPINRetryTimes>
+	            <RemaindPUKRetryTimes type="unsignedInt" Wirtable="0"></RemaindPUKRetryTimes>
+				<RemaindLOCKRetryTimes type="unsignedInt" Wirtable="0"></RemaindLOCKRetryTimes>
+				<AllowUnlockLowTimesOfPIN type="unsignedInt" >3</AllowUnlockLowTimesOfPIN>
+				<AllowUnlockLowTimesOfPUK type="unsignedInt" >10</AllowUnlockLowTimesOfPUK>
+		        <NeedPinCode type="boolean" Standard="0" Writable="0"></NeedPinCode>
+		        <PinActSta type="unsignedInt" Standard="0" Writable="0"></PinActSta>
+		        <PinEnable type="boolean" Standard="0" Writable="0"></PinEnable>
+		        <PinChgEnable type="boolean" Standard="0" Writable="0"></PinChgEnable>
+		        <NeedPukCode type="boolean" Standard="0" Wirtable="0"></NeedPukCode>
+		        <RemainChgPinTimes type="unsignedInt" Standard="0" Wirtable="0"></RemainChgPinTimes>
+		        <PinAction type="string" Standard="0" Wirtable="0"></PinAction>				
+                <PinStatus type="string" Standard="0" Wirtable="0"></PinStatus>	
+				<Inform type="string" Standard="0" Wirtable="0"></Inform>	
+
+				<DongleSerialNumber type="string" Standard="0" Writable="0"></DongleSerialNumber>
+				<DongleVendorId type="unsignedInt" Standard="0" Writable="0"></DongleVendorId>
+				<DongleProductId type="unsignedInt" Standard="0" Writable="0"></DongleProductId>
+				<DongleModelName type="string" Standard="0" Writable="0"></DongleModelName>
+				<UpstreamMaxRate type="string" Standard="0" Writable="0"></UpstreamMaxRate>
+				<DownstreamMaxRate type="string" Standard="0" Writable="0"></DownstreamMaxRate>
+
+				<SingalIntensity type="string" Standard="0" Writable="0"></SingalIntensity>
+				<CellID type="string" Standard="0" Writable="0"></CellID>
+				<DongleIMEI type="string" Standard="0" Writable="0"></DongleIMEI>
+				<DongleLAC type="string" Standard="0" Writable="0"></DongleLAC>
+				<DongleMCC type="string" Standard="0" Writable="0"></DongleMCC>
+				<DongleMNC type="string" Standard="0" Writable="0"></DongleMNC>
+				
+		        <ActResult type="string" Standard="0" Wirtable="0">NONE</ActResult>
+		        <ActNeedCaptival type="string" Standard="0" Wirtable="0">0</ActNeedCaptival>
+		        <ActJumpToPage type="string" Standard="0" Wirtable="0">http://www.movistar.es</ActJumpToPage>
+            </X_TWSZ-COM_WAN3GInterfaceConfig>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

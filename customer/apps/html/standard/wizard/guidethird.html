@@ -1,0 +1,322 @@
+<html>
+<head>
+ <title>831II</title>
+ <!--link rel="stylesheet" href='guidecolors.css' type='text/css'-->
+  <!--meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- hide
+  <meta http-equiv="refresh" content="2">
+  -->
+<style type="text/css">
+body { background:#081273;}
+</style>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/secboot.js"></script>
+
+<script language="javascript">
+
+var SerAdditionMode;
+
+var Cache_data = '<?echo $var:data?>';
+
+removeListeners(TopSelfMenu);
+removeListeners(initSubMenu);
+
+function closeWin()
+{
+    if(window.confirm("Salir?")) {
+        top.close();
+    }
+}
+
+function uiToNextPage(){
+
+		if($('INPUT_solo_speedy').checked ==true)
+		{
+			
+			SerAdditionMode =1;
+		}
+		else if($('INPUT_speedy2').checked == true)
+		{
+		
+			SerAdditionMode =2;
+		}
+		else if($('INPUT_speedy3').checked == true)
+		{
+		
+			SerAdditionMode =3;
+		}
+		else if($('INPUT_speedy4').checked == true)
+		{
+	
+			SerAdditionMode =4;
+		}
+
+	  	$H({
+		'getpage' : 'html/wizard/guidefourth.html',
+		'var:data'  : Base64.Encode(ctrJsonData()),
+	//	'var:data'  : ctrJsonData(),
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function ctrJsonData(){
+
+	//alert("MOODE =" + SerAdditionMode);
+	
+	var _json = ',third:{';
+
+	//Cache_data = 'second:{INPUT_E:"1"}';
+	if(Cache_data != '-')
+	{
+		_json += 'SerAdditionMode:"' + SerAdditionMode +'"}';
+	}
+	else
+		_json = '';
+
+
+	return Cache_data + _json;
+	
+}
+
+function uiToLoginPage(){
+	//alert(1)
+	$H({
+		'getpage' : 'html/main.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function uiToPrePage()
+{
+		//alert(1)
+	$H({
+		'getpage' : 'html/wizard/guidesecond.html',
+		'var:page' : '*',
+		'var:data' : Base64.Encode(ctrJsonData()),
+	//	'var:data' : ctrJsonData(),
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+   
+}
+
+function uiOnload(){
+
+		var Third = [], new_data;
+		var Mode;
+	if(Cache_data != '-'){
+		Cache_data = Base64.Decode(Cache_data);
+		new_data = eval('({' +Cache_data + '})');
+		//alert("new_data=" +new_data);
+		 Third= new_data['third'];
+		//alert("third=" + Third);
+
+		//Mode = (Third && Third['SerAdditionMode']);
+            if (Third)
+                Mode = Third['SerAdditionMode'];
+            else
+                Mode = "<?get :InternetGatewayDevice.X_TELEFONICA_PORTMAPPING.Configuration?>";
+	}
+    else
+        {
+            Mode = "<?get :InternetGatewayDevice.X_TELEFONICA_PORTMAPPING.Configuration?>";
+        }
+
+	//alert("Cache_data=" + Cache_data);
+
+	//alert(Mode);
+
+	 if(Mode == 2)
+	{
+		$('INPUT_solo_speedy').checked = false;
+		$('INPUT_speedy2').checked = true;
+		$('INPUT_speedy3').checked = false;
+		$('INPUT_speedy4').checked = false;
+	}else if(Mode == 3)
+	{
+			$('INPUT_solo_speedy').checked = false;
+		$('INPUT_speedy2').checked = false;
+		$('INPUT_speedy3').checked = true;
+		$('INPUT_speedy4').checked = false;
+	}
+	else if(Mode == 4)
+	{
+			$('INPUT_solo_speedy').checked = false;
+		$('INPUT_speedy2').checked = false;
+		$('INPUT_speedy3').checked = false;
+		$('INPUT_speedy4').checked = true;
+	}else
+	{
+		$('INPUT_solo_speedy').checked = true;
+		$('INPUT_speedy2').checked = false;
+		$('INPUT_speedy3').checked = false;
+		$('INPUT_speedy4').checked = false;
+	}
+
+}
+
+addListeners(uiOnload);
+
+function onSoloSpeedyClick()
+{
+
+	$('INPUT_solo_speedy').checked = true;
+	$('INPUT_speedy2').checked = false;
+	$('INPUT_speedy3').checked = false;
+	$('INPUT_speedy4').checked = false;
+}
+
+function onSpeedy2Click()
+{
+	$('INPUT_solo_speedy').checked = false;
+	$('INPUT_speedy2').checked = true;
+	$('INPUT_speedy3').checked = false;
+	$('INPUT_speedy4').checked = false;
+
+}
+
+function onSpeedy3Click()
+{
+
+	$('INPUT_solo_speedy').checked = false;
+	$('INPUT_speedy2').checked = false;
+	$('INPUT_speedy3').checked = true;
+	$('INPUT_speedy4').checked = false;
+}
+
+function onSpeedy4Click()
+{
+
+	$('INPUT_solo_speedy').checked = false;
+	$('INPUT_speedy2').checked = false;
+	$('INPUT_speedy3').checked = false;
+	$('INPUT_speedy4').checked = true;
+}
+
+
+</script>
+</head>
+
+<body onLoad="uiOnload()">
+<table width="100%">
+<tr><td width="178" height="90"><!--img src="/html/wizard/logo.jpg" width="178" height="90"--></td></tr>
+  <tr>
+    <td><strong><font Bienvenido</font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade></td>
+  </tr>
+</table>
+
+
+<table width="75%"  align="center">
+    
+	<tr height="20">
+	<td><font color=white size=4><b>CUIDADO ESTOS CAMBIOS PUEDEN AFECTAR SU FUNCIONAMIENTO.</b></font></td>
+	<td>&nbsp;</td>
+	</tr>
+	
+	<br>
+	<tr  >
+	<td>
+	
+	<br><br>
+	
+	<tr>
+		<td><input type="radio" name="INPUT_solo_speedy"  id="INPUT_solo_speedy" value="0"  onclick="onSoloSpeedyClick()"/> 
+		<font color=white ><b>Solo Speedy (LAN1, LAN2, LAN3, LAN4 y WIFI) </b></font></td>
+	</tr>
+	
+	<tr>
+		<td> <input type="radio"  name="INPUT_speedy2" id="INPUT_speedy2"  onclick="onSpeedy2Click()" value="1" />
+		<font color=white ><b>Solo Speedy (LAN1, LAN2, LAN3 y WIFI)  + VOIP(LAN4)</b></font></td>
+	</tr>
+	
+	<tr>
+			<td><input type="radio"  name="INPUT_speedy3" id="INPUT_speedy3"  onclick="onSpeedy3Click()" value="1" />
+		<font color=white ><b>Speedy (LAN1, LAN2 y WIFI) + IPTV (LAN3) + VOIP (LAN4)</b></font></td>
+	</tr>
+	
+	<tr>
+		<td>    <input type="radio"  name="INPUT_speedy4" id="INPUT_speedy4"  onclick="onSpeedy4Click()" value="1" />
+	<font color=white ><b>Speedy (LAN1 y WIFI) +IPTV(LAN2 y LAN3) + VOIP (LAN4) </b></font></td>
+	</tr>
+	
+
+	<tr>
+	<script language="javascript">
+
+	</script>
+	</tr>
+</table>
+
+<table width="75%"  align="center">
+	<tr>
+	<td><font color=white size=4><b></b></font></td>
+	</tr>
+	<br>
+	<tr>
+	<td>
+	<br><br>
+	<center >
+	<input type="button" value="Siguiente"  onClick="uiToNextPage()" >
+	&nbsp;
+	<input type="button" value="Canlelar"  onClick="uiToPrePage()" >
+	&nbsp;
+	<input type="button" value="Configuración avanzada" onClick="uiToLoginPage()">
+	&nbsp;
+	</center> 
+	</td>
+	</tr>
+	<br>
+</table>
+<table width="75%" height=10 align="center">
+	<tr>
+	<td>
+	<!--iframe src="guidestatus.html" frameBorder=0 scrolling=no height=50 TARGET="_self"--></iframe>
+	</td>
+	</tr>
+</table>
+
+<table width="100%">
+<tr><td width="178" height="40"></td></tr>
+  <tr>
+    <td><strong><font Bienvenido</font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade size=1></td>
+  </tr>
+</table>
+<table width="75%" align="center">
+  <tr>
+    <td><font Bienvenido color=white>Copyright @ 2010 All Right Reserved</font></td>
+  </tr>
+</table>
+<table id='Content'></table>
+<table id='Menu'></table>
+<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>
+

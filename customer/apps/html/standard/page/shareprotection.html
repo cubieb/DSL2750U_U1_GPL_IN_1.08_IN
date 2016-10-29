@@ -1,0 +1,40 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="lang_SPT">Share Protection Settings</p>
+		<div class="div_orange">
+			<p id="lang_dsc">The shared protection feature enables more than one PC to share Internet access through the router.</p>
+			<p id="lang_dsc1">Enter the appropriate values for the enabled options and click "Apply" to enable the function.</p>
+		</div>
+		<p class="do bk_black" id="lang_SPTSET">Share Protection Configuration</p>
+		<div class="div_black">
+
+
+			<div class="div_left" id="lang_ipid">IPID :</div><div class="div_right"><input type="checkbox" name="INPUT_IPIDEnable" id="INPUT_IPIDEnable"></div>
+			<div class="div_left" id="lang_ttl">TTL :</div><div class="div_right"><input type="checkbox" name="INPUT_TTLEnable" id="INPUT_TTLEnable"></div>
+			<div class="div_left" id="lang_ttlvalue">TTL Value:</div><div class="div_right"><input type="input" size=5 name="INPUT_TTLValue" id="INPUT_TTLValue"></div>
+
+			<div class="div_left" id="lang_connlimit">Connlimit :</div><div class="div_right"><input type="checkbox" name="INPUT_CONNLIMITEnable" id="INPUT_CONNLIMITEnable"></div>
+			<div class="div_left" id="lang_tcpconnvalue">TCP Connlimit Value:</div><div class="div_right"><input type="input" size=5 name="INPUT_TCPCONNValue" id="INPUT_TCPCONNValue"></div>
+			<div class="div_left" id="lang_udpconnvalue">UDP Connlimit Value:</div><div class="div_right"><input type="input" size=5 name="INPUT_UDPCONNValue" id="INPUT_UDPCONNValue"></div>
+			
+		</div>
+		
+		<div class="div_button">
+			<input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();">
+			<input type="button" value="Cancel" name="cancel" id="cancel" onClick="uiPageRefresh()">
+		</div>		
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc">
+				If you fail to share Internet access through this device, please enable the options in this page.
+			</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

@@ -1,0 +1,58 @@
+NEXT VERSION
+
+user interface change(s):
+new feature(s):
+bugfix(es):
+common:
+
+V1.0.4 - 2006-12-20
+bugfix(es):
+- Added version information structure(ifx_adsl_bsp_version_t) to ifx_adsl_bsp.h
+  file
+
+V1.0.3 - 2006-12-09
+bugfix(es):
+- Corrected handling of configure options for LED, EOC and MIB both in configure
+  process as well as in source code  by using the right definitions and delete
+  any definitions within the implementation itself
+- Added new configure options for autoboot handling and winhost support
+- Added extended ADSL modes (G992_5_I, G992_5_J, G992_5_M) to parameter
+  'adslModeSelected' within status information structure 'adslLineStatusInfo'
+common:
+- Modifications to retrieve the version number from MEI BSP Driver
+- Added detailed documentation in doxygen format
+
+V1.0.2 - 2006-11-22
+bugfix(es):
+- Correction for SNRMds reboot criteria takes 6-bit signed value in account and
+  also handles values smaller than zero
+- Included special handling regarding HDLC processing:
+  * While in L2 power mode NO HDLC processing will be done because of to low
+    bandwidth
+  * If L2 power mode is terminated again it will be checked whether the HDLC is
+    in still in BUSY state for more than 10 seconds. In this case the HDLC
+    firmware processing will be reset
+- Minor corrections for datarate calculation in ADSL2/2+
+- The upstream output power does not change in showtime. Hence there is no
+  necessity to read it through OHC
+common:
+- Added handling to generate archive (lib_dsl_cpe_api.a) file of driver to be
+  included within lxdb kernel build
+
+V1.0.1 - 2006-11-13
+common:
+- Reformat of the source code (removed tabs and C++ comments)
+- Exchanged file 'ifx_adsl_features.h' to 'drv_dsl_cpe_api_danube_kernel_config.h'
+  and the included definitions
+  + CONFIG_IFX_ADSL_MIB  -> INCLUDE_ADSL_MIB
+  + CONFIG_IFX_ADSL_LED  -> INCLUDE_ADSL_LED
+  + CONFIG_IFX_ADSL_CEOC -> INCLUDE_ADSL_CEOC
+
+V1.0.0 - 2006-11-09
+common:
+- Introduced version number
+  + Version numbers smaller than V2.0.0 are used for "old" DSL CPE API interface
+  + Implementation is based on SNMP to support ADSL1/2/2+ only
+- Established complete build process using scripts for autogen tools in context
+  of buildroot environment
+

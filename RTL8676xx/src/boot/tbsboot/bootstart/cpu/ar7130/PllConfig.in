@@ -1,0 +1,43 @@
+
+choice
+	prompt "AR7130 pll set"
+	default PLL_300_300_150
+
+config  PLL_800_400_400 
+	bool "PLL_800_400_400 "
+	help
+	
+config  PLL_600_400_300 
+	bool "PLL_600_400_300"
+	help
+
+config  PLL_600_400_150 
+	bool "PLL_600_400_150"
+	help
+
+config  PLL_400_400_200 
+	bool "PLL_400_400_200"
+	help
+
+config  PLL_333_333_166
+	bool "PLL_333_333_166"
+	help
+
+config  PLL_300_300_150 
+	bool "PLL_300_300_150"
+	help
+
+config  PLL_266_266_133
+	bool "PLL_266_266_133"
+	help
+
+config  PLL_266_266_66 
+	bool "PLL_266_266_66"
+	help
+
+config  PLL_200_200_100 
+	bool "PLL_200_200_100"
+	help
+
+endchoice
+

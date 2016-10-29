@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_DPROXY
+	bool 'Dproxy'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	Dproxy for DNS Relay & Caching nameserver 

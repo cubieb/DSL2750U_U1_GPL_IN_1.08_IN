@@ -1,0 +1,6 @@
+rm -rf ./*c  ./*.o
+mv Makefile.nosource Makefile.in
+cp Makefile.in Makefile
+rm cleansource
+echo SRM Source cleaned
+

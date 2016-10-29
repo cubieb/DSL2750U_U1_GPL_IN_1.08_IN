@@ -1,0 +1,21 @@
+menuconfig DRIVERS_WLAN_ATHEROS
+	bool 'Atheros wireless drivers'
+	default n
+	depends on DRIVERS_WLAN
+	help
+		Wireless device driver module
+
+      
+config DRIVERS_WLAN_ATHEROS_CARRIER
+	bool 'Carrier version drivers'
+	default n
+	depends on DRIVERS_WLAN_ATHEROS
+  	help 
+      		Carrier version drivers
+      
+config DRIVERS_WLAN_ATHEROS_K2
+	bool 'K2 version drivers'
+	default n
+	depends on DRIVERS_WLAN_ATHEROS
+  	help 
+      		K2 version drivers

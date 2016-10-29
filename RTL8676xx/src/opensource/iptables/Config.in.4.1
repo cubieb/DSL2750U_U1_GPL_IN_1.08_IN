@@ -1,0 +1,305 @@
+
+comment "iptables extension matchs"
+
+config OPENSOURCE_IPT_ADDRTYPE
+	bool "\"addrtype\" match support"
+	default y
+	help
+
+config OPENSOURCE_IPT_AH
+	bool "\"ah\" match support"
+	default y
+	help
+
+config OPENSOURCE_IPT_COMMENT
+	bool "\"comment\" match support"
+	default y
+	help
+
+
+
+config OPENSOURCE_IPT_CONNBYTES
+	bool "\"connbytes\" match support"
+	default n
+	help
+
+
+
+config OPENSOURCE_IPT_CONNTRACK
+	bool "\"conntrack\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_DCCP
+	bool "\"dccp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_ESP
+	bool "\"esp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_HASHLIMIT
+	bool "\"hashlimit\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_HELPER
+	bool "\"helper\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_ICMP
+	bool "\"icmp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_IPRANGE
+	bool "\"iprange\" match support"
+	default n
+	help
+	
+
+config OPENSOURCE_IPT_LENGTH
+	bool "\"length\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_LIMIT
+	bool "\"limit\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_MAC
+	bool "\"mac\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_MARK
+	bool "\"mark\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_MULTIPORT
+	bool "\"multiport\" match support"
+	default n
+	help	
+
+config OPENSOURCE_IPT_OWNER
+	bool "\"owner\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_PHYSDEV
+	bool "\"physdev\" match support"
+	default n
+	help
+	
+
+	
+config OPENSOURCE_IPT_PKTTYPE
+	bool "\"pkttype\" match support"
+	default n	
+	help
+
+config OPENSOURCE_IPT_POLICY
+	bool "\"policy\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_QUOTA
+	bool "\"quota\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_REALM
+	bool "\"realm\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_RECENT
+	bool "\"recent\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_SCTP
+	bool "\"sctp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_STATISTIC
+	bool "\"statisitc\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_STRING
+	bool "\"string\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_TCP
+	bool "\"tcp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_TCPMSS
+	bool "\"tcpmss\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_TIME
+	bool "\"time\" match support"
+	default n
+	help
+
+
+config OPENSOURCE_IPT_UDP
+	bool "\"udp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_UNCLEAN
+	bool "\"unclean\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_CONNLIMIT
+	bool "\"connlimit\" match support"
+	default y
+	help
+	
+config OPENSOURCE_IPT_STATE
+	bool "\"state\" match support"
+	default n
+	help
+########################################################
+comment "iptables extension targets"
+
+config OPENSOURCE_IPT_CLASSIFY
+	bool "\"CLASSIFY\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_CLUSTERIP
+	bool "\"CLUSTERIP\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_CONNMARK_T
+	bool "\"CONNMARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_CONNSECMARK
+	bool "\"CONNSECMARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_DNAT
+	bool "\"DNAT\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_DSCP_T
+	bool "\"DSCP\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_ECN
+	bool "\"ecn\" match support"
+	default n
+	help
+
+config OPENSOURCE_IPT_LOG
+	bool "\"LOG\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_MARK_T
+	bool "\"MARK\" target support"
+	default n
+	help
+
+
+config OPENSOURCE_IPT_MASQUERADE
+	bool "\"MASQUERADE\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_MIRROR
+	bool "\"MIRROR\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_NETMAP
+	bool "\"NETMAP\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_NFLOG
+	bool "\"NFLOG\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_NFQUEUE
+	bool "\"NFQUEUE\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_NOTRACK
+	bool "\"NOTRACK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_REDIRECT
+	bool "\"REDIRECT\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_REJECT
+	bool "\"REJECT\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_SAME
+	bool "\"SAME\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_SECMARK
+	bool "\"SECMARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_SET_T
+	bool "\"SET\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_SNAT
+	bool "\"SNAT\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_TOS_T
+	bool "\"TOS\" target support"
+	default n
+	help
+
+config OPENSOURCE_IPT_TTL_T
+	bool "\"TTL\" target support"
+	default y
+	help
+
+config OPENSOURCE_IPT_ULOG
+	bool "\"ULOG\" target support"
+	default n
+	help
+
+
+
+
+
+
+

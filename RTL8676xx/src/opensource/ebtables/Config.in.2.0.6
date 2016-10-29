@@ -1,0 +1,161 @@
+
+comment "ebtables extension tables"
+depends on OPENSOURCE_EBTABLES
+
+config OPENSOURCE_EBT_PROUTE
+	bool 'proute table support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_BROUTE
+	bool 'broute table support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_FILTER
+	bool 'filter table support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_NAT
+	bool 'nat table support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+comment "ebtables extension matchs and targets"
+depends on OPENSOURCE_EBTABLES
+
+#
+# matches
+#
+
+config OPENSOURCE_EBT_802_3
+	bool '802.3 match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_AMONG
+	bool 'among match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_ARP
+	bool 'arp match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_IP
+	bool 'ip match support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_LIMIT
+	bool 'limit match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_MARK_M
+	bool 'mark match support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_PKTTYPE
+	bool 'packet type match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_STP
+	bool 'STP match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_VLAN
+	bool 'vlan match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_TBSVLAN_M
+	bool 'tbsvlan match support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_TIME
+	bool 'time match support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+#
+# targets
+#
+
+config OPENSOURCE_EBT_ARPREPLY
+	bool 'arp reply target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_NAT
+	bool 'nat target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_MARK
+	bool 'mark target support'
+	default y
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_REDIRECT
+	bool 'redirect target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_FTOS
+	bool 'ftos target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_WMM_MARK
+	bool 'Wireless Wi-Fi WMM marking target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_VLAN_T
+	bool 'vlan target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+config OPENSOURCE_EBT_CLASSIFY
+	bool 'classify target support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+
+comment "ebtables extension watcher"
+depends on OPENSOURCE_EBTABLES
+
+config OPENSOURCE_EBT_LOG
+	bool 'log watcher support'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help

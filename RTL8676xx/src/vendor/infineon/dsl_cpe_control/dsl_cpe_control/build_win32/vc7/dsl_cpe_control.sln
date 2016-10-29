@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dsl_cpe_control", "dsl_cpe_control.vcproj", "{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Danube Debug
+		ConfigName.1 = Danube Release
+		ConfigName.2 = Vinax Debug
+		ConfigName.3 = Vinax Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Danube Debug.ActiveCfg = Danube Debug|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Danube Debug.Build.0 = Danube Debug|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Danube Release.ActiveCfg = Danube Release|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Danube Release.Build.0 = Danube Release|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Vinax Debug.ActiveCfg = Vinax Debug|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Vinax Debug.Build.0 = Vinax Debug|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Vinax Release.ActiveCfg = Vinax Release|Win32
+		{F79EAF4F-E01C-4331-9E2E-BEC06153ACF4}.Vinax Release.Build.0 = Vinax Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

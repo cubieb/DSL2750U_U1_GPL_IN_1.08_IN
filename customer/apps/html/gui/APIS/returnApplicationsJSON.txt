@@ -1,0 +1,39 @@
+{
+	"RETURN":{
+		"success":<? if eq "<?error found?>" "0"  `true`  `false` ?>
+   	},
+   	
+   	"APPLICATIONS": [
+	<?objget :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications. "IdApplication NameApplication IpAssigned IdIcon"
+	`
+		<?if eq "<?echo $var:appNeedComma?>" "1" `,` ?>
+		<?setvar var:ruleNeedComma 0?>
+
+		{
+			"idApplication": "<?echo $11?>",
+		  	"nameApplication": "<?echo $12?>",
+			"ipAssigned":"<?echo $13?>",
+	  		"idIcon": "<?echo $14?>",
+			"RULES":[
+			<?objget :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications.<?echo $20?>.Rules. "IdRule Protocol StartWan EndWan StartLan EndLan"
+			`
+				<?if eq "<?echo $var:ruleNeedComma?>" "1" `,` ?>
+
+       				{
+					"idRule":"<?echo $11?>",
+			 		"protocol":"<?echo $12?>",
+      			 		"startWan":"<?echo $13?>",
+			       		"endWan":"<?echo $14?>",
+		       			"startLan":"<?echo $15?>",
+		       			"endLan":"<?echo $16?>"
+		      		}
+				
+				<?setvar var:ruleNeedComma 1?>	
+			`?>
+       			]
+       		}
+		
+		<?setvaronce var:appNeedComma 1?>
+      `?> 
+      ]
+}

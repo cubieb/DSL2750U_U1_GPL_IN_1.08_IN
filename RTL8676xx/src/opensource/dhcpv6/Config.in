@@ -1,0 +1,17 @@
+menuconfig OPENSOURCE_DHCPV6
+		bool 'dhcpv6'
+        default n
+        depends on OPENSOURCE
+        help
+        dhcp server, client and realy for ipv6
+
+config OPENSOURCE_DHCPV6_SERVER
+		bool 'dhcpv6_server'
+		depends on OPENSOURCE_DHCPV6
+		help
+
+config OPENSOURCE_DHCPV6_CLIENT
+		bool 'dhcpv6_client'
+		depends on OPENSOURCE_DHCPV6
+		help
+		

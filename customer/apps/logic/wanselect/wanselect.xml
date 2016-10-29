@@ -1,0 +1,14 @@
+<InternetGatewayDevice type="object">
+	<Services type="object" Writable="0">
+		<X_TWSZ-COM_WANSelect type="object" Standard="0" Writable="0">
+			<DefaultCfg type="unsignedInt" Writable="0">1</DefaultCfg>
+			<IndependentCfg type="object" Writable="0">
+				<i>
+					<ConfigKey type="unsignedInt"></ConfigKey>
+					<ConfigPath type="string"></ConfigPath>
+				</i>
+			</IndependentCfg>
+		</X_TWSZ-COM_WANSelect>
+	</Services>
+</InternetGatewayDevice>
+

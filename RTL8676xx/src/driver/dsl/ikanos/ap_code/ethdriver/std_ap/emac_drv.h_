@@ -1,0 +1,93 @@
+/* Copyright (C) 2006 Ikanos Communications
+ * See IKANOS_PROP_LICENSE.txt for license information. */
+
+/*======================================================================
+ * File Name    :       emac_drv.h
+ * Description  :       mac structures
+ * CVS ID       :       $$
+ *======================================================================
+ */
+
+/*======================================================================
+ * History
+ *
+ * Date         Author                  Comment
+ * 12/20/2000   Malati Chavva           Initial version
+ * 01/16/2001   Malati Chavva           structure for que descriptors added
+ *======================================================================
+ */
+
+#ifndef _EMAC_DRV_H
+#define _EMAC_DRV_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* include files */
+#include <ethdriver/common/ethdefs.h>
+#include <ethdriver/std_ap/liu.h>
+
+typedef struct _sra_frame_descp_t 
+{
+	struct _sra_frame_descp_t	*next;  /* align to 16 byte boundary and EOL bit 1/0 */
+	UINT32	                system; /* not used by transmit queue */
+	UINT32	                status; /* not used by free buffer list */
+        UINT16                     ctrl;   /* control bits */
+    #define LIU_FrmOpt_FST     10	
+    #define LIU_FrmOpt_LEN	5	/*  only tx Q uses these options
+		                         *  10000 = Big Endian Byte ordering
+		                         *  01000 = Interrupt after transmiting
+		                         *  00100 = No CRC appended
+		                         *  00010 = No pad bytes for short frame */
+    #define LIU_FrmOwner_BIT   15       /*  1 = owned by controller 
+					 *  0 = owned by the system */
+     
+        UINT16                     length; /* #buffers assoated with this frame */
+} sra_frame_descp_t, *Psra_frame_descp_t;
+
+
+typedef struct _sra_buff_descpt_t
+{
+	UINT32	*data;                  /* pointer to buffer data */
+        UINT32     bstatus;                /* buffer control and status field */
+    #define  LIU_BufLen_FST     0
+    #define  LIU_BufLen_LEN    16        
+    #define  LIU_BufStat_FST   16
+    #define  LIU_BufStat_LEN    8
+    #define  LIU_BufSeqNum_FST 24
+    #define  LIU_BufSeqNum_LEN  7
+    #define  LIU_BufOwner_BIT  31 
+        
+#if 0        
+	UINT16	length;                 /* length of the buffer */
+	UINT8	status;                 /* Buffer ID in receive queue. Not used in tx Q
+			                 * It is copied from the free buffer list */
+	UINT8	ctrl;                   /* tx Q not uses. Rx - # for this buffer in 
+                                         * the current buffer area. */
+    #define LIU_BufOwner_BIT	7       /* 1 = owned by controller 
+				         * 0 = owned by the system */
+    #define LIU_BufSeqNu_FST	0       /* seqence # in the current buf area; */
+    #define LIU_BufSeqNu_LEN	7	
+#endif
+} sra_buff_descpt_t, *Psra_buff_descpt_t;
+
+
+typedef struct _QUE_DESCPT
+{
+    sra_frame_descp_t        frame;
+    sra_buff_descpt_t         buffer1;
+    sra_buff_descpt_t		buffer2;
+} QUE_DESCPT, *PQUE_DESCPT;
+
+
+typedef struct _DATA_BUF
+{
+	char	buf[256];
+} DATA_BUF, PDATA_BUF;
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* for the #define emac_drv.h */

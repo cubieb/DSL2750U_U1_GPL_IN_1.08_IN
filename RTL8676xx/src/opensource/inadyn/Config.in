@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_INADYN_MT
+	bool 'inadyn-mt'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	Dynamic DNS

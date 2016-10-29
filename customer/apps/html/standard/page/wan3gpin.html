@@ -1,0 +1,81 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_3G2">The 3G Configuration</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">In this page, you can configure the PIN code of the SIM card.</p>
+		</div>		
+
+		
+		<p ><div class="div_left"><span id="Sim_status">sim card's status is :&nbsp;</span></div>
+			<div class="div_right"><span id="3G_Status"></span></div>
+		</p>
+		
+		<br><br>
+		<div id="Static">
+		
+			<div id="PIN_ENABLE">
+				<div class="div_left" id="lang_EnPin" >Enable PIN protect</div>	
+				<div class="div_right"><input type="radio" name="Action" value="En_pin" id="En_pin" onclick="select_action()"></div>
+			</div>
+			
+			<div id="PIN_DISABLE">
+				<div class="div_left" id="lang_DisPin" >Disable PIN protect</div>
+				<div class="div_right"><input type="radio" name="Action" value="Dis_pin" id="Dis_pin" onclick="select_action()"></div>
+			</div>
+			
+			<div id="PIN_UNLOCK">
+				<div class="div_left" id="lang_UnPin" >Unlock with PIN code</div>
+				<div class="div_right"><input type="radio" name="Action" value="Un_pin" id="Un_pin" onclick="select_action()"></div>
+			</div>
+			
+			<div id="PUK_UNLOCK">
+				<div class="div_left" id="lang_UnPuk" >Unlock with PUK & PIN</div>
+				<div class="div_right"><input type="radio" name="Action" value="Un_puk" id="Un_puk" onclick="select_action()"></div>
+			</div>
+			
+			<div id="PIN_CHG">
+				<div class="div_left" id="lang_ChgPin" >Change PIN code</div>
+				<div class="div_right"><input type="radio" name="Action" value="Chg_pin" id="Chg_pin" onclick="select_action()"></div>
+			</div>
+			
+			<div class="div_black" id="PUK_ENTER">
+				<div class="div_left" id="lang_EnterPuk" >Enter PUK code:</div>
+				<div class="div_right"><input type="password" maxlength=8 id="INPUT_PUK"> <span id="lang_Remain_times1">Remain times:</span><span id="Puk_Times"></span> &nbsp;</div>
+			</div>
+			<div class="div_black" id="PIN_ENTER">
+				<div class="div_left" id="lang_EnterPin" >Enter PIN code:</div>
+				<div class="div_right"><input type="password" maxlength=8 id="INPUT_PIN"> <span id="lang_Remain_times2">Remain times:</span><span id="Pin_Times"></span> &nbsp;</div>
+			</div>				
+				
+			<div id="Change_pin">			
+				<div class="div_black">
+					<div class="div_left" id="lang_EnterPuk2" >Enter current PIN code:</div>
+					<div class="div_right"><input type="password" name="OLD_PIN" maxlength=8 id="Old_pin"><span id="lang_Remain_times3">Remain times:</span> <span id="Chg_Pin_Times"></span>&nbsp;</div>
+					<div class="div_left" id="lang_EnterPin2" >Enter new PIN code:</div>
+					<div class="div_right"><input type="password" name="NEW_PIN" maxlength=8 id="New_pin"></div>
+					<div class="div_left" id="lang_EnterPin1" >Confirm new PIN code:</div>
+					<div class="div_right"><input type="password" name="CONFIRM_PIN" maxlength=8 id="Confirm_pin"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="div_button">
+			<input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/>
+			<input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+		</div>		
+	</div>
+</td>
+
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+			<div>
+				<p id = "lang_help1">
+					The PIN code helps to protect your 3G SIM card. After the PIN code has been entered incorrectly for 3 times, the SIM card is locked. To unlock the SIM card, you need to enter the PUK code.
+				</p>
+			</div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>
+

@@ -1,0 +1,187 @@
+<!-- config -->
+<!--style type="text/css">
+
+.help_table ul{
+	font-size: 11px; list-style-type: disc; padding-left:40px
+}
+.help_table li{
+	font-size: 11px;
+}
+.help_table a{
+	text-decoration:underline;
+}
+.help_table dl {
+	border-right: gray 1px solid; padding-right: 0px; border-top: gray 1px solid; padding-left: 4px; padding-bottom: 0px; border-left: gray 1px solid; padding-top: 0px;border-bottom: gray 1px solid; background-color: #dfdfdf
+}
+</style-->
+<td>
+	<div class="config1">
+	
+		<p class="bk_orange" id = "lang_setup_menu">Setup Help</p>
+		<div do class="div_black help_table">
+			<ul>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup#Wizard"><span id = "lang_wizard_menu">Wizard</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup#Internet"><span id = "lang_internet_menu">Internet Setup</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup#Wireless"><span id = "lang_wireless_menu">Wireless Setup</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup#LAN"><span id = "lang_net_menu">Local Network</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup#Time"><span id = "lang_time_menu">Time and Date</span></a></li>
+			</ul>
+		</div>
+
+		<p class="do bk_black"><a name="Wizard"><span id = "lang_wizard_subtitle">Wizard</span></a></p>
+		<div do class="div_black help_table">
+			<p id = "lang_wizard_help">If you are new to networking and this is the first time you configure a router, click "Setup Wizard" and the router will guide you through a few steps to get your network up and running.</p>
+		</div>
+		
+		<p class="do bk_black"><a name="Internet"><span id = "lang_internet_subtitle">Internet Setup</span></a></p>
+		<div do class="div_black help_table">
+			<p id = "lang_internet_htlp">If you are an advanced user and have configured a router before, click "Add" to add an Internet Setup and manually configure all the settings. </p>
+		</div>
+		
+		<p class="do bk_black"><a name="Wireless"><span id = "lang_wireless_subtitle">Wireless Setting</span></a></p>
+		<div do class="div_black help_table" id = "lang_wireless_help">
+			<p>In the "Wireless" page, you can configure the wireless settings of the router. Note that changes made in this page must also be duplicated on wireless clients that you wish to connect to the wireless network. </p>
+			<p>To protect your privacy, properly configure the wireless security features. </p>
+
+			<dl>
+		<dt><b>Wireless Basics</b>
+		<dd>Basic settings to get your wireless network up and running.
+			<dl>
+              <dt><b>Enable Wireless</b>
+              <dd>You can enable or disable the wireless connection feature of the router. If this option is selected, the following parameters are available.
+			  <dt>Wireless Network Name (SSID)
+              <dd>When you are searching for available wireless networks, this is the name that appears in the list (unless the "Access Point" is set to "Hidden"). For security purposes, it is recommended to change the pre-configured network name.
+	              <dt>Visibility Status
+		<dd>It helps to hide your wireless network. If this option is set to Visible, your wireless network name is broadcast to anyone within the range of your signal. If you are not using encryption, any device that receives your signal can connect to your network. If it is set to Invisible, you must manually enter the Wireless Network Name (SSID) on the client in order to connect to the network.
+			  <dt>Country
+              <dd>It identifies the available wireless channel for the country where you are in. In case your country is not in the list, please select the country nearest to you.
+			  <dt>Wireless Channel
+		<dd>802.11b and 802.11g use channels to limit interference from other devices. If you are experiencing interference with another 2.4 GHz device such as a baby monitor, security alarm, or cordless phone, try changing the channel on your router.
+			<dt>802.11 Mode
+		<dd>Select "Mixed 802.11g and 802.11b" to operate in b/g mode, or select a specific mode.
+			</dd>
+
+			</dl>
+
+		<br>
+
+		<dt>Wireless Security
+		<dd>Settings to secure your wireless network
+			<dl>
+			<dt>Security Mode
+              <dd>If none of the encryption modes is selected, wireless transmissions to and from your wireless network can be easily intercepted and interpreted by unauthorized users.
+              	<dl>
+			  <dt>WEP
+		        <dd>
+		          <p>It is a method of encrypting data for wireless communication intended to provide the same level of privacy as a wired network. WEP is not as secure as WPA encryption. To gain access to a WEP network, you must enter the key, which is a string of characters in HEX (hexadecimal - using characters 0-9, A-F) or ASCII (American Standard Code for Information Interchange - alphanumeric characters) format that you create. An ASCII string, which is easier to remember, is converted to HEX for use over the network. When using WEP, you must specify the type of encryption, which determines the length of the key. 128-bit encryption requires a longer key than 64-bit encryption. You can set up to four keys.</p>
+                  <div class="help_example">
+                   <dl>
+                    <dt>Example:
+                     <dd>A 64-bit hexadecimal key must contain 10 characters. (12345678FA is a valid string of 10 characters for 64-bit encryption.) 
+		     <dd>A 128-bit hexadecimal key must contain 26 characters. (456FBCDF123400122225271730 is a valid string of 26 characters for 128-bit encryption.) 
+		     <dd>A 64-bit ASCII key must contain 5 characters(DMODE is a valid string of 5 characters for 64-bit encryption.) 
+		     <dd>A 128-bit ASCII key must contain 13 characters (2002HALOSWIN1 is a valid string of 13 characters for 128-bit encryption.)
+                     </dd>
+                   </dl>
+                  </div>
+
+                  <dt>Auto (WPA or WPA2)
+                  <dd>WPA stands for Wi-Fi Protected Access. Auto (WPA or WPA2) uses the TKIP or AES encryption method. It is useful during the transition period of upgrade in the enterprise environment, because it enables "upgraded" users and users not yet "upgraded" to access the network through the router.
+                  <dt>WPA Only
+                  <dd>It uses Temporal Key Integrity Protocol (TKIP) encryption, instead of WEP, which is disabled.
+                  <dt>WPA2 Only
+                  <dd>Uses AES (Advanced Encryption Standard) instead of TKIP as its encryption method.
+                  </dd>
+                  </dl>
+                  <dt>WPA Mode
+                  <dd>
+			<dl>
+			<dt>WPA-PSK
+			<dd>It stands for Wi-Fi Protected Access - Pre-Shared Key. It is WPA for home and SOHO environments, using AES or TKIP encryption, per-packet key construction, and key management that WPA provides in the enterprise environment. The group re-key interval time is required.
+			<dt>WPA-Enterprise
+			<dd>It is Wi-Fi Protected Access - Enterprise. It usually applies to larger Enterprise environments. The information of the RADIUS server and the group re-key interval time must be entered.
+			</dd>
+
+			</dl>
+			  <p><b>Group Key Update Interval: </b>The amount of time before the group key used for broadcast and multicast data is changed.</p>
+			  <p><b>Authentication Timeout: </b>Authentication Timeout: The amount of time before a client is asked to re-authenticate.</p>
+              <p><b>RADIUS Server IP Address: </b>The IP address of the authentication server. </p>
+              <p><b>RADIUS Server Port: </b>The port used to connect the authentication server.</p>
+
+              <p><b>RADIUS Server Shared Secret: </b>A passphrase used to verify at the authentication server.</p>
+			  </dd>
+			</dl>
+			</dd>
+			</dl>
+
+		</div>
+		
+		<p class="do bk_black"><a name="LAN"><span id = "lang_net_subtitle">Local Network</span></a></p>
+		<div do class="div_black help_table" id = "lang_net_help">
+			<dl>
+			  <dt>LAN Setup
+              <dd>In this page, you can configure the LAN (Local Area Network) interface of the router, including setting the IP Address and subnet mask. The IP address can also used to access the Web management interface. You are recommended to use the default settings if you do not have an existing network.
+			  <dt>Router IP Address
+                <dd>The IP address of the router on the local area network. For example, 192.168.0.1. The LAN settings are based on this address. 
+                <dt>Subnet Mask
+                <dd>The subnet mask of the router on the local area network.
+				<dt>DHCP Server Settings
+    			<dd>DHCP stands for Dynamic Host Configuration Protocol. In this page, you can configure the built-in DHCP server, which assigns IP addresses to computers and other devices on the LAN.
+				<dl>
+                <dt>Enable DHCP Server
+                <dd>
+
+                <p>If the router is properly configured and this option is selected, the DHCP server will manage the IP addresses and other network configuration information of computers and other devices connected to the LAN. Manual configuration is not needed. </p><!--@ENDOPTIONAL@-->
+                <p>The computers (and other devices) connected to your LAN also
+                need to have their TCP/IP configuration set to "DHCP" or "Obtain
+                an IP address automatically". </p>
+
+                <p>If <span class=option>Enable DHCP Server</span>is selected,
+                the following options become available. </p>
+                <dt>DHCP IP Address Range
+                <dd>The two IP addresses (<I>from</I> and <I>to</I>)define the range of IP addresses that the DHCP server uses when assigning addresses to computers and devices on your LAN. Any address that is beyond this range is not managed by the DHCP server, and can therefore, be used by a device whose IP address is manually configured or a device that fails to obtain network address automatically through DHCP.
+
+                <p>The router, by default, has the static IP address of 192.168.1.1. This means that addresses 192.168.1.2 to 192.168.1.254 can be available for allocation by the DHCP server. </p>
+
+                <div class="help_example">
+                <dl>
+                  <dt>Example:
+                  <dd>Assume that the IP address of the router is 192.168.1.1. A computer, which serves as a Web server, is assigned with the static IP address of 192.168.1.3. Another computer, which serves as an FTP server, is assigned with the static IP address of 192.168.1.4. Therefore, the starting IP address for DHCP IP address range must be 192.168.1.5 or greater.
+                  <dt>Example:
+                  <dd>Assume that you configure the DHCP Server to manage addresses from 192.168.1.100 to 192.168.1.199. This means that 192.168.1.3 to 192.168.1.99 and 192.168.1.200 to 192.168.1.254 are NOT managed by the DHCP server. Computers or devices that use addresses in these ranges are manually configured.
+                  </dd>
+				</dl>
+				</div>
+                <dt>DHCP Lease Time
+                <dd>The amount of time that a computer can have an IP address before it is required to renew the lease. In the initial lease, the amount of time before the lease expires is specified. If the tenant wishes to retain the address when the lease expires, a new lease can be established. If the lease expires and the address is no longer needed, another tenant can use the address.
+				</dd></dl>
+
+			  </dd>
+			  </dl>
+
+		</div>
+		
+		<p class="do bk_black"><a name="Time"><span id = "lang_time_subtitle">Time and Date</span></a></p>
+		<div do class="div_black help_table" id = "lang_time_help">
+			<dl>
+				<dd>With the time configuration function, you can configure, update, and maintain the correct time of the internal system clock. In this page, you can set the time zone that you are in and set the time server.
+				<dt>Current Router Time
+				<dd>It displays the current time on the router. If it is not correct, do as follows to configure the correct time:
+				<dt>Automatically synchronize with Internet Time servers
+				<dd>
+
+				<dl>
+				<dd>Select this option if you want to synchronize the clock on the router with a network time server over the Internet. If you are using schedules or logs, this can ensure that the schedules and logs are kept accurately.
+				<dt>NTP Time Server
+    			<dd>Select a network time server for synchronization. You can enter the address of a time server or select one from the list. If you have trouble using a server, please select another.
+				<dt>Time Zone
+				<dd>Select your local time zone from the drop-down menu.
+				</dd>
+				</dl>
+				</dd>
+				</dl>
+		</div>
+
+
+	</div>
+</td>

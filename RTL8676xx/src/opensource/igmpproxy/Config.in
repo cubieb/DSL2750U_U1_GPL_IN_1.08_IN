@@ -1,0 +1,23 @@
+#####################
+config OPENSOURCE_IGMPPROXYV3
+	bool 'IGMPProxy'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	IGMPproxy is a simple mulitcast router for Linux that only uses the IGMP protocol.
+
+config SUPPORT_IGMP_V3
+	bool 'Support IGMPv3'
+	default n
+	depends on OPENSOURCE_IGMPPROXYV3
+	help
+		Support IGMPv3
+
+config SUPPORT_MULTIWAN 
+	bool 'Support multiwan upstream'
+	default n
+	depends on OPENSOURCE_IGMPPROXYV3
+	help
+		Support multi wan upstream
+
+	

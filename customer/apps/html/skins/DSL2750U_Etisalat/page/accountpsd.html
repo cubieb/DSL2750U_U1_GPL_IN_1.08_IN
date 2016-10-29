@@ -1,0 +1,70 @@
+		<!-- config -->
+		<style type="text/css"><!--
+		   .div_left { width:255px;}
+        --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_config">Account Password</p>
+				<div class="div_orange">
+					<p id = "lang_introdection">You can access the DSL Router through one of the three user accounts: admin, support, and user.</p>
+					<p id = "lang_introdection1">User "support" can access the DSL Router for maintenance and diagnosis. It is usually used by an ISP technician and cannot be used locally.</p>
+					<p id = "lang_introdection2">User "user" can access the DSL Router, to view configuration settings and statistics.</p>
+					<p id = "lang_introdection3">Use the fields below to change or create passwords. Note: Password cannot contain a space.</p>
+				</div>
+			<p class="do bk_black" id = "lang_config1">Account Password</p>
+			<div class="div_black">
+			    <div class="div_left" id = "lang_username">Username:</div>
+			    <div class="div_right" id="DIV_UserLevel">&nbsp;
+				    <select name="SELECT_UserLevel" id="SELECT_UserLevel" onChange="ctrlChageUser()" style="width:110px"><option value="1">admin</option><option value="2">user</option><option value="3">support</option></select>
+			    </div>
+
+			    <div class="div_left" id = "lang_new_username">New Username:</div>
+			    <div class="div_right">&nbsp;
+				    <input maxlength=15 name="INPUT_NewUsername" id="INPUT_NewUsername" style="width:100px">
+			    </div>
+				
+			    <div class="div_left" id = "lang_cur_password">Current Password:</div>
+			    <div class="div_right">&nbsp;
+				    <input type="password" maxlength=255 name="INPUT_OldPassword" id="INPUT_OldPassword" style="width:100px">
+			    </div>
+						
+			    <div class="div_left" id = "lang_new_password">New Password:</div>
+			    <div class="div_right">&nbsp;
+				    <input type="password" maxlength=255 name="INPUT_NewPassword" id="INPUT_NewPassword" value="" style="width:100px">
+			    </div>
+			
+			    <div class="div_left" id = "lang_con_password">Confirm Password:</div>
+			    <div class="div_right">&nbsp;
+				     <input type="password" maxlength=255 name="INPUT_ConfirmPassword" id="INPUT_ConfirmPassword" value="" style="width:100px">
+			    </div>
+				
+			</div>
+			<div class="div_button"><input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/> <input type="button" id = "cancel"value="Cancel" onClick="uiPageRefresh()"/></div>
+			
+			<p class="do bk_black" id = "lang_timeout_config">Web Idle Timeout Settings</p>
+			<div class="div_black">
+				<div class="div_left" id = "lang_timeout">Web Idle Timeout:</div>
+			    <div class="div_middle">&nbsp;
+			    <input type="text" maxlength=11 name="INPUT_SessionTimeOut" id="INPUT_SessionTimeOut" value="" style="width:100px"/>
+			    <span id = "lang_time">(5 ~ 30 minutes)</span>
+			</div>
+
+			</div>
+			<div class="div_button"><input type="button" name="submit1" id="submit1" value="Apply" onClick="uiSubmit_TO();"/> <input type="button" id = "cancel1" value="Cancel" onClick="uiPageRefresh()"/></div>
+		</td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<div>
+				<p id = "lang_help">
+					In this page, you can change the password for accessing the Web management interface of the router. For security concerns, it is recommended to change the default passwords of user "admin" and user "user" immediately. Each password you set should consist of 1-16 characters.
+Please set a password that is easy for you to remember or write it down and keep it in a safe place for future reference. If you forget the password, you have to reset the router to factory default settings and all the configurations on the router will be lost.
+
+				</p>
+				</div>
+				<h5 ><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>
+	</tr>
+</table>		

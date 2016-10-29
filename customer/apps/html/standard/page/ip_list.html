@@ -1,0 +1,62 @@
+<td>
+	<div class="config2" >
+			<p class="bk_orange"  span id="lang_title">IP过滤设置</span></p>
+		<!--<p class="tips" id="lang_tips">警告: 在白名单中没有规则的情况下, 启用白名单将导致页面无法访问</p>-->
+		<div class="div_black">
+				<div class="div_left" ><input type="checkbox" name="INPUT_Enable" id="INPUT_Enable"></div>
+				<div class="div_right" span id="lang_enableIPfilter">启用IP过滤功能</span></div>
+
+			<div class="div_left" id="lang_security">Security Level</div>
+			<div class="div_middle">&nbsp;
+				<select name="SELECT_SecurityLevel" id="SELECT_SecurityLevel" onChange="uiOnload(this.value)" style="width:100px">
+					<option value="3">高</option>
+					<option value="2">中</option>
+					<option value="1">低</option>
+					<option value="0">自定义</option>
+				</select>
+			</div>
+			<div class="div_right">&nbsp;</div>
+			
+			<p class="do bk_black" id="lang_model">过滤模式</p>
+                     <div class="div_right">&nbsp;</div>
+			<div class="div_left">WAN --> LAN</div>
+			<div class="div_middle">&nbsp;
+				<input type="radio" name="wanToLan" id="INPUT_WanToLan_White" value="1" onClick="createTable()"><span id="lang_wanToLan_white">白名单</span> 
+				<input type="radio" name="wanToLan" id="INPUT_WanToLan_Black" value="2" onClick="createTable()"><span id="lang_wanToLan_black">黑名单</span>
+			</div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left">LAN  --> WAN</div>
+			<div class="div_middle">&nbsp;
+				<input type="radio" name="lanToWan" id="INPUT_LanToWan_White" value="1" onClick="createTable()"><span id="lang_lanToWan_white">白名单</span> 
+				<input type="radio" name="lanToWan" id="INPUT_LanToWan_Black" value="2" onClick="createTable()"><span id="lang_lanToWan_black">黑名单</span>
+			</div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_button do">
+				<input type="button" name="submit" id="submit" value="提交" onClick="uiSumbit()" > 
+				<input type="button" id="refresh" value="刷新" onClick="uiPageRefresh();"/>
+			</div>
+
+			<p class="do bk_black" id="lang_addIPFilter">添加IP过滤规则</p>
+                     <div class="div_right">&nbsp;</div>
+			<div class="div_left" id="lang_chooseDirection">选择方向</div>
+			<div class="div_middle">&nbsp;
+				<select name="SELECT_ListType" id="SELECT_ListType" onChange="createTable()" style="width:100px">
+					<option value="1">WAN --> LAN</option>
+					<option value="2">LAN --> WAN</option>
+				</select> 
+				<input type="button" id="add" name="add" onClick="uiAdd()">
+			</div>
+			<div class="div_right">&nbsp;</div>
+
+			<div id="MainTable">
+				<table class="td_table" id="Table_ip_list">
+					<tr>
+						<td id="lang_num">序列号</td><td id="lang_enable">启用</td><td id="lang_source">源IP/源Mask/源端口</td><td id="lang_destiantion">目的IP/目的Mask/目的端口</td><td id="lang_protocol">协议</td><td id="lang_description">描述</td><td id="lang_device">设备名</td><td id="lang_action">操作</td>
+					</tr>
+				</table>
+			</div>
+			<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+		</div>
+</td>

@@ -1,0 +1,7 @@
+config OPENSOURCE_SIPROXD
+        bool 'sip proxy Daemon'
+        default n
+        depends on OPENSOURCE
+        help
+	 sip proxy base on sip Protocol.
+

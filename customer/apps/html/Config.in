@@ -1,0 +1,162 @@
+######################################
+config APPS_OTHERPORT
+	bool 'OTHERPORT'
+	default n
+	depends on APPS
+	select APPS_WEB
+  	help
+      	  Visit the webpage through other ports
+config APPS_HTML
+	bool 'HTML'
+	default y
+	depends on APPS
+	select APPS_WEB
+	#select APPS_HTML_PAGE_system_msg
+  	help
+      	  HTML Pages
+######################################
+menu "Languages"
+	depends on APPS_HTML
+
+	menu "All Supported Languages"
+		depends on APPS_HTML
+
+		config APPS_HTML_LANG_SUPPORT_en_us
+			bool 'English'
+			default y
+			help
+				Support English Language.
+
+		config APPS_HTML_LANG_SUPPORT_zh_cn
+			bool 'Chinese'
+			default y
+			help
+				Support Chinese Language.
+
+		config APPS_HTML_LANG_SUPPORT_es_es
+			bool 'Spanish'
+			default n
+			help
+				Support Spanish Language.
+	endmenu
+
+	choice
+		prompt "Default language"
+		default APPS_HTML_LANG_DEFAULT_zh_cn
+		depends on APPS_HTML
+
+		config APPS_HTML_LANG_DEFAULT_en_us
+			bool 'English'
+			select APPS_HTML_LANG_SUPPORT_en_us
+			help
+				English as default language.
+
+		config APPS_HTML_LANG_DEFAULT_zh_cn
+			bool 'Chinese'
+			select APPS_HTML_LANG_SUPPORT_zh_cn
+			help
+				Chinese as default language.
+
+		config APPS_HTML_LANG_DEFAULT_es_es
+			bool 'Spanish'
+			select APPS_HTML_LANG_SUPPORT_es_es
+			help
+				Spanish as default language.
+	endchoice
+
+
+
+endmenu
+######################################
+menu "Web Style"
+	depends on APPS_HTML
+	choice
+		prompt "All Supported Style"
+		default APPS_HTML_WEB_STYLE_Blue
+		depends on APPS_HTML
+		config APPS_HTML_WEB_STYLE_STANDARD
+			bool 'standard'
+			help
+				Web  Standard  style
+		config APPS_HTML_WEB_STYLE_DSL2740EL
+			bool 'DSL2740EL'
+			help
+				Web  DSL2740EL  style		
+		config APPS_HTML_WEB_STYLE_DSL2750U
+			bool 'DSL2750U'
+			help
+				Web  DSL2750U  style		
+		config APPS_HTML_WEB_STYLE_DSL2730U
+			bool 'DSL2730U'
+			help
+				Web  DSL2730U  style	
+		config APPS_HTML_WEB_STYLE_DSL2730U_ETISALAT
+			bool 'DSL2730U_ETISALAT'
+			help
+				Web DSL2730U Etisalat style
+		config APPS_HTML_WEB_STYLE_DSL2750U_ETISALAT
+			bool 'DSL2750U_ETISALAT'
+			help
+				Web DSL2750U Etisalat style
+		config APPS_HTML_WEB_STYLE_DSL2730E
+			bool 'DSL2730E'
+			help
+				Web  DSL2730E  style			
+		config APPS_HTML_WEB_STYLE_DSL2750E
+			bool 'DSL2750E'
+			help
+				Web  DSL2750E  style		
+		config APPS_HTML_WEB_STYLE_DSL2750E_TOT
+			bool 'DSL2750E_TOT'
+			help
+				Web  DSL2750E_TOT  style			
+	endchoice
+	
+	choice
+		prompt "Default Style"
+		default APPS_HTML_WEB_STYLE_DEFAULT_Blue
+		depends on APPS_HTML
+
+	  config APPS_HTML_WEB_STYLE_DEFAULT_STANDARD
+			bool 'standard'
+			help
+				Web  Standard  style
+    config APPS_HTML_WEB_STYLE_DEFAULT_DSL2740EL
+    	    bool 'DSL2740EL'
+    	    help
+    		web DSL2740EL stype 
+    config APPS_HTML_WEB_STYLE_DEFAULT_DSL2750U
+    	    bool 'DSL2750U'
+    	    help
+    		web DSL2750U stype      		 							
+    config APPS_HTML_WEB_STYLE_DEFAULT_DSL2730U
+    	    bool 'DSL2730U'
+    	    help
+    		web DSL2730U stype      		 							
+    config APPS_HTML_WEB_STYLE_DEFAULT_DSL2730U_ETISALAT
+    	    bool 'DSL2730U_ETISALAT'
+    	    help
+    		web DSL2730U Etisalat stype
+    config APPS_HTML_WEB_STYLE_DEFAULT_DSL2750U_ETISALAT
+    	    bool 'DSL2750U_ETISALAT'
+    	    help
+    		web DSL2750U Etisalat stype
+     config APPS_HTML_WEB_STYLE_DEFAULT_DSL2750E_TOT
+    	    bool 'DSL2750E_TOT'
+    	    help
+    		web DSL2750E_TOT stype
+
+	endchoice
+	
+	config APPS_HTML_WEB_LOGIN_WIZARD
+			bool 'telefonica login wizard'
+			default n
+			help
+				 telefonica's request when logging in the CPE ,  pop out a specific wizard page
+				 
+	
+endmenu
+
+
+
+

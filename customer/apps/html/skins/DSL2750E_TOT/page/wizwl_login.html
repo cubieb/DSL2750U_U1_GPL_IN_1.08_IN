@@ -1,0 +1,148 @@
+<style type="text/css"><!-- 
+	.div_left { width:300px;}
+ --></style>
+
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<td width="840">
+	<div class="config1" id = "display_all" style="margin:0px auto;">
+		<p class="bk_orange" style="height:20px"></p>
+		<div class="div_black">
+			<!-- wlan mode -->
+			<b id = "lang_config_wlan" style="height:50px"> Quick setup - WLAN </b>
+			<p></p>
+			<p></p>
+			<p id = "lang_introduction"> You may enable/disable WLAN function, change WLAN SSID and Authentication type in this page. Then, clink "SAVE" to continue automatic setup
+			</p>
+			
+			<div id="wlan_mode">	
+				<div class="div_left" id = "lang_enable_wireless">Enable Wireless :</div>
+				<div class="div_right"><input type="checkbox" id="INPUT_WlanEnable" /></div>
+				<hr />
+				<div class="div_left" id = "lang_ssid">Wireless Network Name (SSID) :</div>
+				<div class="div_right"><input type="text" id="INPUT_SSID" maxlength="32" /></div>
+				
+					<div class="div_left"><label for="INPUT_Visible"><span id = "lang_visibility">Visibility Status :</span></label></div>
+					<div class="div_right">
+					       <input type="radio" name="vb_status" id="INPUT_Visible" value="1" /> 
+						   		<label for="INPUT_Visible"><span id = "lang_visible">Visible</span></label> 
+						   <input type="radio" name="vb_status" id="INPUT_Invisible" value="0" /> 
+						   		<label for="INPUT_Invisible"><span id = "lang_invisible">Invisible </span></label></div>
+	
+				<div class="div_left"><span id = "lang_mode">Security Mode :</span></div>
+				<div class="div_right"><select id="SELECT_Mode" onChange="ctrlSecMode()"  style="width:158px">
+											<option value="None">None</option>
+											<option value="Basic">WEP</option>
+											<option value="WPAand11i">Auto(WPA or WPA2)</option>
+											<option value="11i">WPA2 only</option>
+											<option value="WPA">WPA only</option>
+										</select>
+				</div>
+			</div>
+			
+			<hr />
+			<div id = "lang_secure_mode">
+				<div class="div_left" ><span id="lang_WPAEncryption">WPA Encryption :</span></div>
+				<div class="div_right"><select id = "SELECT_EncryptionModes" >
+											<option> </option>
+										</select>
+				</div>
+			</div>
+			<!-- WEP -->
+			<div id="wep">
+				<div class="div_left"><span id = "lang_WEP_length">WEP Key Length :</span></div>
+				<div class="div_right"><select id="SELECT_WEPIndex" onChange="onChgWepLen()"   style="width:158px">
+											<option value="40-bit">64 bits(10 hex digits or 5 char)</option>
+											<option value="104-bit">128 bits(26 hex digits or 13 char)</option>
+										</select>
+				</div>
+				<div class="div_left"><span id = "lang_WEP_choice">Choose WEP Key :</span></div>
+				<div class="div_right"><select id="SELECT_WEPKey"   style="width:158px">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+				</div>
+				<div class="div_left"><span id = "lang_WEP_key1">WEP Key1 :</span></div>
+				<div class="div_right"><input type="text" id="INPUT_WEPKey1" maxLength  = "10" style="width:150px"/></div>
+				<div class="div_left"><span id = "lang_WEP_key2">WEP Key2 :</span></div>
+				<div class="div_right"><input type="text" id="INPUT_WEPKey2" maxLength  = "10" style="width:150px"/></div>
+				<div class="div_left"><span id = "lang_WEP_key3">WEP Key3 :</span></div>
+				<div class="div_right"><input type="text" id="INPUT_WEPKey3" maxLength  = "10" style="width:150px"/></div>					
+				<div class="div_left"><span id = "lang_WEP_key4">WEP Key4 :</span></div>
+				<div class="div_right"><input type="text" id="INPUT_WEPKey4" maxLength  = "10" style="width:150px"/></div>
+				<div class="div_left"><span id = "lang_WEP_auth">Authentication :</span></div>
+				<div class="div_right"><select id="SELECT_Auth"   style="width:158px">
+											<option value="None">Open</option>
+											<option value="SharedAuthentication">Share Key</option>
+										</select>
+				</div>
+				
+				<p id = "lang_WEP_introduction1">
+					WEP 64-bits  :  Please enter exactly 5 characters or 10 hexadecimal digits("0-9","A-F")for each Key(1-4)
+				</p>
+				<p id = "lang_WEP_introduction2">
+					WEP 128-bits : Please enter exactly 13 characters or 26 hexadecimal digits("0-9","A-F")for each Key(1-4)					
+				</p>
+			</div>
+			<!-- WPA -->
+			
+			<div id="wpa">		
+				<!-- Pre-Shared Key -->
+				<div id="prekey">
+					<div class="div_left"><span id = "lang_shard_key1">Pre-Shared Key :</span></div>
+					<div class="div_right"><input type="text" id="INPUT_PreShareKey" maxlength="64"   style="width:150px"/></div>
+				</div>
+			</div>
+		</div>	
+		
+		<p class="bk_orange" align="right">
+				<input type="button" id="back" value="BACK" onClick="uiBack()" /> 
+				<input type="submit" id="submit" value="SAVE" onClick="uiApply()" /> 
+				<input type="button" id="cancle" value="EXIT" onClick="uiCancle()" /> 							
+		</p>
+	</div>
+	
+<div id="display_process">
+	<body>
+		<table border=1 width=400 align=center cellspacing=0 cellpadding=4 bgcolor=#FFFFFF height=87>
+			<tr><td id="lang_display_process" bgcolor=#FFFFFF height=16 align=center><b>Set in......., please wait for the process</b></td></tr>
+			<tr>
+				<td>
+					<marquee style='border:1px solid #000000' direction=right width=400 scrollamount=20 scrolldelay=0 bgcolor=#FFFFFF>
+						<table cellspacing=1 cellpadding=0><tr height=16><td bgcolor=#ff7700 width=50></td></tr></table>
+					</marquee>
+				</td>
+			</tr>
+		</table>
+	</body>
+</div>
+
+<div class="div_button" id="display_process_stop">
+	<body overflow:hidden>
+		<table border=1 width=400 align=center cellspacing=0 cellpadding=4 bgcolor=#FFFFFF height=87>
+			<tr><td id="lang_display_process_stop" bgcolor=#FFFFFF height=16 align=center><b>Set in......., please wait for the process</b></td></tr>
+			<tr>
+				<td>
+					<marquee style='border:1px solid #000000' direction=right width=400 scrollamount=20 scrolldelay=0 bgcolor=#FFFFFF>
+					</marquee>
+				</td>
+			</tr>
+		</table>
+	</body>
+</div>
+<div class="div_button" id="display_process_error">
+	<body overflow:hidden>
+		<table border=1 width=400 align=center cellspacing=0 cellpadding=4 bgcolor=#FFFFFF height=87>
+			<tr><td id="lang_display_process_error" bgcolor=#FFFFFF height=16 align=center><b>Restore settings......., please wait for the process</b></td></tr>
+			<tr>
+				<td>
+					<marquee style='border:1px solid #000000' direction=left width=400 scrollamount=20 scrolldelay=0 bgcolor=#FFFFFF>
+					<table cellspacing=1 cellpadding=0><tr height=16><td bgcolor=#ff7700 width=50></td></tr></table>
+					</marquee>
+				</td>
+			</tr>
+		</table>
+	</body>
+</div>
+</td>

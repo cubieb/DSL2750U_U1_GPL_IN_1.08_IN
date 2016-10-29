@@ -1,0 +1,40 @@
+.PHONY: all build clean distclean 
+SRC_DIR=$(CURDIR)/openssl-0.9.8h
+#export PATH:=$(TOOLCHAINS_PATH)/../${TARGET}/bin:$(PATH)
+SSL_OBJS_TO_REMOVE =    
+
+CRYPTO_OBJS_TO_REMOVE = 
+
+all: prepare_dir build install
+
+zlib:
+	make -C ${ROOTDIR} zlib
+
+prepare_dir:
+	if [ -d $(SRC_DIR) ]; then rm -rf $(SRC_DIR); fi
+	tar zxf openssl-0.9.8h.tar.gz
+	cd $(SRC_DIR); \
+	if [ ! -d $(TOOLCHAINS_PATH)/../${TARGET}/bin ]; then \
+	  echo "Directory \"$(TOOLCHAINS_PATH)/../${TARGET}/bin\" not exists! "; \
+	  exit 1;  \
+	fi; \
+	./Configure --prefix=$(TMPDISTDIR) shared zlib-dynamic $(EXTRAFLAGS) -I$(TMPDISTDIR)/include -L$(TMPDISTDIR)/lib no-threads no-bf no-cast no-pqueue no-store no-dsa no-rc2 no-rc5 -DWAPI_ENABLE linux-generic32
+
+build:
+	make -C $(SRC_DIR) SSL_OBJS_TO_REMOVE="${SSL_OBJS_TO_REMOVE}" CRYPTO_OBJS_TO_REMOVE="${CRYPTO_OBJS_TO_REMOVE}"
+
+clean:
+	rm -rf $(FSROOT)/lib/lib{ssl,crypto}.so*
+	rm -rf $(TMPDISTDIR)/lib/lib{ssl,crypto}.so*
+	rm -rf $(SRC_DIR)
+
+distclean: clean
+	
+install:
+	make -C $(SRC_DIR) install SSL_OBJS_TO_REMOVE="${SSL_OBJS_TO_REMOVE}" CRYPTO_OBJS_TO_REMOVE="${CRYPTO_OBJS_TO_REMOVE}"
+	if [ ! -d $(FSROOT)/lib ]; then mkdir -p $(FSROOT)/lib; fi
+	cp -Pf $(TMPDISTDIR)/lib/lib{ssl,crypto}.so* $(FSROOT)/lib/
+	#cp -Pf $(TMPDISTDIR)/bin/openssl $(FSROOT)/bin
+	chmod u+w $(FSROOT)/lib/lib{ssl,crypto}.so*
+	$(STRIP)  $(FSROOT)/lib/lib{ssl,crypto}.so*
+	#$(STRIP)  $(FSROOT)/bin/openssl

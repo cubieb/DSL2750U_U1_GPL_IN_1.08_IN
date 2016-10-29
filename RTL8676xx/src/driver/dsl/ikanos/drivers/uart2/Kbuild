@@ -1,0 +1,9 @@
+
+#***********************************************************************
+#*                                                                     *
+#*   MODULE:  Serial Driver Interface Makefile                         * 
+#*                                                                     *
+#*---------------------------------------------------------------------*
+UART_OBJ := uart2c.o uartclock.o uartTransmit.o uartTest.o
+obj-m   := uart2.o
+uart2-objs := $(UART_OBJ)

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+TFTP_USER=
+TFTP_SERVER=
+
+tftp -g $TFTP_SERVER -r $TFTP_USER/adf.ko -l adf.ko
+tftp -g $TFTP_SERVER -r $TFTP_USER/hif_pci.ko -l hif_pci.ko
+tftp -g $TFTP_SERVER -r $TFTP_USER/hst_fwd.ko -l hst_fwd.ko
+tftp -g $TFTP_SERVER -r $TFTP_USER/hif_loop.ko -l hif_loop.ko

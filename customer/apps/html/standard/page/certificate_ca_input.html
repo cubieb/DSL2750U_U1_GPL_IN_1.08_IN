@@ -1,0 +1,52 @@
+<!-- config -->
+<style type="text/css"><!--
+	.div_left { width:120px;}
+--></style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_config">Trusted CA Certificates </p>
+		<div class="div_orange">
+			<p id = "lang_introduction">Enter certificate name and upload at most 3 certificate files.</p>
+		</div>
+		<p class="do bk_black" id = "lang_config1">Import CA certificate </p>
+		<div class="div_black" style="display:none">
+			<div class="div_left" id = "lang_name">Certificate Name:</div><div class="div_right"><input type="text" id="certificateName"></div>
+			<div class="div_left" id = "lang_cer">Certificate:</div><div class="div_right" style=" height:400px;"><textarea name="TEXTAREA_IncertCert" id="TEXTAREA_IncertCert" rows="20" cols="47"></textarea></div>
+		</div>
+		<div class="div_black">
+			<form name="confForm1"  method="post" action="webupg" enctype="multipart/form-data" onSubmit="return isInProgress();">
+                <div class="div_left" id = "lang_name2">Certificate Name:</div>
+				<div class="div_right"><input type="text" name ="setAuthFile" id="setAuthFile"></div>
+				<div class="div_left" id="lang_setingAuth">Certificate File:</div> 
+			    <div class="div_right"><input type="file" name="setAuthFile" id="setAuthFile" /></div>
+				<div id="AddAuthfile1" style="display:none">
+			       <div class="div_left" id="lang_setingAuth">Certificate File:</div> 
+			    <div class="div_right"><input type="file" name="setAuthFile" id="setAuthFile" /></div></div>
+			    <div id="AddAuthfile2" style="display:none">
+			    <div class="div_left" id="lang_setingAuth">Certificate File:</div> 
+			    <div class="div_right"><input type="file" name="setAuthFile" id="setAuthFile" /></div></div>
+	
+				<div class="div_button">
+					<input type="button" id="add" name="add" onClick="uiAdd()" value="Add">
+					<input type="submit" name="btn1" id="setAuthFile" value="Submit">
+				</div>
+			</form> 
+		</div>
+	</div>
+	<div class="div_button" style="display:none"><input type="button" id="back" name="back" onClick="toBack()" value="Back" >
+	<input type="button" id="apply" name="apply" onClick="uiSubmit()" value="apply">
+	<input type="button" id="cancle" name="cancle" onClick='uiPageRefresh()' value="Cancel">
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+			<p id = "lang_help">Trusted certificate authority (CA) allows you to verify the certificates of your peers.
+			</p>
+		</div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>
+

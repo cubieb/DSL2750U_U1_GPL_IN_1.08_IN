@@ -1,0 +1,37 @@
+menuconfig APPS_IPV6
+        bool 'IPV6'
+        default y
+        depends on APPS  && TBS_SUPPORT_IPV6
+        help
+        IPV6
+
+config APPS_IPV6_RAMON
+	bool 'RAMon'
+	default y
+	depends on APPS_IPV6
+	help
+		used for monitoring RA message
+
+config APPS_IPV6_IP6MON
+	bool 'IP6Mon'
+	default y
+	depends on APPS_IPV6
+	help
+		used for monitoring IPv6 address and default route status change
+
+config APPS_IPV6_IP6AAC
+	bool 'IP6AAC'
+	default y
+	depends on APPS_IPV6
+	help
+		used for IPv6 address autoconfiguration, including stateful and stateless
+
+
+config APPS_IPV6_IFIPV6
+	bool 'ifip6'
+	default y
+	depends on APPS_IPV6
+	help
+		used for enable or disable ipv6 for individual interface
+
+

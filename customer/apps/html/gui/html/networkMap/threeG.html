@@ -1,0 +1,60 @@
+<div class="dialog_faq dialog_faq_int dialog_faq_3g"></div>
+<div class="threeg_dialog" >
+	<div class="threeg_parte">
+		<div class="threeg_line">
+			<div class="threeg_label trad" key="COMMON_STATUS"></div>
+			<div class="threeg_input colored_iphone" style="margin-left:11px;">
+				<input id="threeg_status" type="checkbox" /></div>
+		</div>
+		<div class="threeg_line">
+			<div style="display: block;">			
+				<div class="threeg_label trad" key="THREEG_PIN"></div>
+				<div class="threeg_input"><input type="password" id="pin"></div>
+			</div>
+		</div>
+		<div class="threeg_line"></div>
+	</div>		
+	<div class="line_grey" style="width: 450px;margin-top:26px;"></div>
+    
+	<div class="centred">
+		<div id="cancel" class="cancel hand">
+			<div class="cancel_icon"></div>			
+			<span class="trad cancel_txt" key="COMMON_CANCEL"></span>
+		</div>
+		<div id="acceptDev" class="accept buttons_space hand">
+			<div class="accept_icon"></div>			
+			<span id="acept3G" class="trad accept_txt" key="COMMON_ACCEPT"></span>		
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function show3GInfo(success, threeGInfo){
+	if (success) {
+		var status = 0;
+		if (threeGInfo.Enable){
+			status = 1;
+		}
+		if ($("#threeg_status").attr("checked") != status)
+			$("#threeg_status").attr("checked", status).change();
+		//$("#pin").value = threeGInfo.pinCode;
+	}
+}
+
+$(document).ready(function(){
+	$("#threeg_status").attr("checkedLabel",_("THREEG_STATUS_ON"));
+	$("#threeg_status").attr("uncheckedLabel",_("THREEG_STATUS_OFF"));
+	
+	get3GInfo(show3GInfo);
+	$('#acept3G').click(function() {
+		var threeGInfo = new Object;
+		threeGInfo.Enable = $("#threeg_status").attr("checked");
+		threeGInfo.pinCode = $('#pin').val();
+		var string3GInfo = $.toJSON(threeGInfo);
+		set3G(string3GInfo, "");
+		$('#dialog').dialog("close");
+	});
+	$('.dialog_faq_3g').click(function() {		
+		loadHelpDialog(_("HELP_TITLE"), function() { linkContent(2,4); });		
+	});
+});
+ </script>

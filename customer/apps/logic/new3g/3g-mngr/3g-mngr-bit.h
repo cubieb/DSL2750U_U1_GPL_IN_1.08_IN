@@ -1,0 +1,10 @@
+/*this file is auto generated,do not edit!*/
+#define MNGR_START_CREATE_MODEM (1<<0)
+#define MNGR_START_CREATE_AT (1<<1)
+#define MNGR_START_CREATE_PAR (1<<2)
+#define MNGR_START_CREATE_PIN (1<<3)
+#define MNGR_START_CREATE_SW (1<<4)
+#define MNGR_START_CREATE_DIAL (1<<5)
+#define MNGR_START_CREATE_CNN (1<<6)
+#define MNGR_START_CREATE_WEB (1<<7)
+#define MNGR_START_CREATE_WAN (1<<8)

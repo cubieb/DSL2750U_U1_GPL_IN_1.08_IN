@@ -1,0 +1,134 @@
+
+<td>
+	<div class="config1">
+	
+		<p class="bk_orange" id = "lang_status_help_menu">Status Help</p>
+		<div do class="div_black help_table">
+			<ul>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#DeviceInfo"><span id = "lang_devinfo">Device Info</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#Wireless"><span id = "lang_wiress_client">Wireless Clients</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#DHCP"><span id = "lang_dhcp_client">DHCP Clients</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#Logs"><span id = "lang_logs">Logs</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#Statistics"><span id = "lang_statistics">Statistics</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#Route"><span id = "lang_routeinfo">Route Info</span></a></li>
+			</ul>
+		</div>
+		
+		<p class="do bk_black"><a name="DeviceInfo"><span id = "lang_devinfo_subtitle">Device Info</span></a></p>
+		<div do class="div_black help_table" id = "lang_devinfo_help">
+			<p>It shows detailed information of the router, such as the firmware version, bootloader, and LAN IP address.</p>
+				<dl>
+				<dt>System Info
+				<dd>
+				<dl>
+				<dt>Model Name
+				<dd>Model of the ADSL router. 
+				<dt>Time and Date
+				<dd>Internal time of the router. 
+				<dt>Firmware Version
+				<dd>The current version of the firmware.
+				</dd>
+				
+				</dl>
+				<BR>
+				<dt>Internet Info
+				<dd>It shows WAN connections configured in the <a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wancfg">Setup -> Internet Setup </a> page. The "Status" column shows whether the ADSL link is up, and it need not be configured.
+				<dl>
+				<dt>Internet Connection
+				<dd>Settings of the created Internet connections.
+				<dt>Internet Connection Status
+				<dd>It indicates whether the selected connection is up or down.
+				<dt>Default Gateway
+				<dd>Current IP Address of the gateway. You can manually configure the gateway or set it to "auto" in the <a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=route">Advanced > Routing page.</a>.
+				<dt>Preferred and Alternate DNS
+				<dd><p>It shows the currently preferred (Primary) and alternate(Secondary) DNS servers. You can manually configure the DNS server information or set it to "auto" in the<a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=dns">Advanced > DNS page.</a>.</p>
+				
+				<dt>Upstream Line Rate(Kbps)
+				<dd>It indicates the upload rate in seconds. It is available only when you are connected to your ISP.
+				<dt>Downstream Line Rate(Kbps)
+				<dd>It indicates the download rate in seconds. It is available only when you are connected to your ISP.
+				</dd>
+				</dl>
+				<BR>
+				<dt>Wireless Info
+				<dd>It shows the detailed WLAN settings configured in the <a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wireless&var:subpage=wlbasic">Setup > Wireless page.</a>
+				<dl>
+				
+				<dt>Mac Address
+				<dd>The wireless MAC Address. 
+				<dt>Status
+				<dd>It indicates whether the wireless is enabled. 
+				<dt>Network Name (SSID):
+				<dd>The wireless network name.
+				<dt>Visibility
+				<dd>It indicates whether the wireless network is visible to other wireless devices.
+				<br>
+				In the Visible mode, your wireless network name is broadcast to all the devices within the range of your signal. In the Invisible mode, you must manually enter the Wireless Network Name (SSID) on a wireless device in order to connect to the network.
+				<dt>Security Mode
+				<dd>It shows the current security settings.
+				</dd>
+				</dl>
+				
+				<BR>
+				<dt>Local Network Info
+				<dd>It shows the detailed LAN settings of the router.
+				<dl>
+				<dt>Mac Address
+				<dd>The MAC address of the router.
+				<dt>IP Address
+				<dd>The IP Address of the router.
+				<dt>Subnet Mask
+				<dd>The subnet mask of the router.
+				<dt>DHCP Server
+				<dd>It indicates whether DHCP is enabled on the router.
+				</dd>
+				</dl>
+		</div>
+		
+		<p class="do bk_black"><a name="Wireless"><span id = "lang_wireless_subtitle">Wireless Clients</span></a></p>
+		<div do class="div_black help_table" id = "lang_wireless_help1">
+			<p>Displays the stations (identified by their BSSIDs) that are associated with your wireless router. Click "Refresh" to refresh the page for displaying new wireless stations.
+                                  </p>
+		</div>
+		
+		<p class="do bk_black"><a name="DHCP"><span id = "lang_dhcpclient">DHCP Clients</span></a></p>
+		<div do class="div_black help_table" id = "lang_dhcpclient_help">
+			<p>It shows the computers that obtained IP addresses from the DHCP server but the lease time of whose IP address elapsed, each identified by host name and MAC address.</p>
+		</div>
+		
+		<p class="do bk_black"><a name="Logs"><span id = "lang_log_subtitle">Logs</span></a></p>
+		<div do class="div_black help_table" id = "lang_log_help">
+			<p>If the log is enabled, the system starts to log the selected levels of events, which may include Emergency, Alert, Critical, Error, Warning, Notice, Informational, and Debugging. Events that are above or equal to the selected display level will be displayed.</p>
+			<p>The navigation path to configure the system logs is as follows: <a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=syslog">Maintenance > System Log</a>.</p>
+		</div>
+		
+		<p class="do bk_black"><a name="Statistics"><span id = "lang_statistics_subtitle">Statistics</span></a></p>
+		<div do class="div_black help_table" id = "lang_statistics_help">
+			<p>The "Statistics" page displays the transmit and receive data of the LAN, WAN, and wireless packets.</p>
+				<dl>
+				  <dt>Transmitted
+				  <dd>The number of packets sent from the router.
+				  <dt>Received
+				  <dd>The number of packets received by the router.
+				  <dt>Transmitted Packets Dropped
+				  <dd>The number of packets that are dropped while being sent, due to errors, collisions, or router resource limitations. <dt>Received Packets Dropped
+				  <dd>The number of packets that are dropped while being received, due to errors, collisions, or router resource limitations.
+				  <dt>Errs
+				  <dd>The number of transmission failures that cause loss of a
+				  packet. A
+				  noisy radio-frequency environment can cause a high error rate on
+				  the wireless LAN.
+			<dt>ADSL Statistics
+			<dd>It shows ADSL statistics data, including link status, downstream and upstream rates, type, and line coding.
+				  </dd>
+				</dl>
+		</div>
+		
+		<p class="do bk_black"><a name="Route"><span id = "lang_routeinfo_subtitle">Route Info</span></a></p>
+		<div do class="div_black help_table" id = "lang_routeinfo_help">
+			<p>The Route Info page shows the routing information, including IP addresses of the destination, gateway, and subnet mask.
+                              </p>
+		</div>
+		
+	</div>
+</td>

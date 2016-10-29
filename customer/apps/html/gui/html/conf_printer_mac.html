@@ -1,0 +1,27 @@
+<div class="dialog_faq dialog_faq_pri_mac"></div>
+<div class="print_dialog">
+    <div class="print_inst">
+       <div>
+           <span class="trad" key="CONF_PRINT_DESC_MAC"></span>
+       </div>
+       <div id="print_img_cont">
+       	    <img id="print_img" width="550" height="350" src="./images/networkMap/MACPrinter_en.png" alt=""/>
+       </div>
+    </div>
+    <div class="line_grey"></div>
+    
+	<div class="centred">
+        <div id="accept_printer" class="accept hand">       
+            <div class="accept_icon"></div>         
+            <span class="trad accept_txt" key="COMMON_ACCEPT">Aceptar</span>        
+        </div>
+    </div>    
+</div>
+<script type="text/javascript" src="js/conf_printer.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.dialog_faq_pri_mac').click(function() {
+		loadHelpDialog(_("HELP_TITLE"), function() { linkContent(5,9); });		
+	});
+});
+ </script>

@@ -1,0 +1,54 @@
+
+<InternetGatewayDevice type="object">
+	<ManagementServer type="object">
+		<X_TWSZ-COM_Events type="object" Writable="0">
+			<i type="object">
+				<Event type="string(64)" Writable="0"></Event>
+				<CommandKey type="string(32)" Writable="0"></CommandKey>
+			</i>
+		</X_TWSZ-COM_Events>
+		<EnableCWMP type="boolean" >1</EnableCWMP>
+		<X_TWSZ-COM_CAFile type="string" Writable="0" Standard="0"></X_TWSZ-COM_CAFile>
+		<X_TWSZ-COM_MaintainComplete type="boolean" Writable="0" Standard="0"></X_TWSZ-COM_MaintainComplete>
+		<X_TWSZ-COM_CAFilePath type="string(64)" Writable="0" Standard="0"></X_TWSZ-COM_CAFilePath>
+		<X_TWSZ-COM_CommandKey type="string(32)" Writable="0"></X_TWSZ-COM_CommandKey>
+		<X_TWSZ-COM_FaultStruct type="string" Writable="0" Standard="0"></X_TWSZ-COM_FaultStruct>
+		<X_TWSZ-COM_DownloadStartTime type="string(32)" Writable="0" Standard="0">0000-00-00T00:00:00-00:00</X_TWSZ-COM_DownloadStartTime>
+		<X_TWSZ-COM_DownloadCompleteTime type="string(32)" Writable="0" Standard="0">0000-00-00T00:00:00-00:00</X_TWSZ-COM_DownloadCompleteTime>
+		<URL type="string(256)">http://192.168.1.123:888/</URL>
+		<Username type="string(256)">serial</Username>
+		<Password type="string(256)">1234</Password>
+		<PeriodicInformEnable type="boolean">0</PeriodicInformEnable>
+		<PeriodicInformInterval type="unsignedInt[1:]">86400</PeriodicInformInterval>
+		<PeriodicInformTime type="dateTime">0000-00-00T00:00:00</PeriodicInformTime>
+		<ParameterKey type="string(32)" Writable="0"></ParameterKey>
+		<ConnectionRequestURL type="string(256)" Writable="0" Notification="2"></ConnectionRequestURL>
+		<ConnectionRequestUsername type="string(256)">admin</ConnectionRequestUsername>
+		<ConnectionRequestPassword type="string(256)">5678</ConnectionRequestPassword>
+		<UpgradesManaged type="boolean">1</UpgradesManaged>
+		<ManageableDeviceNumberOfEntries type="unsignedInt" Writable="0" Notification="2">0</ManageableDeviceNumberOfEntries>
+		<ManageableDeviceNotificationLimit type="unsignedInt" Notification="2"></ManageableDeviceNotificationLimit>
+		<X_TWSZ-COM_CheckInterval type="unsignedInt"></X_TWSZ-COM_CheckInterval>
+		<X_TWSZ-COM_DefaultManageConnectionService type="string" Standard="0"> </X_TWSZ-COM_DefaultManageConnectionService>
+		<action type="string(32)" Standard="0"></action>
+		<UDPConnectionRequestAddress type="string(256)" Writable="0"></UDPConnectionRequestAddress>
+		<UDPConnectionRequestAddressNotificationLimit type="unsignedInt" Writable="1"></UDPConnectionRequestAddressNotificationLimit>
+              <STUNEnable type="boolean" Writable="1"></STUNEnable>
+              <STUNServerAddress   type="string(256)" Writable="1"></STUNServerAddress>
+              <STUNServerPort type="unsignedInt[0:65535]" Writable="1"></STUNServerPort>
+              <STUNUsername   type="string(256)" Writable="1"></STUNUsername>
+              <STUNPassword   type="string(256)" Writable="1"></STUNPassword>
+              <STUNMaximumKeepAlivePeriod   type="int[-1:]" Writable="1"></STUNMaximumKeepAlivePeriod>
+              <STUNMinimumKeepAlivePeriod   type="unsignedInt" Writable="1"></STUNMinimumKeepAlivePeriod>
+              <NATDetected   type="boolean" Writable="0"></NATDetected>             
+		<ManageableDevice type="object" Writable="0">
+			<i type="object">
+				<ManufacturerOUI type="string(64)" Writable="0" Notification="1"></ManufacturerOUI>
+				<SerialNumber type="string(64)" Writable="0" Notification="1"></SerialNumber>
+				<ProductClass type="string(64)" Writable="0" Notification="1"></ProductClass>
+				<X_TWSZ-COM_ClientIP type="string(64)" Writable="0"></X_TWSZ-COM_ClientIP>
+				<Host type="string(1024)" Writable="0" Notification="1"></Host>
+			</i>
+		</ManageableDevice>
+	</ManagementServer>
+</InternetGatewayDevice>

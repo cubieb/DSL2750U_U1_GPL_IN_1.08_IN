@@ -1,0 +1,89 @@
+// Please note -- this is a representative set of error suppression
+//                options.  Please adjust to suit your own policies
+//                See  manual (chapter LIVING WITH LINT)
+//                for further details.
+
+-passes=2
+-t3       //  Presume that tabs are every 3 stops
+
++ppw(warning) // ignore #warning
+//-ppw_asgn( warning, error ) // handle #warning in the same way as #error
+
++rw(va_list) // overcome -e10 for tornado stdio.h
++linebuf
++linebuf
++linebuf
+
+
+-scanf( 2, sscanf, CG_CLI_sscanf )
+-scanf_code( hu, unsigned short )
+-scanf_code( bu, unsigned char )
+
+//-e64 // Type mismatch
+//-e322
+//-e601
+//-e760 // Redundant macro '...' defined identically at '...'
+-e801 // goto
+
+-e537 // Repeated include file
+//-e525 // Negative indentation from line ...
+-e534 // Ignoring return value of function ...
+//-e539 // Did not expect positive indentation from line ...
+-e641 // Converting enum '' to int
+//-e714 // Symbol ... not referenced
+//-e715 // Symbol ... not referenced
+-esym(715,devCtx)
+
+//-e725 // Expected positive indentation from line ...
+-e755 // global macro ... not referenced
+-e756 // global typedef ... not referenced
+-e765 // external ... could be made static
+-e766 // Header file ... not used in module ...
+-e767 // macro '...' was defined differently in another module
+-e768 // global struct member ... not referenced
+-e769 // global enumeration constant ... not referenced
+-e788 // enum constant not used within defaulted switch
+-e793 // ANSI limit of 511 'external identifiers' exceeded -- processing is unaffected
+-e818 // Pointer parameter ... could be declared as pointing to const
+
+-e716 // while(1) 
+-e717 // Info 717 do ... while(0);
+
+// Ignoring return value of function ...
+-esym(534,close,creat,fclose,fprintf,fputc) 
+//-esym(534,fputs,fscanf,fseek,fwrite,lseek,memcpy,memmove,memset) 
+-esym(534,printf,puts,scanf,sprintf,sscanf,strcat,strcpy) 
+-esym(534,strncat,strncpy,unlink,write) 
+-esym(534,cprintf,CTerminalIO::cprintf,printErr,xfclose) 
+
+-e545 // Warning 545 Suspicious use of &
+-e826 // Suspicious pointer-to-pointer conversion (area too small)
+
+-e578 // Declaration of symbol '...' hides symbol '...'
+-e734 // Loss of precision
+//-e750 // Local macro not referenced
+-e773 // Expression-like macro '...' not parenthesized
+
+// remove again if all io_xxx_reg.h are generated with new stylesheet
+//-e648 // Overflow in computing constant for operation: 'shift left'
+
+//-DCG_DEBUG_DISABLE
+
+// following option can be removed if a complete 'project' should be checked
+-u
+
+-e75?
+/*-e751 -e752 -e753 -e754 */
+-e749
+
+/*
+au-misra.lnt
+// disable some MISRA rules:
+-e621 // Identifier clash (symbol '...' with symbol '...' at line 962) [Misra Rule 11]
+-e960 // Violates MISRA Required Rule 59, left brace expected for if, else, for, do and while
+-e970 // Use of modifier or type '...' outside of a typedef [MISRA Rule 13]
+-e971 // Use of 'char' without 'signed' or 'unsigned' [MISRA Rule 14]
+*/
+/*
+au-misra2.lnt
+*/

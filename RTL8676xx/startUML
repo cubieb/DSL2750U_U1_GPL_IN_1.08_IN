@@ -1,0 +1,13 @@
+#!/bin/sh
+if [ "-$1" = "-hostfs" ]; then
+ROOTFS="rootfstype=hostfs rootflags="`readlink -m build.UML/romfs/rootfs`
+else
+ROOTFS="ubd0=build.UML/romfs/rootfs.squashfs.img"
+fi
+
+# Create random MAC address
+MAC_OUI=`grep CONFIG_MAC_OUI .config | awk -F"=" '{print $2}' | awk -F"\"" '{print $2}'`
+MAC_0="$MAC_OUI:`printf %x $[($RANDOM % 256)]`:`printf %x $[($RANDOM % 256)]`:`printf %x $[($RANDOM % 256)]`"
+MAC_1="$MAC_OUI:`printf %x $[($RANDOM % 256)]`:`printf %x $[($RANDOM % 256)]`:`printf %x $[($RANDOM % 256)]`"
+
+build.UML/kernel/linux-uml/linux ${ROOTFS} nosysemu eth0=daemon,${MAC_0},unix,/tmp/uml.tap0 eth1=daemon,${MAC_1},unix,/tmp/uml.tap1 

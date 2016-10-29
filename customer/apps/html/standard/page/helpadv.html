@@ -1,0 +1,302 @@
+
+<td>
+	<div class="config1">
+	
+		<p class="bk_orange" id = "lang_advance_help1">Advanced Help</p>
+		<div do class="div_black help_table"  id="lang_AdvancedHelp">
+			<ul>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#AdvWlan">Advanced Wireless</a>
+				<li class="SecLevel portforwd"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#PortForwarding">Port Forwarding</a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#DMZ">DMZ</a></li>
+				<li class="SecLevel parentalctrl"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Parental">Parental Control</a></li>
+				<li class="SecLevel firmwall"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Filtering">Filtering Options</a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Qos"><span id = "lang_qos">QOS</span></a></li>
+				<li class="SecLevel dos"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Firewall">Firewall Settings</a></li>
+				<?if eq 1 $var:mod_MACCLONE
+				`
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Shareprotection"><span id = "lang_shareprotection">Shareprotection</span></a></li>
+				`?>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#DNS">DNS</a></li>
+				<li class="SecLevel ddns"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#DDNS">DDNS</a></li>
+				<li class="SecLevel nwtools"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Tools">Network Tools</a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Routing">Routing</a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Schedules">Schedules</a></li>
+				<?if eq 1 $var:mod_SPT
+				`
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv#Mac_Clone"><span id = "lang_macclone">Mac_Clone</span></a></li>
+				`?>
+			</ul>
+		</div>
+		
+		<p class="do bk_black"><a name="AdvWlan"  id="AdvWlan">Advanced Wireless</a></p>
+		<div do class="div_black help_table"   id="lang_div_blackhelp_table">
+			<p>Advanced wireless configuration contains the following 3 parts:</p>
+						<ul class="help_table">
+							<li>Advanced Settings
+							<li>MAC Filtering
+							<li>Security
+						</ul>
+						<dl>
+						<dt>Advanced Settings
+						<dd>Additional settings for configuring your wireless network.
+							<dl>
+							<dt>Transmission Rate
+							<dd>The wireless link rate at which the information is transmitted and received on your wireless network.<dt>Multicast Rate
+							<dd>The rate at which a message is sent to a specified group of recipients.
+							<dt>Transmit Power
+							<dd>The percentage of power that should be transmitted from the wireless router. You can select 20%, 40%, 60%, 80%, or 100%.
+							<dt>Beacon Period
+							<dd>A data packet sent from a connected device to all other devices, which indicates its availability and readiness. A beacon interval is a period of time (sent with the beacon) before sending the beacon again. The beacon interval can be adjusted in milliseconds (ms).
+							<dt>RTS Threshold (Request to Send Threshold)
+							<dd>It determines the maximum size of the packet that can be transmitted on the router, to help control traffic flow.
+							<dt>Fragmentation Threshold
+							<dd>It helps to improve the performance of network transmission in the presence of radio frequency (RF) interference.
+							<dt>DTIM Interval
+							<dd>The wake-up interval of clients in the power saving mode.
+							<dt>Preamble Type
+							<dd>The length of the cyclic redundancy check (CRC) block for communication between the router and wireless clients. For high network traffic areas, you can set the preamble type to "Short".
+							</dd>
+
+							</dl>
+						<br>
+						<dt>MAC Filter
+						<dd>It filters incoming packets on your wireless router based on their MAC address.
+						<br>
+						<dt>Security
+						<dd>Settings to secure other "Guest" wireless networks.
+						<dt>WPS
+						<dd>Settings to WPS other "Guest" wireless networks.</dd></dl>
+		</div>
+
+		<div id="div_PortForwarding">
+		<p class="do bk_black"><a name="PortForwarding"  id="PortForwarding">Port Forwarding</a></p>
+		<div do class="div_black help_table">
+		<p  id="lang_Multipleconnectionarer">Some applications, such as internet games, video conferencing, 
+		Internet telephony, require multiple connections. These applications have difficulties in working 
+		through network address translation (NAT). In this page, you can open multiple ports 
+		(by selecting multiple ports or specifying a port range) on your router and redirect the data 
+		through those ports to a single PC on your network.</p>
+		</div>	
+		</div>
+
+		<p class="do bk_black"><a name="DMZ" id="DMZ">DMZ</a></p>
+		<div do class="div_black help_table"  id="lang_DMZ">
+		<dl>
+			<dt>DMZ Host
+              <dd>
+              <p>DMZ refers to "Demilitarized Zone." If an application has trouble 
+			  working behind the router, you can expose a computer to the Internet 
+			  and run the application on that computer. </p>
+
+              <p>When a LAN host is configured as a DMZ host, it becomes the 
+	      destination of all incoming packets that do not match some incoming sessions or rules.
+		   If there is any other ingress rule, that rule is used, and packets are not sent to the DMZ host.
+		    That is, an active session, a virtual server, an active port trigger, 
+			or a port forwarding rule has higher priority than the rule of sending a packet to the DMZ host. 
+			(The DMZ policy resembles a default port forwarding rule that forwards every port that is not specifically sent anywhere else.) </p>
+			<dd>
+                <p><B>Note:</B> Setting a computer to a DMZ host may expose the computer 
+				to a variety of security risks. This function should be used only as the last resort. </p>
+                <dl>
+                <dt>DMZ IP Address
+                <dd>Specify the LAN IP address of the computer that you wish to have unrestricted Internet communication. If this computer obtains its address automatically through DHCP, you can configure static IP address reservation in the Basic Network Settings page. In this way, the IP address of the DMZ computer does not change.
+                </dd>
+                </dl>
+		  	</dd>
+		 </dl>
+		</div>
+
+		<div id="div_ParentalControl">
+		<p class="do bk_black"><a name="Parental" id="Parental">Parental Control</a></p>
+		<div do class="div_black help_table" id="lang_Parentaldsc">
+			<dl>
+			<dt>Block Website
+			<dd>You can use this function to block certain websites from being accessed. For example, if you set to deny "ww.blockthiswebsite.com", access to this site will be blocked according to the schedule you set. 
+			<dt>Block MAC Address
+			<dd><p>In a residential scenario, parents can specify the time and day of the week when some computers can access the Internet.</p> 
+			<div class=help_example>
+			<dl>
+			<dt>Example:
+			<dd><p>If you wish to let your child access the Internet only from 7:00pm to 9:00pm every Monday to Friday.</p>
+		
+			<ol>
+			<li> you can set the user name to "BeforeAccess", and enter the MAC address of your child\'s computer.
+			<li>Then, select the check boxes of Monday to Friday and set the start time to 00:00 and the end time to 19:00.
+			<li>In this way, your child's computer cannot access the Internet from 12:00am to 7:00pm, every Monday to Friday.
+			<li>Repeat the previous steps, but now enter "AfterAccess" in the user name field and set the start time to 21:00 and the end time to 23:59.
+			<li>The rule is now completely set. As a result, your child's computer can access the Internet only from 7:00pm to 9:00pm every Monday to Friday.
+			</ol></dd></dl></div>
+			</dd>
+			</dl>
+		</div>
+		</div>
+
+              <div id="div_FilteringOptions">
+		<p class="do bk_black"><a name="Filtering" id="FilteringOptions">Filtering Options</a></p>
+		<div do class="div_black help_table"  id="lang_FilteringOptions">
+			<p>You can configure filters to manage the incoming and outgoing traffic. 
+					Click the <span class=button_ref>Inbound</span>, <span class=button_ref>Outbound</span>
+					and <span class=button_ref>Bridge</span> buttons to proceed for further configuration.</p>
+					<dl>
+					<dt>Inbound/Outbound Filtering
+					<dd>
+
+					<p>When you use port triggering or port forwarding to open ports to traffic from the Internet,
+					 the risk of LAN being attacked by hackers from the Internet increases. In this case, 
+					 you can use inbound filters to control the risk by specifying the IP addresses of Internet 
+					 hosts that you allow to access your LAN through the ports you open. For example, 
+					 you can configure the function to allow access to a game server on your LAN from only the 
+					 computers of friends whom you invite to play games on that server.</p>
+					<p>The inbound filters feature helps to control access to a server on your network
+					 so that only a system or group of systems can access the server. 
+					 Filter rules can work with the port triggering feature. Each filter can be used for several
+					  functions. For example, a "Game Clan" filter can allow all members of a particular gaming 
+					  group to play several different games for which gaming entries have been created. Meanwhile,
+					   an "Admin" filter can allow only systems from your office network to access the WAN pages 
+					   for the "admin" user and an FTP server you use at home. If you add an IP address to a filter,
+					    the IP address conforms to all existing rules of the filter.</p>
+					<p>The outbound filters feature helps to control access to the Internet by LAN computers. 
+					Filters can work with the port forwarding feature. Outbound filter can also be used in 
+					conjunction with the inbound filter to allow incoming and restrict outgoing access for gaming 
+					over the Internet or file downloading.</p>
+					<dt>Bridge Filtering
+					<dd>It is also known as MAC address filtering. You can forward or deny incoming traffic 
+					based on the source or destination MAC address. Note that bridge filter works with interfaces
+					 that are configured as bridge.
+					</dd>
+				</dl>
+		</div>
+		</div>
+
+		<p class="do bk_black"><a name="QOS" id="QOS">QOS</a></p>
+		<div do class="div_black help_table">
+			<p id="lang_qos">Quality of service is a feature that helps to allocate or guarantee the throughput or rate of the Internet access for certain computers.</p>
+		</div>
+
+		 <div id="div_FirewallSettings">
+		<p class="do bk_black"><a name="Firewall" id="FirewallSettings">Firewall Settings</a></p>
+		<div do class="div_black help_table">
+			<p id="lang_FirewallSettings">This helps to protect your router against denial of service (DoS) attacks.</p>
+		</div>
+		</div>
+		<?if eq 1 $var:mod_SPT
+		`
+
+		<p class="do bk_black"><a name="Shareprotection" id="Shareprotection">DNS</a></p>
+		<div do class="div_black help_table">
+			<p id="lang_shareprotection">The shared protection feature enables more than one PC to share Internet access through the router.
+			Enter the appropriate values for the enabled options and click "Apply" to enable the function.</p>
+		`?>
+		</div>
+		
+		<p class="do bk_black"><a name="DNS" id="DNS">DNS</a></p>
+		<div do class="div_black help_table">
+			<p id="lang_dns">Domain name server (DNS) is a server that translates a URL/domain name to the 
+			corresponding IP address. The Internet is based on IP address, and the alphabetical URL/domain 
+			name is easier to remember.</p>
+		</div>
+
+		<div id="div_DDNS" >
+		<p class="do bk_black"><a name="DDNS" id="DDNS">DDNS</a></p>
+		<div do class="div_black help_table"  id="lang_ddns">
+			<dl>
+				<dt>D-DNS provider
+				<dd>Select a dynamic DNS service provider from the drop-down list.
+				<dt>Hostname
+				<dd>Enter your, fully qualified host name, for example: <b>myhost.mydomain.net.</b>
+				<dt>Username
+				<dd>Enter the user name provided by your service provider.
+				<dt>Password
+				<dd>Enter the password provided by your service provider.
+			</dl>
+		</div>
+		</div>
+
+		<div id="div_NetworkTools" >
+		<p class="do bk_black"><a name="Tools" id="NetworkTools">Network Tools</a></p>
+		<div do class="div_black help_table" id="lang_NetworkTools">
+			<dl>
+			<dt>Port Mapping
+			<dd>Port mapping supports mapping a port group including one or more (LAN) ports to a PVC, which is 
+			associated with a VLAN. As a result, each group of LAN ports serves as an independent (logical) network
+			 (like a broadcast domain) against which traffic broadcast us prevented. This feature is useful for 
+			 creating multiple independent (logical) networks for multimedia applications at home. For instance, 
+			 you can map PVC1 to ports 1-3 to create a network (broadcast domain) for PCs to access the Internet, 
+			 and map PVC2 to port 4 to create another network (broadcast domain) for IPTV service (devices). 
+			 With this feature (multiple PVCs), data traffic and IPTV traffic does not affect each other. 
+					<dt>IGMP
+					<dd>IGMP supports efficient multicasting -- transmission of identical contents, such as multimedia, from a source to a number of recipients.
+			<dt>Queue Config
+			<dd>In this page, you can configure "Assigned Classification Queue" settings of QoS. These settings determine the priority of QoS.
+			<dt>QoS
+			<dd>Quality of service is a feature that helps to allocate or guarantee the throughput or rate of the Internet access for certain computers.
+			<dt>UPnP
+			<dd>It stands for universal plug and play, which is a set of networking protocols that provides 
+			compatibility among networking devices, software, and peripherals. This router has optional UPnP 
+			capability, and can work with other UPnP devices and software.
+					<dt>ADSL
+					<dd>The "ADSL Settings" page contains the modulation and capability options. Consult your ISP
+					 for the correct settings. Then, click "Apply" to finish the settings or click "Advanced 
+					 Settings" to configure more advanced settings.
+			<?if eq 1 $var:mod_SNMPC
+			`
+			<dt>SNMP
+			<dd>Simple Network Management Protocol (SNMP) provides a means to monitor status and performance as 
+					well as set configuration parameters.  It enables a management station to configure, 
+					monitor and receive 
+					trap messages from network devices.
+			`?>
+			<?if eq 1 $var:mod_TR069
+			`
+			<dt>TR-069
+			<dd>TR-069 is a WAN management protocol. As a bidirectional SOAP/HTTP based protocol, 
+			it provides communication between the ADSL router and an auto configuration server (ACS).
+			`?>
+			</dd>
+			</dl>
+		</div>
+		</div>
+		
+		<p class="do bk_black"><a name="Routing" id="Routing">Routing</a></p>
+		<div do class="div_black help_table">
+			<p id="lang_Routing">Static route, default gateway, and RIP type routing configurations can be performed here.</p>
+		</div>
+		
+		<p class="do bk_black"><a name="Schedules" id="Schedules">Schedules</a></p>
+		<div do class="div_black help_table"  id="lang_Schedules">
+			<p>Schedules can be created to enforce rules. For example, if you want to restrict web access to 
+			Mon-Fri from 3pm to 8pm, you can create a schedule, selecting Mon, Tue, Wed, Thu, and Fri, 
+			and setting the Start Time to 3pm and End Time to 8pm.</p>
+
+				<dl>
+				<dt>Add/Edit Schedule Rule
+				<dd>In this page, you can add an entry to the Schedule Rules List or edit an existing entry.
+					<dl>
+					<dt>Name
+					<dd>Set the name of the schedule, for example, "Weekday rule".
+					<dt>Day(s)
+					<dd>Select the check boxes corresponds to the desired days or select the "All Week" radio button to select the whole week.
+					<dt>All Day - 24 hrs
+					<dd>Select this option if you wish the schedule to take effect for the whole day of the selected day(s).
+					<dt>Start Time
+					<dd>If you do not select the "All Day" option, please specify the time here. Set the hour and minute in the two fields of the start time. Normally, email events are triggered only by the start time.
+					<dt>End Time
+					<dd>The end time has the same format as the start time. The end time applies to most rules other than email events.
+					<dt>Apply
+					<dd>After finishing setting a new schedule rule or modifying or an existing one, click the button to save the settings or changes.
+					</dd>
+
+					</dl>
+				<dt>Schedule Rules List
+				<dd>It shows the defined schedule rules. You can click <span class=button_ref>Edit</span>  to modify a schedule rule, or click<span class=button_ref>Delete</span>to delete a schedule rule.	</dd>
+				</dl>
+		</div>	
+		<?if eq 1 $var:mod_MACCLONE
+		`
+		<p class="do bk_black"><a name="Mac_Clone" id="Mac_Clone">Mac Clone</a></p>
+		<div do class="div_black help_table">
+			<p id="lang_macclone"> You can modify nic MAC by MAC cloning, and computers in the LAN can share the Internet.</p>
+		</div>
+		`?>
+	</div>
+</td>

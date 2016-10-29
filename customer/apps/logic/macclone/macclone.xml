@@ -1,0 +1,14 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_MacClone type="object">
+		<PCMac type="string" Writable="0"></PCMac>
+		<MaccloneObject type="object">
+			<i type="object">
+			    <MACCloneEnabled type="boolean">0</MACCloneEnabled>
+				<WANConnetPath type="string" Writable="0"></WANConnetPath>
+				<MacAd type="string" Writable="0"></MacAd>
+			</i>
+		</MaccloneObject>
+	</X_TWSZ-COM_MacClone>
+</InternetGatewayDevice>
+

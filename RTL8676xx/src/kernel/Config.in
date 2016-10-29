@@ -1,0 +1,9 @@
+menuconfig KERNEL
+	bool "Linux Kernel Configuration"
+	default y
+	help
+	  Linux Kernel
+
+if KERNEL=y
+source kernel/Kconfig.main
+endif

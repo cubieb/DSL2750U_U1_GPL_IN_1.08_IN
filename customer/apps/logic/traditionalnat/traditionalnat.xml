@@ -1,0 +1,20 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_TraditionalNAT type="object" Standard="0">
+		<Enable type="boolean" Writable="0">1</Enable>
+		<MaxTraditionalNATEntries type="unsignedInt" Writable="0">16</MaxTraditionalNATEntries>
+		<TraditionalNATNumberOfEntries type="unsignedInt" Writable="1">0</TraditionalNATNumberOfEntries>
+		<TraditionalNATEntry type="object" MaxNode="MaxTraditionalNATEntries" CurNode="TraditionalNATNumberOfEntries">
+			<i type="object">
+				<X_TWSZ-COM_Enable type="boolean" Standard="0">1</X_TWSZ-COM_Enable>
+				<X_TWSZ-COM_EntryName type="string" Standard="0">NAT_1</X_TWSZ-COM_EntryName>
+				<X_TWSZ-COM_InternalIPType type="string(32)" Standard="0">SingleIP</X_TWSZ-COM_InternalIPType>
+				<X_TWSZ-COM_StartInternalIP type="string(32)" Standard="0"></X_TWSZ-COM_StartInternalIP>
+				<X_TWSZ-COM_EndInternalIP type="string(32)" Standard="0"></X_TWSZ-COM_EndInternalIP>
+				<X_TWSZ-COM_ExternalIPType type="string(32)" Standard="0">SingleIP</X_TWSZ-COM_ExternalIPType>
+				<X_TWSZ-COM_StartExternalIP type="String(32)" Standard="0"></X_TWSZ-COM_StartExternalIP>
+				<X_TWSZ-COM_EndExternalIP type="String(32)" Standard="0"></X_TWSZ-COM_EndExternalIP>
+			</i>
+		</TraditionalNATEntry>
+	</X_TWSZ-COM_TraditionalNAT>
+</InternetGatewayDevice>

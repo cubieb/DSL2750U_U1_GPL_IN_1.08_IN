@@ -1,0 +1,281 @@
+﻿<html>													
+<!-- Copyright (c) Realtek Semiconductor Corp., 2003. All Rights Reserved. -->            
+<head>                                                                                 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">                   
+<title>version</title>                                                                 
+                                                                                       
+</head>                                                                                
+<BODY>
+<div align="center"><font size="+6"><strong>Software ReleaseNotes </strong></font></div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong><font size="6">Version History</font></strong> </p>
+<table width=900 border=1>
+  <tr > 
+    <td width=30%> <div align="left"><font size="2"><strong>version</strong></font></div></td>
+    <td width=15%><div align="left"><strong>Date</strong></div></td>
+    <td width=20%> <div align="left"><font size="2"><strong>author</strong></font></div></td>
+    <td width=20%><div align="left"><strong>流程编号</strong></div></td>
+    <td width=15%> <div align="left"><font size="2"><strong>Note</strong></font></div></td>
+  </tr>
+  <tr > 
+    <td><div align="left">GAN9.9T113A-B-DL-DSL2750U-R5B0017-India.EN_2T2R</div></td>
+    <td><div align="left">2013-5-23</div></td>
+    <td><div align="left">liuyunbing</div></td>
+    <td><div align="left">130400003439</div></td>
+    <td>&nbsp; <div align="left"></div></td>
+  </tr>
+</table>   
+Note: latest FW version is always put on top (to avoiding scroll down within the document while looking only for the most recent version)   
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p><font size="6"><strong>Complete Feature List </strong></font> </p>
+<table width=900 border=1>
+  <tr > 
+    <td width=44%> <div align="left"><font size="2"><strong>feature</strong></font></div></td>
+    <td width=45%><div align="left"><strong>Version</strong></div></td>
+    <td width=11%> <div align="left"><font size="2"><strong>Note</strong></font></div></td>
+  </tr>
+  <tr > 
+    <td><div align="left"></div></td>
+    <td></td>
+    <td> &nbsp; <div align="left"></div></td>
+  </tr>
+
+  
+</table>
+<p>Note: latest FW feature is always put on top (to avoiding scroll down within 
+  the document while looking only for the most recent version)</p>
+ 
+<strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0017-India.EN_2T2R(May 23, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL : <SPAN lang="EN-US">03-29-13-8676-GINP TNW SPAIN ver 4924c727 2windingX -NoCS Annex AAAA</SPAN><br>
+WLAN:RTL8192Cn</p>
+<p><strong>New Features</strong><br>
+做内部回归版本。经产品经理确认，内部版本号变为：GAN9.9T113A-B-DL-DSL2750U-R5B0017-India.EN_2T2R，外部版本号变为IN_1.08
+<br>
+<strong>Fixed Issues </strong> <br>
+ 1: 56957 关闭WLAN的ACL功能，无线ACL功能都不能正常使用<br>
+ 2: 56956 IE9以下的浏览器会出现状态界面显示异常<br>
+ 3: 56944 NTP 为以数字开头的域名；重启后再改成默认的NTP域名时重启后，大概率性出现不进行NTP、FTP无法访问等问题<br>
+ 4: 56923 NTP server为以数字开头的域名时，CPE不会去进行DNS请求和时间同步<br>
+ 5: 56921 设置NTP，创建一条PPPoE连接，重启后概率性出现LAN侧无法自动获取IP，所有按键不生效，NTP功能不生效等问题<br>
+ 6: 56840 local network页面中，点击输入框时，输入框会自动缩进，导致页面不美观<br>
+ 7: 56839 DSL正在同步的过程中进行线路诊断出现CPU0、CPE自动重启<br>
+ 8: 56711 新建一条桥方式WAN连接，将其编辑为路由方式（DHCP或PPPOE）时，NAT默认未开启，建议开启NAT<br>
+ 9: url过滤不生效，这是前方提的问题，暂时还没提内部流程<br>
+ 10:2750U软件开启了日志功能后，远程存储日志时大量打印日志，且防火墙日志远程存储不能显示<br>
+ 11:wps功能不生效<br>
+ 12:lan到wlan打最大流,cpe重启<br>
+<p><strong>Fixed BugId list</strong> <br>
+56957,56956,56944,56923,56921,56840,56839,56711<br>
+<p><strong>Remained BugId list</strong> <br>
+1: 56955 全无线长时间挂72小时后，无线网卡连接不上无线<br>
+2: 56945 使用”我的电脑“通过FTP无法访问U盘（是BCM猫是正常的）<br>
+3: 连续多次按WLAN开关后，所有按键都不生效，NTP等功能不生效，LAN侧无法自动获取到IP<br>
+4: 56842 修改WAN侧ACL的WEB服务为非80端口，再选择一个Port Forwarding，端口为80，此时可将ACL的WEB服务端口改成80<br>
+<br>
+<br>
+ 
+   <br><br>
+  <strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0016-India.EN_2T2R (May 8, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL :03-29-13-8676-GINP TNW SPAIN AUTO GINP S-AK   4924c727 2windingX -NoCS Annex AAAA<br>
+WLAN	:	RTL8192Cn
+<p><strong>New Features</strong><br>
+做dlink实验室回归版本
+<br>
+<strong>Fixed Issues </strong> <br>
+ 1: DBG13040339:When we use IE10 to browse DUT webpage, it not show correctly<br>
+ 2: DBG13040342:DUT won't disconnect after 5mins,(disconnect all wireless and wired client)<br>
+ 3: DBG13040349:DUT UPnP icon show DSL-2370U, it should be D-Link DSL-2730U<br>
+ 4: DBG13040353:DUT WAN broadcast/multicast update interval over 10~40sec<br>
+ 5: DBG13040393:PC1 can ping PC2 and vice versa<br>
+ 6: DBG13040394:Device name should match with DUT's model name<br>
+ 7: DBG13050002:DUT will respond DNS request from remote<br>
+ 8: DBG13050016:PC-B is able to ping Wired PC<br>
+ 9: DBG13050034:View System Log always empty even we enable log and set Both remoe and local mode<br>
+ 10: DBG13050036:When we enable daylight saving and set a range and apply, DUT will show conflict<br>
+ 11: DBG13050039:We set 32 wireless client in DUT, but the veriwave result is 31<br>
+
+<p><strong>Fixed BugId list</strong>:<br>
+22510,22507<br>
+<p><strong>Remained BugId list</strong> <br>
+1: DBG13040348:VPN connection can't be created<br>
+2: DBG13040408:TCP session not over 60% of spec<br>
+<br>
+<br>
+ 
+  <br><br>
+  <strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0015-India.EN_2T2R (Apr 17, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL :03-29-13-8676-GINP TNW SPAIN AUTO GINP S-AK   4924c727 2windingX -NoCS Annex AAAA<br>
+WLAN	:	RTL8192Cn
+<p><strong>New Features</strong><br>
+	做客制化版本
+
+<p><strong>Fixed Issues</strong><br>
+1:54708|Svn:21623|Author:liangbingtong|[Ipv6] ping wan ipv6 addr packet more than 1352 fail<br>
+2:55106; Let Power Red led on when booting and let Power Red flash when upgrading.<br>
+3:53754; Internet LED light red after plug off the ADSL line.<br>
+4:53790 [portmapping bridge_list] modify schedules error on portmapping and bridge filter.<br>
+5:54041 [upg_frw] when return failed,remove image.img before reboot<br>
+6:54199 [ipconn] when switch Dual IP Stack to IPV6 static connecttions,usrdnsservers should be deleted.<br>
+7:54790 | ftpd | can not access CPE's FTP from wan side, sync 33951 from E8<br>
+8:55201 | policy route | when a pppoe and a dhcp connection with the same PVC, policy route configuration error<br>
+
+<p><strong>Fixed BugId list</strong>:<br>
+54708,55106,53754,53790,54041,54199,54790,55201<br>
+<p><strong>Remained BugId list</strong> <br>
+<br>
+<br>
+  
+ <br><br>
+  <strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0014-India.EN_2T2R (Mar 21, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL :<SPAN lang="EN-US">10-31-12-8676-GINP TNW SPAIN ver 4924c727 2windingX -NoCS Annex AAAA</SPAN><br>
+WLAN	:	RTL8192Cn
+<p><strong>New Features</strong><br>
+前一次回归遗留太多问题，测试部没有回归，重新做一个回归版本
+<p><strong>Fixed Issues</strong><br>
+1:52263:先配置802.11b模式WPAandWPA2-PSK TKIP模式，切换加密为不加密成功，设置802.11模式含有802.11n时报错<br>
+2:52262:SSID设置为空（没有任何字符）也可以提交<br>
+3:51841:设置3G backup时间为15s，从DSL拨号切换到3G无法成功拨号，一直处于dial waiting状态<br>
+4:51786:不能通过FTP工具访问U盘<br>
+5:51765:3G手动/自动/按需拨号成功后，获取到的DNS错误为172.10.10.1，无法ping通外网<br>
+6:52252:编辑QoS规则，DSCP Mark设置为CS4时保存，不会自动匹配为32<br>
+7:52224:测试的升级文件大于CPE的Flash（任意20M以上文件)升级后CPE挂掉<br>
+8:52036:WAN DHCP续约发送请求间隔时间不正确<br>
+
+<p><strong>Fixed BugId list</strong>:<br>
+
+52363,52252,52224,52060,52036,,51757,51680<br>
+52263,52262,52062,52061,51939,51841,51794,51793,51786<br>
+51785,51765,51713,51712,51711,51628,51627,51626,51625<br>
+51624,51623,51621,51619,51618
+<p><strong>Remained BugId list</strong> <br>
+<br>
+<br>
+ 
+ 
+ <strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0013-India.EN_2T2R (Mar 4, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL :<SPAN lang="EN-US">10-31-12-8676-GINP TNW SPAIN ver 4924c727 2windingX -NoCS Annex AAAA</SPAN><br>
+WLAN	:	RTL8192Cn
+<p><strong>New Features</strong><br>
+	回归并给客户送样版本
+
+<p><strong>Fixed Issues</strong><br>
+<br>
+ 1: 47488:客户需求移除TR069功能<br>
+ 2: 49535:开启pvc搜索功能<br>
+ 3: 51679:D-Link数字签名功能没有实现<br>
+ 4: 51711:可以设置无线SSID为空<br>
+ 5: 51748:无线_国家为JAPAN，信道修改为12，13，14信道，无线网卡上显示的却是1信道<br>
+ 6: 51749:无线网卡通过WPS方式连接上CPE后，WPS灯常亮<br>
+ 7: 51758:CPE页面不能显示当前DMZ规则 <br>
+ 8: 51759:未选择条目时点击edit弹出提示信息不正确<br>
+ 9: 51788:Chrome and Firebox 浏览器登录页面按enter键无反应<br>
+ 10: 51793:设置11g模式下加密方式为WPA2 TKIP方式，然后设置加密方式为open；再次选择切换到11n模式不生效<br>
+ 
+ 11: 51939:对比Broadcom平台的2750U不支持DLNA功能，请移除DLNA功能<br>
+ 12: 51793:设置11g模式下加密方式为WPA2 TKIP方式，然后设置加密方式为open；再次选择切换到11n模式不生效<br>
+ 13: 51786:不能通过FTP工具访问U盘<br>
+ 14: 51712:无法在Windows资源管理器通过FTP访问U盘<br>
+ 15: 51627:不能通过Samba向U盘内写文件（U盘版本3.0）<br>
+<br>
+<p><strong>Fixed BugId list</strong>:<br>
+47488,49535,50453,51625,51629,51679,51711,51746,51748,51749<br>
+51758,51759,51788,51793,51908,51939<br>
+<br>
+51618,51619,51621,51623,51624,51626,51627,51712,51713<br>
+51765,51785,51786,51794,52061,52062,51628<br>
+<br>
+<p><strong>Remained BugId list</strong> <br>
+51841<br>
+  <br>
+ 
+ 
+<strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0012-India.EN_2T2R (Feb 22, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL :<SPAN lang="EN-US">10-31-12-8676-GINP TNW SPAIN ver 4924c727 2windingX -NoCS Annex AAAA</SPAN><br>
+WLAN	:	RTL8192Cn
+<p><strong>New Features</strong><br>
+<br>
+
+主干上2740el已经开发结束，从最新的主干上做转测试版本
+<p><strong>Fixed Issues</strong><br>
+<br>
+ 1: 49945 adsl桥，LAN1没有接PC，开启关闭几次IGMP代理,CPU0<br>
+ 2: 49946 两台PC连接在LAN侧，同时播放同一组播源，第一台pc先离开时也会发送最后组员查询报文 <br>
+ 3: 49948 添加重复PVC或者VLAN的WAN连接，弹出提示框后刷新页面，大概率复现跳转到登陆页面的现象 <br>
+ 4: 50046 添加URL过滤规则使用已经存在的时间表规则，删除此URL规则后，仍然无法编辑该时间表规则 <br>
+ 5: 50052 在CPE配置同VLAN的一条桥WAN连接和一条DHCP WAN连接，CPE会不断重启<br>
+ 6: 50053 流控基于时间调度功能不生效<br>
+ 7: 50054 流控不能设置基于源IP地址的流控<br>
+ 8: 50055 不满足流控规则的流会占有所的带宽<br>
+ 9: 47876 软件的DDNS没有D-Link的域名服务器 <br>
+ 10: 47877 建立多条WAN连接，导出配置再重新导入CPE后WAN拨不上号 <br>
+ 11: 47963 WAN连接手动拨号不成功<br>
+ 12: 48096 无线兼容性：不兼容PSP3000浏览器 <br>
+ 13: 47962 DNS手动切换不成功 <br>
+ 14: 48647 虚拟服务器规则的条目过多 <br>
+ 15: 48710 与BlackBerry OS操作系统的兼容性，无法访问CPE页面<br>
+ 16: 48713 与BlackBerry OS操作系统的兼容性，认证方式：WPA2-PSK<br>
+ 17: 48706 配置802.11 b/g/n with 64bit/index 1 of WEP 无线连接失败 <br>
+ 18: 48268 路由模式开启snooping，不开启代理，组播可以播下来，老化时间到了数据流下不来，重新播放后组播又可以下来 <br>
+ 19: 48627 新建PPPoA、IPoA WAN连接，进程没有拉起，无法拨号 <br>
+ 20: 48596 域名解析时，清除缓存所需时间较长（大于半小时）导致较长时间内不能正常解析域名 <br>
+ 21: 48614 组播通用查询时间与页面设置不致，页面设置时间每增10s,实际时间就比页面多增1s <br>
+ 22: 48698 配置了一条FQDN过滤规则，规则不能删除（必须复位） <br>
+ 23: 48700 IP过滤基于ALG功能过滤规则不生效 <br>
+ 24: 48617 ADSL：PPPOE模式下的组播，开启proxy会导致组播卡到无法正常播放 <br>
+<br>
+<p><strong>Fixed BugId list</strong>:<br>
+ 39792，43795，47379，46149，47876，47880，47960，47964，48030<br>
+ 47964，48030，48052，48089，48101，48139，48345，48404，48596<br>
+ 48614，48617，48656，48664，48671，48688，48711，48714，48971<br>
+ 49138，49258，49448，49483，49719，49942，49945，49946，49948<br>
+ 49949，49950，49951，49952，49953，49974，49986，50011，50012<br>
+ 50024，50043，50044，50045，50046，50052，50057，50059，50204<br>
+ 50342，50359，50451，50453，50514，47851<br>
+ 47864,47866,47869,47870,47872,47875,47876,47877,47878,47879<br>
+ 47880,47881,47882,47883,47959,47960,47962,47963,47964,47965<br>
+ 48016,48018,48096,48264,48265,48268,48269,48270,48271,48272<br>
+ 48322,48324,48325,48574,48575,48590,48592,48594,48596,48597<br>
+ 48598,48599,48600,48603,48614,48615,48617,48627,48628,48629<br>
+ 48630,48631,48632,48639,48647,48652,48656,48657,48660,48663<br>
+ 48664,48674,48675,48677,48678,48680,48681,48683,48687,48698<br>
+ 48700,48706,48708,48710,48711,48713,48714<br>
+<br>
+<p><strong>Remained BugId list</strong> <br>
+  <br>
+  <br>
+ 
+<strong><font size="6">GAN9.9T113A-B-DL-DSL2750U-R5B0011-India.EN_2T2R (Jan 29, 2013)</font></strong> 
+<br>
+CPU/SoC : RTL8676<br>
+DSL :<SPAN lang="EN-US">10-31-12-8676-GINP TNW SPAIN ver 4924c727 2windingX -NoCS Annex AAAA</SPAN><br>
+WLAN	:	RTL8192Cn
+<p><strong>New Features</strong><br>
+<br>
+
+修改客户反馈回来的问题,前一个版本是11月6号送的样，后面统一了命名方式。
+<p><strong>Fixed Issues</strong><br>
+<br>
+1：sync:48961 dlink demande, open &quot;traceroute&quot; function<br>
+2：sync:46959 In the wan side cannot login &quot;CPE&quot; <br>
+<p><strong>Fixed BugId list</strong>:<br>
+48961,48961<br>
+<p><strong>Remained BugId list</strong> <br>
+  <br>
+  <br>

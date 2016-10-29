@@ -1,0 +1,41 @@
+<!-- config -->
+<style type="text/css"><!--
+   .div_left { width:255px;}
+--></style>
+<td width="840">
+	<div class="config1" style="margin:0px auto;">
+		<p class="bk_orange"><span id = "lang_config">Step 4: Account Password</span><font color="white"> &#8594; 5</font></p>
+		<div class="div_orange">
+			<p id = "lang_introdection">&nbsp;</p>
+			<p id = "lang_introdection1">Use the fields below to change or create passwords. Note: Password cannot contain a space.</p>
+		</div>
+		<p class="do bk_black" id = "lang_config1">Account Password</p>
+		<div class="div_black">
+			<div class="div_left" id = "lang_username">Username:</div>
+			<div class="div_right">
+				<input maxlength=15 name="INPUT_Username" id="INPUT_Username" style="width:100px">
+			</div>
+					
+			<div class="div_left" id = "lang_cur_password">Current Password:</div>
+			<div class="div_right">
+				<input type="password" maxlength=255 name="INPUT_OldPassword" id="INPUT_OldPassword" style="width:100px">
+			</div>
+					
+			<div class="div_left" id = "lang_new_password">New Password:</div>
+			<div class="div_right">
+				<input type="password" maxlength=255 name="INPUT_NewPassword" id="INPUT_NewPassword" value="" style="width:100px">
+			</div>
+		
+			<div class="div_left" id = "lang_con_password">Confirm Password:</div>
+			<div class="div_right">
+				 <input type="password" maxlength=255 name="INPUT_ConfirmPassword" id="INPUT_ConfirmPassword" value="" style="width:100px">
+			</div>
+			<div class="div_button">
+				<input type="button" id="back" value="Back" onClick="uiBack()" /> 
+				<input type="submit" id="submit" value="Next" onClick="uiNextPage()" /> 
+				<input type="button" id="skip" value="skip" onClick="uiSkip()" /> 
+				<input type="button" id="cancel" value="Cancel" onClick="uiCancle()" /> 
+			</div>
+		</div>
+	</div>
+</td>	

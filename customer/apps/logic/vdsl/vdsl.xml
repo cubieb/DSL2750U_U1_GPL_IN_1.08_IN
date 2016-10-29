@@ -1,0 +1,139 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_Vdsl type="object">
+		<i type="object">
+			<BriefStatus type="object">
+				<PortStatusEnabled type="boolean" Writable="0">0</PortStatusEnabled>
+				<PortStatusActivate type="boolean" Writable="0">0</PortStatusActivate>
+				<PortStatusShowtime type="boolean" Writable="0">0</PortStatusShowtime>
+			</BriefStatus>
+			<ExtendedStatus type="object">
+				<DsLineRate type="unsignedInt" Writable="0"> </DsLineRate>
+				<UsLineRate type="unsignedInt" Writable="0"> </UsLineRate>
+				<FastDsPayloadRate type="unsignedInt" Writable="0"> </FastDsPayloadRate>
+				<SlowDsPayloadRate type="unsignedInt" Writable="0"> </SlowDsPayloadRate>
+				<FastUsPayloadRate type="unsignedInt" Writable="0"> </FastUsPayloadRate>
+				<SlowUsPayloadRate type="unsignedInt" Writable="0"> </SlowUsPayloadRate>
+				<FastDsNumParityBytes type="unsignedInt" Writable="0"> </FastDsNumParityBytes>
+				<SlowDsNumParityBytes type="unsignedInt" Writable="0"> </SlowDsNumParityBytes>
+				<FastUsNumParityBytes type="unsignedInt" Writable="0"> </FastUsNumParityBytes>
+				<SlowUsNumParityBytes type="unsignedInt" Writable="0"> </SlowUsNumParityBytes>
+				<DsDelay type="string" Writable="0"> </DsDelay>
+				<UsDelay type="string" Writable="0"> </UsDelay>
+				<TransmitPower type="string" Writable="0"> </TransmitPower>
+				<DsTrainingMargin type="string" Writable="0"> </DsTrainingMargin>
+				<DsAttainableRate type="unsignedInt" Writable="0"> </DsAttainableRate>
+				<DsAttainableLineRate type="unsignedInt" Writable="0"> </DsAttainableLineRate>
+				<SlowDsLineProtection type="string" Writable="0"> </SlowDsLineProtection>
+				<UsTrainingMargin type="string" Writable="0"> </UsTrainingMargin>
+				<UsAttainableRate type="unsignedInt" Writable="0"> </UsAttainableRate>
+				<UsAttainableLineRate type="unsignedInt" Writable="0"> </UsAttainableLineRate>
+				<SlowUsLineProtection type="string" Writable="0"> </SlowUsLineProtection>
+				<NeItuVendorId type="string" Writable="0"> </NeItuVendorId>
+				<FeItuVendorId type="string" Writable="0"> </FeItuVendorId>
+				<FeTransmitPower type="string" Writable="0"> </FeTransmitPower>
+				<LoopLength type="unsignedInt" Writable="0"> </LoopLength>
+				<ghsNearEndLoopLength type="unsignedInt" Writable="0"> </ghsNearEndLoopLength>
+				<ghsFarEndLoopLength type="unsignedInt" Writable="0"> </ghsFarEndLoopLength>
+				<SlowUsFFTProtection type="unsignedInt" Writable="0"> </SlowUsFFTProtection>
+				<SlowDsFFTProtection type="unsignedInt" Writable="0"> </SlowDsFFTProtection>
+				<FastDsCodeWordSize type="unsignedInt" Writable="0"> </FastDsCodeWordSize>
+				<SlowDsCodeWordSize type="unsignedInt" Writable="0"> </SlowDsCodeWordSize>
+				<FastUsCodeWordSize type="unsignedInt" Writable="0"> </FastUsCodeWordSize>
+				<SlowUsCodeWordSize type="unsignedInt" Writable="0"> </SlowUsCodeWordSize>
+				<DsInterleaverDepth type="unsignedInt" Writable="0"> </DsInterleaverDepth>
+				<UsInterleaverDepth type="unsignedInt" Writable="0"> </UsInterleaverDepth>
+				<DsInterleaverBlkLen type="unsignedInt" Writable="0"> </DsInterleaverBlkLen>
+				<UsInterleaverBlkLen type="unsignedInt" Writable="0"> </UsInterleaverBlkLen>
+				<CurrentFramingMode type="string" Writable="0"> </CurrentFramingMode>
+				<BandType type="unsignedInt" Writable="0"> </BandType>
+				<NumOfBandsUsDs type="unsignedInt" Writable="0"> </NumOfBandsUsDs>
+				<LineType type="string" Writable="0"> </LineType>
+			</ExtendedStatus>
+			<VdslStatus type="object">
+				<NeLOS type="unsignedInt" Writable="0"> </NeLOS>
+				<NeLOF type="unsignedInt" Writable="0"> </NeLOF>
+				<NeLOM type="unsignedInt" Writable="0"> </NeLOM>
+				<NeESE type="unsignedInt" Writable="0"> </NeESE>
+				<NeNCD_S type="unsignedInt" Writable="0"> </NeNCD_S>
+				<NeLCD_S type="unsignedInt" Writable="0"> </NeLCD_S>
+				<NeNCD_F type="unsignedInt" Writable="0"> </NeNCD_F>
+				<NeLCD_F type="unsignedInt" Writable="0"> </NeLCD_F>
+				<FeLOS type="unsignedInt" Writable="0"> </FeLOS>
+				<FeRDI type="unsignedInt" Writable="0"> </FeRDI>
+				<FeLPR type="unsignedInt" Writable="0"> </FeLPR>
+				<FeLOM type="unsignedInt" Writable="0"> </FeLOM>
+				<FeESE type="unsignedInt" Writable="0"> </FeESE>
+				<FeNCD_S type="unsignedInt" Writable="0"> </FeNCD_S>
+				<FeLCD_S type="unsignedInt" Writable="0"> </FeLCD_S>
+				<FeNCD_F type="unsignedInt" Writable="0"> </FeNCD_F>
+				<FeLCD_F type="unsignedInt" Writable="0"> </FeLCD_F>
+				<FePO type="unsignedInt" Writable="0"> </FePO>
+				<NeSES type="unsignedInt" Writable="0"> </NeSES>
+				<NeES type="unsignedInt" Writable="0"> </NeES>
+				<NeFECS type="unsignedInt" Writable="0"> </NeFECS>
+				<NeLOSS type="unsignedInt" Writable="0"> </NeLOSS>
+				<NeUnavl type="unsignedInt" Writable="0"> </NeUnavl>
+				<FeSES type="unsignedInt" Writable="0"> </FeSES>
+				<FeES type="unsignedInt" Writable="0"> </FeES>
+				<FeFECS type="unsignedInt" Writable="0"> </FeFECS>
+				<FeLOSS type="unsignedInt" Writable="0"> </FeLOSS>
+				<FeUnavl type="unsignedInt" Writable="0"> </FeUnavl>
+				<NeFEC_S type="unsignedInt" Writable="0"> </NeFEC_S>
+				<NeFEC_F type="unsignedInt" Writable="0"> </NeFEC_F>
+				<NeCRC_S type="unsignedInt" Writable="0"> </NeCRC_S>
+				<NeCRC_F type="unsignedInt" Writable="0"> </NeCRC_F>
+				<NeHEC_S type="unsignedInt" Writable="0"> </NeHEC_S>
+				<NeHEC_F type="unsignedInt" Writable="0"> </NeHEC_F>
+				<FeFEC_S type="unsignedInt" Writable="0"> </FeFEC_S>
+				<FeFEC_F type="unsignedInt" Writable="0"> </FeFEC_F>
+				<FeCRC_S type="unsignedInt" Writable="0"> </FeCRC_S>
+				<FeCRC_F type="unsignedInt" Writable="0"> </FeCRC_F>
+				<FeHEC_S type="unsignedInt" Writable="0"> </FeHEC_S>
+				<FeHEC_F type="unsignedInt" Writable="0"> </FeHEC_F>
+				<numUSRcell_S type="unsignedInt" Writable="0"> </numUSRcell_S>
+				<numUSRcell_F type="unsignedInt" Writable="0"> </numUSRcell_F>
+				<numIDLEcell_S type="unsignedInt" Writable="0"> </numIDLEcell_S>
+				<numIDLEcell_F type="unsignedInt" Writable="0"> </numIDLEcell_F>
+				<numIDLEcellBe_S type="unsignedInt" Writable="0"> </numIDLEcellBe_S>
+				<numIDLEcellBe_F type="unsignedInt" Writable="0"> </numIDLEcellBe_F>
+				<numTxBlk_S type="unsignedInt" Writable="0"> </numTxBlk_S>
+				<numTxBlk_F type="unsignedInt" Writable="0"> </numTxBlk_F>
+				<numRxBlk_S type="unsignedInt" Writable="0"> </numRxBlk_S>
+				<numRxBlk_F type="unsignedInt" Writable="0"> </numRxBlk_F>
+				<NeFECUnCrr_S type="unsignedInt" Writable="0"> </NeFECUnCrr_S>
+				<NeFECUnCrr_F type="unsignedInt" Writable="0"> </NeFECUnCrr_F>
+				<sixPtLineHold type="unsignedInt" Writable="0"> </sixPtLineHold>
+				<numReInit type="unsignedInt" Writable="0"> </numReInit>
+				<numInitFailure type="unsignedInt" Writable="0"> </numInitFailure>
+				<NeBER_S type="unsignedInt" Writable="0"> </NeBER_S>
+				<NeBER_F type="unsignedInt" Writable="0"> </NeBER_F>
+				<AllignErrorCount type="unsignedInt" Writable="0"> </AllignErrorCount>
+				<LongFrameCount type="unsignedInt" Writable="0"> </LongFrameCount>
+				<RxErrorCount type="unsignedInt" Writable="0"> </RxErrorCount>
+				<EnetCrcErrorCount type="unsignedInt" Writable="0"> </EnetCrcErrorCount>
+				<CarrierSenseErrorCount type="unsignedInt" Writable="0"> </CarrierSenseErrorCount>
+				<EnetRxFrameCount type="unsignedInt" Writable="0"> </EnetRxFrameCount>
+				<EnetOctRcvCount type="unsignedInt" Writable="0"> </EnetOctRcvCount>
+				<RxPauseFrameCount type="unsignedInt" Writable="0"> </RxPauseFrameCount>
+				<RxHdlcCount type="unsignedInt" Writable="0"> </RxHdlcCount>
+				<RxHdecCount type="unsignedInt" Writable="0"> </RxHdecCount>
+				<RxHdscCount type="unsignedInt" Writable="0"> </RxHdscCount>
+				<RxHdmcCount type="unsignedInt" Writable="0"> </RxHdmcCount>
+				<RxHdDefTransCount type="unsignedInt" Writable="0"> </RxHdDefTransCount>
+				<RxHdlcErrorFrameCount type="unsignedInt" Writable="0"> </RxHdlcErrorFrameCount>
+				<RxHdlcInvalidFrameCount type="unsignedInt" Writable="0"> </RxHdlcInvalidFrameCount>
+				<RxHdlcDropFrameCount type="unsignedInt" Writable="0"> </RxHdlcDropFrameCount>
+			</VdslStatus>
+			<SNRStatus type="object">
+				<SnrMargin type="string" Writable="0"> </SnrMargin>
+				<Attn type="string" Writable="0"> </Attn>
+				<SnrAvgMargin type="string" Writable="0"> </SnrAvgMargin>
+				<SnrAvg type="string" Writable="0"> </SnrAvg>
+			</SNRStatus>
+			<Version type="object">
+				<VersionStr type="string" Writable="0"> </VersionStr>
+			</Version>
+		</i>
+	</X_TWSZ-COM_Vdsl>
+</InternetGatewayDevice>

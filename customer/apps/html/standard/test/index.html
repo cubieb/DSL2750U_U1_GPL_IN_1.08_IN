@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="No-cache" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<meta http-equiv="Expires" content="-1" />
+<title>TBS-TEST</title>
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function createForm(_array){
+	var form = document.forms[0];
+	var inPut;
+	
+	if(_array[1] == undefined) { return false;}
+	for(var i = 0; i < _array.length; i++){
+		inPut = document.createElement('input');
+		inPut.type = "hidden";
+		inPut.name = _array[0];
+		inPut.value = _array[1];
+	}
+	form.appendChild(inPut);
+}
+
+function getValue(){
+	var data        = $('inPut').value;
+	var split_enter = data.split('\n');
+	var buttfer     = [];
+	
+	if($('msgType').value == 'set'){
+		for(var i = 0,num; i < split_enter.length; i++){
+			num = split_enter[i].indexOf('=');
+			var Font = split_enter[i].strip().substring(0,num);
+			var Back = split_enter[i].strip().substring(num + 1,split_enter[i].length);
+			buttfer[i] = [];
+			buttfer[i] = [Font,Back];
+		}
+	}
+	
+	switch($('msgType').value){
+		case 'set' : {
+			buttfer.push(["getpage","html/test/error.html"],["errorpage","html/test/error.html"],["var:page","system_msg"],["obj-action","set"]);
+			break;
+		}
+		case 'add' : {
+			buttfer.push(["getpage","html/test/error.html"],["errorpage","html/test/error.html"],["var:page","system_msg"],["obj-action","add"],["add-obj",data]);
+			break;
+		}
+		case 'del' : {
+			buttfer.push(["getpage","html/test/error.html"],["errorpage","html/test/error.html"],["var:page","system_msg"],["obj-action","del"],["del-obj",data]);
+			break;
+		}
+	}
+	
+	return buttfer;
+}
+
+function dealWithData(){
+	var array_data = getValue();
+	
+	Form.Clear();
+	for(var i = 0; i < array_data.length; i++){
+		createForm(array_data[i]);
+	}
+	
+	var xmlData = Ajax.getInstance('/cgi-bin/webproc','',false,receiveData);
+	xmlData.post($('uiPostForm'));
+}
+
+function receiveData(){
+	var tb = document.createElement('tbody');
+	var tr = document.createElement('tr');
+	var td = document.createElement('td');
+	td.innerHTML = arguments[0];
+	
+	tr.appendChild(td);
+	tb.appendChild(tr);
+	$('outPut').appendChild(tb);
+}
+
+function displayNote(){
+	var Type = $('msgType').value;
+	var note = $('note');
+	
+	switch(Type){
+		case 'set':{
+			note.innerHTML = "输入格式为：:xxx.xxx.xxx.xx1=value1(回车):xxx.xxx.xxx.xx2=value2 如此类推";
+			break;
+		}
+		case 'add':{
+			note.innerHTML = "请直接输入添加节点的路径，格式为 xxx.xxx.xxx.xxx.；<br />例如：InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface. 只能一次添加一个";
+			break;
+		}
+		case 'del':{
+			note.innerHTML = "请直接输入删除节点的路径，格式为 xxx.xxx.xxx.xxx.实例号.； <br />例如：InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.2. 只能一次删除一个";
+			break;
+		}
+	}
+}
+
+window.onload = displayNote;
+//]]>
+</script>
+</head>
+
+<body>
+<h1>请在文本区域输入：</h1>
+<h3 style="float:left;">请选择消息类型：</h3>
+<select name="msgType" id="msgType" onChange="displayNote()">
+	<option value="set">Set</option>
+	<option value="add">Add</option>
+	<option value="del">Delete</option>
+</select><br>
+<div id="note" style=" background:#f4f4f4; width:auto;"></div>
+<textarea cols="100" rows="30" id="inPut" style="font:12px Arial, Helvetica, sans-serif; width:720px;">
+</textarea>
+<input type="button" id="submit" value="提交.." onClick="dealWithData()">
+<h1>输出结果：</h1>
+<h4 style="color:red; ">注意：在保存结果之前不要刷新页面，否则测试结果将被毁于一旦！</h4>
+<table id="outPut" style="border:1px solid red; width:720px;">
+</table>
+<form name="uiPostForm" id="uiPostForm" action="webproc">
+</form>
+</body>
+</html>

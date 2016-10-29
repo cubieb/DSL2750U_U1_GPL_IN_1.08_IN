@@ -1,0 +1,221 @@
+<!-- config -->
+<style type="text/css">
+<!--
+.div_left {width:300px}
+-->
+</style>
+<td>
+	<div class="config2">
+		<p class="bk_orange">Quality of Service</p>
+		<div class="div_orange">
+			  <p>In this page, you can create a traffic class rule to classify the upstream traffic, 
+			  assign queue that defines the precedence and the interface, and optionally 
+			  overwrite the DSCP byte of the IP header.
+			  A rule consists of a class name and at least one condition. 
+			  All the specified conditions in the class rule take effect simultaneously. 
+			  Click "Apply" to save the rule and enable it.  </p>
+			  <p><b>Assign ATM Priority and/or DSCP Mark for the class</b><br>
+			 If a non-blank value is set for "Assign Differentiated Services Code 
+			 Point (DSCP) Mark", the corresponding DSCP byte in the IP header of the 
+			 upstream packet is overwritten by the set value.  </p>
+		</div>
+		<p class="do bk_black">Network Traffic Class Rule</p>
+		<div class="div_black">
+			<div class="div_left">Traffic Class Name :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Rule Order :</div>
+			<div class="div_right">
+				<select id='SELECT_RuleOrder' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0" selected>(Click to Select)</option>
+					<option value="1">Last</option>
+				</select>
+			</div>
+			<div class="div_left">Rule Status :</div>
+			<div class="div_right">
+				<select id='SELECT_RuleStatus' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0" selected>(Click to Select)</option>
+					<option value="1">Disable</option>
+					<option value="2">Enable</option>
+				</select>
+			</div>
+			<div class="div_left">&nbsp;</div><div class="div_right">&nbsp;</div>
+			<div class="div_left">Assign Classification Queue :</div>
+			<div class="div_right">
+				<select id='SELECT_ACQ' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0" selected>(Click to Select)</option>
+				</select>
+			</div>
+			<div class="div_left">Assign Differentiated Services Code Point (DSCP) Mark :</div>
+			<div class="div_right">
+				<select id='SELECT_ADSCPM' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					 <option value=255>No Change</option>            
+					 <option value=0> default</option>
+					 <option value=56> AF13(001110)</option>
+					 <option value=48> AF12(001100)</option>
+					 <option value=40> AF11(001010)</option>
+					 <option value=32> CS1(001000)</option>
+					 <option value=88> AF23(010110)</option>
+					 <option value=80> AF22(010100)</option>
+					 <option value=72> AF21(010010)</option>
+					 <option value=64> CS2(010000)</option>
+					 <option value=120> AF33(011110)</option>
+					 <option value=112> AF32(011100)</option>
+					 <option value=104> AF31(011010)</option>
+					 <option value=96> CS3(011000)</option>
+					 <option value=152> AF43(100110)</option>
+					 <option value=144> AF42(100100)</option>
+					 <option value=136> AF41(100010)</option>
+					 <option value=128> CS4(100000)</option>
+					 <option value=184> EF(101110)</option>
+					 <option value=160> CS5(101000)</option>
+					 <option value=192> CS6(110000)</option>
+					 <option value=224> CS7(111000)</option>
+				</select>
+			</div>
+			<div class="div_left">Mark 802.1p if 802.1q is enabled :</div>
+			<div class="div_right">
+				<select id='SELECT_MarkEnabled' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value=0>No Change</option>         
+					<option value=1>0</option>
+					<option value=2>1</option>
+					<option value=3>2</option>
+					<option value=4>3</option>
+					<option value=5>4</option>
+					<option value=6>5</option>
+					<option value=7>6</option>
+					<option value=8>7</option>
+				</select>
+			</div>
+		</div>
+		
+		<p class="bk_orange">Specify Traffic Classification Rules</p>
+		<div class="div_orange">
+			 <p>Enter the following conditions either for IP level, SET-1, or for IEEE 802.1p, SET-2.</p>
+		</div>
+		<p class="do bk_black">SET-1</p>
+		<div class="div_black">
+			<div class="div_left">Physical LAN Port :</div>
+			<div class="div_right">
+				<select id='SELECT_PhyLanPort' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0">Any</option>
+					<option value="1">LAN1</option>
+					<option value="2">LAN2</option>
+					<option value="3">LAN3</option>
+					<option value="4">LAN4</option>
+					<option value="5">Wireless</option>
+				</select>
+			</div>
+			<div class="div_left">Protocol :</div>
+			<div class="div_right">
+				<select id='SELECT_Protocol' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value=0 selected>Any</option>
+            		<option value=4>TCP/UDP</option>
+					<option value=1>TCP</option>
+					<option value=2>UDP</option>
+					<option value=3>ICMP</option>
+				</select>
+			</div>
+			<div class="div_left">Differentiated Services Code Point (DSCP) Check :</div>
+			<div class="div_right">
+				<select id='SELECT_DSCPCheck' size="1" onChange="onSelectApp(this.value)" style="width:150px">					 
+					<option value="0"> default(000000)</option>
+					<option value="56"> AF13(001110)</option>
+					<option value="48"> AF12(001100)</option>
+					<option value="40"> AF11(001010)</option>
+					<option value="32"> CS1(001000)</option>
+					<option value="88"> AF23(010110)</option>
+					<option value="80"> AF22(010100)</option>
+					<option value="72"> AF21(010010)</option>
+					<option value="64"> CS2(010000)</option>
+					<option value="120"> AF33(011110)</option>
+					<option value="112"> AF32(011100)</option>
+					<option value="104"> AF31(011010)</option>
+					<option value="96"> CS3(011000)</option>
+					<option value="152"> AF43(100110)</option>
+					<option value="144"> AF42(100100)</option>
+					<option value="136"> AF41(100010)</option>
+					<option value="128"> CS4(100000)</option>
+					<option value="184"> EF(101110)</option>
+					<option value="160"> CS5(101000)</option>
+					<option value="192"> CS6(110000)</option>
+					<option value="224"> CS7(111000)</option>
+				</select>
+			</div>
+			<div class="div_left">Source IP Type :</div>
+			<div class="div_right">
+				<select id='SELECT_SorIPType' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					 <option value="0" selected>Any
+		      		 <option value="1">Single IP
+                     <option value="2">Network IP
+				</select>
+			</div>
+			<div class="div_left">Source IP Address :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Source Subnet Mask :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Source Port Type :</div>
+			<div class="div_right">
+				<select id='SELECT_SrcPortType' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0" selected>Any
+                    <option value="1">Single Port
+                    <option value="2">Port Range
+				</select>
+			</div>
+			<div class="div_left">UDP/TCP Source Port (port or port:port) :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Destination IP Type :</div>
+			<div class="div_right" >
+				<select id='SELECT_DestIPType' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0" selected>Any
+                    <option value="1">Single IP
+                    <option value="2">Network IP
+				</select>
+			</div>
+			<div class="div_left">Destination IP Address :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Destination Subnet Mask :</div><div class="div_right"><input type="text" style="width:150px" /></div>
+			<div class="div_left">Destination Port Type :</div>
+			<div class="div_right">
+				<select id='SELECT_DestPortType' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value="0" selected>Any
+                    <option value="1">Single Port
+                    <option value="2">Port Range
+				</select>
+			</div>
+			<div class="div_left">UDP/TCP Destination Port (port or port:port) :</div><div class="div_right">
+				<input type="text" style="width:150px"/>
+			</div>
+			<div class="div_left">Source MAC Address :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Source MAC Mask :</div><div class="div_right"><input type="text" style="width:150px" /></div>
+			<div class="div_left">Destination MAC Address :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+			<div class="div_left">Destination MAC Mask :</div><div class="div_right"><input type="text" style="width:150px"/></div>
+		</div>
+		<p class="do bk_black">SET-2</p>
+		<div class="div_black">
+			<div class="div_left">802.1p Priority :</div>
+			<div class="div_right">
+				<select id='SELECT_8021pPrio' size="1" onChange="onSelectApp(this.value)" style="width:150px">
+					<option value=0>(Click to Select)</option>
+					<option value=1>0</option>
+					<option value=2>1</option>
+					<option value=3>2</option>
+					<option value=4>3</option>
+					<option value=5>4</option>
+					<option value=6>5</option>
+					<option value=7>6</option>
+					<option value=8>7</option>
+				</select>
+			</div>
+		</div>
+		<div class="div_button">
+			<input type="submit" value="Apply" /> 
+			<input type="button" value="Cancel" />
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5>Helpful Hints...</h5>
+		<div>
+		<p>
+			Quality of service (QoS) enables the router to set priority of data packets that flow throughout your network. It is a useful feature for sensitive applications such as VoIP whereby it assists in preventing dropped calls. Large amount of non-critical data can be scaled, to avoid affecting sensitive real-time applications such as VoIP or streaming. This page shows some pre-configured rules that are used with common applications such as VoIP, FTP, and messaging programs.
+		</p></div>
+		<h5><a href="#">More...</a></h5>
+	</div>
+</td>

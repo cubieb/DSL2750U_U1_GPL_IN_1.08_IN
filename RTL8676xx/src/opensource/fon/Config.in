@@ -1,0 +1,6 @@
+config OPENSOURCE_FON
+        bool 'FON'
+        default n
+        depends on OPENSOURCE
+        help
+        FON.

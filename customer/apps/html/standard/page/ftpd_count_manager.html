@@ -1,0 +1,65 @@
+<!-- config -->
+<style type="text/css">
+input.my_btn { width:auto;}
+</style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="lang_FtpSetting">FTP</p>
+		<div class="div_orange">
+			<p id="lang_dsc">In this page, you can manage the FTP user information, such as the user name, password, and the corresponding authority.</p>
+		</div>
+		<p class="do bk_black">Ftp User Manage</p>
+		<div class="div_black">
+		        <div class="div_left" id="lang_ftpd_user" >Username :</div>
+			<div class="div_right"><input type="text" maxlength=32 size=16 name="INPUT_userName" id="INPUT_userName" value="" style="width:180px"></div>	
+
+			<div class="div_left" id="lang_ftpd_paswd" >Password :</div>
+			<div class="div_right"><input type="password" maxlength=32 size=16 name="INPUT_password" id="INPUT_password" value="" style="width:180px"></div>
+			
+			<div class="div_left" id="lang_ftpd_ability" >Right :</div>
+			<div class="div_right">
+			       <input type="checkbox" name="INPUT_access" id="INPUT_access">View &nbsp;&nbsp;
+        			<input type="checkbox" name="INPUT_upload" id="INPUT_upload">Upload &nbsp;&nbsp;
+        			<input type="checkbox" name="INPUT_download" id="INPUT_download">Download
+			</div>
+		</div>
+
+		<div class="div_button">
+		    <input type="button" name="add" id="add" value="Add" onclick="uiSubmit()">
+		    <input type="button" name="submit" id="refresh" value="Delete" onclick="uiRefreshPage()">
+		</div>
+
+		<p class="do bk_black"  id="lang_userlist">Ftp Users List</p>
+		<div class="div_black">
+			<table class="td_table_s" id="tb_multiIPList">
+				<tr class="tr_bold">	
+					<td rowspan="2" id="lang_userlist_no">NO.</td>
+					<td rowspan="2" id="lang_userlist_user">Username</td>
+					<td rowspan="2" id="lang_userlist_paswd">Password</td>
+					<td colspan="3" id="lang_userlist_ability">Right</td>
+					<td rowspan="2" id="lang_userlist_operation">Operation</td>
+				</tr>
+				<tr class="tr_bold">
+				        <td id="lang_right_view">View</td>
+				        <td id="lang_right_upload">Upload</td>
+				        <td id="lang_right_download">Download</td>
+				</tr>
+			</table>
+		</div>
+		
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>	
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc">
+				In this page, you can manage the FTP user information, such as the user name, password, and the corresponding authority.
+<h5><a href="#"  id="AdvancedPorForwarding">Advanced -> Port Forwarding</a></h5> <span id="section">section.</span>
+			</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

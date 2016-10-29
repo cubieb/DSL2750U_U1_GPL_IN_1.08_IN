@@ -1,0 +1,48 @@
+		<td>
+			<div class="config1">
+				<p class="bk_black" id =  "lang_route2">Static Route</p>
+				<div class="div_black">
+					<p id = "lang_route1">
+						Static Route.
+					</p>
+					<div class="div_button"><input type="button" id = "route" value="Static Route" onClick="StaticRoute()"/></div>
+				</div>
+				<?if eq $var:G_IPv6Enable 1
+				`   <p class="bk_black" id =  "lang_v6route">IPv6 Static Route</p>
+				<div class="div_black">
+					<p id = "lang_route6">
+						IPv6 Static Route.
+					</p>
+					<div class="div_button"><input type="button" id = "v6route" value="IPv6 Static Route" onClick="v6StaticRoute()"/></div>
+				</div>
+				`?>
+				<p class="bk_black" id =  "lang_route4">Policy Route</p>
+				<div class="div_black">
+					<p id = "lang_route3">
+						Policy Route.
+					</p>
+					<div class="div_button"><input type="button" id = "proute" value="Policy Route" onClick="PolicyRoute()"/></div>
+				</div>
+				<p class="do bk_black" id = "lang_gw">Default Gateway</p>
+				<div class="div_black">
+					<p id = "lang_gw1">
+						Default Gateway.
+					</p>
+					<div class="div_button"><input type="button" id = "gateway" value="Default Gateway" onClick="DefaultGateway()"/></div>
+				</div>
+				<p class="do bk_black" id = "lang_rip2">RIP Settings</p>
+				<div class="div_black">
+					<p id = "lang_rip1">
+						RIP Settings.
+					</p>
+					<div class="div_button"><input type="button" id = "rip" value="RIP Settings" onClick="RIPSetting()"/></div>
+				</div>
+				<?if eq $var:G_IPv6Enable 1
+				`	<p class="do bk_black" id = "lang_ripng">RIPng Settings</p>
+        		<div do class="div_black">
+        			<p>RIPng Settings.</p>
+        			<div class="div_button"><input type="button" id = "ripng" value="RIPng Settings" onClick="RIPngSetting()"></div>
+        		</div>
+				`?>
+			</div>
+		</td>

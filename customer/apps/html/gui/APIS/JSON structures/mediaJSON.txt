@@ -1,0 +1,38 @@
+{  
+   "currpage":5,
+   "totalpages":9,
+   "IMAGES": [         
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_01.jpg", "width": "86px", "height": "62px", "title": "Image Title"},
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_02.jpg", "width": "86px", "height": "62px", "title": "Image Title"},    
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_03.jpg", "width": "86px", "height": "62px", "title": "Image Title"},
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_04.jpg", "width": "86px", "height": "62px", "title": "Image Title"},    
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_05.jpg", "width": "86px", "height": "62px", "title": "Image Title"},  
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_06.jpg", "width": "86px", "height": "62px", "title": "Image Title"}, 
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_07.jpg", "width": "86px", "height": "62px", "title": "Image Title"}, 
+       {"src": "http://www.aurumproducciones.com/activos/imagen/ponyo_08.jpg", "width": "86px", "height": "62px", "title": "Image Title"}
+                   
+   ],
+   
+   "SONGS": [
+       {"name": "Stadiums and shrines I", "group": "The Books", "time": "1:38", "src": "http://pages.cs.wisc.edu/~cain/mp3/velveteens/bitter.mp3"},      
+       {"name": "They took a vote and say no", "group": "The Books", "time": "1:33", "src": "http://www.transpop.com/porfinmp3/Ultraplayback%20-%2001%20One%20Hit%20Wonder.mp3"},
+       {"name": "Us ones in between", "group": "The Books", "time": "1:33", "src": "http://www.transpop.com/porfinmp3/Ultraplayback%20-%2002%20Luke.mp3"},
+       {"name": "I'm sorry I sang on your hands...", "group": "The Books", "time": "1:33", "src": "http://www.transpop.com/porfinmp3/Ultraplayback%20-%2003%20Mal%20Dance.mp3"},
+       {"name": "Snakes got a leg III", "group": "The Books", "time": "1:33", "src": "http://elrenorenardo.com/web/wp-content/files/El_Reno_Renardo_-_05_-_Camino_Moria.mp3"},
+       {"name": "The empty threats of little lord", "group": "The Books", "time": "1:33", "src": "http://elrenorenardo.com/web/wp-content/files/El_Reno_Renardo_-_05_-_El_Bogavante.mp3"},
+       {"name": "The swimming", "group": "The Books", "time": "1:33", "src": "http://elrenorenardo.com/web/wp-content/files/El_Reno_Renardo_-_06_-_Carrockneros_Del_Rock.mp3"},
+       {"name": "The men are called horsemen here", "group": "The Books", "time": "1:33", "src": "http://elrenorenardo.com/web/wp-content/files/El_Reno_Renardo_-_10_-_Cien_Idiotas.mp3"},
+       {"name": "The Lemon of Pink", "group": "The Books", "time": "1:33", "src": "http://elrenorenardo.com/web/wp-content/files/El_Reno_Renardo_-_08_-_Creci_En_Los_Ochenta.mp3"}         
+   ],
+   
+   "VIDEOS": [
+       {"name": "Big Buck Bunny (http)", "time": "1:33", "src": "http://vlc.Revolunet.Com/Dessin_Anime_BigBuckBunny_HD.avi"},
+       {"name": "Not long ago... (http)", "time": "5:49", "src": "http://altair.videolan.org/~dionoea/vlc-plugin-demo/streams/sw_8M.mov"},
+       {"name": "Not long ago... (local)", "time": "5:49", "src": "http://altair.videolan.org/~dionoea/vlc-plugin-demo/streams/sw_8M.mov"},
+       {"name": "Not long ago... (local)", "time": "5:49", "src": "http://altair.videolan.org/~dionoea/vlc-plugin-demo/streams/sw_8M.mov"},
+       {"name": "Not long ago... (local)", "time": "5:49", "src": "http://altair.videolan.org/~dionoea/vlc-plugin-demo/streams/sw_8M.mov"},
+       {"name": "Not long ago... (local)", "time": "5:49", "src": "http://altair.videolan.org/~dionoea/vlc-plugin-demo/streams/sw_8M.mov"},
+       {"name": "Not long ago... (local)", "time": "5:49", "src": "http://altair.videolan.org/~dionoea/vlc-plugin-demo/streams/sw_8M.mov"}               
+   ]   
+}
+

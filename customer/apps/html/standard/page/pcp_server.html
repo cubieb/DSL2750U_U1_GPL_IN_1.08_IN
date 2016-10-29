@@ -1,0 +1,35 @@
+<td>
+	<div class="config2">
+		<div class="Embody">
+			<div class="div_left" id="lang_WanConnection">WAN连接</div>
+			<div class="div_middle">&nbsp;
+				<select name="SELECT_WanConns" id="SELECT_WanConns" onChange="Table.Clear('PcpServerList');$('INPUT_ServerName').value='';createTables()">
+					<option>
+					</option>
+				</select>
+			</div>
+			<div class="div_right">&nbsp;</div>
+
+			<br/>
+			<div class="div_left" id="lang_ServerName">服务器IP</div>
+			<div class="div_middle">&nbsp;<input type="text" name="INPUT_ServerName" id="INPUT_ServerName" maxlength="15" value="" />&nbsp;<input type="button" name="submit" id="submit" onClick="uiSubmit();"/></div>
+			<div class="div_right">&nbsp;</div>
+		</div>
+
+		<p class="SmallTittle" id="lang_PcpServerList">PCP 服务器列表</p>
+
+		<div id="PcpList">
+			<table class="td_table" id='PcpServerList'>
+				<tr class="bk">
+					<td id="lang_Num">序号</td>
+					<td id="lang_PcpServerName">服务器IP</td>
+					<td id="lang_action">操作</td>
+				</tr>
+			</table>
+		</div>
+		<br/>
+
+		<div id="div_balance"></div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>		
+	</div>
+</td>

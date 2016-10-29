@@ -1,0 +1,15 @@
+<InternetGatewayDevice type="object">
+    <X_TELEFONICA-ES_SystemState type="object">
+    	<Mem type="object">
+        	<MemTotal type="unsignedInt"></MemTotal>
+        	<MemTotalFree type="unsignedInt"></MemTotalFree>
+		</Mem>
+		<CPU type="object">
+        	<CPULoad type="unsignedInt"></CPULoad>
+		</CPU>	
+		<NatSessionTable type="object">
+        	<Total type="unsignedInt"></Total>
+        	<Used type="unsignedInt"></Used>
+		</NatSessionTable>			
+   </X_TELEFONICA-ES_SystemState>    	
+</InternetGatewayDevice>

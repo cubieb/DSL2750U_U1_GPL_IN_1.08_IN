@@ -1,0 +1,3 @@
+KERNEL_EXTRA_VERSION ?= 0
+KBUILD_CFLAGS += -DKERNEL_EXTRA_VERSION=$(KERNEL_EXTRA_VERSION)
+#obj-m:= user_usb_modem.o 	demand_hook.o

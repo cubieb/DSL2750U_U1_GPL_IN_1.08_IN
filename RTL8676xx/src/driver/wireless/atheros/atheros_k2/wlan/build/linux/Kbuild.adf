@@ -1,0 +1,41 @@
+#  
+# Copyright (C) 2002-2008 Atheros Communications Inc.
+# Kbuild File for ADF (shim)
+#
+#Build targets supported
+#
+#make bld-mod=adf
+#make bld-mod=adf clean <only clean adf>
+
+#
+# Paths
+# XXX: This builds only for HOST or Single CPU based adf'es
+#
+#
+
+mod_adf             = adf
+
+config_adf          := $(bld_cfg-adf)
+
+ccflags-y           += -I$(PWD)/$(adf_dir)/include
+ccflags-y           += -I$(PWD)/$(adf_dir)/include/host/nbuf
+ccflags-y           += -I$(PWD)/$(adf_dir)/include/host/net
+ccflags-y           += -I$(PWD)/$(adf_dir)/include/host/os
+ccflags-y           += -I$(PWD)/$(adf_dir)/include/common/os
+ccflags-y           += -I$(PWD)/$(adf_path)
+ccflags-y           += -I$(PWD)/$(adf_path)/host/os
+ccflags-y           += -I$(PWD)/$(adf_path)/host/net
+ccflags-y           += -I$(PWD)/$(adf_path)/host/nbuf
+ccflags-y           += -I$(PWD)/$(adf_path)/common/os
+
+obj-$(config_adf)   := $(mod_adf).o
+$(mod_adf)-objs     += $(adf_path)/host/nbuf/adf_nbuf.o
+$(mod_adf)-objs     += $(adf_path)/common/nbuf/adf_nbuf.o
+$(mod_adf)-objs     += $(adf_path)/host/net/adf_net.o
+$(mod_adf)-objs     += $(adf_path)/host/net/adf_net_ioctl.o
+$(mod_adf)-objs     += $(adf_path)/common/os/adf_os_defer_pvt.o
+$(mod_adf)-objs     += $(adf_path)/common/os/adf_os_irq_pvt.o
+#$(mod_adf)-objs     += $(adf_path)/common/os/adf_os_pci_pvt.o
+
+#rm_files      := $(if $(config_adf),$($(mod_adf)-objs))
+#rm_files      += $(call __del_cmd,$(rm_files))

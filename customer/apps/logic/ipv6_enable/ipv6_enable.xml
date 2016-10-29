@@ -1,0 +1,5 @@
+<InternetGatewayDevice type="object">
+    <X_TWSZ-COM_IPv6Enable type="object">
+        <Enable type="boolean">1</Enable>
+    </X_TWSZ-COM_IPv6Enable>
+</InternetGatewayDevice>

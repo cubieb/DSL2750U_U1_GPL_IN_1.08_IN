@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_PEANUTHULLCLIENT
+	bool 'PeanutHull Client(peanuthullc)'
+	default n
+	depends on OPENSOURCE
+  	help 
+		peanuthull client

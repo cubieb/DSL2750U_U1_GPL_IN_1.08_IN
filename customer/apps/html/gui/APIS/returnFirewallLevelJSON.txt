@@ -1,0 +1,32 @@
+{
+	"RETURN":{
+		"success": true
+      },
+	
+	"FIREWALL_LEVEL": {
+	   "idLevel": "Level1",
+	   "nameLevel":"MyLevel",
+       "description": "My customized level", 
+       "readOnly":false,
+       "RULES":[
+       		{"idRule":"rule2",
+      		 "priority":"0",
+       		 "sourceInterface":"lan",
+       		 "sourceIP":"192.168.2.5",
+       		 "destinationInterface":"any",
+       		 "destinationIP":"any",
+       		 "service":"ssh",
+       		 "target":"deny"
+      		},
+      		{"idRule":"rule1",
+       		 "priority":"1",
+       		 "sourceInterface":"lan",
+       		 "sourceIP":"any",
+       		 "destinationInterface":"any",
+       		 "destinationIP":"any",
+       		 "service":"any",
+       		 "target":"accept"
+      		}
+       		]
+       	}
+}

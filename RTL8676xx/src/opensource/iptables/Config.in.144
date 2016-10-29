@@ -1,0 +1,29 @@
+
+menuconfig OPENSOURCE_IPTABLES_144
+	bool 'iptables'
+	default y
+	depends OPENSOURCE
+  	help
+        iptables
+
+menuconfig OPENSOURCE_IPT_V4
+	bool 'iptables for ipv4'
+	default y
+	depends OPENSOURCE_IPTABLES_144
+	help
+		iptables for ipv4
+
+if OPENSOURCE_IPT_V4=y
+source src/opensource/iptables/Config.in.4.1
+endif
+
+menuconfig OPENSOURCE_IPT_V6
+	bool 'iptables for ipv6'
+	default n
+	depends OPENSOURCE_IPTABLES_144 && TBS_SUPPORT_IPV6
+	help
+		iptables for ipv6
+
+if OPENSOURCE_IPT_V6=y
+source src/opensource/iptables/Config.in.6.1
+endif

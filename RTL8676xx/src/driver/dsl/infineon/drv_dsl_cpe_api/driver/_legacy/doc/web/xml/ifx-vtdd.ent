@@ -1,0 +1,7 @@
+<!--  -->
+<!-- Copied from iso-xxx.ent"> -->
+
+<!ENTITY power3	"&#x00B3;"> <!-- THREESUPERIOR SIGN -->
+<!ENTITY times 	"&#x00D7;"> <!-- MULTIPLICATION SIGN -->
+<!ENTITY yen    	"&#x00A5;"> <!-- YEN SIGN -->
+<!ENTITY yuml  	"&#x00FF;"> <!-- YDIERESIS SIGN  -->

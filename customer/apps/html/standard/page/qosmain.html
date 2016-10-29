@@ -1,0 +1,35 @@
+<!-- config -->
+<td>
+	<div class="config1">
+		<p class="bk_orange">Quality of Service</p>
+		<div class="div_orange">
+			<p><b>If WMM in the "Wireless" Page is disabled, classification related to wireless will not take effect.  </b><br>
+		    	Click "Add" or "Remove" to configure the network traffic classes.
+			</p>
+		</div>
+		<p class="do bk_black">Quality of Service Setup</p>
+		<div class="div_black">
+			<table class="td_table_l" id='PortMappingList'>
+				<tr class="tr_bold">
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td colspan="3">MARK</td>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr class="tr_bold">
+					<td>&nbsp;</td>
+					<td>Class Name</td>
+					<td>DSCP Mark</td>
+					<td>Queue ID</td>
+					<td>802.1P Mark</td>
+					<td>Order</td>
+					<td>Enable/Disable</td>
+					<td>Details</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button">
+			<input type="button" value="Add" id="add" onClick="uiAdd()" /> 			                
+		</div>
+	</div>
+</td>

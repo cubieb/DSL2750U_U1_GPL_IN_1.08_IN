@@ -1,0 +1,14 @@
+
+<InternetGatewayDevice type="object">
+	<Services type="object" Writable="0">
+		<X_TWSZ-COM_ALGAbility Standard="0" type="object">
+			<FTPEnabled Standard="0" Writable="1" type="boolean">1</FTPEnabled>
+			<TFTPEnabled Standard="0" Writable="1" type="boolean">1</TFTPEnabled>
+			<L2TPEnabled Standard="0" Writable="1" type="boolean">1</L2TPEnabled>
+			<PPTPEnabled Standard="0" Writable="1" type="boolean">1</PPTPEnabled>
+			<RTSPEnabled Standard="0" Writable="1" type="boolean">1</RTSPEnabled>
+			<SIPEnabled Standard="0" Writable="1" type="boolean">1</SIPEnabled>
+			<H323Enabled Standard="0" Writable="1" type="boolean">1</H323Enabled>
+		</X_TWSZ-COM_ALGAbility>
+	</Services>
+</InternetGatewayDevice>

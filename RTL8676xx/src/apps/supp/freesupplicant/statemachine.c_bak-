@@ -1,0 +1,607 @@
+#include <stdio.h>
+#include <string.h>
+#include <sys/reboot.h>
+#include <unistd.h>
+
+#include <sys/types.h>	//zlg	
+#include <signal.h>	//zlg
+#include <dirent.h>
+
+#include "statemachine.h"
+#include "cardif.h"
+#include "main.h"
+#include "eap.h"
+#include "MD5.h"
+
+//#include "../goahead-2.1.1/LINUX/utility.h"	//zlg
+
+struct state_info state;
+extern struct cardif_data cardif;
+extern struct config_data config_info;
+
+//unsigned char reply_msg[2048];  //zlg   08-03-13
+unsigned char ssid[64]; // String, Length:1-16
+unsigned char wpa_psk[16]; // "WPA" or "WPA-PSK"
+unsigned char wpa_pw[128]; // String, Length: 1-16
+unsigned char bssid='1';
+int parsed_flag=0;
+
+static void process_reply_msg();
+static int need_restart_hostapd();
+static int resart_hostapd();
+int change_hostapd_config();    
+
+static int get_value_from_flash();//zlg   08-03-13
+static pid_t find_pid();
+
+#define READ_BUF_SIZE	50
+
+pid_t find_pid( char* pidName)
+{
+	DIR *dir;
+	struct dirent *next;
+
+	dir = opendir("/proc");
+	if (!dir) {
+		printf("Cannot open /proc");
+		return 0;
+	}
+
+	while ((next = readdir(dir)) != NULL) {
+		FILE *status;
+		char filename[READ_BUF_SIZE];
+		char buffer[READ_BUF_SIZE];
+		char name[READ_BUF_SIZE];
+
+		/* Must skip ".." since that is outside /proc */
+		if (strcmp(next->d_name, "..") == 0)
+			continue;
+
+		/* If it isn't a number, we don't want it */
+		if (!isdigit(*next->d_name))
+			continue;
+
+		sprintf(filename, "/proc/%s/status", next->d_name);
+		if (! (status = fopen(filename, "r")) ) {
+			continue;
+		}
+		if (fgets(buffer, READ_BUF_SIZE-1, status) == NULL) {
+			fclose(status);
+			continue;
+		}
+		fclose(status);
+
+		/* Buffer should contain a string like "Name:   binary_name" */
+		sscanf(buffer, "%*s %s", name);
+		if (strcmp(name, pidName) == 0) {
+		//	pidList=xrealloc( pidList, sizeof(pid_t) * (i+2));
+			return((pid_t)strtol(next->d_name, NULL, 0));
+
+		}
+	}
+	if ( strcmp(pidName, "init")==0)
+		return 1;
+
+	return 0;
+}
+
+
+
+void init_statemachine(){
+	memset((void*)&state,0,sizeof(state));
+	state.supp_state=INITIALIZE;
+	state.max_start=10;
+	state.md5_v=(struct md5_values*)malloc(sizeof(struct md5_values));
+	if(state.md5_v==NULL){
+		return;
+	}
+}
+//len,only the length of data(except the first byte of data)
+void build_eap_header(char code,char type,int len){
+	char *p=cardif.send_frame;
+	struct eapol_header *h=(struct eapol_header*)&(p[OFFSET_PAST_MAC]);
+	struct eap_header *a=(struct eap_header*)&(p[OFFSET_TO_EAP]);
+	char *b=&p[OFFSET_TO_DATA];
+	int frame_len=sizeof(struct eap_header)+len;
+	h->ether_type=htons(ETH_P_EAPOL);
+	h->proto_ver=state.eapol_ver;
+	h->type=EAPOL_PACKET;
+	h->len=htons(frame_len);
+	a->code=code;
+	a->identifier=state.receive_id;
+	a->len=htons(frame_len);
+	a->type=type;
+	return;
+}
+void send_res_id(){
+	char *p=cardif.send_frame;
+	char *b=&p[OFFSET_TO_DATA];
+	int name_len=strlen(config_info.name);
+	build_eap_header(EAP_RES, EAP_REQUEST_ID, name_len);
+	strncpy(b,config_info.name,name_len);
+	cardif.send_size=OFFSET_TO_DATA+name_len;
+	cardif_sendframe();
+}
+void send_res_md5_challenge(){
+	unsigned char *tohash;
+	unsigned char md5_result[16];
+	int tohashlen;
+	int datalen,i;
+	struct md5_values *m=state.md5_v;
+	char *p=cardif.send_frame;
+	char *b=&p[OFFSET_TO_DATA];
+	tohashlen=1+m->length+strlen(config_info.passwd);
+	tohash=(char*)malloc(tohashlen);
+	if(tohash==NULL){
+		return;
+	}
+	tohash[0]=state.receive_id;
+	memcpy((void*)&tohash[1],config_info.passwd,strlen(config_info.passwd));
+	memcpy((void*)&tohash[1+strlen(config_info.passwd)],m->randval,m->length);
+	for(i=0;i<0x14;i++){
+		printf("%02X ",tohash[i]);
+	}
+	MD5(tohash,tohashlen,md5_result);
+	for(i=0;i<0x10;i++){
+		printf("%02X ",md5_result[i]);
+	}
+	memset(m,0,sizeof(struct md5_values));
+
+	b[0]=0x10;
+	memcpy(&b[1],md5_result,0x10);
+	memcpy(&b[0x11],config_info.name,strlen(config_info.name));
+	datalen=0x11+strlen(config_info.name);
+	build_eap_header(EAP_RES, EAP_TYPE_MD5_CHALLENGE, datalen);
+	cardif.send_size=OFFSET_TO_DATA+datalen;
+	cardif_sendframe();
+	state.send_id=state.receive_id;
+}
+void sm_handle_init(){
+	struct eapol_header *l;
+	struct eap_header *p;
+	char *a;
+	a=cardif.recv_frame;
+	l=(struct eapol_header*)&(a[OFFSET_PAST_MAC]);
+	p=(struct eap_header*)&(a[OFFSET_TO_EAP]);
+	state.eapol_ver=l->proto_ver;
+	if(l->type!=EAPOL_PACKET){
+		return;
+	}
+
+}
+void handle_type_identity(){
+	struct eap_header *p;
+	char *a;
+	a=cardif.recv_frame;
+    p=(struct eap_header*)&(a[OFFSET_TO_EAP]);
+
+   // printf("state.eap_req = %d\n",state.eap_req);
+
+	if(state.eap_req==FALSE){
+		state.receive_id=p->identifier;
+		state.eap_req=TRUE;
+		send_res_id();
+		state.eap_res=TRUE;
+		state.send_id=state.receive_id;
+		//printf("state.eap_req==fail p->identifier=%d \n",p->identifier);
+
+		return;
+	}
+	if(state.eap_req==TRUE){
+		//printf("p->identifier= %d and state.receive_id= %d \n",p->identifier,state.receive_id);
+		
+		if(p->identifier!=state.receive_id){
+			//think the request should be handle by other supplicant.
+			//printf("p->identifier != state.receive_id\n");
+
+			if(p->identifier==1)	//zlg add for relink
+			{
+				state.receive_id=p->identifier;
+				state.eap_req=TRUE;
+				send_res_id();
+				state.eap_res=TRUE;
+				state.send_id=state.receive_id;
+				//printf("noeq state.eap_req==fail p->identifier=%d \n",p->identifier);
+			}
+
+			return;
+		}
+		if(p->identifier==state.receive_id){
+			//ask us to retry response.
+			send_res_id();
+		}
+		return;
+	}
+	
+}
+void handle_type_md5_challenge(){
+	struct eap_header *p;
+	char *a,*d;
+	struct md5_values *v;
+	a=cardif.recv_frame;
+	p=(struct eap_header*)&(a[OFFSET_TO_EAP]);	
+	d=(char*)&a[OFFSET_TO_DATA];
+	if(state.eap_req==FALSE||state.eap_res==FALSE){
+		//before request,get md5 challenge.
+		return;
+	}
+	state.receive_id=p->identifier;
+	v=state.md5_v;
+	v->length=d[0];
+	memcpy((void*)v->randval,&d[1],v->length);
+	send_res_md5_challenge();
+	printf("have send response of md5 challenge\n");
+	state.supp_state=AUTHENTICATING;
+}
+
+static int resart_hostapd() //zlg 08-03-13
+{
+	int pid;
+	char tmpBuf[100];
+	
+	system("killsh.sh");	// kill all running script	
+	
+	pid = fork();
+/*	
+       	if (pid)
+               	waitpid(pid, NULL, 0);
+   	else 
+*/ 
+	if (pid == 0) {
+		//snprintf(tmpBuf, 100, "%s/%s", "/bin", "init.sh");
+		//execl( tmpBuf, "init.sh", "gw", "bridge", NULL);
+		reboot( 0x01234567 );
+
+		exit(1);
+	}
+
+	return 0;
+}
+
+static int get_value_from_flash(char *keyword, char *pVal)
+{
+	char tmpbuf[100], *ptr;
+	FILE *fp;
+	char *tmp_file = "/tmp/tmp.txt";
+	
+    memset(tmpbuf, 0, sizeof(tmpbuf));
+   
+	sprintf(tmpbuf, "flash get wlan0 %s > %s", keyword, tmp_file);
+	system(tmpbuf);
+		
+	fp = fopen(tmp_file, "r");
+	if (fp == NULL) {
+		printf("read tmp file [%s] failed!\n", tmp_file);
+		return 0;
+	}
+	fgets(tmpbuf, 100, fp);
+	fclose(fp);	
+	
+	ptr = strchr(tmpbuf, '=');
+	if (ptr == NULL) {
+		printf("read %s value failed!\n", keyword);		
+		return 0;			
+	}
+	printf("read tmp file %s\n", (ptr+1));
+
+    ptr = ptr + 1;
+    while((*ptr) != 0){
+        if(((*ptr)=='"') || ((*ptr)==0xA))
+        {
+            ++ptr;            
+        }
+        else{
+            *pVal = *ptr;
+            ++ptr;
+            ++pVal;
+        }
+        
+    }
+ 
+	return 1;	
+}
+
+int change_hostapd_config() //zlg 08-03-13
+{
+	char cmd[256];
+	char t_wpa[16];
+
+    system("flash set wlan0 ENCRYPT 2");
+    usleep(500);
+    
+    memset(cmd, 0, sizeof(cmd));
+	sprintf(cmd, "flash set wlan0 HIDDEN_SSID %c", bssid);
+	if(0!=system(cmd)) {
+		printf("Change Broadcast SSID have something wrong\n");
+		return -1;
+	};
+    usleep(500);
+
+	memset(cmd, 0, sizeof(cmd));
+	sprintf(cmd, "flash set wlan0 SSID %s", ssid);
+	if(0!=system(cmd)) {
+		printf("Change SSID have something wrong\n");
+		return -1;
+	};
+    usleep(500);
+
+	memset(cmd, 0, sizeof(cmd));
+	if(strcasecmp(wpa_psk,"WPA")==0) {
+        sprintf(cmd, "flash set wlan0 WPA_AUTH %s", "1");
+        if(0!=system(cmd)) {
+		printf("Change wpa  have something wrong\n");
+		return -1;
+        };
+        usleep(500);
+
+	} else if(strcasecmp(wpa_psk,"WPA-PSK")==0) {
+        sprintf(cmd, "flash set wlan0 WPA_AUTH %s", "2");
+        if(0!=system(cmd)) {
+		printf("Change wpa_psk have something wrong\n");
+		return -1;
+        };
+        usleep(500);
+
+        system("flash set PSK_FORMAT 0");
+        usleep(500);
+
+        memset(cmd, 0, sizeof(cmd));
+        sprintf(cmd, "flash set wlan0 WPA_PSK %s", wpa_pw);
+        if(0!=system(cmd)) {
+		printf("Change wpa_psk password have something wrong\n");
+		return -1;
+        };
+        usleep(500);
+
+	} else {
+		printf("Change wpa_key_mgmt password have something wrong\n");
+		return -1;
+	}
+
+	printf("t_wpa: %s\n", t_wpa);
+
+	return 0;
+}
+
+static int need_restart_hostapd()
+{
+	if(0!=change_hostapd_config()) {
+		printf("Change hostapd config failed\n");
+		return -1;
+	} 
+
+	if(0!=resart_hostapd()) {
+		printf("Restar hostapd failed\n");
+		return -1;
+	}
+
+	return 0;
+}
+
+static void process_reply_msg()   //zlg 08-03-13
+{
+	int i;
+	int inx=0;
+	int changed_flag=0;
+    	int data_len;
+	int pid;	
+
+	unsigned char t_ssid[64];
+	unsigned char t_wpa[16];
+	unsigned char t_wpa_pw[128];
+	unsigned char t_bssid;
+	char *tp;
+
+	struct eapol_header *p;
+	char *a;
+	a=cardif.recv_frame;
+	p=(struct eapol_header*)&(a[OFFSET_PAST_MAC]);
+    	data_len=ntohs(p->len);
+	
+	memset(t_ssid, 0, sizeof(t_ssid));
+	memset(t_wpa, 0, sizeof(t_wpa));
+	memset(t_wpa_pw, 0, sizeof(t_wpa_pw));
+
+    	memset(ssid, 0, sizeof(ssid));
+	memset(wpa_psk, 0, sizeof(wpa_psk));
+	memset(wpa_pw, 0, sizeof(wpa_pw));
+
+    
+    //	printf("data_len:%d\n",data_len);
+	//printf("eap_header:%d\n",(sizeof(struct eap_header)));
+
+
+	tp=&(a[OFFSET_TO_DATA]);  
+
+   if(data_len<sizeof(struct eap_header)) { // if no reply message, disable wifi
+		//system("ifconfig wlan0 down");        
+		return;
+	}
+
+    i=0;
+	while(*tp!=0) {
+		if(*tp=='/') {
+			tp++;
+			i++;
+			inx=0;
+			continue;
+		}
+
+		if(i==0) {
+			t_bssid=*tp;
+		} else if(i==1) {
+                t_ssid[inx]=*tp;
+		} else if (i==2) {
+			t_wpa[inx]=*tp;
+		} else {
+			t_wpa_pw[inx]=*tp;
+		}
+		tp++;
+		inx++;
+		//printf("data:%c\n", *tp);
+	}
+
+    get_value_from_flash("HIDDEN_SSID", &bssid);
+    get_value_from_flash("SSID", ssid);
+    get_value_from_flash("WPA_AUTH", wpa_psk);
+    get_value_from_flash("WPA_PSK", wpa_pw);
+
+	/*printf("bssid:%c\n",bssid);
+	printf("ssid:%s\n",ssid);
+	printf("wpa:%s\n",wpa_psk);
+	printf("wpa_pw:%s\n",wpa_pw);
+    
+	printf("bssid:%c\n",t_bssid);
+	printf("ssid:%s\n",t_ssid);
+	printf("wpa:%s\n",t_wpa);
+	printf("wpa_pw:%s\n",t_wpa_pw);*/
+
+    
+        
+    if(t_bssid==bssid) {
+		changed_flag = 1;
+        if(t_bssid == '0')
+            bssid='1';
+        else if (t_bssid == '1') {
+            bssid='0';
+        }
+		//bssid=t_bssid;
+		printf("BSSID changed\n");
+	}
+  
+	if(strcasecmp(t_ssid,ssid)!=0) {
+		changed_flag = 1;
+		memset(ssid, 0, sizeof(ssid));
+		strncpy(ssid, t_ssid, sizeof(ssid));
+		printf("SSID changed for lend\n");
+	}
+
+	if(strcasecmp(t_wpa,"WPA")==0) {
+        if(strcasecmp(wpa_psk,"1" )!=0) {
+            changed_flag = 1;
+            memset(wpa_psk, 0, sizeof(wpa_psk));
+            strncpy(wpa_psk, t_wpa, sizeof(wpa_psk));
+            printf("WPA changed\n");
+        }
+	} else if(strcasecmp(t_wpa,"WPA-PSK")==0) {
+        if(strcasecmp(wpa_psk,"2" )!=0) {
+            changed_flag = 1;
+            memset(wpa_psk, 0, sizeof(wpa_psk));
+            strncpy(wpa_psk, t_wpa, sizeof(wpa_psk));
+            printf("WPA changed\n");
+        }
+
+        if(strncmp(t_wpa_pw, wpa_pw, sizeof(t_wpa_pw))!=0) {
+            changed_flag = 1;
+            memset(wpa_pw, 0, sizeof(wpa_pw));
+            strncpy(wpa_pw, t_wpa_pw, sizeof(wpa_pw));
+	    strncpy(wpa_psk, t_wpa, sizeof(wpa_psk));
+            printf("WPA PASSWORD changed\n");
+
+        }
+     }
+
+	if(changed_flag==1) {
+		printf("Need restart hostapd\n");
+		if(-1==need_restart_hostapd()) {
+			printf("Restart hostapd failed\n");
+		} 
+	}
+
+
+	system("ifconfig wlan0 up"); //zlg
+	
+	//pid = find_pid("auth");
+    	//if (pid > 0)
+	//{
+    	//	kill(pid, SIGKILL);
+	//	printf("kill auth\n");
+	//}
+	
+	system("/bin/wlanapp.sh start wlan0 br0");  //zlg
+
+	printf("bssid:%c\n",bssid);
+	printf("ssid:%s\n",ssid);
+	printf("wpa:%s\n",wpa_psk);
+	printf("wpa_pw:%s\n",wpa_pw);
+}
+
+void handle_eap_suc(){
+	struct eap_header *p;
+	char *a;
+	a=cardif.recv_frame;
+	p=(struct eap_header*)&(a[OFFSET_TO_EAP]);	
+	if(state.eap_req==FALSE||state.eap_res==FALSE){
+		//before request,get suc frame from multicast.
+		return;
+	}
+	if(p->identifier==state.send_id){
+		state.supp_state=INITIALIZE;
+	}
+
+    process_reply_msg();
+}
+void handle_eap_fail(){
+	struct eap_header *p;
+	char *a;
+	a=cardif.recv_frame;
+	p=(struct eap_header*)&(a[OFFSET_TO_EAP]);	
+	if(state.eap_req==FALSE||state.eap_res==FALSE){
+		//before request,get suc frame from multicast.
+		return;
+	}
+	if(p->identifier==state.send_id){
+		state.supp_state=INITIALIZE;
+	}
+}
+void sm_handle_packet(){
+	struct eap_header *p;
+	char *a;
+	a=cardif.recv_frame;
+	p=(struct eap_header*)&(a[OFFSET_TO_EAP]);
+
+	//printf("EAP-Code:%d and EAP-Type %d \n",p->code,p->type);
+	switch(p->code){
+		case EAP_REQ:
+			switch(p->type){
+				case EAP_TYPE_IDENTITY:
+					handle_type_identity();
+					break;
+				case EAP_TYPE_MD5_CHALLENGE:
+					handle_type_md5_challenge();
+					break;
+				default:
+					break;
+			}
+			return;
+		case EAP_SUC:
+			handle_eap_suc();
+			break;
+		case EAP_FAIL:
+			handle_eap_fail();
+			break;
+	}
+}
+void run_statemachine(){
+	struct eapol_header *l;
+	char *a;
+	a=cardif.recv_frame;
+	l=(struct eapol_header*)&(a[OFFSET_PAST_MAC]);
+	state.eapol_ver=l->proto_ver;
+	
+	//printf("EAPOL->type:%d \n",l->type);
+
+	switch(l->type){
+		case EAPOL_PACKET:
+			sm_handle_packet();
+			break;
+		case EAPOL_ASF:
+			//printf("EAPOL_ASF\n");
+		case EAPOL_LOGOFF:
+			//printf("EAPOL_LOGOFF\n");
+		case EAPOL_KEY:
+			//printf("EAPOL_KEY\n");
+			return;
+	}
+	return;
+}

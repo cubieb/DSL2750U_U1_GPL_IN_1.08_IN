@@ -1,0 +1,7 @@
+
+config OPENSOURCE_L2TPD
+	bool 'l2tpd'
+	default n
+	depends on OPENSOURCE
+  	help 
+      	l2tpd

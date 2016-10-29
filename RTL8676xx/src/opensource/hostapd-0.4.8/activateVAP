@@ -1,0 +1,334 @@
+#!/bin/sh
+####################################################################
+## activateVAP
+##
+## This script is used to activate a VAP that was created earlier.
+## Activation involves bringing the interface up, associating with
+## a bridge, and configuring the security mode.  The VAP MUST EXIST
+## prior to calling the activate script.
+##
+## The form of the command is
+##
+## activateVAP <device_type> <vap> <BR> <Security> <SEC Args>
+##
+## Where
+## device_type: 11g or 11n
+##      vap:    Vap ID (e.g. ath0)
+##       BR:    Bridge to join (or - if not bridged)
+## Security:    Security mode (WEP,WPA,WSC,NONE)
+## Sec Args:    File containing security configuration.  For WPA this is the hostapd
+##              conf file.  For WEP this is a list of iwconfig commands setting the
+##              keys.
+##
+## Examples:
+##   11g Open Access Point
+##      activateVAP 11g ath0 br0 NONE
+##   11n WPA Access Point
+##      activateVAP 11n ath1 br0 WPA wpa2-psk.conf
+##   11n WEP Station
+##      activateVAP 11n ath0 br0 WEP wep.conf
+##
+###################################################################
+
+. /etc/ath/apcfg
+
+if [ "${1}" = "" ]; then
+    echo "activateVAP usage"
+    echo "activateVAP device_type vapid bridge Security Security_file Service_Type"
+    echo
+    echo "device_type: [ 11g | 11n ]"
+    echo "  11g means non-11n legacy device"
+    echo "vapid: e.g. ath0"
+    echo "bridge:  Name of bridge to add to,(typically br0)"
+    echo "Security: [ WPA | WEP | WSC | NONE ]"
+    echo "Security_file: Name of file in /etc/ath containing security config"
+    echo "Service_Type: [ PUBLIC | DATA | VOICE | VIDEO ]"
+    echo
+    exit
+fi
+
+APMODE=$1
+APNAME=$2
+BRIDGE=$3
+SECMODE=$4
+SECFILE=$5
+SERVICE=$6
+
+KVER=`uname -r | cut -f 1 -d '-'`
+##
+## if GN_MERGE (carrier 1.3 or later), only use 11n MODULE_PATH
+##
+if [ "${GN_MERGE}" != "y" ]; then
+    MODULE_PATH=/lib/modules/$KVER/net/$APMODE
+else
+    MODULE_PATH=/lib/modules/$KVER/net/11n
+fi
+ESSID=`iwconfig ${APNAME} | grep ESSID | cut -f2 -d\"` 
+MODE=`iwconfig ${APNAME} | grep "Mode:Master"`
+
+##
+## First, let's see if the indicated VAP exists.  If not, it must be created
+##
+
+VAPLIST=`iwconfig | grep ${APNAME} | cut -b 1-4`
+
+if [ "${VAPLIST}" = "" ]; then
+    echo "VAP ${APNAME} must be created first!! (use makeVAP)"
+    exit
+fi
+
+##
+## Must determine if the scan modules need to be loaded.  Remember, only once!
+## This is in station mode if the MODE value is blank
+##
+
+STATIONSCAN=`lsmod | grep wlan_scan_sta`
+CHANNELSCAN=`lsmod | grep wlan_scan_ap`
+CHANNELSCAN11G=`lsmod | grep wlan_scan_ap11g`
+
+if [ "${MODE}" = "" -a "${STATIONSCAN}" = "" ]; then
+    if [ "${APMODE}" = "11n" ]; then
+        insmod $MODULE_PATH/wlan_scan_sta.ko
+    else
+        if [ "${GN_MERGE}" != "y" ]; then
+            insmod $MODULE_PATH/wlan_scan_sta11g.ko
+        else
+            insmod $MODULE_PATH/wlan_scan_sta.ko
+        fi
+    fi
+    
+    #
+    # Check for a specific MAC address that is specified.  Only valid for stations
+    #
+
+    if [ "${AP_REQ_MAC}" != "" ]; then
+        iwconfig $APNAME ap $AP_REQ_MAC
+    fi
+fi
+
+if [ "${AP_PRIMARY_CH}" = "11na" -o "${AP_PRIMARY_CH}" = "11ng" -o "${AP_PRIMARY_CH}" = "11g" -o "${AP_PRIMARY_CH_LEG}" = "11g" ]; then
+    if [ "${APMODE}" = "11n" ]; then
+            insmod $MODULE_PATH/wlan_scan_ap.ko
+    else
+        if [ "${AP_PRIMARY_CH_LEG}" = "11g" -o "${AP_PRIMARY_CH}" = "11g" ]; then
+            if [ "${GN_MERGE}" != "y" ]; then
+                if [ "${CHANNELSCAN11G}" = "" ]; then
+                    insmod $MODULE_PATH/wlan_scan_ap11g.ko
+                fi
+            else
+                if [ "${CHANNELSCAN}" = "" ]; then
+                    insmod $MODULE_PATH/wlan_scan_ap.ko
+                fi
+            fi
+        fi
+    fi
+fi
+
+if [ "${GN_MERGE}" != "y" ]; then
+  if [ "${CHANNELSCAN11G}" = "" ]; then
+    if [ "${AP_STARTMODE}" = "dual_legacy" ]; then
+      if [ "${AP_PRIMARY_CH_LEG_1}" = "11g" -o "${AP_PRIMARY_CH_LEG_2}" = "11g" ]; then
+          insmod $MODULE_PATH/wlan_scan_ap11g.ko
+      fi
+    fi 
+  fi
+else
+  if [ "${CHANNELSCAN}" = "" ]; then
+    if [ "${AP_STARTMODE}" = "dual_legacy" ]; then
+      if [ "${AP_PRIMARY_CH_LEG_1}" = "11g" -o "${AP_PRIMARY_CH_LEG_2}" = "11g" ]; then
+          insmod $MODULE_PATH/wlan_scan_ap.ko
+      fi
+    fi 
+  fi
+fi
+
+if [ "${CHANNELSCAN}" = "" ]; then
+  if [ "${AP_STARTMODE}" = "dual_11n" ]; then
+    if [ "${AP_PRIMARY_CH_11N_1}" = "11na" -o "${AP_PRIMARY_CH_11N_1}" = "11ng" -o "${AP_PRIMARY_CH_11N_2}" = "11na" -o "${AP_PRIMARY_CH_11N_2}" = "11ng" ]; then
+        insmod $MODULE_PATH/wlan_scan_ap.ko
+    fi
+  fi 
+fi  
+
+#
+# Bring the interface up at this point!!
+# configure bridge, or set an IP address for the WLAN interface
+#
+
+if [ "${BRIDGE}" != "none" -a "${BRIDGE}" != "-" ]; then
+    ifconfig ${APNAME} up
+    brctl addif ${BRIDGE} ${APNAME}
+    #
+    # Add the arping command to ensure all nodes are updated on the network!
+    #
+    
+    arping -U -c 1 -I ${BRIDGE} $AP_IPADDR
+
+else
+    ifconfig ${APNAME} up ${WAN_IPADDR}
+fi
+
+
+if [ "${SECMODE}" = "WPA" ]; then
+    #
+    # The way to tell if this is an AP is that it's "mode" is master
+    # If not, then it's managed
+    #
+
+    if [ "${MODE}" != "" ]; then
+        #
+        # This is the sed method for changing the defaults in the file to
+        # the specifics required.
+        #
+        sed -e 's/CHANGE_ME/'${ESSID}'/g' /etc/ath/${SECFILE} | sed -e 's/ath0/'${APNAME}'/g' > /tmp/sec${APNAME}
+        hostapd -B /tmp/sec${APNAME} &
+    else
+        #
+        # This is a managed (station) node
+        #
+        sed -e 's/CHANGE_ME/'${ESSID}'/g' /etc/ath/${SECFILE} | sed -e 's/ath0/'${APNAME}'/' > /tmp/sup${APNAME}
+        wpa_supplicant -i ${APNAME} -b ${BRIDGE} -c /tmp/sup${APNAME} -Datheros -B
+    fi
+fi
+
+if [ "${SECMODE}" = "WEP" ]; then
+#
+# Execute the commands in SECFILE
+#
+   . /etc/ath/${SECFILE}
+fi
+
+#
+# Start wsccmd if AP (but not repeater), wps_enrollee if STA
+# For repeater, wps_enrollee will automagically start wsccmd
+#
+if [ "${SECMODE}" = "WSC" ]; then
+    if [ "${MODE}" != "" ]; then 
+        #
+        # change service type of APs
+        #
+        
+        sed -i -e '/SERVICE_TYPE=/s/.$//' /etc/ath/default/base_wsc_cfg.txt
+        sed -i -e '/DEVICE_STATUS=/s/.$//' /etc/ath/default/base_wsc_cfg.txt
+        sed -i -e 's/SERVICE_TYPE=/#SERVICE_TYPE=/' /etc/ath/default/base_wsc_cfg.txt
+        sed -i -e 's/DEVICE_STATUS=/#DEVICE_STATUS=/' /etc/ath/default/base_wsc_cfg.txt
+
+        #
+        # change SERVICE_TYPE field
+        #
+
+        if [ "${AP_SERVICE}" = "PUBLIC" ]; then
+            sed -i -e '70,80s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE}" = "DATA" ]; then
+            sed -i -e '70,80s/#SERVICE_TYPE=/SERVICE_TYPE=2/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE}" = "VOICE" ]; then
+            sed -i -e '70,80s/#SERVICE_TYPE=/SERVICE_TYPE=4/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE}" = "VIDEO" ]; then
+            sed -i -e '70,80s/#SERVICE_TYPE=/SERVICE_TYPE=8/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '70,80s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+        if [ "${AP_SERVICE_2}" = "PUBLIC" ]; then
+            sed -i -e '130,150s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_2}" = "DATA" ]; then
+            sed -i -e '130,150s/#SERVICE_TYPE=/SERVICE_TYPE=2/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_2}" = "VOICE" ]; then
+            sed -i -e '130,150s/#SERVICE_TYPE=/SERVICE_TYPE=4/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_2}" = "VIDEO" ]; then
+            sed -i -e '130,150s/#SERVICE_TYPE=/SERVICE_TYPE=8/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '130,150s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+        if [ "${AP_SERVICE_3}" = "PUBLIC" ]; then
+            sed -i -e '210,230s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_3}" = "DATA" ]; then
+            sed -i -e '210,230s/#SERVICE_TYPE=/SERVICE_TYPE=2/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_3}" = "VOICE" ]; then
+            sed -i -e '210,230s/#SERVICE_TYPE=/SERVICE_TYPE=4/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_3}" = "VIDEO" ]; then
+            sed -i -e '210,230s/#SERVICE_TYPE=/SERVICE_TYPE=8/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '210,230s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+        if [ "${AP_SERVICE_4}" = "PUBLIC" ]; then
+            sed -i -e '280,300s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_4}" = "DATA" ]; then
+            sed -i -e '280,300s/#SERVICE_TYPE=/SERVICE_TYPE=2/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_4}" = "VOICE" ]; then
+            sed -i -e '280,300s/#SERVICE_TYPE=/SERVICE_TYPE=4/' /etc/ath/default/base_wsc_cfg.txt
+        elif [ "${AP_SERVICE_4}" = "VIDEO" ]; then
+            sed -i -e '280,300s/#SERVICE_TYPE=/SERVICE_TYPE=8/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '280,300s/#SERVICE_TYPE=/SERVICE_TYPE=1/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+
+        #
+        # change DEVICE_STATUS field
+        #
+
+        if [ "${AP_SECMODE}" = "WSC" ]; then
+            sed -i -e '70,90s/#DEVICE_STATUS=/DEVICE_STATUS=1/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '70,90s/#DEVICE_STATUS=/DEVICE_STATUS=0/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+        if [ "${AP_SECMODE_2}" = "WSC" ]; then
+            sed -i -e '130,160s/#DEVICE_STATUS=/DEVICE_STATUS=1/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '130,160s/#DEVICE_STATUS=/DEVICE_STATUS=0/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+        if [ "${AP_SECMODE_3}" = "WSC" ]; then
+            sed -i -e '210,240s/#DEVICE_STATUS=/DEVICE_STATUS=1/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '210,240s/#DEVICE_STATUS=/DEVICE_STATUS=0/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+        if [ "${AP_SECMODE_4}" = "WSC" ]; then
+            sed -i -e '280,310s/#DEVICE_STATUS=/DEVICE_STATUS=1/' /etc/ath/default/base_wsc_cfg.txt
+        else
+            sed -i -e '280,310s/#DEVICE_STATUS=/DEVICE_STATUS=0/' /etc/ath/default/base_wsc_cfg.txt
+        fi
+
+        #
+        # change key content if AP_KEY is exported
+        #
+        
+        if [ "${AP_KEY}" != "" ]; then
+            if [ "${AP_SSID}" != "" ]; then
+                sed -i -e '1,80s/WscAtherosAP1/'${AP_SSID}'/' /etc/ath/wsc_config.txt
+                sed -i -e '1,80s/WscAtherosAP/'${AP_SSID}'/' /etc/ath/wsc_config.txt
+            else
+                sed -i -e '1,80s/WscAtherosAP1/WscEncryptAP/' /etc/ath/wsc_config.txt
+                sed -i -e '1,80s/WscAtherosAP/WscEncryptAP/' /etc/ath/wsc_config.txt
+            fi
+            sed -i -e '1,80s/^NW_KEY=/NW_KEY='${AP_KEY}'/' /etc/ath/wsc_config.txt
+        fi
+
+        #
+        # Invoke wsccmd if necessary
+        #
+
+        if [ "${AP_STARTMODE}" != "repeaterlegacy" -a "${AP_STARTMODE}" != "repeater11n" ]; then
+            wsccmd -B /etc/ath/ ${VAPNUM}
+        fi
+    else
+        sed -e 's/CHANGE_ME/'${ESSID}'/g' /etc/ath/${SECFILE} | sed -e 's/br0/'${BRIDGE}'/' > /tmp/enr${APNAME}
+        if [ "${AP_STARTMODE}" = "client11n" -o "${AP_STARTMODE}" = "clientlegacy" ]; then
+            sed -i -e 's/wds_ap/#wds_ap/' /tmp/enr${APNAME}
+            sed -i -e 's/ath1/'${APNAME}'/' /tmp/enr${APNAME}
+        fi
+        if [ "${SERVICE}" = "PUBLIC" ]; then
+            sed -i -e 's/service=0/service=1/' /tmp/enr${APNAME}
+        elif [ "${SERVICE}" = "DATA" ]; then
+            sed -i -e 's/service=0/service=2/' /tmp/enr${APNAME}
+        elif [ "${SERVICE}" = "VOICE" ]; then
+            sed -i -e 's/service=0/service=4/' /tmp/enr${APNAME}
+        elif [ "${SERVICE}" = "VIDEO" ]; then
+            sed -i -e 's/service=0/service=8/' /tmp/enr${APNAME}
+        else
+            sed -i -e 's/service=0/service=1/' /tmp/enr${APNAME}
+        fi
+        if [ "${AP_PIN}" != "" ]; then
+            sed -i -e 's/# PIN=/pin='${AP_PIN}'/' /tmp/enr${APNAME}
+        fi
+        wps_enrollee /tmp/enr${APNAME}
+    fi
+fi

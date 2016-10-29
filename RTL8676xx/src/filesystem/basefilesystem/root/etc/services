@@ -1,0 +1,6 @@
+ftp-data        20/tcp
+ftp             21/tcp
+telnet          23/tcp
+tftp            69/udp
+netbios-ssn     139/tcp
+netbios-ns      137/udp

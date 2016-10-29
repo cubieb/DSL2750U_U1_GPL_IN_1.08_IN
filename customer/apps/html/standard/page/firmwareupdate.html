@@ -1,0 +1,60 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange"  id="lang_FirmwareUpdate">Firmware Update</p>
+		<div class="div_orange">
+			<p id="lang_dsc1"><b>Step 1: </b>Obtain an updated firmware image file from your ISP.</p>
+			<p id="lang_dsc2"><b>Step 2: </b>Enter the directory of the image file in the following field or click "Browse" to select the image file.</p>
+			<p id="lang_dec3"><b>Step 3: </b>Click "Update Firmware" to upload the new image file.</p>
+			<p id="lang_dec4">Note: The update process takes about 2 minutes. The DSL router automatically reboots after the update. Please DO NOT power off the router during the update. After click "Update Firmware", page jump before, do not click on page options.</p>
+		</div>
+		<p class="do bk_black" id="lang_FirmwareUpdate1">Firmware Update</p>
+		<div class="div_black" id = "select_file">
+			<form name="firmForm" method="post" action="webupg" enctype="multipart/form-data" onSubmit="return isInProgress();">
+				<div class="div_left" id="lang_CurrentFirmware">Current Firmware Version:</div>
+				<div class="div_right" id = "lang_firmware1"></div>
+				<div id = "CurrentSoftware_info">
+					<div class="div_left" id="lang_CurrentSoftware">Current Software Version:</div>
+					<div class="div_right" id = "lang_software1"></div>	
+				</div>		
+				<div class="div_left" id="lang_CurrentFirmwareDate">Current Version Date:</div>
+				<div class="div_right" id="lang_datetime">Wed, 04 Mar 2009 10:37:50</div>
+				<div class="div_left" id="lang_SelectFile">Select File:</div>
+				<div class="div_right"><input type="file" name="firmware" id="firmware" /></div>
+				<div class="div_left" id="lang_ClearConfig">Clear Config:</div>
+				<div class="div_right"><input type="checkbox" name="clearConfig" id="clearConfig" /></div>
+				<div class="div_button">
+					<input type="submit" name="btn" id="update" value="Update Firmware" />
+				</div>
+			</form>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div id="sending">
+			<div class="div_left" id="lang_CurrentFirmwareDate"></div>
+			<div class="div_right" id="lang_datetime">
+				<span id = "display_access">
+					<span id= "lang_pvcresult" style="color:red;">sending......</span>
+					<span id="SPAN_PvcResult" style="color:red;">
+						<marquee style='border:1px solid #000000' direction=right width=100 scrollamount=10 scrolldelay=1 bgcolor=#FFFFFF>
+							<table cellspacing=0 cellpadding=0><tr height=15><td bgcolor=#ff7700 width=20></td></tr></table>
+						</marquee>
+					</span>
+				</span>
+			</div>
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+		<p id="lang_helpdsc">
+			Note: This page shows the firmware version and the information that is helpful to technical support personnel. If your router works properly, you need not update the firmware and the information in this page is for reference only.
+		</p></div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>
+

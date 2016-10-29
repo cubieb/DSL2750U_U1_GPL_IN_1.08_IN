@@ -1,0 +1,11 @@
+ifconfig ath0 down
+rmmod ./ath_pci.ko
+rmmod ./ath_rate.ko
+rmmod ./crypto_tkip.ko
+rmmod ./crypto_ccmp.ko
+rmmod ./wlan_wep.ko
+rmmod ./wlan_xauth.ko
+rmmod ./wlan.ko
+rmmod ./hal.ko
+rmmod ./adf.ko
+

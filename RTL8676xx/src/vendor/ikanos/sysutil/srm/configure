@@ -1,0 +1,30 @@
+#!/bin/sh
+#/* Copyright (C) 2006 Ikanos Communications
+# * See IKANOS_PROP_LICENSE.txt for license information. */
+
+
+#function help_sysutil
+#{
+#   echo " Great !!"
+#}
+
+
+# Process the options specified on the command line. Any unrecognised options
+# will get the usage message, as will specifying no options
+#if [ $# -lt 2 ]
+#then
+#        help_sysutil
+#        exit 1
+#fi
+
+echo "CC=$1" > Makefile
+echo "#########" >> Makefile
+echo "" >> Makefile
+echo "AR=$2" >> Makefile
+echo "#########" >> Makefile
+echo "" >> Makefile
+echo "RANLIB=$3" >> Makefile
+echo "#########" >> Makefile
+echo "" >> Makefile
+cat Makefile.in >> Makefile 
+exit 0

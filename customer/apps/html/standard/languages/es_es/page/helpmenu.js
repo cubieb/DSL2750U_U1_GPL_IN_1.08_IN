@@ -1,0 +1,41 @@
+﻿var data_language = {
+	innerHTML : {
+		lang_menu_help2 :'Menú de ayuda',
+		lang_setup_help1 : 'Configuración',
+		lang_advanced_help1:'Avanzado',
+		lang_status_help11 :'Estatus',
+		lang_mainten_help1 :'administración',
+		lang_setup_help2   :'Ayuda de Configuración',
+		lang_wizard        :'Asistente',
+		lang_internet      :'Configuración de Internet',
+		lang_wireless      :'Configuración Inalámbrica',
+		lang_net           :'Red Local',
+		lang_time          :'Hora y Fecha',
+		lang_advanced_help2:'Ayuda Avanzada',
+		lang_wiress_advanced:'Inalámbrico avanzado',
+		lang_port_forward   :'Renvío del Puerto',
+		lang_parental       :'Control Parental',
+		lang_filter_option  :'Opciones de filtrado',
+		lang_firewall       :'Configuración del Cortafuegos',
+		lang_dns            :'DNS',
+		lang_ddns           :'DDNS',
+		lang_net_tools      :'Herramientas de red',
+		lang_route          :'Enrutamiento',
+		lang_schedules      :'Programaciones',
+		lang_mainten_help2  :'Ayuda de Administración',
+		lang_system_management :'Sistema',
+		lang_firmware_update   :'Lenguaje_firmware_actualizar',
+		lang_access_control    :'Controles de Acceso',
+		lang_dgn               :'Diagnosticos',
+		lang_log               :'Registro del Sistema',
+		lang_status_help2      :'Ayuda de Estado',
+		lang_dev_info          :'Información del Dispositivo',
+		lang_wireless_client   :'Clientes Inalámbricos',
+		lang_dhcp_info         :'Clientes DHCP',
+		lang_log_view          :'Registros',
+		lang_statis            :'Estadisticas',
+		lang_route_info        :'Información de Ruta'
+ }
+ 
+ 
+}

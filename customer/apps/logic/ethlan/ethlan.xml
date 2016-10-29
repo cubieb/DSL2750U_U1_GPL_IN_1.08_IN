@@ -1,0 +1,43 @@
+
+<InternetGatewayDevice type="object">
+	<LANDevice type="object" Writable="0" CurNode="LANDeviceNumberOfEntries">
+		<i type="object">
+			<LANEthernetInterfaceNumberOfEntries type="unsignedInt" Writable="0"></LANEthernetInterfaceNumberOfEntries>
+			<LANEthernetInterfaceConfig type="object" Writable="0">
+				<i type="object">
+					<X_TWSZ-COM_DeviceName type="string" Writable="0">eth0</X_TWSZ-COM_DeviceName>
+					<X_TWSZ-COM_Description type="string" Standard="0" Writable="0">ethernet1</X_TWSZ-COM_Description>
+					<Enable type="boolean">1</Enable>
+					<DhcpServerEnable type="boolean">1</DhcpServerEnable>
+					<Status type="string" Writable="0"></Status>
+					<MACAddress type="string" Writable="0"></MACAddress>
+					<MACAddressControlEnabled type="boolean">0</MACAddressControlEnabled>
+					<X_TWSZ-COM_MACAddressControlAction type="string" Writeable="1" Standard="0">Whitelist</X_TWSZ-COM_MACAddressControlAction>
+					<MaxBitRate type="string">Auto</MaxBitRate>
+					<DuplexMode type="string">Auto</DuplexMode>
+					<Stats type="object">
+						<BytesSent type="unsignedInt" Writable="0"></BytesSent>
+						<BytesReceived type="unsignedInt" Writable="0"></BytesReceived>
+						<PacketsSent type="unsignedInt" Writable="0"></PacketsSent>
+						<PacketsReceived type="unsignedInt" Writable="0"></PacketsReceived>
+						<RxError type="unsignedInt" Writable="0"></RxError>
+						<TxError type="unsignedInt" Writable="0"></TxError>
+						<RxDrop type="unsignedInt" Writable="0"></RxDrop>
+						<TxDrop type="unsignedInt" Writable="0"></TxDrop>
+						<ErrorsSent type="unsignedInt" Writable="0"></ErrorsSent>
+						<ErrorsReceived type="unsignedInt" Writable="0"></ErrorsReceived>
+						<UnicastPacketsSent type="unsignedInt" Writable="0"></UnicastPacketsSent>
+						<UnicastPacketsReceived type="unsignedInt" Writable="0"></UnicastPacketsReceived>
+						<DiscardPacketsSent type="unsignedInt" Writable="0"></DiscardPacketsSent>
+						<DiscardPacketsReceived type="unsignedInt" Writable="0"></DiscardPacketsReceived>
+						<MulticastPacketsSent type="unsignedInt" Writable="0"></MulticastPacketsSent>
+						<MulticastPacketsReceived type="unsignedInt" Writable="0"></MulticastPacketsReceived>
+						<BroadcastPacketsSent type="unsignedInt" Writable="0"></BroadcastPacketsSent>
+						<BroadcastPacketsReceived type="unsignedInt" Writable="0"></BroadcastPacketsReceived>
+						<UnknownProtoPacketsReceived type="unsignedInt" Writable="0"></UnknownProtoPacketsReceived>
+					</Stats>
+				</i>
+			</LANEthernetInterfaceConfig>
+		</i>
+	</LANDevice>
+</InternetGatewayDevice>

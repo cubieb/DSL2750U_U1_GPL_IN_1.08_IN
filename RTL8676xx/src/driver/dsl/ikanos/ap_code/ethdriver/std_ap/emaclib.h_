@@ -1,0 +1,137 @@
+/* Copyright (C) 2006 Ikanos Communications
+ * See IKANOS_PROP_LICENSE.txt for license information. */
+
+/*****************************************************************************
+  File Name   : emaclib.h
+  Author      : Trilok
+  Description : This is NMAPI header file . Only this file should be used by
+                HTTP, Telnet CLI, Menu CLI
+                modules for configuring emac module.
+******************************************************************************/
+
+
+/*** Macros used by NMAPI ***/
+
+#define LINK_SPEED_100MB 100
+#define LINK_SPEED_10MB 10
+#define LINK_SPEED_AUTO 0
+
+#define LINK_FULL_DUPLEX 1
+#define LINK_HALF_DUPLEX 2
+#define LINK_AUTO_DUPLEX 3
+#define LINK_DISPLAY     0
+
+
+/*** The NMAPI structure ***/
+
+typedef struct
+{
+  UINT8 emacAddr[6];  /* This field carries the mac address of a specified port 
+                       */
+  INT16 linkSpeed;    /*  Holds the link speed of the port.
+                          It can take one of LINK_SPEED_10MB/LINK_SPEED_100MB/
+                          LINK_SPEED_AUTO values */
+  INT8  linkDuplex;   /* Holds the linkDuplex. 
+                         It can hold one of LINK_DUPLEX_FULL/LINK_DUPLEX_HALF/                           LINK_DUPLEX_AUTO values */
+  UINT8 portNo;	      /* Holds the portno of the device */
+  UINT16 regNo;       /* Holds the register number of the phy */
+  UINT16 regValue;    /* Holds the register value of the phy */
+  UINT32 emacInErrors;/* Holds the number of errors occured in reception */
+  UINT32 emacOutErrors;/*Holds the number of errors occured in transmission */
+} emacLS;
+
+typedef struct
+{
+  UINT32   rxFrames;           // Frames received by port
+  UINT64   rxBytes;            // Bytes received by port
+  UINT32   rxInterrupts;       // Receive interrupts processed by port
+  UINT32   rxCRCErrors;        // Packets received with CRC errors
+  UINT32   rxFrameErrors;      // Packets received with frame errors
+  UINT32   rxInternalErrors;   // Internal errors on receive side
+  UINT32   rxFrameTooLong;     // Frame too long
+  UINT32   rxResourceLoss;     // Detected RX loss due to lack
+                                        // of resources. Each count may
+                                        // represent multiple lost frames
+
+  UINT32   txFrames;           // Frames sent by port
+  UINT64   txBytes;            // Bytes transmitted by port
+  UINT32   txInterrupts;       // Transmit interrupts processed by port
+  UINT32   txInternalErrors;   // Errors detected during transmission
+  UINT32   txDeferred;         // Frames whose tx was deferred
+  UINT32   txSQETestErrors;    // SQE test errors
+  UINT32   txExcessiveDefer;   // Frames with excessive deferal
+  UINT32   txLateCollisions;   // Late TX collisions
+  UINT32   txCarrierSense;     // Carrier sensing errors
+  UINT32   txSingleCollision;  // Frames TX with single collision
+  UINT32   txMultipleCollision; // Frames TX with multiple collision
+
+  UINT32   genInterrupt;      // Total number of interrupts received
+  UINT32   genInternalErrors; // Internal errors
+  UINT8 portNo;	      /* Holds the portno of the device */
+} emacStatsLS;
+
+
+/**************************************************************************
+*       Description        :  This function sets the emac address for a   *
+*			      port                                        *
+*       Input              : Local structure                              *
+*       Output             : Error message in case of FAILURE             *
+*       Result             : SUCCESS/FAILURE                              *
+***************************************************************************/
+
+INT16 emacSetAddr(emacLS *lStruct, UCHAR aucMesg[NM_API_MESS_LEN]);
+
+
+/**************************************************************************
+*       Description        :  This function gets the value of phy register*
+*			                                                        *
+*       Input              : Local structure                              *
+*       Output             : Error message in case of FAILURE             *
+*       Result             : SUCCESS/FAILURE                              *
+***************************************************************************/
+
+INT16 emacGetPhyRegs(emacLS *lStruct, UCHAR pucMesg[NM_API_MESS_LEN]);
+
+
+/**************************************************************************
+*       Description        :  This function sets the link parameters      *
+*			                                                        *
+*       Input              : Local structure containing the params        *
+*       Output             : Error message in case of FAILURE             *
+*       Result             : SUCCESS/FAILURE                              *
+***************************************************************************/
+
+INT16 emacSetLink(emacLS *lStruct,UCHAR aucMesg[NM_API_MESS_LEN]);
+
+
+/**************************************************************************
+*       Description        : This function changes the link state to up   *
+*			           irrespective of what the current state is    *                                        *
+*       Input              : Local structure                              *
+*       Output             : Error message in case of FAILURE             *
+*       Result             : SUCCESS/FAILURE                              *
+***************************************************************************/
+
+INT16 emacSetLinkUp(emacLS *lStruct, UCHAR pucMesg[NM_API_MESS_LEN]);
+
+
+/**************************************************************************
+*       Description        :  This function sets the emac address for a   *
+*			      port                                        *
+*       Input              : Mac address in the form of an array of bytes *
+*       Output             : Error message in case of FAILURE             *
+*       Result             : SUCCESS/FAILURE                              *
+***************************************************************************/
+INT16 emacSetLinkDown(emacLS *lStruct, UCHAR pucMesg[NM_API_MESS_LEN]);
+
+/**************************************************************************
+*       Description        : This function fills the local structure with *
+*			           current link state                           *
+*       Input              : Mac address in the form of an array of bytes *
+*       Output             : Error message in case of FAILURE             *
+*       Result             : SUCCESS/FAILURE                              *
+***************************************************************************/
+
+INT16 emacGetLinkStats(emacStatsLS *lStats,UCHAR paucMesg[NM_API_MESS_LEN]);
+INT16 emacGetLink(emacLS *lStruct,UCHAR paucMesg[NM_API_MESS_LEN]);
+INT16 emacGetMacAddress(CHAR *ifname,UCHAR *macaddr);

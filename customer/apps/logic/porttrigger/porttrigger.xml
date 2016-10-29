@@ -1,0 +1,20 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_PortTrigger type="object">
+		<Enable	type="boolean">1</Enable>
+		<MaxNumberOfEntries type="unsignedInt" Writable="0">32</MaxNumberOfEntries>
+		<NumberOfEntries type="unsignedInt" Writable="0">0</NumberOfEntries>
+		<TriggerList type="object" MaxIdx="0" CurNode="NumberOfEntries" MaxNode="MaxNumberOfEntries">
+			<i type="object">
+				<Name type="string"> </Name>
+				<Enable	type="boolean">0</Enable>
+				<TriggerProtocol type="string">TCP</TriggerProtocol>
+				<TriggerStartPort type="unsignedInt">0</TriggerStartPort>
+				<TriggerEndPort type="unsignedInt">0</TriggerEndPort>
+				<OpenProtocol type="string">TCP</OpenProtocol>
+				<OpenStartPort type="unsignedInt">0</OpenStartPort>
+				<OpenEndPort type="unsignedInt">0</OpenEndPort>
+			</i>
+		</TriggerList>
+	</X_TWSZ-COM_PortTrigger>
+</InternetGatewayDevice>

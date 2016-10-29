@@ -1,0 +1,7 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_DLNA type="object">
+		<Enable type="boolean">1</Enable>
+	</X_TWSZ-COM_DLNA>
+</InternetGatewayDevice>
+

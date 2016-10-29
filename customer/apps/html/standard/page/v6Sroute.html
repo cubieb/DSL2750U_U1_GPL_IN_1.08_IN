@@ -1,0 +1,60 @@
+<!-- config -->
+<style type="text/css">
+	.div_left { width:240px;}
+</style>
+    <td>
+		<div class="config2">
+			<p class="bk_orange" id = "lang_config">IPv6 Static Route </p>
+			<div class="div_orange">
+				<p id = "lang_introdection">
+				Enter the destination network address (for example: 2000::1 or 2000::/64 eg.), AND/OR available WAN interface. Then, click "Apply" to add the entry to the routing table.
+                </p>
+				<p>
+				<b><span id = "lang_introdection1">A maximum 30 entries can be configured. </span></b>
+				</p>
+			</div>
+			<p class="do bk_black" id = "lang_config1">Routing -- IPv6 Static Route</p>
+			<div class="div_black">
+ 
+			    <table class="td_table_s" id='StaticRoutingList'>
+				    <tr>
+					    <td>&nbsp;</td><td><b>Status</b></td><td id = "lang_destination"><b>Destination</b></td><td id = "lang_interface"><b>Interface</b></td>
+				    </tr>
+			    </table>
+			</div>
+			
+			<div class="div_button do"><input type="button" name="add" id="add" value="Add" onclick="uiAdd();" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="edit" id="edit" value="Edit" onclick="uiEdit();" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="del" id="del" value="Delete" onClick="uiDelete();"></div>
+
+			<div id="rtRouteAddInfo" style="display:none">
+				<p class="do bk_black" id = "lang_config_add">IPv6 Static Route Add </p>
+			<div class="div_black">
+
+			<div class="div_left"><span id = "lang_config_enable">Enable :</span></div><div class="div_right"><input type="checkbox" name="staticRoutingEnable" id="staticRoutingEnable" /></div>
+			<div class="div_left"><span id = "lang_config_dst">Destination Network Address :</span></div><div class="div_right"><input type="text" maxlength=43 name="DestinationAddress" id="DestinationAddress" value="" style="width:150px"/></div>
+			<div class="div_left"><span id = "lang_config_interface">Use Interface :</span></div><div class="div_right"><select name="selectConnectionName" class="hold" id="selectConnectionName" style="width:160px"><option></option></select></div>
+				   				   
+		
+			<div class="div_button do">
+				<input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" name="Cancel" id="cancel" value="cancel" onClick="uiPageRefresh();">
+			</div>
+
+		</div>
+	</td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<div>
+				<p id = "lang_help">
+				        You can specify IP addresses to set specific users to be able access the local management services.
+				</p>
+				<p id = "lang_help1">
+				    Note: Before enabling the service, remember to add your IP address to the list.
+				</p>
+				</div>
+				<h5 ><a href="#" id = "lang_more">More...</a></h5>
+			</div>
+		</td>
+	</tr>
+</table>

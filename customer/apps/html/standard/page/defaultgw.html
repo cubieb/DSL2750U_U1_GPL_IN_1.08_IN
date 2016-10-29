@@ -1,0 +1,48 @@
+<!-- config -->
+<style type="text/css">
+	.div_left { width:305px;}
+</style>
+	<td>
+		<div class="config2">
+			<p class="bk_orange" id = "lang_config">Default Gateway</p>
+			<div class="div_orange">
+				<p id = "lang_introdection">
+				You can assign the default gateway. The router will use the first WAN interface you assign. Click "Apply" to save the setting. 
+				</p>
+			</div>
+
+			<p class="do bk_black" id = "lang_config1">Default Gateway </p>
+			<div class="div_black">
+				<div class="div_left"><span id = "lang_interface">Assigned the Default Gateway :</span></div>
+				<div class="div_right"><select name="selectConnectionName" class="hold" id="selectConnectionName"><option></option></select></div>
+			</div>
+			<br>
+            <?if eq $var:G_IPv6Enable 1
+			`
+			<p class="do bk_black" id = "lang_config2">IPv6 Default Gateway </p>
+			<div class="div_black">
+				<div class="div_left"><span id = "lang_ipv6_interface">Assigned the IPv6 Default Gateway :</span></div>
+				<div class="div_right"><select name="selectIp6ConnectionName" class="hold" id="selectIp6ConnectionName"><option></option></select></div>
+			</div>
+			`?>
+			<br>
+		</div>
+		<br>
+		<div class="div_button do"><input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="Cancel" id="cancel" value="Cancel" onClick="uiPageRefresh();"></div>
+
+	
+	</td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<div>
+				<p id = "lang_help">
+					Note: If you select the Automatic Assigned Default Gateway option, you must reboot the router to obtain the default gateway automatically assigned.
+				</p>
+				</div>
+				<h5 ><a href="#" id = "lang_more">More...</a></h5>
+			</div>
+		</td>
+	</tr>
+</table>		

@@ -1,0 +1,47 @@
+menuconfig VENDOR_IKANOS 
+  bool "IKANOS Applications"
+  depends on VENDOR
+  default n
+
+config IKANOS_DSL_APP
+	bool 'IKANOS dsl app'
+	default y
+	depends on IKANOS_DSL_DRIVERS && VENDOR_IKANOS
+	help
+		IKANOS dsl app
+
+#
+# FUSIV Source User Configuration
+#
+menu "FUSIV Source User Configuration"
+	depends on IKANOS_DSL_APP
+
+source vendor/ikanos/sysutil/Config.in
+
+choice
+	depends on FUSIV_VX180
+	prompt "Select xDSL type"
+	default FUSIV_USER_VDSLD_UNIFIED
+
+config FUSIV_USER_VDSLD_VX180
+        bool "Generic VDSL mode only"
+        help
+           Generic VDSL code (fusiv_src/user/vdsld_vx180)
+
+config FUSIV_USER_VDSLD_UNIFIED
+        bool "IFE5 VDSL mode"
+        help
+           IFE5 VDSL code (fusiv_src/user/dsld/ife5).
+
+config FUSIV_USER_AVDSLD
+        bool "IFE6 AVDSL mode"
+        help
+           IFE6 AVDSL code (fusiv_src/user/dsld/ife6).
+endchoice
+
+config FUSIV_USER_VDSLD        
+        bool "VDSL daemon for Alaska"
+		depends on !(CONFIG_FUSIV_VX180)
+        default n
+
+endmenu

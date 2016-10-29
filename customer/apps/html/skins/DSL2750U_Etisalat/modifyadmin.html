@@ -1,0 +1,187 @@
+<?setvaronce var:language zh_cn?>
+<?setvaronce var:menu setup?>
+<?setvaronce var:page wizard?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ADSL Router --Dlink</title>
+<style type="text/css">
+<!-- 
+body { margin:0px auto; padding:3px; font:12px Tahoma,Helvetica,Geneva,Arial,sans-serif; background:#757575;}
+	.Content { margin:0px auto; padding:0px 1px; width:840px; height:460px; background:white;}
+		.title { padding:5px 6px 3px; height:20px; background:#404343; color:white;}
+			.product { float:left; }
+			.firmware { float:right;}
+		.logo { margin:6px 0 40px 0; background:white;}
+		.login_bk { margin:0 auto; padding:5px; width:600px; height:208px; background:#F1F1F1;}
+			.login { height:235px; border:1px solid #619C00; background:#DFDFDF; text-align:center;}
+				.login_title { padding:5px 10px; height:15px; font-weight:bold; background:#619C00; text-align:left;}
+				p#lang_tips { text-align:left; margin:10px 10px 25px;}
+				.div_left { padding:3px 8px 9px; float:left; width:240px; text-align:right; font-weight:bold;}
+				.div_right { font-weight:bold; text-align:left; height:28px;}
+				.do { margin-top:10px;}
+				.div_button { margin-top:20px;}
+		.footer { margin-top:43px; background:#404343;}
+		p#copyright { color:#F1F1F1; text-align:center; font-size:11px; margin:10px;}
+-->
+</style>
+</head>
+<script type="text/javascript" src="/html/languages/<?echo $var:language?>/main.js"></script>
+<script type="text/javascript" src="/html/languages/<?echo $var:language?>/error.js"></script>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript">
+<!--
+var G_Error	    = "<?error found?>"; 
+var G_Status	= "<?error status?>"; 
+var G_Error_Msg	= "<?error message?>";
+var G_UserInDex = 0;
+<?objget :InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList. "UserName Password Level"
+`	<? if eq $11 '<?echo $var:username?>'
+	  ` G_UserInDex = '<? echo $20?>'; //Index
+	`?>
+`?>
+function uiOnload(){
+	dealWithError();
+}
+
+function checkValue()
+{
+	//check NewPassword
+	var _NewPassword = String($("INPUT_NewPassword").value);
+	
+	if(_NewPassword.length < 6)
+	{
+		alert("The new password must be at lest 6 strings");
+		return false;
+	}
+	if(_NewPassword == "etisalat")
+	{
+		alert("Please input a new password different from the default one.");
+		return false;
+	}
+	//check ConfirmPassword
+	var _ConfirmPassword = String($('INPUT_ConfirmPassword').value);
+	if(_ConfirmPassword != _NewPassword)
+	{
+		alert(SEcode[1010]);
+		return false;
+	}
+	
+	return true;
+}
+
+function dealWithError()
+{
+	if (G_Error != 1)
+	{
+		return false;
+	}
+	
+	var arrayHint = [];
+//	arrayHint['SessionTimeout']  = 'INPUT_SessionTimeOut';
+	
+	dealErrorMsg(arrayHint, G_Error_Msg);
+}
+
+function uiSubmit(){
+	if(!checkValue()) 
+		return false;
+	
+	var value_node = $('INPUT_OldPassword','INPUT_NewPassword' );
+	
+	$F(':InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList.' + G_UserInDex + '.Password', value_node[0].value + ':' +value_node[1].value);
+	$F(':InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList.' + G_UserInDex + '.UserName', '<?echo $var:username?>');
+
+	$H({
+		'getpage'   :'html/main.html',
+		'errorpage' :'html/main.html',
+		'var:page'  :'wizard',
+		'var:noredirect':'0',
+		'var:sessionid':'<?echo $var:sessionid?>',
+		'obj-action':'set'
+	});
+
+	$('uiPostForm').submit();
+}
+
+function dealErrorMsg(arrayNode, errorMsg){
+	if (typeof errorMsg != 'string') 
+	    return;
+	    
+	var errorFragment = errorMsg.split('=');
+	var errorCode, errorString, leafNode;
+
+	if (errorFragment != null && errorFragment.length > 0){
+		var _fragment = errorFragment[0].split('.');
+		leafNode = _fragment[_fragment.length - 1];
+		leafNode = arrayNode[leafNode];
+	}
+
+	if (errorFragment[1] != null){
+		errorCode = errorFragment[1].match(/^[0-9]{4}/)[0];
+	} else {
+		if (errorMsg.match(/^[0-9]{4}/) == null){
+            leafNode = arrayNode["result"];
+			
+			if($(leafNode)){
+				$(leafNode).innerHTML = errorMsg;				
+			}
+            return false;
+	    }
+	    errorCode = errorMsg.match(/^[0-9]{4}/)[0];
+	}
+	
+	if(UEcode[errorCode] !== undefined){
+		errorString = UEcode[errorCode];
+	} else if (SEcode[errorCode] !== undefined ) {
+		errorString = SEcode[errorCode];
+	} else {
+		errorString = SEcode[1000];
+	}
+	
+	if (leafNode != undefined){
+		$(leafNode).innerHTML = errorString;
+	} else {
+		alert(errorString + "!");
+	}
+}
+window.onload = uiOnload;
+-->
+</script>
+<body>
+	<!-- content -->
+	<div class="Content">
+		<!-- title -->
+		<div class="title">
+			<div class="product"><span id = "lang_product_main">Product Page</span>: DSL-2730U</div><div class="firmware"><span id = "lang_firmware_main">Firmware Version</span>:<?get :InternetGatewayDevice.DeviceInfo.ModemFirmwareVersion?></div>
+		</div>
+		<!-- logo -->
+		<div class="logo"><img src="/html/skin/logo.gif" alt="logo"/></div>
+		<!-- login background -->
+		<div class="login_bk">
+			<!-- login -->
+			<div class="login">
+				<!-- login title -->
+				<div class="login_title" id = "modifypwd">Modify admin password</div>
+				<br />
+				<!-- username/password -->
+				<div class="div_left" id="lang_username">Username :</div><div class="div_right"> admin </div>
+				<div class="div_left" id="lang_cur_password">Current Password :</div><div class="div_right"> <input type="password" id="INPUT_OldPassword" value="" /></div>
+				<div class="div_left" id="lang_new_password">New Password :</div><div class="div_right"> <input type="password" id="INPUT_NewPassword" value="" /></div>
+				<div class="div_left" id="lang_con_password">Confirm Password :</div><div class="div_right"> <input type="password" id="INPUT_ConfirmPassword" value="" /></div>
+				<!-- submit -->
+				<div class="div_button"><input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/></div>
+				<p id="lang_tips">&nbsp;&nbsp;&nbsp;Please write at lest 6 characters,do not include common words or names,and for a strong password combine these character types:capital Letter, Small Letter, Number and Character.</p>
+			</div>
+			<!-- login failed -->
+		</div>
+		<!-- footer -->
+		<div class="footer"><img src="/html/skin/broadband.gif" /></div>
+	</div>
+	<!-- copyright-->
+	<p id="copyright">Copyright © 2009-2014 D-Link Systems, Inc.</p>
+	<!-- form -->
+	<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

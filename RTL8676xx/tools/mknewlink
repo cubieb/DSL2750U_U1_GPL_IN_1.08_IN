@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#svn up |tee updateinfo
+
+while read type file;
+do 
+  
+  build_file=`echo ${file}|sed 's/^src/build/g'`
+  build_path=`echo ${build_file%/*}`
+
+  if [ "A" = ${type} ];then
+	mkdir -p ${build_path}
+	ln -s ${PWD}/${file} ${build_file}
+        echo "add link to ${build_file}"
+  elif [ "D" = ${type} ];then  
+	rm -rf ${build_file}
+	echo "delete link from ${build_file}"
+  else
+	echo "no modify for ${file}"
+  fi 
+
+done<./updateinfo
+

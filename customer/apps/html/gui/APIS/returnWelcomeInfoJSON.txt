@@ -1,0 +1,18 @@
+{
+	"RETURN":{
+		"success":<? if eq "<?error found?>" "0"  `true`  `false` ?>
+      },
+    
+	"URL": {
+		"ipaddress":"<?get InternetGatewayDevice.IPPingDiagnostics.Host?>",
+		"configuration_url":<?if eq "<get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.DHCPServerEnable>" "1"
+                                    `
+				        "http://<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPRouters?>"
+				    `
+			            `
+					"http://<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.IPInterfaceIPAddress?>"
+                                    `
+				    ?>
+ 	}
+ 
+}

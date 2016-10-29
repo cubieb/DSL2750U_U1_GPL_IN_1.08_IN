@@ -1,0 +1,63 @@
+{
+	"RETURN":{
+		"success":<? if eq "<?error found?>" "0"  `true`  `false` ?>
+      },
+
+<?objget :InternetGatewayDevice.WANDevice. ""
+`      
+<?objget :InternetGatewayDevice.WANDevice.<?echo $20?>.WANConnectionDevice. ""
+`
+    <?objget :InternetGatewayDevice.WANDevice.<?echo $30?>.WANConnectionDevice.<?echo $20?>.WANPPPConnection. "ConnectionStatus Name Username Password X_TWSZ-COM_ServiceList"
+    `
+        <?if neq "<?echo $25?>" "TR069"
+        `
+
+            <?if eq "<?echo $31?>" "Connected"
+            `
+                <?setvaronce var:connectStatus up?>
+                <?if eq "<?echo $42?>" "pppo3g"
+                `
+                    <?setvaronce var:wanType 3G?>
+                `
+                `
+                    <?setvaronce var:wanType DSL?>
+                `?>
+                <?setvaronce var:username <?echo $43?>?>
+                <?setvaronce var:password <?echo $44?>?>
+                <?setvaronce var:pppPath InternetGatewayDevice.WANDevice.<?echo $60?>.WANConnectionDevice.<?echo $50?>.WANPPPConnection.<?echo $40?>.?>
+            `?>
+            <?setvaronce var:pppPathDown InternetGatewayDevice.WANDevice.<?echo $50?>.WANConnectionDevice.<?echo $40?>.WANPPPConnection.<?echo $30?>.?>
+
+        `?>
+    `?>
+`?>
+`?>
+
+<?setvaronce var:connectStatus down?>
+<?setvaronce var:wanType DSL?>
+<?setvaronce var:username ""?>
+<?setvaronce var:password ""?>
+<?setvaronce var:pppPath ""?>
+<?setvaronce var:pppPathDown ""?>
+
+      "INTERNET": 	{
+      	"physicalStatus": "<?echo $var:connectStatus?>",
+      	"rateDown": "6,3Mb",
+      	"rateUp": "309Kb",
+      	"maxRateDown": 0,
+      	"maxRateUp": 0,
+     	"wanType": "<?echo $var:wanType?>",
+     	"PPP": {
+        	"type": "PPPoE",
+        	"username": "<?echo $var:username?>",
+         	"password": "<?echo $var:password?>",
+		"pppPath": <?if neq "<?echo $var:pppPath?>" ""
+		           `
+		               "<?echo $var:pppPath?>"
+		           `
+		           `
+		               "<?echo $var:pppPathDown?>"
+		           `?>
+      	}
+   	}
+}

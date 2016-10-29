@@ -1,0 +1,36 @@
+##################################
+##################################
+## MAGPIE AP CONFIGURATION FILE ##
+##################################
+##################################
+#!/bin/sh
+
+
+if [ "${ATH_countrycode}" != "" ]; then
+    ATH_ARGS="countrycode=${ATH_countrycode} ${ATH_ARGS}"
+fi
+
+if [ "${AP_SSID}" = "" ]; then
+    export AP_SSID=pb-magpie
+fi
+
+if [ "${AP_STARTMODE}" = "" ]; then
+    export AP_STARTMODE=hostap
+fi
+
+if [ "${CWMMODE}" = "" ]; then
+    export CWMMODE=1
+fi
+
+if [ "${AP_PRIMARY_CH}" = "" ]; then
+    export AP_PRIMARY_CH=40
+fi
+
+if [ "${AP_CHMODE}" = "" ]; then
+    export AP_CHMODE=11NA
+fi
+
+if [ "${AP_SECONDARY_CH}" = "" ]; then
+    export AP_SECONDARY_CH=-1
+fi
+

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ -x /usr/bin/pc ]; then
+  /usr/bin/pc &
+fi
+
+if [ -x /usr/bin/btn ]; then
+  /usr/bin/btn &
+fi
+
+if [ -x /usr/bin/mon ]; then
+  /usr/bin/mon &
+fi
+
+#/usr/sbin/telnetd &
+
+if [ -x /usr/sbin/inetd ]; then
+  /usr/sbin/inetd &
+fi
+
+if [ -x /usr/sbin/dropbear ]; then
+  /usr/sbin/dropbear &
+fi
+
+#if  [ -a /usr/bin/ELMon ]; then
+#/usr/bin/ELMon &
+#fi
+
+if [ "${HTTPS}" = "yes" ]; then
+    /usr/sbin/mini_httpd -d /usr/www -c '/cgi-bin/*' -u root -S -E /etc/mini_httpd.pem -T utf-8
+else
+    /usr/sbin/mini_httpd -d /usr/www -c '/cgi-bin/*' -u root -T utf-8
+fi
+
+

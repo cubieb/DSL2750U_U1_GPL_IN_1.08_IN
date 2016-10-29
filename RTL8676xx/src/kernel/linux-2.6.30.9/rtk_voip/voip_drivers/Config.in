@@ -1,0 +1,7 @@
+
+# $Id: Config.in,v 1.1 2011/03/15 08:13:29 yachang Exp $
+
+mainmenu_option next_comment
+comment 'PCM Controller @ Realtek'
+tristate 'PCM Controller @ Realtek support' CONFIG_PCM
+endmenu

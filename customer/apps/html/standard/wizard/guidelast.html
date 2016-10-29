@@ -1,0 +1,492 @@
+<html>
+<head>
+ <title>831II</title>
+ <!--link rel="stylesheet" href='guidecolors.css' type='text/css'-->
+  <!--meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--meta http-equiv="refresh" content="5"-->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- hide
+  <meta http-equiv="refresh" content="2">
+  -->
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/secboot.js"></script>
+<style type="text/css">
+body { background:#081273;}
+</style>
+<script language="javascript">
+<!-- hide
+var userLevel   = "1";
+var Cache_data = '<?echo $var:data?>';
+var third_data="-";
+var isp_data="-"; 
+var wlan_data="-";
+var ajax;
+var vlanid=0;
+var AvailableInt='';
+var GroupedInt='';
+// about vlan lan
+var G_vlan_lan   = [];
+var m = 0;
+<?objget :InternetGatewayDevice.Layer2Bridging.Bridge. "BridgeKey BridgeName VLANID X_TWSZ-COM_AssociatedLANDevice"
+`	G_vlan_lan[m] = [];
+	G_vlan_lan[m][0] = "$01"; //BridgeKey
+	G_vlan_lan[m][1] = "$02"; //BridgeName
+	G_vlan_lan[m][2] = "$03"; //VLANID
+	G_vlan_lan[m][3] = "$04"; //X_TWSZ-COM_AssociatedLANDevice
+	G_vlan_lan[m][5] = "InternetGatewayDevice.Layer2Bridging.Bridge.$00.";
+	m++;
+`?>
+//filter
+var G_bing_vlan = [];
+var m = 0;
+<?objget :InternetGatewayDevice.Layer2Bridging.Filter. "FilterKey FilterBridgeReference FilterInterface"
+`	G_bing_vlan[m] = [];
+	G_bing_vlan[m][0] = "$01"; //FilterKey
+	G_bing_vlan[m][1] = "$02"; //FilterBridgeReference
+	G_bing_vlan[m][2] = "$03"; //FilterInterface
+	G_bing_vlan[m][3] = "InternetGatewayDevice.Layer2Bridging.Filter.$00.";
+	m++;
+`?>
+
+//interface
+var G_Avail_Interface = [];
+var n = 0;
+<?objget :InternetGatewayDevice.Layer2Bridging.AvailableInterface. "AvailableInterfaceKey InterfaceType InterfaceReference" 
+`	<?if eq `LANInterface` `<?echo $22?>`
+	`	G_Avail_Interface[n] = [];
+		G_Avail_Interface[n][0] = "<?echo $21?>"; //AvailableInterfaceKey
+		G_Avail_Interface[n][1] = "<?echo $22?>"; //InterfaceType
+		G_Avail_Interface[n][2] = "<?echo $23?>"; //InterfaceReference
+		n++;
+	`?>
+	<?if eq `WANInterface` `<?echo $22?>`
+	`	G_Avail_Interface[n] = [];
+		G_Avail_Interface[n][0] = "<?echo $21?>"; //AvailableInterfaceKey
+		G_Avail_Interface[n][1] = "<?echo $22?>"; //InterfaceType
+		G_Avail_Interface[n][2] = "<?echo $23?>"; //InterfaceReference
+		n++;
+	`?>
+`?>
+
+//??lan config?????//Don't change the order
+var G_interface_config = [];
+var t = 0;
+<?objget :InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig. "X_TWSZ-COM_Description DhcpServerEnable"
+`	G_interface_config[t] = [];
+	G_interface_config[t][0] = "$01";
+	G_interface_config[t][1] = "InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.$00";
+	G_interface_config[t][2] = "$02"; 
+	t++;
+`?>
+
+//Wan Conns List  Don't change the order
+//var G_wanConnction = [];
+//var m = 0;
+<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice. "WANIPConnectionNumberOfEntries"
+`	<?if gt $11 0
+	`	<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice.$20.WANIPConnection. "Name"
+		`	G_interface_config[t] = [];
+			G_interface_config[t][0] = "$01";
+			G_interface_config[t][1] = "InternetGatewayDevice.WANDevice.1.WANConnectionDevice.$20.WANIPConnection.$00.";
+			t++;
+		`?>
+	`?>
+`?>
+
+removeListeners(TopSelfMenu);
+
+function closeWin()
+{
+	if(window.confirm("This setting is finish, close the window?"))
+	{
+		//window.open('','_parent',''); 
+		window.close();
+	}
+}
+
+function ctrJsonData(){
+
+	return Cache_data ;
+	
+}
+
+function uiToPrevPage()
+{
+	//alert(1)
+	$H({
+		'getpage' : 'html/wizard/guidefourth.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+	//	'var:data' : ctrJsonData(),
+		'var:data'  : Base64.Encode(ctrJsonData()),
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+   
+   //document.location.href = '/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wizard';;
+}
+function searchBrindexByNum(num)
+{
+
+	if(parseInt(num) <= G_vlan_lan.length)
+	{
+		var _idx = parseInt(num)-1;
+
+		return G_vlan_lan[_idx][0];
+	}
+	return 1;
+}
+function searchFilterPath(interfaceName){
+	
+	for(var n=0; n<G_interface_config.length; n++){
+		if(interfaceName==G_interface_config[n][0]){
+			for(var k=0 ; k<G_Avail_Interface.length; k++){
+				if(G_interface_config[n][1].indexOf(G_Avail_Interface[k][2])>-1)
+					for(var i=0; i<G_bing_vlan.length; i++){
+						if(G_Avail_Interface[k][0]==G_bing_vlan[i][2]){
+							return G_bing_vlan[i][3];
+						}
+					}	
+			}
+		}
+	}
+}
+function uiDoPortMapping(mode)
+{
+    $F(":InternetGatewayDevice.X_TELEFONICA_PORTMAPPING.Configuration", mode);
+    $F(":InternetGatewayDevice.X_TELEFONICA_PORTMAPPING.Enable", "1");
+    return ;
+/*
+	//mode = 4; 
+	var dhcpenablePath ;
+	if(mode == 1)
+	{
+	    //alert("uiDoPortMapping");
+		for(var len=0; len<G_interface_config.length; len++)
+		{
+			if(G_interface_config[len][0].indexOf('eth')>-1)
+			{
+			    //alert(len);
+				dhcpenablePath = ':'+G_interface_config[len][1];
+				$F(dhcpenablePath+'.DhcpServerEnable', 1);
+				
+				//alert(dhcpenablePath);
+				var brKey;
+				//looking for br1
+				brKey = searchBrindexByNum(1);
+				var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+				$F(Brpath+'FilterBridgeReference', brKey);
+			}
+		}
+	}
+	else if(mode == 2)
+	{
+	    for(var len = 0; len < G_interface_config.length; len ++)
+		{
+			// ethernet
+			if(G_interface_config[len][0].indexOf('eth')> -1)
+			{
+				 if(G_interface_config[len][0] == "ethernet4")
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 0);
+					
+					var brKey;
+					//looking for br2
+					brKey = searchBrindexByNum(2);
+					var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+					$F(Brpath+'FilterBridgeReference', brKey);
+				 }
+				 else 
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 1);
+					
+					var brKey;
+					//looking for br2
+					brKey = searchBrindexByNum(1);
+					var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+					$F(Brpath+'FilterBridgeReference', brKey);
+				 }
+			}
+		}
+
+	}
+	else if(mode == 3)
+	{
+	    for(var len = 0; len < 4; len ++)
+		{
+			if(G_interface_config[len][0].indexOf('eth')> -1)
+			{
+				 if(G_interface_config[len][0] == "ethernet4")
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 0);
+
+					var brKey;
+					//looking for br2
+					brKey = searchBrindexByNum(2);
+					var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+					$F(Brpath+'FilterBridgeReference', brKey);
+					
+				 }
+				 else if(G_interface_config[len][0] == "ethernet3")
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 1);
+					
+					var brKey;
+					//looking for br3
+					brKey = searchBrindexByNum(3);
+					var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+					$F(Brpath+'FilterBridgeReference', brKey);
+				 }
+			} 
+		}	
+	}
+	else if(mode == 4)
+	{
+	    for(var len = 0; len < 4; len ++)
+		{
+			if(G_interface_config[len][0].indexOf('eth')> -1)
+			{
+				 if(G_interface_config[len][0] == "ethernet1")
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 1);
+				 }
+				 else if(G_interface_config[len][0] == "ethernet2" || G_interface_config[len][0] == "ethernet3")
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 0);
+					
+					var brKey;
+					//looking for br3
+					brKey = searchBrindexByNum(3);
+					var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+					$F(Brpath+'FilterBridgeReference', brKey);
+					
+				 }
+				 else if(G_interface_config[len][0] == "ethernet4")
+				 {
+					dhcpenablePath = ':'+G_interface_config[len][1];
+					$F(dhcpenablePath+'.DhcpServerEnable', 0);
+					
+					var brKey;
+					//looking for br2
+					brKey = searchBrindexByNum(2);
+					var Brpath=':'+searchFilterPath(G_interface_config[len][0]);
+					$F(Brpath+'FilterBridgeReference', brKey);
+				 }
+			}
+		}
+	}
+*/    
+}
+
+function uiSubmit()
+{
+	
+	$H({
+		'obj-action'	:'set',
+		'getpage' : 'html/wizard/guidelast.html',
+		'errorpage': 'html/wizard/guidelast.html',
+		'var:page' : 'html/wizard/guidelast.html'
+	},true);
+
+	if(isp_data!="-")
+	{
+		if(isp_data['path']!='undifined'){
+			//alert("isp_data");
+			var _path=isp_data['path'];
+			//alert(_path);
+			$F(_path+'Username',isp_data['INPUT_Username']);
+			$F(_path+'Password',isp_data['INPUT_Psd']);
+		}
+	}
+
+	if(third_data!='-')
+	{
+
+		uiDoPortMapping(third_data['SerAdditionMode']);
+	}
+
+	if(wlan_data!="-")
+	{
+
+		var wlan_auth;
+		if(wlan_data['auth']=='None')
+		{
+			wlan_auth='None';
+		}
+		else if(wlan_data['auth']=='WEP_64'||wlan_data['auth']=='WEP_128')
+		{
+
+			wlan_auth='Basic';
+		}
+		else if(wlan_data['auth']=='11i')
+		{
+			wlan_auth='11i';
+		}
+		else
+		{
+			;
+		}	
+		$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Enable'              , wlan_data['INPUT_WlanEnable']);
+		$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID'                , wlan_data['INPUT_SSID']);
+		$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSIDAdvertisementEnabled' , wlan_data['vb_status']);
+		$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType'          , wlan_auth);
+		$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Channel'             , wlan_data['wlan_channel']);
+
+		switch(wlan_auth)
+		{
+			case 'None'  : 
+			{
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicEncryptionModes'   , 'None');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicAuthenticationMode', 'None');
+				break;
+			}
+			
+			case 'Basic' : 
+			{
+
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WEPEncryptionLevel'   , wlan_data['WEPEncryptionLevel']);
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicEncryptionModes'   , 'WEPEncryption');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicAuthenticationMode', 'None');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WEPKeyIndex'            , '1');			
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WEPKey.1.WEPKey'        , wlan_data['INPUT_KEY']);
+				break;
+			}
+			case 'WPA' : 
+			{
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WPAEncryptionModes'      , 'TKIPEncryption');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WPAAuthenticationMode'   , 'PSKAuthentication');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PreSharedKey.1.KeyPassphrase', wlan_data['INPUT_KEY']);
+				break;
+			}
+			case '11i' : 
+			{
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.IEEE11iEncryptionModes'   , 'AESEncryption');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.IEEE11iAuthenticationMode', 'PSKAuthentication');
+				$F(':InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PreSharedKey.1.KeyPassphrase' , wlan_data['INPUT_KEY']);
+				break;
+			}
+		}
+		
+	}
+    
+	$('uiPostForm').submit();
+	setTimeout('closeWin();', 1000);
+}
+
+function searchFilterPath(interfaceName)
+{
+	for(var n=0; n < G_interface_config.length; n++){
+		if(interfaceName==G_interface_config[n][0]){
+			for(var k=0 ; k < G_Avail_Interface.length; k++){
+				if(G_interface_config[n][1].indexOf(G_Avail_Interface[k][2])>-1)
+					for(var i=0; i<G_bing_vlan.length; i++){
+						if(G_Avail_Interface[k][0]==G_bing_vlan[i][2]){
+							return G_bing_vlan[i][3];
+						}
+					}	
+			}
+		}
+	}
+}
+
+
+function uiToLoginPage(){
+	//alert(1)
+	$H({
+		'getpage' : 'html/main.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'admin',
+		':password' :'admin',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function uiOnload()
+{
+    var new_data;
+	
+	if(Cache_data != '-'){
+		//alert(Cache_data);
+		Cache_data = Base64.Decode(Cache_data);
+		new_data  = eval('({' +Cache_data + '})');
+		if(Cache_data.indexOf('SerAdditionMode')>-1)
+		{
+			third_data=new_data['third'];
+			//alert(third_data);
+		}
+		isp_data=new_data['pppoe'];
+		wlan_data=new_data['wlan'];
+	}
+}
+
+addListeners(uiOnload);
+
+
+// -->
+</script>
+</head>
+
+<body>
+<table width="100%">
+<tr><td width="178" height="90"><!--img src="/html/wizard/logo.jpg" width="178" height="90"--></td></tr>
+  <tr>
+    <td><strong><font Bienvenido></font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade></td>
+  </tr>
+</table>
+<table width="75%" align="center">
+	<tr>
+	<td><font color=white size=4><b>Conetado a Internet</font></td>
+	</tr>
+	<tr>
+	<td>
+	<br><br><br><br>
+	<center>
+	<input type="button" value="Cerrar" id="submit" onClick="uiSubmit()" >
+	&nbsp;
+	<input type="button" value="Cancelar" id="back" onClick="uiToPrevPage()" >
+	&nbsp;
+	<input type="button" value="Configuración avanzada" id="cancle" onClick="uiToLoginPage()">
+	&nbsp;
+	</center> 
+	</td>
+	</tr>
+	<br>
+</table>
+<table width="100%">
+<tr><td width="178" height="40"></td></tr>
+  <tr>
+    <td><strong><font Bienvenido</font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade size=1></td>
+  </tr>
+</table>
+<table width="75%" align="center">
+  <tr>
+    <td><font Bienvenido color=white>Copyright @ 2010 All Right Reserved</font></td>
+  </tr>
+</table>
+<table id='Content'></table>
+<table id='Menu'></table>
+<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

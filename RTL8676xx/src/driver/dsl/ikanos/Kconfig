@@ -1,0 +1,467 @@
+#
+# FUSIV Source Kernel Configuration
+#
+
+menu "FUSIV Source Kernel Configuration"
+depends on MACH_ADI_FUSIV || MACH_IKAN_MIPS
+
+config FUSIV_LIBRARY
+        tristate "Fusiv library files"
+        default m
+        help
+	Fusiv library files, this must be included
+
+config FUSIV_TIMERS
+        tristate "Timers"
+        default m
+        help
+	Fusiv timers, used by atmdrivers and pppoerelay
+
+config FUSIV_KERNEL_AP_2_AP
+        depends on FUSIV_LIBRARY
+        tristate "AP to AP Fastpath"
+        default m
+        help
+	AP to AP Fastpath option
+
+config  MCAST_AP_SUPPORT
+        bool "AP Support for Multicast"
+        depends on FUSIV_KERNEL_AP_2_AP
+        default n
+        help
+        AP Support when IGMP Snooping is not enabled.
+
+config FUSIV_BMDRIVER
+        depends on FUSIV_LIBRARY
+        tristate "Buffer Manager"
+        default m
+        help
+	Buffer Manager, allocate buffer for each packet
+
+config FUSIV_KERNEL_ETHERNET
+        depends on FUSIV_LIBRARY
+        tristate "Ethernet Driver"
+        default m
+        help
+	Ethernet Driver, Buffer Manager and Fusiv Library files are required
+
+config FUSIV_KERNEL_ETH_PORTS
+        depends on FUSIV_KERNEL_ETHERNET
+	int "Max Ethernet Ports"
+	range 1 3
+	default 2 
+	help
+	    No of Ethernet ports in the system
+
+choice
+	prompt "Eth0 MAC Interface" 
+        depends on FUSIV_KERNEL_ETHERNET
+	default FUSIV_ETH0_PHY
+
+config FUSIV_ETH0_PHY	
+	bool "PHY"
+config  FUSIV_ETH0_SWITCH
+	bool "SWITCH"
+config  FUSIV_ETH0_MX50
+	bool "GPON"
+config  FUSIV_ETH0_VDSL
+	bool "VDSL"
+
+endchoice
+
+	 
+choice
+        depends on FUSIV_KERNEL_ETHERNET
+	prompt "Eth1 MAC Interface" if FUSIV_KERNEL_ETH_PORTS=2 || FUSIV_KERNEL_ETH_PORTS=3
+	default FUSIV_ETH1_PHY
+
+config FUSIV_ETH1_PHY	
+	bool "PHY"
+config  FUSIV_ETH1_SWITCH
+	bool "SWITCH"
+config  FUSIV_ETH1_MX50
+	bool "GPON"
+config  FUSIV_ETH1_VDSL
+	bool "VDSL"
+
+endchoice
+
+choice
+        depends on FUSIV_KERNEL_ETHERNET
+	prompt "Eth2 MAC Interface" if FUSIV_KERNEL_ETH_PORTS=3
+	default FUSIV_ETH2_PHY
+
+config FUSIV_ETH2_PHY	
+	bool "PHY"
+config  FUSIV_ETH2_SWITCH
+	bool "SWITCH"
+config  FUSIV_ETH2_MX50
+	bool "GPON"
+config  FUSIV_ETH2_VDSL
+	bool "VDSL"
+
+endchoice
+
+
+choice  
+	prompt "switch vendor"
+        depends on FUSIV_ETH0_SWITCH || FUSIV_ETH1_SWITCH || FUSIV_ETH1_SWITCH
+	default MARVEL_88E6161 
+
+config  MARVEL_88E6161 
+	bool "Marvel 88E6161"
+
+config  IC_PLUS_175C
+	bool "IC+ 175C"
+
+config  IC_PLUS_175D
+	bool "IC+ 175D"
+
+endchoice
+
+#config IC_PLUS_SWITCH
+#	tristate "IC+ Ethernet switch"
+#        default m
+#        help
+#	 Ethernet switch module
+
+config MARVEL_SWITCH
+	tristate "Marvel 88E6161 Ethernet switch"
+        depends on MARVEL_88E6161 
+        default m
+        help
+	 Ethernet switch module
+
+config FUSIV_KERNEL_ATM
+        depends on FUSIV_BMDRIVER
+        tristate "ATM Driver"
+	depends on FUSIV_TIMERS
+        default m
+        help
+	Atm Driver, Buffer Manager and Fusiv Library files are required
+
+config FUSIV_KERNEL_ACL
+        depends on FUSIV_BMDRIVER
+        tristate "ACL Driver"
+        default n
+        help
+        ACL (L2/L3/L4) filtering support
+choice
+		depends on FUSIV_KERNEL_ACL
+       	prompt "ACL AP support"
+
+config FUSIV_KERNEL_ACL_EMAC3
+        depends on FUSIV_KERNEL_ACL
+        bool "ACL Support on EMAC3"
+
+config FUSIV_KERNEL_ACL_SPA
+        depends on FUSIV_KERNEL_ACL
+        bool "ACL Support on SPA"
+        default y
+endchoice
+
+config FUSIV_KERNEL_PPPOE_RELAY
+        tristate "PPP over Ethernet Relay"
+        depends on PPPOE
+	depends on FUSIV_LIBRARY
+	depends on FUSIV_TIMERS
+        default n
+        help
+        Support for PPP over Ethernet Relay. Depends of Fusiv Library and Fusiv Timers.
+
+config FUSIV_KERNEL_PPPOE_PASSTHROUGH
+        bool "PPPoE Passthrough"
+        depends on FUSIV_KERNEL_PPPOE_RELAY
+        default y
+        help
+        Support for PPPoE Passthrough fast path.
+
+#config FUSIV_KERNEL_WLAN
+#	tristate "Vindhya WLAN Driver"
+#	default n
+#	help
+
+config FUSIV_KERNEL_PERI_AP
+        tristate "PERI AP Driver"
+        depends on FUSIV_KERNEL_AP_2_AP
+        default n
+        help
+
+#choice
+#        prompt "Atheros WLAN Driver"
+
+#config FUSIV_KERNEL_WLAN_ATH_11G
+#        bool "Atheros WLAN 11g Driver"
+
+#config FUSIV_KERNEL_WLAN_ATH_11N
+#        bool "Atheros WLAN 11g+11n Driver"
+
+#endchoice
+
+#config FUSIV_KERNEL_WLAN_RT_11N
+#	tristate "Ralink WLAN 11n Driver"
+#	default n
+#	help
+
+#config FUSIV_KERNEL_WLAN_RT_11G
+#	tristate "Ralink WLAN 11g Driver"
+#	default n
+#	help
+
+config FUSIV_KERNEL_DSP
+	tristate "Fusiv Based Voice Driver"
+	default n
+	help
+
+menu "Voice Drivers Selection"
+
+choice
+	depends on FUSIV_KERNEL_DSP
+	prompt "Voice System Type"
+	default FUSIV_DSP_BASED_VOICE
+
+config FUSIV_MIPS_BASED_VOICE
+	bool "MIPS Based Voice System"
+	
+config FUSIV_DSP_BASED_VOICE
+	bool "DSP Based Voice System"
+
+endchoice
+
+choice
+        depends on FUSIV_DSP_BASED_VOICE
+        prompt "Voice Architecture Type"
+        default FUSIV_DSP_BASED_VOICE_V2_ARCH
+
+config FUSIV_DSP_BASED_VOICE_V2_ARCH
+        bool "V2 VOICE Architecture - Supports 4PLUS2 & 2PLUS1 SLIC"
+
+config FUSIV_DSP_BASED_VOICE_V1_ARCH
+        bool "V1 VOICE Architecture - Supports 2PLUS1 SLIC only"
+
+endchoice
+
+
+choice
+        depends on FUSIV_DSP_BASED_VOICE_V1_ARCH
+        prompt "VoIP channel combination for V1 Voice:"
+        default FUSIV_DSP_BASED_VOICE_2FXS_1FXO_V1
+
+config FUSIV_DSP_BASED_VOICE_1FXS_1FXO_V1
+        bool "1FXS + 1FXO only"
+
+config FUSIV_DSP_BASED_VOICE_2FXS_1FXO_V1
+        bool "2FXS + 1FXO only"
+
+endchoice
+
+choice
+        depends on FUSIV_DSP_BASED_VOICE_V2_ARCH
+        prompt "VoIP channel combination for V2 Voice:"
+        default FUSIV_DSP_BASED_VOICE_2FXS_1FXO_V2
+
+
+config FUSIV_DSP_BASED_VOICE_1FXS_V2
+        bool "1FXS only"
+
+config FUSIV_DSP_BASED_VOICE_1FXS_1FXO_V2
+        bool "1FXS + 1FXO only"
+
+config FUSIV_DSP_BASED_VOICE_2FXS_V2
+        bool "2FXS only"
+
+config FUSIV_DSP_BASED_VOICE_2FXS_1FXO_V2
+        bool "2FXS + 1FXO only"
+
+config FUSIV_DSP_BASED_VOICE_4FXS_V2
+        bool "4FXS only"
+
+config FUSIV_DSP_BASED_VOICE_4FXS_1FXO_V2
+        bool "4FXS + 1FXO only"
+
+config FUSIV_DSP_BASED_VOICE_4FXS_2FXO_V2
+        bool "4FXS + 2FXO only"
+
+endchoice
+
+
+endmenu
+
+config FUSIV_KERNEL_UART2
+        tristate "UART2 Driver"
+		depends on FUSIV_VX200 || FUSIV_AT300 
+		depends on FUSIV_LIBRARY
+        default m
+        help
+
+config FUSIV_KERNEL_BME
+        tristate "Fusiv BME Driver"
+		depends on FUSIV_VX160
+        default n
+        help
+        BME driver for Alaska.
+
+config FUSIV_KERNEL_BME_DRIVER_VX180
+        tristate "Fusiv BME Driver"
+		depends on FUSIV_VX180
+        default n
+        help
+        BME driver for VX180.
+
+config FUSIV_KERNEL_VX180_AVDSL
+        tristate "Fusiv AVDSL"
+		depends on FUSIV_VX180
+        default n
+        help
+        Fusiv kernel support for AVDSL on VX180
+
+menu "Fusiv IPQoS Configurations"
+
+config FUSIV_KERNEL_HOST_IPQOS
+        tristate "Fusiv IPQoS Configurations"
+        default n
+        help
+
+config FUSIV_KERNEL_IPQOS_TRAFFIC_SCHEDULER
+				bool "Host Based IPQoS Traffic Scheduler"
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				default y
+				help
+				Host Based Bandwidth Management Module, refer Fusiv IPQoS document.
+
+config FUSIV_KERNEL_IPQOS_APQOS
+				bool "Fusiv AP based QoS Module"
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				depends on FUSIV_KERNEL_AP_2_AP
+				default y
+				help
+				AP Based IPQoS modules.
+
+config FUSIV_KERNEL_IPQOS_TC_RATE_CONTROL
+				bool "TC Rate Control Module"
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				default n
+				help 
+				Support of Traffic Conditioning Rate Control Module
+
+config FUSIV_KERNEL_IPQOS_TC_MAPPING
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				bool "TC QoS premptives (TOS/DSCP/COS) to Schedule Q Mapping"
+				default y
+				help
+				Support for the QoS Mapping as defined in IPQoS document, TOS/COS/DSCP.
+
+config FUSIV_KERNEL_IPQOS_TC_MARKING
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				bool "TC TOS/COS/DSCP Marking"
+				default y
+				help
+				Support of QoS Marking as defined in IPQoS document.
+
+config FUSIV_KERNEL_IPQOS_TC_PRIORITY_CONVERSION
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				bool "TC Priority Conversion/remarking (TOS/COS/DSCP)"
+				default y
+				help
+				Support for QoS priority conversion / remarking from one to other (TOS/COS/DSCP)
+
+config FUSIV_KERNEL_IPQOS_STATISTICS
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				bool "IPQoS Statistics support"
+				default y
+				help
+				Support to fetch the statistics, good idea to disable for the production.
+
+config FUSIV_KERNEL_IPQOS_DEBUG_LOG
+				depends on FUSIV_KERNEL_HOST_IPQOS
+				bool "IPQoS Debugging Support"
+				default y
+				help
+				Support to log QoS Debugging Information
+
+
+endmenu
+
+config FUSIV_KERNEL_PROFILER
+        tristate "GPT Based Simple Profiler"
+        default n
+        help
+
+config FUSIV_KERNEL_MONIF
+		depends on FUSIV_KERNEL_ATM
+        tristate "ADSL Link Monitoring Interface device"
+        default m
+        help
+
+config BT_HCI_FUSIV_UART2
+	bool "HCI FUSIV UART2 driver"
+	depends on FUSIV_VX160
+	help
+	Bluetooth HCI FUSIV UART2 driver.
+
+config FUSIV_KERNEL_IGMP_SNOOP
+        tristate "IGMP Snoop"
+        default n
+        help
+        Support for IGMP Snooping
+
+config  IGMP_SNOOP_AP_SUPPORT 
+        bool "AP Support for IGMP Snooping"
+        depends on FUSIV_KERNEL_IGMP_SNOOP
+		depends on FUSIV_KERNEL_AP_2_AP
+        default n
+        help
+        AP Support for IGMP Snooping.
+
+config FUSIV_KERNEL_POLICY_VLAN
+        tristate "Policy based VLAN"
+        default n
+        help
+        Support for Policy based vlan
+
+#config FUSIV_KERNEL_GPON
+#        depends on FUSIV_VX180
+#        tristate "GPON driver"
+#        default m
+#        help
+#	GPON driver option
+
+menu  "AP-BUF and SK-BUFF Mapping"
+
+config  FUSIV_ENABLE_AP_MBUF
+        bool    "AP-BUFF TO SK-BUF Mapping"
+        default y
+        help
+
+config  FUSIV_ENABLE_MBUF_AP
+        bool    "SK-BUF TO AP-BUFF Mapping"
+        default y
+
+endmenu
+
+choice
+	depends on FUSIV_VX180
+	prompt "MIPS Cacheing Policy"
+	default FUSIV_VX180_WRITE_THRU
+
+config FUSIV_VX180_WRITE_THRU
+	bool "Write-through Cache Policy"
+	
+config FUSIV_VX180_WRITE_BACK
+	bool "Write-back Cache Policy"
+
+endchoice
+
+#choice
+#        prompt "PHY/Switch Driver"
+#
+#config RTL8306SD_PHY
+#        bool "RTL8306SD Switch Driver"
+#
+#config RTL8201CP_PHY
+#        bool "RTL8201CP PHY Driver"
+#
+#endchoice
+
+endmenu
+

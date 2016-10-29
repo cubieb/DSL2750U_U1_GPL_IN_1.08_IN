@@ -1,0 +1,238 @@
+menu "Board Config"
+
+config DRAM_SIZE
+        int "DRAM SIZE(MB)"
+        default 32
+        help
+                 Board DRAM Size,use 16 bits.
+choice
+        prompt "Type of the sdram"
+        default SDRAM_TYPE_DEFAULT
+
+config SDRAM_TYPE_DEFAULT
+        bool "Default"
+        help
+            Choice the default sdram.
+		
+config SDRAM_TYPE_5
+        bool "-5 SDRAM"
+        help
+            Choice the -5 sdram.
+endchoice
+
+config TEXT_BASE_BOOTSTART
+        hex "Uboot Text Base for stage 1"
+        default 0xBE220000
+        help
+            TEXT_BASE_BOOTSTART is used for uboot stage 1
+
+config TEXT_BASE
+        hex "Uboot Text Base for stage 2"
+        default 0x80400000
+        help
+            TEXT_BASE is used for uboot stage 2
+
+config DRAM_BASE
+	hex "Global DRAM base address"
+	default 0x80000000
+	help
+	    DRAM base address
+
+config FLASH_BASE
+	hex "Global Flash base address"
+	default 0xBD000000
+	help
+	    Flash base address
+
+config FLASH_ERASESIZE
+	int "Flash erasesize (KB)"
+	default "64"
+	help
+	    Flash sector size
+
+menuconfig ROOTFS_SQUASHFS
+	boolean "Root squash filesystem support"
+	depends on SQUASHFS && KERNEL
+	default y
+	help
+		Use SQUASHFS target filesystem
+
+if ROOTFS_SQUASHFS=y
+
+choice   
+	prompt "Squash version"
+        default SQUASHFS_V_4_1
+
+config SQUASHFS_V_3_3
+        bool "SQUASHFS_V_3_3"
+        help
+            SQUASHFS version 3.3
+
+config SQUASHFS_V_3_4
+        bool "SQUASHFS_V_3_4"
+        help
+            SQUASHFS version 3.4
+
+config SQUASHFS_V_4_0
+        bool "SQUASHFS_V_4_0"
+        help
+            SQUASHFS version 4.0
+
+config SQUASHFS_V_4_1
+        bool "SQUASHFS_V_4_1"
+        help
+            SQUASHFS version 4.1
+
+endchoice
+
+config MKSQUASHFS_BLOCK
+	int "Mksquashfs block size"
+	default "65536"
+	help
+	    Mksquashfs block size
+
+endif
+	    
+config CHECK_BOARD_ID 
+	bool "check signature"
+	default n
+	help
+	    check System electronic signatures
+	    	    
+config BOARD_ID 
+	string "Board id"
+	default 0123456789
+	help
+	    System electronic signatures
+	    
+config SYSTEM_VERSION 
+	string "System version"
+	default R2
+	help
+	    System version
+choice
+	prompt "Sysconfig transfer mode"
+	default FLASH_TRANSFER 
+	
+config FLASH_TRANSFER
+	bool "Flash"
+	help
+	    When the sysconfig space is full,the available item will 
+	    use flash space to transfer.This mode is safe.
+
+config SDRAM_TRANSFER
+	bool "DRAM"
+	help
+	    When the sysconfig space is full,the available item will 
+	    use sdram space to transfer.This mode isn't safe, 
+	    because power is off when flash is erased, sysconifg would lose.
+
+endchoice
+
+
+config MAC_OUI 
+	string "Mac oui"
+	default "00:1E:E3"
+	help
+	    Mac oui value
+
+config LAN_MAC_ADDRESS_OFFSET 
+	int "LAN PORT MAC OFFSET"
+	default 0
+	help
+	    lan port mac
+	    
+config WAN_MAC_ADDRESS_OFFSET 
+	int "WAN PORT MAC OFFSET"
+	default 1
+	help
+	    wan port mac
+
+config WLAN_MAC_ADDRESS_OFFSET 
+	int "WLAN PORT MAC OFFSET"
+	default 2
+	help
+	    wlan port mac
+
+config USB_MAC_ADDRESS_OFFSET 
+	int "USB PORT MAC OFFSET"
+	default 3
+	help
+	    usb port mac
+
+if AR7130 
+source boot/tbsboot/bootstart/cpu/ar7130/PllConfig.in
+endif
+
+endmenu
+menu "Product Config"
+
+choice
+        prompt "Image Backup Settings"
+        default SINGLE_IMAGE
+        help
+                Setting image backup type, options including single
+                dual and backup
+config SINGLE_IMAGE
+        bool "Single Image"
+        help
+                TBS Support Single Image
+config DUAL_IMAGE
+        bool "Dual Image"
+        help
+                TBS Support Dual Image
+config BACKUP_IMAGE
+        bool "Backup Image"
+        help
+                TBS Support Backup Image
+
+endchoice
+
+choice
+        prompt "Build Mode Select"
+        default ORIGINAL_MODE
+        depends on BACKUP_IMAGE
+        help
+                Select build mode for compile
+
+config ORIGINAL_MODE
+        bool "Original Mode"
+        depends on BACKUP_IMAGE
+        help
+                Build the First Original Image
+
+config BACKUP_MODE
+        bool "Backup Mode"
+        depends on BACKUP_IMAGE
+        help
+                Build the Second Backup Image
+endchoice
+
+config REPLACE_NODE_PREFIX
+	bool "Replace node prefix"
+	default "X_TWSZ-COM"
+	help
+	    Replace node prefix
+
+config PRODUCT_PREFIX
+	string "Product node prefix"
+	default "X_TWSZ-COM"
+	depends on REPLACE_NODE_PREFIX
+	help
+	    Product node prefix
+
+config REPLACE_NODE_SECOND_PREFIX
+	bool "Replace node second prefix"
+	default "n"
+	depends on REPLACE_NODE_PREFIX
+	help
+	    Replace node second prefix
+
+config PRODUCT_SECOND_PREFIX
+	string "Product node second prefix"
+	default "X_TWSZ-COM"
+	depends on REPLACE_NODE_SECOND_PREFIX
+	help
+	    Product node second prefix
+
+endmenu

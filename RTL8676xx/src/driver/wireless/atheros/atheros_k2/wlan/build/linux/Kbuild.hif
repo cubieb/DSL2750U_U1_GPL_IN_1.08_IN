@@ -1,0 +1,87 @@
+#  
+# Kbuild File for HTC
+# Copyright (C) 2002-2008 Atheros Communications Inc.
+#
+
+mod_hif         = hif
+mod_hif-loop    = hif_loop
+mod_hif-pci     = hif_pci
+mod_hif-usb     = hif_usb
+mod_hif-gmac    = hif_gmac
+mod_ath-usb     = if_ath_usb
+
+hif-$(bld_cfg-hif)		        := m
+hif-$(bld_cfg-hif-loop)		    := m
+hif-$(bld_cfg-hif-usb)		    := m
+hif-$(bld_cfg-hif-pci)		    := m
+hif-$(bld_cfg-hif-gmac)		    := m
+
+
+__hif_flags-$(hif-m)	        := y
+__hif_single-$(bld_cfg-hif)     := y
+__hif_loop-$(bld_cfg-hif-loop)  := y
+__hif_pci-$(bld_cfg-hif-pci)    := y
+__hif_usb-$(bld_cfg-hif-usb)    := y
+__hif_gmac-$(bld_cfg-hif-gmac)  := y
+
+
+hif-single-$(__hif_single-m)    := m
+hif-loop-$(__hif_loop-m)        := m
+hif-pci-$(__hif_pci-m)          := m
+hif-gmac-$(__hif_gmac-m)        := m
+hif-usb-$(__hif_usb-m)          := m
+
+############################################################
+####################### CFLAGS #############################
+############################################################
+
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(split_incl)
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(tgt-htc_path)/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(tgt-htc_path)/htc/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(tgt-htc_path)/wmi/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(tgt-htc_path)/hif/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(tgt-htc_path)/buf_pool/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(tgt-htc_path)/build/single_cpu
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(hst-htc_path)/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(hst-htc_path)/hif
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(hst-htc_path)/hif/inc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(hst-htc_path)/htc
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(hst-htc_path)/wmi
+ccflags-$(__hif_flags-m) 	+= -I$(PWD)/$(hst-htc_path)/misc_drv
+
+ccflags-$(__hif_pci-m)  	+= -I$(PWD)/$(hst-htc_path)/hif/pci
+ccflags-$(__hif_loop-m)  	+= -I$(PWD)/$(hst-htc_path)/hif/loop
+ccflags-$(__hif_usb-m)  	+= -I$(PWD)/$(hst-htc_path)/hif/usb
+ccflags-$(__hif_gmac-m)  	+= -I$(PWD)/$(hst-htc_path)/hif/gmac
+
+ifeq ($(boot), flash)
+ccflags-$(__hif_flags-m) 	+= -DFLASH_PRESENT 
+ccflags-$(__hif_flags-m) 	+= -DUSB_DISCONNECT_RECONNECT
+endif
+
+##############################################################
+################## Module Specific ###########################
+##############################################################
+obj-$(hif-single-y)         += $(mod_hif).o
+$(mod_hif)-objs             += $(tgt-hif_path)/inproc/HIF_inproc.o
+$(mod_hif)-objs             += $(hst-hif_path)/hif_inproc.o
+
+
+obj-$(hif-pci-y)	        += $(mod_hif-pci).o
+$(mod_hif-pci)-objs         += $(hst-hif_path)/pci/hif_pci.o
+$(mod_hif-pci)-objs         += $(hst-hif_path)/pci/hif_pci_zdma.o
+
+obj-$(hif-loop-y)	        += $(mod_hif-loop).o
+$(mod_hif-loop)-objs        += $(hst-hif_path)/loop/hif_loop.o
+
+obj-$(hif-gmac-y)	        += $(mod_hif-gmac).o
+$(mod_hif-gmac)-objs         += $(hst-hif_path)/gmac/hif_gmac.o
+
+obj-$(hif-usb-y)            += $(mod_hif-usb).o
+$(mod_hif-usb)-objs         += $(hst-hif_path)/usb/hif_usb.o
+$(mod_hif-usb)-objs         += $(hst-hif_path)/usb/usbdrv.o
+$(mod_hif-usb)-objs         += $(hst-hif_path)/usb/fwu_$(tgt)_$(boot)_usb.o
+
+obj-$(hif-usb-y)            += $(mod_ath-usb).o
+$(mod_ath-usb)-objs         += $(hst-hif_path)/usb/if_ath_usb.o
+

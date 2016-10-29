@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_LIBNFNETLINK
+	bool 'libnfnetlink'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	libnfnetlink-0.0.33

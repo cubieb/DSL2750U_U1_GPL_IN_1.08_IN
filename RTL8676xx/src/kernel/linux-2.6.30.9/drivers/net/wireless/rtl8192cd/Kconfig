@@ -1,0 +1,45 @@
+config NET_WIRELESS_AGN
+        bool
+        depends on RTL8192CD
+        default y
+config	RTL8190_PRIV_SKB
+	bool "private skb buffer management"
+	depends on RTL8192CD
+	default y
+config  RTL_VAP_SUPPORT
+    bool "VAP support"
+	depends on RTL8192CD
+config RTL_WDS_SUPPORT
+        bool "WDS Support"
+        depends on RTL8192CD
+        default n
+config	RTL_WAPI_SUPPORT
+	bool "WAPI support"
+	depends on RTL8192CD
+config	RTL_WAPI_LOCAL_AS_SUPPORT
+	bool	"support local AS"
+	depends on RTL_WAPI_SUPPORT
+config  RTL_TX_RESERVE_DESC
+        bool "TX desc reserving mechanism"
+        depends on RTL8192CD
+        default y
+config	ENABLE_EFUSE
+	bool "Efuse Support"
+	depends on RTL8192CD
+	default y
+config ENABLE_RX_BUFFER_GATHER
+	bool "Enable RX buffer gather machanism"
+	depends on RTL8192CD
+	default n
+config DISABLE_BR_SHORTCUT
+	bool "Disable bridge shortcut function"
+	depends on RTL8192CD
+	default y
+config PCIE_POWER_SAVING
+	bool "Enable PCIE power saving support"
+	depends on RTL8192CD
+	default n
+config Telefonica_Argentina
+	bool "Telefonica_Argentina feature"
+	depends on RTL8192CD
+	default n

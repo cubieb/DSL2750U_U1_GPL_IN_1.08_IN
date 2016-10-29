@@ -1,0 +1,17 @@
+
+<InternetGatewayDevice type="object">
+	<IPPingDiagnostics type="object">
+		<DiagnosticsState type="string"></DiagnosticsState>
+		<Interface type="string(256)"></Interface>
+		<Host type="string(256)"></Host>
+		<NumberOfRepetitions type="unsignedInt[1:]"></NumberOfRepetitions>
+		<Timeout type="unsignedInt[1:]"></Timeout>
+		<DataBlockSize type="unsignedInt[1:60000]"></DataBlockSize>
+		<DSCP type="unsignedInt[0:63]"></DSCP>
+		<SuccessCount type="unsignedInt" Writable="0"></SuccessCount>
+		<FailureCount type="unsignedInt" Writable="0"></FailureCount>
+		<AverageResponseTime type="unsignedInt" Writable="0"></AverageResponseTime>
+		<MinimumResponseTime type="unsignedInt" Writable="0"></MinimumResponseTime>
+		<MaximumResponseTime type="unsignedInt" Writable="0"></MaximumResponseTime>
+	</IPPingDiagnostics>
+</InternetGatewayDevice>

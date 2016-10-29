@@ -1,0 +1,148 @@
+		<style type="text/css"><!-- 
+			.div_left { width:245px;}
+			.sh { width:80px;}
+			.bo { font-weight:bold;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_internet_config">3G Internet Setup</p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						This screen allows you to configure a 3G Internet connection.
+					</p>
+				</div>
+
+				<div id="pppo3g">
+					<p class="do bk_black" id = "lang_3G_Setup">3G USB Setup</p>			
+					<div class="div_black">
+						<div id="Enable3g">
+							<div class="div_left" id = "lang_3G_service">Enable 3G Service :</div>							
+							<div class="div_right"><input type="checkbox" id="INPUT_Enable3G"  onClick="CheckShowSetupDiv()"/></div>
+						</div>
+
+						<div id="div_Setup3g">
+							<div id="div_SetupProfile">
+								<div class="div_left" id = "lang_CounryList">Country:</div>
+								<div class="div_right" id="item_CounryList">
+									<select id="SELECT_3G_CountryList" onChange='appConutrySelect(this.value)' style="width:110px">
+									</select>
+								</div>
+								<div class="div_left" id = "lang_Profile">Profile Name:</div>
+								<div class="div_right" id="item_Profile">
+									<select id="SELECT_3G_ProfileList" onChange='appProfile(this.value)' style="width:110px">
+									</select>
+								</div>
+							</div>
+						
+							<div class="div_left" id = "lang_Account">Account :</div>
+							<div class="div_right"><input type="text" id="INPUT_3G_Account" style="width:100px"/></div>
+							
+							<div class="div_left" id = "lang_Password">Password :</div>
+							<div class="div_right"><input type="password" id="INPUT_3G_Psw" style="width:100px"/></div>						
+						
+							<div class="div_left" id = "lang_Dial_Num">Dial_Number :</div>
+							<div class="div_right"><input type="text" id="INPUT_3G_DialNumber" style="width:100px"/></div>
+							
+							<div class="div_left" id = "lang_Authentication_Method">Authentication Method :</div>
+							<div class="div_right" id="item_Authentication_Method">
+								<select id="SELECT_3G_AuthMethod" style="width:110px">
+									<option value="Auto">AUTO</option>
+									<option value="PAP">PAP</option>
+									<option value="CHAP">CHAP</option>
+									<option value="MS-CHAP">MS-CHAP</option>
+								</select>
+							</div>
+
+							<div class="div_left" id = "lang_NetType">Net Type :</div>
+							<div class="div_right" id="lang_NetType">
+								<select id="SELECT_3G_NetType" style="width:110px">
+									<option value="Auto">Auto</option>
+									<option value="EVDO">EVDO</option>
+									<option value="WCDMA">WCDMA</option>
+									<option value="TD-SCDMA">TD-SCDMA</option>
+								</select>
+							</div>							
+							
+							<div class="div_left">APN :</div>
+						  	<div class="div_right"><input type="text" id="INPUT_3G_Apn" style="width:100px"/></div>
+
+							<div class="div_left" id = "lang_OnDemand">OnDemand :</div>
+							<div class="div_right"><input type="checkbox" id="INPUT_EnableOnDemand" onClick="onchgMode()"/></div>																					 
+
+							<div id="invalid_timeout">
+								<div class="div_left" id = "lang_timeout">Inactivity Timeout :</div>
+								<div class="div_right">
+									<input type="text" id="INPUT_InaTimeout" maxlength="5" style="width:100px"/>
+										<span id = "lang_second"> (Seconds [60-65535]. if 0, we will set default value)</span>
+								</div>
+							</div>
+
+							
+							<div class="div_left" id="item_mtu_name">MTU</div>
+							<div class="div_right" id="item_mtu_value">
+								<input type="text" id="INPUT_3G_MTU" value="1492" maxlength="4" style="width:100px" /> (64-1492)
+							</div>
+
+							<div class="div_left" id = "lang_delay_timeout">Backup delay time :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_DelayTimeout" maxlength="3" style="width:100px"/>
+									<span id = "lang_second2"> (Seconds [0-600])</span>
+							</div>
+
+							
+							<div class="div_left" id = "lang_recovery_timeout">Recovery delay time :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_RecoveryTimeout" maxlength="3" style="width:100px"/>
+									<span id = "lang_second3"> (Seconds [0-600])</span>
+							</div>
+							<span style="display:none">
+								<div class="div_left" id = "lang_timepin">Allow Unlock Low TimesOfPIN :</div>
+								<div class="div_right"><input type="text" id="INPUT_timepin" maxlength="3" /></div>
+	
+								<div class="div_left" id = "lang_timepuk_timeout">Allow Unlock Low TimesOfPUK :</div>
+								<div class="div_right"><input type="text" id="INPUT_timepuk" maxlength="3" /></div>
+							</span>
+							<div class="div_left" id = "item_hotplug_delay_name">Initialization Delay time :</div>
+							<div class="div_right">
+								<input type="text" id="item_hotplug_delay_value" maxlength="3" style="width:100px"/>
+									<span id = "lang_second2"> (If too small, some 3g dongle will be unsupported)</span>
+							</div>	
+
+							<div class="div_left" id = "item_switch_delay_name">Mode Switch Delay time :</div>
+							<div class="div_right">
+								<input type="text" id="item_switch_delay_value" maxlength="3" style="width:100px"/>
+									<span id = "lang_second2"> (If too small, some 3g dongle will be unsupported)</span>
+							</div>
+
+							<div class="div_left" id = "lang_BackupMechanism">BackupMechanism :</div>
+							<div class="div_right" id = '3G_BackupMechanism'>
+								<select id="SELECT_3G_BackupMechanism" onChange='CheckShowIpCheckDiv()' style="width:110px">
+									<option value="DSL">DSL</option>
+									<option value="IP_CHECK">IP Check</option>
+								</select>
+							</div>
+
+							<div id="div_IpCheck">
+								<div class="div_left">Checking IP address:&nbsp;&nbsp;</div>
+							  	<div class="div_right"><input type="text" id="INPUT_3G_CheckIpAddr" style="width:100px"/></div>
+
+								<div class="div_left">Timeout (in sec.):&nbsp;&nbsp;</div>
+							  	<div class="div_right"><input type="text" id="INPUT_3G_TimeOut" style="width:100px"/></div>	
+							  	
+								<div class="div_left">Period time (in sec.):&nbsp;&nbsp;</div>
+							  	<div class="div_right"><input type="text" id="INPUT_3G_CheckPeriod" style="width:100px"/></div>								  	
+
+								<div class="div_left">Fail Tolerance:&nbsp;&nbsp;</div>
+							  	<div class="div_right"><input type="text" id="INPUT_3G_CheckFailTolerance" style="width:100px"/></div>							
+							</div>											 
+						</div><!--end <div id="div_Setup3g">  -->
+					</div><!--end <div id="div_black">  -->
+				</div> <!--end <div id="pppo3g">  -->
+			</div> <!-- end <div class="config2"> -->		
+			<div class="div_button">
+					<input type="button" id = "div_buttonApply" value="Apply" onClick="uiSubmit()"/> 
+					<input type="button" id = "div_buttonDefault" value="AutoSet" onClick="uiGetDefault()"/> 
+					<input type="button" id = "div_buttonCancel" value="Cancel" onClick="uiCancel()"/> 
+			</div>
+		</td>
+

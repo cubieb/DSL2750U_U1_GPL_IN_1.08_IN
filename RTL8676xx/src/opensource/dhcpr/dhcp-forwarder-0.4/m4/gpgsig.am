@@ -1,0 +1,2 @@
+gpgsig:
+			gpg --armor --detach-sign $(distdir).tar.bz2

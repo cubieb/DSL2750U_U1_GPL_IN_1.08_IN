@@ -1,0 +1,56 @@
+menuconfig APPS_SSAP
+	bool 'SSAP'
+	default y
+	depends on APPS
+  	help
+      	SSAP
+
+
+config APPS_SSAP_BUTTON
+	bool 'Button'
+	default n
+	depends on APPS_SSAP
+	help
+		Button module	
+	
+config APPS_SSAP_PROTEST
+	bool 'Product test'
+	default n
+	depends on APPS_SSAP
+	help
+		Product test module	
+
+config APPS_SSAP_UPGRADE
+	bool 'Upgrade'
+	default y
+	depends on APPS_SSAP
+	help
+		Upgrade module	
+
+config APPS_SSAP_TFTPUPG
+    bool 'tftp_upg'
+    default y
+    depends on APPS_SSAP_UPGRADE
+    help
+       For tftp upgrade 
+
+config APPS_SSAP_GETSMAPS
+    bool 'getsmaps'
+	depends on APPS_SSAP
+    default n
+    help
+        For test only,the progress can count a process's memory 
+
+config APPS_SSAP_RCDMODULETM
+    bool 'record module time'
+	depends on APPS_SSAP
+    default n
+    help
+        For test only,the progress can count time of logic's module calling function 
+
+config APPS_CMM_NODE_FIX
+    bool 'Check and restore the missing node'
+    depends on APPS_SSAP
+    default n
+    help
+        Restore the missing node at boot-up after upgrade to the new firmware.

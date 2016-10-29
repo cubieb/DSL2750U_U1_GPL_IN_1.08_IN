@@ -1,0 +1,77 @@
+
+	<style type="text/css">
+	<!-- 
+		.div_left { padding-left:0px; width:350;}
+	-->
+	</style>
+		<!-- config -->
+		<td>
+			<div class="config2">
+			<p class="bk_orange" id="lang_disc">WDS Settings</p>
+			<div class="div_orange">
+				<p id = "lang_introduction">
+					Wireless repeater function can make the WLAN signal cover more area. Fill the blanks and then Apply.
+				</p>
+			</div>
+			
+			<div class="div_orange">
+			 <div class="div_left"><b id="lang_enable_repeater">Enable WDS:</b></div>
+			 <div class="div_right"><input name="checkbox" type="checkbox"  id="INPUT_EnableRepeater" /></div>
+            <div class="div_left"><span id="lang_wireless_mac">Wireless MAC of this router:</span></div>
+			<div class="div_right"><div id="INPUT_WirelessMAC"></div></div>
+          </div>
+		  
+		  <!--div class="div_orange">
+		 	<strong><div id="Profile_wirelessnum"></div></strong>
+		
+		    <input type="radio"  name="INPUT_radiomode" id="Radio_repeater" value="Repeater" onclick="SelectMode();" />&nbsp;<b id="lang_repeater_mode">Wireless Repeater</b>
+			<br>	
+			<div class="div_left" id="lang_repeater_ip_addr" style="padding-left:20px">Repeater IP Address: </div>
+			<div class="div_right" id="ReapterIP"><input type='text' id="INPUTRepeaterIpAddr_1" maxlength=3 style="width:30px"  onfocus="this.select();" onkeyup="IPKeyUp(event,this);" onkeydown="return IPKeyDown(event,this)" />.
+				<input type='text' id="INPUTRepeaterIpAddr_2" maxlength=3 style="width:30px" onfocus="this.select();" onkeyup="IPKeyUp(event,this);" onkeydown="return IPKeyDown(event,this)" />.
+				<input type='text' id="INPUTRepeaterIpAddr_3" maxlength=3 style="width:30px" onfocus="this.select();" onkeyup="IPKeyUp(event,this);" onkeydown="return IPKeyDown(event,this)" />.
+				<input type='text' id="INPUTRepeaterIpAddr_4" maxlength=3 style="width:30px"  onfocus="this.select();" onkeyup="IPKeyUp(event,this);" onkeydown="return IPKeyDown(event,this)" />
+            </div-->
+    	  
+	  		<!--div class="div_left" id="lang_central_MAC" style="padding-left:20px">Basic Station MAC Address: </div>
+			<div class="div_right"><input name="BaseMAC" type="text" id="BaseMAC" /></div>
+			</div-->
+			
+			 <p class="do bk_black">WDS</p>
+			 <div class="div_black">
+		<p>
+			<!--input type="radio"  name="INPUT_radiomode" id="Radio_basestation" value="BaseStation" onclick="SelectMode();" />
+			<b id="lang_central_mode">Basic Station Mode</b-->
+				  
+			<div class="div_left" id="lang_repeater1_MAC" style="padding-left:20px">Repeater MAC Address 1:</div>
+			<div class="div_right"><input type="text" id="INPUT_MAC1"></div>
+			
+			<div class="div_left" id="lang_repeater2_MAC" style="padding-left:20px">Repeater MAC Address 2:</div>
+			<div class="div_right"><input type="text" id="INPUT_MAC2"></div>
+			
+			<div class="div_left" id="lang_repeater3_MAC" style="padding-left:20px">Repeater MAC Address 3:</div>
+			<div class="div_right"><input type="text" id="INPUT_MAC3"></div>
+			
+			<div class="div_left" id="lang_repeater4_MAC" style="padding-left:20px">Repeater MAC Address 4:</div>
+			<div class="div_right"><input type="text" id="INPUT_MAC4"></div>
+			
+		
+		</p>
+			</div>
+		  	<div class="div_button">
+				<input type="button" id="submit" value="Apply" onClick="uiSubmit();"/> 
+				<input type="button" id ="cancel" value="Cancel" onClick="uiPageRefresh()" />
+			</div>
+			<!--------------------><!---end of <div id="module_tkip">---><!---end of <div id="module_aes">---></td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5><p id="lang_help">Helpful Hints...</p></h5>
+				<p id="lang_context">
+					Wireless repeater function can make the WLAN signal cover more area. Fill the blanks and then Apply.
+				</p>
+				<h5><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpsetup#Wireless"><p id="lang_help_more">More...</p></a></h5>
+			</div>
+		</td>
+	</tr>
+</table>	

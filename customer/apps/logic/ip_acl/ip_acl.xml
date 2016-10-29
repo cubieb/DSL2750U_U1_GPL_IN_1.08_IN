@@ -1,0 +1,10 @@
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_IP_ACL type="object">
+		<ACLEnable type="boolean">0</ACLEnable>
+		<ACL type="object" >
+			<i type="object">
+				<SrcIP type="string">0</SrcIP>
+			</i>
+		</ACL>
+	</X_TWSZ-COM_IP_ACL>
+</InternetGatewayDevice>

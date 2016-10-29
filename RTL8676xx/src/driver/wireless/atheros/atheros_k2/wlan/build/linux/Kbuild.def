@@ -1,0 +1,149 @@
+#######################################
+#######################################
+# Global paths should always be like this 
+# <mod_name>_path, other wise clean does not work
+#######################################
+#######################################
+
+#######################################
+############### Paths #################
+#######################################
+adf_path        := $(adf_dir)/linux
+aed_path        = ../../../wlan
+
+ath_path        = $(aed_path)/host/madwifi/ath
+hal_path        = $(aed_path)/host/hal
+hal_cfg_path    = $(hal_path)/main/linux/obj/$(arch)
+wlan_path       = $(aed_path)/host/madwifi/net80211
+pktlog_path 	= $(aed_path)/host/ath_pktlog
+
+rate_path       = $(aed_path)/host/ratectrl11n
+dfs_path        = $(aed_path)/host/dfs
+
+#######################################
+############## Includes ###############
+#######################################
+aed_incl        = $(aed_path)/host/madwifi/include
+split_incl      = ../../include
+
+#######################################
+######### Default variables ###########
+#######################################
+arch           	?= mipsisa32-be-elf
+mac             ?= ar5416
+oflags          ?= -O2
+hif             ?=
+tgt             ?=
+
+
+
+##################################
+############# Host ###############
+##################################
+hst_path	= $(aed_path)/host
+hst_incl	= $(hst_path)/madwifi/include
+hst-ath_path	= $(hst_path)/madwifi/ath
+hst-hal_path	= $(hst_path)/hal
+hst-wlan_path   = $(hst_path)/madwifi/net80211
+hst-htc_path	= $(hst_path)/htc
+hst-hif_path    = $(hst-htc_path)/hif
+hst-fwd_path    = $(hst_path)/fwd
+hst-rate_path   = $(hst_path)/ratectrl11n
+hif-pci_path    = $(hst_path)/htc/hif/pci
+hif-gmac_path   = $(hst_path)/htc/hif/gmac
+hif-usb_path    = $(hst_path)/htc/hif/usb
+
+####################################
+############# Target ###############
+####################################
+tgt_path        = ../../target
+tgt_incl        = $(tgt_path)/madwifi/include
+tgt-ath_path    = $(tgt_path)/madwifi/ath
+tgt-hal_path    = $(tgt_path)/hal
+tgt-wlan_path   = $(tgt_path)/madwifi/net80211
+tgt-htc_path    = $(tgt_path)/htc
+tgt-hif_path    = $(tgt-htc_path)/hif
+tgt-rate_path   = $(tgt_path)/ratectrl11n
+tgt-cfg_path    = $(tgt_path)/include
+
+#temporary , to be removed afterwords
+####################################
+######### k2 & Magpie specific #####
+####################################
+k2-ccflags              := -DK2 -DDEBUG_PKTLOG
+#magpie-ccflags          := -DMAGPIE_MERLIN -DOMNI_MX_LED
+magpie-ccflags          := -DMAGPIE_MERLIN 
+
+####################################
+######## HIF Specific ##############
+####################################
+usb-ccflags             := -DMAGPIE_HIF_USB -DDEBUG_PKTLOG
+usb-ccflags             += -DMAGPIE_RATE_CTRL
+
+pci-ccflags             := -DMAGPIE_HIF_PCI -DDEBUG_PKTLOG
+pci-ccflags             += -DMAGPIE_RATE_CTRL
+gmac-ccflags            := -DMAGPIE_HIF_GMAC
+gmac-ccflags            += -DLIMIT_MTU_SIZE
+
+singlecpu-ccflags       := -DMAGPIE_SINGLE_CPU_CASE
+singlecpu-ccflags       += -DMAGPIE_RATE_CTRL
+
+####################################
+####### Default Build params #######
+####################################
+ifeq ($(bld-mod),)
+bld-mod             := all
+bld_cfg-adf         := m
+bld_cfg-aed         := m
+#bld_cfg-hst         := m
+#bld_cfg-hif-pci     := m
+else
+bld_cfg-$(bld-mod)  := m
+endif
+
+####################################
+##### Default Hal config path ######
+####################################
+cfg_path-m                  :=
+
+######################
+## Non-split driver ##
+######################
+cfg_path-$(bld_cfg-aed)     := $(hal_path)/main
+cfg_path-$(bld_cfg-hal)     := $(hal_path)/main
+                               
+##################
+## Split driver ##
+##################
+cfg_path-$(bld_cfg-hst)     := $(hst-hal_path)/main
+cfg_path-$(bld_cfg-hst-hal) := $(hst-hal_path)/main
+
+cfg_path-$(bld_cfg-tgt)     := $(tgt-hal_path)/main
+cfg_path-$(bld_cfg-tgt-hal) := $(tgt-hal_path)/main
+
+#################################################
+############# ARCH specific FLAGS ############### 
+#################################################    
+i386-elf-ccflags            := -DAH_BYTE_ORDER=AH_LITTLE_ENDIAN
+i386-elf-ccflags            += -fomit-frame-pointer
+
+mipsisa32-be-elf-ccflags    := -DAH_BYTE_ORDER=AH_BIG_ENDIAN
+mipsisa32-be-elf-ccflags    += -D=AH_REGOPS_FUNC
+mipsisa32-be-elf-ccflags    += -D__LINUX_MIPS32_ARCH__
+mipsisa32-be-elf-ccflags    += -G 0 -mno-abicalls -fno-pic
+mipsisa32-be-elf-ccflags    += -march=mips32r2 -Wa,--trap
+mipsisa32-be-elf-ccflags    += -fno-strict-aliasing -fno-common
+mipsisa32-be-elf-ccflags    += -fomit-frame-pointer -mlong-calls
+
+mipsisa32-be-elf-ldflags    := -EB
+
+#################################################
+######### Arch specific cflags & ldflags ########
+#################################################
+
+ccflags-y                   += $($(arch)-ccflags)    
+ldflags-y                   += $($(arch)-ldflags)
+ccflags-y                   += $(oflags)
+ccflags-y                   += $($(tgt)-ccflags)
+ccflags-y                   += $($(hif)-ccflags)
+ccflags-y                   += -DAMAZON_SE

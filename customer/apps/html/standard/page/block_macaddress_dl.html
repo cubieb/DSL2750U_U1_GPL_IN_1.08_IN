@@ -1,0 +1,47 @@
+
+<!-- config -->
+<style type="text/css"><!--
+.div_left { width:210px;}
+--></style>
+<td>
+<div class="config2">
+	<p class="bk_orange" id="lang_BlockMACAddress">Block MAC Address </p>
+	<div class="div_orange">
+		<p id="lang_dsc1">This page used to control a special LAN device access to the router. It is based on the MAC to identify the device and MAC is the exclusive ID for every device. The LAN device can be found under DHCP client list. User can configure maximum of 20 rules.</p>
+		<p id = "lang_note" style="color:red;" >note : If you select"Enable Block MAC, allow following PC to access network",please put your PC MAC also adds to the rules.Otherwise,the PC will not be able to access cpe!
+		</p>
+	</div>
+	<p class="do bk_black" id="lang_BlockMAC">Block MAC Address rules</p>
+	<div class="div_black">
+		<p id="lang_block_mode">Configure Block MAC Address:</p>
+		<select id="SELECT_block_mode" onChange="ChangeFilterMode()">
+			<option value="Disable">Disable Block MAC Address</option>
+			<option value="Allow">Enable Block MAC, allow following PC to access network</option>
+			<option value="Deny">Enable Block MAC, deny following PC to access network</option>
+		</select>
+		<span id = "lang_note_mac" >&nbsp The current PC MAC :</span>
+		<span id = "lang_note_mac_value" style="color:red;" ></span>
+		
+	</div>
+	<div class="div_black">
+		<div id = "display_control">
+			<table class="td_table_s" id="td_macAddrs">
+				<tr class="tr_bold">
+					<td id="lang_Num">Num</td>
+					<td></td>
+					<td id="lang_Mac">MAC address</td>
+					<td></td>
+					<td id="lang_Dhcp">DHCP client list</td>
+					<td id="lang_Schedule1">Schedule</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="div_button">
+		<input type="button" id="Apply" name="Apply" value=" Apply " onClick="uiApply()" />
+		<input type="button" id="AddSchedule" name="AddSchedule" value=" Add new Schedule " onClick="uiAddSchedule()" />
+		<input type="button" id="refresh" name="refresh" value=" Cancel " onclick="uiPageRefresh()" />
+	</div>
+</div>
+</td>
+

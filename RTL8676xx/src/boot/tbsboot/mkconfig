@@ -1,0 +1,63 @@
+#!/bin/sh -e
+
+APPEND=no	# Default: Create new config file
+BOARD_NAME=""	# Name to print in make output
+
+echo "param:-$0,-$1,-$2,-$3,-$4,-$5,-$6:$@ "
+
+if [ "$SRCTREE" != "$OBJTREE" ] ; then
+	mkdir -p ${OBJTREE}/include
+	mkdir -p ${OBJTREE}/include2
+	cd ${OBJTREE}/include2
+	rm -f asm
+	ln -s ${SRCTREE}/include/asm-$1 asm
+	LNPREFIX="../../include2/asm/"
+	cd ../include
+	rm -rf asm-$1
+	rm -f asm
+	mkdir asm-$1
+	ln -s asm-$1 asm
+else
+	cd ./include
+	rm -f asm
+	ln -s asm-$1 asm
+fi
+
+rm -f asm-$1/arch
+
+if [ -z "$6" -o "$6" = "NULL" ] ; then
+	ln -s ${LNPREFIX}arch-$2 asm-$1/arch
+else
+	ln -s ${LNPREFIX}arch-$6 asm-$1/arch
+fi
+
+if [ "$1" = "arm" ] ; then
+	rm -f asm-$1/proc
+	ln -s ${LNPREFIX}proc-armv asm-$1/proc
+fi
+
+#
+# Create include file for Make
+#
+#echo "@pwd"
+echo "ARCH   = $1" >  config.mk
+echo "CPU    = $2" >> config.mk
+#echo "BOARD  = $4" >> config.mk
+
+[ "$5" ] && [ "$5" != "NULL" ] && echo "VENDOR = $5" >> config.mk
+
+[ "$6" ] && [ "$6" != "NULL" ] && echo "SOC    = $6" >> config.mk
+
+#
+# Create board specific header file
+#
+#if [ "$APPEND" = "yes" ]	# Append to existing config file
+#then
+#	echo >> config.h
+#else
+#	> config.h		# Create new config file
+#fi
+#echo "/* Automatically generated - do not edit */" >>config.h
+#echo "#include <configs/$1.h>" >>config.h
+
+exit 0

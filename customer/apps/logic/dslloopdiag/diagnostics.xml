@@ -1,0 +1,44 @@
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANDSLDiagnostics type="object">
+				<LoopDiagnosticsState type="string" Writable="1">None</LoopDiagnosticsState>
+			    <ACTPSDds type="int" Writable="0" NeedSave="0"></ACTPSDds>
+				<ACTPSDus type="int" Writable="0" NeedSave="0"></ACTPSDus>						
+				<ACTATPds type="int" Writable="0" NeedSave="0"></ACTATPds>
+				<ACTATPus type="int" Writable="0" NeedSave="0"></ACTATPus>						
+				<HLINSCds type="int" Writable="0" NeedSave="0"></HLINSCds>
+				<HLINSCus type="int" Writable="0" NeedSave="0"></HLINSCus>
+				<HLINGds type="unsignedInt" Writable="0" NeedSave="0"></HLINGds>
+				<HLINGus type="unsignedInt" Writable="0" NeedSave="0"></HLINGus>
+				<HLOGGds type="unsignedInt" Writable="0" NeedSave="0"></HLOGGds>
+				<HLOGGus type="unsignedInt" Writable="0" NeedSave="0"></HLOGGus>
+				<HLOGpsds type="string(2559)" Writable="0" NeedSave="0"></HLOGpsds>
+				<HLOGpsus type="string(2559)" Writable="0" NeedSave="0"></HLOGpsus>
+				<HLOGMTds type="unsignedInt" Writable="0" NeedSave="0"></HLOGMTds>
+				<HLOGMTus type="unsignedInt" Writable="0" NeedSave="0"></HLOGMTus>
+				<LATNpbds type="string(24)" Writable="0" NeedSave="0"></LATNpbds>
+				<LATNpbus type="string(24)" Writable="0" NeedSave="0"></LATNpbus>
+				<SATNds type="string(24)" Writable="0" NeedSave="0"></SATNds>
+				<SATNus type="string(24)" Writable="0" NeedSave="0"></SATNus>
+				<HLINpsds type="string(61430)" Writable="0" NeedSave="0"></HLINpsds>	
+				<HLINpsus type="string(61430)" Writable="0" NeedSave="0"></HLINpsus>	
+				<QLNGds type="unsignedInt" Writable="0" NeedSave="0"></QLNGds>
+				<QLNGus type="unsignedInt" Writable="0" NeedSave="0"></QLNGus>						
+				<QLNpsds type="string(61430)" Writable="0" NeedSave="0"></QLNpsds>
+				<QLNpsus type="string(61430)" Writable="0" NeedSave="0"></QLNpsus>
+				<QLNMTds type="unsignedInt" Writable="0" NeedSave="0"></QLNMTds>
+				<QLNMTus type="unsignedInt" Writable="0" NeedSave="0"></QLNMTus>
+				<SNRGds type="unsignedInt" Writable="0" NeedSave="0"></SNRGds>
+				<SNRGus type="unsignedInt" Writable="0" NeedSave="0"></SNRGus>
+				<SNRpsds type="string(61430)" Writable="0" NeedSave="0"></SNRpsds>	
+				<SNRpsus type="string(61430)" Writable="0" NeedSave="0"></SNRpsus>	
+				<SNRMTds type="unsignedInt" Writable="0" NeedSave="0"></SNRMTds>	
+				<SNRMTus type="unsignedInt" Writable="0" NeedSave="0"></SNRMTus>					
+				<BITSpsds type="string(61430)" Writable="0" NeedSave="0"></BITSpsds>
+				<BITSpsus type="string(61430)" Writable="0" NeedSave="0"></BITSpsus>
+				<GAINSpsds type="string(61430)" Writable="0" NeedSave="0"></GAINSpsds>
+			</WANDSLDiagnostics>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

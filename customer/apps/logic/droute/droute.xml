@@ -1,0 +1,41 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnection type="object" CurNode="WANIPConnectionNumberOfEntries">
+						<i type="object">
+							<RouteProtocolRx type="string"></RouteProtocolRx>
+							<RipPassive type="string">1</RipPassive>
+							<RIPngEnabled type="boolean">0</RIPngEnabled>
+							<X_TWSZ-COM_DelFlag type="string" Writable="0" Standard="0">0</X_TWSZ-COM_DelFlag>
+							<X_TWSZ-COM_DynamicStatus type="string" Writable="0" Standard="0">Disconnected</X_TWSZ-COM_DynamicStatus>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object" CurNode="WANPPPConnectionNumberOfEntries">
+						<i type="object">
+							<RouteProtocolRx type="string"></RouteProtocolRx>
+							<RipPassive type="string">1</RipPassive>
+							<RIPngEnabled type="boolean">0</RIPngEnabled>
+							<X_TWSZ-COM_DelFlag type="string" Writable="0" Standard="0">0</X_TWSZ-COM_DelFlag>
+							<X_TWSZ-COM_DynamicStatus type="string" Writable="0" Standard="0">Disconnected</X_TWSZ-COM_DynamicStatus>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+	<X_TWSZ-COM_DynamicRouting type="object" Writable="0" Standard="0">
+		<Enable type="boolean" Writable="0">0</Enable>
+		<ForwardNumberOfEntries type="unsignedInt" Writable="0">1</ForwardNumberOfEntries>
+		<Forwarding type="object">
+			<i type="object">
+				<Enable type="unsignedInt" Writable="0">1</Enable>
+				<InterfaceName type="string" Writable="0">InternetGatewayDevice.LANDevice.1.</InterfaceName>
+				<Version type="unsignedInt" Writable="0">0</Version>
+				<Operation type="unsignedInt" Writable="0">0</Operation>
+			</i>
+		</Forwarding>
+	</X_TWSZ-COM_DynamicRouting>
+</InternetGatewayDevice>

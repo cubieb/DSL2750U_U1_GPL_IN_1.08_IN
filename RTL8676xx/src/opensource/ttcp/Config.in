@@ -1,0 +1,9 @@
+#####################
+config OPENSOURCE_TTCP
+	bool 'TTCP'
+	default n
+	depends on OPENSOURCE_DEBUGTOOLS
+  	help 
+      	ttcp throughput test
+
+

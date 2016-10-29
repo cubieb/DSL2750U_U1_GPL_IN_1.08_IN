@@ -1,0 +1,117 @@
+## $Id: dhcp-forwarder.spec.in,v 1.1.1.1 2003/11/25 22:14:04 jharrell Exp $		--*- rpm-spec -*--
+
+%define		homedir		%{_var}/lib/dhcp-fwd
+
+Summary:	A DHCP relay agent
+Name:		dhcp-forwarder
+Version:	@VERSION@
+Release:	1
+License:	GPL
+Group:		System Environment/Daemons
+Packager:	Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de>
+URL:		http://www.tu-chemnitz.de/~ensc/dhcp-fwd
+Source0:	http://www.tu-chemnitz.de/~ensc/dhcp-fwd/files/%{name}-%{version}.tar.bz2
+PreReq:		/sbin/chkconfig /usr/sbin/userdel /usr/sbin/adduser
+PreReq:		/sbin/service
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+
+%if %{?_without_dietlibc:0}%{!?_without_dietlibc:1}
+BuildRequires:	dietlibc
+%endif
+
+
+%description
+dhcp-fwd forwards DHCP messages between subnets with different sublayer
+broadcast domains. It is similar to the DHCP relay agent dhcrelay of
+ISC's DHCP, but has the following features which are important for me:
+
+* Runs as non-root in a chroot-jail
+* Uses "normal" AF_INET sockets which allows to uses packetfilters to
+  filter incoming messages.
+* The DHCP agent IDs can be defined freely
+* Has a small memory footprint when using dietlibc
+
+
+%prep
+%setup -q
+
+
+%build
+%configure --enable-release %{?_without_dietlibc:--disable-dietlibc}
+%{__make}
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+make DESTDIR=${RPM_BUILD_ROOT} install-strip install-contrib
+
+install -d ${RPM_BUILD_ROOT}%{_sysconfdir}
+install -m644 -p contrib/dhcp-fwd.conf ${RPM_BUILD_ROOT}%{_sysconfdir}/
+install -m700 -d ${RPM_BUILD_ROOT}%{homedir}
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+
+%pre
+/usr/sbin/adduser -r -s /sbin/nologin -d %{homedir} -M		\
+	 	  -c 'DHCP Forwarder user' dhcp-fwd &>/dev/null || true
+
+%post
+/sbin/chkconfig --add dhcp-fwd
+
+%preun
+if test "$1" = "0"; then
+	/sbin/chkconfig --del dhcp-fwd
+fi
+
+%postun
+if test "$1" = "0"; then
+	/usr/sbin/userdel dhcp-fwd &>/dev/null || true
+elif test "$1" -ge 1; then
+	/sbin/service dhcp-fwd condrestart >/dev/null
+fi
+
+
+%files
+%defattr(-,root,root,-)
+%doc AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS
+%doc %{_mandir}/*/*
+%config /etc/init.d/*
+%config(noreplace) /etc/sysconfig/*
+%config(noreplace) %{_sysconfdir}/dhcp-fwd.conf
+%{_sbindir}/*
+
+## *DO NOT* add %defattr(-,dhcp-fwd,dhcp-fwd); the homedir is used for
+## the chroot() only and there is no reason why the setuid()'ed daemon
+## needs any kind of access there
+%{homedir}
+
+
+%changelog
+* Wed Aug 28 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 0.3.1-1
+- Added /etc/sysconfig/dhcp-fwd file
+
+* Fri Jul 12 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 0.2.5-2
+- Renamed username from dhcpfwd to dhcp-fwd
+- Adjusted URL
+
+* Fri Jul 12 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 0.2.5-1
+- version 0.2.5
+- Fixed some typos
+- Added some PreReq's
+- Enhanced %postun script
+
+* Mon Jun 17 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 0.2-2
+- Described purpose of the %%{homedir} and its handling
+
+* Fri Jun 14 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 0.2-1
+- Added manpage
+
+* Thu Jun 13 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 0.1-0.3
+- Added --without dietlibc option
+
+* Sat Jun  1 2002 Enrico Scholz <enrico.scholz@informatik.tu-chemnitz.de> 
+- Initial build.

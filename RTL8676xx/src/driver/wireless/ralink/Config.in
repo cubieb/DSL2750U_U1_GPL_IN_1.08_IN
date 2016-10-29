@@ -1,0 +1,36 @@
+menuconfig DRIVERS_WLAN_RALINK
+	bool 'Ralink wireless drivers'
+	default n
+	depends on DRIVERS_WLAN
+	help
+		Wireless device driver 
+
+menuconfig DRIVERS_WLAN_RALINK_RT3070_SOFTAP
+	bool 'RT3070 SoftAP'
+	default n
+	depends on DRIVERS_WLAN_RALINK
+	help
+		Ralink usb wireless card driver
+
+config  DRIVERS_WLAN_RALINK_RT3070_SOFTAP_V1_3_1_0
+	bool 'RT3070 SoftAP v1.3.1.0'
+	default n
+	depends on DRIVERS_WLAN_RALINK_RT3070_SOFTAP
+	help 
+
+config  DRIVERS_WLAN_RALINK_RT3070_SOFTAP_V2_1_3_0
+	bool 'RT3070 SoftAP v2.1.3.0'
+	default y
+	depends on DRIVERS_WLAN_RALINK_RT3070_SOFTAP
+	help 
+
+source "driver/wireless/ralink/RT288x_SDK_3.2/Config.in"
+
+config DRIVERS_WLAN_RALINK_RT2860_11N
+	bool 'RT2860 11N'
+	default n
+	depends on DRIVERS_WLAN_RALINK
+  	help 
+      		Ralink usb wireless card driver
+
+		

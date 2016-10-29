@@ -1,0 +1,113 @@
+<div class="dialog_faq dialog_faq_dev"></div>	
+<div class="conf_devices">		
+	<div class="dev_left" >
+		<div class="dev_ico_big" id="iconBig"></div>
+	</div>
+	<div class="dev_right">
+		<div class="dev_line">
+			<div class="title_grey dev_divTxt1 trad" key="CONF_DEV_NAME" id="device_name"></div>
+			<div id="devName" class="dev_divTxt2 hand">
+				<span class="left" id="nameDevice"></span> <div id="imgEdit" class="left edit_iconLittle"></div>
+			</div>
+		</div>
+		<div class="dev_line">
+			<div class="title_grey dev_divTxt1 trad" key="CONF_DEV_TYPE"></div>
+			<div class="dev_divTxt2" >
+				<select id="selectType" class="dev_divTxt2">
+					<option value="DesktopComputer" class="trad" key="CONF_DEV_DESKTOP"></option>
+					<option value="Laptop" class="trad" key="CONF_DEV_LAPTOP"></option>
+					<option value="TVset" class="trad" key="CONF_DEV_TV"></option>
+					<option value="HiFi" class="trad" key="CONF_DEV_HIFI"></option>
+					<option value="CellPhone" class="trad" key="CONF_DEV_PHONE"></option>
+					<option value="MobileDevice" class="trad" key="CONF_DEV_MOBILE"></option>
+					<option value="GameConsole" class="trad" key="CONF_DEV_GAME"></option>
+					<option value="HardDrive" class="trad" key="CONF_DEV_HD"></option>
+					<option value="Printer" class="trad" key="CONF_DEV_PRINTER"></option>
+					<option value="Other" class="trad" key="CONF_DEV_OTHER"></option>
+					<option value="Unknown" class="trad" key="CONF_DEV_UNKNOWN"></option>
+				</select>
+			</div>
+		</div>
+		<div class="dev_line">
+			<div class="title_grey dev_divTxt1 trad" key="CONF_DEV_IP"></div>
+			<div class="dev_divTxt2" ><span id="ipDevice"></span></div>
+		</div>			
+		<div class="dev_line">
+			<div id="connected" class="title_grey dev_divTxt3"></div>
+		</div>
+		<div class="hand" id="minus"></div>
+	</div>
+</div>
+
+<div class="line_grey"></div>
+
+<div class="conf_dev_app" >
+	<div class="title_grey trad" key="CONF_DEV_ALLOWED" style="width:410px;"></div>
+	<div class="scroll_devApp">
+			<div id="app_content"></div>	
+	</div>	
+	
+	<div id="app_dev" class="hand conf_app">
+		<span class="trad conf_appTxt" key="MAP_CONFIG_APPLICATIONS"></span>
+		<div class="applications_icoLittle"></div>
+	</div>
+</div>
+<div class="line_grey"></div>
+<div class="centred">
+	<div id="cancel" class="cancel hand">
+		<div class="cancel_icon"></div>			
+		<span class="trad cancel_txt" key="COMMON_CANCEL"></span>
+	</div>
+	<div id="acceptDevice" class="accept buttons_space hand">
+		<div class="accept_icon"></div>			
+		<span class="trad accept_txt" key="COMMON_ACCEPT"></span>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/devices.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	listApplications(loadInfoDevice);	
+	$('#app_dev').click(function() {
+		loadDialog("html/networkMap/applications.html",_("APPLICATIONS_TITLE"),790, function (){
+			load_some_iphone_butons($("#rules_list input[type=checkbox]"));
+			$("select").selectbox();			
+		});
+	});
+	if(unknownDevice!="true"){
+		$('#devName').click(function() {
+			$("#devName").html("<input type='text' id='nameDev' name='nameDev' maxlength='16' value='"+nameDevice+"'></input>");
+			$("#nameDev").focus();
+			$('#devName').unbind("click");
+		});
+	}
+	
+	$('#minus').click(function() {
+		showWarningOptional(_("CONF_DEV_REMOVE_QUESTION"),function(resp){
+				if (resp == true) {	removeDevice(idDev, responseRemoveDev);}
+			}
+		);
+	});
+	$('#acceptDevice').click(function() {
+		var applicationsListJSON=createdAppListJSON();
+		modifyListAssignedApplications(idDev,applicationsListJSON,responseAssignApp);
+		renoveSession();
+	});
+	effectHover('app_dev','applications_icoLittle');
+	effectHover('minus','minus_icon');
+	effectHover('devName', 'edit_iconLittle');
+	
+	if (unknownDevice == "true") {
+		$('.dialog_faq_dev').click(function() {		
+			loadHelpDialog(_("HELP_TITLE"), function() { linkContent(5,6); });		
+		});
+		
+	}else{
+		$('.dialog_faq_dev').click(function() {		
+			loadHelpDialog(_("HELP_TITLE"), function() { linkContent(5,5); });		
+		});
+	}
+	
+	renoveSession();	
+});
+</script>

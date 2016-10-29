@@ -1,0 +1,74 @@
+######################################
+#
+#
+######################################
+menuconfig APPS
+  bool "Applications"
+  default y
+
+source apps/ssap/Config.in  
+source apps/logic/Config.in  
+
+source apps/ipv6/Config.in
+config APPS_CLI
+	bool 'CLI'
+	default y
+	depends on APPS
+  	help 
+      	CLI(Command Line Interface)
+
+config APPS_CLI_SEPARATE_AUTH
+	bool 'CLI authenticate from MTD'
+	default n
+	depends on APPS_CLI
+	help
+		CLI authenticate from MTD replace from config
+
+menu "TR069FE"
+	depends on APPS
+	config APPS_TR069
+		bool 'TR069'
+		default n
+		depends on APPS_LOGIC_TR069 && APPS
+		help
+		TR069FE
+source apps/tr069fe/Config.in
+endmenu
+
+menu "TR064FE"
+    depends on APPS
+    config APPS_TR064
+		bool 'TR064'
+		default n
+		depends on APPS_LOGIC_TR064BE && APPS
+		help
+		TR064FE
+source apps/tr064fe/Config.in
+endmenu
+      
+config APPS_WEB
+	bool 'WEB'
+	default y
+	depends on APPS
+	select OPENSOURCE_HTTPD
+  	help
+      	WEB       
+
+source apps/html/Config.in
+
+config APPS_TM
+        bool 'TM'
+        default n
+        depends on APPS
+        help
+        TM
+config APPS_UPGCGI
+	boolean "upgcgi"
+	default n
+	depends on APPS
+	help
+	CGI upg
+source apps/supp/Config.in
+
+source apps/logic/new3g/Config.in
+source apps/captival-portal/Config.in

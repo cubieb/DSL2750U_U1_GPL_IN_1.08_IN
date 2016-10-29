@@ -1,0 +1,20 @@
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_BridgeFilter type="object"  Standard="0">
+	  <Enable type="boolean" Writable="0">1</Enable>
+		<BridgeRule type="string" Writable="1">Allow</BridgeRule>
+		<MaxBridgeFilterEntries type="unsignedInt" Writable="0">16</MaxBridgeFilterEntries>
+		<BridgeFilterNumberOfEntries type="unsignedInt" Writable="0">0</BridgeFilterNumberOfEntries>
+		<BridgeFilterList type="object" MaxNode="MaxBridgeFilterEntries" CurNode="BridgeFilterNumberOfEntries">
+			<i type="object">
+				<ProtocolType type="unsignedInt">0</ProtocolType>
+				<DstMac type="string">0.0.0.0</DstMac>
+				<SrcMac type="string">0.0.0.0</SrcMac>
+				<UsrPriority type="string"></UsrPriority>
+				<VlanId type="string"></VlanId>
+				<LanDirection type="unsignedInt">0</LanDirection>
+				<BridgeRuleWan type="string">select_all</BridgeRuleWan>
+				<TimeSchedule type="string">always</TimeSchedule>
+			</i>
+		</BridgeFilterList>
+	    </X_TWSZ-COM_BridgeFilter>
+</InternetGatewayDevice>

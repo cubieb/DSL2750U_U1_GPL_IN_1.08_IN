@@ -1,0 +1,10 @@
+menuconfig OPENSOURCE_BUSYBOX
+	bool 'BusyBox'
+	default y
+	depends on OPENSOURCE
+	help 
+      	Busy Box
+
+if OPENSOURCE_BUSYBOX=y
+	source opensource/busybox/busybox-1.6.1/Config.in.main
+endif

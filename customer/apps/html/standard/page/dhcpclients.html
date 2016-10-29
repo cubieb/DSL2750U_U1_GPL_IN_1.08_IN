@@ -1,0 +1,35 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="DHCPClients">DHCP Clients</p>
+		<div class="div_orange">
+			<p id="flectsthecurr">It indicates the current DHCP client of your router.</p>
+		</div>
+		<p class="do bk_black"  id="DHCPLeases">DHCP Leases</p>
+		<div class="div_black">
+			<table class="td_table_s" id="td_lanClients">
+				<tr class="tr_bold">
+					<td  id="Hostname">Hostname</td>
+					<td  id="MACAddress">MAC Address</td>
+					<td id="IPAddress">IP Address</td>
+					<td  id="ExpiresIn">Expires In</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button">
+			<input type="button" name="refresh" id="refresh" value="Refresh" onClick="uiPageRefresh()" >
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5  id="lang_help">Helpful Hints...</h5>
+		<div>
+		<p id="lang_helpdec">
+	        It shows the list of all LAN clients that are currently connected to the router and whose IP addresses are assigned by DHCP service. 
+		</p></div>
+		<h5 ><a href="#" id="lang_More">More...</a></h5>
+	</div>
+</td>
+

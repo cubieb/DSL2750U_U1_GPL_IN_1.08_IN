@@ -1,0 +1,87 @@
+
+<InternetGatewayDevice type="object">
+	<WANDeviceNumberOfEntries type="unsignedInt" Writable="0"></WANDeviceNumberOfEntries>
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionNumberOfEntries type="unsignedInt" Writable="0">0</WANConnectionNumberOfEntries>
+			<MAXWANConnectionNumberOfEntries type="unsignedInt" Writable="0">8</MAXWANConnectionNumberOfEntries>
+			<WANCommonInterfaceConfig type="object">
+				<X_TWSZ-COM_DeviceName type="string" Writable="0" Standard="0">ADSL</X_TWSZ-COM_DeviceName>
+				<EnabledForInternet type="boolean">1</EnabledForInternet>
+				<WANAccessType type="string" Writable="0"></WANAccessType>
+				<X_TELEFONICA-ES_MultiNATModeSupported type="string" Writable="0" Standard="0">One-to-One,Many-to-One,Many-to-Many,Server</X_TELEFONICA-ES_MultiNATModeSupported>
+                <X_TELEFONICA-ES_MultiNATMode type="string" Writable="1" Standard="0">One-to-One</X_TELEFONICA-ES_MultiNATMode>
+				<Layer1UpstreamMaxBitRate type="unsignedInt" Writable="0"></Layer1UpstreamMaxBitRate>
+				<Layer1DownstreamMaxBitRate type="unsignedInt" Writable="0"></Layer1DownstreamMaxBitRate>
+				<PhysicalLinkStatus type="string" Writable="0"></PhysicalLinkStatus>
+				<WANAccessProvider type="string(256)" Writable="0"></WANAccessProvider>
+				<TotalBytesSent type="unsignedInt" Writable="0"></TotalBytesSent>
+				<TotalBytesReceived type="unsignedInt" Writable="0"></TotalBytesReceived>
+				<TotalPacketsSent type="unsignedInt" Writable="0"></TotalPacketsSent>
+				<TotalPacketsReceived type="unsignedInt" Writable="0"></TotalPacketsReceived>
+				<X_TWSZ-COM_MaximumConnections type="unsignedInt" Writable="0" Standard="0">16</X_TWSZ-COM_MaximumConnections>
+				<X_TWSZ-COM_MaximumIPConnections type="unsignedInt" Writable="0" Standard="0">8</X_TWSZ-COM_MaximumIPConnections>
+				<X_TWSZ-COM_MaximumPPPConnections type="unsignedInt" Writable="0" Standard="0">16</X_TWSZ-COM_MaximumPPPConnections>
+				<MaximumActiveConnections type="unsignedInt" Writable="0">4</MaximumActiveConnections>
+				<NumberOfActiveConnections type="unsignedInt" Writable="0">0</NumberOfActiveConnections>
+				<TWSZ-COM_NumberOfEnabledConnections type="unsignedInt" Writable="0" Standard="0">0</TWSZ-COM_NumberOfEnabledConnections>
+				<Connection type="object" Writable="0" MaxNode="MaximumActiveConnections" CurNode="NumberOfActiveConnections">
+					<i type="object">
+						<ActiveConnectionDeviceContainer type="string(256)" Writable="0"></ActiveConnectionDeviceContainer>
+						<ActiveConnectionServiceID type="string(256)" Writable="0"></ActiveConnectionServiceID>
+						<ActiveConnectionRef type="unsignedInt" Writable="0"></ActiveConnectionRef>
+					</i>
+				</Connection>
+			</WANCommonInterfaceConfig>
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<X_TWSZ-COM_DeviceName type="string" Standard="0" Writable="0"></X_TWSZ-COM_DeviceName>
+					<X_TWSZ-COM_ProxyArp type="boolean">0</X_TWSZ-COM_ProxyArp>
+					<X_TWSZ-COM_VLANID type="unsignedInt" Standard="0">0</X_TWSZ-COM_VLANID>
+					<X_TWSZ-COM_VLANPriority type="unsignedInt" Standard="0">0</X_TWSZ-COM_VLANPriority>
+					<X_TWSZ-COM_QinQEnable type="boolean">0</X_TWSZ-COM_QinQEnable>
+					<X_TWSZ-COM_FirewallEnable type="boolean">1</X_TWSZ-COM_FirewallEnable>
+					<X_TWSZ-COM_MACAddress type="string" Writable="0"></X_TWSZ-COM_MACAddress>
+					<WANEthernetLinkConfig type="object" >
+						<EthernetLinkStatus type="string" Writable="0">Unavailable</EthernetLinkStatus>
+						<X_TELEFONICA-ES_IGMPEnabled type="boolean" Standard="0" Writable="1">0</X_TELEFONICA-ES_IGMPEnabled>
+					</WANEthernetLinkConfig>
+					<WANDSLLinkConfig type="object">
+						<Enable type="boolean">1</Enable>
+						<LinkStatus type="string" Writable="0">Unavailable</LinkStatus>
+						<LinkType type="string(256)">EoA</LinkType>
+						<DestinationAddress type="string"></DestinationAddress>
+						<ATMEncapsulation type="string">LLC</ATMEncapsulation>
+						<ATMAAL type="string" Writable="0">AAL5</ATMAAL>
+						<ATMQoS type="string">UBR</ATMQoS>
+						<ATMPeakCellRate type="unsignedInt">0</ATMPeakCellRate>
+						<ATMMaximumBurstSize type="unsignedInt">0</ATMMaximumBurstSize>
+						<ATMSustainableCellRate type="unsignedInt">0</ATMSustainableCellRate>
+						<ModulationType type="string" Writable="0">ADSL_2plus</ModulationType>
+					</WANDSLLinkConfig>	
+					<WANATMF5LoopbackDiagnostics type="object">
+						<MaximumResponseTime type="unsignedInt" Writable="0" NeedSave="0">0</MaximumResponseTime>
+						<MinimumResponseTime type="unsignedInt" Writable="0" NeedSave="0">0</MinimumResponseTime>
+						<AverageResponseTime type="unsignedInt" Writable="0" NeedSave="0">0</AverageResponseTime>
+						<FailureCount type="unsignedInt" Writable="0" NeedSave="0">0</FailureCount>
+						<SuccessCount type="unsignedInt" Writable="0" NeedSave="0">0</SuccessCount>
+						<Timeout type="unsignedInt" NeedSave="0">20</Timeout>
+						<NumberOfRepetitions type="unsignedInt" NeedSave="0">1</NumberOfRepetitions>
+						<DiagnosticsState type="string" NeedSave="0">None</DiagnosticsState>
+					</WANATMF5LoopbackDiagnostics>
+					<WANIPConnection type="object">
+						<i type="object">							
+							<X_TWSZ-COM_ServiceList type="string" Standard="0">Internet</X_TWSZ-COM_ServiceList>							
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object">
+						<i type="object">							
+							<X_TWSZ-COM_ServiceList type="string" Standard="0">Internet</X_TWSZ-COM_ServiceList>							
+							<MACAddress type="string" Writable="0"></MACAddress>							
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

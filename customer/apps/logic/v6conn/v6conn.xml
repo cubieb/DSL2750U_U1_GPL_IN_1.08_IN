@@ -1,0 +1,115 @@
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0">
+		<i type="object">
+			<WANConnectionDevice type="object">
+				<i type="object">
+					<WANIPConnection type="object" CurNode="WANIPConnectionNumberOfEntries">
+						<i type="object">
+							<X_TELEFONICA-ES_IPv6Enabled type="boolean">0</X_TELEFONICA-ES_IPv6Enabled>
+							<X_TELEFONICA-ES_UnnumberedModel type="boolean" Writable="0">0</X_TELEFONICA-ES_UnnumberedModel>
+							<X_TELEFONICA-ES_IPv6ConnStatus type="string" Writable="0">Disconnected</X_TELEFONICA-ES_IPv6ConnStatus>
+							<X_TELEFONICA-ES_IPv6AddressingType type="string">SLAAC</X_TELEFONICA-ES_IPv6AddressingType>
+							<X_TELEFONICA-ES_DHCP6cForAddress type="boolean">0</X_TELEFONICA-ES_DHCP6cForAddress>
+							<X_TELEFONICA-ES_ExternalIPv6Address type="string"></X_TELEFONICA-ES_ExternalIPv6Address>
+							<X_TELEFONICA-ES_DefaultIPv6Gateway type="string"></X_TELEFONICA-ES_DefaultIPv6Gateway>
+							<X_TELEFONICA-ES_IPv6PrefixDelegationEnabled type="boolean">0</X_TELEFONICA-ES_IPv6PrefixDelegationEnabled>
+							<X_TELEFONICA-ES_IPv6SitePrefix type="string"></X_TELEFONICA-ES_IPv6SitePrefix>
+							<X_TELEFONICA-ES_ExternalIPv6AddressPrefixLength type="unsignedInt">128</X_TELEFONICA-ES_ExternalIPv6AddressPrefixLength>
+							<X_TELEFONICA-ES_IPv6SitePrefixPltime type="int" Writable="0">7200</X_TELEFONICA-ES_IPv6SitePrefixPltime>
+							<X_TELEFONICA-ES_IPv6SitePrefixVLtime type="int" Writable="0">172800</X_TELEFONICA-ES_IPv6SitePrefixVLtime>
+							<X_TELEFONICA-ES_IPv6DNSServers type="string"></X_TELEFONICA-ES_IPv6DNSServers>							
+							<X_TWSZ-COM_IPv6Config type="object">
+								<ConnectionStatus type="string" Writable="0">Disconnected</ConnectionStatus>
+								<X_TWSZ-COM_ConnectedDeviceName type="string" Writable="0"></X_TWSZ-COM_ConnectedDeviceName>
+								<DUIDConfigType type="string">Auto</DUIDConfigType>
+								<DUID type="string">00:01:00:01:00:00:00:01:00:00:00:00:00:01</DUID>
+								<IPv6AddressList type="object" Writable="0">
+									<i type="object">
+										<AddressScope type="string" Writable="0"></AddressScope>
+										<AddressingType type="string" Writable="0"></AddressingType>
+										<IPv6Address type="string" Writable="0"></IPv6Address>
+										<PrefixLength type="unsignedInt" Writable="0"></PrefixLength>
+										<AddressStatus type="string" Writable="0">Invalid</AddressStatus>
+									</i>
+								</IPv6AddressList>
+								<IPv6DefaultRouterList type="object" Writable="0">
+									<i type="object">
+										<ConfigType type="string" Writable="0">OTHER</ConfigType>
+										<DefaultRouter type="string" Writable="0"></DefaultRouter>
+									</i>
+								</IPv6DefaultRouterList>
+								<IPv6SitePrefixInfo type="object">
+									<IPv6SitePrefix type="string" Writable="0"></IPv6SitePrefix>
+									<IPv6SitePrefixLength type="unsignedInt" Writable="0"></IPv6SitePrefixLength>
+									<PreferredLifeTime type="string" Writable="0"></PreferredLifeTime>
+									<ValidLifeTime type="string" Writable="0"></ValidLifeTime>
+									<PrefixStatus type="string" Writable="0">Invalid</PrefixStatus>
+								</IPv6SitePrefixInfo>
+								<IPv6DNSEnabled type="boolean">1</IPv6DNSEnabled>
+								<IPv6DNSOverrideAllowed type="boolean">0</IPv6DNSOverrideAllowed>
+								<IPv6DNSServers type="string" Writable="0"></IPv6DNSServers>
+								<UsrIPv6DNSServers type="string"></UsrIPv6DNSServers>
+								<GetIPv6NTPServers type="boolean">0</GetIPv6NTPServers>
+								<IPv6NTPServers type="string" Writable="0"></IPv6NTPServers>
+							</X_TWSZ-COM_IPv6Config>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object" CurNode="WANPPPConnectionNumberOfEntries">
+						<i type="object">
+							<X_TELEFONICA-ES_IPv6Enabled type="boolean">0</X_TELEFONICA-ES_IPv6Enabled>
+							<X_TELEFONICA-ES_UnnumberedModel type="boolean" Writable="0">0</X_TELEFONICA-ES_UnnumberedModel>
+							<X_TELEFONICA-ES_IPv6ConnStatus type="string" Writable="0">Disconnected</X_TELEFONICA-ES_IPv6ConnStatus>
+							<X_TELEFONICA-ES_IPv6PppUp type="string" Writable="0"></X_TELEFONICA-ES_IPv6PppUp>
+							<X_TELEFONICA-ES_IPv6AddressingType type="string">SLAAC</X_TELEFONICA-ES_IPv6AddressingType>
+							<X_TELEFONICA-ES_DHCP6cForAddress type="boolean">0</X_TELEFONICA-ES_DHCP6cForAddress>
+							<X_TELEFONICA-ES_ExternalIPv6Address type="string" Writable="0"></X_TELEFONICA-ES_ExternalIPv6Address>
+							<X_TELEFONICA-ES_DefaultIPv6Gateway type="string" Writable="0"></X_TELEFONICA-ES_DefaultIPv6Gateway>
+							<X_TELEFONICA-ES_IPv6PrefixDelegationEnabled type="boolean">0</X_TELEFONICA-ES_IPv6PrefixDelegationEnabled>
+							<X_TELEFONICA-ES_IPv6SitePrefix type="string" Writable="0"></X_TELEFONICA-ES_IPv6SitePrefix>
+							<X_TELEFONICA-ES_ExternalIPv6AddressPrefixLength type="unsignedInt" Writable="0">128</X_TELEFONICA-ES_ExternalIPv6AddressPrefixLength>
+							<X_TELEFONICA-ES_IPv6SitePrefixPltime type="int" Writable="0">7200</X_TELEFONICA-ES_IPv6SitePrefixPltime>
+							<X_TELEFONICA-ES_IPv6SitePrefixVLtime type="int" Writable="0">172800</X_TELEFONICA-ES_IPv6SitePrefixVLtime>
+							<X_TELEFONICA-ES_IPv6DNSServers type="string" Writable="0"></X_TELEFONICA-ES_IPv6DNSServers>							
+							<X_TWSZ-COM_IPv6Config type="object">
+								<RemoteIPv6LinkLocalAddress type="string"></RemoteIPv6LinkLocalAddress>
+								<ConnectionStatus type="string" Writable="0">Disconnected</ConnectionStatus>
+								<X_TWSZ-COM_ConnectedDeviceName type="string" Writable="0"></X_TWSZ-COM_ConnectedDeviceName>
+								<DUIDConfigType type="string">Auto</DUIDConfigType>
+								<DUID type="string">00:01:00:01:00:00:00:01:00:00:00:00:00:01</DUID>
+								<IPv6AddressList type="object" Writable="0">
+									<i type="object">
+										<AddressScope type="string" Writable="0"></AddressScope>
+										<AddressingType type="string" Writable="0"></AddressingType>
+										<IPv6Address type="string" Writable="0"></IPv6Address>
+										<PrefixLength type="unsignedInt" Writable="0"></PrefixLength>
+										<AddressStatus type="string" Writable="0">Invalid</AddressStatus>
+									</i>
+								</IPv6AddressList>
+								<IPv6DefaultRouterList type="object" Writable="0">
+									<i type="object">
+										<ConfigType type="string">OTHER</ConfigType>
+										<DefaultRouter type="string"></DefaultRouter>
+									</i>
+								</IPv6DefaultRouterList>
+								<IPv6PrefixDelegationEnabled type="boolean">1</IPv6PrefixDelegationEnabled>
+								<IPv6SitePrefixInfo type="object">
+									<IPv6SitePrefix type="string" Writable="0"></IPv6SitePrefix>
+									<IPv6SitePrefixLength type="unsignedInt" Writable="0"></IPv6SitePrefixLength>
+									<PreferredLifeTime type="string" Writable="0"></PreferredLifeTime>
+									<ValidLifeTime type="string" Writable="0"></ValidLifeTime>
+									<PrefixStatus type="string" Writable="0">Invalid</PrefixStatus>
+								</IPv6SitePrefixInfo>
+								<IPv6DNSEnabled type="boolean">1</IPv6DNSEnabled>
+								<IPv6DNSOverrideAllowed type="boolean">0</IPv6DNSOverrideAllowed>
+								<IPv6DNSServers type="string" Writable="0"></IPv6DNSServers>
+								<UsrIPv6DNSServers type="string"></UsrIPv6DNSServers>
+								<GetIPv6NTPServers type="boolean">0</GetIPv6NTPServers>
+								<IPv6NTPServers type="string" Writable="0"></IPv6NTPServers>
+							</X_TWSZ-COM_IPv6Config>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

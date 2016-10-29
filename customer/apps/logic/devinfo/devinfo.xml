@@ -1,0 +1,33 @@
+
+<InternetGatewayDevice type="object">
+	<DeviceInfo type="object">
+		<Manufacturer type="string(64)" Writable="0">TongWei</Manufacturer>
+		<ManufacturerOUI type="string(6)" Writable="0">00E0A6</ManufacturerOUI>
+		<ModelName type="string(64)" Writable="0">TBS</ModelName>
+		<X_TWSZ-COM_DeviceDomainNameLabel type="string(64)" Writable="0">homestation</X_TWSZ-COM_DeviceDomainNameLabel>
+		<X_TWSZ-COM_FactoryMode type="string" Writable="0">default_settings</X_TWSZ-COM_FactoryMode>
+		<Description type="string(256)" Writable="0">Tongwei Broadband System</Description>
+		<ProductClass type="string(64)" Writable="0">IGD</ProductClass>
+		<SerialNumber type="string(64)" Writable="0">001EE3010203</SerialNumber>
+		<HardwareVersion type="string(64)" Writable="0">Unknown</HardwareVersion>
+		<SoftwareVersion type="string(64)" Writable="0" Notification="2">TBS-R2B01</SoftwareVersion>
+		<ModemFirmwareVersion type="string(64)" Writable="0">1.0.0</ModemFirmwareVersion>
+		<EnabledOptions type="string(1024)" Writable="0"></EnabledOptions>
+		<AdditionalHardwareVersion type="string(64)" Writable="0"></AdditionalHardwareVersion>
+		<AdditionalSoftwareVersion type="string(64)" Writable="0"></AdditionalSoftwareVersion>
+		<SpecVersion type="string(16)" Writable="0"></SpecVersion>
+		<ProvisioningCode type="string(64)" Writable="0" Notification="2"></ProvisioningCode>
+		<UpTime type="unsignedInt" Writable="0"></UpTime>
+		<FirstUseDate type="dateTime" Writable="0"></FirstUseDate>
+		<DeviceLog type="string(32k)" Writable="0"></DeviceLog>
+		<VendorConfigFileNumberOfEntries type="unsignedInt" Writable="0"></VendorConfigFileNumberOfEntries>
+		<VendorConfigFile type="object" Writable="0">
+			<i type="object">
+				<Name type="string(64)" Writable="0"></Name>
+				<Version type="string(15)" Writable="0"></Version>
+				<Date type="dateTime" Writable="0"></Date>
+				<Description type="string(256)" Writable="0"></Description>
+			</i>
+		</VendorConfigFile>
+	</DeviceInfo>
+</InternetGatewayDevice>

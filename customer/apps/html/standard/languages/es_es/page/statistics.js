@@ -1,0 +1,70 @@
+﻿var data_language = {
+	
+	innerHTML : {
+		deviceinfo : 'información del dispositivo',
+		mationreflects : 'Esto indica el estado actual de todas las conexiones.',
+		LocalNetwork : ' Red Local e Inalámbrica',
+		interface5 : 'interfaz',
+		Received5 : 'Recibido',
+		Transmitted5 : 'Transmitido',
+		Bytes3 : 'Bytes',
+		Pkts3 : 'Pkts',
+		Errs3 : 'Errs',
+		Rxdrop3 : 'Caída Rx',
+		Rxdrop2 : 'Caída Rx',
+		Bytes2 : 'Bytes',
+		Pkts1  :  'Pkts',
+		Pkts2 : 'Pkts',
+		Errs2 : 'Errs',
+		Internet : 'Internet',
+		Service : 'Servicio',
+		VPIVCI : 'VPI/VCI',
+		Protocol : 'Protocolo',
+		Received : 'Recibido',
+		Transmitted : 'Transmitido',
+		Bytes1 : 'Bytes',
+		Errs1 : 'Errs',
+		Drops1 : 'Caídas',
+		Bytes : 'Bytes',
+		Pkts : 'Pkts',
+		Errs : 'Errs',
+		Drops : 'Caídas',
+		ADSL : 'ADSL',
+		Mode : 'Modo:',
+		Type : 'Tipo:',
+		LineCoding : 'Codificación de línea:',
+		Status : 'Estado:',
+		UpTime : 'Tiempo de subida:',
+		Downstream : 'Flujo descendente',
+		Upstream : 'Flujo ascendente',
+		SNRMargindB : 'Margen SNR (0.1dB):',
+		Attenuation : 'Atenuación(0.1dB):',
+		OutputPowerdBm : 'Potencia de salida (dBm):',
+		AttainableRate : 'Velocidad Alcanzable (Kbps):',
+		RateKbps : 'Tasa (Kbps):',
+		Dinterleaverdepth : 'D (intercalado de profundidad):',
+		Delaymsec : 'Demora (msec):',
+		DataCounter : 'Contador de Datos:',
+		HECErrors : 'Errores HEC:',
+		OCDErrors : 'Errores OCD:',
+		LCDErrors : 'Errores LCD:',
+		CRCErrors : 'Errores CRC:',
+		FECErrors : 'Errores FEC:',
+		TotalES : 'Total ES',
+		TotalFrames : 'Marcos Totales',
+		lang_help : 'Consejos Útiles ...',
+		lang_helpdec : 'Esto muestra el número de paquetes que han sido transmitidos entre WAN y LAN desde que el enrutador se inicializó por última vez.',
+		lang_more : 'Más..'
+	},
+	
+	dynamic : {
+		Enable : 'Habilitar',
+		DISABLE : 'Deshabilitar'
+ },
+ 
+  value : {
+	 clear_up : 'Limpiar',
+	 clear_down : 'Limpiar'
+ }
+
+}

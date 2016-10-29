@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ATH_MOD_PATH=/lib/modules/2.6.15/net/11n/magpie_usb_flash
+
+insmod ${ATH_MOD_PATH}/adf.ko
+insmod ${ATH_MOD_PATH}/hif_usb.ko
+insmod ${ATH_MOD_PATH}/hst_htc.ko
+insmod ${ATH_MOD_PATH}/hst_hal.ko
+insmod ${ATH_MOD_PATH}/hst_wlan.ko
+insmod ${ATH_MOD_PATH}/hst_scansta.ko
+insmod ${ATH_MOD_PATH}/hst_rate.ko
+insmod ${ATH_MOD_PATH}/hst_ath.ko
+insmod ${ATH_MOD_PATH}/if_ath_usb.ko
+

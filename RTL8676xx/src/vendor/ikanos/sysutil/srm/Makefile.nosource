@@ -1,0 +1,6 @@
+all:
+	@echo SRM Done
+
+clean:
+	@echo SRM Clean done
+

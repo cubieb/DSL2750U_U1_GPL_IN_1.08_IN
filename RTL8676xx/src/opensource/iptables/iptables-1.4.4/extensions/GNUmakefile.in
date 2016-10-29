@@ -1,0 +1,617 @@
+# -*- Makefile -*-
+#! /usr/bin/make
+
+top_builddir := @top_builddir@
+builddir     := @builddir@
+top_srcdir  := @top_srcdir@
+srcdir      := @srcdir@
+ksourcedir  := @ksourcedir@
+prefix      := @prefix@
+exec_prefix := @exec_prefix@
+libdir      := @libdir@
+libexecdir  := @libexecdir@
+xtlibdir    := @xtlibdir@
+ROOTDIR = $(patsubst %/build/tmpdist,%,${prefix})
+include $(ROOTDIR)/.config
+include $(ROOTDIR)/BaseVar.mk
+
+CC             := @CC@
+CCLD           := ${CC}
+CFLAGS         := @CFLAGS@
+LDFLAGS        := @LDFLAGS@
+regular_CFLAGS := @regular_CFLAGS@
+kinclude_CFLAGS := @kinclude_CFLAGS@
+
+AM_CFLAGS      := ${regular_CFLAGS} -I${top_builddir}/include -I${top_srcdir}/include ${kinclude_CFLAGS}
+AM_DEPFLAGS     = -Wp,-MMD,$(@D)/.$(@F).d,-MT,$@
+
+ifeq (${V},)
+AM_LIBTOOL_SILENT = --silent
+AM_VERBOSE_CC     = @echo "  CC      " $@;
+AM_VERBOSE_CCLD   = @echo "  CCLD    " $@;
+AM_VERBOSE_CXX    = @echo "  CXX     " $@;
+AM_VERBOSE_CXXLD  = @echo "  CXXLD   " $@;
+AM_VERBOSE_AR     = @echo "  AR      " $@;
+AM_VERBOSE_GEN    = @echo "  GEN     " $@;
+endif
+
+#
+#	Wildcard module list
+#
+pfx4_build_mod := standard
+pfx4_build_mod += cluster
+pfx4_build_mod += rateest
+pfx4_build_mod += socket
+pfx4_build_mod += TCPOPTSTRIP
+pfx4_build_mod += TPROXY
+pfx4_build_mod += TRACE
+pfx4_build_mod += u32   
+     
+ifeq (${CONFIG_OPENSOURCE_IPT_UDP},y)
+pfx4_build_mod +=udp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_TOS_T},y)
+pfx4_build_mod +=TOS
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_MARK_T},y)
+pfx4_build_mod +=MARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CONNSECMARK},y)
+pfx4_build_mod +=CONNSECMARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_DNAT},y)
+pf4_build_mod +=DNAT
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CLASSIFY},y)
+pfx4_build_mod +=CLASSIFY
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_COMMENT},y)
+pfx4_build_mod +=comment
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CONNBYTES},y)
+pfx4_build_mod +=connbytes
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CONNLIMIT},y)
+pfx4_build_mod +=connlimit
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CONNMARK_T},y)
+pfx4_build_mod +=CONNMARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CONNTRACK},y)
+pfx4_build_mod +=conntrack
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_DCCP},y)
+pfx4_build_mod +=dccp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_DSCP_T},y)
+pfx4_build_mod +=DSCP
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_ESP},y)
+pfx4_build_mod +=esp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_HASHLIMIT},y)
+pfx4_build_mod +=hashlimit
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_HASHLIMIT},y)
+pfx4_build_mod +=hashlimit
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_HELPER},y)
+pfx4_build_mod +=helper
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_IPRANGE},y)
+pfx4_build_mod +=iprange
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_LENGTH},y)
+pfx4_build_mod +=length
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_LIMIT},y)
+pfx4_build_mod +=limit
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_MAC},y)
+pfx4_build_mod +=mac
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_MARK},y)
+pfx4_build_mod +=mark
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_MULTIPORT},y)
+pfx4_build_mod +=multiport
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_NFLOG},y)
+pfx4_build_mod +=NFLOG
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_NFQUEUE},y)
+pfx4_build_mod +=NFQUEUE
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_NOTRACK},y)
+pfx4_build_mod +=NOTRACK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_OWNER},y)
+pfx4_build_mod +=owner
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_PHYSDEV},y)
+pfx4_build_mod +=physdev
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_PKTTYPE},y)
+pfx4_build_mod +=pkttype
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_POLICY},y)
+pfx4_build_mod +=policy
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_QUOTA},y)
+pfx4_build_mod +=quota
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_RECENT},y)
+pfx4_build_mod +=recent
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_SCTP},y)
+pfx4_build_mod +=sctp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_SECMARK},y)
+pfx4_build_mod +=SECMARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_STATE},y)
+pfx4_build_mod +=state
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_STATISTIC},y)
+pfx4_build_mod +=statistic
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_STRING},y)
+pfx4_build_mod +=string
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_TCP},y)
+pfx4_build_mod +=tcp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_TCPMSS},y)
+pfx4_build_mod +=TCPMSS
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_TIME},y)
+pfx4_build_mod +=time
+endif
+
+#ifeq (${CONFIG_OPENSOURCE_IPT_TOS},y)
+#pfx4_build_mod +=tos
+#endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_ADDRTYPE},y)
+pf4_build_mod +=addrtype
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_AH},y)
+pf4_build_mod +=ah
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_CLUSTERIP},y)
+pf4_build_mod +=CLUSTERIP
+endif
+
+#ifeq (${CONFIG_OPENSOURCE_IPT_CONENAT},y)
+#pf4_build_mod +=CONENAT
+#endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_ECN},y)
+pf4_build_mod +=ecn
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_ICMP},y)
+pf4_build_mod +=icmp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_LOG},y)
+pf4_build_mod +=LOG
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_MASQUERADE},y)
+pf4_build_mod +=MASQUERADE
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_MIRROR},y)
+pf4_build_mod +=MIRROR
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_NETMAP},y)
+pf4_build_mod +=NETMAP
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_REALM},y)
+pf4_build_mod +=realm
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_REALM},y)
+pf4_build_mod +=realm
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_REDIRECT},y)
+pf4_build_mod +=REDIRECT
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_REJECT},y)
+pf4_build_mod +=REJECT
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_SAME},y)
+pf4_build_mod +=SAME
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_SET_T},y)
+pf4_build_mod +=SET
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_SNAT},y)
+pf4_build_mod +=SNAT
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_TTL},y)
+pf4_build_mod +=ttl
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_ULOG},y)
+pf4_build_mod +=ULOG
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IPT_UNCLEAN},y)
+pf4_build_mod +=unclean
+endif
+
+
+pfx6_build_mod = standard
+pfx6_build_mod += cluster
+
+pfx6_build_mod += rateest
+pfx6_build_mod += socket
+pfx6_build_mod += TCPOPTSTRIP
+pfx6_build_mod += TPROXY
+pfx6_build_mod += TRACE
+pfx6_build_mod += u32
+
+pfx6_build_mod += comment
+pfx6_build_mod += connbytes
+pfx6_build_mod += connlimit
+pfx6_build_mod += conntrack
+pfx6_build_mod += dccp
+pfx6_build_mod += CLASSIFY
+pfx6_build_mod += CONNMARK
+pfx6_build_mod += helper
+pfx6_build_mod += iprange
+pfx6_build_mod += NOTRACK
+pfx6_build_mod += quota
+pfx6_build_mod += pkttype
+pfx6_build_mod += recent
+pfx6_build_mod += statistic
+pfx6_build_mod += string
+pfx6_build_mod += time
+pfx6_build_mod += TOS
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_UDP},y)
+pfx6_build_mod +=udp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_CLASSIFY},y)
+pfx6_build_mod +=CLASSIFY
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_CONNMARK_T},y)
+pfx6_build_mod +=CONNMARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_CONNSECMARK},y)
+pfx6_build_mod +=CONNSECMARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_DSCP_T},y)
+pfx6_build_mod +=DSCP
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_DSCP_T},y)
+pfx6_build_mod +=DSCP
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_ESP},y)
+pfx6_build_mod +=esp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_HASHLIMIT},y)
+pfx6_build_mod +=hashlimit
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_LENGTH},y)
+pfx6_build_mod +=length
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_LIMIT},y)
+pfx6_build_mod +=limit
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_MAC},y)
+pfx6_build_mod +=mac
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_MAC},y)
+pfx6_build_mod +=mac
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_MARK_T},y)
+pfx6_build_mod +=mark
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_MULTIPORT},y)
+pfx6_build_mod +=multiport
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_NFLOG},y)
+pfx6_build_mod +=NFLOG
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_NFQUEUE},y)
+pfx6_build_mod +=NFQUEUE
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_OWNER},y)
+pfx6_build_mod +=owner
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_PHYSDEV},y)
+pfx6_build_mod +=physdev
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_POLICY},y)
+pfx6_build_mod +=policy
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_SCTP},y)
+pfx6_build_mod +=sctp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_SECMARK},y)
+pfx6_build_mod +=SECMARK
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_STATE},y)
+pfx6_build_mod +=state
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_TCP},y)
+pfx6_build_mod +=tcp
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_TCPMSS_T},y)
+pfx6_build_mod +=TCPMSS
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_AH},y)
+pf6_build_mod +=ah
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_DST},y)
+pf6_build_mod +=dst
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_EUI64},y)
+pf6_build_mod +=eui64
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_FRAG},y)
+pf6_build_mod +=frag
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_HBH},y)
+pf6_build_mod +=hbh
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_HL},y)
+pf6_build_mod +=hl
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_ICMP6},y)
+pf6_build_mod +=icmp6
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_IPV6HEADER},y)
+pf6_build_mod +=ipv6header
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_LOG},y)
+pf6_build_mod +=LOG
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_MH},y)
+pf6_build_mod +=mh
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_REJECT},y)
+pf6_build_mod +=REJECT
+endif
+
+ifeq (${CONFIG_OPENSOURCE_IP6T_RT},y)
+pf6_build_mod +=rt
+endif
+
+
+pfx4_objs      := $(patsubst %,libxt_%.o,${pfx4_build_mod})
+pfx6_objs      := $(patsubst %,libxt_%.o,${pfx6_build_mod})
+pf4_objs      := $(patsubst %,libipt_%.o,${pf4_build_mod})
+pf6_objs      := $(patsubst %,libip6t_%.o,${pf6_build_mod})
+pfx_solibs    := $(patsubst %,libxt_%.so,${pfx4_build_mod})
+pfx_solibs    += $(patsubst %,libxt_%.so,${pfx6_build_mod})
+pf4_solibs    := $(patsubst %,libipt_%.so,${pf4_build_mod})
+pf6_solibs    := $(patsubst %,libip6t_%.so,${pf6_build_mod})
+#libipt        =$(patsubst ${srcdir}/libipt_%.c,%,$(wildcard ${srcdir}/libipt_*.c))
+#libip6t				=$(patsubst ${srcdir}/libip6t_%.c,%,$(wildcard ${srcdir}/libip6t_*.c))
+#
+# Building blocks
+#
+targets :=  libext4.a  matches4.man targets4.man libext6.a  matches6.man targets6.man
+
+targets_install :=
+@ENABLE_STATIC_TRUE@ libext4_objs := ${pfx4_objs} ${pf4_objs}
+@ENABLE_STATIC_TRUE@ libext6_objs := ${pfx6_objs} ${pf6_objs}
+@ENABLE_SHARED_TRUE@ targets += ${pfx_solibs} ${pf4_solibs} ${pf6_solibs}
+@ENABLE_SHARED_TRUE@ targets_install += ${pfx_solibs} ${pf4_solibs} ${pf6_solibs}
+
+.SECONDARY:
+
+.PHONY: all install clean distclean FORCE
+
+all: ${targets}
+
+install: ${targets_install}
+	@mkdir -p "${DESTDIR}${xtlibdir}";
+	if test -n "${targets_install}"; then install -pm0755 $^ "${DESTDIR}${xtlibdir}/"; fi;
+
+clean:
+	rm -f *.o *.oo *.so *.a {matches,targets}[46].man initext4.c initext6.c;
+
+distclean: clean
+	rm -f .*.d .*.dd;
+
+init%.o: init%.c
+	${AM_VERBOSE_CC} ${CC} ${AM_DEPFLAGS} ${AM_CFLAGS} -D_INIT=$*_init ${CFLAGS} -o $@ -c $<;
+
+-include .*.d
+
+
+#
+#	Shared libraries
+#
+lib%.so: lib%.oo
+	${AM_VERBOSE_CCLD} ${CCLD} ${AM_LDFLAGS} -shared ${LDFLAGS} -o $@ $<;
+
+lib%.oo: ${srcdir}/lib%.c
+	${AM_VERBOSE_CC} ${CC} ${AM_DEPFLAGS} ${AM_CFLAGS} -D_INIT=lib$*_init -DPIC -fPIC ${CFLAGS} -o $@ -c $<;
+
+
+#
+#	Static bits
+#
+#	If static building is disabled, libext*.a will still be generated,
+#	but will be empty. This is good since we can do with less case
+#	handling code in the Makefiles.
+#
+lib%.o: ${srcdir}/lib%.c
+	${AM_VERBOSE_CC} ${CC} ${AM_DEPFLAGS} ${AM_CFLAGS} -DNO_SHARED_LIBS=1 -D_INIT=lib$*_init ${CFLAGS} -o $@ -c $<;
+
+libext4.a: initext4.o ${libext4_objs}
+	${AM_VERBOSE_AR} ${AR} crs $@ $^;
+
+libext6.a: initext6.o ${libext6_objs}
+	${AM_VERBOSE_AR} ${AR} crs $@ $^;
+
+initext_func  := $(addprefix xt_,${pfx4_build_mod}) $(addprefix ipt_,${pf4_build_mod})
+initext6_func := $(addprefix xt_,${pfx6_build_mod}) $(addprefix ip6t_,${pf6_build_mod})
+
+.initext4.dd: FORCE
+	@echo "${initext_func}" >$@.tmp; \
+	cmp -s $@ $@.tmp || mv $@.tmp $@; \
+	rm -f $@.tmp;
+
+.initext6.dd: FORCE
+	@echo "${initext6_func}" >$@.tmp; \
+	cmp -s $@ $@.tmp || mv $@.tmp $@; \
+	rm -f $@.tmp;
+
+initext4.c: .initext4.dd
+	${AM_VERBOSE_GEN}
+	@( \
+	echo "" >$@; \
+	for i in ${initext_func}; do \
+		echo "extern void lib$${i}_init(void);" >>$@; \
+	done; \
+	echo "void init_extensions(void);" >>$@; \
+	echo "void init_extensions(void)" >>$@; \
+	echo "{" >>$@; \
+	for i in ${initext_func}; do \
+		echo  " ""lib$${i}_init();" >>$@; \
+	done; \
+	echo "}" >>$@; \
+	);
+
+initext6.c: .initext6.dd
+	${AM_VERBOSE_GEN}
+	@( \
+	echo "" >$@; \
+	for i in ${initext6_func}; do \
+		echo "extern void lib$${i}_init(void);" >>$@; \
+	done; \
+	echo "void init_extensions(void);" >>$@; \
+	echo "void init_extensions(void)" >>$@; \
+	echo "{" >>$@; \
+	for i in ${initext6_func}; do \
+		echo " ""lib$${i}_init();" >>$@; \
+	done; \
+	echo "}" >>$@; \
+	);
+
+#
+#	Manual pages
+#
+ex_matches = $(sort $(shell echo $(1) | grep -Eo '\b[a-z0-9]+\b'))
+ex_targets = $(sort $(shell echo $(1) | grep -Eo '\b[A-Z0-9]+\b'))
+man_run    = \
+	${AM_VERBOSE_GEN} \
+	for ext in $(1); do \
+		f="${srcdir}/libxt_$$ext.man"; \
+		cf="${srcdir}/libxt_$$ext.c"; \
+		if [ -f "$$f" ] && grep -Eq "$(3)|NFPROTO_UNSPEC" "$$cf"; then \
+			echo -e "\t+ $$f" >&2; \
+			echo ".SS $$ext"; \
+			cat "$$f"; \
+			continue; \
+		fi; \
+		f="${srcdir}/lib$(2)t_$$ext.man"; \
+		if [ -f "$$f" ]; then \
+			echo -e "\t+ $$f" >&2; \
+			echo ".SS $$ext"; \
+			cat "$$f"; \
+			continue; \
+		fi; \
+	done >$@;
+
+matches4.man: .initext4.dd $(wildcard ${srcdir}/lib*.man)
+	$(call man_run,$(call ex_matches,${pfx_build_mod} ${pf4_build_mod}),ip,NFPROTO_IPV4)
+
+matches6.man: .initext6.dd $(wildcard ${srcdir}/lib*.man)
+	$(call man_run,$(call ex_matches,${pfx_build_mod} ${pf6_build_mod}),ip6,NFPROTO_IPV6)
+
+targets4.man: .initext4.dd $(wildcard ${srcdir}/lib*.man)
+	$(call man_run,$(call ex_targets,${pfx_build_mod} ${pf4_build_mod}),ip,NFPROTO_IPV4)
+
+targets6.man: .initext6.dd $(wildcard ${srcdir}/lib*.man)
+	$(call man_run,$(call ex_targets,${pfx_build_mod} ${pf6_build_mod}),ip6,NFPROTO_IPV6)

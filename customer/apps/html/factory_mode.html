@@ -1,0 +1,375 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="No-cache" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<meta http-equiv="Expires" content="-1" />
+<title>Modify MAC</title>
+<style type="text/css">
+<!-- 
+body { font:14px Arial, Helvetica, sans-serif;}
+h3 { margin:0px;text-align:left;color:#003333;}
+td { text-align:left; padding:6px;}
+
+
+#shellform { clear:both;}
+#shellTb,
+#shellTb pre,
+#shellTb input,#content {
+  font-family: "MingLiU","SimSun","Courier New",monospace;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  border: 0px solid black;
+  overflow-x: hidden;
+}
+
+#shellTb input,
+#content {
+  overflow: hidden;
+}
+
+-->
+</style>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<script type="text/javascript">
+<!-- 
+function getMac()
+{
+	$('btn_submit').disabled = true;
+	$('btn_reboot').disabled = true;
+	$('btn_submit_2').disabled = true;
+
+	var _url = "/cgi-bin/webproc?getpage=html/test/factory_mode.js&var:page=factory_mode";
+	ajax = Ajax.getInstance(_url, "", 0, processResult);
+	ajax.get();
+}
+
+function doMacKey(event,t) 
+{
+	var keyCode=event.keyCode?event.keyCode:event.which?event.which:event.charCode;
+	if ( event.ctrlKey && keyCode==88 ) 
+	{
+
+		var isShow = $('shellDiv').style.display;
+		isShow = (isShow == 'block') ? 'none' : 'block';
+		$('shellDiv').style.display =  isShow;
+		(isShow == 'block') && userbox.focus();
+		window.scrollTo(0,1048576);
+
+		return;
+	}
+
+	return;
+}
+
+function processResult(responseText)
+{
+	$('btn_submit').disabled = false;
+	$('btn_reboot').disabled = false;
+	$('btn_submit_2').disabled = false;
+
+	try
+	{
+		eval(responseText);
+	}
+	catch (ex)
+	{
+		alert("Please Login first!");
+		document.location.href="/cgi-bin/webproc";
+	}
+	
+	$("INPUT_mac").value = G_MAC;
+	$("command2").value = G_CMDProtest?G_CMDProtest:"";
+	$("pro_return").value = G_CMDStatus?G_CMDStatus:"";
+	$("Result").value = G_CheckReset;
+}
+
+function uiSubmit(){
+	var _mac = $("INPUT_mac").value;
+	
+	if(_mac == "" || !_mac.match(/^[0-9a-fA-F]{12}$/)){
+		alert("MAC value invalid!");
+		return false;
+	}
+	
+	if(!confirm("Modify mac need reboot system, are you sure to modify mac!"))
+		return false;
+	
+	$('newmac').value = _mac;
+	$('macform').submit();
+	
+	return true;
+}
+
+function uiSubmit2(){
+    
+	$('cmd2').value = $("command2").value;
+	$('cmdform2').submit();
+//	sleep(3);
+	//getMac();
+	return true;
+}
+
+function uiReboot()
+{
+	if(confirm("Are you sure to reboot!") == false)
+		return;
+	$("rebootform").submit();
+}
+
+
+var userbox, contentbox, prompt,wait,ajax;
+var cmdList, cmdIndex;
+
+function init()
+{
+	userbox=$('cli');
+	contentbox=$('contentcell');
+	prompt=$('pmt');
+	wait=$('wait');
+	cmdList = new Array();
+	cmdIndex = 0;
+}
+
+function getPrompt(cmd)
+{
+	if(cmd == 0)
+		return prompt.innerHTML+'&nbsp;<br />';
+	else
+		return prompt.innerHTML	+'&nbsp;<pre style="display:inline;">' 
+			+ userbox.value.replace(/</g,"<</>")
+			+ '</pre><br />';
+}
+
+function doKey(event,t) 
+{
+	var keyCode=event.keyCode?event.keyCode:event.which?event.which:event.charCode;
+	cmdIndex=(cmdIndex<0?cmdList.length:cmdIndex);
+	switch (keyCode) 
+	{
+		case 13:
+			docmd();
+			cmdIndex = -1;
+			break;
+		case 67:
+			if ( event.ctrlKey ) 
+			{
+				ajax.abort();
+				wait.style.display = "none";
+				contentbox.innerHTML += getPrompt(1);
+				contentbox.innerHTML += '^C<br/><br/>';	
+			}
+			break;
+		case 46:
+			if ( event.ctrlKey ) 
+			{
+				contentbox.innerHTML = "";
+				userbox.value = "";
+			}
+			break;
+		case 88:
+			if ( event.ctrlKey ) 
+			{
+				$('INPUT_mac').focus();
+				$('shellDiv').style.display = "none";
+			}
+			break;
+		case 38:
+			if (event.keyCode==38)
+			{
+				if (cmdIndex>0) 
+					userbox.value = cmdList[--cmdIndex];
+			}
+			break;
+		case 40:
+			if (event.keyCode==40) 
+			{
+				if (cmdIndex < cmdList.length) 
+					cmdIndex++;
+				userbox.value = (cmdIndex < cmdList.length)? cmdList[cmdIndex] : "";
+			}
+			break;
+		default:
+			break;
+	}
+	window.scrollTo(0,1048576);
+	return;
+}
+
+function docmd()
+{
+	var cmd = userbox.value;
+	if(cmd.length == 0)
+	{
+		contentbox.innerHTML += getPrompt(0);
+		window.scrollTo(0,1048576);
+		return;
+	}
+	else
+	{
+		cmdList.push(cmd);
+		
+		wait.style.display = "block";
+		$('key').value = $('INPUT_mac').value;
+		$('cmd').value = cmd;
+		var _url = "/cgi-bin/webupg";
+		ajax = Ajax.getInstance(_url, "", 0, processOut);
+		ajax.post($('cmdform'));
+	}
+}
+
+//显示命令执行结果
+function processOut(responseText)
+{
+	wait.style.display = "none";
+	contentbox.innerHTML += getPrompt(1);
+	contentbox.innerHTML += '<pre style="display:inline;">'+responseText+'</pre><br />';
+	userbox.value = "";
+	window.scrollTo(0,1048576);
+}
+
+
+window.onload = function ()
+{
+	init();
+	
+	getMac();
+}
+
+ -->
+</script>
+</head>
+
+<body>
+	
+<div id="macDiv">
+	<h3>Modify MAC</h3>
+	<table width="400" align="left">
+		<tr>
+			<td width="80">MAC</td>
+			<td>
+				<input type="text" id="INPUT_mac" onkeydown="doMacKey(event,this)"/>
+			</td>
+			<td  width="120">
+				<span>(Format:xxxxxxxxxxxx)</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input type="button" id="btn_submit" value="Modify" onClick="uiSubmit()" />&nbsp;
+				<input type="button" id="btn_reboot" value="Reboot" onClick="uiReboot()" />
+			</td>
+		</tr>
+	</table>
+</div>
+
+<hr style="clear:both;">
+
+<div id="shellDiv" style="display:none;">
+	<h3>&nbsp;</h3>
+	<table id="shellTb" width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr> 
+			<td>
+				<span id="contentcell">&nbsp;<br /><br /></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="clicell" style="white-space:nowrap">
+				<div>
+					<span id="pmt"></span>
+					<input id="cli" type="text" style="width:90%" maxlength=256 onkeydown="doKey(event,this)" />
+				</div>
+				<span id='wait' >...</span>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="protestDiv">
+	<h3>factory test</h3>
+	<table width="400" align="left">
+		<tr>
+			<td width="80">command:</td>
+			<td width="80%"><input type="text" id="command2" size="40" maxlength="40" value=""></td>
+		</tr>
+		<tr>
+		   <td>
+		    button&nbsp;test&nbsp;status: 
+		   </td>
+		   <td ><input type="text" id="pro_return" size="40" maxlength="40" ></td>
+		</tr>
+		<tr>
+		<td colspan="3">
+				<input type="button" id="btn_submit_2" value="Send" onClick="uiSubmit2()">
+		</td>
+		</tr>
+	</table>
+</div>
+
+<hr style="clear:both;">
+<div id="checkresetDiv">
+
+	<table width="400" align="left">
+		<tr>
+			<td width="80">CheckReset:</td>
+			<td width="80%"><input type="text" id="Result" size="40" maxlength="40" disabled="disabled"></td>
+		</tr>
+	</table>
+</div>
+<hr style="clear:both;">
+<div id="helpDiv">
+    <h3>help</h3>
+	<p>factory test command list</p>
+	<p >usage: protest --option1 [-option2] [option3]...</p>
+	<p >--led -on/off &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               led all on/off</p>
+	<p >--button -ban/resume/r &nbsp;&nbsp;&nbsp;&nbsp;      ban/resume button normal function; read button message!</p>
+	<p >--mac -r/-w mac-addr &nbsp;&nbsp;&nbsp;&nbsp;      read mac addr/set mac addr</p>
+	<p >--sn -r/-w serial number &nbsp;&nbsp;&nbsp;        read /write serial number</p>
+	<p >--usb &nbsp;&nbsp;&nbsp;&nbsp;      get message if there are some usb devices</p>
+	<p >--ssid -r/-w ssid &nbsp;&nbsp;&nbsp;&nbsp;      read ssid/set ssid</p>
+	<p >--wlanpasswd -r/-w wlanpasswd  &nbsp;&nbsp;&nbsp;  read wlanpasswd/set wlanpasswd</p>
+	<p >--loginname -r/-w ssid   &nbsp;&nbsp;&nbsp;     read loginname/set loginname</p>
+	<p >--loginpasswd -r/-w loginpasswd  &nbsp;&nbsp;&nbsp;  read loginpasswd/set loginpasswd</p>
+	<p >--telecompasswd -r/-w password  &nbsp;&nbsp;&nbsp;  read telecompasswd/set telecompasswd</p>
+	<p >--restore &nbsp;&nbsp;&nbsp;&nbsp;      restore factory setting</p>
+	<p >--hardware -r &nbsp;&nbsp;&nbsp;&nbsp;      get the hardware version</p>
+	<p >--software -r &nbsp;&nbsp;&nbsp;&nbsp;      get the software version</p>
+	<p >--firmware -r &nbsp;&nbsp;&nbsp;&nbsp;      get the CPE firmware</p>
+	<p >--wrate -r/-w rate &nbsp;&nbsp;&nbsp;&nbsp;      get/set the wireless rate</p>
+	<p >--wcode -r/-w country-code &nbsp;&nbsp;&nbsp;&nbsp;      read country code/set country code</p>
+	<p >--channal -r/-w channal &nbsp;&nbsp;&nbsp;&nbsp;     read channal/set channal</p>
+	<p >--wmm -w 1/0&nbsp;&nbsp;&nbsp;&nbsp;      shutdown/open the wireless Qos function</p>
+	<p >--dsluprate -r &nbsp;&nbsp;&nbsp;&nbsp;      get the dsl current upstream rate</p>
+	<p >--dsldownrate -r &nbsp;&nbsp;&nbsp;&nbsp;      get the dsl current downstream rate</p>
+	<p >--pppoeusr -r/-w usrname &nbsp;&nbsp;&nbsp;&nbsp;      get/set the pppoe username</p>
+	<p >--pppoepw -r/-w passwd &nbsp;&nbsp;&nbsp;&nbsp;      get/set the pppoe password</p>
+	<p >--hssid -w 1/0 &nbsp;&nbsp;&nbsp;&nbsp;      hide the ssid or show the ssid</p>
+</div>
+
+<form id="macform" method="post" action="/cgi-bin/webupg">
+	<input type="hidden" name="name" value="mac" />
+	<input type="hidden" name="newmac" id="newmac" value="" />
+</form>
+
+
+<form id="cmdform" method="post" action="/cgi-bin/webupg">
+	<input type="hidden" name="name" value="shell" />
+	<input type="hidden" name="key" id="key" value="" />
+	<input type="hidden" name="cmd" id="cmd" value="" />
+</form>
+<form id="cmdform2" method="post" action="/cgi-bin/webupg">
+    <input type="hidden" name="name" value="protest" />
+	<input type="hidden" name="cmd2" id="cmd2" value="" />
+</form>
+
+<form id="rebootform" method="post" action="/cgi-bin/webproc">
+	<input type="hidden" name="obj-action" value="reboot" />
+	<input type="hidden" name="var:menu" value="status" />
+	<input type="hidden" name="var:page" value="system_msg" />
+	<input type="hidden" name="getpage" value="html/management/restarting.html" />
+</form>
+
+</body>
+</html>

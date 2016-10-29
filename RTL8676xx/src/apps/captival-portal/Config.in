@@ -1,0 +1,9 @@
+#scb+ 2011-10-19
+######################################
+config APPS_GENERAL_CAPTIVAL_PORTAL
+	bool 'GENERAL_CAPTIVAL_PORTAL'
+	default n
+	depends on APPS
+  	help
+      	  This program is for implement the captival portal function
+######################################

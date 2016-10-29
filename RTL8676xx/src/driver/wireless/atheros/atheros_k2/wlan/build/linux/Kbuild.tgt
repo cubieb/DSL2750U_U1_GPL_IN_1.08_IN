@@ -1,0 +1,243 @@
+#  
+# Copyright (C) 2002-2008 Atheros Communications Inc.
+#
+# Kbuild File for Split driver(Host part) 
+#
+#Usage:
+# (a).Everything only default tgt
+#       make
+# (b).Module level granularity
+#       make bld-mod=tgt-hal
+#       make bld-mod=tgt-ath
+#       make bld-mod=tgt-wlan
+#       make bld-mod=tgt-dfs
+#       make bld-mod=tgt-rate
+#       make bld-mod=tgt-xauth
+#       make bld-mod=tgt-wep
+#       make bld-mod=tgt-tkip
+#       make bld-mod=tgt-ccmp
+#       make bld-mod=tgt-htc
+#
+#Note: Don't use long module name, if module names have 2 parts make it
+#like this foo-bar, where foo is main module & bar is sub module, ideally
+#if the sub module is unique you don't need to partition
+#+
+
+
+#################################################
+############## Global variables ################# 
+#################################################    
+tgt_mac             = $(tgt-hal_path)/main/$(mac)
+tgt_incl_path        = $(aed_path)/../tgt/target
+
+#
+# Module Names
+#
+mod_tgt-hal         = tgt_hal
+mod_tgt-test        = tgt_test
+mod_tgt-ath         = tgt_ath
+mod_tgt-rate        = tgt_rate
+mod_tgt-wlan        = tgt_wlan
+mod_tgt-dfs         = tgt_dfs
+mod_tgt-xauth       = tgt_xauth
+mod_tgt-wep         = tgt_wep
+mod_tgt-tkip        = tgt_tkip
+mod_tgt-ccmp        = tgt_ccmp
+mod_tgt-htc         = tgt_htc
+#
+#For all the modules part default 
+#group tgt 
+#
+tgt-$(bld_cfg-tgt)              := m
+tgt_hal-$(bld_cfg-tgt)          := m
+tgt_ath-$(bld_cfg-tgt)          := m
+tgt_wlan-$(bld_cfg-tgt)         := m
+#tgt_dfs-$(bld_cfg-tgt)          := m
+tgt_rate-$(bld_cfg-tgt)         := m
+tgt_htc-$(bld_cfg-tgt)          := m
+
+
+
+#
+#Module specific
+#
+tgt_test-$(bld_cfg-test)        := m
+tgt_hal-$(bld_cfg-tgt-hal)      := m
+tgt_ath-$(bld_cfg-tgt-ath)      := m
+tgt_wlan-$(bld_cfg-tgt-wlan)    := m
+tgt_dfs-$(bld_cfg-tgt-dfs)      := m
+tgt_rate-$(bld_cfg-tgt-rate)    := m
+tgt_wep-$(bld_cfg-tgt-wep)      := m
+tgt_xauth-$(bld_cfg-tgt-xauth)  := m
+tgt_tkip-$(bld_cfg-tgt-tkip)    := m
+tgt_ccmp-$(bld_cfg-tgt-ccmp)    := m
+tgt_htc-$(bld_cfg-tgt-htc)      := m
+
+#
+#These functions help in insering module specific cflags
+#Note: The idea is to put the dependent modules tgt_*
+#var in __<mod_name>_flags on which its depending
+
+
+__tgt_flags-$(tgt-m)                := y
+__tgt_flags-$(tgt_hal-m)            := y
+__tgt_flags-$(tgt_ath-m)            := y
+__tgt_flags-$(tgt_wlan-m)           := y
+#__tgt_flags-$(tgt_rate-m)           := y
+#__tgt_flags-$(tgt_dfs-m)            := y
+#__tgt_flags-$(tgt_wep-m)            := y
+#__tgt_flags-$(tgt_tkip-m)           := y
+#__tgt_flags-$(tgt_ccmp-m)           := y
+#__tgt_flags-$(tgt_xauth-m)          := y
+__tgt_flags-$(tgt_htc-m)            := y
+
+__tgt_hal_flags-$(tgt_hal-m)        := y
+__tgt_hal_flags-$(tgt_ath-m)        := y
+__tgt_hal_flags-$(tgt_wlan-m)       := y
+#__tgt_hal_flags-$(tgt_rate-m)       := y
+#__tgt_hal_flags-$(tgt_wep-m)        := y
+#__tgt_hal_flags-$(tgt_xauth-m)      := y
+#__tgt_hal_flags-$(tgt_tkip-m)       := y
+#__tgt_hal_flags-$(tgt_ccmp-m)       := y
+
+__tgt_ath_flags-$(tgt_ath-m)        := y
+__tgt_ath_flags-$(tgt_rate-m)       := y
+    
+__tgt_wlan_flags-$(tgt_wlan-m)      := y
+#__tgt_wlan_flags-$(tgt_wep-m)       := y
+#__tgt_wlan_flags-$(tgt_xauth-m)     := y
+#__tgt_wlan_flags-$(tgt_tkip-m)      := y
+#__tgt_wlan_flags-$(tgt_ccmp-m)      := y
+#__tgt_wlan_flags-$(tgt_rate-m)      := y
+__tgt_wlan_flags-$(tgt_ath-m)       := y
+
+__tgt_dfs_flags-$(tgt_dfs-m)        := y
+__tgt_dfs_flags-$(tgt_ath-m)        := y
+
+__tgt_rate_flags-$(tgt_rate-m)      := y
+
+__tgt_htc_flags-$(tgt_htc-m)        := y
+__tgt_htc_flags-$(tgt_hal-m)        := y
+__tgt_htc_flags-$(tgt_ath-m)        := y
+                                       
+
+#################################################
+############# Module specific FLAGS #############
+##################################################
+ccflags-$(__tgt_flags-m)        += -O2
+ccflags-$(__tgt_flags-m)        += -I$(PWD)/$(tgt_incl)
+ccflags-$(__tgt_flags-m)        += -I$(PWD)/$(split_incl)
+
+
+ccflags-$(__tgt_hal_flags-m)    += -funit-at-a-time
+ccflags-$(__tgt_hal_flags-m)    += -D__WORDSIZE=32 -D__DECONST
+ccflags-$(__tgt_hal_flags-m)    += -DAH_BYTE_ORDER=AH_LITTLE_ENDIAN
+ccflags-$(__tgt_hal_flags-m)    += -I$(PWD)/$(tgt-hal_path)/main
+ccflags-$(__tgt_hal_flags-m)    += -I$(PWD)/$(tgt-hal_path)/main/linux
+ccflags-$(__tgt_hal_flags-m)    += -I$(PWD)/$(tgt-hal_path)/main/$(mac)
+ccflags-$(__tgt_hal_flags-m)    += -I$(PWD)/$(tgt-hal_path)/main/linux/obj/$(arch)
+ccflags-$(__tgt_hal_flags-m)    += -I$(PWD)/$(tgt-cfg_path)/magpie
+
+#ccflags-$(__tgt_ath_flags-m)    += -DATH_CHAINMASK_SELECT -DATH_CWM
+ccflags-$(__tgt_ath_flags-m)    += -I$(PWD)/$(tgt-ath_path)
+ccflags-$(__tgt_ath_flags-m)    += -I$(PWD)/$(tgt-rate_path)
+ccflags-$(__tgt_ath_flags-m)    += -I$(PWD)/$(tgt_incl_path)/htc/inc
+
+ccflags-$(__tgt_wlan_flags-m)   += -I$(PWD)/$(tgt-wlan_path)
+ccflags-$(__tgt_wlan_flags-m)   += -DATH_FULL_APSCAN=0
+
+ccflags-$(__tgt_dfs_flags-m)    += -I$(PWD)/$(tgt-dfs_path)
+ccflags-$(__tgt_rate_flags-m)   += -I$(PWD)/$(tgt-rate_path)
+
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/inc
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/hif/inc
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/htc/inc
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/wmi/inc
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/buf_pool/inc
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/build/single_cpu
+ccflags-$(__tgt_htc_flags-m)    += -I$(PWD)/$(tgt-htc_path)/miscdrv
+ccflags-$(__tgt_htc_flags-m)    += -DMAGPIE_SINGLE_CPU_CASE 
+
+#################################################
+################## Core Modules ################## 
+##################################################    
+#
+#Atheros Test Driver
+#
+
+obj-$(hal_test-m)           += $(mod_tgt-test).o
+$(mod_tgt-test)-objs        += $(tgt_path)/test/tgt_test.o
+#
+# HAL
+#
+obj-$(tgt_hal-m)            += $(mod_tgt-hal).o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/ah.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/linux/ah_osdep.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_attach.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_gpio.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_interrupts.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_misc.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_phy.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_recv_10.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_recv_20.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_recv.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_reset.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_xmit_10.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_xmit_20.o 
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_xmit.o
+$(mod_tgt-hal)-objs         += $(tgt-hal_path)/main/$(mac)/ar5416_timer.o
+
+#
+# ATH
+#
+obj-$(tgt_ath-m)            += $(mod_tgt-ath).o
+$(mod_tgt-ath)-objs         += $(tgt-ath_path)/if_ath.o
+$(mod_tgt-ath)-objs         += $(tgt-ath_path)/if_owl.o
+$(mod_tgt-ath)-objs         += $(tgt-ath_path)/if_ath_cwm.o
+$(mod_tgt-ath)-objs         += $(tgt-ath_path)/if_ath_pci.o
+#$(mod_tgt-ath)-objs         += $(tgt-ath_path)/ar5416Phy.o
+$(mod_tgt-ath)-objs         += $(tgt-ath_path)/ratehard.o
+
+#
+# Rate Control
+#
+obj-$(tgt_rate-m)           += $(mod_tgt-rate).o
+$(mod_tgt-rate)-objs        += $(tgt-rate_path)/linux.o
+$(mod_tgt-rate)-objs        += $(tgt-rate_path)/ratectrl_11n_ln.o
+$(mod_tgt-rate)-objs        += $(tgt-rate_path)/ar5416Phy.o
+
+#
+# WLAN (ieee80211)
+#
+obj-$(tgt_wlan-m)           += $(mod_tgt-wlan).o
+$(mod_tgt-wlan)-objs        += $(tgt-wlan_path)/ieee80211_linux.o
+$(mod_tgt-wlan)-objs        += $(tgt-wlan_path)/ieee80211_output.o
+
+#
+# WEP
+obj-$(tgt_wep-m)            += $(mod_tgt-wep).o
+$(mod_tgt-wep)-objs         += $(tgt-wlan_path)/ieee80211_crypto_wep.o
+
+#
+# XAUTH
+obj-$(tgt_xauth-m)          += $(mod_tgt-xauth).o
+$(mod_tgt-xauth)-objs       += $(tgt-wlan_path)/ieee80211_xauth.o
+
+#
+# CRYPTO TKIP library
+obj-$(tgt_tkip-m)           += $(mod_tkip).o
+$(mod_tgt-tkip)-objs        += $(tgt-wlan_path)/ieee80211_crypto_tkip.o
+
+
+#
+# CRYPTO CCMP library
+obj-$(tgt_ccmp-m)           += $(mod_tgt-ccmp).o
+$(mod_tgt-ccmp)-objs        += $(tgt-wlan_path)/ieee80211_crypto_ccmp.o
+
+
+# HTC
+obj-$(tgt_htc-m)            += $(mod_tgt-htc).o
+$(mod_tgt-htc)-objs         += $(tgt-htc_path)/htc/htc_tgt.o
+$(mod_tgt-htc)-objs         += $(tgt-htc_path)/buf_pool/buf_pool_dynamic.o
+$(mod_tgt-htc)-objs         += $(tgt-htc_path)/htc/htc.o
+$(mod_tgt-htc)-objs         += $(tgt-htc_path)/wmi/wmi_svc.o

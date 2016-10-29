@@ -1,0 +1,43 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANDSLLinkConfig type="object">
+						<Enable type="boolean">0</Enable>
+						<X_TWSZ-COM_VLANID type="unsignedInt" Standard="0">0</X_TWSZ-COM_VLANID>
+						<X_TWSZ-COM_VLANPriority type="unsignedInt" Standard="0">0</X_TWSZ-COM_VLANPriority>
+						<X_TWSZ-COM_VLANUntag type="boolean" Standard="0">0</X_TWSZ-COM_VLANUntag>
+						<LinkStatus type="string" Writable="0">Unavailable</LinkStatus>
+						<LinkType type="string(256)">EoA</LinkType>
+						<DestinationAddress type="string">PVC:0/0</DestinationAddress>
+						<ATMEncapsulation type="string">LLC</ATMEncapsulation>
+						<ATMAAL type="string">AAL5</ATMAAL>
+						<ATMQoS type="string">UBR</ATMQoS>
+						<ATMPeakCellRate type="unsignedInt">0</ATMPeakCellRate>
+						<ATMMaximumBurstSize type="unsignedInt">0</ATMMaximumBurstSize>
+						<ATMSustainableCellRate type="unsignedInt">0</ATMSustainableCellRate>
+						<X_TWSZ-COM_ATMCellDelayVarition type="unsignedInt" Standard="0">0</X_TWSZ-COM_ATMCellDelayVarition>
+						<X_TWSZ-COM_ATMMinimumCellRate type="unsignedInt" Standard="0">0</X_TWSZ-COM_ATMMinimumCellRate>
+						<AutoConfig type="boolean" Writable="0">0</AutoConfig>
+						<ATMTransmittedBlocks type="unsignedInt" Writable="0">0</ATMTransmittedBlocks>
+						<ATMReceivedBlocks type="unsignedInt" Writable="0">0</ATMReceivedBlocks>
+						<AAL5CRCErrors type="unsignedInt" Writable="0">0</AAL5CRCErrors>
+						<ATMCRCErrors type="unsignedInt" Writable="0">0</ATMCRCErrors>
+					</WANDSLLinkConfig>
+					<WANATMF5LoopbackDiagnostics type="object">
+						<DiagnosticsState type="string">None</DiagnosticsState>
+						<NumberOfRepetitions type="unsignedInt">1</NumberOfRepetitions>
+						<Timeout type="unsignedInt">0</Timeout>
+						<SuccessCount type="unsignedInt" Writable="0">0/0</SuccessCount>
+						<FailureCount type="unsignedInt" Writable="0">0</FailureCount>
+						<AverageResponseTime type="unsignedInt" Writable="0">0</AverageResponseTime>
+						<MinimumResponseTime type="unsignedInt" Writable="0">0</MinimumResponseTime>
+						<MaximumResponseTime type="unsignedInt" Writable="0">0</MaximumResponseTime>
+					</WANATMF5LoopbackDiagnostics>					
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

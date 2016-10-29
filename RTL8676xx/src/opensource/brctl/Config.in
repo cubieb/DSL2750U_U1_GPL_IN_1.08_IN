@@ -1,0 +1,9 @@
+#####################
+config OPENSOURCE_BRCTL
+	bool 'Bridge utils'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	Bridge utils
+
+

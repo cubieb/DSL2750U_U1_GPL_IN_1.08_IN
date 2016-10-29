@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_IGMPPROXY
+	bool 'IGMP Proxy'
+	default y
+	depends OPENSOURCE
+  	help 
+      	IGMPProxy for IGMP Proxy

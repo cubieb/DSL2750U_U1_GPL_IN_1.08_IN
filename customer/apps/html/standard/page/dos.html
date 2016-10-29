@@ -1,0 +1,70 @@
+<style type="text/css">
+	.div_left { width:240px;}
+</style>
+<td>
+			<div class="config2">
+				<p class="bk_orange"  id="lang_FirewallSettings">Firewall Settings</p>
+				<div class="div_orange">
+						<p id="lang_dsc">Click "Apply" to take the changes in effect immediately.</p>
+					</div>	 
+
+		<p class="do bk_black"  id="lang_FirewallConfiguration">Firewall Configuration</p>
+		<div class="div_black">
+			<div class="div_left"  id="lang_EnableAttackPrevent">Enable Attack Prevent</div><div class="div_right"><input type="checkbox" id="INPUT_AntiDosEnable" /></div>
+			<p></p>
+
+			<div class="div_left" id="lang_IcmpEcho">Icmp Echo</div><div class="div_right"><input type="checkbox" name="INPUT_IcmpEchoIgnrBcastEnable" id="INPUT_IcmpEchoIgnrBcastEnable" /></div>
+			<div class="div_left" id="lang_Fraggle">Fraggle </div><div class="div_right"><input type="checkbox" name="INPUT_AntiFraggleEnable" id="INPUT_AntiFraggleEnable" /></div>
+			<div class="div_left" id="lang_EchoChargen">Echo Chargen </div><div class="div_right"><input type="checkbox" name="INPUT_AntiEchoCargenEnable" id="INPUT_AntiEchoCargenEnable" /></div>
+			<div class="div_left" id="lang_IPLand">IP Land </div><div class="div_right"><input type="checkbox" name="INPUT_AntiIPLandEnable" id="INPUT_AntiIPLandEnable" /></div>
+			<div class="div_left" id="lang_PortScan">Port Scan </div><div class="div_right"><input type="checkbox" name="INPUT_IgnrPortScanEnable" id="INPUT_IgnrPortScanEnable" /></div>
+			<div class="div_left" id="lang_SetSYNFIN">TCP Flags: Set "SYN FIN"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanSetSynFinEnable" id="INPUT_AntiScanSetSynFinEnable" /></div>
+			<div class="div_left" id="lang_SetSYNRST">TCP Flags: Set "SYN RST"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanSetSynRstEnable" id="INPUT_AntiScanSetSynRstEnable" /></div>			
+			<div class="div_left"  id="lang_SetFINRST">TCP Flags: Set "FIN RST"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanSetFinRstEnable" id="INPUT_AntiScanSetFinRstEnable" /></div>            			
+			<div style="display:none">
+			<div class="div_left"  id="lang_SetACKFIN">TCP Flags: Set "ACK FIN"</div>
+            <div class="div_right"><input type="checkbox" name="INPUT_AntiScanSetAckFinEnable" id="INPUT_AntiScanSetAckFinEnable" /></div>
+			<div class="div_left"  id="lang_SetACKPSH">TCP Flags: Set "ACK PSH"</div>
+            <div class="div_right"><input type="checkbox" name="INPUT_AntiScanSetAckPshEnable" id="INPUT_AntiScanSetAckPshEnable" /></div>	            			
+			<div class="div_left"  id="lang_SetACKURG">TCP Flags: Set "ACK URG"</div>
+            <div class="div_right"><input type="checkbox" name="INPUT_AntiScanSetAckUrgEnable" id="INPUT_AntiScanSetAckUrgEnable" /></div></div>
+			<!--		
+			<div class="div_left">TCP Flags: Unset "ACK", Set "FIN"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanUnAckSetFinEnable" id="INPUT_AntiScanUnAckSetFinEnable" /></div>
+			<div class="div_left">TCP Flags: Unset "ACK", Set "PSH"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanUnAckSetPshEnable" id="INPUT_AntiScanUnAckSetPshEnable" /></div>
+			<div class="div_left">TCP Flags: Unset "ACK", Set "URG</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanUnAckSetUrgEnable" id="INPUT_AntiScanUnAckSetUrgEnable" /></div>
+			<div class="div_left">TCP Flags: Unset "SYN ACK FIN RST URG PSH"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanUnsetAllEnable" id="INPUT_AntiScanUnsetAllEnable" /></div>
+			<div class="div_left">TCP Flags: Set "SYN ACK FIN RST URG PSH"</div><div class="div_right">><input type="checkbox" name="INPUT_AntiScanSetAllEnable" id="INPUT_AntiScanSetAllEnable" /></div>
+			<div class="div_left">TCP Flags: Unset "PSH", Set "SYN ACK FIN RST URG"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanForAllSetSynRstAckFinUrgEnable" id="INPUT_AntiScanForAllSetSynRstAckFinUrgEnable" /></div>			
+			<div class="div_left">TCP Flags: Unset "SYN ACK RST URG PSH", Set "FIN"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanForAllSetFinEnable" id="INPUT_AntiScanForAllSetFinEnable" /></div>			
+			<div class="div_left">TCP Flags: Unset "SYN ACK RST", Set "FIN URG PSH"</div><div class="div_right"><input type="checkbox" name="INPUT_AntiScanForAllSetFinUrgPshEnable" id="INPUT_AntiScanForAllSetFinUrgPshEnable" />	</div>	
+			-->	
+			<div class="div_left" id="lang_TCPDoS">TCP DoS :</div><div class="div_right"><input type="checkbox" name="INPUT_SynCookieEnable" id="INPUT_SynCookieEnable" onclick="OnSynCookieEnableClick()" /></div>
+			<div class="div_left" id="lang_TCPDoSMaxRate">TCP DoS Max Rate:</div><div class="div_right"><input type="input" size=5 name="INPUT_SynMaxConnections" id="INPUT_SynMaxConnections" /><span id="lang_packetssecond" >(packets/second)</span></div>
+	</div>
+			<div class="div_button"><input type="submit" id="submit" value='Apply' onClick="uiSubmit()"><input type='button' onClick='uiPageRefresh()' id="cancelapp"value='Cancel'></div>
+
+
+	
+	</div> 		
+
+
+				
+				
+
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc">
+		</form>	
+</td>	
+		<td class="td_help">
+			<div class="help">
+				<h5 id="lang_help">Helpful Hints...</h5>
+				<div>
+				<p id="lang_help_dsc">
+Helpful Hints... 
+If you select "Enable Attack Prevent", the router detects attacks. If you select "Prevent IP Spoofing", the router drops packets from WAN interface with private source IP addresses. The private IP address ranges are as follows: 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16.
+More...
+				</p></div>
+				<h5><a href="#" id="lang_help_more">More...</a></h5>
+			</div>
+		</td>
+
+

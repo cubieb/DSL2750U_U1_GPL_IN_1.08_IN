@@ -1,0 +1,944 @@
+
+menuconfig APPS_LOGIC
+	bool 'LOGIC'
+	default y
+	depends on APPS
+  	help
+      	LOGIC
+
+config APPS_LOGIC_IPV6
+	bool 'Support IPv6'
+	default y
+	depends on TBS_SUPPORT_IPV6 && APPS_LOGIC
+	help
+	    IPV6 feature
+
+config APPS_LOGIC_FON
+	bool 'FON'
+	default n
+	depends on APPS_LOGIC
+	help
+	    FON
+
+config APPS_LOGIC_NATPUBIPADDR
+	bool 'Support nat public IP address'
+	default y
+	depends on APPS_LOGIC
+	help
+	    Support nat public IP address function,SNAT
+
+config APPS_LOGIC_WAN_REPLACE
+	bool 'Support WAN connection replace'
+	default n
+	depends on APPS_LOGIC
+	help
+	    Support WAN connection replace
+	    
+config APPS_LOGIC_IPV6_ENABLE
+	bool 'IPv6 Enable & Disable'
+	default y
+	depends on APPS_LOGIC
+	help
+	    Enable IPv6 & Diable IPv6 server 
+config APPS_LOGIC_ClubWifi
+	bool 'Support ClubWifi'
+	default y
+	depends on APPS_LOGIC
+	help
+	    ClubWifi feature
+
+config APPS_LOGIC_WLAN
+	bool 'WLAN'
+	default n
+	depends on APPS_LOGIC
+	help
+	   Wlan module
+
+config APPS_LOGIC_WPS
+	bool 'WPS'
+	default n
+	depends on APPS_LOGIC_WLAN
+	help
+	   Support WPS(WiFi Protected Setup) in WLAN module
+	   
+config APPS_LOGIC_WPS2X
+	bool 'WPS 2.0'
+	default n
+	depends on APPS_LOGIC_WLAN
+	help
+	   Support WPS2.0(WiFi Protected Setup) in WLAN module	
+	      
+config APPS_LOGIC_WDS
+	bool 'WDS'
+	default n
+	depends on APPS_LOGIC_WLAN
+	help
+	   Support WDS in WLAN module
+ 
+menu "TR Mode"
+	depends on APPS_LOGIC_WLAN
+
+	config APPS_TRMODE_1T1R
+		bool '1T1R'
+		default n
+		help
+			TR Mode:1T1R
+
+	config APPS_TRMODE_1T2R
+		bool '1T2R'
+		default y
+		help
+			TR Mode:1T2R
+
+	config APPS_TRMODE_2T2R
+		bool '2T2R'
+             default n
+             help
+			TR Mode:2T2R
+endmenu
+
+config APPS_LOGIC_PPPOE
+	bool 'PPPoE'
+	default n
+	depends on APPS_LOGIC
+    help
+	  PPPoE module
+
+config APPS_LOGIC_IPSEC
+	bool 'IPSEC'
+	default n
+	depends on APPS_LOGIC_PPPOE
+	help
+		IPSEC module
+
+config APPS_LOGIC_PPP_RETRY
+	bool 'PPP Retry Mechanism'
+	default n
+	depends on APPS_LOGIC_PPPOE
+	help
+		A retry mechanism for PPP Data Session
+
+config APPS_LOGIC_PPPOE_BRIDGE
+	bool 'PPPoE_Bridge'
+	default n
+	depends on APPS_LOGIC_PPPOE
+    help
+	  Support  PPPoE Bridge
+
+config APPS_LOGIC_PPPOE_PASSTHROUGH
+	bool 'PPPoE Pass-Through'
+	default n
+	depends on APPS_LOGIC_PPPOE
+    help
+	  Support  PPPoE Pass-Through
+	  
+config APPS_LOGIC_VPN
+   bool 'VPN'
+   default n
+   depends on APPS_LOGIC_PPPOE
+   help
+      VPN module
+      
+config APP_LOGIC_PPPOU
+    bool 'PPP over usb modem(For GPRS/CDMA/3G wireless module)'
+    default n
+    depends on APPS_LOGIC_PPPOE
+    help
+       Support ppp on usb modem module
+
+
+
+config APPS_LOGIC_USBPIN
+    bool '3G pin management(For GPRS/CDMA/3G sim card)'
+    default n
+    depends on APP_LOGIC_PPPOU
+    help
+       Pin code manage on usb 3g sim card module
+
+config APPS_LOGIC_LAN
+	bool 'LAN'
+	default n
+	depends on APPS_LOGIC
+	select OPENSOURCE_BRCTL
+	help
+	  Lan module
+
+config APPS_LOGIC_LAN_VLAN
+	bool 'LAN_VLAN'
+	default n
+	depends on APPS_LOGIC_LAN
+	help
+	  Lan vlan module
+
+config APPS_LOGIC_LAN_PORT_VLAN
+	bool 'LAN_PORT_VLAN'
+	default n
+	depends on APPS_LOGIC_LAN
+	help
+	  Lan port vlan module
+	  
+config APPS_LOGIC_TR069HOLD
+	bool 'TR069HOLD'
+	default n
+	depends on APPS_LOGIC
+	help
+	  tr069 hold module
+	  	  
+config APPS_LOGIC_DNS
+	bool 'DNS'
+	default n
+	depends on APPS_LOGIC
+	help
+	  DNS module
+
+config APPS_LOGIC_DDNS
+    bool 'DDNS'
+    default n
+    depends on APPS_LOGIC
+    help
+      ddns module, config dynamic DNS.
+
+config APPS_LOGIC_DDNS_PEANUTHULLCLIENT
+	bool 'Peanuthull Clinet'
+	default n
+	depends on APPS_LOGIC_DDNS && OPENSOURCE_PEANUTHULLCLIENT
+	help
+	  Support DDNS peanuthull client for D_link
+
+config APPS_LOGIC_WANSELECT
+    bool 'WANSELECT'
+    default n
+    depends on APPS_LOGIC
+    select LAN_AS_WAN
+    help
+      wanselect module, select WAN access type.
+
+config APPS_LOGIC_WAN
+	bool 'WAN'
+	default n
+	depends on APPS_LOGIC
+	help
+	  Wan module
+
+config APPS_LOGIC_WAN_SERVICETYPE
+	bool 'WAN_SERVICETYPE'
+	default n
+	depends on APPS_LOGIC_WAN
+	help
+	  Wan connection type
+
+config APPS_LOGIC_INTERNET_LED
+	bool 'INTERNET_LED(TR068)'
+	default y
+	depends on APPS_LOGIC_WAN
+	help
+	Wan internet led module
+
+#config APPS_LOGIC_WAN_VLAN
+#	bool 'WAN_VLAN'
+#	default n
+#	depends on APPS_LOGIC_WAN
+#	help
+#	  Wan vlan module
+
+config APPS_LOGIC_IPCONN
+	bool 'IPCONN'
+	default n
+	depends on APPS_LOGIC
+	help
+	  IPConn module
+
+config APPS_LOGIC_DHCPC_OPTION15
+	bool 'DHCPC_OPTION15(Domain Name Option)'
+	default n
+	depends on APPS_LOGIC_IPCONN
+	help
+	  DHCP option15
+
+config APPS_LOGIC_DHCPC_OPTION42
+	bool 'DHCPC_OPTION42(Network Time Protocol Servers Option)'
+	default n
+	depends on APPS_LOGIC_IPCONN
+	help
+	  DHCP option42
+
+#	config APPS_LOGIC_DHCPC_OPTION250
+#		bool 'DHCPC_OPTION250()'
+#		default n
+#		depends on APPS_LOGIC_IPCONN
+#	  	help
+#	        DHCP option250
+
+config APPS_LOGIC_ETHWAN
+	bool 'ETHWAN'
+	default n
+	depends on APPS_LOGIC
+	help
+	  EthWan module
+
+config APPS_LOGIC_ETHLAN
+	bool 'ETHLAN'
+	default n
+	depends on APPS_LOGIC
+	help
+	  EthLan module
+
+config APPS_LOGIC_TR069
+	bool 'TR069'
+	default n
+	depends on APPS_LOGIC
+	select APPS_TR069
+	help
+		TR069 module
+
+config APPS_LOGIC_TR111
+	bool 'TR111'
+	default n
+	depends on APPS_LOGIC_TR069
+	help
+		TR111 for TR069 module
+
+config APPS_LOGIC_TR064BE
+	bool 'TR064BE'
+	default n
+	depends on APPS_LOGIC
+	select APPS_TR064
+	help
+		TR064 module
+
+config APPS_LOGIC_IPT
+	bool 'IPT'
+	default n
+	depends on APPS_LOGIC
+	help
+		NAPT/NAT module
+
+config APPS_LOGIC_PORTMAPPING
+	bool 'PORTMAPPING'
+    default n
+    depends on APPS_LOGIC
+    help
+    	PORTMAPPING module
+
+config APPS_LOGIC_PCP
+	bool 'PCP - Port Control Protocol'
+	default n
+	depends on APPS_LOGIC
+	help
+		PCP module
+
+config APPS_LOGIC_ACL
+	bool 'ACL'
+	default n
+	depends on APPS_LOGIC
+	help
+		ACL(RACL/LACL) module
+
+config APPS_LOGIC_IP_ACL
+	bool 'IP_ACL'
+	default n
+	depends on APPS_LOGIC
+	help
+		IP_ACL module
+
+config APPS_LOGIC_DEFAULT_GATEWAY
+	bool 'DEFAULT_GATEWAY'
+	default n
+	depends on APPS_LOGIC
+	help
+		DEFAULT_GATEWAY module
+
+config APPS_LOGIC_NATPRIO
+	bool 'NATPRIO'
+	default n
+	depends on APPS_LOGIC
+	help
+		NAT PRIO module
+
+config APPS_LOGIC_LOGGER
+	bool 'LOGGER'
+	default n
+	depends on APPS_LOGIC
+	help
+		LOGGER module
+
+config APPS_LOGIC_PING
+	bool 'Ping'
+	default n
+	depends on APPS_LOGIC
+	help
+		Ping module
+
+config APPS_LOGIC_DIAG
+	bool 'Diagnostics'
+	default n
+	depends on APPS_LOGIC
+	help
+		Ping module
+
+config APPS_LOGIC_DHCPS
+	bool 'Dhcp Server'
+	default n
+	depends on APPS_LOGIC
+	select OPENSOURCE_UDHCP
+	help
+		Dhcp Server module
+
+config APPS_LOGIC_DHCPS_FILTER
+	bool 'Dhcp Server filter'
+	default n
+	depends on APPS_LOGIC_DHCPS
+	help
+		Dhcp Server module
+
+config APPS_LOGIC_DHCPS_OPTION125
+	bool 'Dhcp Server Option125'
+	default n
+	depends on APPS_LOGIC_DHCPS
+	help
+		Dhcp Server module
+
+config APPS_LOGIC_DHCPR
+	bool 'Dhcp Relay'
+	default n
+	depends on APPS_LOGIC
+	select OPENSOURCE_DHCPR
+	help
+	Dhcp Relay module
+
+config APPS_LOGIC_PORTTRIGGER
+	bool 'Port Trigger'
+	default n
+	depends on APPS_LOGIC
+	select IP_NF_TARGET_TRIGGER
+	help
+		Port Trigger module
+
+config APPS_LOGIC_ALG
+	bool 'ALG'
+	default n
+	depends on APPS_LOGIC
+	help
+		ALG module
+
+config APPS_LOGIC_DEVCONFIG
+	bool 'DEVCONFIG'
+	default y
+	depends on APPS_LOGIC
+	help
+		DevConfig module
+
+config APPS_LOGIC_AUTH
+	bool 'Auth'
+	default n
+	depends on APPS_LOGIC
+	help
+		Auth module
+
+config APPS_LOGIC_FIRSTLOGIN_CHECK
+	bool 'FIRSTLOGIN CHECK'
+	default n
+	depends on APPS_LOGIC_AUTH
+	help
+		FIRSTLOGIN CHECK
+
+config APPS_LOGIC_IGMP
+	bool 'IGMP Proxy & Snooping'
+    default n
+    depends on APPS_LOGIC
+	select OPENSOURCE_IGMPPROXYV3
+    help
+    	IGMP Proxy & Snooping Configuration Module
+
+config APPS_LOGIC_STATIC_IGMP
+        bool 'Static IGMP'
+        default n
+        depends on APPS_LOGIC_IGMP
+	select IGMP_SNOOPING_STATIC
+	help
+	    Support static IGMP Configuration Module
+
+config APPS_LOGIC_MLD
+	bool 'MLD Proxy & Snooping'
+	default y
+	depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+	select OPENSOURCE_MLD
+	help
+	MLD	Proxy &	Snooping Configuration Module
+
+config APPS_LOGIC_UPNP
+	bool 'UPnP'
+    default n
+    depends on APPS_LOGIC
+	select OPENSOURCE_UPnP
+    help
+    	UPnP Configuration Module
+
+#config APPS_LOGIC_BRIDGE
+#		bool 'BRIDGE'
+#		default n
+#		depends on APPS_LOGIC
+#	  	help
+#		Bridge module
+
+config APPS_LOGIC_SNMPC
+	bool 'SNMP Configuration'
+	default n
+	depends on APPS_LOGIC
+	help
+		Configuration module
+
+config APPS_LOGIC_SAMBA
+	bool 'SAMBA Configuration'
+	default n
+	depends on APPS_LOGIC
+	help
+		Configuration module
+
+choice
+		prompt "Samba Type"
+		default APPS_LOGIC_TW_SAMBA
+		depends on APPS_LOGIC_SAMBA
+	config APPS_LOGIC_TF_SAMBA
+		bool 'TF_SAMBA'
+	config APPS_LOGIC_TW_SAMBA
+		bool 'TW_SAMBA'
+endchoice
+
+config APPS_LOGIC_FIREWALLLOG
+	bool 'FIREWALLLOG Configuration'
+	default n
+	depends on APPS_LOGIC
+	help
+		Firewall Configuration module
+
+#
+# QoS start
+#
+	config APPS_LOGIC_QOS
+		bool 'QOS Configuration'
+		default n
+		depends on APPS_LOGIC
+		select OPENSOURCE_IPROUTE2
+		select OPENSOURCE_EBTABLES
+		select OPENSOURCE_IPTABLES
+		help
+		Configuration module
+
+	choice
+		prompt "QOS Type"
+		default APPS_LOGIC_QOS_IMQ
+		depends on APPS_LOGIC_QOS
+
+	config APPS_LOGIC_QOS_IFB
+		bool 'QOS IFB'	
+	
+	config APPS_LOGIC_QOS_IMQ
+		bool 'QOS IMQ'
+	
+	config QOS_WAN_ADSL
+		bool 'Enable Macor QOS_WAN_ADSL'
+		default y
+		depends on APPS_LOGIC_QOS_IMQ
+		
+	endchoice  
+  
+#
+# QoS end
+#
+
+config APPS_LOGIC_STATIC_ROUTING
+	bool 'Static Routing'
+	default n
+	depends on APPS_LOGIC
+	help
+		Static Routing
+
+config APPS_LOGIC_FIREWALL
+	bool 'Firewall'
+	default n
+	depends on APPS_LOGIC
+	help
+		Firewall module
+
+config APPS_LOGIC_TF_GUI
+        bool 'gui for telefonica'
+        default n
+        depends on APPS_LOGIC 
+        help
+ 	       gui for telefonica
+config APPS_LOGIC_ANTIATTACK
+	bool 'AntiAttack'
+	default n
+	depends on APPS_LOGIC
+	help
+		AntiAttack module
+
+config APPS_LOGIC_DROUTE
+	bool 'Dynamic Routing'
+	default n
+	depends on APPS_LOGIC
+	select OPENSOURCE_ZEBRA
+	help
+		Dynamic Routing
+
+config APPS_LOGIC_SNTP
+	bool 'SNTP'
+	default n
+	depends on APPS_LOGIC
+	help
+		for the configuration of msntp
+
+config APPS_LOGIC_USB_MASS
+	bool 'USB Mass Manager'
+	default n
+	depends on APPS_LOGIC
+	help
+		An upper App For USB Storage Info, Make sure has enabled the concerned USB driver.
+
+config APPS_LOGIC_IPPMNGR
+	bool 'USB Printing Manager'
+	default n
+	depends on APPS_LOGIC
+	help
+		USB Printing. Make sure enable the IPPD and USB-Printer support too.
+
+config APPS_LOGIC_FTPD
+	bool 'FTPD'
+	select OPENSOURCE_FTPD
+	default n
+	depends on APPS_LOGIC
+	help
+		FTPD module. Make sure the FTPD Daemon in Opensource has been on tick.
+
+choice
+	prompt "password Support"
+	default n
+	depends on APPS_LOGIC_FTPD
+
+	config APPS_LOGIC_FTPD_TBS
+		bool 'TBS FTPD'
+		help
+			TBS FTPD.
+
+	config APPS_LOGIC_FTPD_CT
+		bool 'China-Telecom FTPD'
+		help
+			Support China-Telecom FTPD requirement.
+endchoice
+
+config APPS_LOGIC_PROUTE
+	bool 'Policy Route'
+	default y
+	depends on APPS_LOGIC
+	help
+		Policy Route, config Policy Route
+
+config APPS_LOGIC_URL_FILTER
+	bool 'URL Filter'
+	default n
+	depends on APPS_LOGIC
+	help
+		URL Filter Module
+
+config APPS_LOGIC_MACFILTER
+	bool 'MAC Filter'
+	default n
+	depends on APPS_LOGIC
+	help
+		MAC Filter Module
+
+config APPS_LOGIC_DSL
+	bool 'DSL'
+	default n
+	depends on APPS_LOGIC
+	help
+		DSL Module
+
+config APPS_LOGIC_DEVINFO
+	bool 'DevInfo'
+	default y
+	depends on APPS_LOGIC
+	help
+		devinfo module, manage all misc nodes.
+
+config APPS_LOGIC_WEBPROXY
+	bool 'WAN Page Web Proxy'
+	default y
+	depends on APPS_LOGIC
+	help
+	WAN Page Web Proxy
+
+#config APPS_LOGIC_ATM
+#	bool 'ATM'
+#	default n
+#	depends on APPS_LOGIC
+#	help
+#		atm module, config PVC info by br2684ctl.
+
+config APPS_LOGIC_VDSL
+	bool 'VDSL'
+	default n
+	depends on APPS_LOGIC
+	help
+		Logic VDSL Module
+
+config APPS_LOGIC_SUPP
+	bool '802.1x supplicant'
+	default N
+	depends on APPS_LOGIC
+	select APPS_SUPP
+	help
+		802.1x supplicant module.
+
+config APPS_LOGIC_TRACERT
+	bool 'traceroute'
+	default y
+	depends on APPS_LOGIC
+	select TRACEROUTE
+	select FEATURE_TRACEROUTE_USE_ICMP
+	help
+		traceroute module.
+
+config APPS_LOGIC_SCHEDULE
+	bool 'Schedule'
+	default y
+	depends on APPS_LOGIC
+	help
+		schedule module.
+		
+config APPS_LOGIC_SPT
+	bool 'shareprotection'
+	default n
+	depends on APPS_LOGIC
+	help
+		share protection module.		
+
+config APPS_LOGIC_TRADITIONALNAT
+	bool 'TraditionalNAT'
+	default n
+	depends on APPS_LOGIC
+	help
+		Traditional NAT module.	
+		
+config APPS_LOGIC_IPMACFILTER
+	bool 'IPMACFilter'
+	default n
+	depends on APPS_LOGIC
+	help
+		IPMACFilter module.	
+config APPS_LOGIC_TR143
+	bool 'TR143'
+	default n
+	depends on APPS_LOGIC
+	help
+		tr143 module.	
+
+
+config APPS_LOGIC_DHCP6S
+        bool 'DHCP6S'
+        default y
+        depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+        help
+		DHCP6S module
+
+config APPS_LOGIC_RADVD
+        bool 'RADVD'
+        default y
+        depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+        help
+        	RADVD module
+    
+config APPS_LOGIC_V6CONN
+        bool 'V6CONN'
+        default y
+        depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+        help
+ 	       V6CONN module
+
+
+config APPS_LOGIC_V6SROUTE
+         bool 'IPv6 Static Routing'
+         default y
+         depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+         help
+ 	        IPv6 Static Routing
+
+config APPS_LOGIC_SUPPORT_PPPV6
+        bool 'PPPv6'
+        default y
+        depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+        help
+ 	       V6CONN module
+
+
+config APPS_LOGIC_TF_FIREWALL
+        bool 'firewall for telefonica'
+        default n
+        depends on APPS_LOGIC 
+        help
+ 	       firewall for telefonica
+ 	       
+config APPS_LOGIC_TF_PORTMAPPING
+        bool 'TF_PORTMAPPING'
+        default n
+        depends on APPS_LOGIC 
+        help
+ 	       this module response for lan eth-port bind in wizard-web
+
+config APPS_LOGIC_SUPPORT_CPUUSAGE
+        bool 'CPUUsage'
+        default n
+        depends on APPS_LOGIC
+        help
+ 	       CPU module
+
+config APPS_LOGIC_TF_IGMP
+	bool 'Telefonica IGMP Proxy & Snooping'
+    default n
+    depends on APPS_LOGIC
+	select OPENSOURCE_IGMPPROXYV3
+    help
+    	Telefonica IGMP Proxy & Snooping Configuration Module
+
+config APPS_LOGIC_DLNA
+	bool 'DLNA DMS Support'
+	default n
+	select OPENSOURCE_DLNA
+	depends on APPS_LOGIC
+	help
+		DLNA DMS Support
+
+config APPS_LOGIC_IPTUNNEL
+	bool 'IPTunnel'
+	default y
+	depends on APPS_LOGIC
+	help
+	Logic IPTunnel module.
+
+config APPS_LOGIC_GRE
+	bool 'GRETunnel'
+	default n
+	depends on APPS_LOGIC
+	help
+	Logic GRETunnel module.
+
+config APPS_LOGIC_FIREWALL_IPV6
+	bool 'Support IPv6 Firewall'
+	default y
+	depends on APPS_LOGIC && TBS_SUPPORT_IPV6
+	help
+	IPV6 feature
+
+config APPS_LOGIC_TR069DIAG	 
+	bool 'TR069 DSL DIAG Support'
+	default n
+	depends on APPS_LOGIC
+	help
+		TR069 DSL DIAG 
+		
+config APPS_LOGIC_MACCLONE
+	bool 'MACCLONE'
+	default n
+	depends on APPS_LOGIC
+	help
+		MACCLONE module
+	
+config APPS_LOGIC_QrenCode
+ 		bool 'QrenCode'
+		default n
+		depends on APPS_LOGIC && OPENSOURCE_LIB_PNG && OPENSOURCE_QRENCODE
+		help
+			This switch is depends on opensource libpng and opensource qrencode
+
+
+choice
+	prompt "TR069 PASSWORD SELECTION"
+	default n
+	depends on APPS_LOGIC
+	
+	config APPS_LOGIC_TR069_PASSWORD_Default 
+		bool 'Default'
+		help
+			TR069 Password use MACAddress.
+
+	config APPS_LOGIC_TR069_PASSWORD_Argentina 
+		bool 'PASSWORD_Argentine '
+		help
+			TR069 Password use "password".
+
+	config APPS_LOGIC_TR069_PASSWORD_Columbia 
+		bool 'PASSWORD_Columbia'
+		help
+			TR069 Password use front 6 char of MACAddress.
+
+endchoice
+config APPS_LOGIC_CUSTOMIZE_VERSION
+	bool "CUSTOMIZE VERSION FEATURES SELECTION"
+	default n
+	depends on APPS_LOGIC
+
+config TELEFONICA_COLOMBIA
+		bool 'Telefonica_Colombia'
+		default n
+		depends on APPS_LOGIC_CUSTOMIZE_VERSION
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_COLOMBIA_ZTE
+		bool 'Telefonica_Colombia_ZTE'
+		default n
+		depends on TELEFONICA_COLOMBIA
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_COLOMBIA_OBSERVA
+		bool 'Telefonica_Colombia_Observa'
+		default n
+		depends on TELEFONICA_COLOMBIA
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_CHILE 
+		bool 'Telefonica_Chile'
+		default n
+		depends on APPS_LOGIC_CUSTOMIZE_VERSION
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_SPAIN 
+		bool 'Telefonica_Spain'
+		default n
+		depends on APPS_LOGIC_CUSTOMIZE_VERSION
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+			
+			
+config TELEFONICA_PERU 
+		bool 'Telefonica_Peru'
+		default n
+		depends on APPS_LOGIC_CUSTOMIZE_VERSION
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_BRAZIL
+		bool 'Telefonica_Brazil'
+		default n
+		depends on APPS_LOGIC_CUSTOMIZE_VERSION
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_BRAZIL_ZTE
+		bool 'Telefonica_Brazil_ZTE'
+		default n
+		depends on TELEFONICA_BRAZIL
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+
+config TELEFONICA_BRAZIL_OBSERVA
+		bool 'Telefonica_Brazil_Observa'
+		default n
+		depends on TELEFONICA_BRAZIL
+		help
+			Pppoe&wlan username and password use the mac and serialnumber
+

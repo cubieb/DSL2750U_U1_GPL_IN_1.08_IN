@@ -1,0 +1,34 @@
+
+<InternetGatewayDevice type="object">
+	<DeviceInfo type="object" Writable="0">
+		<X_TWSZ-COM_Restore Standard="0" type="object">
+			<Enable Standard="0" Writable="1" type="boolean">0</Enable>
+		</X_TWSZ-COM_Restore>
+	</DeviceInfo>
+	<X_TWSZ-COM_USBDevice type="object" Writable="0">
+		<StorageSum type="unsignedInt" Standard="0" Writable="0" NeedSave="0">0</StorageSum>
+		<Storage type="object" Standard="0" NeedSave="0">
+			<i type="object">
+				<Vendor type="string" Standard="0" Writable="0"></Vendor>
+				<Model  type="string" Standard="0" Writable="0"></Model>
+				<DiskSizeMB   type="unsignedInt" Standard="0" Writable="0">0</DiskSizeMB>
+				<PartitionSum type="unsignedInt" Standard="0" Writable="0">0</PartitionSum>
+
+				<Partitions type="object" Standard="0" Writable="0">
+					<i type="object">
+						<SDName type="string" Standard="0" Writable="0"></SDName>
+						<Boot   type="boolean" Standard="0" Writable="0"></Boot>
+						<PartSizeMB type="unsignedInt" Standard="0" Writable="0">0</PartSizeMB>
+						<SysID type="int[0:255]" Standard="0" Writable="0">0</SysID>
+						<FileSystem type="string" Standard="0" Writable="0"></FileSystem>
+						<PartUsedKB type="string" Standard="0" Writable="0"></PartUsedKB>
+						<PercentUsed type="int[0:100]" Standard="0" Writable="0">0</PercentUsed>
+						<MountPoint type="string" Standard="0" Writable="0"></MountPoint>
+						<Mounted type="boolean" Standard="0" Writable="0">0</Mounted>
+						<CfgBackupFileExist type="boolean" Standard="0" Writable="0">0</CfgBackupFileExist>
+					</i>
+				</Partitions>
+			</i>
+		</Storage>
+	</X_TWSZ-COM_USBDevice>
+</InternetGatewayDevice>

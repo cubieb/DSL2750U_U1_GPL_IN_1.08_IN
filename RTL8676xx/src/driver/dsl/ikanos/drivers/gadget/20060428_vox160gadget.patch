@@ -1,0 +1,47 @@
+diff -Naru gadget_old/ether.c gadget_new/ether.c
+--- gadget_old/ether.c	2006-04-28 10:26:45.614903000 -0700
++++ gadget_new/ether.c	2006-04-28 10:31:05.043803000 -0700
+@@ -1127,6 +1127,7 @@
+ 
+ 	netif_stop_queue (dev->net);
+ 	netif_carrier_off (dev->net);
++	rndis_uninit(dev->rndis_config);
+ 
+ 	/* disable endpoints, forcing (synchronous) completion of
+ 	 * pending i/o.  then free the requests.
+diff -Naru gadget_old/rndis.c gadget_new/rndis.c
+--- gadget_old/rndis.c	2006-04-28 10:25:48.376127000 -0700
++++ gadget_new/rndis.c	2006-04-28 10:31:00.810959000 -0700
+@@ -1013,6 +1013,21 @@
+ 					  RNDIS_STATUS_MEDIA_CONNECT);
+ }
+ 
++void rndis_uninit (int configNr)
++{
++        u8 *buf;
++        u32 length;
++
++        if (configNr >= RNDIS_MAX_CONFIGS)
++                return;
++        rndis_per_dev_params [configNr].used = 0;
++        rndis_per_dev_params [configNr].state = RNDIS_UNINITIALIZED;
++
++        /* drain the response queue */
++        while ((buf = rndis_get_next_response(configNr, &length)))
++                rndis_free_response(configNr, buf);
++}
++
+ int rndis_signal_disconnect (int configNr)
+ {
+ 	rndis_per_dev_params [configNr].media_state
+diff -Naru gadget_old/rndis.h gadget_new/rndis.h
+--- gadget_old/rndis.h	2006-04-28 10:25:48.379126000 -0700
++++ gadget_new/rndis.h	2006-04-28 10:30:54.535192000 -0700
+@@ -338,6 +338,7 @@
+ u8   *rndis_get_next_response (int configNr, u32 *length);
+ void rndis_free_response (int configNr, u8 *buf);
+ 
++void rndis_uninit (int configNr);
+ int  rndis_signal_connect (int configNr);
+ int  rndis_signal_disconnect (int configNr);
+ int  rndis_state (int configNr);

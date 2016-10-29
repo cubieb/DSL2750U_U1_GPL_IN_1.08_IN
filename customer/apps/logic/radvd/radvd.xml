@@ -1,0 +1,39 @@
+<InternetGatewayDevice type="object">
+	<LANDevice type="object" Writable="0">
+		<i type="object">
+			<X_TELEFONICA-ES_IPv6LANHostConfigManagement type="object">
+				<RADVD type="object">
+					<Enabled type="boolean">1</Enabled>
+				</RADVD>
+				<IPv6SitePrefixConfigType type="object">
+					<StaticDelegated type="boolean">0</StaticDelegated>
+				</IPv6SitePrefixConfigType>
+				<IPv6PDWanConnection type="object">
+					<Interface type="string"></Interface>
+				</IPv6PDWanConnection>
+				<IPv6InterfaceNumberOfEntries type="object">
+					<N_entries type="unsignedInt">1</N_entries>
+				</IPv6InterfaceNumberOfEntries>
+				<RadVDConfigManagement type="object">
+					<ULAPrefixInfo type="object">
+						<Enable type="boolean">0</Enable>
+						<Prefix type="string">11:22:33:44:55</Prefix>
+						<PreferredLifeTime type="int">14400</PreferredLifeTime>
+						<ValidLifeTime type="int">86400</ValidLifeTime>
+					</ULAPrefixInfo>
+					<PrefixInformationNumberOfEntries type="unsignedInt" Writable="0">0</PrefixInformationNumberOfEntries>
+					<PrefixInformation type="object" CurNode="PrefixInformationNumberOfEntries">
+						<i type="object">
+							<Mode type="string"></Mode>
+							<DelegatedConnection type="string"></DelegatedConnection>
+							<Prefix type="string"></Prefix>
+							<PreferredLifeTime type="int">7200</PreferredLifeTime>
+							<ValidLifeTime type="int">172800</ValidLifeTime>
+						</i>
+					</PrefixInformation>
+				</RadVDConfigManagement>
+			</X_TELEFONICA-ES_IPv6LANHostConfigManagement>
+		</i>
+	</LANDevice>
+</InternetGatewayDevice>
+

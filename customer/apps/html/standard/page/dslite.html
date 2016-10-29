@@ -1,0 +1,122 @@
+<style type="text/css">
+	.div_left { width:240px;}
+</style>
+<td>
+	<div class="config2">
+		<p class="do bk_black" id="lang_tunnel_global">Ip Tunnel Configuration</p>
+		<div class="div_orange" id="lang_in">
+		   <p>Network topology in IPv4/v6 Internet, some only run IPv6 protocol stack P routers form the pure IPv6 backbone. However, due to the large IPv4 applications will be a period of time is still widely used, so the need for pure IPv6 backbone network to IPv4 stack border access.</p>
+	    </div>
+		<div id="TunnelSetting">
+		<p class="do bk_black" id="lang_TunnelSetting">IpTunnel</p>
+		<div class="div_black">
+			<table class="td_table_s" id="Iptunnel_table">
+				<tr class="tr_bold">
+					<td></td>
+					<td id="lang_Tunnel">Tunnel Name</td>
+					<td id="lang_Mode">Mode</td>
+					<td id="lang_Wan">Wan interface</td>
+					<td id="lang_Lan">Lan interface</td>
+					<td id="lang_Activated">Activated</td>
+					<td id="lang_Counter">Counter</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button"><input type='button' id='addTunnel' name='addTunnel' onClick='AddTunnel()' value=' Add '>
+			<input type="button" id="editTunnel" name="editTunnel"  onClick="EditTunnel()" value=" Edit ">
+			<input type="button" id="removeTunnel" name="removeTunnel" onClick="RemoveTunnel()" value=" Delete ">
+		</div>
+		</div>
+		
+		<div id="tunnel_setup" style="display:none">
+			<p class="do bk_black" id="lang_Add">Add Tunnel I tems</p>
+			<div class="div_black">
+				<div class="div_left" id="lang_Name">Tunnel Name:</div>
+				<div class="div_right">
+					<input type="text" id="INPUT_TunnelName" style="width:100px">
+				</div>
+
+                <div class="div_left" id="lang_TMode">Tunnel Mode</div>
+				<div class="div_right">
+					<select id="SELECT_TunnelMode" style="width:110px"></select>
+				</div>
+
+                <div class="div_left" id="lang_Wan1">Wan Interface:</div>
+				<div class="div_right">
+					<select id="SELECT_WanInterface" style="width:110px"></select>
+				</div>
+				<div class="div_left" id="lang_Lan1">Lan Interface:</div>
+				<div class="div_right">
+					<select id="SELECT_LanInterface" style="width:110px"></select>
+				</div>
+			</div>
+			<div class="div_button">
+			     <input type="button" id="submit" value="Apply" onClick="uiTunnelSubmit()">
+				 <input type='button' value="Cancel" onClick='uiPageRefresh()' id="CancelEdit">
+			</div>
+		</div>
+
+<!--  DSLITE SET -->
+        <div id="DsliteSetting">
+        <p class="do bk_black" id="lang_DS">DS-Lite IPv4 over IPv6 Tunnel List</p>
+        <div class="div_black">
+            <table class="td_table_s" id='DsliteList'>
+                <tr class="tr_bold">
+				    <td></td>
+                    <td id="lang_Mechanism">Mechanism</td>
+                    <td id="lang_Dynamic1">Dynamic</td>
+                    <td id="lang_Remote">RemoteIpv6Address </td>
+					          <td id="lang_Con">ConnStatus</td>
+					          <td id="lang_Select">Select </td>
+                </tr>
+            </table>
+        </div>
+        <div class="div_button">
+            <input type="button" value=" Add " id="addDslite" onClick="uiAddDslite()" />
+            <input type="button" value=" Edit " id="editDslite" onClick="uiEditDslite()" />
+            <input type="button" value=" Delete " id="deleteDslite" onClick="uiDeleteDslite()" />
+        </div>
+		</div>
+
+        <div id="dslite_setup" style="display:none">
+            <p class="do bk_black" id="lang_DS1">DS-Lite IPv4 over IPv6 Tunnel List</p>
+            <div class="div_black">
+                <div class="div_left" id="lang_Mechanism1">Mechanism:</div>
+                <div class="div_right">
+                    <select id="SELECT_DsliteMechanism" style="width:110px">
+                        <option value="DualStackLite" id="lang_Dual">DualStackLite</option>
+                    </select>
+                </div>
+			    <div class="div_left" id="lang_Dynamic2">Dynamic:</div>
+                <div class="div_right">
+                    <select id="SELECT_TunnelDynamic" onChange="uiDynamicChange()" style="width:110px">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+                </div>
+                <div id="div_remoteAddress">
+                <div class="div_left" id="lang_RemoteAddress">RemoteIpv6Address:</div>
+                <div class="div_right">
+                    <input type="text" id="INPUT_RemoteIpv6Address">
+                </div>
+                </div>
+            </div>
+            <div class="div_button">
+                <input type="button" value="Apply" name="apply" id="apply" onClick="btnApplyDSlite()" />
+                <input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+            </div>
+        </div>
+
+	</div>
+</td>
+
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc0">this is a ip tunnel configuration.</p>
+		</div>
+		<h5 ><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

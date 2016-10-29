@@ -1,0 +1,7 @@
+
+config OPENSOURCE_PPTP
+	bool 'pptp'
+	default n
+	depends on OPENSOURCE
+  	help 
+      	pptp

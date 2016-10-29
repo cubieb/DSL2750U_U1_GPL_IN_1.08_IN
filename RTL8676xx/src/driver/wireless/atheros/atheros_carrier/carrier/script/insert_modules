@@ -1,0 +1,28 @@
+#!/bin/sh
+
+SUFFIX=""
+
+#Peter Meng comments it since no 11g driver module be installed  
+# Finally, insert the modules
+##
+#if [ $MOD_TO_LOAD = "11g" ]; then
+#	SUFFIX=11g
+#fi
+
+PKTLOG_A="interfaces=wifi0"
+
+    sleep 2
+    insmod $MODULE_PATH/$MOD_TO_LOAD/ath_hal$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/ath_dfs$SUFFIX.ko $DFS_A
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/ath_rate_atheros$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/ath_pci$SUFFIX.ko $PCI_A
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_scan_ap$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_scan_sta$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_xauth$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_ccmp$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_tkip$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_wep$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/wlan_acl$SUFFIX.ko
+    insmod $MODULE_PATH/$MOD_TO_LOAD/ath_pktlog$SUFFIX.ko $PKTLOG_A
+                                            

@@ -1,0 +1,7 @@
+common_bup.o
+sdram.o
+basic_dma_test.o
+uart.o
+hic.o
+afe_rw.o
+memTest.o

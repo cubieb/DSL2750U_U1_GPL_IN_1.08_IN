@@ -1,0 +1,274 @@
+
+#
+# System Config
+#
+menu "System Configuration"
+choice
+	prompt "Chipset Configuration"
+	default RTL8676
+	
+config RTL8676
+	bool "Realtek RTL8676"
+	help
+	  This enables supports for RTL8676-based boards
+endchoice
+
+#config RTL_819X
+#	def_bool y
+
+#config RTL_8196C
+#	def_bool y
+
+#
+# Processor Config
+#
+config ARCH_32BIT
+  bool	"ARCH_32BIT" 
+  default y
+
+choice
+        prompt "CPU hardware Arch"
+        depends on RTL8676
+        default ARCH_CPU_RLX5181
+
+config ARCH_CPU_RLX5181
+  bool "ARCH_CPU_RLX5181"
+  depends on !RLE0412
+  
+config ARCH_CPU_RLX5281
+  bool "ARCH_CPU_RLX5281"
+
+endchoice
+choice
+        prompt "CPU Endianess"
+        depends on RTL8676
+        default ARCH_CPU_EB
+
+config ARCH_CPU_EB
+  bool "ARCH_CPU_EB"
+
+config ARCH_CPU_EL
+  bool "ARCH_CPU_EL"
+
+endchoice
+
+config ARCH_CPU_RADIAX
+  bool "ARCH_CPU_RADIAX"
+  default n
+
+config ARCH_CPU_SLEEP
+  bool "ARCH_CPU_SLEEP"
+  default n
+
+config ARCH_CPU_ULS
+  bool "ARCH_CPU_ULS"
+  default y
+
+config ARCH_CPU_LLSC
+  bool "ARCH_CPU_LLSC"
+  default n
+
+config ARCH_CPU_SYNC
+  bool "ARCH_CPU_SYNC"
+  default n
+
+config ARCH_CACHE_WBC
+  bool "ARCH_CACHE_WBC"
+  default y
+
+config ARCH_CACHE_L2
+  bool "ARCH_CACHE_L2"
+  default n
+
+config ARCH_IRQ_CPU
+  bool "ARCH_IRQ_CPU"
+  default y
+
+config ARCH_IRQ_VEC
+  bool "ARCH_IRQ_VEC"
+  default y
+
+config ARCH_BUS_USB
+  bool "ARCH_BUS_USB"
+  default n
+
+config ARCH_BUS_PCI
+  bool "ARCH_BUS_PCI"
+  default y
+
+config ARCH_BUS_PCI_MSI
+  bool "ARCH_BUS_PCI_MSI"
+  default n
+
+config RLE0412
+	bool "Support for RLE0412"
+	select ARCH_CPU_RLX5281
+	select ARCH_CPU_SYNC
+	default n
+
+# KERNE_STACK_SIZE = PAGE_SIZE<<KERNEL_STACK_SIZE_ORDER
+config KERNEL_STACK_SIZE_ORDER
+	int "Kenel Stack Size Order Configuration"
+	default "2"
+	help
+	  With Page Size 4K
+	  1 for 8K kenel stack size
+	  2 for 16K kernel stack size
+	  3 for 32K kernel stack size
+	  etc...
+
+choice
+        prompt "FLASH read type"
+        default FLASH_PIO_READ
+
+config FLASH_MMIO_READ
+        boolean "CPU MMIO flash read support"
+
+config FLASH_PIO_READ
+        boolean "CPU PIO flash read support"
+
+endchoice
+
+choice
+	prompt "Flash Size"
+	depends on RTL8676
+	default 4M_FLASH
+
+config 2M_FLASH
+	bool "2M"
+
+config 4M_FLASH
+	bool "4M"
+
+config	8M_FLASH
+	bool "8M"
+
+config	16M_FLASH
+	bool "16M"
+endchoice
+
+config SPANSION_16M_FLASH
+	bool "Support for SPANSION 16M FLASH"
+	depends on RTL8676
+
+config 64KB_CONF_PART
+	bool "Support a 64KB config partition for TR-069"
+	depends on RTL8676 
+
+config DEV_xDSL
+	bool "xDsl device"
+	default y
+choice 
+	prompt "xDSL Chip"
+	default RTL8271BVN
+	depends on DEV_xDSL
+
+config RTL8271BVN
+	boolean "RTL8271BVN QFN32"
+	depends on DEV_xDSL
+
+
+config RTL8271BVQ
+	boolean "RTL8271BVQ LQFP48"
+	depends on DEV_xDSL
+
+endchoice
+
+config EOC
+	bool "Support for DSL EOC channel"
+	depends on RTL8676 && DEV_xDSL
+
+config E8B
+	bool "Support for CTC E8B requirement"
+
+config NEW_PORTMAPPING
+    bool "Support the new port mapping"
+    depends on E8B
+
+choice	
+	prompt "IMEM Size"
+	depends on RTL8676
+	default	IMEM_4K
+
+config	IMEM_4K
+	bool "4K"
+
+config	IMEM_32K
+	bool "32K"
+
+config	IMEM_64K
+	bool "64K"
+
+endchoice
+
+choice	
+	prompt "IMEM1 Size"
+	depends on ARCH_CPU_RLX5281
+	default	IMEM1_32K
+
+config	IMEM1_4K
+	bool "4K"
+
+config	IMEM1_32K
+	bool "32K"
+
+config	IMEM1_64K
+	bool "64K"
+
+endchoice
+
+config IMEM_SIZE
+	hex
+	default "10000" if IMEM_64K
+	default "8000" if IMEM_32K
+	default "1000"
+	
+config IMEM1_SIZE
+	hex
+	default "10000" if IMEM1_64K
+	default "8000" if IMEM1_32K
+	default "1000"
+
+#choice
+#	prompt "LED Style"
+#	depends on RTL8676 
+#	default GPIO_LED_TR068
+#	
+config GPIO_LED_TR068
+	bool "GPIO led style TR068"
+	default y
+#endchoice
+#
+config RTL8676_SW_USB_LED
+	tristate "Support Software USB LED"
+	depends on USB_RTL8676_SUPPORT
+
+config SW_USB_LED0
+	bool "Software USB LED 0"
+	depends on RTL8676_SW_USB_LED
+
+config SW_USB_LED1
+        bool "Software USB LED 1"
+        depends on RTL8676_SW_USB_LED
+
+config	WPS_LED
+	 bool "Support WPS LED"
+	depends on WIFI_SIMPLE_CONFIG && RTL8676
+
+choice
+	prompt "UART selection"
+	depends on RTL8676
+	default USE_UART1 if (BOARD_006 || RLE0412)
+	default USE_UART0
+
+config USE_UART0
+	bool "Use UART0"
+
+config USE_UART1
+	bool "Use UART1"
+endchoice
+
+config MEM_LIMITATION
+        bool "Memory size limitation"
+        default n
+endmenu

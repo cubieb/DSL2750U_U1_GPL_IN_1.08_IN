@@ -1,0 +1,24 @@
+include ../../TI_Build.make
+-include $(TARGET_HOME)/.config
+
+export TI_base
+export TI_rlibdir
+
+export PATH := $(TI_uclibc_path):$(shell echo -n $(PATH))
+export CROSS_COMPILE_PREFIX=$(TI_uclibc_base)
+
+all: build install
+
+build:
+	CFLAGS="-Os -Wall -W -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs" 
+	$(MAKE)
+	mips_fp_le-strip -s mini_httpd
+
+install:
+	install -m 0755 mini_httpd $(TARGET_HOME)$(TI_sbindir)/mini_httpd
+	install -m 0755 mini_httpd.pem $(TARGET_HOME)$(TI_wwwdir)/mini_httpd.pem
+	install -m 0755 .htpasswd $(TARGET_HOME)$(TI_wwwdir)/.htpasswd
+	install -m 0755 .htdgst $(TARGET_HOME)$(TI_wwwdir)/.htdgst
+
+clean:
+	$(MAKE) clean

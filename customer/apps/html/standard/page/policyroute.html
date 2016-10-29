@@ -1,0 +1,58 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_Policy_Route">Policy Route</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">Policy Route :chose one Wanconnection and one Lanconnection then bind them.</p>
+		</div>
+		<p class="do bk_black" id = "lang_config">Policy Route SETUP</p>
+		
+				
+			<div class="div_black">
+				<table class="td_table_s" id="wan_lan_list">
+					<tr class="tr_bold">
+						<td>&nbsp;</td>
+						<td id="lang_wan">WAN</td>
+						<td id="lang_lan1111">LAN</td>
+					</tr>
+				</table>
+			</div>
+		
+		<div class="div_button">
+			<input type="button" value="Add"  name="add" id="add"  onClick="uiAdd()"/> 
+			<input type="button" value="Delete" name="delete" id="delete1" onClick="uiDelete()" />
+		</div>
+	</div>
+
+	<div class="div_black" id = "lang_wan_lan">
+		<p class="do bk_black" id = "lang_config2"> Wan instance and lan instance</p>
+			<div class="div_left" id = "lang_wan_con">WAN Connection </div>
+			<div class="div_right">
+			<select id="SELECT_WanInterface" name="SELECT_WanInterface" style="width:100px">
+			</select>
+			</div>
+			<div class="div_left" id = "lang_lan_con">LAN Connection </div>
+			<div class="div_right">
+			<select id="SELECT_LanInterface" name="SELECT_LanInterface"  style="width:100px">
+			</select>
+			</div>
+
+		<div class="div_button">
+			<input type="button" value="Apply"  name="submit" id="Apply"  onClick="uiSubmit()"/> 
+			<input type="button" value="Cancel" name="cancel" id="cancel" onClick="uiPageRefresh()" />
+	</div>
+
+  </div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+		<p id = "lang_help">
+			Plocy Route.
+		</p>
+		</div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>

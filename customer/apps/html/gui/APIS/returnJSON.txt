@@ -1,0 +1,6 @@
+{	"RETURN":{
+		"success":<? if eq "<?error found?>" "0"  `true`  `false` ?>,
+		"errorDescription": "ERROR_AUTHENTICATION"
+	}
+
+}

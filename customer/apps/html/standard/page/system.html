@@ -1,0 +1,76 @@
+<style type="text/css"><!-- 
+			.div_left { width:250px;}
+--></style>
+ <td>
+ 
+ <div class="config2">
+      <p class="do bk_black" id="lang_Sreboot" >System -- Reboot</p>
+	  <div class="div_black">
+	       <p id="lang_reboot">Click the button below to reboot the router.</p>
+		   <div class="div_button">
+				<form name="reboot" id="reboot" method="post" action="webproc">
+					<input type="submit" id="reboot123" name="reboot" value="Reboot" />
+					<input type="hidden" name="obj-action" value="reboot" />
+					<input type="hidden" name="var:noredirect" value="1" />
+					<input type="hidden" name="var:menu" value="maintenance" />
+					<input type="hidden" name="var:page" value="system" />
+					<input type="hidden" name="var:errorpage" value="system" />
+					<input type="hidden" name="getpage" value="html/page/restarting.html" />					
+				</form>
+		   </div>
+	  </div>
+	  
+	  <p class="do bk_black" id="lang_Sbackup">System -- Backup Settings</p>
+	  <div class="div_black">
+	        <p id="lang_backup"> Back up configurations of the DSL router. You can save them to a file on the PC.</p>
+			<br><font color="#FF0000" id="lang_backupnote">Note: Please always save configuration file first before viewing it.</font></br>
+	         <div class="div_button">
+			    <form name="confForm2"  method="post" action="webupg">
+		           <input type="submit" value="Backup Setting"  id="backupstting">
+				   <input type="hidden" name="name" value="downloadConfig" />
+			     </form>   
+		   </div>
+	  </div>
+	   	  
+	   <p class="do bk_black" id="lang_Supdate">System -- Update Settings</p>
+	   <div class="div_black">
+	        <p id="lang_update">Update settings on the DSL router. You can update them using the configuration files your saved.</p>
+			<form name="confForm1"  method="post" action="webupg" enctype="multipart/form-data" onSubmit="return isInProgress();">
+				<div class="div_left" id="lang_setingFname">Settings File Name:</div> 
+			    <div class="div_right"><input type="file" name="config" id="config" /></div>
+		        <input type="hidden" name="updateConfig" value="update">
+				<input type="hidden" name="btn1" value="update">
+				<div class="div_button">
+					<input type="submit" name="btn1" id="update" value="Update Setting">
+				</div>
+			</form>   
+	   </div>
+	   
+	   <p class="SecLevel do bk_black" id="lang_Srestore">System -- Restore Default Settings</p>
+	   <div class="SecLevel div_black">
+	         <p id="lang_restore">Restore settings on the DSL router to the factory defaults.</p>
+			 <div class="div_button">
+			    <form name="restore" id="restore" method="post" action="webproc" onClick="return CofirmRestore()">
+				      <input type="submit" id="restore123" name="restore" value="Restore Default Setting">
+				      <input type="hidden" name="obj-action" value="recover" />
+					  <input type="hidden" name="var:noredirect" value="1" />
+				      <input type="hidden" name="var:menu" value="maintenance" />
+				      <input type="hidden" name="var:page" value="system" />
+					  <input type="hidden" name="var:errorpage" value="system" />		
+				      <input type="hidden" name="getpage" value="html/page/restarting.html" />  		  
+				</form>
+		    </div>	   
+	   </div>
+
+</div>	                              
+	
+ </td>
+  <td  class="td_help">
+    <div  class="help">
+     <h5 id="lang_helpfulH">Helpful Hints... </h5>
+	 <p id="lang_helpfulP">In this page, you can reboot the router or save the configurations on the router to a file on your computer as a backup, in case you want to restore the router. You can restore the router based on a configuration file previously saved.
+You can also reset the router. In this way, the current configurations are lost and the router is restored to factory default settings.</p>
+	 <h5 ><a href="#" id="help_morenihoa">More...</a></h5>
+	</div> 
+	
+  </td>

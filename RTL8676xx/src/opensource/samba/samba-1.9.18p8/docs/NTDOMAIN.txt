@@ -1,0 +1,24 @@
+!==
+!== NTDOMAIN.txt for Samba release 1.9.18p8 13 Jun 1998
+!==
+Contributor:	Luke Kenneth Casson Leighton <samba-bugs@samba.anu.edu.au>
+		Copyright (C) 1997, 1998 Luke Kenneth Casson Leighton
+Created:	October 20, 1997
+Updated:	March 24, 1998
+
+Subject:	NT Domain Logons
+===========================================================================
+
+1.9.18p4 does not properly support NT Domains: please see the draft FAQ
+being written by Gerald Carter:
+
+	http://www.eng.auburn.edu/users/cartegw/samba_ntdom_faq.html.
+
+and the Samba NT Domain archives:
+
+	http://samba.anu.edu.au/listproc/samba-ntdom
+
+To obtain a version that does support NT Domains, please see:
+
+	http://samba.anu.edu.au/cvs.html
+

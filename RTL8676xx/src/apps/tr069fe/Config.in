@@ -1,0 +1,27 @@
+config ALP_CC_TR069FE
+	bool 'TR069FE'
+	default y
+	depends on APPS_LOGIC_TR069
+  	help 
+        tr069 front end
+
+config  TR069_SSL
+	bool 'Support TR069 SSL'
+	default y
+	depends on APPS_LOGIC_TR069 && OPENSOURCE_OPENSSL
+	help 
+        tr069 support ssl
+
+config  TR069_PRINT_PACKAGE_TO_FILE
+	bool 'Print Package to file(for DEBUG)'
+	default n
+        depends on ALP_CC_TR069FE
+	help
+	Print Package to file /var/tmp/tr069_package.(for DEBUG)
+
+config  TR069_CN_CHECK
+	bool 'Support TR069 CN CHECK'
+	default n
+	depends on APPS_LOGIC_TR069 && OPENSOURCE_OPENSSL
+	help 
+        tr069 support common name check

@@ -1,0 +1,297 @@
+#  
+# Copyright (C) 2002-2008 Atheros Communications Inc.
+#
+# Kbuild File for Split driver(Host part) 
+#
+#Usage:
+# (a).Everything only default hst
+#       make
+# (b).Module level granularity
+#       make bld-mod=hst-hal
+#       make bld-mod=hst-ath
+#       make bld-mod=hst-wlan
+#       make bld-mod=hst-dfs
+#       make bld-mod=hst-rate
+#       make bld-mod=hst-xauth
+#       make bld-mod=hst-wep
+#       make bld-mod=hst-tkip
+#       make bld-mod=hst-ccmp
+#       make bld-mod=hst-htc
+#
+#Note: Don't use long module name, if module names have 2 parts make it
+#like this foo-bar, where foo is main module & bar is sub module, ideally
+#if the sub module is unique you don't need to partition
+#+
+
+
+#################################################
+############## Global variables ################# 
+#################################################    
+hst_mac             = $(hst-hal_path)/main/$(mac)
+
+#
+# Module Names
+#
+mod_hst-hal         = hst_hal
+mod_hst-hal-$(tgt)  = hst_hal
+mod_hst-test        = hst_test
+mod_hst-ath         = hst_ath
+mod_hst-rate        = hst_rate
+mod_hst-wlan        = hst_wlan
+mod_hst-dfs         = hst_dfs
+mod_hst-xauth       = hst_xauth
+mod_hst-wep         = hst_wep
+mod_hst-tkip        = hst_tkip
+mod_hst-ccmp        = hst_ccmp
+mod_hst-htc         = hst_htc
+mod_hst-fwd         = hst_fwd
+mod_hst-scansta     = hst_scansta
+mod_hst-scanap     = hst_scanap
+mod_hst-acl     = hst_acl
+
+#
+#For all the modules part default 
+#group hst 
+#
+hst-$(bld_cfg-hst)              := m
+hst_hal-$(bld_cfg-hst)          := m
+hst_ath-$(bld_cfg-hst)          := m
+hst_wlan-$(bld_cfg-hst)         := m
+#hst_dfs-$(bld_cfg-hst)          := m
+hst_rate-$(bld_cfg-hst)         := m
+hst_htc-$(bld_cfg-hst)          := m
+hst_scansta-$(bld_cfg-hst)      := m
+hst_scanap-$(bld_cfg-hst)      := m
+hst_wep-$(bld_cfg-hst)          := m
+hst_ccmp-$(bld_cfg-hst)          := m
+hst_tkip-$(bld_cfg-hst)         := m
+hst_xauth-$(bld_cfg-hst)        := m
+hst_acl-$(bld_cfg-hst)      := m
+
+
+#
+#Module specific
+#
+hst_test-$(bld_cfg-test)        := m
+hst_hal-$(bld_cfg-hst-hal)      := m
+hst_ath-$(bld_cfg-hst-ath)      := m
+hst_wlan-$(bld_cfg-hst-wlan)    := m
+hst_dfs-$(bld_cfg-hst-dfs)      := m
+hst_rate-$(bld_cfg-hst-rate)    := m
+hst_wep-$(bld_cfg-hst-wep)      := m
+hst_xauth-$(bld_cfg-hst-xauth)  := m
+hst_tkip-$(bld_cfg-hst-tkip)    := m
+hst_ccmp-$(bld_cfg-hst-ccmp)    := m
+hst_htc-$(bld_cfg-hst-htc)      := m
+hst_fwd-$(bld_cfg-hst-fwd)      := m
+hst_scansta-$(bld_cfg-hst-scansta) := m
+hst_scanap-$(bld_cfg-hst-scanap) := m
+hst_acl-$(bld_cfg-hst-acl) := m
+
+
+
+#
+#These functions help in inserting module specific cflags
+#Note: The idea is to put the dependent modules hst_*
+#var in __<mod_name>_flags on which its depending
+
+
+__hst_flags-$(hst-m)                := y
+__hst_flags-$(hst_hal-m)            := y
+__hst_flags-$(hst_ath-m)            := y
+__hst_flags-$(hst_wlan-m)           := y
+__hst_flags-$(hst_rate-m)           := y
+#__hst_flags-$(hst_dfs-m)            := y
+__hst_flags-$(hst_wep-m)            := y
+__hst_flags-$(hst_tkip-m)           := y
+__hst_flags-$(hst_ccmp-m)           := y
+__hst_flags-$(hst_xauth-m)          := y
+__hst_flags-$(hst_htc-m)            := y
+__hst_flags-$(hst_fwd-m)            := y
+__hst_flags-$(hst_scansta-m)        := y
+__hst_flags-$(hst_scanap-m)        := y
+__hst_flags-$(hst_acl-m)        := y
+
+__hst_hal_flags-$(hst_hal-m)        := y
+__hst_hal_flags-$(hst_ath-m)        := y
+__hst_hal_flags-$(hst_wlan-m)       := y
+__hst_hal_flags-$(hst_rate-m)       := y
+__hst_hal_flags-$(hst_wep-m)        := y
+__hst_hal_flags-$(hst_xauth-m)      := y
+__hst_hal_flags-$(hst_tkip-m)       := y
+__hst_hal_flags-$(hst_ccmp-m)       := y
+__hst_hal_flags-$(hst_scansta-m)    := y
+__hst_hal_flags-$(hst_scanap-m)    := y
+__hst_hal_flags-$(hst_acl-m)    := y
+
+__hst_ath_flags-$(hst_ath-m)        := y
+__hst_ath_flags-$(hst_rate-m)       := y
+    
+__hst_wlan_flags-$(hst_wlan-m)      := y
+__hst_wlan_flags-$(hst_wep-m)       := y
+__hst_wlan_flags-$(hst_xauth-m)     := y
+__hst_wlan_flags-$(hst_tkip-m)      := y
+__hst_wlan_flags-$(hst_ccmp-m)      := y
+__hst_wlan_flags-$(hst_rate-m)      := y
+__hst_wlan_flags-$(hst_ath-m)       := y
+__hst_wlan_flags-$(hst_scansta-m)   := y
+__hst_wlan_flags-$(hst_scanap-m)   := y
+__hst_wlan_flags-$(hst_acl-m)   := y
+
+#__hst_dfs_flags-$(hst_dfs-m)        := y
+#__hst_dfs_flags-$(hst_ath-m)        := y
+
+__hst_rate_flags-$(hst_rate-m)      := y
+
+__hst_htc_flags-$(hst_htc-m)        := y
+__hst_htc_flags-$(hst_hal-m)        := y
+__hst_htc_flags-$(hst_ath-m)        := y
+__hst_htc_flags-$(hst_fwd-m)        := y
+                                       
+
+#################################################
+############# Module specific FLAGS #############
+##################################################
+ccflags-$(__hst_flags-m)        += -O2 -Werror 
+ccflags-$(__hst_flags-m)        += -I$(PWD)/$(hst_incl)
+ccflags-$(__hst_flags-m)        += -I$(PWD)/$(split_incl)
+
+#ccflags-$(__hst_hal_flags-m)    += -funit-at-a-time -DATH_K2_MAGPIE_ONLY
+#ccflags-$(__hst_hal_flags-m)    += -D__WORDSIZE=32 -D__DECONST -DATH_STA_ONLY
+ccflags-$(__hst_hal_flags-m)    += -D__WORDSIZE=32 -D__DECONST 
+ccflags-$(__hst_hal_flags-m)    += -I$(PWD)/$(hst-hal_path)/main
+ccflags-$(__hst_hal_flags-m)    += -I$(PWD)/$(hst-hal_path)/main/linux
+ccflags-$(__hst_hal_flags-m)    += -I$(PWD)/$(hst-hal_path)/main/$(mac)
+ccflags-$(__hst_hal_flags-m)    += -I$(PWD)/$(hst-hal_path)/main/linux/obj/$(arch)
+
+ccflags-$(__hst_ath_flags-m)    += -DATH_CHAINMASK_SELECT -DATH_CWM
+ccflags-$(__hst_ath_flags-m)    += -I$(PWD)/$(hst-ath_path)
+
+ccflags-$(__hst_wlan_flags-m)   += -I$(PWD)/$(hst-wlan_path)
+ccflags-$(__hst_wlan_flags-m)   += -DATH_FULL_APSCAN=1
+
+ccflags-$(__hst_dfs_flags-m)    += -I$(PWD)/$(hst-dfs_path)
+ccflags-$(__hst_rate_flags-m)   += -I$(PWD)/$(hst-rate_path)
+
+ccflags-$(__hst_htc_flags-m)    += -I$(PWD)/$(hst-htc_path)/inc
+ccflags-$(__hst_htc_flags-m)    += -I$(PWD)/$(hst-htc_path)/hif
+ccflags-$(__hst_htc_flags-m)    += -I$(PWD)/$(hst-htc_path)/htc
+ccflags-$(__hst_htc_flags-m)    += -I$(PWD)/$(hst-htc_path)/wmi
+ccflags-$(__hst_htc_flags-m)    += -I$(PWD)/$(hst-htc_path)/miscdrv
+#ccflags-$(__hst_htc_flags-m)    += -DMAGPIE_SINGLE_CPU_CASE
+
+#################################################
+################## Core Modules ################## 
+##################################################    
+#
+#Atheros Test Driver
+#
+
+obj-$(hal_test-m)           += $(mod_hst-test).o
+$(mod_hst-test)-objs        += $(hst_path)/test/hst_test.o
+#
+# HAL
+#
+obj-$(hst_hal-m)            += $(mod_hst-hal).o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/ah.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/ah_eeprom.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/ah_regdomain.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/linux/ah_osdep.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_attach.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_beacon.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_eeprom.o 
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_gpio.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_keycache.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_misc.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_power.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_recv.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_reset.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_xmit.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5416_phy.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar2133.o
+$(mod_hst-hal)-objs         += $(hst-hal_path)/main/$(mac)/ar5112.o
+$(mod_hst-hal-k2)-objs      += $(hst-hal_path)/main/$(mac)/ar5416_eeprom_4k.o
+$(mod_hst-hal-k2)-objs      += $(hst-hal_path)/main/$(mac)/ar5416_eeprom_def.o
+
+#
+# ATH
+#
+obj-$(hst_ath-m)            += $(mod_hst-ath).o
+$(mod_hst-ath)-objs         += $(hst-ath_path)/if_ath.o
+$(mod_hst-ath)-objs         += $(hst-ath_path)/if_owl.o
+$(mod_hst-ath)-objs         += $(hst-ath_path)/if_ath_cwm.o
+$(mod_hst-ath)-objs         += $(hst-ath_path)/sort.o
+
+#
+# Rate Control
+#
+obj-$(hst_rate-m)           += $(mod_hst-rate).o
+$(mod_hst-rate)-objs        += $(hst-rate_path)/linux.o
+$(mod_hst-rate)-objs        += $(hst-rate_path)/ar5416Phy.o
+
+#
+# WLAN (ieee80211)
+#
+obj-$(hst_wlan-m)           += $(mod_hst-wlan).o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/if_media.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_beacon.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_crypto.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_crypto_none.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_input.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_power.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_scan.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_linux.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_output.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_node.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_proto.o
+$(mod_hst-wlan)-objs        += $(hst-wlan_path)/ieee80211_wireless.o
+
+#
+# WEP
+obj-$(hst_wep-m)            += $(mod_hst-wep).o
+$(mod_hst-wep)-objs         += $(hst-wlan_path)/ieee80211_crypto_wep.o
+
+#
+# FWD
+obj-$(hst_fwd-m)            += $(mod_hst-fwd).o
+$(mod_hst-fwd)-objs         += $(hst-fwd_path)/fwd.o
+$(mod_hst-fwd)-objs         += $(hst-fwd_path)/fwu_$(tgt)_$(hif).o
+
+
+#
+# XAUTH
+obj-$(hst_xauth-m)          += $(mod_hst-xauth).o
+$(mod_hst-xauth)-objs       += $(hst-wlan_path)/ieee80211_xauth.o
+
+#
+# CRYPTO TKIP library
+obj-$(hst_tkip-m)           += $(mod_hst-tkip).o
+$(mod_hst-tkip)-objs        += $(hst-wlan_path)/ieee80211_crypto_tkip.o
+
+
+#
+# CRYPTO CCMP library
+obj-$(hst_ccmp-m)           += $(mod_hst-ccmp).o
+$(mod_hst-ccmp)-objs        += $(hst-wlan_path)/ieee80211_crypto_ccmp.o
+
+# SCAN STA
+obj-$(hst_scansta-m)        += $(mod_hst-scansta).o
+$(mod_hst-scansta)-objs     += $(hst-wlan_path)/ieee80211_scan_sta.o
+
+# SCAN AP
+obj-$(hst_scanap-m)        += $(mod_hst-scanap).o
+$(mod_hst-scanap)-objs     += $(hst-wlan_path)/ieee80211_scan_ap.o
+
+# ACL
+obj-$(hst_acl-m)        += $(mod_hst-acl).o
+$(mod_hst-acl)-objs     += $(hst-wlan_path)/ieee80211_acl.o
+# HTC
+obj-$(hst_htc-m)           += $(mod_hst-htc).o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/htc/htc_host.o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/htc/htc_send.o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/htc/htc_recv.o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/htc/htc_services.o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/htc/htc_svc_pipe_mapping.o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/wmi/wmi.o
+$(mod_hst-htc)-objs        += $(hst-htc_path)/miscdrv/credit_dist.o

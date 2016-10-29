@@ -1,0 +1,35 @@
+	<style type="text/css"><!-- 
+		input.portType { width:51px;}
+	 --></style>
+	 <td>
+	<div class="config2" >
+		<p class="bk_orange" span id="lang_title">IP过滤设置</span></p>
+		<div class="div_right">&nbsp;</div>
+		<div class="div_black">
+			<div class="div_left" id="lang_conName">连接名</div>
+			<div class="div_right">&nbsp;<select name="SELECT_ConnsName" id="SELECT_ConnsName" style="width:100px"><option>-</option></select></div>
+			<div class="div_left" id="lang_enable">启用</div>
+			<div class="div_right">&nbsp;<input type="checkbox" name="INPUT_Enable" id="INPUT_Enable"></div><div class="div_right">&nbsp;</div>
+			<div class="div_left" id="lang_protocol">协议</div>
+			<div class="div_right">&nbsp;<select name="SELECT_Protocol" id="SELECT_Protocol" onChange="changeProtocol();" style="width:100px"><option value="TCP">TCP</option><option value="UDP">UDP</option><option value="ICMP">ICMP</option><option value="TCP/UDP">TCP/UDP</option></select></div>
+			<div class="div_left" id="lang_sourceIP">源IP地址</div>
+			<div class="div_right">&nbsp;<input type="text" name="INPUT_SrcIP" id="INPUT_SrcIP" style="width:100px"></div>
+			<div class="div_left" id="lang_sourceMask">源子网掩码</div>
+			<div class="div_right">&nbsp;<input type="text" name="INPUT_SrcMask" id="INPUT_SrcMask" style="width:100px"></div>
+			<div class="div_left" id="div_src_port">源端口</div>
+			<div class="div_right">&nbsp;<input type="text" class="portType" name="INPUT_SrcPortStart" id="INPUT_SrcPortStart"> - <input type="text" class="portType" name="INPUT_SrcPortEnd" id="INPUT_SrcPortEnd"></div>
+			<div class="div_left" id="lang_destiIP">目的IP地址</div>
+			<div class="div_right">&nbsp;<input type="text" name="INPUT_DestIP" id="INPUT_DestIP" style="width:100px"></div>
+			<div class="div_left" id="lang_destiMask">目的子网掩码</div>
+			<div class="div_right">&nbsp;<input type="text" name="INPUT_DstMask" id="INPUT_DstMask" style="width:100px"></div>
+			<div class="div_left" id="div_des_port">目的端口</div>
+			<div class="div_right">&nbsp;<input type="text" class="portType" name="INPUT_DestPortStart" id="INPUT_DestPortStart"/> - <input type="text" class="portType" name="INPUT_DestPortEnd" id="INPUT_DestPortEnd"></div>
+			<div class="div_left" id="lang_description">描述</div>
+			<div class="div_right">&nbsp;<input type="text" name="INPUT_Description" id="INPUT_Description"  style="width:100px"></div>
+			<div class="div_right">&nbsp;</div>
+			<div class="div_button do"><input type="button" name="submit" id="submit" value="应用" onClick="uiSubmit()"> <input type="button" name="refresh" id="refresh" value="刷新" onClick="uiPageRefresh()"></div>
+		</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc">
+		</form>
+	</div>
+		 </td>

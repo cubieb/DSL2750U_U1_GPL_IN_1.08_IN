@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#panel_header {
+	background: url(../images/brd_chile/header_t2-movistar.png) no-repeat;	
+}
+
+/*========================================================================================================
+	WELCOME SPLASH IMAGE
+========================================================================================================*/
+.welcomepan_icon{
+	background: url(../images/brd_chile/welcome_pantalla_t_chile.png) no-repeat;	
+}
+.welcomepan_icon:hover{
+	background: url(../images/brd_chile/welcome_pantalla_t_chile.png)  270px 0px;	
+}

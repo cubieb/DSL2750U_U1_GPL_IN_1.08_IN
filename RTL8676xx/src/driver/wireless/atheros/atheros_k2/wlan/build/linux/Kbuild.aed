@@ -1,0 +1,283 @@
+#  
+# Copyright (C) 2002-2008 Atheros Communications Inc.
+#
+# Kbuild File for AED(Atheros Portable Driver)
+#
+#Usage:
+# (a).Everything only default config
+#       make
+# (b).Module level granularity
+#       make bld-mod=test
+#       make bld-mod=hal
+#       make bld-mod=ath
+#       make bld-mod=wlan
+#       make bld-mod=dfs
+#       make bld-mod=rate
+#       make bld-mod=xauth
+#       make bld-mod=wep
+#       make bld-mod=tkip
+#       make bld-mod=ccmp
+#
+#Note: Don't use long module name, if module names have 2 parts make it
+#like this foo-bar, where foo is main module & bar is sub module, ideally
+#if the sub module is unique you don't need to partition
+#
+
+
+#################################################
+############## Global variables ################# 
+#################################################    
+aed_mac         = $(hal_path)/main/$(mac)
+
+#
+# Module Names
+#
+mod_hal         = hal
+mod_test        = aed-test
+mod_ath         = ath_pci
+mod_rate        = ath_rate
+mod_wlan        = wlan
+#mod_dfs        = dfs
+mod_xauth       = wlan_xauth
+mod_wep         = wlan_wep
+mod_tkip        = crypto_tkip
+mod_ccmp        = crypto_ccmp
+mod_scanap      = wlan_scan_ap
+mod_scansta	= wlan_scan_sta
+
+#
+#Initialize everything to empty
+#
+config_aed      :=
+config_test     :=
+config_hal      :=
+config_ath      :=
+config_wlan     :=
+config_dfs      :=
+config_rate     :=
+config_wep      :=
+config_xauth    :=
+config_tkip     :=
+config_ccmp     :=
+
+#################################################
+############### Module configs ################## 
+#################################################    
+#
+#Default configuration
+#Note: This becomes part of the build when you type 
+# just make
+#
+
+config_aed-$(bld_cfg-aed)       := m
+config_hal-$(bld_cfg-aed)       := m
+config_ath-$(bld_cfg-aed)       := m
+config_wlan-$(bld_cfg-aed)      := m
+config_rate-$(bld_cfg-aed)      := m
+config_dfs-$(bld_cfg-aed)       := m
+config_wep-$(bld_cfg-aed)       := m
+config_xauth-$(bld_cfg-aed)     := m
+config_tkip-$(bld_cfg-aed)      := m
+config_ccmp-$(bld_cfg-aed)      := m
+config_scanap-$(bld_cfg-aed)    := m
+config_scansta-$(bld_cfg-aed)   := m
+
+#Module Specific
+#Note: Add your module like this if you want it to be
+# separate from default ( What this means is you need 
+# type make bld-mod=<name> to compile it)
+#
+config_test-$(bld_cfg-test)		:= m
+config_hal-$(bld_cfg-hal)		:= m
+config_ath-$(bld_cfg-ath)		:= m
+config_wlan-$(bld_cfg-wlan)		:= m
+config_rate-$(bld_cfg-rate)		:= m
+config_dfs-$(bld_cfg-dfs)		:= m
+config_wep-$(bld_cfg-wep)		:= m
+config_xauth-$(bld_cfg-xauth)		:= m
+config_tkip-$(bld_cfg-tkip)		:= m
+config_ccmp-$(bld_cfg-ccmp)		:= m
+config_scanap-$(bld_cfg-scanap)		:= m
+config_scansta-$(bld_cfg-scansta)	:= m
+
+
+#################################################
+########## Module Specific variables ############ 
+#################################################    
+
+#
+#These functions help in insering module specific cflags
+#Note: The idea is to put the dependent modules config_*
+#var in __<mod_name>_flags on which its depending
+#
+
+__def_flags-$(config_aed-m)     := y
+__def_flags-$(config_hal-m)     := y
+__def_flags-$(config_ath-m)     := y
+__def_flags-$(config_wlan-m)    := y
+__def_flags-$(config_rate-m)    := y
+__def_flags-$(config_dfs-m)     := y
+__def_flags-$(config_wep-m)     := y
+__def_flags-$(config_tkip-m)    := y
+__def_flags-$(config_ccmp-m)    := y
+__def_flags-$(config_xauth-m)   := y
+__def_flags-$(config_scanap-m)  := y
+__def_flags-$(config_scansta-m) := y
+
+__hal_flags-$(config_hal-m)     := y
+__hal_flags-$(config_ath-m)     := y
+__hal_flags-$(config_wlan-m)    := y
+__hal_flags-$(config_rate-m)    := y
+__hal_flags-$(config_wep-m)     := y
+__hal_flags-$(config_xauth-m)   := y
+__hal_flags-$(config_tkip-m)    := y
+__hal_flags-$(config_ccmp-m)    := y
+__hal_flags-$(config_scanap-m)  := y
+__hal_flags-$(config_scansta-m) := y
+
+__ath_flags-$(config_ath-m)     := y
+__ath_flags-$(config_rate-m)    := y
+
+__wlan_flags-$(config_wlan-m)   := y
+__wlan_flags-$(config_wep-m)    := y
+__wlan_flags-$(config_xauth-m)  := y
+__wlan_flags-$(config_tkip-m)   := y
+__wlan_flags-$(config_ccmp-m)   := y
+__wlan_flags-$(config_rate-m)   := y
+__wlan_flags-$(config_ath-m)    := y
+__wlan_flags-$(config_scanap-m) := y
+__wlan_flags-$(config_scansta-m):= y
+
+__dfs_flags-$(config_dfs-m)     := y
+__dfs_flags-$(config_ath-m)     := y
+
+__rate_flags-$(config_rate-m)   := y
+
+
+
+#################################################
+############ Module specific FLAGS ############# 
+#################################################    
+ccflags-$(__def_flags-m)    += -I$(PWD)/$(aed_incl) 
+
+ccflags-$(__hal_flags-m)    += -funit-at-a-time
+ccflags-$(__hal_flags-m)    += -D__WORDSIZE=32 -D__DECONST
+ccflags-$(__hal_flags-m)    += -DAH_BYTE_ORDER=AH_LITTLE_ENDIAN
+ccflags-$(__hal_flags-m)    += -I$(PWD)/$(hal_path)/main
+ccflags-$(__hal_flags-m)    += -I$(PWD)/$(hal_path)/main/linux
+ccflags-$(__hal_flags-m)    += -I$(PWD)/$(hal_path)/main/ar5416
+ccflags-$(__hal_flags-m)    += -I$(PWD)/$(hal_path)/main/linux/obj/$(arch)
+
+ccflags-$(__ath_flags-m)    += -DATH_CHAINMASK_SELECT -DATH_CWM
+ccflags-$(__ath_flags-m)    += -I$(PWD)/$(ath_path)
+
+ccflags-$(__wlan_flags-m)   += -I$(PWD)/$(wlan_path)
+ccflags-$(__wlan_flags-m)   += -DATH_FULL_APSCAN=1
+
+ccflags-$(__dfs_flags-m)    += -I$(PWD)/$(dfs_path)
+
+ccflags-$(__rate_flags-m)   += -I$(PWD)/$(rate_path)
+
+#################################################
+################# Core Modules ################## 
+#################################################    
+#
+#Atheros Test Driver
+#
+
+obj-$(config_test-m) 	+= $(mod_test).o
+$(mod_test)-objs        += $(aed_path)/test/aed_test.o
+#
+# HAL
+#
+obj-$(config_hal-m)     += $(mod_hal).o
+$(mod_hal)-objs	        += $(hal_path)/main/ah.o 
+$(mod_hal)-objs	        += $(hal_path)/main/ah_eeprom.o 
+$(mod_hal)-objs	        += $(hal_path)/main/ah_regdomain.o
+$(mod_hal)-objs         += $(hal_path)/main/linux/ah_osdep.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_attach.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_beacon.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_eeprom.o 
+ifeq ($(usb),k2)
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_eeprom_4k.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_eeprom_def.o
+endif
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_gpio.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_interrupts.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_keycache.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_misc.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_power.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_phy.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_recv_10.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_recv_20.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_recv.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_reset.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_xmit_10.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_xmit_20.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_xmit.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_timer.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar2133.o
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5112.o 
+$(mod_hal)-objs         += $(hal_path)/main/$(mac)/ar5416_ani.o 
+$(mod_hal)-objs         += $(aed_mac)/ar5416_radar.o
+
+
+# ATH
+#
+obj-$(config_ath-m)	+= $(mod_ath).o
+$(mod_ath)-objs	    += $(ath_path)/if_ath.o 
+$(mod_ath)-objs	    += $(ath_path)/if_owl.o 
+$(mod_ath)-objs	    += $(ath_path)/if_ath_cwm.o 
+$(mod_ath)-objs	    += $(ath_path)/if_ath_pci.o
+$(mod_ath)-objs     += $(ath_path)/sort.o
+
+# Rate Control
+#
+obj-$(config_rate-m)  += $(mod_rate).o
+$(mod_rate)-objs    += $(rate_path)/linux.o
+$(mod_rate)-objs    += $(rate_path)/ratectrl.o
+$(mod_rate)-objs    += $(rate_path)/ratectrl_11n_ln.o
+$(mod_rate)-objs    += $(rate_path)/ar5212Phy.o
+$(mod_rate)-objs    += $(rate_path)/ar5416Phy.o
+
+# WLAN (ieee80211)
+#
+obj-$(config_wlan-m)  += $(mod_wlan).o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211.o
+$(mod_wlan)-objs	+= $(wlan_path)/if_media.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_beacon.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_crypto.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_crypto_none.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_input.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_power.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_scan.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_linux.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_output.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_node.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_proto.o
+$(mod_wlan)-objs	+= $(wlan_path)/ieee80211_wireless.o
+
+# WEP
+obj-$(config_wep-m)   += $(mod_wep).o
+$(mod_wep)-objs     += $(wlan_path)/ieee80211_crypto_wep.o
+
+# XAUTH
+obj-$(config_xauth-m) += $(mod_xauth).o
+$(mod_xauth)-objs   += $(wlan_path)/ieee80211_xauth.o
+
+# CRYPTO TKIP library
+obj-$(config_tkip-m)  += $(mod_tkip).o
+$(mod_tkip)-objs    += $(wlan_path)/ieee80211_crypto_tkip.o
+
+# CRYPTO CCMP library
+obj-$(config_ccmp-m)  += $(mod_ccmp).o
+$(mod_ccmp)-objs    += $(wlan_path)/ieee80211_crypto_ccmp.o
+
+# SCAN AP
+obj-$(config_scanap-m)  += $(mod_scanap).o
+$(mod_scanap)-objs      += $(wlan_path)/ieee80211_scan_ap.o
+
+# SCAN STA
+obj-$(config_scansta-m)  += $(mod_scansta).o
+$(mod_scansta)-objs      += $(wlan_path)/ieee80211_scan_sta.o
+

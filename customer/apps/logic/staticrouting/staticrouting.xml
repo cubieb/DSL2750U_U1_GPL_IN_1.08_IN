@@ -1,0 +1,36 @@
+
+<InternetGatewayDevice type="object">
+	<Layer3Forwarding type="object">
+		<DefaultConnectionService type="string(256)"></DefaultConnectionService>
+		<ForwardNumberOfEntries type="unsignedInt" Writable="0"></ForwardNumberOfEntries>
+		<MAXForwardNumberOfEntries type="unsignedInt" Writable="0">30</MAXForwardNumberOfEntries>
+		<Forwarding type="object" MaxNode="MAXForwardNumberOfEntries" CurNode="ForwardNumberOfEntries">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<Status type="string" Writable="0">Disabled</Status>
+				<DestIPAddress type="string"></DestIPAddress>
+				<DestSubnetMask type="string"></DestSubnetMask>
+				<Type type="string">Host</Type>
+				<SourceIPAddress type="string"></SourceIPAddress>
+				<SourceSubnetMask type="string"></SourceSubnetMask>
+				<GatewayIPAddress type="string"></GatewayIPAddress>
+				<Interface type="string"></Interface>
+				<ForwardingPolicy type="int[-1:]"></ForwardingPolicy>
+				<ForwardingMetric type="unsignedInt">16</ForwardingMetric>
+				<X_TWSZ-COM_ErrorInfo type="string" Standard="0" Writable="0">NULL</X_TWSZ-COM_ErrorInfo>
+				<StaticRoute type="boolean" Writable="0">1</StaticRoute>
+			</i>
+		</Forwarding>
+	</Layer3Forwarding>
+	<X_TWSZ-COM_RouteInfo type="object" >
+			<i type="object">
+				<DestIPAddress type="string"></DestIPAddress>
+				<DestSubnetMask type="string"></DestSubnetMask>
+				<GatewayIPAddress type="string"></GatewayIPAddress>
+				<Flags type="string"></Flags>
+				<Ref type="string"></Ref>
+				<ForwardingMetric type="string"></ForwardingMetric>
+				<Interface type="string"></Interface>
+			</i>
+	</X_TWSZ-COM_RouteInfo>
+</InternetGatewayDevice>

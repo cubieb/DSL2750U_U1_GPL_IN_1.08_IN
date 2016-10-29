@@ -1,0 +1,74 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_Logger type="object">
+		<LoggerEnabled type="boolean" Standard="0" Writable="1"></LoggerEnabled>
+		<LogTFTPServer type="string(64)" Standard="0" Writable="1"></LogTFTPServer>
+		<LogUploadTrigger type="boolean" Standard="0" Writable="1"></LogUploadTrigger>
+		<LogClearTrigger type="boolean" Standard="0" Writable="1"></LogClearTrigger>
+		<DebugLogEnabled type="boolean" Standard="0" Writable="1"></DebugLogEnabled>
+		<DebugLogFileSize type="unsignedInt" Standard="0" Writable="1"></DebugLogFileSize>
+		<RemoteLogEnabled type="boolean" Standard="0" Writable="1"></RemoteLogEnabled>
+		<RemotePort type="unsignedInt" Standard="0" Writable="1">514</RemotePort>
+		<RemoteLogger type="string(64)" Standard="0" Writable="1"></RemoteLogger>
+		<LogLevel type="object">
+			<DefaultLogLevel type="string" Standard="0" Writable="1">Notice</DefaultLogLevel>
+			<CcpLogLevel type="string" Standard="0" Writable="1">Notice</CcpLogLevel>
+			<AuthLogLevel type="string" Standard="0" Writable="1">Notice</AuthLogLevel>
+			<Igmp_proxyLogLevel type="string" Standard="0" Writable="1">Notice</Igmp_proxyLogLevel>
+			<CmmLogLevel type="string" Standard="0" Writable="1">Notice</CmmLogLevel>
+			<LanLogLevel type="string" Standard="0" Writable="1">Notice</LanLogLevel>
+			<IptLogLevel type="string" Standard="0" Writable="1">Notice</IptLogLevel>
+			<EthlanLogLevel type="string" Standard="0" Writable="1">Notice</EthlanLogLevel>
+			<EthwanLogLevel type="string" Standard="0" Writable="1">Notice</EthwanLogLevel>
+			<PppoeLogLevel type="string" Standard="0" Writable="1">Notice</PppoeLogLevel>
+			<WlanLogLevel type="string" Standard="0" Writable="1">Notice</WlanLogLevel>
+			<Tr069beLogLevel type="string" Standard="0" Writable="1">Notice</Tr069beLogLevel>
+			<DgnLogLevel type="string" Standard="0" Writable="1">Notice</DgnLogLevel>
+			<DhcprLogLevel type="string" Standard="0" Writable="1">Notice</DhcprLogLevel>
+			<DhcpsLogLevel type="string" Standard="0" Writable="1">Notice</DhcpsLogLevel>
+			<TimerLogLevel type="string" Standard="0" Writable="1">Notice</TimerLogLevel>
+			<IpconnLogLevel type="string" Standard="0" Writable="1">Notice</IpconnLogLevel>
+			<FirewallLogLevel type="string" Standard="0" Writable="1">Notice</FirewallLogLevel>
+			<AntiAttackLogLevel type="string" Standard="0" Writable="1">Notice</AntiAttackLogLevel>
+			<SnmpcLogLevel type="string" Standard="0" Writable="1">Notice</SnmpcLogLevel>
+			<QosLogLevel type="string" Standard="0" Writable="1">Notice</QosLogLevel>
+			<Static_routingLogLevel type="string" Standard="0" Writable="1">Notice</Static_routingLogLevel>
+			<VdslLogLevel type="string" Standard="0" Writable="1">Notice</VdslLogLevel>
+			<DnsLogLevel type="string" Standard="0" Writable="1">Notice</DnsLogLevel>
+			<AlgLogLevel type="string" Standard="0" Writable="1">Notice</AlgLogLevel>
+			<WanLogLevel type="string" Standard="0" Writable="1">Notice</WanLogLevel>
+			<Dynamic_routingLogLevel type="string" Standard="0" Writable="1">Notice</Dynamic_routingLogLevel>
+			<SntpLogLevel type="string" Standard="0" Writable="1">Notice</SntpLogLevel>
+			<VlanLogLevel type="string" Standard="0" Writable="1">Notice</VlanLogLevel>
+			<Usb_massLogLevel type="string" Standard="0" Writable="1">Notice</Usb_massLogLevel>
+			<LogLogLevel type="string" Standard="0" Writable="1">Notice</LogLogLevel>
+			<FtpdLogLevel type="string" Standard="0" Writable="1">Notice</FtpdLogLevel>
+			<NatPrioLogLevel type="string" Standard="0" Writable="1">Notice</NatPrioLogLevel>
+			<WpsLogLevel type="string" Standard="0" Writable="1">Notice</WpsLogLevel>
+			<AclLogLevel type="string" Standard="0" Writable="1">Notice</AclLogLevel>
+			<WebLogLevel type="string" Standard="0" Writable="1">Notice</WebLogLevel>
+			<LnbLogLevel type="string" Standard="0" Writable="1">Notice</LnbLogLevel>
+			<CliLogLevel type="string" Standard="0" Writable="1">Notice</CliLogLevel>
+			<Tr069feLogLevel type="string" Standard="0" Writable="1">Notice</Tr069feLogLevel>
+			<Tr069_httpdLogLevel type="string" Standard="0" Writable="1">Notice</Tr069_httpdLogLevel>
+			<SnmpaLogLevel type="string" Standard="0" Writable="1">Notice</SnmpaLogLevel>
+			<PcLogLevel type="string" Standard="0" Writable="1">Notice</PcLogLevel>
+			<ElmLogLevel type="string" Standard="0" Writable="1">Notice</ElmLogLevel>
+			<UpgLogLevel type="string" Standard="0" Writable="1">Notice</UpgLogLevel>
+			<VdsldLogLevel type="string" Standard="0" Writable="1">Notice</VdsldLogLevel>
+			<TmLogLevel type="string" Standard="0" Writable="1">Notice</TmLogLevel>
+			<MonLogLevel type="string" Standard="0" Writable="1">Notice</MonLogLevel>
+			<LbtLogLevel type="string" Standard="0" Writable="1">Notice</LbtLogLevel>
+			<UpgcgiLogLevel type="string" Standard="0" Writable="1">Notice</UpgcgiLogLevel>
+			<FtpupgLogLevel type="string" Standard="0" Writable="1">Notice</FtpupgLogLevel>
+			<PtiLogLevel type="string" Standard="0" Writable="1">Notice</PtiLogLevel>
+			<Msg4udpLogLevel type="string" Standard="0" Writable="1">Notice</Msg4udpLogLevel>
+			<UpnpLogLevel type="string" Standard="0" Writable="1">Notice</UpnpLogLevel>
+			<LsvlanLogLevel type="string" Standard="0" Writable="1">Notice</LsvlanLogLevel>
+			<PortoffLogLevel type="string" Standard="0" Writable="1">Notice</PortoffLogLevel>
+			<UrlfilterLogLevel type="string" Standard="0" Writable="1">Notice</UrlfilterLogLevel>
+			<TftpupgLogLevel type="string" Standard="0" Writable="1">Notice</TftpupgLogLevel>
+			<DevinfoLogLevel type="string" Standard="0" Writable="1">Notice</DevinfoLogLevel>
+		</LogLevel>
+	</X_TWSZ-COM_Logger>
+</InternetGatewayDevice>

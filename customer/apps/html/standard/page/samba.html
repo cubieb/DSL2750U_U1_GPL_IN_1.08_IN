@@ -1,0 +1,41 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="lang_SMB">SAMBA</p>
+		<div class="div_orange">
+			<p id="lang_dsc">configure for Samba.</p>	
+		</div>
+		<p class="do bk_black" id="lang_SMBSERV">SAMBA SERVER</p>
+		<div class="div_black">
+			<div class="div_left" id="lang_enableSMB" >Enable SAMBA :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_SMBEnable" id="INPUT_SMBEnable"></div>
+			<div class="div_left" id="lang_Workgroup">Workgroup :</div>
+			<div class="div_right"><input type="text" name="INPUT_Workgroup" id="INPUT_Workgroup"></div>
+			<div class="div_left" id="lang_NetbiosName">Netbios Name :</div>
+			<div class="div_right"><input type="text" name="INPUT_NetbiosName" id="INPUT_NetbiosName"></div>  
+			<p id="lang_dscpassword">modify the password for user root</p>
+			<div class="div_left" id="lang_NewSMBPasswd">New SMB password :</div>
+			<div class="div_right"><input type="password" name="INPUT_NewSMBPasswd" id="INPUT_NewSMBPasswd"></div>
+			<div class="div_left" id="lang_RNewSMBPasswd">Retype new SMB password :</div>
+			<div class="div_right"><input type="password" name="INPUT_RNewSMBPasswd" id="INPUT_RNewSMBPasswd"></div>
+			<div class="div_left" id="lang_enableUSB" >Enable USB Storage :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_USBEnable" id="INPUT_USBEnable"></div>
+			<div class="div_left" id="lang_enableANONYMOUS" >Enable Anonymous Access :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_AnonymousEnable" id="INPUT_AnonymousEnable"></div>
+		</div>
+		<div class="SecLevel div_button"><input type="button" name="submit" id="submit1" value="Apply" onClick="uiSubmit();"/> 	           
+		<input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+		</div>		
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc">configure for Samba.</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>
+

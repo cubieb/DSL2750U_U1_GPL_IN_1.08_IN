@@ -1,0 +1,36 @@
+<html>
+<head>
+<script language="javascript">
+function Add2Form(Name,Value, form_name){
+	var _form;
+	var new_element = document.createElement('input');
+	
+	if (form_name != undefined && form_name != '')
+		_form = $(form_name);
+	else
+		_form = document.forms[0];
+	
+	new_element.type = "hidden";
+	new_element.name = Name;
+	new_element.value = Value;
+		_form.appendChild(new_element);
+}
+	
+function uiToMainPage()
+{
+	Add2Form('getpage', 'html/wizard/wizardfirst.html');
+	Add2Form('var:page', 'wizardfirst');
+	Add2Form('obj-action', 'auth');
+	Add2Form(':username', 'user');
+	Add2Form(':password', 'user');
+	Add2Form(':action', 'login');
+	Add2Form(':sessionid', '<?echo $var:sessionid?>');
+	document.getElementById('uiPostForm').submit();
+}
+setTimeout("uiToMainPage();", 1000);
+</script>
+</head>
+<body>
+<form name="uiPostForm" id="uiPostForm" method="post" action="/cgi-bin/webproc"></form>
+</body>
+</html>

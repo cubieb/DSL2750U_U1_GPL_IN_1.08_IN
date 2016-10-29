@@ -1,0 +1,94 @@
+<?setvaronce var:menu status?>
+<?setvaronce var:page system_msg?>
+<?setvaronce var:subpage 0?>
+<?setvaronce var:errorpage 0?>
+<?setvaronce var:style skin?>
+<?setvaronce var:language zh_cn?>
+<?setvaronce var:tbsversion trunkr3636?>
+<? if eq 0 $var:subpage
+`	<? setvar var:realpage $var:page?>
+	<?if eq 1 <?error found?>
+	`	<?setvar var:realpage $var:errorpage?>`
+	?>
+`
+`	<? if eq 0 <?error found?>
+	`	<?setvar var:realpage $var:subpage?>`
+	`	<?setvar var:realpage $var:errorpage?>
+	`?>
+`?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" content="No-cache" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<meta http-equiv="Expires" content="-1" />
+<title><?get :InternetGatewayDevice.DeviceInfo.Manufacturer?></title>
+<link type="text/css" rel="stylesheet" href="/html/<?echo $var:style?>/common.css?v=<?echo $var:tbsversion ?>" media="screen" />
+<? include html/js/language.js ?>
+<script type="text/javascript" src="/html/js/boot.js?v=<?echo $var:tbsversion?>"></script>
+<script type="text/javascript" src="/html/js/secboot.js?v=<?echo $var:tbsversion?>"></script>
+<script type="text/javascript">
+//<![CDATA[
+<? include html/js/global.js ?>
+<? include html/page/<?echo $var:realpage?>.js ?>
+//]]>
+</script>
+<script language="javascript">document.oncontextmenu = function(e){return false;}</script>
+</head>
+
+<body style="visibility:hidden;">
+<!--  header -->
+<div id="Header">
+	<div id="Logo">
+		<p id="Pic"></p>
+		<!--p id="Logout"><span id="lang_welcome">Welcome</span> <span id="span_UserName"><?echo $var:sys_UserName?></span>, <a href="/cgi-bin/webproc?logout" id="lang_logout">Logout</a></p-->
+	</div>
+<? if eq 1 <?echo $var:sys_UserLevel?>
+`<div id="Navigation"><!-- important -->
+		<ul class="M0">
+			<li><a id="<?if eq `$var:menu` `setup` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wizard"><span id="lang_setup">setup</span></a></li>
+		<li><a id="<?if eq `$var:menu` `advanced` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=wadvance"><span id="lang_advanced">advanced</span></a></li>
+		<li><a id="<?if eq `$var:menu` `maintenance` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=globalipv6"><span id="lang_management">maintenance</span></a></li>
+		<li><a id="<?if eq `$var:menu` `status` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=deviceinfo"><span id="lang_status">status</span></a></li>
+		<li><a id="<?if eq `$var:menu` `help` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmenu"><span id="lang_help_menu">help</span></a></li>
+		</ul>
+	</div>
+	`?>
+<? if eq 2 <?echo $var:sys_UserLevel?>
+`<div id="Navigation"><!-- important -->
+		<ul class="M0">
+			<li><a id="<?if eq `$var:menu` `setup` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wizard"><span id="lang_setup">setup</span></a></li>
+		<li><a id="<?if eq `$var:menu` `advanced` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=parent_control"><span id="lang_advanced">advanced</span></a></li>
+		<li><a id="<?if eq `$var:menu` `maintenance` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=system"><span id="lang_management">maintenance</span></a></li>
+		<li><a id="<?if eq `$var:menu` `status` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=deviceinfo"><span id="lang_status">status</span></a></li>
+		<li><a id="<?if eq `$var:menu` `help` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmenu"><span id="lang_help_menu">help</span></a></li>
+		</ul>
+	</div>
+`?>
+
+<? if eq 3 <?echo $var:sys_UserLevel?>
+`<div id="Navigation"><!-- important -->
+		<ul class="M0">
+			<li><a id="<?if eq `$var:menu` `setup` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=setup&var:page=wizard"><span id="lang_setup">setup</span></a></li>
+		<li><a id="<?if eq `$var:menu` `advanced` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=parent_control"><span id="lang_advanced">advanced</span></a></li>
+		<li><a id="<?if eq `$var:menu` `maintenance` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=system"><span id="lang_management">maintenance</span></a></li>
+		<li><a id="<?if eq `$var:menu` `status` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=status&var:page=deviceinfos "><span id="lang_status">status</span></a></li>
+		<li><a id="<?if eq `$var:menu` `help` `on`?>" href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmenu"><span id="lang_help_menu">help</span></a></li>
+		</ul>
+	</div>
+`?>
+</div>
+<!--  main content -->
+<div  id="Main">
+	<!-- left menu -->
+	<? include html/menu.html ?>
+	<!--  content -->
+	<div  id="Content">
+	<? include html/page/<?echo $var:realpage?>.html ?>
+	</div>
+</div>
+<form id="uiPostForm" method="post" action="webproc" accept-charset="UTF-8" onsubmit="document.charset='UTF-8';"></form>
+
+</body>
+</html>

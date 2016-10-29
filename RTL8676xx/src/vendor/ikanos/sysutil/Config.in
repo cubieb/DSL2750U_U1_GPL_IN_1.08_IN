@@ -1,0 +1,160 @@
+config BR2_PACKAGE_ADI_SYSUTILS
+	bool "ikanos sysutils"
+	default n
+	depends on IKANOS_DSL_APP
+	help
+	  ADI sysutils.
+
+config USER_SYSUTIL_APREADWRITE
+	bool "AP Read/Write"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to Read from or Write to Fusiv AP.
+
+config USER_SYSUTIL_MREADWRITE
+	bool "Memory Read/Write"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to Read from or Write to Memory.
+
+config USER_SYSUTIL_APSTATS
+	bool "AP Statistics"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to retrieve Fusiv AP statistics.
+
+config USER_SYSUTIL_APROUTETABLE
+	bool "AP Route Table"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to display Fusiv AP Route Table.
+
+config USER_SYSUTIL_ADSLUTILS
+	bool "ADSL Utilities"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Provides various ADSL Utilities like adsl start, adsl mon, etc.
+
+config USER_SYSUTIL_XDSL_LINE_MNGR
+	bool "XDSL Line Manager"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    xDSL Line auto detection
+
+config USER_SYSUTIL_SENDOAMLB
+	bool "OAM Loopback"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to initiate OAM Loopback.
+
+config USER_SYSUTIL_SHOWATMCONN
+	bool "Show ATM Connections"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to view configured PVC's.
+
+config USER_SYSUTIL_GETRMON
+        bool "Get Ethernet RMON counters"
+        depends on BR2_PACKAGE_ADI_SYSUTILS
+        default n
+        help
+            Utility to Get Ethernet RMON Counters.
+
+config USER_SYSUTIL_GETLINK
+	bool "Get Link State"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to Get Ethernet Link State.
+
+config USER_SYSUTIL_SETLINK
+	bool "Set Link State"
+	depends on BR2_PACKAGE_ADI_SYSUTILS
+	default n
+	help
+	    Utility to Set Ethernet Link State.
+
+config USER_ADI_PPPOE_RELAY
+        bool "pppoe-relay"
+        depends on BR2_PACKAGE_ADI_SYSUTILS
+        default n
+        help
+            to relay pppoe packets through the target board.
+
+config USER_SYSUTIL_IGMPSNOOP
+        bool "IGMP SNOOP"
+        depends on BR2_PACKAGE_ADI_SYSUTILS
+        default n
+        help
+            Utility to configure IGMP Snooping.
+
+config USER_SYSUTIL_POLICY_VLAN
+        bool "Policy based VLAN"
+        depends on BR2_PACKAGE_ADI_SYSUTILS
+        default n
+        help
+            Utility to configure add/delete policy based vlan.
+config USER_SYSUTIL_SWITCH_CONFIG
+        bool "Configuration FOR IC+ SWITCH"
+        depends on BR2_PACKAGE_ADI_SYSUTILS
+        default n
+        help
+            Utility to configure Vlan/Qos for IC+ Switch.
+
+config USER_SYSUTIL_APQOS
+  bool "QoS Configurations Utility"
+  depends on BR2_PACKAGE_ADI_SYSUTILS
+  default n
+  help
+     Utility to Configure QoS Parameters for AP.
+
+config USER_SYSUTIL_SRM
+        bool "Save/Restore"
+        default y
+        help
+        Utility to save/restore the configured information.
+
+config USER_SYSUTIL_GPON
+        bool "GPON CLI"
+        default n
+        help
+        Utility to set/get  config information.
+
+config USER_SYSUTIL_COMPDECOMP
+        bool "Zlib Compression/Decompression"
+        default n
+        help
+        Utility for Compressing/Decompressing files using zlib.
+
+config USER_SYSUTIL_SET_ETH_FRAME_READ_CNT
+        bool "Maximum Ethernet Frame Read Count"
+        default n
+        help
+        Utility for configuring the max ethernet frame read cnt.
+
+config USER_SYSUTIL_SET_ATM_FRAME_READ_CNT
+        bool "Maximum ATM Frame Read Count"
+        default n
+        help
+        Utility for configuring the max ATM frame read cnt.
+
+config USER_SYSUTIL_SET_PERI_FRAME_READ_CNT
+        bool "Maximum PERI_AP Frame Read Count"
+        default n
+        help
+        Utility for configuring the max PERI_AP frame read cnt.
+
+config USER_SYSUTIL_SET_VDSL_FRAME_READ_CNT
+        bool "Maximum VDSL Frame Read Count"
+        default n
+        help
+        Utility for configuring the max VDSL frame read cnt.
+

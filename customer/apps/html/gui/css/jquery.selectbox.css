@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+.jquery-selectbox {
+	position: relative;	
+	height: 19px;	
+	border: 1px solid #aeb0b2;	
+	z-index: 0;
+	float: left;
+	display: inline;	
+	padding: 0;
+	background-color: #fff;
+}
+.jquery-selectbox.selecthover {
+	background-color: #dde5ea;
+	z-index: 700;
+}	
+.jquery-selectbox .jquery-selectbox-currentItem {
+	padding: 0 0 0 7px;
+	white-space: nowrap;
+	display: block;
+	overflow: hidden;
+	line-height: 19px;
+}
+
+.jquery-selectbox .jquery-selectbox-list {
+	display: none;
+	position: absolute;
+	top: 19px;
+	padding: 2px;
+	left: -1px;	
+	background: #fff;
+	width: 144px;	
+	overflow-x: hidden;
+	overflow-y: auto;
+	z-index: 1000;	
+	border: 1px solid #aeb0b2;		
+}
+
+.jquery-selectbox .jquery-selectbox-moreButton {	
+	float: right;
+	background: url("../images/select/select1b.png");
+	width: 31px;
+	height: 19px;
+	cursor: pointer;
+}
+.jquery-selectbox .jquery-selectbox-moreButton.morebuttonhover {
+	background: url("../images/select/select2b.png");
+}
+
+.jquery-selectbox .jquery-selectbox-item.listelementhover {	
+	background: #bdc8d2;
+}
+.jquery-selectbox .jquery-selectbox-item {
+	display: block;
+	width:100%;
+	cursor: default;
+	padding-left: 5px;
+}
+
+/** ERROR classes **/
+form .error .jquery-selectbox {
+	color: #d00;
+	border-color: #d00;
+	background-image: url("../images/select/bg-TextFieldError.gif");
+}

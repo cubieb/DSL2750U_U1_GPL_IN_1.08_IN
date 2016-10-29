@@ -1,0 +1,194 @@
+{	"APPLICATIONS": [
+	{
+	  "idApplication": "1",
+	  "nameApplication": "eMule",
+	  "ipAssigned":"192.168.1.37",
+	  "idIcon": "Laptop_1",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"ANY",
+       		 "startWan":"4662",
+       		 "endWan":"4662",
+       		 "startLan":"4662",
+       		 "endLan":"4662"
+      		}
+       		]
+       },
+       {
+	  "idApplication": "2",
+	  "nameApplication": "BitTorrent",
+	  "ipAssigned":"192.168.1.37",
+	  "idIcon": "Laptop_1",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"TCP",
+       		 "startWan":"6881",
+       		 "endWan":"6999",
+       		 "startLan":"6881",
+       		 "endLan":"6999"
+      		}
+       		]
+       },
+       {
+	  "idApplication": "3",
+	  "nameApplication": "Xbox Live",
+	  "ipAssigned":"192.168.1.34",
+	  "idIcon": "DesktopComputer_1",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"ANY",
+       		 "startWan":"53",
+       		 "endWan":"53",
+       		 "startLan":"53",
+       		 "endLan":"53"
+      		},
+      		{"idRule":"rule2",
+      		 "protocol":"ANY",
+       		 "startWan":"88",
+       		 "endWan":"88",
+       		 "startLan":"88",
+       		 "endLan":"88"
+      		},
+      		{"idRule":"rule3",
+      		 "protocol":"ANY",
+       		 "startWan":"3074",
+       		 "endWan":"3074",
+       		 "startLan":"3074",
+       		 "endLan":"3074"
+      		}
+      		
+       		]
+       },
+       {
+	  "idApplication": "4",
+	  "nameApplication": "Transmission",
+	  "ipAssigned":"false",
+	  "idIcon":"false",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"ANY",
+       		 "startWan":"51413",
+       		 "endWan":"51413",
+       		 "startLan":"51413",
+       		 "endLan":"51413"
+      		}
+       		]
+       },
+       {
+	  "idApplication": "5",
+	  "nameApplication": "PlayStation Network",
+	  "ipAssigned":"192.168.1.38",
+	  "idIcon": "GameConsole_1",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"TCP",
+       		 "startWan":"80",
+       		 "endWan":"80",
+       		 "startLan":"80",
+       		 "endLan":"80"
+      		},
+      		{"idRule":"rule2",
+      		 "protocol":"TCP",
+       		 "startWan":"443",
+       		 "endWan":"443",
+       		 "startLan":"443",
+       		 "endLan":"443"
+      		},
+      		{"idRule":"rule3",
+      		 "protocol":"TCP",
+       		 "startWan":"5223",
+       		 "endWan":"5223",
+       		 "startLan":"5223",
+       		 "endLan":"5223"
+      		},
+      		{"idRule":"rule4",
+      		 "protocol":"UDP",
+       		 "startWan":"3478",
+       		 "endWan":"3479",
+       		 "startLan":"3478",
+       		 "endLan":"3479"
+      		},
+      		{"idRule":"rule5",
+      		 "protocol":"UDP",
+       		 "startWan":"3658",
+       		 "endWan":"3658",
+       		 "startLan":"3658",
+       		 "endLan":"3658"
+      		}
+       		]
+       },
+        {
+	  "idApplication": "6",
+	  "nameApplication": "PlayStation Remote Play",
+	  "ipAssigned":"false",
+	  "idIcon": "false",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"ANY",
+       		 "startWan":"9293",
+       		 "endWan":"9293",
+       		 "startLan":"9293",
+       		 "endLan":"9293"
+      		}
+       		]
+       },
+       {
+	  "idApplication": "7",
+	  "nameApplication": "World of Warcraft",
+	  "ipAssigned":"192.168.1.37",
+	  "idIcon": "Laptop_1",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"TCP",
+       		 "startWan":"3742",
+       		 "endWan":"3742",
+       		 "startLan":"3742",
+       		 "endLan":"3742"
+      		},
+      		{"idRule":"rule2",
+      		 "protocol":"TCP",
+       		 "startWan":"6112",
+       		 "endWan":"6112",
+       		 "startLan":"6112",
+       		 "endLan":"6112"
+      		}
+       		]
+       },
+       {
+	  "idApplication": "8",
+	  "nameApplication": "MSN Gaming Zone",
+	  "ipAssigned":"false",
+	  "idIcon":"false",
+      "RULES":[
+       		{"idRule":"rule1",
+       		 "protocol":"TCP",
+       		 "startWan":"6667",
+       		 "endWan":"6667",
+       		 "startLan":"6667",
+       		 "endLan":"6667"
+      		},
+      		{"idRule":"rule2",
+      		 "protocol":"UDP",
+       		 "startWan":"28800",
+       		 "endWan":"29000",
+       		 "startLan":"28800",
+       		 "endLan":"29000"
+      		},
+      		{"idRule":"rule3",
+      		 "protocol":"ANY",
+       		 "startWan":"2300",
+       		 "endWan":"2400",
+       		 "startLan":"2300",
+       		 "endLan":"2400"
+      		},
+      		{"idRule":"rule4",
+      		 "protocol":"TCP",
+       		 "startWan":"47624",
+       		 "endWan":"47624",
+       		 "startLan":"47624",
+       		 "endLan":"47624"
+      		}
+       		]
+       }
+      ]
+}

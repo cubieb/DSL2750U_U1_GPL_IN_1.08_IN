@@ -1,0 +1,8 @@
+mkdir /root/prof
+mkdir /var/lib
+mkdir /dev/oprofile
+echo >/etc/mtab
+mklinks.sh
+mkdir -p /usr/local/share
+ln -s /root/prof/share/oprofile /usr/local/share/oprofile
+

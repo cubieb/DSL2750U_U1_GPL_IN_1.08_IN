@@ -1,0 +1,14 @@
+menuconfig DRIVERS_WLAN_REALTEK
+	bool 'Realtek wireless drivers'
+	default n
+	depends on DRIVERS_WLAN
+	help
+		Wireless device driver 
+    
+config DRIVERS_WLAN_REALTEK_RTL8192
+	bool 'Realtek rtl8192 drivers'
+	default n
+	depends on DRIVERS_WLAN_REALTEK
+  	help 
+      		Realtek version drivers
+      

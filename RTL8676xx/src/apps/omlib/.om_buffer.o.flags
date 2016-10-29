@@ -1,0 +1,3 @@
+ifeq (-Os -Wall -pipe -I/mnt/sda1/work/liuyunbing/project/DLink/old/GAN9.9T113A-B-DL-DSL2750U-R5B0017-India.EN_2T2R/RTL8676xx/build -I/mnt/sda1/work/liuyunbing/project/DLink/old/GAN9.9T113A-B-DL-DSL2750U-R5B0017-India.EN_2T2R/RTL8676xx/build/apps/include -Wall,$(strip $(subst $(comma),:,$(CFLAGS) $(EXTRA_CFLAGS_nostdinc) $(CFLAGS_../omlib/om_buffer.o))))
+FILES_FLAGS_UP_TO_DATE += ../omlib/om_buffer.o
+endif

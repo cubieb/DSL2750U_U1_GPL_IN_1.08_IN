@@ -1,0 +1,36 @@
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_IPSEC type="object">
+		<IPSECEnable type="boolean">0</IPSECEnable>		
+		<IPSECNumberOfEntries type="unsignedInt" Writable="0"></IPSECNumberOfEntries>
+		<MAXIPSECNumberOfEntries type="unsignedInt" Writable="0">16</MAXIPSECNumberOfEntries>
+		<IPSEC type="object" MaxNode="MAXIPSECNumberOfEntries" CurNode="IPSECNumberOfEntries">
+			<i type="object">
+				<ConnectionName type="string">name</ConnectionName>
+				<TunnelMode type="string"></TunnelMode>
+				<RemoteGW type="string"></RemoteGW>
+				<LocalIPAddr type="string"></LocalIPAddr>
+				<LocalIPSubnetMask type="string"></LocalIPSubnetMask>
+				<RemoteIPAddr type="string"></RemoteIPAddr>
+				<RemoteIPSubnetMask type="string"></RemoteIPSubnetMask>
+				<KeyExchangeMethod type="string"></KeyExchangeMethod>
+				<PreSharedKey type="string"></PreSharedKey>
+				<PerfectForwardSecrecyEnable type="boolean"></PerfectForwardSecrecyEnable>
+				<Mode type="string"></Mode>
+				<EncryptionAlgorithm_Auto1 type="string"></EncryptionAlgorithm_Auto1>
+				<IntegrityAlgorithm_Auto1 type="string"></IntegrityAlgorithm_Auto1>
+				<DHGroup type="unsignedInt"></DHGroup>
+				<KeyLifeTime1 type="unsignedInt"></KeyLifeTime1>	
+				<EncryptionAlgorithm_Auto2 type="string"></EncryptionAlgorithm_Auto2>
+				<IntegrityAlgorithm_Auto2 type="string"></IntegrityAlgorithm_Auto2>
+				<PFSGroup type="unsignedInt"></PFSGroup>
+				<KeyLifeTime2 type="unsignedInt"></KeyLifeTime2>			
+				<EncryptionAlgorithm_Manual type="string"></EncryptionAlgorithm_Manual>
+				<EncryptionKey type="string"></EncryptionKey>
+				<IntegrityAlgorithm_Manual type="string"></IntegrityAlgorithm_Manual>
+				<IntegrityKey type="string"></IntegrityKey>
+				<SPI type="string"></SPI>
+				<Interface type="string"></Interface>
+			</i>
+		</IPSEC>
+	</X_TWSZ-COM_IPSEC>
+</InternetGatewayDevice>

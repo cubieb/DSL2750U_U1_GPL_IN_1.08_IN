@@ -1,0 +1,7 @@
+#####################
+config OPENSOURCE_LIBNETFILTER_CONNTRACK
+	bool 'libnetfilter_conntrack'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	libnetfilter_conntrack-0.0.89 

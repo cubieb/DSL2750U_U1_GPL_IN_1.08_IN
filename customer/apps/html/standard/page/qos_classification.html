@@ -1,0 +1,44 @@
+<td>
+	<div class="config2">
+		<p class="bk_orange"><span id="lang_title">QoS Classification</span></p>
+		<div class="div_black">
+			<div class="div_left" id="lang_classifyMode">Classify Mode</div>
+			<div class="div_right">
+				<select id="SELECT_ClassifyModel" onChange="uiOnload()"><option></option></select>
+			</div>
+        <!--
+        -->
+			
+			<div class="div_button">
+				<input type="button" value="Add Classification Rule"  name="add" id="add"  onClick="uiAddConfig()"/> 
+			</div>
+		</div>
+		<p class="do bk_black" id="lang_list">List</p>
+		<div class="div_black">
+			<table class="td_table_l" id="td_business">
+				<tr class="tr_bold">
+					<td id="lang_num">Classify Number</td>
+					<td id="lang_enable">Enable</td>
+					<td id="lang_businessName">Business Name</td>
+					<td id="lang_classifyTag">Classify Tag</td>
+					<td id="lang_classifyQueue">Classify Queue</td>
+					<td id="lang_action">Operation</td>
+				</tr>
+			</table>
+			<table class="td_table_l" id="td_flux">
+				<tr class="tr_bold">
+					<td id="lang_flowNum">Classify Number</td>
+					<td id="lang_flowEnable">Enable</td>
+					<!--
+					<td id="lang_classifyDirection">Classify Direction</td>
+					 -->
+					<td id="lang_classifyCondition">Classify Condition</td>
+					<td id="lang_flowClassifyTag">Classify Tag</td>
+					<td id="lang_flowClassifyQueue">Classify Queue</td>
+					<td id="lang_flowAction">Operation</td>
+				</tr>
+			</table>
+		</div> 
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+	</div>
+</td>

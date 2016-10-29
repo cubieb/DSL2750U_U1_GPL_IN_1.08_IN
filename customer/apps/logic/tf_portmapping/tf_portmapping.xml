@@ -1,0 +1,8 @@
+
+<InternetGatewayDevice type="object">
+	<X_TELEFONICA_PORTMAPPING type="object" Standard="0">
+		<Provider type="unsignedInt" Standard="0" Writable="0">0</Provider>
+		<Enable type="boolean" Standard="0">1</Enable>
+		<Configuration type="unsignedInt" Standard="0">1</Configuration>
+	</X_TELEFONICA_PORTMAPPING>
+</InternetGatewayDevice>

@@ -1,0 +1,73 @@
+<td>
+	<div class="config2">
+		<div class="Embody">
+			<div class="div_left" id="lang_WanConnection">WAN连接</div>
+			<div class="div_middle">&nbsp;
+				<select name="SELECT_WanConns" id="SELECT_WanConns" onChange="Table.Clear('PcpMapList');Table.Clear('PcpPeerList');pcpServerIndex='-';createTables();">
+					<option>
+					</option>
+				</select>
+			</div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left" id="lang_PcpServer">PCP 服务器</div>
+			<div class="div_middle">&nbsp;
+				<select name="SELECT_PcpServerList" id="SELECT_PcpServerList" onChange="Table.Clear('PcpMapList');Table.Clear('PcpPeerList');createPcpMapTables();createPcpPeerTables();">
+					<option>
+					</option>
+				</select>
+			</div>
+			<div class="div_right">&nbsp;</div>
+
+			<div class="div_left">&nbsp;<input type="button" id="configPcpServer" onClick="uiConfigPcpServer()"></div>
+			<div class="div_right">&nbsp;</div>
+		</div>
+		<br/>
+
+		<p class="SmallTittle" id="lang_MapList">映射 (Map) 配置列表</p>
+		<div class="div_left">&nbsp;<input type="button" id="addMap" onClick="uiAddMap()"></div><div class="div_right">&nbsp;</div>
+		<br/>
+
+		<div id="MapMainTable">
+			<table class="td_table" id='PcpMapList'>
+				<tr class="bk">
+					<td id="lang_NumMap">序号</td>
+					<td id="lang_PcpServerMap">服务器IP</td>
+					<td id="lang_protocolMap">协议</td>
+					<td id="lang_internalPortMap">LAN端主机端口</td>
+					<td id="lang_externalHostMap">外部公共IP</td>
+					<td id="lang_externalPortMap">外部公共端口</td>
+					<td id="lang_lifetimeMap">有效期(秒)</td>
+					<td id="lang_stateMap">状态</td>
+					<td id="lang_actionMap">操作</td>
+				</tr>
+			</table>
+		</div>
+		<br/>
+
+		<p class="SmallTittle" id="lang_PeerList">对方端点 (Peer) 配置列表</p>
+		<div class="div_left">&nbsp;<input type="button" id="addPeer" onClick="uiAddPeer()"></div><div class="div_right">&nbsp;</div>
+		<br/>
+		<div id="PeerMainTable">
+			<table class="td_table" id='PcpPeerList'>
+				<tr class="bk">
+					<td id="lang_NumPeer">序号</td>
+					<td id="lang_PcpServerPeer">服务器IP</td>
+					<td id="lang_protocolPeer">协议</td>
+					<td id="lang_internalPortPeer">LAN端主机端口</td>
+					<td id="lang_externalHostPeer">外部公共IP</td>
+					<td id="lang_externalPortPeer">外部公共端口</td>
+					<td id="lang_remoteHostPeer">远端主机IP</td>
+					<td id="lang_remotePortPeer">远端主机端口</td>
+					<td id="lang_lifetimePeer">有效期(秒)</td>
+					<td id="lang_statePeer">状态</td>
+					<td id="lang_actionPeer">操作</td>
+				</tr>
+			</table>
+		</div>
+		<br/>
+
+		<div id="div_balance"></div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>		
+	</div>
+</td>

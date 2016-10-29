@@ -1,0 +1,186 @@
+<td>
+	<style type="text/css">
+	<!--
+		.div_left { width: 200px;}
+	-->
+	</style>
+	<div class="config2">
+		<p class="bk_orange"  id="lang_IncomingIPFiltering">Inbound IP Filtering </p>
+		<div class="div_orange">
+			<p  id="lang_dsc1">In this page, you can specify a filter name and at least one condition to create a filter for identify incoming IP traffic. All the specified conditions take effect simultaneously. Click "Apply" to save the filter and enable it.</p>
+			<p id="lang_dsc2">Packets conform to the rule can be transmitted.</p>
+		</div>
+		<p class="do bk_black" id="lang_ActiveInboundFilter">Active Inbound Filter </p>
+		<div class="div_black">
+			<table class="td_table_s" id="Table_ip_list">
+				<tr class="tr_bold">
+					<td></td>
+					<td id="lang_Name">Name</td>
+					<td id="lang_VPIVCI">VPI/VCI</td>
+					<td id="lang_wwProtocol">Protocol</td>
+					<td id="lang_urceAddress"> Source Address</td>
+					<td id="lang_ourcePort">Source Port</td>
+					<td id="lang_DeAddres">Dest. Address</td>
+					<td id="lang_DePort">Dest. Port</td>
+					<td id="lang_SchedulRule">Schedule Rule</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button"><input type='button' id='addEntry' name='addEntry' onClick='AddEntry()' value=' Add '>
+			<input type="button" id="editEntry" name="editEntry"  onClick="EditEntry()" value=" Edit ">
+			<input type="submit" id="removeEntry" name="removeEntry" onClick="RemoveEntry()" value=" Delete ">
+		</div>
+		
+		<div id="EntryInfo" style="display:none">
+			<p class="do bk_black" id="lang_IncomingIPFiltering1">Incoming IP Filtering </p>
+			<div class="div_black">
+				<div class="div_left"><label for="filterName" id="lang_FilterName">Filter Name :</label></div>
+				<div class="div_right"><input type="text" id="INPUT_Description" ></div>
+				<div class="div_left" id="lang_Protocol">Protocol :</div>
+				<div class="div_right">
+					<select id="SELECT_protocol">
+						<option value="tcp/udp/icmp">Any</option>
+						<option value="tcp/udp">TCP and UDP</option>
+						<option value="tcp">TCP</option>
+						<option value="udp">UDP</option>
+						<option value="icmp">ICMP</option>
+					</select>
+				</div>
+				<div class="div_left" id="lang_SourceIPType">Source IP Type :</div>
+				<div class="div_right">
+					<select id="SELECT_SrcIP" onChange="changeSrcIPType()">
+						<option value="Any">Any</option>
+						<option value="SingleIP">Single IP</option>
+						<option value="NetworkIP">Network IP</option>
+						<option value="iprange">IP Range</option>
+					</select>
+				</div>
+				
+				<div id="SrcSingleIPArea">
+					<div id="srcipaddr">
+					<div class="div_left" id="lang_SourceIPAddress">Source IP Address :</div>
+					<div class="div_right">
+						<input type="text" id="SrcIPAddress" name="SrcIPAddress">
+						</div>
+					</div>
+					<div id="srcipmask">
+					<div class="div_left" id="lang_SourceSubnetMask">Source Subnet Mask :</div>
+					<div class="div_right">
+						<input type="text" id="SrcMask" name="SrcMask">
+						</div>
+					</div>
+				</div>
+				
+				<div id="SrcIPRangeArea" style="display:none">
+					<div class="div_left" id="lang_StartSourceIPAd">Start Source IP Address :</div>
+					<div class="div_right">
+						<input type="text" id="SrcStartIPAddress" name="SrcStartIPAddress">
+					</div>
+					<div class="div_left" id="lang_EndSourceIPAd">End Source IP Address :</div>
+					<div class="div_right">
+						<input type="text" id="SrcEndIPAddress" name="SrcEndIPAddress">
+					</div>
+				</div>
+				
+				<div class="div_left" id="lang_SourcePortType">Source Port Type :</div>
+				<div class="div_right">
+					<select id="SELECT_SrcPortType" onChange="changeSrcPortType()">
+						<option value="Any">Any</option>
+						<option value="SinglePort">Single Port</option>
+						<option value="PortRange">Port Range</option>
+					</select>
+				</div>
+				
+				<div id="SrcPortArea">
+					<div class="div_left" id="lang_SourcePort">Source Port :</div>
+					<div class="div_right">
+						<input type="text" id="SrcPort">&nbsp;&nbsp;<span id="lang_nihao">(port or port:port)</span>
+					</div>
+				</div>
+				
+				<div class="div_left" id="lang_DestinationIPType">Destination IP Type :</div>
+				<div class="div_right">
+					<select id="SELECT_DestIP" onChange="changeDestIPType()">
+						<option value="Any">Any</option>
+						<option value="SingleIP">Single IP</option>
+						<option value="NetworkIP">Network IP</option>
+						<option value="iprange">IP Range</option>
+					</select>
+				</div>
+				
+				<div id="DestSingleIPArea">
+					<div id="destipaddr">
+					<div class="div_left" id="lang_DestinationIP">Destination IP Address :</div>
+					<div class="div_right">
+						<input type="text" id="DestIPAddress" name="DestIPAddress">
+						</div>
+					</div>
+					<div id="destipmask">
+					<div class="div_left" id="lang_DestinationSubnet">Destination Subnet Mask :</div>
+					<div class="div_right">
+						<input type="text" id="DestMask" name="DestMask">
+						</div>
+					</div>
+				</div>
+				
+				<div id="DestIPRangeArea" style="display:none">
+					<div class="div_left" id="lang_StartDestination">Start Destination IP Address :</div>
+					<div class="div_right">
+						<input type="text" id="DestStartIPAddress" name="DestStartIPAddress">
+					</div>
+					<div class="div_left" id="lang_EndDestination">End Destination IP Address :</div>
+					<div class="div_right">
+						<input type="text" id="DestEndIPAddress" name="DestEndIPAddress">
+					</div>
+				</div>
+				
+				<div class="div_left" id="lang_DestinationPortType">Destination Port Type :</div>
+				<div class="div_right">
+					<select id="SELECT_DestPortType" onChange="changeDestPortType()">
+						<option value="Any">Any</option>
+						<option value="SinglePort">Single Port</option>
+						<option value="PortRange">Port Range</option>
+					</select>
+				</div>
+				<div id="DestPortArea">
+					<div class="div_left" id="lang_DestinationPort">Destination Port :</div>
+					<div class="div_right">
+						<input type="text" id="DestPort">&nbsp;&nbsp;<span id="lang_nihao1">(port or port:port)</span>
+					</div>
+				</div>
+				<div class="div_left" id="lang_Schedule1">Schedule : </div>
+				<div class="div_right">
+					<select id="SELECT_Schedules" name="SELECT_Schedules"></select>&nbsp;&nbsp;
+					<a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=schedules"><u id="lang_ViewAvailable">View Available Schedules</u></a>
+				</div>
+				<div>
+				<p><b id="lang_WANInterfacesConfigured">WAN Interfaces (Configured in Routing mode and with firewall enabled only) </b></p>
+				</div>
+				<div class="div_left" id="lang_WANInterfaces">WAN Interfaces : </div>
+				<div class="div_right">
+					<select id="SELECT_ConnsName" name="SELECT_ConnsName"></select>
+				</div>
+			</div>
+			<div class="div_button"><input type="button" id="submit" value="Apply" onClick="uiSumbit()">
+					<input type='button' value="Cancel" onClick='uiPageRefresh()' id="ancel">
+			</div>
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc1">Set the name of each rule.</p>
+			<p id="lang_helpdsc2">A source IP address is a WAN address and a destination IP address is a LAN address.</p>
+			<p id="lang_helpdsc3">By setting a rule, you can allow traffic from the WAN.</p>
+			<p id="lang_helpdsc4">Select a time schedule for enabling the rule. If the list of schedules does not include your desired schedule, you can create one. The navigation path is as follows: 
+                         <a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=schedules"> Advanced -> Schedules</a>
+                        </p>
+			<p id="lang_helpdsc5">Click "Apply" to save the rule and it will be displayed in the Rules List.</p>
+			<p id="lang_helpdsc6">Select the "Remove" check box corresponding to a rule in the Rules List and click the "Remove" button to permanently remove a rule.</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

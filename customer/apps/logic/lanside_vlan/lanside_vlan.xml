@@ -1,0 +1,99 @@
+
+<InternetGatewayDevice type="object">
+	<Layer2Bridging type="object">
+		<X_TWSZ-COM_STP type="boolean" Writable="0">0</X_TWSZ-COM_STP>
+		<MaxBridgeEntries type="unsignedInt" Writable="0"></MaxBridgeEntries>
+		<MaxDBridgeEntries type="unsignedInt" Writable="0"></MaxDBridgeEntries>
+		<MaxQBridgeEntries type="unsignedInt" Writable="0"></MaxQBridgeEntries>
+		<MaxFilterEntries type="unsignedInt" Writable="0"></MaxFilterEntries>
+		<MaxAvailableInterface type="unsignedInt" Writable="0"></MaxAvailableInterface>
+		<MaxMarkingEntries type="unsignedInt" Writable="0"></MaxMarkingEntries>
+		<BridgeNumberOfEntries type="unsignedInt" Writable="0"></BridgeNumberOfEntries>
+		<FilterNumberOfEntries type="unsignedInt" Writable="0"></FilterNumberOfEntries>
+		<MarkingNumberOfEntries type="unsignedInt" Writable="0"></MarkingNumberOfEntries>
+		<MaxVLANEntries type="unsignedInt" Writable="0"></MaxVLANEntries>
+		<AvailableInterfaceNumberOfEntries type="unsignedInt" Writable="0"></AvailableInterfaceNumberOfEntries>
+		<Bridge type="object" MaxNode="MaxBridgeEntries" CurNode="BridgeNumberOfEntries">
+			<i type="object">
+				<BridgeKey type="unsignedInt" Writable="0"></BridgeKey>
+				<BridgeStandard type="boolean"></BridgeStandard>
+				<BridgeEnable type="boolean">0</BridgeEnable>
+				<BridgeStatus type="string" Writable="0"></BridgeStatus>
+				<BridgeName type="string(64)"></BridgeName>
+				<PortNumberOfEntries type="unsignedInt"></PortNumberOfEntries>
+				<VLANNumberOfEntries type="unsignedInt"></VLANNumberOfEntries>
+				<Port type="object">
+					<i type="object">
+						<PortEnable type="boolean">0</PortEnable>
+						<PortInterface type="string(64)"></PortInterface>
+						<PortState type="string" Writable="0">Disabled</PortState>
+						<PVID type="unsignedInt[1:4094]">1</PVID>
+						<AcceptableFrameTypes type="string">AdmitAll</AcceptableFrameTypes>
+						<IngressFiltering type="boolean">0</IngressFiltering>
+					</i>
+				</Port>
+				<VLAN type="object">
+					<i type="object">
+						<VLANEnable type="boolean">0</VLANEnable>
+						<VLANName type="string(64)"></VLANName>
+						<VLANID type="unsignedInt[1:4094]"></VLANID>
+					</i>
+				</VLAN>
+				<VLANID type="unsignedInt[0:4094]"></VLANID>
+				<X_TWSZ-COM_AssociatedLANDevice type="string" Writable="0"></X_TWSZ-COM_AssociatedLANDevice>
+				<NumOfAssociatedEthPort type="unsignedInt" Writable="0" NeedSave="0">0</NumOfAssociatedEthPort>
+			</i>
+		</Bridge>
+		<Filter type="object" MaxNode="MaxFilterEntries" CurNode="FilterNumberOfEntries">
+			<i type="object">
+				<FilterKey type="unsignedInt" Writable="0"></FilterKey>
+				<FilterEnable type="boolean">0</FilterEnable>
+				<FilterStatus type="string" Writable="0"></FilterStatus>
+				<FilterBridgeReference type="int[-1:]">-1</FilterBridgeReference>
+				<ExclusivityOrder type="unsignedInt"></ExclusivityOrder>
+				<FilterInterface type="string">0</FilterInterface>
+				<VLANIDFilter type="int[-1:4095]"></VLANIDFilter>
+				<AdmitOnlyVLANTagged type="boolean">0</AdmitOnlyVLANTagged>
+				<EthertypeFilterList type="string(256)"></EthertypeFilterList>
+				<EthertypeFilterExclude type="boolean"></EthertypeFilterExclude>
+				<SourceMACAddressFilterList type="string(512)"></SourceMACAddressFilterList>
+				<SourceMACAddressFilterExclude type="boolean"></SourceMACAddressFilterExclude>
+				<DestMACAddressFilterList type="string(512)"></DestMACAddressFilterList>
+				<DestMACAddressFilterExclude type="boolean"></DestMACAddressFilterExclude>
+				<SourceMACFromVendorClassIDFilter type="string(256)"></SourceMACFromVendorClassIDFilter>
+				<SourceMACFromVendorClassIDFilterExclude type="boolean"></SourceMACFromVendorClassIDFilterExclude>
+				<DestMACFromVendorClassIDFilter type="string(256)"></DestMACFromVendorClassIDFilter>
+				<DestMACFromVendorClassIDFilterExclude type="boolean"></DestMACFromVendorClassIDFilterExclude>
+				<SourceMACFromClientIDFilter type="string(256)"></SourceMACFromClientIDFilter>
+				<SourceMACFromClientIDFilterExclude type="boolean"></SourceMACFromClientIDFilterExclude>
+				<DestMACFromClientIDFilter type="string(256)"></DestMACFromClientIDFilter>
+				<DestMACFromClientIDFilterExclude type="boolean"></DestMACFromClientIDFilterExclude>
+				<SourceMACFromUserClassIDFilter type="string(256)"></SourceMACFromUserClassIDFilter>
+				<SourceMACFromUserClassIDFilterExclude type="boolean"></SourceMACFromUserClassIDFilterExclude>
+				<DestMACFromUserClassIDFilter type="string(256)"></DestMACFromUserClassIDFilter>
+				<DestMACFromUserClassIDFilterExclude type="boolean"></DestMACFromUserClassIDFilterExclude>
+			</i>
+		</Filter>
+		<Marking type="object" MaxNode="MaxMarkingEntries" CurNode="MarkingNumberOfEntries">
+			<i type="object">
+				<MarkingKey type="unsignedInt" Writable="0"></MarkingKey>
+				<MarkingEnable type="boolean"></MarkingEnable>
+				<MarkingStatus type="string" Writable="0"></MarkingStatus>
+				<MarkingBridgeReference type="int[-1:]"></MarkingBridgeReference>
+				<MarkingInterface type="string"></MarkingInterface>
+				<VLANIDUntag type="boolean"></VLANIDUntag>
+				<VLANIDMark type="int[-1:4095]"></VLANIDMark>
+				<VLANIDMarkOverride type="boolean"></VLANIDMarkOverride>
+				<EthernetPriorityMark type="int[-1:7]"></EthernetPriorityMark>
+				<EthernetPriorityOverride type="boolean"></EthernetPriorityOverride>
+			</i>
+		</Marking>
+		<AvailableInterface type="object" Writable="0" MaxNode="MaxAvailableInterface" CurNode="AvailableInterfaceNumberOfEntries">
+			<i type="object">
+				<AvailableInterfaceKey type="unsignedInt" Writable="0"></AvailableInterfaceKey>
+				<InterfaceType type="string" Writable="0"></InterfaceType>
+				<InterfaceReference type="string(256)" Writable="0"></InterfaceReference>
+			</i>
+		</AvailableInterface>
+	</Layer2Bridging>
+</InternetGatewayDevice>

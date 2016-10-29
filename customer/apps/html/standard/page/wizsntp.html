@@ -1,0 +1,195 @@
+<style type="text/css"><!-- 
+.div_left { width:220px;}
+.fix { padding-top:0px;}
+input.timeLength { width:30px;}
+input.timeLengthyear { width:30px;}
+--></style>
+<td width="840">
+	<div class="config1" style="margin:0px auto;">
+		<p class="bk_orange"><span id = "lang_config">Step 1: Set Time and Date</span><font color="white"> &#8594; 2 &#8594; 3 &#8594; 4 &#8594; 5</font></p>
+		
+		<div class="div_orange">
+			<p id="lang_dec">With the time configuration function, you can configure, update, and maintain the correct time of the internal system clock. 
+							In this page, you can set the time zone that you are in and set the network time protocol (NTP) server. 
+							You can also configure daylight saving to automatically adjust the time if necessary.</p>
+		</div>
+		<!--*******************************设置基本时间****************************************-->
+		<p class="do bk_black" id="lang_timesrting">TIME SETTING </p>				
+		<div class="div_black">
+			<!--*************自动同步网络时间***********************-->
+			<div class="div_left fix">
+				<input type="checkbox" id="INPUT_Enable" onclick="ctrlSntpEnable()">
+			</div>
+			<div class="div_right"><b><label for="INPUT_Enable" id="lang_syninttimr">Automatically synchronize with Internet time server</label></b></div>
+			<div id="sntp1">
+				<div class="div_left" id="lang_firttime">Primary NTP time server:</div>
+				<div class="div_right">
+					<input type="text" maxlength=64 name="INPUT_NTPServer1" id="INPUT_NTPServer1" value="" style="width:200px"/>
+				</div>
+				<div class="div_left" id="lang_secondtime">Secondary NTP time server:</div>
+				<div class="div_right">
+				  <input type="text" maxlength=64 name="INPUT_NTPServer2" id="INPUT_NTPServer2" value="" style="width:200px"/>
+				</div>
+			</div>
+			<!--*************自动同步网络时间结束******************-->
+			
+			<!--***********手动输入时间**************************-->
+			<div id = 'manual_set'>
+				<div class="div_left" id = "lang_timeconfig_manual">Manual setup time:</div>
+				<div class="div_right">
+					<input type="text" id="CurrentYear" class="timeLengthyear" maxlength="4" size="1" > <span id="lang_years1">Year</span>&nbsp;&nbsp;
+					<input type="text" id="CurrentMonth" class="timeLengthyear" maxlength="2" size="1"> <span id="lang_months1">Mon</span>&nbsp;&nbsp;
+					<input type="text" id="CurrentDay" class="timeLengthyear" maxlength="2" size="1"> <span id="lang_days1">Day</span>&nbsp;&nbsp;
+					<input type="text" id="CurrentHour" class="timeLengthyear" maxlength="2" size="1"> <span id="lang_hours1">Hour</span>&nbsp;&nbsp;
+					<input type="text" id="CurrentMinute" class="timeLengthyear" maxlength="2" size="1"> <span id="lang_minutes1">Min</span>&nbsp;&nbsp;
+					<input type="text" id="CurrentSecond" class="timeLengthyear" maxlength="2" size="1"> <span id="lang_seconds1">Sec</span>&nbsp;&nbsp;
+				</div>
+			</div>
+			<!--************手动输入时间结束**********************-->
+		</div>
+		<!--*******************************设置基本时间结束****************************************-->
+		
+		<!--*******************************设置时区和夏令时****************************************-->
+		<p class="do bk_black" id="lang_timeconfig">Time Configuration</p>
+		<div class="div_black">
+			<div id="sntp2">
+			<!--*********************选择时区***************************-->
+				<div class="div_right" id="INPUT_LocalTime"></div>	
+				<div class="div_left" id="lang_timezone">Time Zone: </div>
+				<div class="div_right">
+					<select name="INPUT_TimeZone" id="INPUT_TimeZone" style="font-size:11px;">
+					<option value='-12:00_1' selected='selected'>(GMT-12:00) International Date Line West</option>
+					<option value='-11:00_1'>(GMT-11:00) Midway Island, Samoa</option>
+					<option value='-10:00_1'>(GMT-10:00) Hawaii</option>
+					<option value='-09:00_1'>(GMT-09:00) Alaska</option>
+					<option value='-08:00_1'>(GMT-08:00) Tijuana, Baja California</option>
+					<option value='-08:00_2'>(GMT-08:00) Pacific Time (US & Canada)</option>
+					<option value='-07:00_1'>(GMT-07:00) Mountain Time (US & Canada)</option>
+					<option value='-07:00_2'>(GMT-07:00) Chihuahua, La Paz, Mazatlan - Old</option>
+					<option value='-07:00_3'>(GMT-07:00) Chihuahua, La Paz, Mazatlan - New</option>
+					<option value='-07:00_4'>(GMT-07:00) Arizona</option>
+					<option value='-06:00_1'>(GMT-06:00) Saskatchewan</option>
+					<option value='-06:00_2'>(GMT-06:00) Guadalajara, Mexico City, Monterrey - Old</option>
+					<option value='-06:00_3'>(GMT-06:00) Guadalajara, Mexico City, Monterrey - New</option>
+					<option value='-06:00_4'>(GMT-06:00) Central Time (US & Canada)</option>
+					<option value='-06:00_5'>(GMT-06:00) Central America</option>
+					<option value='-05:00_1'>(GMT-05:00) Indiana (East)</option>
+					<option value='-05:00_2'>(GMT-05:00) Eastern Time (US & Canada)</option>
+					<option value='-05:00_3'>(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+					<option value='-04:00_1'>(GMT-04:00) Caracas</option>
+					<option value='-04:00_2'>(GMT-04:00) Santiago</option>
+					<option value='-04:00_3'>(GMT-04:00) Manaus</option>
+					<option value='-04:00_4'>(GMT-04:00) La Paz</option>
+					<option value='-04:00_5'>(GMT-04:00) Atlantic Time (Canada)</option>
+					<option value='-03:30_1'>(GMT-03:30) Newfoundland</option>
+					<option value='-03:00_1'>(GMT-03:00) Montevideo</option>
+					<option value='-03:00_2'>(GMT-03:00) Greenland</option>
+					<option value='-03:00_3'>(GMT-03:00) Georgetown</option>
+					<option value='-03:00_4'>(GMT-03:00) Buenos Aires</option>
+					<option value='-03:00_5'>(GMT-03:00) Brasilia</option>
+					<option value='-02:00_1'>(GMT-02:00) Mid-Atlantic</option>
+					<option value='-01:00_1'>(GMT-01:00) Cape Verde Is.</option>
+					<option value='-01:00_2'>(GMT-01:00) Azores</option>
+					<option value='+00:00_1'>(GMT 0:00) Casablanca</option>
+					<option value='+00:00_2'>(GMT 00:00) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</option>
+					<option value='+00:00_3'>(GMT 00:00) Monrovia, Reykjavik</option>
+					<option value='+01:00_1'>(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+					<option value='+01:00_2'>(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+					<option value='+01:00_3'>(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+					<option value='+01:00_4'>(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+					<option value='+01:00_5'>(GMT+01:00) West Central Africa</option>
+					<option value='+02:00_1'>(GMT+02:00) Amman</option>
+					<option value='+02:00_2'>(GMT+02:00) Athens, Bucharest, Istanbul</option>
+					<option value='+02:00_3'>(GMT+02:00) Beirut</option>
+					<option value='+02:00_4'>(GMT+02:00) Cairo</option>
+					<option value='+02:00_5'>(GMT+02:00) Harare, Pretoria</option>
+					<option value='+02:00_6'>(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
+					<option value='+02:00_7'>(GMT+02:00) Jerusalem</option>
+					<option value='+02:00_8'>(GMT+02:00) Minsk</option>
+					<option value='+02:00_9'>(GMT+02:00) Windhoek</option>
+					<option value='+03:00_1'>(GMT+03:00) Baghdad</option>
+					<option value='+03:00_2'>(GMT+03:00) Kuwait, Riyadh</option>
+					<option value='+03:00_3'>(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+					<option value='+03:00_4'>(GMT+03:00) Nairobi</option>
+					<option value='+03:00_5'>(GMT+03:00) Tbilisi</option>
+					<option value='+03:30_1'>(GMT+03:30) Tehran</option>
+					<option value='+04:00_1'>(GMT+04:00) Abu Dhabi, Muscat, Dubai</option>
+					<option value='+04:00_2'>(GMT+04:00) Baku</option>
+					<option value='+04:00_3'>(GMT+04:00) Caucasus Standard Time</option>
+					<option value='+04:00_4'>(GMT+04:00) Port Louis</option>
+					<option value='+04:00_5'>(GMT+04:00) Yerevan</option>
+					<option value='+04:30_1'>(GMT+04:30) Kabul</option>
+					<option value='+05:00_1'>(GMT+05:00) Ekaterinburg</option>
+					<option value='+05:00_2'>(GMT+05:00) Islamabad, Karachi</option>
+					<option value='+05:00_3'>(GMT+05:00) Tashkent</option>
+					<option value='+05:30_1'>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+					<option value='+05:30_2'>(GMT+05:30) Sri Jayawardenepura</option>
+					<option value='+05:45_1'>(GMT+05:45) Kathmandu</option>
+					<option value='+06:00_1'>(GMT+06:00) Almaty, Novosibirsk</option>
+					<option value='+06:00_2'>(GMT+06:00) Astana, Dhaka</option>
+					<option value='+06:30_1'>(GMT+06:30) Yangon (Rangoon)</option>
+					<option value='+07:00_1'>(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+					<option value='+07:00_2'>(GMT+07:00) Krasnoyarsk</option>
+					<option value='+08:00_1'>(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+					<option value='+08:00_2'>(GMT+08:00) Irkutsk, Ulaan Bataar</option>
+					<option value='+08:00_3'>(GMT+08:00) Kuala Lumpur, Singapore</option>
+					<option value='+08:00_4'>(GMT+08:00) Perth</option>
+					<option value='+08:00_5'>(GMT+08:00) Taipei</option>
+					<option value='+09:00_1'>(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+					<option value='+09:00_2'>(GMT+09:00) Seoul</option>
+					<option value='+09:00_3'>(GMT+09:00) YakutskAdelaide</option>
+					<option value='+09:30_1'>(GMT+09:30) Adelaide</option>
+					<option value='+09:30_2'>(GMT+09:30) Darwin</option>
+					<option value='+10:00_1'>(GMT+10:00) Brisbane</option>
+					<option value='+10:00_2'>(GMT+10:00) Canberra, Melbourne, Sydney</option>
+					<option value='+10:00_3'>(GMT+10:00) Guam, Port Moresby</option>
+					<option value='+10:00_4'>(GMT+10:00) Hobart</option>
+					<option value='+10:00_5'>(GMT+10:00) Vladivostok</option>
+					<option value='+11:00_1'>(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+					<option value='+12:00_1'>(GMT+12:00) Auckland, Wellington</option>
+					<option value='+12:00_2'>(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
+					<option value='+13:00_1'>(GMT+13:00) Nuku\'alofa</option>
+				</select>
+				</div>
+				<!--*********************选择时区结束***************************-->
+				
+				<!--*********************启动夏令时*****************************-->
+				<div class="div_left fix">
+					<input type="checkbox" id="INPUT_DaylightSavingsUsed" onclick="ctrlDayLightEnable()" />
+				</div>
+				<div class="div_right">
+					<b><label for="INPUT_DaylightSavingsUsed" id="lang_enabledaysaveing">Automatically adjust clock for daylight saving changes</label></b>
+				</div>
+				<!--********************设置夏令时时间开始***********************-->
+				<div id="daylight">
+					<div class="div_left" id="lang_DaylightSavingsStart">Daylight Saving Start: </div>
+					<div class="div_right">
+						<input type="text" id="INPUT_StartYear" class="timeLength" maxlength="4" size="1"> <span id="lang_years3">Year</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_StartMonth" class="timeLength" maxlength="2" size="1"> <span id="lang_months3">Mon</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_StartDay" class="timeLength" maxlength="2" size="1"> <span id="lang_days3">Day</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_StartHour" class="timeLength" maxlength="2" size="1"> <span id="lang_hours3">Hour</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_StartMinute" class="timeLength" maxlength="2" size="1"> <span id="lang_minutes3">Min</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_StartSecond" class="timeLength" maxlength="2" size="1"> <span id="lang_seconds3">Sec</span>&nbsp;&nbsp;
+					</div>
+					
+					<div class="div_left"  id="lang_DaylightSavingsEnd">Daylight Saving End: </div>
+					<div class="div_right">
+						<input type="text" id="INPUT_EndYear" class="timeLength" maxlength="4" size="1"> <span id="lang_years2">Year</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_EndMonth" class="timeLength" maxlength="2" size="1"> <span id="lang_months2">Mon</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_EndDay" class="timeLength" maxlength="2" size="1"> <span id="lang_days2">Day</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_EndHour" class="timeLength" maxlength="2" size="1"> <span id="lang_hours2">Hour</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_EndMinute" class="timeLength" maxlength="2" size="2"> <span id="lang_minutes2">Min</span>&nbsp;&nbsp;
+						<input type="text" id="INPUT_EndSecond" class="timeLength" maxlength="2" size="10"> <span id="lang_seconds2">Sec</span>&nbsp;&nbsp;
+					</div>
+				</div>
+				<!--********************设置夏令时时间结束***********************-->
+			</div>
+		</div>
+		<!--*******************************设置时区和夏令时结束****************************************-->
+		<div class="div_button">
+			<input type="button" id="back" value="Back" onClick="uiBack()" /> 
+			<input type="submit" id="submit" value="Next" onClick="uiNextPage()" /> 
+			<input type="button" id="cancel" value="Cancel" onClick="uiCancle()" /> 
+		</div>
+	</div>
+</td>

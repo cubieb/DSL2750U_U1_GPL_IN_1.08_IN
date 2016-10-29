@@ -1,0 +1,137 @@
+
+			README for DLNA Digital Media Server (DMS) - August 3, 2008
+
+
+==========
+Overview
+==========
+
+DLNA DMS has been built using the Broadcom UPNP framework. 
+The DMS can be built as a library or as a standalone application. 
+When the DMS is built as a library it will be linked into the Media Browser application. 
+When built standalone, it can be run independently of the Media Browser application.
+
+
+The DMS can be built and run on several platforms and this includes Linux on MIPS, Linux X86 and Windows. 
+Broadcom's will deploy the DMS on its MIPS platforms such as 7405, 7420 etc.
+			
+
+	
+===================
+Build Instructions
+===================
+
+=> Building DMS as a library 
+-----------------------------
+
+1. Logon to the build server.
+2. Go to directory Build/Linux, inside the dms folder.
+3. Under BASH shell, run the command. 
+	For example for 97405 platform the following should be executed
+
+	. /opt/brcm/scripts/plat 97405 b1
+
+This script sets up the toolchain paths properly
+ 
+4. Run the following command
+	make clean all
+
+5. The libbdlna-dms library [shared and static] will be placed under AppLib/bin folder.
+
+
+
+=> Building DMS as a standalone application
+--------------------------------------------
+1. logon to build server.
+2. Go to directory Build/Linux, inside the dms folder.
+3. Under bash shell run the command 
+	. /opt/brcm/scripts/plat 97405 b1
+4. run the following command to build DMS for Mips.
+	./mips_build.sh
+5. The dlna server will be build as a mips application
+
+NOTE: If X86 build is needed:
+	i> Do not execute step 3 in above sequence.
+     ii> In Step-4 run the x86 script. The command should be 
+		./x86_build.sh
+
+
+
+============================
+Install and Run instructions
+=============================
+
+1. Installing the DMS application
+---------------------------------
+
+	=> The following libraries are needed by the DMS.
+
+		-> libavcodec.so
+		-> libavformat.so
+		-> libavutil.so
+
+	   For the ease of execution the libraries may be copied to /usr/lib. 
+	   These are FFMPEG libraries that the DLNA server is dependent upon.
+
+	=> After the above libraries are available to DMS, the DMS can be executed as a 
+	   standalone application or as a library included with other applications.
+
+	
+2. Running the DMS application
+-------------------------------
+
+	=> If the DMS is built as a application it can simply be run as any other application. 
+		If the DMS is built using the library and included in some other application, the 
+		instructions for running the application should be followed.	
+
+	=> Once the DMS is executed, it will start scanning the content directory. The content directoy 
+		is provided to the DMS server by the user or the application using the DMS server.
+
+		
+3. Populating the content directory 
+-----------------------------------
+
+	=> The test data can be any corretly encoded clip and can be kept at any location accesable from the 
+	   machine running the DMS server.
+
+	=> The path to the content directory (where the media contents are placed) will be given to the DMS server.
+	    If the DMS server is running as a standalone application, it will prompt the user to enter the 
+	    content directory path. If the DMS server is running as library included in some application, 
+	    it is the application's responsibility to provide the content directory path through the available 
+	    interface.
+	   
+4. Testing the DMS server
+-------------------------
+
+5.  Shutting down the DMA server
+---------------------------------
+
+	=> If the DMS server is running as a application then 
+		pressing "x" followed by enter key will shutdown the DMS server.
+		
+	=> If the DMS server is running as a library included in the application, it is 
+		the responsibility of the application to call the shutdown API of the DMS server.	
+
+
+===========================
+Known issues/ Limitations
+===========================
+
+1. SCAN DIRECTORY TAKES A LONG TIME
+------------------------------------
+	
+	The DMS takes a time that is proportional to the size of the content in the content directory. For a 35 GB
+    data the DMS takes about 10-13 minutes to fully populate the internal database. This is a known issue and 
+	will be addresses in future DMS releases.
+
+2. LPCM NOT SUPPORTED
+----------------------
+
+	The DMS uses FFMPEG decode libraries. The build that we have checked in the 
+	clearcase does not have LPCM audio support. This issue will be resolved in future releases.
+
+3. LIVE STREAMING PROFILES NOT SUPPORTED
+----------------------------------------
+	Profiles like TV tuner, CD players etc are not supported.
+
+

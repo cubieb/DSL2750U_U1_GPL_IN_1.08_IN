@@ -1,0 +1,45 @@
+January 8, 1997
+Copyright (C) John H Terpstra - 1997
+Modified: January 24, 1998
+
+Subject:
+========
+Preparation of RedHat RPM packages.
+
+Version Numbers:
+================
+The numbering scheme adopted consists of:
+	samba-1.9.18p2-50.11.i386.rpm
+		The Samba release version here is: 1.9.18p2
+		The Red Hat Linux version this is for is: 5.0
+		The issue number is: 11
+		The Architecture for this RPM is: Intel (i386)
+
+Please, please - PLEASE!!! Do NOT issue any duplicate issue numbers
+as this will cause confusion. If you really have to make public any
+issue of the Red Hat RPMs then please mail jht@samba.anu.edu.au to
+ensure that duplicates can be avoided. Also, post a message to:
+samba@samba.anu.edu.au clearly copying us all of your action. We DO NOT
+want confusion of RPM package issue numbers.
+
+Preparation Process:
+====================
+1. Copy the official Samba-latest.tar.gz archive to /usr/src/redhat/SOURCES
+2. Un-gnuzip the file to the plain tar archive format
+3. Untar the archive to access the samba/examples/redhat files
+4. Copy the samba-make.patch file to /usr/src/redhat/SOURCES
+5. Copy samba.spec file to /usr/src/redhat/SPECS
+6. Delete the extracted archive (see item 3)
+7. Go to the /usr/src/redhat/SPECS directory
+8. Execute: rpm -ba -v samba.spec
+
+Notice: All the above can be achieved simply by going to the relevant
+	samba version directory (eg: ~samba-x.yy.zz/packaging/redhat/RH50)
+	then executing "makerpms.sh"
+
+9. Copy the SRPM file from the /usr/src/redhat/SRPMS directory
+	and copy the RPMS file from the /usr/src/redhat/RPMS directory
+	to the distribution point from which the finished packages will
+	be uploaded to the samba ftp archive.
+
+Finito!!

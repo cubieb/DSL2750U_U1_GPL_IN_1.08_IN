@@ -1,0 +1,49 @@
+<style type="text/css">
+<!-- 
+.div_left { padding-left:120px; width:150px;}
+ -->
+</style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_traceroute1">Traceroute Diagnosis</p>
+				<div class="div_orange">
+					<p id = "lang_routers">
+						Traceroute diagnostics sends packets to determine the routers on the Internet.
+					</p>
+				</div>
+				
+				<p class="do bk_black">&nbsp;</p>
+				<div class="div_black">
+					<div class="div_left" id = "lang_host">Host :</div>
+					<div class="div_right"><input type="text" id="INPUT_Host" /></div>
+					
+					<div class="div_left"  id = "lang_ttl">Max TTL : </div>
+					<div class="div_right"><input type="text" id="INPUT_MAXTTL" /> (1-64)</div>
+					
+					<div class="div_left"  id = "lang_waittime">Wait times :</div>
+					<div class="div_right"><input type="text" id="INPUT_WaitTime" /> (>=1ms)</div>
+				</div>
+				<div class="div_button">
+					<input id="btn_Traceroute" type="button" value="Traceroute" onClick="uiSubmit()"/> 
+					<input id="btn_Stop" type="button" value="Stop" onClick="uiStop()"/>
+				</div>
+				
+				<p class="do bk_black"  id = "lang_result">Result</p>
+				<div class="div_black">
+					<div align="center">
+						<textarea name="TEXTAREA_Output" id="TEXTAREA_Output" cols="45" rows="10" wrap="virtual">
+						</textarea>
+					</div>
+				</div>
+				
+			</div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<p id = "lang_help">
+					"Traceroute" checks whether a computer on the Internet is running and responding. Enter either the IP address of the target computer or enter its fully qualified domain name.
+				</p>
+				<h5><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain#Diagnostics">More...</a></h5>				
+			</div>
+		</td>

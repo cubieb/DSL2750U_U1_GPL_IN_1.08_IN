@@ -1,0 +1,42 @@
+<style type="text/css"><!-- 
+	.div_left { width:260px;}
+	.sh { width:80px;}
+	.bo { font-weight:bold;}
+ --></style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_internet_config">Internet Setup</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">
+				In this page, you can configure PPP Username and Password.
+			</p>
+		</div>
+		
+			<p class="do bk_black" id = "lang_PPP_config">PPP Username and Password</p>
+			<div class="div_black">
+				<div class="div_left" id = "lang_ppp_name">PPP Username :</div>
+				<div class="div_right"><input type="text" id="INPUT_UserName" style="width:150px"/></div>
+				<div class="div_left" id = "lang_ppp_password">PPP Password :</div>
+				<div class="div_right"><input type="password" id="INPUT_Psd" style="width:150px"/></div>
+				<div class="div_left" id = "lang_ppp_conf_password">Confirm PPP Password :</div>
+				<div class="div_right"><input type="password" id="INPUT_ConfirmPsd" style="width:150px"/></div>
+			</div>	
+		
+		<div class="div_button">
+			<input type="button" id = "Apply" value="Apply" onClick="uiSubmit()"/>
+			<input type="button" id = "Cancel" value="Cancel" onClick="backtowancfg()"/>
+		</div>
+	</div>
+</td>
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<p id = "lang_help1">
+			When configuring the router to access the Internet, select the correct <b>Connection Type</b> from the list.
+		</p>
+		<p id = "lang_help2">
+			Note that the <b>user name</b> and <b>password</b> are case-sensitive. Most connection issues are caused by incorrect <b>user name</b> or <b>password</b> combinations.				
+		</p>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>

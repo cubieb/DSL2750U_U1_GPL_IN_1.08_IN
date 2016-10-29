@@ -1,0 +1,122 @@
+
+<!-- config -->
+<td>
+	<div class="config1">
+	
+		<p class="do bk_black" id = "lang_port_config">Network Tools -- Port Mapping </p>
+		<div do class="div_black">
+			<p id = "lang_port_introduction">Port Mapping supports multiple port to PVC and bridging groups. Each group will perform as an independent network.</p>
+			<div class="div_button"><input type="button" id = "port" value="Port Mapping" onClick="toPortMapping()"></div>
+		</div>
+
+		<p class="do bk_black" id = "lang_igmpproxy_config">Network Tools -- IGMP PROXY</p>
+		<div do class="div_black">
+			<p id = "lang_igmpproxy_introduction">Transmission of identical content, such as multimedia, from a source to a number of recipients.</p>
+			<div class="div_button"><input type="button" id = "igmp_proxy" value="IGMP Proxy" onClick="toIgmpproxy()"></div>
+		</div>
+		
+		<p class="do bk_black" id = "lang_igmpsnooping_config">Network Tools -- IGMP SNOOPING</p>
+		<div do class="div_black">
+			<p id = "lang_igmpsnooping_introduction">Transmission of identical content, such as multimedia, from a source to a number of recipients.</p>
+			<div class="div_button"><input type="button" id = "igmp_snnoping" value="IGMP Snooping" onClick="toIgmpsnooping()"></div>
+		</div>
+
+		<?if eq 1 $var:mod_STATIC_IGMP
+		`	
+		<p class="do bk_black" id = "lang_igmpstatic_config">Network Tools - Static IGMP</p>
+		<div do class="div_black">
+			<p id = "lang_igmpstatic_introduction">Transmission of identical content, such as multimedia, from a source to a number of recipients.</p>
+			<div class="div_button"><input type="button" id = "igmp_static" value="Static IGMP" onClick="toStaticIgmp()"></div>
+		</div>
+		`?>
+
+		<?if eq $var:G_IPv6Enable 1
+		`
+		<p class="do bk_black" id = "lang_mld_config">Network Tools -- MLD Configuration</p>
+		<div do class="div_black">
+			<p id = "lang_mld_introduction">Transmission of identical content, such as multimedia, from a source to a number of recipients.</p>
+			<div class="div_button"><input type="button" id = "mld_cfg" value="MLD Configuration" onClick="toMldCfg()"></div>
+		</div>
+		`?>
+		
+		<p class="do bk_black" id = "lang_queue_config1"  style="display:none">Network Tools -- Queue Config</p>
+		<div do class="div_black"  style="display:none" >
+			<p id = "lang_queue_introduction">Allows you to add Classification Queue precedence for QoS.</p>
+			<div class="div_button"><input type="button" id = "queue" value="Queue Config" onClick=""></div>
+		</div>
+		
+		<p class="do bk_black" id = "lang_qos_config"  style="display:none">Network Tools -- Quality of Service</p>
+		<div do class="div_black"  style="display:none">
+			<p id = "lang_qos_introduction">Transmission of identical content, such as multimedia, from a source to a number of recipients.</p>
+			<div class="div_button"><input type="button"  id = "qos" value="Quality of service" onClick=""></div>
+		</div>
+		
+		<p class="do bk_black" id = "lang_upnp_config">Network Tools -- UPnP</p>
+		<div do class="div_black">
+			<p id = "lang_upnp_introduction">Allows you to enable or disable UPnP.</p>
+			<div class="div_button"><input type="button" id = "upnp" value="Upnp" onClick="toUpnp()"></div>
+		</div>
+		
+	     <?mget :InternetGatewayDevice.WANDevice.1. "WANCommonInterfaceConfig.WANAccessType"
+                  	`<?if eq `DSL` `<?echo $21?>`
+			     `<p class="do bk_black"  id = "lang_adsl_config">Network Tools -- ADSL</p>
+				<div do class="div_black">
+				<p id = "lang_adsl_introduction">Allows you to configure advanced settings for ADSL.</p>
+				<div class="div_button"><input type="button" id = "adsl" value="ADSL" onClick="toAdsl()"></div>
+				</div>
+				<div do class="div_black">
+				<p id = "lang_pvc_search">Allows you to configure default PVC list for ADSL.</p>
+				<div class="div_button"><input type="button" id = "pvcsearch" value="pvcsearch" onClick="toPvcsearch()"></div>
+				</div>
+			`?>
+		`?>
+	    <?if eq 1 $var:mod_SNMPC
+		`
+		<p class="do bk_black" id = "lang_snmp_config">Network Tools -- SNMP</p>
+		<div do class="div_black">
+			<p id = "lang_snmp_introduction">Network Tools -- SNMP</p>
+			<div class="div_button"><input type="button" id = "snmp" value="SNMP" onClick="toSnmp()"></div>
+		</div>
+		`?>
+        <?if eq 1 $var:mod_TR064BE
+		`
+		<p class="do bk_black" id = "lang_tr064_config">Network Tools -- TR-064</p>
+		<div do class="div_black">
+			<p id = "lang_tr064_introduction">Allows you to configure TR-064 protocol.</p>
+			<div class="div_button"><input type="button"  id = "tr64" value="TR-064" onClick="toTr064()"></div>
+		</div>
+		`?>
+		<?if eq 1 $var:mod_TR069
+		`
+		<p class="do bk_black" id = "lang_tr069_config">Network Tools -- TR-069</p>
+		<div do class="div_black">
+			<p id = "lang_tr069_introduction">Allows you to configure TR-069 protocol.</p>
+			<div class="div_button"><input type="button"  id = "tr69" value="TR-069" onClick="toTr069()"></div>
+		</div>
+		
+		<p class="do bk_black" id = "lang_cer_config">Network Tools -- Certificates</p>
+		<div do class="div_black">
+			<p id = "lang_cer_introduction">Allows you to manage certificates used with TR-069.</p>
+			<div class="div_button"><input type="button" id = "certificate" value="Certificates" onClick="toCertificates()"></div>
+		</div>
+		`?>
+		<?if eq 1 $var:mod_IPPMNGR
+		`
+		<p class="do bk_black" id = "lang_cer_configPrinter">Network Tools -- Printer</p>
+		<div do class="div_black">
+			<p id = "lang_cer_printer">Allows you to manage printer .</p>
+			<div class="div_button"><input type="button" id = "cerprinter" value="printer" onClick="toprinter()"></div>
+		</div>
+		`?>
+	  <?if eq 1 $var:mod_LAN_PORT_VLAN
+		`	
+		<p class="do bk_black" id = "lang_cer_configLanPortVlan">Network Tools -- Lan Port Vlan</p>
+		<div do class="div_black">
+			<p id = "lang_cer_LanPortVlan">Allows you to config vlan on lan/wlan port .</p>
+			<div class="div_button"><input type="button" id = "cerLanPortVlan" value="LanPortVlan" onClick="toLanPortVlan()"></div>
+		</div>
+		`?>
+		
+	</div>
+</td>
+

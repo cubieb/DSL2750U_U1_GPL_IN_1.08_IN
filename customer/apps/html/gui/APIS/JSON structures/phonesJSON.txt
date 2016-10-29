@@ -1,0 +1,10 @@
+{"DECTS":  [
+       {"id": "telef1", "nombre": "DECT 1", "numero": "91 352 1166", "bateria": "4", "cobertura": "2", "NRSS": "2"},
+       {"id": "telef2", "nombre": "DECT 2", "numero": "91 352 1167", "bateria": "1", "cobertura": "2", "NRSS": "5"}
+   ],
+  "OTROS": [
+       {"id": "telef3", "nombre": "DECT 3", "numero": "91 352 1168", "bateria": "4", "cobertura": "1", "NRSS": "3"},
+       {"id": "telef1", "nombre": "DECT 1", "numero": "91 352 1166", "bateria": "4", "cobertura": "2", "NRSS": "2"},
+       {"id": "telef2", "nombre": "DECT 2", "numero": "91 352 1167", "bateria": "1", "cobertura": "2", "NRSS": "5"}
+  ]
+}

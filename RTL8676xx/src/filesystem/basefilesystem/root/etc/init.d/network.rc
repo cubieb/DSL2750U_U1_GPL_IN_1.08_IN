@@ -1,0 +1,109 @@
+#!/bin/sh
+
+if [ `cat /proc/llconfig/phys_mem_size` -eq 1000000 ]; then
+    #The memory size is 16M!
+    echo 4096 >/proc/sys/net/nf_conntrack_max
+elif [ `cat /proc/llconfig/phys_mem_size` -eq 2000000 ]; then
+    #The memory size is 32M!
+	  echo 1 > /proc/net/drop_conntracks
+	  echo 300 > /proc/sys/net/ipv4/route/gc_timeout
+	  echo 8192 > /proc/sys/net/ipv4/route/max_size
+    echo 4096 > /proc/sys/net/ipv4/route/gc_thresh
+	echo "20" > /proc/sys/net/ipv4/route/gc_elasticity
+	echo 35 > /proc/sys/net/ipv4/route/gc_interval
+	echo  60 > /proc/sys/net/ipv4/route/secret_interval
+	echo 10 > /proc/sys/net/ipv4/route/gc_timeout
+	echo 512 > /proc/sys/net/core/netdev_max_backlog
+	
+    echo "600" > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_established
+    echo "60" > /proc/sys/net/netfilter/nf_conntrack_udp_timeout
+    echo "20" > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_time_wait
+    echo "20" > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_close
+    echo "90" > /proc/sys/net/netfilter/nf_conntrack_udp_timeout_stream
+    echo "90" > /proc/sys/net/netfilter/nf_conntrack_generic_timeout
+	echo 1 > /proc/sys/net/ipv4/ip_forward
+	echo "1048576" > /proc/sys/net/ipv4/rt_cache_rebuild_count
+	#echo "1024" > /proc/sys/net/netfilter/nf_conntrack_expect_max
+	#echo "4096" > /proc/sys/net/netfilter/nf_conntrack_max
+	
+	echo "48" > /proc/sys/net/ipv4/ipfrag_max_dist
+    echo "2">/proc/sys/net/ipv4/ipfrag_time
+	echo "300">/proc/sys/net/ipv4/ipfrag_secret_interval
+    echo "16384">/proc/sys/net/ipv4/ipfrag_low_thresh
+    echo "32768">/proc/sys/net/ipv4/ipfrag_high_thresh
+	#echo "4096" > /proc/sys/net/nf_conntrack_max
+	
+    echo 2048 > /proc/sys/fs/file-max
+	echo 3 > /proc/sys/vm/drop_caches
+    echo 20 > /proc/sys/net/core/message_burst
+	echo 128 > /proc/sys/vm/min_free_kbytes
+    echo 5119 > /proc/sys/net/core/optmem_max
+    echo 16383 > /proc/sys/net/core/rmem_max
+    echo 8191 > /proc/sys/net/core/rmem_default
+    #echo 16383 > /proc/sys/net/core/wmem_max
+    #echo 8191 > /proc/sys/net/core/wmem_default
+    
+    echo 8192 > /proc/sys/net/ipv4/inet_peer_threshold
+    echo 100 > /proc/sys/net/ipv4/inet_peer_minttl
+    echo 500 > /proc/sys/net/ipv4/inet_peer_maxttl
+    echo 64 > /proc/sys/net/ipv4/tcp_max_orphans
+    echo 2048 32767 65535> /proc/sys/net/ipv4/tcp_rmem
+    echo 2048 16384 32768 > /proc/sys/net/ipv4/tcp_wmem
+    echo 800000 > /proc/sys/kernel/sched_rt_runtime_us
+
+    #系统kernel panic 1S后重启
+    echo "1" > /proc/sys/kernel/panic
+
+elif  [ `cat /proc/llconfig/phys_mem_size` -gt 2000000 ]; then
+    #The memory size is 64M or larger!
+	  echo 1 > /proc/net/drop_conntracks
+	  echo 300 > /proc/sys/net/ipv4/route/gc_timeout
+	  echo 8192 > /proc/sys/net/ipv4/route/max_size
+    echo 4096 > /proc/sys/net/ipv4/route/gc_thresh
+	echo "20" > /proc/sys/net/ipv4/route/gc_elasticity
+	echo 35 > /proc/sys/net/ipv4/route/gc_interval
+	echo  60 > /proc/sys/net/ipv4/route/secret_interval
+	echo 10 > /proc/sys/net/ipv4/route/gc_timeout
+	echo 512 > /proc/sys/net/core/netdev_max_backlog
+	
+    echo "600" > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_established
+    echo "60" > /proc/sys/net/netfilter/nf_conntrack_udp_timeout
+    echo "20" > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_time_wait
+    echo "20" > /proc/sys/net/netfilter/nf_conntrack_tcp_timeout_close
+    echo "90" > /proc/sys/net/netfilter/nf_conntrack_udp_timeout_stream
+    echo "90" > /proc/sys/net/netfilter/nf_conntrack_generic_timeout
+	echo 1 > /proc/sys/net/ipv4/ip_forward
+	echo "1048576" > /proc/sys/net/ipv4/rt_cache_rebuild_count
+	#echo "1024" > /proc/sys/net/netfilter/nf_conntrack_expect_max
+	#echo "4096" > /proc/sys/net/netfilter/nf_conntrack_max
+	
+	echo "48" > /proc/sys/net/ipv4/ipfrag_max_dist
+    echo "2">/proc/sys/net/ipv4/ipfrag_time
+	echo "300">/proc/sys/net/ipv4/ipfrag_secret_interval
+    echo "16384">/proc/sys/net/ipv4/ipfrag_low_thresh
+    echo "32768">/proc/sys/net/ipv4/ipfrag_high_thresh
+	#echo "4096" > /proc/sys/net/nf_conntrack_max
+	
+    echo 2048 > /proc/sys/fs/file-max
+	echo 3 > /proc/sys/vm/drop_caches
+    echo 20 > /proc/sys/net/core/message_burst
+	echo 128 > /proc/sys/vm/min_free_kbytes
+    echo 5119 > /proc/sys/net/core/optmem_max
+    echo 16383 > /proc/sys/net/core/rmem_max
+    echo 8191 > /proc/sys/net/core/rmem_default
+    #echo 16383 > /proc/sys/net/core/wmem_max
+    #echo 8191 > /proc/sys/net/core/wmem_default
+    
+    echo 8192 > /proc/sys/net/ipv4/inet_peer_threshold
+    echo 100 > /proc/sys/net/ipv4/inet_peer_minttl
+    echo 500 > /proc/sys/net/ipv4/inet_peer_maxttl
+    echo 64 > /proc/sys/net/ipv4/tcp_max_orphans
+    echo 2048 32767 65535> /proc/sys/net/ipv4/tcp_rmem
+    echo 2048 16384 32768 > /proc/sys/net/ipv4/tcp_wmem
+    echo 800000 > /proc/sys/kernel/sched_rt_runtime_us
+
+    #系统kernel panic 1S后重启
+    echo "1" > /proc/sys/kernel/panic
+fi
+
+###Network Initializing Configuration

@@ -1,0 +1,38 @@
+//  Gnu C/C++, -si4 -sp4,
+//  Standard lint options
+
+co-gnu3.lnt
+-u__linux__
+
+// define size of short/int/long/pointer
+-ss2 -si4 -sl4 -sp4
+
+-D__STDC__
+
++libclass(angle)
+
+-I%WIND_BASE%\target\h\
++libdir(%WIND_BASE%\target\h\)
+//-I%WIND_BASE%\target\h\arch\ppc
+//+libdir(%WIND_BASE%\target\h\arch\ppc\)
+
+-wlib(1) // Error messages only (when processing library code.)
+
+-D__BIG_ENDIAN=1
+-D__LITTLE_ENDIAN=2
+-D__BYTE_ORDER=__LITTLE_ENDIAN
+//-vf -D__BYTE_ORDER=__LITTLE_ENDIAN
+
+-DRW_MULTI_THREAD
+-D_REENTRANT
+-DCPU=PPC860
+-DVXWORKS
+-D_MPC860_
+-D__PROTOTYPE_5_0
+-D__VXWORKS__
+-DINCLUDE_CG_API_CLI
+-DINCLUDE_CG_API_TEST_SUITE
+
+options.lnt
+
+

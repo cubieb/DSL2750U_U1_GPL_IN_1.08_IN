@@ -1,0 +1,28 @@
+{"USB":{
+		"serialNumber":"IC35L060AW207-0",
+	    "nameUSB": "Flash disk USB",  
+	    "protocol":"Samba",
+	    "port":"ttyUSB0",
+	    "vendor":"Philips",
+	    "type":"Removable disk",
+	    "version":"USB2.0",
+        "partitionNumber":"2",
+        "PARTITION":[
+       		{"namePartition": "Programs",
+	    	 "capacity": "29360128",
+	    	 "usedSpace":11950080",
+        	 "freeSpace":"17410048",
+        	 "fileSystem":"FAT",
+        	 "location": "\\\\192.168.1.1\\shareFolderPrograms"
+      		},
+      		{"namePartition": "Work",
+	    	 "capacity": "122267648",
+	    	 "usedSpace":"0",
+        	 "freeSpace":"122267648"
+        	 "fileSystem:"NTFS",
+        	 "location": "\\\\192.168.1.1\\shareFolderWork"
+      		}
+       		]
+       	}
+  }
+

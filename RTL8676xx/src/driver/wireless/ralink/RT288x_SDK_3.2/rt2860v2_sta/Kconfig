@@ -1,0 +1,52 @@
+config RT2860V2_STA
+	bool "Ralink RT2860 802.11n STA support"
+	depends on DRIVERS_WLAN_RALINK_RT288x
+
+config  RT2860V2_STA_2850
+	bool "Dual Bnad"
+	depends on RT2860V2_STA && RALINK_RT2880
+
+choice
+	prompt "RF Type"
+	depends on RT2860V2_STA && RALINK_RT3052
+	default RALINK_RT3052STA_2T2R
+
+	config  RALINK_RT3050STA_1T1R
+	bool "RT3050-1T1R"
+
+	config  RALINK_RT3051STA_1T2R
+	bool "RT3051-1T2R"
+
+	config  RALINK_RT3052STA_2T2R
+	bool "RT3052-2T2R"
+endchoice
+
+config  RT2860V2_STA_LED
+	bool "LED Support"
+	depends on RT2860V2_STA
+
+config  RT2860V2_STA_WPA_SUPPLICANT
+	bool "WPA Supplicant"
+	depends on RT2860V2_STA
+
+config  RT2860V2_STA_WSC
+	bool "WSC (WiFi Simple Config)"
+	depends on RT2860V2_STA
+
+#config  RT2860V2_STA_DPB
+#	bool "DPB Support"
+#	depends on RT2860V2_STA
+
+config  RT2860V2_STA_CARRIER
+	bool "Carrier Sense Support"
+	depends on RT2860V2_STA
+	select RALINK_TIMER
+	select RALINK_TIMER_DFS
+
+config  RT2860V2_STA_DLS
+	bool "DLS ((Direct-Link Setup) Support"
+	depends on RT2860V2_STA
+
+#config  RT2860V2_STA_MESH
+#	bool "MESH Support"
+#	depends on RT2860V2_STA

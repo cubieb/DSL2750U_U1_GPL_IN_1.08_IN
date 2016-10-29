@@ -1,0 +1,10 @@
+insmod ./adf.ko
+insmod ./hal.ko
+insmod ./wlan.ko
+insmod ./ath_rate.ko
+insmod ./ath_pci.ko
+insmod ./wlan_wep.ko
+insmod ./wlan_xauth.ko
+insmod ./crypto_tkip.ko
+insmod ./crypto_ccmp.ko
+

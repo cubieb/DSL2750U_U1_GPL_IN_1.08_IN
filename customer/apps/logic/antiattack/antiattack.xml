@@ -1,0 +1,29 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_AntiAttack type="object">
+		<AntiDosEnable type="boolean">1</AntiDosEnable>
+		<AntiLogEnable type="boolean">0</AntiLogEnable>
+		<AntiDos type="object">
+			<SynCookieEnable type="boolean">1</SynCookieEnable>
+			<SynMaxConnections type="unsignedInt">50</SynMaxConnections>
+			<IcmpEchoIgnrBcastEnable type="boolean">1</IcmpEchoIgnrBcastEnable>
+			<IgnrPortScanEnable type="boolean">1</IgnrPortScanEnable>
+			<AntiFraggleEnable type="boolean">1</AntiFraggleEnable>
+			<AntiEchoCargenEnable type="boolean">1</AntiEchoCargenEnable>
+			<AntiIPLandEnable type="boolean">1</AntiIPLandEnable>
+		</AntiDos>
+		<AntiScan type="object">
+			<AntiScanSetSynFinEnable type="boolean">1</AntiScanSetSynFinEnable>
+			<AntiScanSetSynRstEnable type="boolean">1</AntiScanSetSynRstEnable>
+			<AntiScanSetFinRstEnable type="boolean">1</AntiScanSetFinRstEnable>
+			<AntiScanUnAckSetFinEnable type="boolean">1</AntiScanUnAckSetFinEnable>
+			<AntiScanUnAckSetPshEnable type="boolean">1</AntiScanUnAckSetPshEnable>
+			<AntiScanUnAckSetUrgEnable type="boolean">1</AntiScanUnAckSetUrgEnable>
+			<AntiScanUnsetAllEnable type="boolean">1</AntiScanUnsetAllEnable>
+			<AntiScanSetAllEnable type="boolean">1</AntiScanSetAllEnable>
+			<AntiScanForAllSetSynRstAckFinUrgEnable type="boolean">1</AntiScanForAllSetSynRstAckFinUrgEnable>
+			<AntiScanForAllSetFinEnable type="boolean">1</AntiScanForAllSetFinEnable>
+			<AntiScanForAllSetFinUrgPshEnable type="boolean">1</AntiScanForAllSetFinUrgPshEnable>
+		</AntiScan>
+	</X_TWSZ-COM_AntiAttack>
+</InternetGatewayDevice>

@@ -1,0 +1,122 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANDSLInterfaceConfig type="object">
+				<Enable type="boolean">1</Enable>
+				<Status type="string" Writable="0"></Status>
+				<UpTime type="string" Writable="0"></UpTime>
+				<StandardsSupported type="string" Writable="1"></StandardsSupported>
+				<StandardUsed type="string" Writable="0"></StandardUsed>
+				<ModulationType type="string" Writable="0"></ModulationType>
+				<Latency type="string" Writable="0"></Latency>
+				<TrellisCoding type="string" Writable="0"></TrellisCoding>				
+				<PowerManagementState type="string" Writable="0"></PowerManagementState>
+				<DataPath type="string" Writable="0">None</DataPath>
+				<InterleaveDepth type="unsignedInt" Writable="0">0</InterleaveDepth>
+				<UpstreamCurrRate type="unsignedInt" Writable="0"></UpstreamCurrRate>
+				<DownstreamCurrRate type="unsignedInt" Writable="0"></DownstreamCurrRate>
+				<UpstreamMaxRate type="unsignedInt" Writable="0"></UpstreamMaxRate>
+				<DownstreamMaxRate type="unsignedInt" Writable="0"></DownstreamMaxRate>
+				<UpstreamNoiseMargin type="int" Writable="0"></UpstreamNoiseMargin>
+				<DownstreamNoiseMargin type="int" Writable="0"></DownstreamNoiseMargin>
+				<UpstreamAttenuation type="int" Writable="0">0.0</UpstreamAttenuation>
+				<DownstreamAttenuation type="int" Writable="0">0.0</DownstreamAttenuation>
+				<UpstreamAttainableRate type="string" Writable="0"></UpstreamAttainableRate>
+				<DownstreamAttainableRate type="string" Writable="0"></DownstreamAttainableRate>
+				<UpstreamPower type="int" Writable="0">0.0</UpstreamPower>
+				<DownstreamPower type="int" Writable="0">0.0</DownstreamPower>
+				<UpstreamInterleaveDepth type="unsignedInt" Writable="0"></UpstreamInterleaveDepth>
+				<DownstreamInterleaveDepth type="unsignedInt" Writable="0"></DownstreamInterleaveDepth>
+				<UpstreamDelay type="unsignedInt" Writable="0"></UpstreamDelay>
+				<DownstreamDelay type="unsignedInt" Writable="0"></DownstreamDelay>							
+				<ATURVendor type="string(8)" Writable="0">00000000</ATURVendor>
+				<ATURCountry type="string(4)" Writable="0">0000</ATURCountry>
+				<ATUCVendor type="string(8)" Writable="0">00000000</ATUCVendor>		
+				<ATUCCountry type="string(4)" Writable="0">0000</ATUCCountry>
+				<TotalStart type="unsignedInt" Writable="0">0</TotalStart>				
+				<ShowtimeStart type="unsignedInt" Writable="0">0</ShowtimeStart>				
+				<Stats type="object">
+					<Total type="object">
+						<ErroredSecs type="unsignedInt" Writable="0">4294967295</ErroredSecs>
+						<ATUCErroredSecs type="unsignedInt" Writable="0">4294967295</ATUCErroredSecs>
+						<SeverelyErroredSecs type="unsignedInt" Writable="0">4294967295</SeverelyErroredSecs>
+						<ATUCSeverelyErroredSecs type="unsignedInt" Writable="0">4294967295</ATUCSeverelyErroredSecs>
+						<FECErrors type="unsignedInt" Writable="0">4294967295</FECErrors>
+						<ATUCFECErrors type="unsignedInt" Writable="0">4294967295</ATUCFECErrors>
+						<HECErrors type="unsignedInt" Writable="0">4294967295</HECErrors>
+						<ATUCHECErrors type="unsignedInt" Writable="0">4294967295</ATUCHECErrors>
+						<CRCErrors type="unsignedInt" Writable="0">4294967295</CRCErrors>
+						<ATUCCRCErrors type="unsignedInt" Writable="0">4294967295</ATUCCRCErrors>
+						<UpstreamCRCErrors type="string" Writable="0">0</UpstreamCRCErrors>
+						<DownstreamCRCErrors type="string" Writable="0">0</DownstreamCRCErrors>
+						<UpstreamHECErrors type="string" Writable="0">0</UpstreamHECErrors>
+						<DownstreamHECErrors type="string" Writable="0">0</DownstreamHECErrors>
+						<UpstreamOCDErrors type="string" Writable="0">0</UpstreamOCDErrors>
+						<DownstreamOCDErrors type="string" Writable="0">0</DownstreamOCDErrors>
+						<UpstreamLCDErrors type="string" Writable="0">0</UpstreamLCDErrors>
+						<DownstreamLCDErrors type="string" Writable="0">0</DownstreamLCDErrors>
+						<UpstreamTotalES type="string" Writable="0">0</UpstreamTotalES>
+						<DownstreamTotalES type="string" Writable="0">0</DownstreamTotalES>
+						<UpstreamTotalFrames type="string" Writable="0">0</UpstreamTotalFrames>
+						<DownstreamTotalFrames type="string" Writable="0">0</DownstreamTotalFrames>
+						<ReceiveBlocks type="unsignedInt" Writable="0">0</ReceiveBlocks>						
+						<TransmitBlocks type="unsignedInt" Writable="0">0</TransmitBlocks>
+						<CellDelin type="unsignedInt" Writable="0">0</CellDelin>
+						<LinkRetrain type="unsignedInt" Writable="0">0</LinkRetrain>
+						<InitErrors type="unsignedInt" Writable="0">0</InitErrors>
+						<InitTimeouts type="unsignedInt" Writable="0">0</InitTimeouts>
+						<LossOfFraming type="unsignedInt" Writable="0">0</LossOfFraming>						
+					</Total>
+					<Showtime type="object">
+						<ReceiveBlocks type="unsignedInt" Writable="0">0</ReceiveBlocks>
+						<TransmitBlocks type="unsignedInt" Writable="0">0</TransmitBlocks>
+						<CellDelin type="unsignedInt" Writable="0">0</CellDelin>
+						<LinkRetrain type="unsignedInt" Writable="0">0</LinkRetrain>
+						<InitErrors type="unsignedInt" Writable="0">0</InitErrors>
+						<InitTimeouts type="unsignedInt" Writable="0">0</InitTimeouts>
+						<LossOfFraming type="unsignedInt" Writable="0">0</LossOfFraming>
+						<ErroredSecs type="unsignedInt" Writable="0">0</ErroredSecs>
+						<SeverelyErroredSecs type="unsignedInt" Writable="0">4294967295</SeverelyErroredSecs>
+						<FECErrors type="unsignedInt" Writable="0">4294967295</FECErrors>
+						<ATUCFECErrors type="unsignedInt" Writable="0">4294967295</ATUCFECErrors>
+						<HECErrors type="unsignedInt" Writable="0">4294967295</HECErrors>
+						<ATUCHECErrors type="unsignedInt" Writable="0">4294967295</ATUCHECErrors>
+						<CRCErrors type="unsignedInt" Writable="0">4294967295</CRCErrors>
+						<ATUCCRCErrors type="unsignedInt" Writable="0">4294967295</ATUCCRCErrors>						
+					</Showtime>
+					<QuarterHour type="object">
+						<ReceiveBlocks type="unsignedInt" Writable="0">0</ReceiveBlocks>
+						<TransmitBlocks type="unsignedInt" Writable="0">0</TransmitBlocks>
+						<CellDelin type="unsignedInt" Writable="0">0</CellDelin>
+						<LinkRetrain type="unsignedInt" Writable="0">0</LinkRetrain>
+						<InitErrors type="unsignedInt" Writable="0">0</InitErrors>
+						<InitTimeouts type="unsignedInt" Writable="0">0</InitTimeouts>
+						<LossOfFraming type="unsignedInt" Writable="0">0</LossOfFraming>
+						<ErroredSecs type="unsignedInt" Writable="0">0</ErroredSecs>
+						<SeverelyErroredSecs type="unsignedInt" Writable="0">0</SeverelyErroredSecs>
+						<FECErrors type="unsignedInt" Writable="0">0</FECErrors>
+						<ATUCFECErrors type="unsignedInt" Writable="0">0</ATUCFECErrors>
+						<HECErrors type="unsignedInt" Writable="0">0</HECErrors>
+						<ATUCHECErrors type="unsignedInt" Writable="0">0</ATUCHECErrors>
+						<CRCErrors type="unsignedInt" Writable="0">0</CRCErrors>
+						<ATUCCRCErrors type="unsignedInt" Writable="0">0</ATUCCRCErrors>						
+					</QuarterHour>					
+				</Stats>
+			</WANDSLInterfaceConfig>
+			<WANDSLConnectionManagement type="object">
+				<ConnectionServiceNumberOfEntries type="unsignedInt" Writable="0"></ConnectionServiceNumberOfEntries>						
+				<ConnectionService type="object" CurNode="ConnectionServiceNumberOfEntries">
+					<i type="object">
+						<WANConnectionDevice type="string(256)" Writable="0"></WANConnectionDevice>
+						<WANConnectionService type="string(256)" Writable="0"></WANConnectionService>
+						<DestinationAddress type="string(256)" Writable="0"></DestinationAddress>
+						<LinkType type="string(16)" Writable="0"></LinkType>
+						<ConnectionType type="string(16)" Writable="0"></ConnectionType>
+						<Name type="string(32)" Writable="0"></Name>
+					</i>
+				</ConnectionService>
+			</WANDSLConnectionManagement>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

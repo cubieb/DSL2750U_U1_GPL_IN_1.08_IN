@@ -1,0 +1,7 @@
+{	"RETURN":{
+		"sessionid": "<?echo $var:sessionid?>",
+		"success" : <? if eq "<?error found?>" "0"  `true`  `false`?>,
+		"user" : "<?get :InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList.1.UserName?>"
+	}
+
+}

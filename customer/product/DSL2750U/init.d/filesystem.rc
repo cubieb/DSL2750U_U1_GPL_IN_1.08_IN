@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd /
+mount -t proc null /proc
+mount -t tmpfs tmpfs /var
+mount -t sysfs none /sys
+mount -t jffs2 /dev/mtdblock3 /usr/local/ct 
+tar xf /etc/var.tar

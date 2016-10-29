@@ -1,0 +1,31 @@
+CFLAGS=-Wall -g
+CC=cc 
+OBJECTS = web_proc.o web_outpage.o web_cgi.o web_cmd.o web_msg.o \
+          web_utils.o web_mark.o web_stub.o om_nameval.o om_buffer.o mm.o msg.o
+
+WebProc:$(OBJECTS)
+	@cc -o /var/www/cgi-bin/webproc $(OBJECTS)
+	
+
+DEPENDS = web_pub.h web_stub.h ../omlib/om_nameval.h \
+          ../omlib/om_buffer.h ../../../ssap/mm/mm.h ../../../ssap/msg/msg.h ../../../include/tbstype.h
+
+web_msg.o:    web_msg.c     $(DEPENDS) web_msg.h
+web_stub.o:   web_stub.c    $(DEPENDS) web_stub.h
+web_utils.o:  web_utils.c   $(DEPENDS) web_utils.h
+web_mark.o:   web_mark.c    $(DEPENDS)
+web_cmd.o:    web_cmd.c     $(DEPENDS) web_cmd.h
+web_cgi.o:    web_cgi.c     $(DEPENDS) web_cgi.h
+web_outpage.o:web_outpage.c $(DEPENDS) web_proc.h
+web_proc.o:   web_proc.c    $(DEPENDS) web_proc.h
+om_nameval.o: ../omlib/om_nameval.c  $(DEPENDS)
+	$(CC) -c ../omlib/om_nameval.c $(CFLAGS)
+om_buffer.o:  ../omlib/om_buffer.c   $(DEPENDS)
+	$(CC) -c ../omlib/om_buffer.c $(CFLAGS)
+mm.o:         ../../../ssap/mm/mm.c ../../../ssap/mm/mm.h
+	$(CC) -c ../../../ssap/mm/mm.c $(CFLAGS)
+msg.o:         ../../../ssap/msg/msg.c ../../../ssap/msg/msg.h
+	$(CC) -c ../../../ssap/msg/msg.c $(CFLAGS)
+
+clean:
+	rm *.o *.bb *.da *.bbg

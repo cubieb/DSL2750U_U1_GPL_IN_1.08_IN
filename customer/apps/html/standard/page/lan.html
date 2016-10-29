@@ -1,0 +1,487 @@
+<style type="text/css"><!--
+.div_left { width:200px;}
+--></style>
+<td>
+	<div class="config2">
+		<!--***********************Local Network **********************************-->
+		<p class="bk_orange" id="lang_localnetwork" >Local Network </p>
+		<div class="div_orange">
+			<p id="lang_runndsc">In this page, you can configure the local network settings of your router. Please note that settings in this page are optional and you need not change any of the settings in this page to get your network up and running.</p>
+		</div>
+		<!--*********************************************************-->
+		
+		<!--************************Router Settings ***********************-->
+		<p class="do bk_black" id="lang_routerseting">Router Settings </p>
+		<div class="div_black">
+			<p id="lang_secipdsc">The IP address of the router configured in this page is the one you use to access the Web management interface. If you change the IP address in this page, you need to adjust the network settings of your PC to access the network.</p>
+			
+			<div class="div_left" id="lang_routerIPaddr">Router IP Address :</div> 
+			<div class="div_right">
+				<input type="text" style="width:150px" name="INPUT_IPAddress" id="INPUT_IPAddress" value="" onchange="ipchange()" />
+			</div>
+				
+			<div class="div_left" id="lang_submask">Subnet Mask :</div> 
+			<div class="div_right">
+				<input type="text" style="width:150px" name="INPUT_SubAddress" id="INPUT_SubAddress" value="" />
+			</div>
+				
+			<div class="div_left" id="lang_domainName">Domain Name :</div> 
+			<div class="div_right">
+				<input type="text" style="width:150px" name="INPUT_DomainName" id="INPUT_DomainName" value="" />
+			</div>
+				
+			<div id = "arp_agency">
+				<div class="div_left">
+					<input type="checkbox"name="en_proxyarp" id="en_proxyarp" />
+				</div> 
+				<div class="div_right" id="lang_configproxyarp">Enable Proxy Arp</div> 
+			</div>
+			
+			<p> 
+			<div class="div_left">
+				<input type="checkbox"name="en_secipadd" id="en_secipadd"onClick="uien_secipadd()" />
+			</div> 
+			<div class="div_right" id="lang_configsecip">Configure the second IP Address and Subnet Mask for LAN</div>
+			
+			<div class="div_left"id="ipaddress" >IP Address :</div> 
+			<div class="div_right">
+				<input type="text" style="width:150px"  maxlength="15" name="INPUT_IPAddress2" id="INPUT_IPAddress2" value="" />
+			</div> 
+			
+			<div class="div_left"id="submask" >Subnet Mask :</div> 
+			<div class="div_right">
+				<input type="text" style="width:150px"  maxlength="15" name="INPUT_SubnetMask2" id="INPUT_SubnetMask2" value="" />
+			</div>
+		</div> 
+		<!--************************Router Settings ***********************-->
+		
+		<?if eq $var:mod_ClubWifi 1 
+		`	
+			<div id="SecIPRouterRange">
+				<p class="do bk_black" id="lang_Addrouterseting">Add Router Settings </p> 
+			<!--*********************The second IP Range.*****************************-->
+				<div class="div_black">
+					<p id="lang_Secsecipdsc">The second IP Range.</p>
+					
+					<div class="div_left" id="lang_secrouterIPaddr">Router IP Address :</div> 
+					<div class="div_right">
+						<input type="text" style="width:150px" name="INPUT_SecIPAddress" id="INPUT_SecIPAddress" value="" />
+					</div>
+						
+					<div class="div_left" id="lang_secsubmask">Subnet Mask :</div> 
+					<div class="div_right">
+						<input type="text" style="width:150px" name="INPUT_SecSubAddress" id="INPUT_SecSubAddress" value="" />
+					</div>
+						
+					<div class="div_left" id="lang_SecdomainName">Domain Name :</div> 
+					<div class="div_right">
+						<input type="text" style="width:150px" name="INPUT_SecDomainName" id="INPUT_SecDomainName" value="" />
+					</div>
+						
+					<div class="div_left" id="SecDhcpipaddrR">DHCP IP Address Range :</div> 
+					<div class="div_right"id="Sectodispaly">
+						<input type="text" style="width:150px" name="INPUT_SecMinAddress" class="control" id="INPUT_SecMinAddress" value="" /><span id="lang_Secwto">to</span>
+						<input type="text" style="width:150px" name="INPUT_SecMaxAddress" class="control" id="INPUT_SecMaxAddress" value="" />
+					</div>
+					
+					<div class="div_left" id="SecDhcpleaseT">DHCP Lease Time :</div> 
+					<div class="div_right" id="Secsecdisplay">
+						<input type="text" style="width:150px"  name="INPUT_SecDHCPLeaseTime" class="control" id="INPUT_SecDHCPLeaseTime" /><span id="lang_Secmiaonihao">(seconds)</span>
+					</div>			
+				</div>
+			</div>
+			<!--*********************The second IP Range.*****************************-->
+			
+			<!--*********************The Third IP Range.*****************************-->
+			<div id="ThiIPRouterRange">
+				<p id="lang_thiipdsc">The Third IP Range.</p>
+				<div class="div_left" id="lang_ThirouterIPaddr">Router IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_ThiIPAddress" id="INPUT_ThiIPAddress" value="" />
+				</div>
+					
+				<div class="div_left" id="lang_Thisubmask">Subnet Mask :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_ThiSubAddress" id="INPUT_ThiSubAddress" value="" />
+				</div>
+					
+				<div class="div_left" id="lang_ThidomainName">Domain Name :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_ThiDomainName" id="INPUT_ThiDomainName" value="" />
+				</div>
+					
+				<div class="div_left" id="ThiDhcpipaddrR">DHCP IP Address Range :</div> 
+				<div class="div_right"id="Thitodispaly">
+					<input type="text" style="width:150px" name="INPUT_ThiMinAddress" class="control" id="INPUT_ThiMinAddress" value="" /> <span id="lang_Thiwto">to</span>
+					<input type="text" style="width:150px" name="INPUT_ThiMaxAddress" class="control" id="INPUT_ThiMaxAddress" value="" />
+				</div>
+			
+				<div class="div_left" id="ThiDhcpleaseT">DHCP Lease Time :</div> 
+				<div class="div_right" id="Thisecdisplay">
+					<input type="text" style="width:150px"  name="INPUT_ThiDHCPLeaseTime" class="control" id="INPUT_ThiDHCPLeaseTime" /> <span id="lang_Thimiaonihao">(seconds)</span>
+				</div>
+			</div>
+			<!--*********************The Third IP Range.*****************************-->
+			
+			<!--*********************The Forth IP Range.*****************************-->
+			<div id="ForIPRouterRange">
+				<p id="lang_foripdsc">The Forth IP Range.</p>
+				<div class="div_left" id="lang_ForrouterIPaddr">Router IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_ForIPAddress" id="INPUT_ForIPAddress" value="" />
+				</div>
+				
+				<div class="div_left" id="lang_Forsubmask">Subnet Mask :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_ForSubAddress" id="INPUT_ForSubAddress" value="" />
+				</div>
+					
+				<div class="div_left" id="lang_FordomainName">Domain Name :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_ForDomainName" id="INPUT_ForDomainName" value="" />
+				</div>
+					
+				<div class="div_left" id="ForDhcpipaddrR">DHCP IP Address Range :</div> 
+				<div class="div_right"id="Fortodispaly">
+					<input type="text" style="width:150px" name="INPUT_ForMinAddress" class="control" id="INPUT_ForMinAddress" value="" /> <span id="lang_Forwto">to</span>
+					<input type="text" style="width:150px" name="INPUT_ForMaxAddress" class="control" id="INPUT_ForMaxAddress" value="" />
+				</div>
+				
+				<div class="div_left" id="ForDhcpleaseT">DHCP Lease Time :</div> 
+				<div class="div_right" id="Forsecdisplay">
+					<input type="text" style="width:150px"  name="INPUT_ForDHCPLeaseTime" class="control" id="INPUT_ForDHCPLeaseTime" /> <span id="lang_Formiaonihao">(seconds)</span>
+				</div>
+			</div>
+			<!--*********************The Forth IP Range.*****************************-->
+			
+			<!--*********************The Five IP Range.*****************************-->
+			<div id="FiveIPRouterRange">
+				<p id="lang_fiveipdsc">The Five IP Range.</p>
+				<div class="div_left" id="lang_FiverouterIPaddr">Router IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_FiveIPAddress" id="INPUT_FiveIPAddress" value="" />
+				</div>
+					
+				<div class="div_left" id="lang_Fivesubmask">Subnet Mask :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_FiveSubAddress" id="INPUT_FiveSubAddress" value="" />
+				</div>
+					
+				<div class="div_left" id="lang_FivedomainName">Domain Name :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_FiveDomainName" id="INPUT_FiveDomainName" value="" />
+				</div>
+					
+				<div class="div_left" id="FiveDhcpipaddrR">DHCP IP Address Range :</div> 
+				<div class="div_right"id="Fivetodispaly">
+					<input type="text" style="width:150px" name="INPUT_FiveMinAddress" class="control" id="INPUT_FiveMinAddress" value="" /> <span id="lang_Forwto">to</span>
+					<input type="text" style="width:150px" name="INPUT_FiveMaxAddress" class="control" id="INPUT_FiveMaxAddress" value="" />
+				</div>
+				
+				<div class="div_left" id="FiveDhcpleaseT">DHCP Lease Time :</div> 
+				<div class="div_right" id="Fivesecdisplay">
+					<input type="text" style="width:150px"  name="INPUT_FiveDHCPLeaseTime" class="control" id="INPUT_FiveDHCPLeaseTime" /> <span id="lang_Fivemiaonihao">(seconds)</span>
+				</div>
+			</div>
+			<!--*********************The Five IP Range.*****************************-->
+		`?>
+		<!--*********************************************************-->
+		
+		<!--***********************DHCP Settings (Optional) **********************************-->
+		
+		<!-- Beginning config DHCP Server -->
+		<p class="do bk_black" id="lang_DHCPseting">DHCP Settings (Optional) </p>
+		<div class="div_black">
+			<p id="lang_dhcprelay">Use this section to configure the DHCP Relay for your network. </p>
+			<div id = "DHCP_relay">
+				<div class="div_left">
+					<input type="checkbox" name="Enable" id="INPUT_DHCPRelayEnable" onClick="setRelayEnable()" />
+				</div> 
+				<div class="div_right" id="lang_EnableDhcpRelay">Enable DHCP Relay </div>
+				
+				<div class="div_left" id="lang_RealyIPaddr">Relay IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px" name="INPUT_RelayIP" id="INPUT_RelayIP" value="" />
+				</div> 
+			</div>
+		
+			<p id="lang_useconfig">In this page, you can configure the built-in DHCP server to assign IP addresses to the computers on your network. </p> 
+			<div class="div_left">
+				<input type="checkbox" name="Enable" id="INPUT_DHCPServerEnable" onClick="setEnable()" />
+			</div>  
+			<div class="div_right" id="lang_Enabledhcp">Enable DHCP Server </div>
+		
+			<div class="div_left" id="DhcpipaddrR">DHCP IP Address Range :</div> 
+			<div class="div_right"id="todispaly">
+				<input type="text" style="width:150px" name="INPUT_MinAddress" class="control" id="INPUT_MinAddress" value="" /> <span id="lang_wto">to</span>
+				<input type="text" style="width:150px" name="INPUT_MaxAddress" class="control" id="INPUT_MaxAddress" value="" />
+			</div>
+		
+			<div class="div_left" id="lang_DhcpMask">DHCP IP Mask :</div> 
+			<div class="div_right" id="DhcpMaskDisplay">
+				<input type="text" style="width:150px"  name="INPUT_DhcpMask" class="control" id="INPUT_DhcpMask" />
+			</div>
+		
+			<div class="div_left" id="lang_DhcpRouter">DHCP Router IP :</div> 
+			<div class="div_right" id="DhcpRouterDisplay">
+				<input type="text" style="width:150px"  name="INPUT_DhcpRouter" class="control" id="INPUT_DhcpRouter" />
+			</div>
+		
+			<div class="div_left" id="DhcpleaseT">DHCP Lease Time :</div> 
+			<div class="div_right" id="secdisplay">
+				<input type="text" style="width:150px"  name="INPUT_DHCPLeaseTime" class="control" id="INPUT_DHCPLeaseTime" /> <span id="lang_miaonihao">(seconds)</span>
+			</div>
+		
+			<p id="lang_landnssetting">Use the following DNS server addresses:</p> 
+			<div id = "DNS_service">
+				<div class="div_left">
+					<input type="checkbox" name="Enable" id="INPUT_LANDNSEnable" onClick="setLANDNSEnable()" />
+				</div> 
+				<div class="div_right" id="lang_LANDNSEnable">Enable static DNS </div>
+				
+				<div class="div_left"id="LANFSTDNSserver" >Preferred DNS server :</div> 
+				<div class="div_right"> 
+					<input type="text" style="width:150px"  maxlength=17 id="INPUT_FSTDNS" value="" /> 
+				</div>		
+				<div class="div_left"id="LANAltDNSserver" >Alternate DNS server :</div> 
+				<div class="div_right"> 
+					<input type="text" style="width:150px"  maxlength=17 id="INPUT_SECDNS" value="" /> 
+				</div>
+				
+				<div class="div_left">
+					<input type="checkbox" name="Enable" id="en_DNSRelayEnable" />
+				</div> 
+				<div class="div_right" id="lang_DNSRelayEnable">Enable DNS Relay</div>
+			</div>
+		
+			<div id = "lan_dhcp_set">
+				<p id="lang_dhcplanport">Use this section to configure the DHCP Server in lan and wlan port individual:</p> 
+				<div class="div_left">
+					<input type="checkbox" name="LAN Port1" id="INPUT_Lan1" />
+				</div> 
+				<div class="div_right" id="lang_Lan1">LAN Port1 </div>
+			
+				<div class="div_left">
+					<input type="checkbox" name="LAn Port2" id="INPUT_Lan2" />
+				</div> 
+				<div class="div_right" id="lang_Lan2">LAN Port2 </div>
+			
+				<div class="div_left">
+					<input type="checkbox" name="LAN Port3" id="INPUT_Lan3" />
+				</div> 
+				<div class="div_right" id="lang_Lan3">LAN Port3 </div> 
+			
+				<div class="div_left" id="lan4">
+					<input type="checkbox" name="LAN Port4" id="INPUT_Lan4" />
+				</div> 
+				<div class="div_right" id="lang_Lan4">LAN Port4 </div>
+			
+				<div class="div_left">
+					<input type="checkbox" name="WLAN Port1" id="INPUT_Wlan1" />
+				</div> 
+				<div class="div_right" id="lang_Wlan1">WLAN Port1 </div>
+			
+				<div class="div_left">
+					<input type="checkbox" name="WLAN Port2" id="INPUT_Wlan2" />
+				</div> 
+				<div class="div_right" id="lang_Wlan2">WLAN Port2 </div>
+			
+				<div class="div_left">
+					<input type="checkbox" name="WLAN Port3" id="INPUT_Wlan3" />
+				</div> 
+				<div class="div_right" id="lang_Wlan3">WLAN Port3 </div> 
+			
+				<div class="div_left">
+					<input type="checkbox" name="WLAN Port4" id="INPUT_Wlan4" />
+				</div> 
+				<div class="div_right" id="lang_Wlan4">WLAN Port4 </div>
+			</div>
+			<p>
+		</div>
+		<div class="SecLevel div_button">
+			<input type="submit" name="btn" id="btn" onClick="uiSubmit();" value="Apply" />
+			<input type="button" name="refresh" id="refresh1" onClick="uiPageRefresh();" value="Cancel" />		
+		</div>
+		<!-- ***********************DHCP Settings (Optional)**********************-->
+		
+		<!-- ***********************DHCP Client Class List **********************-->
+		<div id = "DHCP_customer_info">	
+			<p class="do bk_black" id="lang_DHCPCClist">DHCP Client Class List</p>
+			<div class="div_black">
+				<table class="td_table_s" id="td_clientclasslist">
+					<tr	class="tr_bold" >
+						<td></td>
+						<td	id="lang_wClientClassName">Client Class </td> 
+						<td	id="lang_wMinAddress">Min Address</td>
+						<td	id="lang_wMaxAddress">Max Address</td>
+						<td	id="lang_wDnsAddress">DNS Address</td>
+					</tr>
+				</table>
+			</div>
+			<div class="SecLevel div_button">
+				<input type="button" name="addcc" id="addcc" onClick="addcc()"value="Add" />
+				<input type="button" name="editcc" id="editcc" onClick="editcc()" value="Edit" />
+				<input type="button" name="delcc" id="delcc" onClick="delcc()"value="Delete" />
+			</div>
+		</div>
+		<!--************************DHCP Client Class List******************************-->
+		
+		<!-- ***********************Add DHCP Client Class(Optional)**********************-->
+		<div id="DhcpClientClass" style="display:none">
+			<p class="do bk_black" id="lang_AddClientClass">Add DHCP Client Class(Optional) </p>
+			<div class="div_black">
+				<div class="div_left" id="lang_ClientClassName">Client Class Name :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=29 name="INPUT_CC_Name" id="INPUT_CC_Name" value="" />
+				</div>
+				<div class="div_left" id="lang_MinIpAddr">Min IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=15 name="INPUT_CC_MinAddr" id="INPUT_CC_MinAddr" value="" />
+				</div>
+				<div class="div_left" id="lang_MaxIpAddr">Max IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=17 name="INPUT_CC_MaxAddr" id="INPUT_CC_MaxAddr" value="" />
+				</div>
+				<div class="div_left" id="lang_DnsAddr">DNS Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=17 name="INPUT_CC_DnsAddr" id="INPUT_CC_DnsAddr" value="" />
+				</div> 
+				<div class="div_left" id="lang_PoolRode" style = "display:none">PoolRode :</div> 
+				<div class="div_right" style = "display:none">
+					<input type="text" style="width:150px"  maxlength=17 name="INPUT_CC_PoolRode" id="INPUT_CC_PoolRode" value="" />
+				</div>
+			</div>
+			
+			<div class="div_button">
+				<input type="button" value="Apply"id="lang_ccapply" onClick="uiCCSubmit()" />
+				<input type="button" name="refresh2" id="refresh2" value="Cancel" onClick="uiPageRefresh()" />
+			</div>
+		</div> 
+		<!--*************************Add DHCP Client Class(Optional)*****************************-->
+		
+		<!--*************************DHCP Cond Option*****************************-->
+		<div id = "dhcpcoptlist">
+			<p class="do bk_black" id="lang_DHCPCCOptlist">DHCP Cond Option</p>
+			<div class="div_black">
+				<table class="td_table_s" id="td_conddhcpoptionlist" style="TABLE-LAYOUT: fixed;word-wrap:break-word; overflow:hidden;">
+					<tr	class="tr_bold" >
+						<td	width=30></td>
+						<td	id="lang_wOptEnable" width=80>Status</td>
+						<td	id="lang_wOptClientClas" width=80>Client Class Name</td>
+						<td	id="lang_wOptTag" width=80>Option Code</td>
+						<td	id="lang_wOptValue" width=150>Option Value</td>
+					</tr>
+				</table>
+			</div>
+			<div class="SecLevel div_button">
+				<input type="button" name="addcondoption" id="addcondoption" onClick="addcondoption()"value="Add" />
+				<input type="button" name="editcondoption" id="editcondoption" onClick="editcondoption()" value="Edit" />
+				<input type="button" name="delecondoption" id="delecondoption" onClick="delecondoption()"value="Delete" />
+			</div>
+		</div>
+		<!--************************DHCP Cond Option******************************-->
+		
+		<!--*************************Add DHCP Option(Optional) *****************************-->
+		<div id="Dhcpcondoptionclass" style="display:none">
+			<p class="do bk_black" id="lang_AddOptionClass">Add DHCP Option(Optional) </p>
+			<div class="div_black"> 
+				<div class="div_left" id="lang_OptEnable">Cond Option enable:</div> 
+				<div class="div_right">
+					<input type="checkbox" name="INPUT_CONDOPTEnabled" id="INPUT_CONDOPTEnabled" value="" />
+				</div>
+				<div class="div_left" id="lang_OptClientClass">Cond Option Client Class:</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=29 name="INPUT_CONDOPT_ClientClass" id="INPUT_CONDOPT_ClientClass" value="" />
+				</div>
+				<div class="div_left" id="lang_OptTag">Cond Option Tag:</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=10 name="INPUT_CONDOPT_Tag" id="INPUT_CONDOPT_Tag" value="" />
+				</div>
+				<div class="div_left" id="lang_OptValue">Cond Option Value:</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=199 name="INPUT_CONDOPT_Value" id="INPUT_CONDOPT_Value" value="" />
+				</div>
+			</div>
+			<div class="div_button">
+				<input type="button" name="condoptionsubmit"id="lang_condoptionapply"value="Apply"onClick="condoptionuisubmit()" />
+				<input type="button" name="condoptionrefresh" id="lang_condoptioncancel" value="Cancel" onClick="uiPageRefresh()" />
+			</div>
+		</div> 
+		<!--*************************Add DHCP Option(Optional) *****************************-->
+		
+		<!--*************************DHCP Reservations List*****************************-->
+		<!-- Save this one, hide others -->
+		<p class="do bk_black" id="lang_DHCPrlist">DHCP Reservations List</p>
+		<div class="div_black" >
+			<table class="td_table_s" id="td_reseverlist" style="TABLE-LAYOUT: fixed;word-wrap:break-word; overflow:hidden;">
+				<tr	class="tr_bold" >
+					<td></td>
+					<td	id="lang_wStatus">Status</td>
+					<td	id="lang_wComputerName">Computer Name</td> 
+					<td	id="lang_wMACAddress">MAC Address</td>
+					<td	id="lang_wIPAddress">IP Address</td>
+				</tr>
+			</table>
+		</div>
+		<div class="SecLevel div_button">
+			<input type="button" name="addresever" id="addresever" onClick="addreseverdisp()"value="Add" />
+			<input type="button" name="editresever" id="editresever" onClick="editreseverdisp()" value="Edit" />
+			<input type="button" name="deleresever" id="deleresever" onClick="deleresever()"value="Delete" />
+		</div>
+		<!--*************************DHCP Reservations List*****************************-->
+		
+		<!--*****************************Add DHCP Reservation (Optional)************************-->
+		<div id="Dhcpreservation" style="display:none">
+			<p class="do bk_black" id="lang_ADDDR">Add DHCP Reservation (Optional) </p>
+			<div class="div_black">
+				<div class="div_left" id="lang_Enable">Enable :</div> 
+				<div class="div_right">
+					<input type="checkbox" name="INPUT_DHCPFilterEnabled" id="INPUT_DHCPFilterEnabled" value="" />
+				</div>
+				<div class="div_left" id="lang_PCname">Computer Name :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=63 name="INPUT_WHITE_pcname" id="INPUT_WHITE_pcname" value="" />
+				</div>
+				<div class="div_left" id="lang_IPaddr">IP Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=15 name="INPUT_WHITE_IP" id="INPUT_WHITE_IP" value="" />
+				</div>
+				<div class="div_left" id="lang_MACaddr">MAC Address :</div> 
+				<div class="div_right">
+					<input type="text" style="width:150px"  maxlength=17 name="INPUT_WHITE_MAC" id="INPUT_WHITE_MAC" value="" />
+				</div> 
+			</div>
+			<div class="div_button">
+				<input type="button" value="Apply"id="lang_apply" onClick=" reseveruisubmit()" />
+				<input type="button" name="refresh2" id="refresh3" value="Cancel" onClick="uiPageRefresh()" />
+			</div>
+		</div>
+		<!--*****************************Add DHCP Reservation (Optional)************************-->
+		
+		<!--*****************************Number of Dynamic DHCP Clients************************-->
+		<div id = "dhcp_nddc">
+			<p class="do bk_black" id="lang_NDDC">Number of Dynamic DHCP Clients: <span id="DHCP_Client"></span></p> 
+			<div class=" div_black">
+			<table class="td_table_s" id="td_lanClients" >
+				<tr class="tr_bold">
+					<td id="lang_hostName">Computer Name</td>
+					<td id="lang_macAddress">MAC Address</td>
+					<td id="lang_ipAddress">IP Address</td>
+					<td id="lang_leaseTime">Expire Time</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+		<!--*****************************Number of Dynamic DHCP Clients************************-->
+	</div>
+</td>
+<td class="td_help">
+	<div class="help">
+	<h5 id="lang_helpH1">Helpful Hints... </h5>
+	<p id="lang_helpp1">The IP address of your router is the same IP address you use to access the Web management interface of your router.</p>
+	<p id="lang_helpp2">If you already have a DHCP server on your network or if you are using static IP addresses on all the devices on your network, click "Disable DHCP Server" to disable this feature.</p>
+	<p id="lang_helpp3">If some devices on your network always use fixed IP addresses, add a static DHCP for each of such devices.</p>
+	<h5 ><a href="#" id="lang_helpH2">More...</a></h5>
+
+	</div>
+</td>

@@ -1,0 +1,57 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id='v6_status'>IPV6 Status</p>
+		<div class="div_orange" id='lang_info'>
+			<p>In this section you can see the information for the IPv6 Connection.</p>
+		</div>
+
+	<p class="do bk_black" id="v6_connection">IPv6 Connection</p>
+	<div class="div_black">
+		<table class="td_table_s" id='v6_WanConnection'>
+			<tr>
+				<td class="td_bold" id='wan_connection'>Wan Connection :</td><td><select id="SELECT_WanConns" onChange="onchgWanConns(this)"></select></td>
+			</tr>
+			<tr>
+				<td class="td_bold" id='lang_type'>Connection Type :</td><td id="td_type">&nbsp;</td>
+			</tr>			
+			<tr>
+				<td class="td_bold" id='address'>IPv6 Address/Prefix Len : </td><td id="td_ipAddress">&nbsp;</td>
+			</tr>			
+			<tr>	
+				<td class="td_bold" id='gateway'>Gateway : </td><td id="td_gateway">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="td_bold" id='lang_dns1'>Pri Dns : </td><td id="td_dns_1">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="td_bold" id='lang_dns2'>Sec Dns : </td><td id="td_dns_2">&nbsp;</td>
+			</tr>
+			<tr>	
+				<td class="td_bold" id='lang_info'>Prefix Info : </td><td id="td_prefixinfo">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="td_bold" id="lang_status">Status : </td><td id="td_status">&nbsp;</td>
+			</tr>			
+		</table>
+	</div> 
+	<div class="div_button"><input type="button" value="Refresh" id="lang_Refresh" onClick="uiPageRefresh()" />
+	</div>		
+	</div>
+	
+</td>
+		
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+		<p id = "lang_help">
+			This is a list of all LAN clients that are currently connected to your wireless Router.
+		</p></div>
+		<h5><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpstatus#Wireless">More...</a></h5>
+	</div>
+</td>
+
+
+

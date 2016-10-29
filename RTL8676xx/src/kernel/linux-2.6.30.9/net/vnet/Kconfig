@@ -1,0 +1,10 @@
+#
+# Configuration for 802.1Q VLAN support
+#
+
+config VNET
+	tristate "WAN VNET Support"
+	default n
+	---help---
+	  Select this and you will be able to create WAN VNET interfaces
+	  

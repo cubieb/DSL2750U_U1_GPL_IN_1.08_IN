@@ -1,0 +1,20 @@
+{
+	"RETURN":{
+		"success": true
+      },
+      
+      "SERVICES": [
+		{"serviceName":"any","port":""},
+		{"serviceName":"ftp","port":"21"},
+		{"serviceName":"telnet","port":"23"},
+		{"serviceName":"http","port":"80"},
+		{"serviceName":"httpproxy","port":"8080"},
+		{"serviceName":"RPC","port":"135"},
+		{"serviceName":"NBT","port":"137"},
+		{"serviceName":"pop2","port":"109"},
+		{"serviceName":"pop3","port":"110"},
+		{"serviceName":"smtp","port":"25"},
+		{"serviceName":"ssh","port":"22"},
+		{"serviceName":"sip","port":"5060"}
+	]
+}

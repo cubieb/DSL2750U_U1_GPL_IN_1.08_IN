@@ -1,0 +1,260 @@
+﻿<?setvaronce var:language zh_cn?>
+<?setvaronce var:menu setup?>
+<?setvaronce var:page wizard?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ADSL Router --Dlink</title>
+<style type="text/css">
+<!-- 
+body { margin:0px auto; padding:3px; font:12px Tahoma,Helvetica,Geneva,Arial,sans-serif; background:#757575;}
+	.Content { margin:0px auto; padding:0px 1px; width:840px; height:460px; background:white;}
+		.title { padding:5px 6px 3px; height:20px; background:#404343; color:white;}
+			.product { float:left; }
+			.firmware { float:right;}
+		.logo { margin:6px 0 40px 0; background:white;}
+		.login_bk { margin:0 auto; padding:5px; width:600px; height:208px; background:#F1F1F1;}
+			.login { height:206px; border:1px solid #619C00; background:#DFDFDF; text-align:center;}
+				.login_title { padding:5px 10px; height:15px; font-weight:bold; background:#619C00; text-align:left;}
+				p#lang_tips { text-align:left; margin:10px 10px 25px;}
+				.div_left { padding:0px 2px 0px; float:left; width:250px; text-align:right; font-weight:bold; height:25px}
+				.div_right { padding:0px 2px 0px; float:right; width:337px; text-align:left; font-weight:bold; height:25px}
+				.do { margin-top:10px;}
+				.div_button { margin-top:20px;}
+		.footer { margin-top:43px; background:#404343;}
+		p#copyright { color:#F1F1F1; text-align:center; font-size:11px; margin:10px;}
+-->
+</style>
+</head>
+<script type="text/javascript" src="/html/languages/<?echo $var:language?>/main.js"></script>
+<script type="text/javascript" src="/html/languages/<?echo $var:language?>/error.js"></script>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript">
+<!-- 
+/*---- Global variable define -----*/
+var G_Error	    = "<?error found?>"; 
+var G_Status	= "<?error status?>"; 
+var G_Error_Msg	= "<?error message?>";
+
+//support language
+var G_SupportLang = "<?echo $var:sys_SupportLangs?>";
+//default language
+var G_DefaultLang = "<?echo $var:language?>";
+
+//Init
+//get user info
+var G_UserInfo = new Array();
+var m = 0;
+<?objget :InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList. "UserName Password Level"
+	`	G_UserInfo[m] = new Array();
+		G_UserInfo[m][0] = "$01"; //UserName
+		G_UserInfo[m][2] = "$03"; //Level
+		G_UserInfo[m][3] = "$00"; //Index
+		m++;
+	`?>
+
+	//加载语言列表
+function createLangsOptions(){
+	var _text  = [], _value = [];
+	var split_lang = G_SupportLang.split(";");
+	for(var i = 0; i < split_lang.length; i++){
+		if(split_lang[i] == 'en_us'){
+			_text.push('English');
+		} else if(split_lang[i] == 'zh_cn'){
+			_text.push('简体中文');
+		}
+		_value.push(split_lang[i]);
+	}
+	
+	$S('SELECT_Language', _text, _value);
+}
+	
+function uiOnload(){
+	//search language
+	Cookie.Set('language',G_DefaultLang);
+	chg_language(data_language);
+	//create user option
+	createUserOpt();
+	//$('SELECT_UserName').value = '<?echo $var:sys_UserName?>';
+	var Psd = Cookie.Get('TBSPASSWORD');
+		
+	if(Psd){
+		Form.Checkbox('INPUT_Remember', '1');
+		$('INPUT_Psd').value = Psd;
+	}
+	$('INPUT_Psd').focus();
+	
+	dealWithError();
+}
+
+function createUserOpt(){
+	var _text = [], _value = [];
+	var formIp = '<?echo $var:sys_RemoteAddr?>';
+	
+	if(formIp.indexOf('192.168') > -1 || formIp.indexOf('fe80') > -1){
+		_text = [G_UserInfo[0][0],G_UserInfo[1][0]], _value = [G_UserInfo[0][0],G_UserInfo[1][0]];
+	} else {
+		_text = [G_UserInfo[2][0]], _value = [G_UserInfo[2][0]];
+	}
+	$S('SELECT_UserName', _text, _value);
+}
+
+function uipostLogin(){
+	if($('INPUT_Psd').value == ''){
+		return false;
+	}
+	//record password
+	recordPsd();
+	//record level
+    Cookie.Set('sys_UserName', $('SELECT_UserName').value);
+	$H({
+		'getpage'   :'html/index.html',
+		'errorpage' :'html/main.html',
+		'var:menu'  :'<?echo $var:menu?>',
+		'var:page'  :'wizard',
+		'obj-action':'auth',
+		':username' :$('SELECT_UserName').value,
+		':password' :$("INPUT_Psd").value,
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	$('uiPostForm').submit();
+}
+
+function recordPsd(){
+	if(Form.Checkbox('INPUT_Remember')){ //checked = true;
+		Cookie.Set('TBSPASSWORD', $('INPUT_Psd').value, 720);
+	} else if(!Form.Checkbox('INPUT_Remember')){ //checked = false;
+		Cookie.Delete('TBSPASSWORD');
+	}
+}
+
+/* 更换main.html语言 */
+function onChgLang(){
+    setCookie('language', $('SELECT_Language').value);
+	document.location.href = '/cgi-bin/webproc';
+}
+
+/* 
+对错误码的处理 
+错误码的格式:节点名=错误码
+*/
+function dealErrorMsg(arrayNode, errorMsg){
+	if (typeof errorMsg != 'string') 
+	    return;
+	    
+	//将错误信息一分为二：前段寻找错误码对应的节点；后段寻找错误码对应的提示；
+	var errorFragment = errorMsg.split('=');
+	var errorCode, errorString, leafNode;
+	
+	//寻找错误码对应的节点;
+	if (errorFragment != null && errorFragment.length > 0){
+		var _fragment = errorFragment[0].split('.');
+		leafNode = _fragment[_fragment.length - 1];
+		leafNode = arrayNode[leafNode];
+	}
+	    
+	//在获取错误码后，立即寻找相应的错误码。
+	if (errorFragment[1] != null){
+		errorCode = errorFragment[1].match(/^[0-9]{4}/)[0];
+	} else {
+		if (errorMsg.match(/^[0-9]{4}/) == null){
+            leafNode = arrayNode["result"];
+			
+			if($(leafNode)){
+				$(leafNode).innerHTML = errorMsg;				
+			}
+            return false;
+	    }
+	    errorCode = errorMsg.match(/^[0-9]{4}/)[0];
+	}
+	
+	if(UEcode[errorCode] !== undefined){
+		errorString = UEcode[errorCode];
+	} else if (SEcode[errorCode] !== undefined ) {
+		errorString = SEcode[errorCode];
+	} else {
+		errorString = SEcode[1000];
+	}
+	
+	//选择两种不同的错误提示方式：1、将错误准确打印在对应的输入框之后；2、对于未知错误，以告警框来提示；3、第一次使用admin账户登录时提示修改密码,1217表示首次登录
+	if (leafNode != undefined){
+		$(leafNode).innerHTML = errorString;
+	} 	
+	else if( 1217 == errorCode ){
+		openwin();
+	}	
+	else {
+		alert(errorString + "!");
+	}
+}
+
+function dealWithError(){
+	if(G_Error != 1){
+		return false;
+	}
+	
+	var arrayHint = [];
+		
+	dealErrorMsg(arrayHint, G_Error_Msg);
+}
+
+function openwin() {
+	alert("First login,Please change the default password to a new complex one.");
+	
+	$H({
+		'getpage'   :'html/modifyadmin.html',
+		'errorpage' :'html/modifyadmin.html',
+		'obj-action':'auth',
+		':action'   :'control',
+		'var:username':$('SELECT_UserName').value,
+		'var:noredirect':'0',
+		':sessionid':'<?echo $var:sessionid?>'
+		 });
+	$('uiPostForm').submit();
+}
+
+window.onload = uiOnload;
+-->
+</script>
+<body>
+	<!-- content -->
+	<div class="Content">
+		<!-- title -->
+		<div class="title">
+			<div class="product"><span id = "lang_product_main">Product Page</span>: DSL-2750U</div><div class="firmware"><span id = "lang_firmware_main">Firmware Version</span>:<?get :InternetGatewayDevice.DeviceInfo.ModemFirmwareVersion?></div>
+		</div>
+		<!-- logo -->
+		<div class="logo"><img src="/html/skin/logo.gif" alt="logo"/></div>
+		<!-- login background -->
+		<div class="login_bk">
+			<!-- login -->
+			<div class="login">
+				<!-- login title -->
+				<div class="login_title" id = "lang_title">LOGIN</div>
+				<!-- tips-->
+				<p id="lang_tips">Input username and password</p>
+				<!-- username/password -->
+				<div class="div_left" id="lang_username">Username :</div><div class="div_right"> <select id="SELECT_UserName"><option> </option></select></div>
+				<p>
+				<p>
+				<div class="div_left" id="lang_password">Password :</div><div class="div_right"> <input type="password" id="INPUT_Psd" value="" onKeyDown='if(event.keyCode==13)uipostLogin()' /></div>
+				<!-- remember me -->
+				<p>
+				<p>
+				<div><input type="checkbox" id="INPUT_Remember" /> <label for="INPUT_Remember" id = "lang_login">Remember my login info. on this computer</label></div>
+				<!-- submit -->
+			<div class="div_button"><input type="button" name="uipostSubmit" id="uipostSubmit" value="Login" onClick="uipostLogin()"/></div>
+			</div>
+			<!-- login failed -->
+		</div>
+		<!-- footer -->
+		<div class="footer"><img src="/html/skin/broadband.gif" /></div>
+	</div>
+	<!-- copyright-->
+	<p id="copyright">Copyright © 2013-2015 D-Link Systems, Inc.</p>
+	<!-- form -->
+	<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

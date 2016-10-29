@@ -1,0 +1,25 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnection type="object" CurNode="WANIPConnectionNumberOfEntries">
+						<i type="object">
+							<SuppEnable type="boolean">0</SuppEnable>
+							<SuppUsername type="string(64)">user</SuppUsername>
+							<SuppPass type="string(64)">pass</SuppPass>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object">
+						<i type="object">
+							<SuppEnable type="boolean">0</SuppEnable>
+							<SuppUsername type="string(64)">user</SuppUsername>
+							<SuppPass type="string(64)">pass</SuppPass>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

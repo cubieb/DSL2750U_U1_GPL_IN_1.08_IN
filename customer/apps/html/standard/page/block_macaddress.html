@@ -1,0 +1,145 @@
+
+<!-- config -->
+<style type="text/css"><!--
+	.div_left { width:210px;}
+--></style>
+<td>
+	<div class="config2">
+
+	
+		<p class="bk_orange" id="lang_BlockMACAddress">Block MAC Address </p>
+		<div class="div_orange">
+			<p id="lang_dec2">Time of Day Restrictions -- A maximum of 16 entries can be configured</p>
+			<p id="lang_dsc1">In this page, you can set the time of day restriction on a specific LAN device connected to the router. The "Current PC's MAC Address" automatically displays the MAC address of the LAN device where the browser is running. To restrict another LAN device, click "Other MAC Address" and enter the MAC address of that LAN device. To obtain the MAC address of a Windows-based PC, open a command prompt window and enter "ipconfig /all".</p>
+		</div>
+
+
+		<div>&nbsp</div>
+		<b font color="orange" id="lang_BridgeFilteringGlobal">MAC Filtering Global Policy:</b>
+		<div>&nbsp</div>
+
+		<div><input type='radio' name='macFltGP' value="Black"   id=mac_black_radio onclick="onRadioClick()" ><b><font color='red' id="lang_BLACK2">BLACK_LIST</font></b><span id="lang_allpackets2"> --Allow all packets but</span> <b><font color='red' id="lang_ALLOW2">DENY</font></b><span id="lang_thosematching">   MAC addresses that match a rule in the list</span></label></div>
+		<div><input type='radio' name='macFltGP' value="White"  id=mac_white_radio onclick="onRadioClick()"><b><font color='green' id="lang_WHITE1">WHITE_LIST</font></b><span id="lang_allpacketsbut"> --Deny all packets but </span> <b><font color='green' id="lang_DENY1">ALLOW</font></b><span id="lang_thosematching1">  MAC addresses that match a rule in the list</span></label></div>
+		<div class="div_button"><input type="button" id="radio_submit" value="Apply" onClick="uiRadioSubmit()">
+				<input type='button' value="Cancel" onClick='uiPageRefresh()'  id="lang_Radio_Cancel">
+		</div>
+		
+	<div id="black_block">	
+		<p class="do bk_black" id="lang_BlockMAC">Block MAC Address--blacklist</p>
+		<div class="div_black">
+			<table class="td_table_s" id="td_macAddrs">
+				<tr class="tr_bold">
+					<td></td>
+					<td id="lang_Username1">Username</td>
+					<td id="lang_MAC">MAC</td>
+					<td id="lang_Schedule1">Schedule</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div id="white_block">
+		<p class="do bk_black" id="lang_PassMAC">Pass MAC Address--whitelist</p>
+		<div class="div_black">
+			<table class="td_table_s" id="td_passmacAddrs">
+				<tr class="tr_bold">
+					<td></td>
+					<td id="lang_Username2">Username</td>
+					<td id="lang_MAC2">MAC</td>
+					<td id="lang_Schedule2">Schedule</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+		
+		<div id = "button_group" class="div_button">
+			<input type='button' id='addEntry' name='addEntry' onClick='AddEntry()' value=' Add '>
+			<input type="button" id="editEntry" name="editEntry"  onClick="EditEntry()" value=" Edit ">
+			<input type="submit" id="removeEntry" name="removeEntry" onClick="RemoveEntry()" value=" Delete ">
+		</div>
+		
+		<div id="EntryInfo" style="display:none">
+		<p class="do bk_black" id="lang_AddSchedule">Add Schedule Rule</p>
+			<div class="div_black">
+
+						
+				<div class="div_left"><label for="INPUT_UserName" id="lang_UserName">User Name :</label></div>
+				<div class="div_right"><input type="text" id="INPUT_UserName" ></div>
+				
+				<div class="div_left"><input type="radio" name="RADIO_MacAddress" id="RADIO_CurrentPcAddress" value="1" onClick="changeMACSelect(1)">
+					<label for="RADIO_CurrentPcAddress" id="lang_CurrentPC">Current PC's MACAddress :</label>
+				</div>
+				<div class="div_right"><input type="text" id="INPUT_CurrentPcAddress"></div>
+				
+				<div class="div_left"><input type="radio" name="RADIO_MacAddress" id="RADIO_OtherMacAddress" value="0" onClick="changeMACSelect(0)">
+					<label for="RADIO_OtherMacAddress" id="lang_OtherMAC">Other MAC Address :</label>
+				</div>
+				<div class="div_right"><input type="text" id="INPUT_OtherMacAddress"></div>
+	
+				<div class="div_left">
+					<input type="radio" name="RADIO_ScheduleMode" id="RADIO_SelectSchedule" value="Select" onClick="changeScheduleMode()" checked>
+								  <label for="RADIO_SelectSchedule" id="lang_Schedule">Schedule :</label>
+				</div>
+				
+				<div class="div_right"><select id="SELECT_Schedules" name="SELECT_Schedules"></select>&nbsp;&nbsp;
+					<a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=schedules"><u id="lang_ViewAvailable">View Available Schedules</u></a>
+				</div>
+				<div class="div_left"><input type="radio" name="RADIO_ScheduleMode" id="RADIO_ManualSchedule" value="Manual" onClick="changeScheduleMode('Monual')">
+						<label for="RADIO_ManualSchedule" id="lang_ManualSchedul">Manual Schedule :</label></div>
+				<div class="div_right"></div>
+				
+					<div id="manualSchedule">
+						<div class="div_left" id="lang_Day">Day(s) :</div>
+						<div class="div_right">
+							<input type=radio name='EnableAllDays' id='AllWeek' value=1 onClick="changeDaysSelect()"><label for=AllWeek id="lang_AllWeek">All Week</label>
+							<input type=radio name='EnableAllDays' id='SelectDay' value=0 onClick="changeDaysSelect()" checked><label for=SelectDay id="lang_Select">Select Day(s)</label>
+						</div>
+						<div id="daysArea">
+							<div class="div_left"></div>
+							<div class="div_right">
+								<input id='sunday' name='sunday' type=checkbox><label for=sunday id="lang_Sun">Sun</label>&nbsp;&nbsp;
+								<input id='monday' name='monday'  type=checkbox><label for=monday id="lang_Mon">Mon</label>&nbsp;&nbsp;
+								<input id='tuesday' name='tuesday' type=checkbox><label for=tuesday id="lang_Tue">Tue</label>&nbsp;&nbsp;
+								<input id='wednesday' name='wednesday'  type=checkbox><label for=wednesday id="lang_Wed">Wed</label>&nbsp;&nbsp;
+							</div>
+							<div class="div_left"></div>
+							<div class="div_right">
+								<input id='thursday' name='thursday' type=checkbox><label for=thursday id="lang_Thu">Thu</label>&nbsp;&nbsp;
+								<input id='friday' name='friday' type=checkbox><label for=friday id="lang_Fri">Fri&nbsp;&nbsp;</label>&nbsp;&nbsp;
+								<input id='saturday' name='saturday'  type=checkbox><label for=saturday id="lang_Sat">Sat</label>
+							</div>
+						</div>
+						<div class="div_left" id="lang_AllDay">All Day - 24 hrs&nbsp;:</div>
+						<div class="div_right">
+							<input id='EnableAllTimes' type='checkbox' onClick='setWholeDay()' name='EnableAllTimes'>
+						</div>
+						<div class="div_left" id="lang_StartTime">Start Time&nbsp;:</div>
+						<div class="div_right">
+							<INPUT id='startTimeH' name='startTimeH' style="WIDTH: 40px" maxLength=2> :
+							<INPUT id='startTimeM' name='startTimeM' style="WIDTH: 40px" maxLength=2>&nbsp;&nbsp;<span id="lang_hourminute1">(hour:minute, 24 hour time)</span>
+						</div>
+						<div class="div_left" id="lang_EndTime">End Time&nbsp;:</div>
+						<div class="div_right">
+							<INPUT id='endTimeH' name='endTimeH' style="WIDTH: 40px" maxLength=2> :
+							<INPUT id='endTimeM' name='endTimeM' style="WIDTH: 40px" maxLength=2>&nbsp;&nbsp;<span id="lang_hourminute">(hour:minute, 24 hour time)</span>
+						</div>
+					</div>
+			</div>
+			<div class="div_button"><input type="button" id="submit" value="Apply" onClick="uiSubmit()">
+					<input type='button' value="Cancel" onClick='uiPageRefresh()'  id="lang_Cancel">
+			</div>
+		</div>
+
+	</div>
+
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc">Set the name of each rule. For example, a schedule that lasts from 3:00pm to 9:00pm every Monday to Friday can be named "After School". Then, enter the MAC address that you wish to block from Internet access.</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

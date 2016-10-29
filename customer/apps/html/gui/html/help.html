@@ -1,0 +1,38 @@
+<div class="help_header" style="margin-left:150px;">
+    <div class="help_vert"></div>
+    <div class="help_line"><div id="topic_title" class="help_tit"><span class='trad'></span></div></div>
+</div>
+<div class= "help_menu">
+    <ul id="navi">
+    	 <li><div topic_key="topic_adsl" class="trad help_menuentry" key="HELP_TOPIC0"></div></li>
+        <li><div topic_key="topic_internet" class="trad help_menuentry" key="HELP_TOPIC1"></div></li>
+        <li><div topic_key="topic_wb" class="trad help_menuentry" key="HELP_TOPIC2"></div></li>
+        <li><div topic_key="topic_security" class="trad help_menuentry" key="HELP_TOPIC3"></div></li>
+        <li><div topic_key="topic_homenet" class="trad help_menuentry" key="HELP_TOPIC4"></div></li>
+        <li><div topic_key="topic_devices" class="trad help_menuentry" key="HELP_TOPIC5"></div></li>
+        <li><div topic_key="topic_ports" class="trad help_menuentry" key="HELP_TOPIC6"></div></li>
+    </ul>
+</div>
+<div class="help_cont">    
+    <div class="help_contents">
+        <div class="help_vertline"></div>          
+        <div class="help_contents_scroll">
+            <div id="help_scroll" class="help_scroll">
+             
+            </div>
+        </div>
+    </div>
+    <div class="help_content_pie"></div>
+</div>
+<script type="text/javascript" src="js/help.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	setHelpLinks();
+	$(".help_menuentry").each(	function(index){
+		$(this).click(function(){
+			//linkContent(index+1,"1");
+			linkTip($(this).attr("topic_key"),1);
+		});
+	});	
+});
+</script>

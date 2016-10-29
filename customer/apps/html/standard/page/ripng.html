@@ -1,0 +1,39 @@
+		<!-- config -->
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_config">RIPng Configuration</p>
+				<div class="div_orange">
+					<p id = "lang_introction">
+					To enable RIP for IPv6 (RIPng) on the interface, select the corresponding "Enabled" check box and click "Apply" to save the settings. The RIPng is enabled or disabled accordingly.
+                    </p>
+				</div>
+			<p class="do bk_black" id = "lang_ripng">RIPng</p>
+			<div class="div_black">
+			    <table class="td_table_s" id='td_wanripnglist'>
+				<tr class="tr_bold">
+                    <td id = "lang_interface">Interface</td><td >VPI/VCI</td><td id = "lang_enabled">Enabled</td>
+                    <!--
+                    <td id = "lang_version">Version</td>
+                    <td id = "lang_operation">Operation</td>
+                    <td id = "lang_passive">Passive</td>
+                    -->
+				</tr>
+			    </table>
+			</div>
+			<div class="div_button do"><input type="button" name="submit" id="Apply" value="Apply" onClick="uiEdit();">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="Cancel" id="refresh" id="Cancel" value="Cancel" onClick="uiPageRefresh();"></div>
+		</td>
+
+        <!-- help -->
+        <td class="td_help">
+            <div class="help">
+                <h5 id = "lang_help_hint">Helpful Hints...</h5>
+            <div>
+            <p id = "lang_help">
+            Enabling RIPng provides a protocol that determines the best path to a target by estimating the distance in number of hops or intermediate routers.
+            </p>
+            </div>
+            <h5><a href="#"  id = "lang_more">More...</a></h5>
+            </div>
+        </td>
+        </tr>
+        </table>

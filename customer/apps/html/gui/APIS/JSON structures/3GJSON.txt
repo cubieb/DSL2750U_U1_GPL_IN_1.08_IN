@@ -1,0 +1,4 @@
+{"3G": {
+	"3GActivated":true,
+	"pin":"1111"
+}

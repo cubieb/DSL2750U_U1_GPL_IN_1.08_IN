@@ -1,0 +1,12 @@
+PRODUCT=RTL8676
+#CROSS_PREFIX=mipseb
+CROSS_COMPILE=rsdk-linux-
+TOOLCHAINS_SYSROOT=/opt/tbs_toolchains/realtek/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/mips-linux
+TOOLCHAINS_SYSINCLUDE=/opt/tbs_toolchains/realtek/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/mips-linux/sys-include
+TOOLCHAINS_PATH=/opt/tbs_toolchains/realtek/rsdk-1.5.6-5281-EB-2.6.30-0.9.30.3-110915/bin
+TARGET=mips-linux
+ARCH=rlx
+ENDIANNESS=big
+CPU=rtl8676
+DIGIT_SIG=RTL8676
+TBS_KERNEL_VERSION=linux-2.6.30.9

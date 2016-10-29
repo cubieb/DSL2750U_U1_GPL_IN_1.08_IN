@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>HomeStation</title>
+<link type="text/css" rel="stylesheet" href="../../css/styles.css"/>
+<link type="text/css" rel="stylesheet" href="../../css/network_map.css"/>
+<link type="text/css" rel="stylesheet" href="../../css/jquery.ui.core.css"/>	
+<link type="text/css" rel="stylesheet" href="../../css/defaultBranding.css"/>
+
+</head>
+<body>	
+	<div id="dialogWarning" class="dialog dialog_text"></div>
+	<div id="dialog" class="dialog dialog_text"></div>	
+	
+	<div id="panel_general" >		
+		<div id="panel_header">
+            <div class="header_content">
+				<div class="header_left">
+					<div class="home_station"></div>					
+				</div>
+				<div class="movistar"></div>
+			</div>
+			<div class="options_menu">				
+				<div id="languages" class="languages"></div>
+			</div>
+        </div>
+		<div id="panel_content">
+       		<div id="welcome_gateway"></div>
+       		<div id="welcome_content">
+            	<div id="welcome_content_txt">
+                	<div class="trad welcome_cont_txt1" key="WELCOME_TEXT_WELCOME"></div>
+					<div class="trad welcome_cont_txt2" key="WELCOME_TEXT_PAGE"></div>
+                    <div>                    	
+						<img src="../../images/punto.png" width="15" height="11" alt="punto" /><span class="trad" key="WELCOME_TEXT_DEVICES"></span><br/><br/>
+                  		<img src="../../images/punto.png" width="15" height="11" alt="punto" /><span class="trad" key="WELCOME_TEXT_CONFIGURE"><b></b></span>
+					</div>
+					<div class="welcome_cont_txt3">
+						<span class="trad" key="WELCOME_CONFIGURE_INTERNET"></span><br/>
+            	    	<span class="trad" key="WELCOME_CONFIGURE_DEVICES"></span>
+					</div>
+            	  	<div id="divUrlMHS" class="divUrlMHS">
+						<span class="trad" key="WELCOME_TEXT_WEB"></span>&nbsp; <a href="javascript:void(0);" ><span id="urlMHS" class="welcome_link hand"></span></a>
+					</div>
+                	<div id="imgConfigPage" class="welcome_pantalla">
+                		<a href="javascript:void(0);">
+                			<div class="welcomepan_home"><div class="welcomepan_icon"></div></div>
+						</a>
+					</div>
+                  	<div id="welcome_favorites">
+               	 		<div id="welcome_fav_home" class="welcome_fav_home hand">
+               	 			<div class="welcome_fav_icon"></div>
+							<span class="trad welcome_fav_txt" key="WELCOME_FAVORITES"></span>							
+						</div>
+                    	
+          				<div id="welcome_home" class="hand">
+          					<div class="welcome_home_icon"></div>
+							<span class="trad welcome_txt" key="WELCOME_GO_CONFIG"></span>
+						</div>
+                    	<div id="welcome_back" class="hand">
+                    		<div class="welcome_back_icon"></div>
+                  			<span class="trad welcome_back_txt" key="WELCOME_CLOSE"></span>
+						</div>
+              		</div>  
+            	</div>
+      		</div>
+		</div>
+	
+	<a href="javascript:void(0);"><div id="panel_footer"></div></a>
+  
+</div>
+		
+	<script type="text/javascript" src="../../js/apis/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../../js/apis/jquery.utils.homestation.min.js"></script>	
+	<script type="text/javascript" src="../../js/index.js"></script>	
+	<script type="text/javascript" src="../../js/commons.js"></script>
+	<script type="text/javascript" src="../../js/welcomeSplash/welcome_splash.js"></script>
+	<script type="text/javascript" src="../../js/apis/jquery-ui-1.8rc2.custom.min.js"></script>	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#panel_general').css('visibility', 'hidden');
+		jQuery.getJSON('../../config.json.txt', function(data, textStatus){
+			CONFIG = data.CONFIG;
+			STATUS = data.STATUS;
+			var imprementation = CONFIG.Implementation;
+			if (imprementation=="api"){
+				loadjscssfile("../../APIS/api.js", "js");		
+			}else if (imprementation=="api_fake"){		
+				loadjscssfile("../../APIS/api_fake.js", "js");		
+			}
+			if (CONFIG.Branding =="o2")
+				replacecssfile("../../css/defaultBranding.css", "../../css/o2.css");
+			else if (CONFIG.Branding =="telefonica")
+				replacecssfile("../../css/defaultBranding.css", "../../css/telefonica.css");
+			else if (CONFIG.Branding == "chile") {
+				replacecssfile("../../css/defaultBranding.css", "../../css/telefonica.css");
+				loadjscssfile("../../css/chile.css", "css");
+			}
+			else 
+				replacecssfile("../../css/defaultBranding.css", "../../css/movistar.css");
+		});
+		setTimeout("$('#panel_footer').load('../footer.html',function() {loadFooter()});",0);
+		setLanguages();
+		setTimeout('urlWelcomeSplash(loadUrl);','1000');
+		effectHover('welcome_home', 'welcome_home_icon');
+		effectHover('welcome_back', 'welcome_back_icon');	
+		effectHover('welcome_fav_home', 'welcome_fav_icon');	
+		$('#welcome_home').click(function() {
+			goConfigMHS();
+		});
+		$('#welcome_back').click(function() {
+			closeWelcome();
+		});
+		$('#welcome_fav_home').click(function() {
+			addFavorites()
+		});
+	});
+	</script>
+		
+</body>
+</html>					

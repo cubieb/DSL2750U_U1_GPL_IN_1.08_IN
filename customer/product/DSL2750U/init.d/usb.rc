@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p /dev/usb/sd
+mkdir -p /dev/usb/lp
+mknod /dev/usb/lp/lp0 c 180 0

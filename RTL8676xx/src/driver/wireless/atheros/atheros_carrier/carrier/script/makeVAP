@@ -1,0 +1,282 @@
+#!/bin/sh
+####################################################################
+## makeVAP
+## This script is used to create AP or Station instances (VAPs).  It
+## will NOT actually join the bridge or do any RF configuration.
+## The form of the command is
+## makeVAP <device_type> <Mode> <ESSID> RF <beaconint>
+## Where
+## device_type: legacy or 11n
+##     Mode:    Either ap, ap-wds, sta, or sta-wds
+##              (access point or station)
+##     ESSID:   ESSID String
+##     RF:      If the RF command is included, the script will
+##              include all RF and hardware level configuration
+##              commands.  These should be sent only once.
+## beaconint:   This is the beacon interval desired for this VAP.  Note
+##              that this is system wide, and will override the current
+##              beacon interval for ALL vaps.  You MUST also include the
+##              RF command for this option.
+## Examples:
+##   11n Access Point with RF
+##      makeVAP 11n ap OpenAP RF
+##   11n Access Point with RF, beacon interval of 400 ms
+##      makeVAP 11n ap OpenAP RF 400
+##   legacy Access Point w/o RF
+##      makeVAP legacy ap NormAP
+##   11n WDS Root AP
+##      makeVAP 11n ap-wds RootAP RF
+##   11n WDS Repeater (two commands)
+##      makeVAP 11n sta-wds RPTR RF
+##      makeVAP 11n ap-wds RPTR
+###################################################################
+
+. /etc/ath/apcfg
+
+if [ "${1}" = "" ]; then
+    echo "makeVAP usage"
+    echo "makeVAP device_type mode essid RF beaconint"
+    echo
+    echo "device_type: [legacy | 11n ]"
+    echo "mode: [ap | ap-wds | sta | sta-wds ]"
+    echo "essid: up to 32 character ESSID string"
+    echo "RF: Include RF commands"
+    echo "beaconint: Beacon interval, milliseconds"
+    echo
+    exit
+fi
+
+MODE=`echo $2 | cut -f 1 -d '-'`
+WDS=`echo $2 | cut -f 2 -d '-'`
+
+IFNUM=`echo $4 | cut -f 1 -d ':'`
+RF=`echo $4 | cut -f 2 -d ':'`
+PRI_CH=`echo $4 | cut -f 3 -d ':'`
+SEC_CH=`echo $4 | cut -f 4 -d ':'`
+
+if [ "${IFNUM}" != "0" -a "${IFNUM}" != "1" ]; then
+    IFNUM=0
+fi
+
+ESSID=$3
+BEACONINT=$5
+AP_MODE=$1
+CHMODE=11NG
+FREQ="freq $PRI_CH"
+
+## First, let's see if we have the modules loaded.  If not, call the
+## rc.wlan script to load them
+
+MODLIST=`lsmod | grep ath_pci`
+
+
+if [ "${MODLIST}" = "" ]; then
+    /etc/init.d/rc.wlan up
+else
+    echo "Modules already loaded"
+fi
+        
+
+echo "Creating ${MODE} for ${ESSID} on ${BRIDGE} on IFNUM ${IFNUM}"
+
+##Peter Meng comments it since expr not exist in current shell
+# Check if Merlin might use invalid default tx chain mask
+#DEVLIST=`cat /proc/bus/pci/devices | cut -f 2 | grep 168c*`
+#DEVCOUNT=0
+#for i in $DEVLIST; do
+#    DEVID=`expr substr $i 5 4`
+#    if [ "$DEVID" = "0029" ]; then
+#        if [ "$DEVCOUNT" = "${IFNUM}" -a "${TX_CHAINMASK}" = "5" ]; then
+#            DEFAULT_MERLIN_TX_CHAINMASK=y
+#        fi
+#    fi
+#    DEVCOUNT=$(($DEVCOUNT + 1))
+#done
+
+## Create the instance
+
+if [ "${MODE}" = "sta" ]; then
+    APNAME=`wlanconfig ath$VAP_INDEX create wlandev wifi$IFNUM wlanmode ${MODE} nosbeacon`
+    #APMODE="mode managed"
+    #FREQ=""
+elif [ "${MODE}" = "ethersta" ]; then
+    APNAME=`wlanconfig ath$VAP_INDEX create wlandev wifi$IFNUM wlanmode sta nosbeacon`
+    APMODE="mode managed"
+    iwpriv ${APNAME} etherdongle $ETHERDONGLE
+    iwpriv ${APNAME} ethermac $ETHERMAC
+else
+    	APNAME=`wlanconfig ath$VAP_INDEX create wlandev wifi$IFNUM wlanmode ${MODE}`
+    	#echo "APNAME ${APNAME} IFNUM ${IFNUM} ${MODE}"
+    	APMODE="mode master"
+fi
+echo "Added ${APNAME} ${APMODE}"
+
+#first set channel to 0 to avoid error when  set mode 
+iwconfig ${APNAME} channel 0
+## Enable WDS if selected
+
+if [ "${WDS}" = "wds" ]; then
+    iwpriv ${APNAME} wds 1
+fi
+
+## Disable Background Scan
+
+if [ "${MODE}" != "sta" ]; then
+    iwpriv ${APNAME} bgscan 0
+fi
+# set debug mode output
+
+#DEBUGMODE=0x100
+#echo $DEBUGMODE > /proc/sys/net/${APNAME}/debug
+
+## Determine the operating mode and frequency
+
+if [ $PRI_CH = 11na ]; then
+    CHMODE=11NA
+    FREQ=""
+elif [ $PRI_CH = 11ng ]; then
+    CHMODE=11NG
+    FREQ=""
+elif [ $PRI_CH = 11a -a "${AP_MODE}" = "legacy" ]; then
+    CHMODE=11A
+    FREQ=""
+elif [ $PRI_CH = 11g -a "${AP_MODE}" = "legacy" ]; then
+    FREQ=""
+elif [ $PRI_CH -gt 14 ]; then
+    CHMODE=11NA
+    FREQ="freq $PRI_CH"
+elif [ $PRI_CH -lt 13 -a "${AP_MODE}" != "legacy" ]; then
+    CHMODE=11NG
+    FREQ="freq $PRI_CH"
+fi
+
+
+####################################################################
+## Check for RF command. If so, set the RF parameters, else do the
+## simple cofiguration.
+echo "APNAME $APNAME CHMODE $CHMODE"
+iwpriv ${APNAME} mode $CHMODE
+
+if [ "${RF}" = "RF" ]; then
+
+    #
+    # 11n configuration section
+    # increase queue length
+    #
+
+    if [ "${MODE}" != "sta" ]; then
+        ifconfig ${APNAME} txqueuelen $TXQUEUELEN
+        ifconfig wifi$IFNUM txqueuelen $TXQUEUELEN
+
+        # The set of configurations below is only for 11ng/11na.
+
+        if [ $CHMODE != 11G ]; then
+
+            # turn on halfgi
+            iwpriv ${APNAME} shortgi $SHORTGI
+
+            #if [ $CHMODE = 11NG ]; then
+            #    echo 1 > /proc/sys/dev/ath/hal/forceBiasAuto
+            #fi
+            # Channel Width Mode
+            # cwmmode 0 is static 20; cwmmode 1 is dyn 2040; cwmmode 2 is static 40
+    
+            if [ $CHMODE = 11NG ]; then
+                if [ "$FORCE_11NG_HT40" = "" ]; then
+                    iwpriv ${APNAME} cwmmode 0
+                else
+                    iwpriv ${APNAME} cwmmode $CWMMODE
+                fi
+                # disable power constraint element on 2.4GHz channels.
+                iwpriv ${APNAME} countryie 1
+                iwpriv ${APNAME} doth 0
+            else
+                iwpriv ${APNAME} cwmmode $CWMMODE
+            fi
+
+            # Extension Channel only for 11n devices
+            # set extension channel below control channel
+
+            #iwpriv ${APNAME} extoffset $SEC_CH
+
+            # set extension channel offset to 20Mhz (25Mhz not supported yet)
+
+            iwpriv ${APNAME} extprotspac 0
+
+            # Set Aggregation State
+
+            iwpriv ${APNAME} ampdu $AMPDU
+
+            # set ampdu limit
+
+            iwpriv ${APNAME} ampdulimit $AMPDULIMIT
+
+            # Set the chain masks
+
+            if [ "$DEFAULT_MERLIN_TX_CHAINMASK" = "y" ]; then                                 
+                iwpriv ${APNAME} tx_chainmask 3
+            else                                                                                         
+                iwpriv ${APNAME} tx_chainmask $TX_CHAINMASK
+            fi                                                                               
+            iwpriv ${APNAME} rx_chainmask $RX_CHAINMASK
+   
+            # An extra IE is provided for Intel interop
+
+            echo 1 > /proc/sys/dev/ath/htdupieenable
+        else
+            # disable power constraint element on 2.4GHz channels.
+            iwpriv ${APNAME} countryie 1
+            iwpriv ${APNAME} doth 0        
+        fi
+ 
+        # set SSID and frequency
+
+        #iwconfig ${APNAME} essid ${ESSID} ${APMODE} ${FREQ}
+        iwconfig ${APNAME} essid ${ESSID}
+        iwconfig ${APNAME} ${APMODE}
+        #iwconfig ${APNAME} ${FREQ}
+
+        # If rate control is not auto, set the manual settings
+    
+        #if [ "${RATECTL}" != "auto" ]; then
+        #   iwpriv ${APNAME} set11NRates $MANRATE
+        #   iwpriv ${APNAME} set11NRetries $MANRETRIES
+        #fi
+
+        # This is where extra commands are executed.
+
+        $AP_EXTRA
+
+    fi
+else
+    if [ "${MODE}" != "sta" ]; then
+        # set SSID only
+        # disable power constraint element on 2.4GHz channels.
+        if [ $CHMODE = 11G ]; then
+            iwpriv ${APNAME} countryie 1
+            iwpriv ${APNAME} doth 0
+        fi 
+        #iwconfig ${APNAME} essid ${ESSID} ${APMODE} ${FREQ}
+        iwconfig ${APNAME} essid ${ESSID}
+        #iwconfig ${APNAME} ${APMODE}
+        #iwconfig ${APNAME} ${FREQ}
+    else
+        #iwpriv ${APNAME} mode ${CHMODE}
+        #iwconfig ${APNAME} ${APMODE}
+	echo "Test"
+    fi
+fi
+
+if [ $PRI_CH -lt 13 ]; then
+    iwconfig ${APNAME} channel ${PRI_CH}
+fi
+## Check for multiple VAPs.  If the VAP name is ath2 we assume we want the
+## beacon interval to be 400 ms
+
+# if [ "${BEACONINT}" != "" ]; then
+#    # Beacon interval was specified
+#    iwpriv ${APNAME} bintval ${BEACONINT}
+# fi
+
+## Script Complete
+echo Created ${APNAME} mode ${MODE} for ${ESSID}

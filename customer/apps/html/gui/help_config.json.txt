@@ -1,0 +1,65 @@
+
+"CONFIG"
+
+	"Implementation": Configures the Vendor/provider/APIimpl
+			"api_fake": Web data is received from JSON files, wich are in 'APIS' folder. In that case, the API implementation is a javascript file called api_fake.js in APIS folder.
+			"api": Data is received from a real router. In that case, the API implementation is a javascript file called "api.js" in APIS folder.
+			
+	"DefaultLanguage": Default language of the GUI
+			"en": english 
+			"es": spanish
+			"ch": chinesse
+			"pt": portuguese
+
+	"Branding": Branding look&Feel to visualize, being "movistar" branding, "telefonica" branding or "o2" branding.  
+			"movistar":	The new branding, with dark blue headers 
+			"o2": O2 branding.
+			"telefonica": The old branding, with light blue headers.
+			"chile": Specific branding for this country. It requires Telefonica branding included in the distribution.
+			
+	"SessionMaxTime": Maximum session time. If this time expires without hapenning any operation in the page, the browser
+			requests the server to close the session. When requesting a later operation, authentication will be needed again. 
+			600: this should mean 600 sg, it is, 10 minutes. 
+			
+	"SessionWarning": Modifies session control system, in the sense of showing alerts or no, when session expires.
+			true: Warning is shown when session expires. 
+			false: Warning is NOT shown when session expires.
+			
+	"UpdateStep": Modifies session control system, about time between checks. 
+			10: Every 10 seconds it will be checked is the session must expire.
+			
+	"Country": Location. There are features that depend on the location and according to the country they will be showed one way or another, for example, the footer.
+		"ES": Spain
+		"UK": United Kingdom
+		"BR": Brazil
+	
+	"LANGUAGES": List of languages that GUI supports 
+			   For every language it should be defined the json file containing corresponding translations and the sort name of the language. 
+			   Sample for spanish language: {"file":"language.es.json", "shortName":"es"}
+
+	"LanConfEnabled": enables LAN configuration form. Possible values are:
+		true: form to configure LAN is showed in the GUI.
+		false: form to configure LAN is not showed in the GUI.
+		
+	"Supported3G": Enables 3G configuration. Currently, this parameter is not used, but is ready to enable 3G configuration depending on the requirements of each country. Possible values are:
+		true: enabled 3G configuration.
+		false: disabled 3G configuration
+
+	"LanConfEnabled": Enables LAN IP configuration form inside gateway configuration form. Also, network mask is shown.
+		true: LAN form is shown.
+		false: LAN form is not shown.
+
+	"VENDORCONFIGURATION": This is a JSON object containing all configuration related with original Vendor’s configuration GUI. Currently this includes:
+
+	"VENDORCONFIGURATION.Availability": This variable sets if a link to the Old Vendor GUI should appear in MHS GUI or not.  Possible values are:
+		true: Link to Vendor GUI appears in MHS GUI.
+		false: No link to Vendor GUI in MHS GUI.
+	
+	"VENDORCONFIGURATION.Link": This variable sets URL of the link to the old Vendor GUI. Value is a string containing an absolut or relative URL.
+		(Note: The link to Old Vendor GUI should show a warning to the user. The text of the alert is configured with the “WIFI_WARNING7” language constant, in language files)
+	
+			   
+		
+	
+	}
+}

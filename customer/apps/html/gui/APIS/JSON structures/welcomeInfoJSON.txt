@@ -1,0 +1,7 @@
+{
+"URL": {
+		"external_url":"http://www.terra.es",
+		"configuration_url":"http://localhost:8080/"
+ 	}
+ 
+}

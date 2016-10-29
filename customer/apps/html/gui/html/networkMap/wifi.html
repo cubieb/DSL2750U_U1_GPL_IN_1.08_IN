@@ -1,0 +1,190 @@
+<div class="dialog_faq dialog_faq_wifi"></div>
+<div class="wifi">
+	<div class="wifi_line"><div class="line_grey"></div></div>
+	<div class="wifi_parte">
+		<div class="wifi_line">
+			<div class="title_grey trad" key="WIFI_WIFITITLE"></div>
+			<div >&nbsp;&nbsp;<span class="trad" key="WIFI_WIFITITLE_FRIENDLY"></span></div>
+		</div>	
+<!--	CONF SSID		-->		
+		<div class="wifi_line">
+			<div class="wifi_label trad" key="COMMON_STATUS"></div>
+			<div class="wifi_input colored_iphone" style="margin-left:11px;"><input id="wifi_status" type="checkbox" onchange="wifistatusmodified(this);" /></div>
+		</div>
+		<div class="wifi_line"></div>
+<div id="wifiConf" style="display:none">			
+			
+		<div class="wifi_label trad" key="WIFI_SSIDNAME"></div>
+		<div class="wifi_input"><input id="ssidname" type="text" maxlength=32 onkeypress="checkAscii(event)"  /></div>
+		<div class="wifi_input wifi_input_small" ><input id="wifi_visible" type="checkbox" onchange="wifivisibilitymodified(this);" /></div>
+		
+		
+		<div class="wifi_sep"></div>
+<!--	SECURITY		-->
+		<div class="wifi_line">
+			<div class="title_grey trad" key="WIFI_SEC_TITLE"></div>
+		</div>	
+		<div class="wifi_line">
+			<div class="wifi_label trad" key="WIFI_SEC_LEVEL"></div>
+			<div class="wifi_input" style="margin-left:11px;">
+				<select id="wifi_sec" onchange="wifisecuritymodified(this);" >
+					<option value="WPA2" class="trad" key="WIFI_SEC_WPA2"></option>
+					<option value="AUTO" class="trad" key="WIFI_SEC_AUTO"></option>
+					<option value="WPA" class="trad" key="WIFI_SEC_WPA"></option>
+					<option value="WEP" class="trad" key="WIFI_SEC_WEP"></option>
+					<option value="None" class="trad" key="WIFI_SEC_NON"></option>
+				</select>
+			</div>
+		</div>
+		<div id="wifi_pass" class="wifi_line"  style="display:block">
+			<div class="wifi_label trad" key="WIFI_SEC_PASS"></div>
+			<!--onkeypress="checkKey(event)" -->
+			<div class="wifi_input"><input id="wifiPass" type="text" maxlength=63 onkeyup="updateWPAstrength(false);" /></div>
+			<div id=".wifi_input pass_level_box" class="pass_level_box">
+				<span id="pass_level_title" class="trad" key="WIFI_SEC_PASS_STRENGTH"></span>
+				<div class="wifi_line"></div>
+				<div  id="pass_level_img" style="float:left; margin:5px 5px 0 0;" ></div>
+				<span id="pass_level_value" class="trad left" key="WIFI_SEC_PASS_STRENGTH_0"></span>
+			</div>
+		</div>		
+		
+		<div class="wifi_sep"></div>
+		<div class="wifi_line">
+			<div class="title_grey trad" key="WIFI_CHANNEL_TITLE" style="width:107px; overflow:visible;"></div>
+			<div class="wifi_input" style="margin-left:11px;"><input id="ssid_mode" type="checkbox" onchange="ssidmodemodified(this);" /></div>
+		</div>
+		<div id="num_canal" class="wifi_line">
+			<div class="wifi_label ">&nbsp;</div>
+			<div id="wifi_channel" class="wifi_input" style="margin-left:11px;">
+				<select id="select_numcanal" ></select>
+			</div>
+		</div>	
+	</div>
+</div>	
+	<div class="wifi_sep"></div>
+	
+	
+	<div class="wifi_line"><div class="line_grey"></div></div>
+<div id="LANCONF" style="display:none">	
+	<div class="wifi_parte">
+		<div class="wifi_line">
+			<div class="title_grey trad" key="WIFI_LAN_TITLE"></div>
+			<div>&nbsp;&nbsp;<span class="trad" key="WIFI_LANTITLE_FRIENDLY"></span></div>
+			<div class="wifi_line">
+				<div class="wifi_label trad" key="WIFI_LAN_IP"></div>
+				<div class="wifi_input">
+					<input id="wifiLan2" type="text" class="dhcp_dir" onkeypress="checkNumbers(event)" maxlength="3"/>
+					<span class="inicio_dir" style="width:1px">.</span>
+					<input id="wifiLan1" type="text" class="dhcp_dir" onkeypress="checkNumbers(event);" onkeyup="updateDhcp();" maxlength="3"/>
+					<span id="wifiLan0" class="inicio_dir" style="width:50px" >192.168.</span>
+				</div>
+			</div>
+			<div class="wifi_line">
+				<div class="wifi_label trad" key="WIFI_LAN_MASK"></div>
+				<div class="wifi_input">
+					<span id="wifiLanMask" class="inicio_dir" style="width:100px">255.255.255.0</span>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<div class="wifi_sep"></div>
+</div>
+	
+<!--	CONF DHCP		-->
+	<div class="wifi_parte">			
+		<div class="wifi_line">
+			<div class="title_grey trad" key="WIFI_DHCPTITLE"></div>
+			<div>&nbsp;&nbsp;<span class="trad" key="WIFI_DHCPTITLE_FRIENDLY"></span></div>
+		</div>	
+		<div class="wifi_line">
+			<div class="wifi_label trad" key="COMMON_STATUS"></div>
+			<div class="wifi_input colored_iphone" style="margin-left:11px;"><input id="dhcp_status" type="checkbox" onchange="dhcpstatusmodified(this);"/></div>
+		</div>
+		<div class="wifi_line"></div>
+<div id="DHCPpool" style="display:none">
+		<div class="wifi_line">
+			<div class="wifi_label trad" key="WIFI_DHCP_POOLINI" style="height:23px" ></div>
+			<div class="wifi_input" style="width:161px;height:23px">
+				<input id="pool_start" class="dhcp_dir" value="1" type=text onkeypress="checkNumbers(event)" maxlength="3"/>
+				<span id="poolStart" class="inicio_dir" >192.168.1.</span>
+			</div>
+		</div>
+		<div class="wifi_line">
+			<div class="wifi_label trad" key="WIFI_DHCP_POOLFIN" style="height:23px" ></div>
+			<div class="wifi_input" style="width:161;height:23px">
+				<input id="pool_end" class="dhcp_dir" value="253" type=text onkeypress="checkNumbers(event)" maxlength="3"/>
+				<span id="poolEnd" class="inicio_dir" >192.168.1.</span>
+			</div>
+		</div>
+</div>		
+
+		<div id="CONF_VENDOR" style="display:none">
+			<div class="wifi_line">
+				<div style="float:right"><a class="welcome_link" id="link_advancedconf" href="javascript:goToOriginalConfig();" ><span class="trad" key="WIFI_LINK_VENDORCONFIG"></span></a></div>
+			</div>
+		</div>
+		
+		<div class="wifi_sep"></div>
+	</div>
+	
+
+<div class="wifi_line"><div class="line_grey"></div></div>
+<div class="centred">
+	<div id="cancel" class="cancel hand" onclick="wificancel()">
+		<div class="cancel_icon"></div>			
+		<span class="trad cancel_txt" key="COMMON_CANCEL">Cancelar</span>
+	</div>
+	<div id="acceptDev" class="accept buttons_space hand" onclick="wifiaccept()">
+		<div class="accept_icon"></div>			
+		<span class="trad accept_txt" key="COMMON_ACCEPT">Aceptar</span>		
+	</div>
+</div>
+</div>
+<div style="display:none">
+	<p id="wifi_alert1" class="trad" key="WIFI_WARNING1"></p>
+	<p id="wifi_alert2" class="trad" key="WIFI_WARNING2"></p>
+	<p id="wifi_alert3" class="trad" key="WIFI_WARNING3"></p>
+	<p id="wifi_alert4" class="trad" key="WIFI_WARNING4"></p>
+	<p id="wifi_alert7" class="trad" key="WIFI_WARNING7"></p>
+</div>
+
+<script type="text/javascript" src="js/networkMap/wifi.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {	
+		$("#pass_level_img").addClass("dialog_security_img");
+		$(".dialog_security_img").css("background-position","0 " + (0*-10) + "px");
+		
+		$("#wifi_status").attr("checkedLabel",_("WIFI_STATUS_ON"));
+		$("#wifi_status").attr("uncheckedLabel",_("WIFI_STATUS_OFF"));
+
+		$("#wifi_visible").attr("checkedLabel",_("WIFI_VISIBILITY_ON"));
+		$("#wifi_visible").attr("uncheckedLabel",_("WIFI_VISIBILITY_OFF"));
+
+		$("#ssid_mode").attr("checkedLabel",_("WIFI_SSIDMODE_AUT"));
+		$("#ssid_mode").attr("uncheckedLabel",_("WIFI_SSIDMODE_MAN"));
+
+		var options = "";		
+		for(i=0;i<=10;i++)
+		{
+			options += '<option value=' +	(i+1) + '>'+_("WIFI_CHANNEL_TXT")+' '+(i+1)+'</option>';
+		}
+		// stick these new options in the existing select menu
+		$("#select_numcanal").html(options);
+
+		$("#dhcp_status").attr("checkedLabel",_("WIFI_DHCP_ON"));
+		$("#dhcp_status").attr("uncheckedLabel",_("WIFI_DHCP_OFF"));
+
+		setTimeout("getWifiInfo(wifiInfoReceived);",0);
+		
+		renoveSession();
+		
+		$('.dialog_faq_wifi').click(function() {		
+			loadHelpDialog(_("HELP_TITLE"), function() { linkContent(4,7); });		
+		});
+		
+		if (CONFIG.VENDORCONFIGURATION.Availability==true)	$("#CONF_VENDOR").show();
+		if (CONFIG.LanConfEnabled==true)	$("#LANCONF").show();
+		
+	});
+ </script>

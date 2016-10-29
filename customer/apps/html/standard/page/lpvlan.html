@@ -1,0 +1,49 @@
+		<style type="text/css"><!-- 
+			.div_left { width:210px;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_config">Lan Port Vlan</p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						Use this section to configure the lan/wlan port vlan settings for your router.
+						VLAN ID number in the list is up to 32, and must be separated by commas.
+					</p>
+				</div>
+				<p class="do bk_black"  id="lang_LanPortVlan">LAN/WLAN PORT</p>
+				<div class="div_black">
+					<div class="div_left"  id="lang_SelectPort">Select Lan/Wlan Port:</div><div class="div_right"><select id="SELECT_PORT" onChange="uiOnload('false')" style="width:180px"><option> </option></select></div>
+				</div>
+				<div id="lpvlan_mode">
+				<p class="do bk_black" id = "lang_config1">Vlan setting</p>
+				</div>
+					<div class="div_left" id="lang_enableVlan" >Enable VLAN :</div>
+					<div class="div_right"><input type="checkbox" name="INPUT_VLANEnable" id="INPUT_VLANEnable"></div>
+					<div class="div_left" id = "lang_linktype">Link Type :</div>
+					<div class="div_right"><select id="SELECT_LinkType" onChange="onChgLinkType()" style="width:180px">
+											<option value="access">Access</option>
+											<option value="trunk">Trunk</option>
+											<option value="hybird">Hybird</option>
+										   </select>
+					</div>
+					<div class="div_left"><span id = "lang_PVID">PVID :</span></div><div class="div_right"><input type="text" id="INPUT_PVID" maxlength="4" style="width:180px"/><span id = "lang_pvlan_set"> (1 - 4094)</span></div>
+                    <div id="vidlist">
+						<div class="div_left"><span id = "lang_VIDList">VLAN ID List :</span></div><div class="div_right"><input type="text" id="INPUT_VIDList" maxlength="160"  style="width:180px"/><span id = "lang_vlanlist_set"> (1,2,3,...)</span></div>
+					</div>
+                    <div id="untagvidlist">
+						<div class="div_left"><span id = "lang_UtagVIDList">Untag VLAN ID List :</span></div><div class="div_right"><input type="text" id="INPUT_UntagVIDList" maxlength="160" style="width:180px"/><span id = "lang_untagvlanlist_set"> (1,2,3,...)</span></div>
+					</div>
+			</div>
+			<div class="div_button"><input type="submit" id = "Apply" value="Apply" onClick="uiSubmit()" /> <input type="button" id = "Cancel" value="Cancel" onClick="uiPageRefresh()" /></div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5><span id = "lang_help_hint">Helpful Hints...</span></h5>
+				<p id = "lang_help1">
+					You can configure VLAN on the selected LAN/WLAN port. 
+                                        The list can contain up to 32 VLAN IDs, and each two adjacent VLAN IDs must be separated by a comma.
+				</p>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>
+				

@@ -1,0 +1,1617 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+AMONG_DST	../extensions/ebt_among.c	24;"	d	file:
+AMONG_DST_F	../extensions/ebt_among.c	26;"	d	file:
+AMONG_SRC	../extensions/ebt_among.c	25;"	d	file:
+AMONG_SRC_F	../extensions/ebt_among.c	27;"	d	file:
+ARG_LIMIT	../extensions/ebt_limit.c	41;"	d	file:
+ARG_LIMIT_BURST	../extensions/ebt_limit.c	42;"	d	file:
+ARP_GRAT	../extensions/ebt_arp.c	26;"	d	file:
+ARP_HTYPE	../extensions/ebt_arp.c	20;"	d	file:
+ARP_IP_D	../extensions/ebt_arp.c	23;"	d	file:
+ARP_IP_S	../extensions/ebt_arp.c	22;"	d	file:
+ARP_MAC_D	../extensions/ebt_arp.c	25;"	d	file:
+ARP_MAC_S	../extensions/ebt_arp.c	24;"	d	file:
+ARP_OPCODE	../extensions/ebt_arp.c	19;"	d	file:
+ARP_PTYPE	../extensions/ebt_arp.c	21;"	d	file:
+ATOMIC_ENV_VARIABLE	../include/ebtables_u.h	378;"	d
+BASE_CHAIN	../include/ebtables_u.h	371;"	d
+BINDIR	../Makefile	/^BINDIR:=\/usr\/local\/sbin$/;"	m
+BINFILE	../Makefile	/^BINFILE:=$(BINPATH)ebtables$/;"	m
+BINPATH	../Makefile	/^BINPATH?=$(INSTALL_DIR)\/bin\/$/;"	m
+BPDU_TYPE_CONFIG	../extensions/ebt_stp.c	47;"	d	file:
+BPDU_TYPE_CONFIG_STRING	../extensions/ebt_stp.c	49;"	d	file:
+BPDU_TYPE_TCN	../extensions/ebt_stp.c	48;"	d	file:
+BPDU_TYPE_TCN_STRING	../extensions/ebt_stp.c	50;"	d	file:
+BRNF_BRIDGED	../include/linux/netfilter_bridge.h	45;"	d
+BRNF_BRIDGED_DNAT	../include/linux/netfilter_bridge.h	43;"	d
+BRNF_DONT_TAKE_PARENT	../include/linux/netfilter_bridge.h	44;"	d
+BRNF_NF_BRIDGE_PREROUTING	../include/linux/netfilter_bridge.h	46;"	d
+BRNF_PKT_TYPE	../include/linux/netfilter_bridge.h	42;"	d
+BUFLEN	../examples/ulog/test_ulog.c	79;"	d	file:
+CFLAGS	../Makefile	/^CFLAGS:=-Wall -Wunused -Os -s$/;"	m
+CHECK_IF_MISSING_VALUE	../extensions/ebt_realdev.c	43;"	d	file:
+CHECK_IF_MISSING_VALUE	../extensions/ebt_tbs_vlan_m.c	44;"	d	file:
+CHECK_IF_MISSING_VALUE	../extensions/ebt_vlan.c	24;"	d	file:
+CHECK_INV_FLAG	../extensions/ebt_realdev.c	44;"	d	file:
+CHECK_INV_FLAG	../extensions/ebt_tbs_vlan_m.c	45;"	d	file:
+CHECK_INV_FLAG	../extensions/ebt_vlan.c	25;"	d	file:
+CHECK_RANGE	../extensions/ebt_realdev.c	45;"	d	file:
+CHECK_RANGE	../extensions/ebt_tbs_vlan_m.c	46;"	d	file:
+CHECK_RANGE	../extensions/ebt_vlan.c	26;"	d	file:
+CHECK_TYPE	../include/linux/netfilter_bridge/ebt_802_3.h	13;"	d
+CLASS_SETVAL	../extensions/ebt_classify.c	19;"	d	file:
+CLASS_TARGET	../extensions/ebt_classify.c	20;"	d	file:
+CLEAR_BASE_CHAIN_BIT	../include/ebtables_u.h	373;"	d
+CNT_ADD	../include/ebtables_u.h	340;"	d
+CNT_CHANGE	../include/ebtables_u.h	341;"	d
+CNT_DEL	../include/ebtables_u.h	339;"	d
+CNT_NORM	../include/ebtables_u.h	338;"	d
+CODE	../extensions/ebt_log.c	/^} CODE;$/;"	t	typeref:struct:_code	file:
+CP_NO_LIMIT_N	../extensions/ebt_ulog.c	20;"	d	file:
+CP_NO_LIMIT_S	../extensions/ebt_ulog.c	19;"	d	file:
+CVSDIRS	../Makefile	/^CVSDIRS:=CVS extensions\/CVS examples\/CVS examples\/perf_test\/CVS \\$/;"	m
+DEBUG_QUEUE	../examples/ulog/test_ulog.c	78;"	d	file:
+DECLARE_BITMAP	../include/linux/types.h	9;"	d
+DECLARE_MAC_BUF	../include/linux/if_ether.h	145;"	d
+DESTDIR	../Makefile	/^DESTDIR:=$/;"	m
+DIR	../Makefile	/^DIR:=$(PROGNAME)-v$(PROGVERSION)$/;"	m
+EBTABLES_U_H	../include/ebtables_u.h	25;"	d
+EBTD_ARGC_MAX	../Makefile	/^EBTD_ARGC_MAX?=50$/;"	m
+EBTD_CMDLINE_MAXLN	../Makefile	/^EBTD_CMDLINE_MAXLN?=2048$/;"	m
+EBT_802_3	../include/ebtables.h	97;"	d
+EBT_802_3	../include/linux/netfilter_bridge/ebtables.h	97;"	d
+EBT_802_3_MASK	../include/linux/netfilter_bridge/ebt_802_3.h	23;"	d
+EBT_802_3_MATCH	../include/linux/netfilter_bridge/ebt_802_3.h	7;"	d
+EBT_802_3_SAP	../include/linux/netfilter_bridge/ebt_802_3.h	4;"	d
+EBT_802_3_TYPE	../include/linux/netfilter_bridge/ebt_802_3.h	5;"	d
+EBT_ACCEPT	../include/ebtables.h	25;"	d
+EBT_ACCEPT	../include/linux/netfilter_bridge/ebtables.h	25;"	d
+EBT_ALIGN	../include/ebtables_u.h	43;"	d
+EBT_AMONG_DST	../include/linux/netfilter_bridge/ebt_among.h	4;"	d
+EBT_AMONG_DST_NEG	../include/linux/netfilter_bridge/ebt_among.h	55;"	d
+EBT_AMONG_MATCH	../include/linux/netfilter_bridge/ebt_among.h	63;"	d
+EBT_AMONG_SRC	../include/linux/netfilter_bridge/ebt_among.h	5;"	d
+EBT_AMONG_SRC_NEG	../include/linux/netfilter_bridge/ebt_among.h	56;"	d
+EBT_ARPREPLY_TARGET	../include/linux/netfilter_bridge/ebt_arpreply.h	9;"	d
+EBT_ARP_DST_IP	../include/linux/netfilter_bridge/ebt_arp.h	8;"	d
+EBT_ARP_DST_MAC	../include/linux/netfilter_bridge/ebt_arp.h	10;"	d
+EBT_ARP_GRAT	../include/linux/netfilter_bridge/ebt_arp.h	11;"	d
+EBT_ARP_HTYPE	../include/linux/netfilter_bridge/ebt_arp.h	5;"	d
+EBT_ARP_MASK	../include/linux/netfilter_bridge/ebt_arp.h	12;"	d
+EBT_ARP_MATCH	../include/linux/netfilter_bridge/ebt_arp.h	15;"	d
+EBT_ARP_OPCODE	../include/linux/netfilter_bridge/ebt_arp.h	4;"	d
+EBT_ARP_PTYPE	../include/linux/netfilter_bridge/ebt_arp.h	6;"	d
+EBT_ARP_SRC_IP	../include/linux/netfilter_bridge/ebt_arp.h	7;"	d
+EBT_ARP_SRC_MAC	../include/linux/netfilter_bridge/ebt_arp.h	9;"	d
+EBT_BASE_CTL	../include/ebtables.h	193;"	d
+EBT_BASE_CTL	../include/linux/netfilter_bridge/ebtables.h	193;"	d
+EBT_CHAIN_MAXNAMELEN	../include/ebtables.h	21;"	d
+EBT_CHAIN_MAXNAMELEN	../include/linux/netfilter_bridge/ebtables.h	21;"	d
+EBT_CLASSIFY_TARGET	../include/linux/netfilter_bridge/ebt_classify.h	10;"	d
+EBT_CONTINUE	../include/ebtables.h	27;"	d
+EBT_CONTINUE	../include/linux/netfilter_bridge/ebtables.h	27;"	d
+EBT_DESTMAC	../include/ebtables.h	99;"	d
+EBT_DESTMAC	../include/linux/netfilter_bridge/ebtables.h	99;"	d
+EBT_DNAT_TARGET	../include/linux/netfilter_bridge/ebt_nat.h	12;"	d
+EBT_DROP	../include/ebtables.h	26;"	d
+EBT_DROP	../include/linux/netfilter_bridge/ebtables.h	26;"	d
+EBT_ENTRY_ITERATE	../include/ebtables.h	253;"	d
+EBT_ENTRY_ITERATE	../include/linux/netfilter_bridge/ebtables.h	253;"	d
+EBT_ENTRY_OR_ENTRIES	../include/ebtables.h	94;"	d
+EBT_ENTRY_OR_ENTRIES	../include/linux/netfilter_bridge/ebtables.h	94;"	d
+EBT_FTOS_TARGET	../include/linux/netfilter_bridge/ebt_ftos_t.h	11;"	d
+EBT_FUNCTION_MAXNAMELEN	../include/ebtables.h	22;"	d
+EBT_FUNCTION_MAXNAMELEN	../include/linux/netfilter_bridge/ebtables.h	22;"	d
+EBT_F_MASK	../include/ebtables.h	100;"	d
+EBT_F_MASK	../include/linux/netfilter_bridge/ebtables.h	100;"	d
+EBT_IDEST	../include/ebtables.h	107;"	d
+EBT_IDEST	../include/linux/netfilter_bridge/ebtables.h	107;"	d
+EBT_IIN	../include/ebtables.h	104;"	d
+EBT_IIN	../include/linux/netfilter_bridge/ebtables.h	104;"	d
+EBT_ILOGICALIN	../include/ebtables.h	108;"	d
+EBT_ILOGICALIN	../include/linux/netfilter_bridge/ebtables.h	108;"	d
+EBT_ILOGICALOUT	../include/ebtables.h	109;"	d
+EBT_ILOGICALOUT	../include/linux/netfilter_bridge/ebtables.h	109;"	d
+EBT_INV_MASK	../include/ebtables.h	110;"	d
+EBT_INV_MASK	../include/linux/netfilter_bridge/ebtables.h	110;"	d
+EBT_IOUT	../include/ebtables.h	105;"	d
+EBT_IOUT	../include/linux/netfilter_bridge/ebtables.h	105;"	d
+EBT_IP6_DEST	../include/linux/netfilter_bridge/ebt_ip6.h	16;"	d
+EBT_IP6_DPORT	../include/linux/netfilter_bridge/ebt_ip6.h	20;"	d
+EBT_IP6_MASK	../include/linux/netfilter_bridge/ebt_ip6.h	21;"	d
+EBT_IP6_MATCH	../include/linux/netfilter_bridge/ebt_ip6.h	23;"	d
+EBT_IP6_PROTO	../include/linux/netfilter_bridge/ebt_ip6.h	18;"	d
+EBT_IP6_SOURCE	../include/linux/netfilter_bridge/ebt_ip6.h	15;"	d
+EBT_IP6_SPORT	../include/linux/netfilter_bridge/ebt_ip6.h	19;"	d
+EBT_IP6_TCLASS	../include/linux/netfilter_bridge/ebt_ip6.h	17;"	d
+EBT_IPROTO	../include/ebtables.h	103;"	d
+EBT_IPROTO	../include/linux/netfilter_bridge/ebtables.h	103;"	d
+EBT_IP_DEST	../include/linux/netfilter_bridge/ebt_ip.h	19;"	d
+EBT_IP_DPORT	../include/linux/netfilter_bridge/ebt_ip.h	23;"	d
+EBT_IP_MASK	../include/linux/netfilter_bridge/ebt_ip.h	24;"	d
+EBT_IP_MATCH	../include/linux/netfilter_bridge/ebt_ip.h	26;"	d
+EBT_IP_PROTO	../include/linux/netfilter_bridge/ebt_ip.h	21;"	d
+EBT_IP_SOURCE	../include/linux/netfilter_bridge/ebt_ip.h	18;"	d
+EBT_IP_SPORT	../include/linux/netfilter_bridge/ebt_ip.h	22;"	d
+EBT_IP_TOS	../include/linux/netfilter_bridge/ebt_ip.h	20;"	d
+EBT_ISOURCE	../include/ebtables.h	106;"	d
+EBT_ISOURCE	../include/linux/netfilter_bridge/ebtables.h	106;"	d
+EBT_LIMIT_AVG	../extensions/ebt_limit.c	19;"	d	file:
+EBT_LIMIT_BURST	../extensions/ebt_limit.c	20;"	d	file:
+EBT_LIMIT_MATCH	../include/linux/netfilter_bridge/ebt_limit.h	4;"	d
+EBT_LIMIT_SCALE	../include/linux/netfilter_bridge/ebt_limit.h	7;"	d
+EBT_LOG_ARP	../include/linux/netfilter_bridge/ebt_log.h	5;"	d
+EBT_LOG_IP	../include/linux/netfilter_bridge/ebt_log.h	4;"	d
+EBT_LOG_IP6	../include/linux/netfilter_bridge/ebt_log.h	7;"	d
+EBT_LOG_MASK	../include/linux/netfilter_bridge/ebt_log.h	8;"	d
+EBT_LOG_NFLOG	../include/linux/netfilter_bridge/ebt_log.h	6;"	d
+EBT_LOG_PREFIX_SIZE	../include/linux/netfilter_bridge/ebt_log.h	9;"	d
+EBT_LOG_WATCHER	../include/linux/netfilter_bridge/ebt_log.h	10;"	d
+EBT_MARK_AND	../include/linux/netfilter_bridge/ebt_mark_m.h	4;"	d
+EBT_MARK_MASK	../include/linux/netfilter_bridge/ebt_mark_m.h	6;"	d
+EBT_MARK_MATCH	../include/linux/netfilter_bridge/ebt_mark_m.h	13;"	d
+EBT_MARK_OR	../include/linux/netfilter_bridge/ebt_mark_m.h	5;"	d
+EBT_MARK_TARGET	../include/linux/netfilter_bridge/ebt_mark_t.h	22;"	d
+EBT_MATCH_ITERATE	../include/ebtables.h	207;"	d
+EBT_MATCH_ITERATE	../include/linux/netfilter_bridge/ebtables.h	207;"	d
+EBT_MIN_ALIGN	../include/ebtables_u.h	41;"	d
+EBT_NFLOG_DEFAULT_GROUP	../include/linux/netfilter_bridge/ebt_nflog.h	9;"	d
+EBT_NFLOG_DEFAULT_THRESHOLD	../include/linux/netfilter_bridge/ebt_nflog.h	10;"	d
+EBT_NFLOG_MASK	../include/linux/netfilter_bridge/ebt_nflog.h	4;"	d
+EBT_NFLOG_PREFIX_SIZE	../include/linux/netfilter_bridge/ebt_nflog.h	6;"	d
+EBT_NFLOG_WATCHER	../include/linux/netfilter_bridge/ebt_nflog.h	7;"	d
+EBT_NOPROTO	../include/ebtables.h	96;"	d
+EBT_NOPROTO	../include/linux/netfilter_bridge/ebtables.h	96;"	d
+EBT_ORI_MAX_CHAINS	../include/ebtables_u.h	67;"	d
+EBT_PKTTYPE_MATCH	../include/linux/netfilter_bridge/ebt_pkttype.h	9;"	d
+EBT_REDIRECT_TARGET	../include/linux/netfilter_bridge/ebt_redirect.h	9;"	d
+EBT_RETURN	../include/ebtables.h	28;"	d
+EBT_RETURN	../include/linux/netfilter_bridge/ebtables.h	28;"	d
+EBT_SNAT_TARGET	../include/linux/netfilter_bridge/ebt_nat.h	11;"	d
+EBT_SOURCEMAC	../include/ebtables.h	98;"	d
+EBT_SOURCEMAC	../include/linux/netfilter_bridge/ebtables.h	98;"	d
+EBT_SO_GET_ENTRIES	../include/ebtables.h	200;"	d
+EBT_SO_GET_ENTRIES	../include/linux/netfilter_bridge/ebtables.h	200;"	d
+EBT_SO_GET_INFO	../include/ebtables.h	199;"	d
+EBT_SO_GET_INFO	../include/linux/netfilter_bridge/ebtables.h	199;"	d
+EBT_SO_GET_INIT_ENTRIES	../include/ebtables.h	202;"	d
+EBT_SO_GET_INIT_ENTRIES	../include/linux/netfilter_bridge/ebtables.h	202;"	d
+EBT_SO_GET_INIT_INFO	../include/ebtables.h	201;"	d
+EBT_SO_GET_INIT_INFO	../include/linux/netfilter_bridge/ebtables.h	201;"	d
+EBT_SO_GET_MAX	../include/ebtables.h	203;"	d
+EBT_SO_GET_MAX	../include/linux/netfilter_bridge/ebtables.h	203;"	d
+EBT_SO_SET_COUNTERS	../include/ebtables.h	196;"	d
+EBT_SO_SET_COUNTERS	../include/linux/netfilter_bridge/ebtables.h	196;"	d
+EBT_SO_SET_ENTRIES	../include/ebtables.h	195;"	d
+EBT_SO_SET_ENTRIES	../include/linux/netfilter_bridge/ebtables.h	195;"	d
+EBT_SO_SET_MAX	../include/ebtables.h	197;"	d
+EBT_SO_SET_MAX	../include/linux/netfilter_bridge/ebtables.h	197;"	d
+EBT_STANDARD_TARGET	../include/ebtables.h	155;"	d
+EBT_STANDARD_TARGET	../include/linux/netfilter_bridge/ebtables.h	155;"	d
+EBT_STP_CONFIG_MASK	../include/linux/netfilter_bridge/ebt_stp.h	19;"	d
+EBT_STP_FLAGS	../include/linux/netfilter_bridge/ebt_stp.h	6;"	d
+EBT_STP_FWDD	../include/linux/netfilter_bridge/ebt_stp.h	16;"	d
+EBT_STP_HELLOTIME	../include/linux/netfilter_bridge/ebt_stp.h	15;"	d
+EBT_STP_MASK	../include/linux/netfilter_bridge/ebt_stp.h	18;"	d
+EBT_STP_MATCH	../include/linux/netfilter_bridge/ebt_stp.h	21;"	d
+EBT_STP_MAXAGE	../include/linux/netfilter_bridge/ebt_stp.h	14;"	d
+EBT_STP_MSGAGE	../include/linux/netfilter_bridge/ebt_stp.h	13;"	d
+EBT_STP_PORT	../include/linux/netfilter_bridge/ebt_stp.h	12;"	d
+EBT_STP_ROOTADDR	../include/linux/netfilter_bridge/ebt_stp.h	8;"	d
+EBT_STP_ROOTCOST	../include/linux/netfilter_bridge/ebt_stp.h	9;"	d
+EBT_STP_ROOTPRIO	../include/linux/netfilter_bridge/ebt_stp.h	7;"	d
+EBT_STP_SENDERADDR	../include/linux/netfilter_bridge/ebt_stp.h	11;"	d
+EBT_STP_SENDERPRIO	../include/linux/netfilter_bridge/ebt_stp.h	10;"	d
+EBT_STP_TYPE	../include/linux/netfilter_bridge/ebt_stp.h	4;"	d
+EBT_TABLE_MAXNAMELEN	../include/ebtables.h	20;"	d
+EBT_TABLE_MAXNAMELEN	../include/linux/netfilter_bridge/ebtables.h	20;"	d
+EBT_TIME_DAYS	../extensions/ebt_time.c	188;"	d	file:
+EBT_TIME_MATCH	../include/linux/netfilter_bridge/ebt_time.h	12;"	d
+EBT_TIME_START	../extensions/ebt_time.c	186;"	d	file:
+EBT_TIME_STOP	../extensions/ebt_time.c	187;"	d	file:
+EBT_ULOG_DEFAULT_NLGROUP	../include/linux/netfilter_bridge/ebt_ulog.h	4;"	d
+EBT_ULOG_DEFAULT_QTHRESHOLD	../include/linux/netfilter_bridge/ebt_ulog.h	5;"	d
+EBT_ULOG_MAXNLGROUPS	../include/linux/netfilter_bridge/ebt_ulog.h	6;"	d
+EBT_ULOG_MAX_QLEN	../include/linux/netfilter_bridge/ebt_ulog.h	8;"	d
+EBT_ULOG_PREFIX_LEN	../include/linux/netfilter_bridge/ebt_ulog.h	7;"	d
+EBT_ULOG_VERSION	../include/linux/netfilter_bridge/ebt_ulog.h	10;"	d
+EBT_ULOG_WATCHER	../include/linux/netfilter_bridge/ebt_ulog.h	9;"	d
+EBT_VERDICT_BITS	../include/ebtables.h	33;"	d
+EBT_VERDICT_BITS	../include/linux/netfilter_bridge/ebtables.h	33;"	d
+EBT_VLAN_ENCAP	../include/linux/netfilter_bridge/ebt_vlan.h	6;"	d
+EBT_VLAN_ID	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	4;"	d
+EBT_VLAN_ID	../include/linux/netfilter_bridge/ebt_vlan.h	4;"	d
+EBT_VLAN_MASK	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	6;"	d
+EBT_VLAN_MASK	../include/linux/netfilter_bridge/ebt_vlan.h	7;"	d
+EBT_VLAN_MATCH	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	7;"	d
+EBT_VLAN_MATCH	../include/linux/netfilter_bridge/ebt_vlan.h	8;"	d
+EBT_VLAN_PRIO	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	5;"	d
+EBT_VLAN_PRIO	../include/linux/netfilter_bridge/ebt_vlan.h	5;"	d
+EBT_VLAN_TARGET	../include/linux/netfilter_bridge/ebt_vlan_t.h	13;"	d
+EBT_WATCHER_ITERATE	../include/ebtables.h	230;"	d
+EBT_WATCHER_ITERATE	../include/linux/netfilter_bridge/ebtables.h	230;"	d
+EBT_WMM_MARK_TARGET	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	25;"	d
+ERRORMSG_MAXLEN	../include/ebtables_u.h	44;"	d
+ETCDIR	../Makefile	/^ETCDIR:=\/etc$/;"	m
+ETHERTYPESFILE	../Makefile	/^ETHERTYPESFILE:=$(ETHERTYPESPATH)\/ethertypes$/;"	m
+ETHERTYPESPATH	../Makefile	/^ETHERTYPESPATH?=$(INSTALL_DIR)\/etc$/;"	m
+ETH_ALEN	../include/linux/if_ether.h	31;"	d
+ETH_DATA_LEN	../include/linux/if_ether.h	34;"	d
+ETH_FCS_LEN	../include/linux/if_ether.h	36;"	d
+ETH_FRAME_LEN	../include/linux/if_ether.h	35;"	d
+ETH_HLEN	../include/linux/if_ether.h	32;"	d
+ETH_P_1588	../include/linux/if_ether.h	81;"	d
+ETH_P_8021Q	../include/linux/if_ether.h	63;"	d
+ETH_P_802_2	../include/linux/if_ether.h	93;"	d
+ETH_P_802_3	../include/linux/if_ether.h	90;"	d
+ETH_P_AARP	../include/linux/if_ether.h	62;"	d
+ETH_P_ALL	../include/linux/if_ether.h	92;"	d
+ETH_P_AOE	../include/linux/if_ether.h	79;"	d
+ETH_P_ARCNET	../include/linux/if_ether.h	107;"	d
+ETH_P_ARP	../include/linux/if_ether.h	47;"	d
+ETH_P_ATALK	../include/linux/if_ether.h	61;"	d
+ETH_P_ATMFATE	../include/linux/if_ether.h	75;"	d
+ETH_P_ATMMPOA	../include/linux/if_ether.h	74;"	d
+ETH_P_AX25	../include/linux/if_ether.h	91;"	d
+ETH_P_BPQ	../include/linux/if_ether.h	48;"	d
+ETH_P_CAN	../include/linux/if_ether.h	99;"	d
+ETH_P_CONTROL	../include/linux/if_ether.h	103;"	d
+ETH_P_CUST	../include/linux/if_ether.h	57;"	d
+ETH_P_DDCMP	../include/linux/if_ether.h	95;"	d
+ETH_P_DEC	../include/linux/if_ether.h	51;"	d
+ETH_P_DIAG	../include/linux/if_ether.h	56;"	d
+ETH_P_DNA_DL	../include/linux/if_ether.h	52;"	d
+ETH_P_DNA_RC	../include/linux/if_ether.h	53;"	d
+ETH_P_DNA_RT	../include/linux/if_ether.h	54;"	d
+ETH_P_DSA	../include/linux/if_ether.h	108;"	d
+ETH_P_ECONET	../include/linux/if_ether.h	105;"	d
+ETH_P_EDSA	../include/linux/if_ether.h	84;"	d
+ETH_P_FCOE	../include/linux/if_ether.h	82;"	d
+ETH_P_FIP	../include/linux/if_ether.h	83;"	d
+ETH_P_HDLC	../include/linux/if_ether.h	106;"	d
+ETH_P_IEEE802154	../include/linux/if_ether.h	111;"	d
+ETH_P_IEEEPUP	../include/linux/if_ether.h	49;"	d
+ETH_P_IEEEPUPAT	../include/linux/if_ether.h	50;"	d
+ETH_P_IP	../include/linux/if_ether.h	45;"	d
+ETH_P_IPV6	../include/linux/if_ether.h	65;"	d
+ETH_P_IPX	../include/linux/if_ether.h	64;"	d
+ETH_P_IRDA	../include/linux/if_ether.h	104;"	d
+ETH_P_LAT	../include/linux/if_ether.h	55;"	d
+ETH_P_LOCALTALK	../include/linux/if_ether.h	98;"	d
+ETH_P_LOOP	../include/linux/if_ether.h	42;"	d
+ETH_P_MOBITEX	../include/linux/if_ether.h	102;"	d
+ETH_P_MPLS_MC	../include/linux/if_ether.h	73;"	d
+ETH_P_MPLS_UC	../include/linux/if_ether.h	72;"	d
+ETH_P_PAE	../include/linux/if_ether.h	78;"	d
+ETH_P_PAUSE	../include/linux/if_ether.h	66;"	d
+ETH_P_PHONET	../include/linux/if_ether.h	110;"	d
+ETH_P_PPPTALK	../include/linux/if_ether.h	100;"	d
+ETH_P_PPP_DISC	../include/linux/if_ether.h	70;"	d
+ETH_P_PPP_MP	../include/linux/if_ether.h	97;"	d
+ETH_P_PPP_SES	../include/linux/if_ether.h	71;"	d
+ETH_P_PUP	../include/linux/if_ether.h	43;"	d
+ETH_P_PUPAT	../include/linux/if_ether.h	44;"	d
+ETH_P_RARP	../include/linux/if_ether.h	60;"	d
+ETH_P_SCA	../include/linux/if_ether.h	58;"	d
+ETH_P_SLOW	../include/linux/if_ether.h	67;"	d
+ETH_P_SNAP	../include/linux/if_ether.h	94;"	d
+ETH_P_TEB	../include/linux/if_ether.h	59;"	d
+ETH_P_TIPC	../include/linux/if_ether.h	80;"	d
+ETH_P_TRAILER	../include/linux/if_ether.h	109;"	d
+ETH_P_TR_802_2	../include/linux/if_ether.h	101;"	d
+ETH_P_WAN_PPP	../include/linux/if_ether.h	96;"	d
+ETH_P_WCCP	../include/linux/if_ether.h	68;"	d
+ETH_P_X25	../include/linux/if_ether.h	46;"	d
+ETH_ZLEN	../include/linux/if_ether.h	33;"	d
+EXEC_STYLE_DAEMON	../include/ebtables_u.h	38;"	d
+EXEC_STYLE_PRG	../include/ebtables_u.h	37;"	d
+EXT_TABLES-y	../extensions/Makefile	/^EXT_TABLES-y :=$/;"	m
+FILL_TARGET	../include/ebtables_u.h	354;"	d
+FILTER_VALID_HOOKS	../extensions/ebtable_filter.c	12;"	d	file:
+FLAG_LIMIT	../extensions/ebt_limit.c	39;"	d	file:
+FLAG_LIMIT_BURST	../extensions/ebt_limit.c	40;"	d	file:
+FLAG_TC	../extensions/ebt_stp.c	52;"	d	file:
+FLAG_TC_ACK	../extensions/ebt_stp.c	53;"	d	file:
+FLAG_TC_ACK_STRING	../extensions/ebt_stp.c	55;"	d	file:
+FLAG_TC_STRING	../extensions/ebt_stp.c	54;"	d	file:
+FTOS_8021QFTOS	../extensions/ebt_ftos.c	28;"	d	file:
+FTOS_8021QFTOS	../include/linux/netfilter_bridge/ebt_ftos_t.h	16;"	d
+FTOS_SETFTOS	../extensions/ebt_ftos.c	26;"	d	file:
+FTOS_SETFTOS	../include/linux/netfilter_bridge/ebt_ftos_t.h	14;"	d
+FTOS_TARGET	../extensions/ebt_ftos.c	25;"	d	file:
+FTOS_TARGET	../include/linux/netfilter_bridge/ebt_ftos_t.h	13;"	d
+FTOS_WMMFTOS	../extensions/ebt_ftos.c	27;"	d	file:
+FTOS_WMMFTOS	../include/linux/netfilter_bridge/ebt_ftos_t.h	15;"	d
+GET_BITMASK	../extensions/ebt_realdev.c	40;"	d	file:
+GET_BITMASK	../extensions/ebt_tbs_vlan_m.c	41;"	d	file:
+GET_BITMASK	../extensions/ebt_vlan.c	21;"	d	file:
+HELP_TITLE	../extensions/ebt_tbs_vlan_m.c	71;"	d	file:
+IF_WILDCARD	../ebtables.c	166;"	d	file:
+INITDIR	../Makefile	/^INITDIR:=\/etc\/rc.d\/init.d$/;"	m
+INV_FLAG	../extensions/ebt_realdev.c	42;"	d	file:
+INV_FLAG	../extensions/ebt_tbs_vlan_m.c	43;"	d	file:
+INV_FLAG	../extensions/ebt_vlan.c	23;"	d	file:
+IPPROTO_DCCP	../include/ebtables_u.h	34;"	d
+IPPROTO_SCTP	../include/ebtables_u.h	31;"	d
+IP_DEST	../extensions/ebt_ip.c	22;"	d	file:
+IP_DEST	../extensions/ebt_ip6.c	25;"	d	file:
+IP_DPORT	../extensions/ebt_ip.c	26;"	d	file:
+IP_DPORT	../extensions/ebt_ip6.c	29;"	d	file:
+IP_PROTO	../extensions/ebt_ip.c	24;"	d	file:
+IP_PROTO	../extensions/ebt_ip6.c	27;"	d	file:
+IP_SOURCE	../extensions/ebt_ip.c	21;"	d	file:
+IP_SOURCE	../extensions/ebt_ip6.c	24;"	d	file:
+IP_SPORT	../extensions/ebt_ip.c	25;"	d	file:
+IP_SPORT	../extensions/ebt_ip6.c	28;"	d	file:
+IP_TCLASS	../extensions/ebt_ip6.c	26;"	d	file:
+IP_myTOS	../extensions/ebt_ip.c	23;"	d	file:
+IS_UI	../include/linux/netfilter_bridge/ebt_802_3.h	21;"	d
+KERNEL_INCLUDES	../Makefile	/^KERNEL_INCLUDES?=include\/$/;"	m
+LD	../Makefile	/^LD:=ld$/;"	m
+LIBDIR	../Makefile	/^LIBDIR:=\/usr\/lib$/;"	m
+LIST_C	../ebtables.c	181;"	d	file:
+LIST_MAC2	../ebtables.c	183;"	d	file:
+LIST_N	../ebtables.c	180;"	d	file:
+LIST_X	../ebtables.c	182;"	d	file:
+LOG_ALERT	../extensions/ebt_log.c	21;"	d	file:
+LOG_ARP	../extensions/ebt_log.c	60;"	d	file:
+LOG_CRIT	../extensions/ebt_log.c	22;"	d	file:
+LOG_DEBUG	../extensions/ebt_log.c	27;"	d	file:
+LOG_DEFAULT_LEVEL	../extensions/ebt_log.c	29;"	d	file:
+LOG_EMERG	../extensions/ebt_log.c	20;"	d	file:
+LOG_ERR	../extensions/ebt_log.c	23;"	d	file:
+LOG_INFO	../extensions/ebt_log.c	26;"	d	file:
+LOG_IP	../extensions/ebt_log.c	61;"	d	file:
+LOG_IP6	../extensions/ebt_log.c	63;"	d	file:
+LOG_LEVEL	../extensions/ebt_log.c	59;"	d	file:
+LOG_LOG	../extensions/ebt_log.c	62;"	d	file:
+LOG_NOTICE	../extensions/ebt_log.c	25;"	d	file:
+LOG_PREFIX	../extensions/ebt_log.c	58;"	d	file:
+LOG_WARNING	../extensions/ebt_log.c	24;"	d	file:
+MAC_BUF_SIZE	../include/linux/if_ether.h	144;"	d
+MAC_FMT	../include/linux/if_ether.h	143;"	d
+MANDIR	../Makefile	/^MANDIR:=\/usr\/local\/man$/;"	m
+MARK	../extensions/ebt_mark_m.c	16;"	d	file:
+MARK_ANDMARK	../extensions/ebt_mark.c	16;"	d	file:
+MARK_ANDRMARK	../extensions/ebt_mark.c	17;"	d	file:
+MARK_AND_VALUE	../include/linux/netfilter_bridge/ebt_mark_t.h	13;"	d
+MARK_ORMARK	../extensions/ebt_mark.c	14;"	d	file:
+MARK_ORRMARK	../extensions/ebt_mark.c	15;"	d	file:
+MARK_OR_VALUE	../include/linux/netfilter_bridge/ebt_mark_t.h	12;"	d
+MARK_SETMARK	../extensions/ebt_mark.c	11;"	d	file:
+MARK_SETRMARK	../extensions/ebt_mark.c	12;"	d	file:
+MARK_SET_VALUE	../include/linux/netfilter_bridge/ebt_mark_t.h	11;"	d
+MARK_TARGET	../extensions/ebt_mark.c	10;"	d	file:
+MARK_XOR_VALUE	../include/linux/netfilter_bridge/ebt_mark_t.h	14;"	d
+MAXALIASES	../getethertype.c	49;"	d	file:
+NAME_VLAN_ENCAP	../extensions/ebt_vlan.c	30;"	d	file:
+NAME_VLAN_ID	../extensions/ebt_tbs_vlan_m.c	48;"	d	file:
+NAME_VLAN_ID	../extensions/ebt_vlan.c	28;"	d	file:
+NAME_VLAN_PRIO	../extensions/ebt_tbs_vlan_m.c	49;"	d	file:
+NAME_VLAN_PRIO	../extensions/ebt_vlan.c	29;"	d	file:
+NAT_ARP_BIT	../include/linux/netfilter_bridge/ebt_nat.h	4;"	d
+NAT_D	../extensions/ebt_nat.c	20;"	d	file:
+NAT_D_TARGET	../extensions/ebt_nat.c	22;"	d	file:
+NAT_S	../extensions/ebt_nat.c	19;"	d	file:
+NAT_S_ARP	../extensions/ebt_nat.c	23;"	d	file:
+NAT_S_TARGET	../extensions/ebt_nat.c	21;"	d	file:
+NAT_VALID_HOOKS	../extensions/ebtable_nat.c	12;"	d	file:
+NFLOG_GROUP	../extensions/ebt_nflog.c	/^	NFLOG_GROUP = 0x1,$/;"	e	enum:__anon1	file:
+NFLOG_NFLOG	../extensions/ebt_nflog.c	/^	NFLOG_NFLOG = 0x16,$/;"	e	enum:__anon1	file:
+NFLOG_PREFIX	../extensions/ebt_nflog.c	/^	NFLOG_PREFIX = 0x2,$/;"	e	enum:__anon1	file:
+NFLOG_RANGE	../extensions/ebt_nflog.c	/^	NFLOG_RANGE = 0x4,$/;"	e	enum:__anon1	file:
+NFLOG_THRESHOLD	../extensions/ebt_nflog.c	/^	NFLOG_THRESHOLD = 0x8,$/;"	e	enum:__anon1	file:
+NF_BR_BROUTING	../include/linux/netfilter_bridge.h	24;"	d
+NF_BR_FORWARD	../include/linux/netfilter_bridge.h	18;"	d
+NF_BR_LOCAL_IN	../include/linux/netfilter_bridge.h	16;"	d
+NF_BR_LOCAL_OUT	../include/linux/netfilter_bridge.h	20;"	d
+NF_BR_NUMHOOKS	../include/linux/netfilter_bridge.h	25;"	d
+NF_BR_POST_ROUTING	../include/linux/netfilter_bridge.h	22;"	d
+NF_BR_PRE_ROUTING	../include/linux/netfilter_bridge.h	14;"	d
+NF_BR_PRI_BRNF	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_BRNF = 0,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_FILTER_BRIDGED	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_FILTER_BRIDGED = -200,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_FILTER_OTHER	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_FILTER_OTHER = 200,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_FIRST	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_FIRST = INT_MIN,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_LAST	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_LAST = INT_MAX,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_NAT_DST_BRIDGED	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_NAT_DST_BRIDGED = -300,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_NAT_DST_OTHER	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_NAT_DST_OTHER = 100,$/;"	e	enum:nf_br_hook_priorities
+NF_BR_PRI_NAT_SRC	../include/linux/netfilter_bridge.h	/^	NF_BR_PRI_NAT_SRC = 300,$/;"	e	enum:nf_br_hook_priorities
+NUMOPCODES	../extensions/ebt_arp.c	41;"	d	file:
+NUM_STANDARD_TARGETS	../include/ebtables.h	29;"	d
+NUM_STANDARD_TARGETS	../include/linux/netfilter_bridge/ebtables.h	29;"	d
+OBJECTS	../Makefile	/^OBJECTS:=$(OBJECTS2) $(EXT_OBJS) $(EXT_LIBS)$/;"	m
+OBJECTS2	../Makefile	/^OBJECTS2:=getethertype.o communication.o libebtc.o \\$/;"	m
+OPEN_METHOD_FILE	../ebtablesd.c	35;"	d	file:
+OPEN_METHOD_KERNEL	../ebtablesd.c	36;"	d	file:
+OPTION_OFFSET	../ebtables.c	116;"	d	file:
+OPT_ARP	../extensions/ebt_log.c	105;"	d	file:
+OPT_CLASS_TARGET	../extensions/ebt_classify.c	58;"	d	file:
+OPT_CNT_DECR	../ebtables.c	49;"	d	file:
+OPT_CNT_INCR	../ebtables.c	48;"	d	file:
+OPT_COMMAND	../ebtables.c	35;"	d	file:
+OPT_COMMANDS	../ebtables.c	33;"	d	file:
+OPT_COUNT	../ebtables.c	47;"	d	file:
+OPT_COUNT	../libebtc.c	466;"	d	file:
+OPT_CPRANGE	../extensions/ebt_ulog.c	63;"	d	file:
+OPT_DEST	../ebtables.c	42;"	d	file:
+OPT_DEST	../extensions/ebt_ip.c	120;"	d	file:
+OPT_DEST	../extensions/ebt_ip6.c	123;"	d	file:
+OPT_DNAT	../extensions/ebt_nat.c	112;"	d	file:
+OPT_DNAT_TARGET	../extensions/ebt_nat.c	113;"	d	file:
+OPT_DPORT	../extensions/ebt_ip.c	124;"	d	file:
+OPT_DPORT	../extensions/ebt_ip6.c	127;"	d	file:
+OPT_DST	../extensions/ebt_among.c	303;"	d	file:
+OPT_FTOS_8021QFTOS	../extensions/ebt_ftos.c	61;"	d	file:
+OPT_FTOS_SETFTOS	../extensions/ebt_ftos.c	59;"	d	file:
+OPT_FTOS_TARGET	../extensions/ebt_ftos.c	58;"	d	file:
+OPT_FTOS_WMMFTOS	../extensions/ebt_ftos.c	60;"	d	file:
+OPT_GRAT	../extensions/ebt_arp.c	94;"	d	file:
+OPT_HTYPE	../extensions/ebt_arp.c	88;"	d	file:
+OPT_IN	../ebtables.c	37;"	d	file:
+OPT_IP	../extensions/ebt_log.c	106;"	d	file:
+OPT_IP6	../extensions/ebt_log.c	108;"	d	file:
+OPT_IP_D	../extensions/ebt_arp.c	91;"	d	file:
+OPT_IP_S	../extensions/ebt_arp.c	90;"	d	file:
+OPT_JUMP	../ebtables.c	39;"	d	file:
+OPT_KERNELDATA	../ebtables-restore.c	30;"	d	file:
+OPT_KERNELDATA	../ebtables.c	46;"	d	file:
+OPT_KERNELDATA	../ebtablesd.c	32;"	d	file:
+OPT_LEVEL	../extensions/ebt_log.c	104;"	d	file:
+OPT_LOG	../extensions/ebt_log.c	107;"	d	file:
+OPT_LOGICALIN	../ebtables.c	44;"	d	file:
+OPT_LOGICALOUT	../ebtables.c	45;"	d	file:
+OPT_MAC_D	../extensions/ebt_arp.c	93;"	d	file:
+OPT_MAC_S	../extensions/ebt_arp.c	92;"	d	file:
+OPT_MARK	../extensions/ebt_mark_m.c	41;"	d	file:
+OPT_MARK_ANDMARK	../extensions/ebt_mark.c	66;"	d	file:
+OPT_MARK_ANDRMARK	../extensions/ebt_mark.c	67;"	d	file:
+OPT_MARK_ORMARK	../extensions/ebt_mark.c	64;"	d	file:
+OPT_MARK_ORRMARK	../extensions/ebt_mark.c	65;"	d	file:
+OPT_MARK_SETMARK	../extensions/ebt_mark.c	62;"	d	file:
+OPT_MARK_SETRMARK	../extensions/ebt_mark.c	63;"	d	file:
+OPT_MARK_TARGET	../extensions/ebt_mark.c	61;"	d	file:
+OPT_NLGROUP	../extensions/ebt_ulog.c	62;"	d	file:
+OPT_OPCODE	../extensions/ebt_arp.c	87;"	d	file:
+OPT_OUT	../ebtables.c	38;"	d	file:
+OPT_PREFIX	../extensions/ebt_log.c	103;"	d	file:
+OPT_PREFIX	../extensions/ebt_ulog.c	61;"	d	file:
+OPT_PROTO	../extensions/ebt_ip.c	122;"	d	file:
+OPT_PROTO	../extensions/ebt_ip6.c	125;"	d	file:
+OPT_PROTOCOL	../ebtables.c	40;"	d	file:
+OPT_PTYPE	../extensions/ebt_arp.c	89;"	d	file:
+OPT_QTHRESHOLD	../extensions/ebt_ulog.c	64;"	d	file:
+OPT_REDIRECT_TARGET	../extensions/ebt_redirect.c	39;"	d	file:
+OPT_REPLY_MAC	../extensions/ebt_arpreply.c	48;"	d	file:
+OPT_REPLY_TARGET	../extensions/ebt_arpreply.c	49;"	d	file:
+OPT_SET_CLASS	../extensions/ebt_classify.c	57;"	d	file:
+OPT_SNAT	../extensions/ebt_nat.c	76;"	d	file:
+OPT_SNAT_ARP	../extensions/ebt_nat.c	78;"	d	file:
+OPT_SNAT_TARGET	../extensions/ebt_nat.c	77;"	d	file:
+OPT_SOURCE	../ebtables.c	41;"	d	file:
+OPT_SOURCE	../extensions/ebt_ip.c	119;"	d	file:
+OPT_SOURCE	../extensions/ebt_ip6.c	122;"	d	file:
+OPT_SPORT	../extensions/ebt_ip.c	123;"	d	file:
+OPT_SPORT	../extensions/ebt_ip6.c	126;"	d	file:
+OPT_SRC	../extensions/ebt_among.c	304;"	d	file:
+OPT_TABLE	../ebtables.c	36;"	d	file:
+OPT_TCLASS	../extensions/ebt_ip6.c	124;"	d	file:
+OPT_TOS	../extensions/ebt_ip.c	121;"	d	file:
+OPT_ULOG	../extensions/ebt_ulog.c	65;"	d	file:
+OPT_VLAN_ENCAP	../extensions/ebt_vlan.c	51;"	d	file:
+OPT_VLAN_FLAGS	../extensions/ebt_tbs_vlan_m.c	67;"	d	file:
+OPT_VLAN_FLAGS	../extensions/ebt_vlan.c	52;"	d	file:
+OPT_VLAN_HEADER	../extensions/ebt_vlan_t.c	65;"	d	file:
+OPT_VLAN_ID	../extensions/ebt_tbs_vlan_m.c	65;"	d	file:
+OPT_VLAN_ID	../extensions/ebt_vlan.c	49;"	d	file:
+OPT_VLAN_PRIO	../extensions/ebt_tbs_vlan_m.c	66;"	d	file:
+OPT_VLAN_PRIO	../extensions/ebt_vlan.c	50;"	d	file:
+OPT_VLAN_PRIORITY	../extensions/ebt_vlan_t.c	64;"	d	file:
+OPT_VLAN_REDIR	../extensions/ebt_vlan_t.c	67;"	d	file:
+OPT_VLAN_SET	../extensions/ebt_vlan_t.c	63;"	d	file:
+OPT_VLAN_TARGET	../extensions/ebt_vlan_t.c	62;"	d	file:
+OPT_VLAN_UNTAG	../extensions/ebt_vlan_t.c	66;"	d	file:
+OPT_WMM_MARK_POS	../extensions/ebt_wmm_mark.c	51;"	d	file:
+OPT_WMM_MARK_SET	../extensions/ebt_wmm_mark.c	52;"	d	file:
+OPT_WMM_MARK_TAG	../extensions/ebt_wmm_mark.c	50;"	d	file:
+OPT_WMM_MARK_TARGET	../extensions/ebt_wmm_mark.c	49;"	d	file:
+OPT_ZERO	../ebtables.c	43;"	d	file:
+PIPE	../Makefile	/^PIPE=$(PIPE_DIR)\/ebtablesd_pipe$/;"	m
+PIPE_DIR	../Makefile	/^PIPE_DIR?=\/tmp\/$(PROGNAME)-v$(PROGVERSION)$/;"	m
+PRINT_VERSION	../include/ebtables_u.h	374;"	d
+PRIO_LOC_NFMARK	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	10;"	d
+PRIO_LOC_NFMASK	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	11;"	d
+PROC_SYS_MODPROBE	../include/ebtables_u.h	376;"	d
+PROGDATE	../Makefile	/^PROGDATE:=June\\ 2009$/;"	m
+PROGNAME	../Makefile	/^PROGNAME:=ebtables$/;"	m
+PROGRELEASE	../Makefile	/^PROGRELEASE:=2$/;"	m
+PROGSPECS	../Makefile	/^PROGSPECS:=-DPROGVERSION=\\"$(PROGVERSION)\\" \\$/;"	m
+PROGSPECSD	../Makefile	/^PROGSPECSD:=-DPROGVERSION=\\"$(PROGVERSION)\\" \\$/;"	m
+PROGVERSION	../Makefile	/^PROGVERSION:=$(PROGVERSION_)-$(PROGRELEASE)$/;"	m
+PROGVERSION_	../Makefile	/^PROGVERSION_:=2.0.9$/;"	m
+REALDEV_IN	../extensions/ebt_realdev.c	47;"	d	file:
+REDIRECT_TARGET	../extensions/ebt_redirect.c	16;"	d	file:
+REPLY_MAC	../extensions/ebt_arpreply.c	20;"	d	file:
+REPLY_TARGET	../extensions/ebt_arpreply.c	21;"	d	file:
+SET_BITMASK	../extensions/ebt_realdev.c	41;"	d	file:
+SET_BITMASK	../extensions/ebt_tbs_vlan_m.c	42;"	d	file:
+SET_BITMASK	../extensions/ebt_vlan.c	22;"	d	file:
+STP_FLAGS	../extensions/ebt_stp.c	17;"	d	file:
+STP_FWDD	../extensions/ebt_stp.c	27;"	d	file:
+STP_HELLOTIME	../extensions/ebt_stp.c	26;"	d	file:
+STP_MAXAGE	../extensions/ebt_stp.c	25;"	d	file:
+STP_MSGAGE	../extensions/ebt_stp.c	24;"	d	file:
+STP_NUMOPS	../extensions/ebt_stp.c	28;"	d	file:
+STP_PORT	../extensions/ebt_stp.c	23;"	d	file:
+STP_ROOTADDR	../extensions/ebt_stp.c	19;"	d	file:
+STP_ROOTCOST	../extensions/ebt_stp.c	20;"	d	file:
+STP_ROOTPRIO	../extensions/ebt_stp.c	18;"	d	file:
+STP_SENDERADDR	../extensions/ebt_stp.c	22;"	d	file:
+STP_SENDERPRIO	../extensions/ebt_stp.c	21;"	d	file:
+STP_TYPE	../extensions/ebt_stp.c	16;"	d	file:
+SYSCONFIGDIR	../Makefile	/^SYSCONFIGDIR:=\/etc\/sysconfig$/;"	m
+TARGET_INDEX	../include/ebtables_u.h	367;"	d
+TARGET_NAME	../include/ebtables_u.h	369;"	d
+TCI	../examples/ulog/test_ulog.c	/^	unsigned short TCI;$/;"	m	struct:vlan_hdr	file:
+ULOG_CPRANGE	../extensions/ebt_ulog.c	24;"	d	file:
+ULOG_NLGROUP	../extensions/ebt_ulog.c	23;"	d	file:
+ULOG_PREFIX	../extensions/ebt_ulog.c	22;"	d	file:
+ULOG_QTHRESHOLD	../extensions/ebt_ulog.c	25;"	d	file:
+ULOG_ULOG	../extensions/ebt_ulog.c	26;"	d	file:
+VLAN_ENCAP	../extensions/ebt_vlan.c	34;"	d	file:
+VLAN_HEADER	../extensions/ebt_vlan_t.c	21;"	d	file:
+VLAN_HLEN	../examples/ulog/test_ulog.c	49;"	d	file:
+VLAN_ID	../extensions/ebt_tbs_vlan_m.c	51;"	d	file:
+VLAN_ID	../extensions/ebt_vlan.c	32;"	d	file:
+VLAN_PRIO	../extensions/ebt_tbs_vlan_m.c	52;"	d	file:
+VLAN_PRIO	../extensions/ebt_vlan.c	33;"	d	file:
+VLAN_PRIORITY	../extensions/ebt_vlan_t.c	20;"	d	file:
+VLAN_REDIR	../extensions/ebt_vlan_t.c	23;"	d	file:
+VLAN_SET	../extensions/ebt_vlan_t.c	19;"	d	file:
+VLAN_TARGET	../extensions/ebt_vlan_t.c	18;"	d	file:
+VLAN_UNTAG	../extensions/ebt_vlan_t.c	22;"	d	file:
+WMM_DSCP_MASK_SHIFT	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	13;"	d
+WMM_MARK_8021D	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	5;"	d
+WMM_MARK_8021D_STR	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	8;"	d
+WMM_MARK_DSCP	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	4;"	d
+WMM_MARK_DSCP_STR	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	7;"	d
+WMM_MARK_POS	../extensions/ebt_wmm_mark.c	15;"	d	file:
+WMM_MARK_SET	../extensions/ebt_wmm_mark.c	16;"	d	file:
+WMM_MARK_TAG	../extensions/ebt_wmm_mark.c	14;"	d	file:
+WMM_MARK_TARGET	../extensions/ebt_wmm_mark.c	13;"	d	file:
+WMM_MARK_VALUE_NONE	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	14;"	d
+_802_3_SAP	../extensions/ebt_802_3.c	17;"	d	file:
+_802_3_TYPE	../extensions/ebt_802_3.c	18;"	d	file:
+_802_3_match	../extensions/ebt_802_3.c	/^static struct ebt_u_match _802_3_match = $/;"	v	typeref:struct:ebt_u_match	file:
+_CADDR_T	../include/linux/types.h	83;"	d
+_CLOCK_T	../include/linux/types.h	78;"	d
+_EBT_ULOG_H	../include/linux/netfilter_bridge/ebt_ulog.h	2;"	d
+_ETHERNETDB_H	../include/ethernetdb.h	22;"	d
+_LINUX_IF_ETHER_H	../include/linux/if_ether.h	22;"	d
+_LINUX_TYPES_H	../include/linux/types.h	2;"	d
+_PATH_ETHERTYPES	../include/ethernetdb.h	30;"	d
+_PTRDIFF_T	../include/linux/types.h	68;"	d
+_SIZE_T	../include/linux/types.h	58;"	d
+_SSIZE_T	../include/linux/types.h	63;"	d
+_TIME_T	../include/linux/types.h	73;"	d
+__BIT_TYPES_DEFINED__	../include/linux/types.h	100;"	d
+__LINUX_BRIDGE_EBT_802_3_H	../include/linux/netfilter_bridge/ebt_802_3.h	2;"	d
+__LINUX_BRIDGE_EBT_AMONG_H	../include/linux/netfilter_bridge/ebt_among.h	2;"	d
+__LINUX_BRIDGE_EBT_ARPREPLY_H	../include/linux/netfilter_bridge/ebt_arpreply.h	2;"	d
+__LINUX_BRIDGE_EBT_ARP_H	../include/linux/netfilter_bridge/ebt_arp.h	2;"	d
+__LINUX_BRIDGE_EBT_CLASSIFY_H	../include/linux/netfilter_bridge/ebt_classify.h	2;"	d
+__LINUX_BRIDGE_EBT_FTOS_T_H	../include/linux/netfilter_bridge/ebt_ftos_t.h	2;"	d
+__LINUX_BRIDGE_EBT_IP6_H	../include/linux/netfilter_bridge/ebt_ip6.h	13;"	d
+__LINUX_BRIDGE_EBT_IP_H	../include/linux/netfilter_bridge/ebt_ip.h	16;"	d
+__LINUX_BRIDGE_EBT_LIMIT_H	../include/linux/netfilter_bridge/ebt_limit.h	2;"	d
+__LINUX_BRIDGE_EBT_LOG_H	../include/linux/netfilter_bridge/ebt_log.h	2;"	d
+__LINUX_BRIDGE_EBT_MARK_M_H	../include/linux/netfilter_bridge/ebt_mark_m.h	2;"	d
+__LINUX_BRIDGE_EBT_MARK_T_H	../include/linux/netfilter_bridge/ebt_mark_t.h	2;"	d
+__LINUX_BRIDGE_EBT_MARK_T_H	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	2;"	d
+__LINUX_BRIDGE_EBT_NAT_H	../include/linux/netfilter_bridge/ebt_nat.h	2;"	d
+__LINUX_BRIDGE_EBT_NFLOG_H	../include/linux/netfilter_bridge/ebt_nflog.h	2;"	d
+__LINUX_BRIDGE_EBT_PKTTYPE_H	../include/linux/netfilter_bridge/ebt_pkttype.h	2;"	d
+__LINUX_BRIDGE_EBT_REDIRECT_H	../include/linux/netfilter_bridge/ebt_redirect.h	2;"	d
+__LINUX_BRIDGE_EBT_STP_H	../include/linux/netfilter_bridge/ebt_stp.h	2;"	d
+__LINUX_BRIDGE_EBT_TBSVLAN_H	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	2;"	d
+__LINUX_BRIDGE_EBT_TIME_H	../include/linux/netfilter_bridge/ebt_time.h	2;"	d
+__LINUX_BRIDGE_EBT_VLAN_H	../include/linux/netfilter_bridge/ebt_vlan.h	2;"	d
+__LINUX_BRIDGE_EBT_VLAN_T_H	../include/linux/netfilter_bridge/ebt_vlan_t.h	2;"	d
+__LINUX_BRIDGE_EFF_H	../include/ebtables.h	15;"	d
+__LINUX_BRIDGE_EFF_H	../include/linux/netfilter_bridge/ebtables.h	15;"	d
+__LINUX_BRIDGE_NETFILTER_H	../include/linux/netfilter_bridge.h	2;"	d
+__be16	../include/linux/types.h	/^typedef __u16 __bitwise __be16;$/;"	t
+__be32	../include/linux/types.h	/^typedef __u32 __bitwise __be32;$/;"	t
+__be64	../include/linux/types.h	/^typedef __u64 __bitwise __be64;$/;"	t
+__bitwise	../include/linux/types.h	163;"	d
+__bitwise	../include/linux/types.h	165;"	d
+__bitwise__	../include/linux/types.h	158;"	d
+__bitwise__	../include/linux/types.h	160;"	d
+__ebt_print_bug	../libebtc.c	/^void __ebt_print_bug(char *file, int line, char *format, ...)$/;"	f
+__ebt_print_error	../libebtc.c	/^void __ebt_print_error(char *format, ...)$/;"	f
+__kernel_dev_t	../include/linux/types.h	/^typedef __u32 __kernel_dev_t;$/;"	t
+__le16	../include/linux/types.h	/^typedef __u16 __bitwise __le16;$/;"	t
+__le32	../include/linux/types.h	/^typedef __u32 __bitwise __le32;$/;"	t
+__le64	../include/linux/types.h	/^typedef __u64 __bitwise __le64;$/;"	t
+__need_suseconds_t	../extensions/ebt_ulog.c	10;"	d	file:
+__need_time_t	../extensions/ebt_ulog.c	9;"	d	file:
+__sum16	../include/linux/types.h	/^typedef __u16 __bitwise __sum16;$/;"	t
+__wsum	../include/linux/types.h	/^typedef __u32 __bitwise __wsum;$/;"	t
+_code	../extensions/ebt_log.c	/^typedef struct _code {$/;"	s	file:
+_ebt_check_inverse	../useful_functions.c	/^int _ebt_check_inverse(const char option[], int argc, char **argv)$/;"	f
+_init	../extensions/ebt_802_3.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_among.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_arp.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_arpreply.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_classify.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebt_ftos.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebt_ip.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_ip6.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_limit.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_log.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_mark.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebt_mark_m.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_nat.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_nflog.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_pkttype.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_realdev.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebt_redirect.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_standard.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_stp.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_tbs_vlan_m.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebt_time.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_ulog.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_vlan.c	/^void _init(void)$/;"	f
+_init	../extensions/ebt_vlan_t.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebt_wmm_mark.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebtable_aroute.c	/^static void _init(void)$/;"	f	file:
+_init	../extensions/ebtable_broute.c	/^void _init(void)$/;"	f
+_init	../extensions/ebtable_filter.c	/^void _init(void)$/;"	f
+_init	../extensions/ebtable_nat.c	/^void _init(void)$/;"	f
+_init	../extensions/ebtable_proute.c	/^void _init(void)$/;"	f
+aligned_be64	../include/linux/types.h	123;"	d
+aligned_le64	../include/linux/types.h	124;"	d
+aligned_u64	../include/linux/types.h	122;"	d
+among_match	../extensions/ebt_among.c	/^static struct ebt_u_match among_match = {$/;"	v	typeref:struct:ebt_u_match	file:
+arp_match	../extensions/ebt_arp.c	/^static struct ebt_u_match arp_match =$/;"	v	typeref:struct:ebt_u_match	file:
+arpreply_target	../extensions/ebt_arpreply.c	/^static struct ebt_u_target arpreply_target =$/;"	v	typeref:struct:ebt_u_target	file:
+atomic64_t	../include/linux/types.h	/^} atomic64_t;$/;"	t	typeref:struct:__anon8
+atomic_t	../include/linux/types.h	/^} atomic_t;$/;"	t	typeref:struct:__anon7
+avg	../include/linux/netfilter_bridge/ebt_limit.h	/^	u_int32_t avg;    \/* Average secs between packets * scale *\/$/;"	m	struct:ebt_limit_info
+bcnt	../include/ebtables.h	/^	uint64_t bcnt;$/;"	m	struct:ebt_counter
+bcnt	../include/linux/netfilter_bridge/ebtables.h	/^	uint64_t bcnt;$/;"	m	struct:ebt_counter
+bitmask	../include/ebtables.h	/^	unsigned int bitmask;$/;"	m	struct:ebt_entry
+bitmask	../include/ebtables_u.h	/^	unsigned int bitmask;$/;"	m	struct:ebt_u_entry
+bitmask	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t  bitmask;$/;"	m	struct:ebt_802_3_info
+bitmask	../include/linux/netfilter_bridge/ebt_among.h	/^	int bitmask;$/;"	m	struct:ebt_among_info
+bitmask	../include/linux/netfilter_bridge/ebt_arp.h	/^	uint8_t  bitmask;$/;"	m	struct:ebt_arp_info
+bitmask	../include/linux/netfilter_bridge/ebt_ip.h	/^	uint8_t  bitmask;$/;"	m	struct:ebt_ip_info
+bitmask	../include/linux/netfilter_bridge/ebt_ip6.h	/^	uint8_t  bitmask;$/;"	m	struct:ebt_ip6_info
+bitmask	../include/linux/netfilter_bridge/ebt_log.h	/^	uint32_t bitmask;$/;"	m	struct:ebt_log_info
+bitmask	../include/linux/netfilter_bridge/ebt_mark_m.h	/^	uint8_t bitmask;$/;"	m	struct:ebt_mark_m_info
+bitmask	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t bitmask;$/;"	m	struct:ebt_stp_info
+bitmask	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	/^    uint32_t bitmask;        \/* Args bitmask bit 1=1 - ID arg,$/;"	m	struct:ebt_tbs_vlan_info
+bitmask	../include/linux/netfilter_bridge/ebt_vlan.h	/^	uint8_t bitmask;		\/* Args bitmask bit 1=1 - ID arg,$/;"	m	struct:ebt_vlan_info
+bitmask	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int bitmask;$/;"	m	struct:ebt_entry
+blkcnt_t	../include/linux/types.h	/^typedef u64 blkcnt_t;$/;"	t
+blkcnt_t	../include/linux/types.h	/^typedef unsigned long blkcnt_t;$/;"	t
+bool	../include/linux/types.h	/^typedef _Bool			bool;$/;"	t
+bridge_skb_cb	../include/linux/netfilter_bridge.h	/^struct bridge_skb_cb {$/;"	s
+buf	../examples/ulog/test_ulog.c	/^static char buf[BUFLEN];$/;"	v	file:
+burst	../include/linux/netfilter_bridge/ebt_limit.h	/^	u_int32_t burst;  \/* Period multiplier for upper limit. *\/$/;"	m	struct:ebt_limit_info
+c_name	../extensions/ebt_log.c	/^	char *c_name;$/;"	m	struct:_code	file:
+c_val	../extensions/ebt_log.c	/^	int c_val;$/;"	m	struct:_code	file:
+caddr_t	../include/linux/types.h	/^typedef __kernel_caddr_t	caddr_t;$/;"	t
+cc	../include/ebtables_u.h	/^	struct ebt_cntchanges *cc;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_cntchanges
+cc	../include/ebtables_u.h	/^	struct ebt_cntchanges *cc;$/;"	m	struct:ebt_u_replace	typeref:struct:ebt_u_replace::ebt_cntchanges
+chain_nr	../libebtc.c	/^	int chain_nr;$/;"	m	struct:ebt_u_stack	file:
+chains	../include/ebtables_u.h	/^	struct ebt_u_entries **chains;$/;"	m	struct:ebt_u_replace	typeref:struct:ebt_u_replace::ebt_u_entries
+change	../include/ebtables_u.h	/^	unsigned short change; \/* determines incremental\/decremental\/change *\/$/;"	m	struct:ebt_cntchanges
+check	../include/ebtables_u.h	/^	void (*check)(struct ebt_u_replace *repl);$/;"	m	struct:ebt_u_table
+check_and_change_rule_number	../libebtc.c	/^static int check_and_change_rule_number(struct ebt_u_replace *replace,$/;"	f	file:
+class_supplied	../extensions/ebt_classify.c	/^static int class_supplied;$/;"	v	file:
+classes	../extensions/ebt_pkttype.c	/^char *classes[] =$/;"	v
+classify_target	../extensions/ebt_classify.c	/^static struct ebt_u_target classify_target =$/;"	v	typeref:struct:ebt_u_target	file:
+clock_t	../include/linux/types.h	/^typedef __kernel_clock_t	clock_t;$/;"	t
+clockid_t	../include/linux/types.h	/^typedef __kernel_clockid_t	clockid_t;$/;"	t
+cmd	../include/linux/netfilter_bridge/ebt_vlan_t.h	/^	unsigned char cmd;  \/*0x01 is set-vlan 0x02 is set-header 0x03 is untag*\/$/;"	m	struct:ebt_vlan_t_info
+cmp	../include/linux/netfilter_bridge/ebt_among.h	/^	uint32_t cmp[2];$/;"	m	struct:ebt_mac_wormhash_tuple
+cnt	../include/ebtables_u.h	/^	struct ebt_counter cnt;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_counter
+cnt_surplus	../include/ebtables_u.h	/^	struct ebt_counter cnt_surplus; \/* for increasing\/decreasing a counter and for option 'C' *\/$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_counter
+command	../include/ebtables_u.h	/^	char command;$/;"	m	struct:ebt_u_replace
+compare	../extensions/ebt_802_3.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_among.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_arp.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_arpreply.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_classify.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_ftos.c	/^compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_ip.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_ip6.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_limit.c	/^static int compare(const struct ebt_entry_match* m1,$/;"	f	file:
+compare	../extensions/ebt_log.c	/^static int compare(const struct ebt_entry_watcher *w1,$/;"	f	file:
+compare	../extensions/ebt_mark.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_mark_m.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_nat.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_pkttype.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_realdev.c	/^compare(const struct ebt_entry_match *vlan1,$/;"	f	file:
+compare	../extensions/ebt_redirect.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_standard.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_stp.c	/^static int compare(const struct ebt_entry_match *m1,$/;"	f	file:
+compare	../extensions/ebt_tbs_vlan_m.c	/^compare(const struct ebt_entry_match *vlan1,$/;"	f	file:
+compare	../extensions/ebt_time.c	/^compare(const struct ebt_entry_match *m1, const struct ebt_entry_match *m2)$/;"	f	file:
+compare	../extensions/ebt_ulog.c	/^static int compare(const struct ebt_entry_watcher *w1,$/;"	f	file:
+compare	../extensions/ebt_vlan.c	/^static int compare(const struct ebt_entry_match *vlan1,$/;"	f	file:
+compare	../extensions/ebt_vlan_t.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../extensions/ebt_wmm_mark.c	/^static int compare(const struct ebt_entry_target *t1,$/;"	f	file:
+compare	../include/ebtables_u.h	/^	int (*compare)(const struct ebt_entry_match *m1,$/;"	m	struct:ebt_u_match
+compare	../include/ebtables_u.h	/^	int (*compare)(const struct ebt_entry_target *t1,$/;"	m	struct:ebt_u_target
+compare	../include/ebtables_u.h	/^	int (*compare)(const struct ebt_entry_watcher *w1,$/;"	m	struct:ebt_u_watcher
+compare_wh	../extensions/ebt_among.c	/^static int compare_wh(const struct ebt_mac_wormhash *aw,$/;"	f	file:
+config	../include/linux/netfilter_bridge/ebt_stp.h	/^	struct ebt_stp_config_info config;$/;"	m	struct:ebt_stp_info	typeref:struct:ebt_stp_info::ebt_stp_config_info
+copy_table_names	../ebtables-restore.c	/^static void copy_table_names()$/;"	f	file:
+copy_table_names	../ebtablesd.c	/^static void copy_table_names()$/;"	f	file:
+copy_wormhash	../extensions/ebt_among.c	/^static void copy_wormhash(struct ebt_mac_wormhash *d,$/;"	f	file:
+cost	../include/linux/netfilter_bridge/ebt_limit.h	/^	u_int32_t credit_cap, cost;$/;"	m	struct:ebt_limit_info
+counter	../include/linux/types.h	/^	volatile int counter;$/;"	m	struct:__anon7
+counter	../include/linux/types.h	/^	volatile long counter;$/;"	m	struct:__anon8
+counter_offset	../include/ebtables.h	/^	unsigned int counter_offset;$/;"	m	struct:ebt_entries
+counter_offset	../include/ebtables_u.h	/^	unsigned int counter_offset;$/;"	m	struct:ebt_u_entries
+counter_offset	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int counter_offset;$/;"	m	struct:ebt_entries
+counters	../include/ebtables.h	/^	struct ebt_counter *counters;$/;"	m	struct:ebt_replace	typeref:struct:ebt_replace::ebt_counter
+counters	../include/ebtables.h	/^	uint64_t counters;$/;"	m	struct:ebt_replace
+counters	../include/ebtables_u.h	/^	struct ebt_counter *counters;$/;"	m	struct:ebt_u_replace	typeref:struct:ebt_u_replace::ebt_counter
+counters	../include/linux/netfilter_bridge/ebtables.h	/^	struct ebt_counter *counters;$/;"	m	struct:ebt_replace	typeref:struct:ebt_replace::ebt_counter
+counters	../include/linux/netfilter_bridge/ebtables.h	/^	uint64_t counters;$/;"	m	struct:ebt_replace
+cprange	../include/linux/netfilter_bridge/ebt_ulog.h	/^	unsigned int cprange;$/;"	m	struct:ebt_ulog_info
+create_wormhash	../extensions/ebt_among.c	/^static struct ebt_mac_wormhash *create_wormhash(const char *arg)$/;"	f	file:
+credit	../include/linux/netfilter_bridge/ebt_limit.h	/^	u_int32_t credit;$/;"	m	struct:ebt_limit_info
+credit_cap	../include/linux/netfilter_bridge/ebt_limit.h	/^	u_int32_t credit_cap, cost;$/;"	m	struct:ebt_limit_info
+ctrl	../include/linux/netfilter_bridge/ebt_802_3.h	/^	__be16 ctrl;$/;"	m	struct:hdr_ni
+ctrl	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t ctrl;$/;"	m	struct:hdr_ui
+daddr	../include/linux/netfilter_bridge.h	/^	} daddr;$/;"	m	struct:bridge_skb_cb	typeref:union:bridge_skb_cb::__anon6
+daddr	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t  daddr[6];$/;"	m	struct:ebt_802_3_hdr
+daddr	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be32 daddr;$/;"	m	struct:ebt_arp_info
+daddr	../include/linux/netfilter_bridge/ebt_ip.h	/^	__be32 daddr;$/;"	m	struct:ebt_ip_info
+daddr	../include/linux/netfilter_bridge/ebt_ip6.h	/^	struct in6_addr daddr;$/;"	m	struct:ebt_ip6_info	typeref:struct:ebt_ip6_info::in6_addr
+daddr_t	../include/linux/types.h	/^typedef __kernel_daddr_t	daddr_t;$/;"	t
+data	../include/ebtables.h	/^	char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entries
+data	../include/ebtables.h	/^	unsigned char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry_match
+data	../include/ebtables.h	/^	unsigned char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry_target
+data	../include/ebtables.h	/^	unsigned char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry_watcher
+data	../include/linux/netfilter_bridge/ebt_ulog.h	/^	unsigned char data[0] __attribute__$/;"	m	struct:ebt_ulog_packet_msg
+data	../include/linux/netfilter_bridge/ebtables.h	/^	char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entries
+data	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry_match
+data	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry_target
+data	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char data[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry_watcher
+data_len	../include/linux/netfilter_bridge/ebt_ulog.h	/^	size_t data_len;$/;"	m	struct:ebt_ulog_packet_msg
+days_match	../include/linux/netfilter_bridge/ebt_time.h	/^	u_int8_t  days_match;   \/* 1 bit per day. -SMTWTFS                      *\/$/;"	m	struct:ebt_time_info
+decrease_chain_jumps	../libebtc.c	/^static void decrease_chain_jumps(struct ebt_u_replace *replace)$/;"	f	file:
+destmac	../include/ebtables.h	/^	unsigned char destmac[ETH_ALEN];$/;"	m	struct:ebt_entry
+destmac	../include/ebtables_u.h	/^	unsigned char destmac[ETH_ALEN];$/;"	m	struct:ebt_u_entry
+destmac	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char destmac[ETH_ALEN];$/;"	m	struct:ebt_entry
+destmsk	../include/ebtables.h	/^	unsigned char destmsk[ETH_ALEN];$/;"	m	struct:ebt_entry
+destmsk	../include/ebtables_u.h	/^	unsigned char destmsk[ETH_ALEN];$/;"	m	struct:ebt_u_entry
+destmsk	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char destmsk[ETH_ALEN];$/;"	m	struct:ebt_entry
+dev_t	../include/linux/types.h	/^typedef __kernel_dev_t		dev_t;$/;"	t
+distinguisher	../include/ebtables.h	/^	unsigned int distinguisher;$/;"	m	struct:ebt_entries
+distinguisher	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int distinguisher;$/;"	m	struct:ebt_entries
+divide_time	../extensions/ebt_time.c	/^divide_time(int fulltime, int *hours, int *minutes)$/;"	f	file:
+dmaddr	../include/linux/netfilter_bridge/ebt_arp.h	/^	unsigned char dmaddr[ETH_ALEN];$/;"	m	struct:ebt_arp_info
+dmmsk	../include/linux/netfilter_bridge/ebt_arp.h	/^	unsigned char dmmsk[ETH_ALEN];$/;"	m	struct:ebt_arp_info
+dmsk	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be32 dmsk;$/;"	m	struct:ebt_arp_info
+dmsk	../include/linux/netfilter_bridge/ebt_ip.h	/^	__be32 dmsk;$/;"	m	struct:ebt_ip_info
+dmsk	../include/linux/netfilter_bridge/ebt_ip6.h	/^	struct in6_addr dmsk;$/;"	m	struct:ebt_ip6_info	typeref:struct:ebt_ip6_info::in6_addr
+dnat_target	../extensions/ebt_nat.c	/^static struct ebt_u_target dnat_target =$/;"	v	typeref:struct:ebt_u_target	file:
+do_command	../ebtables.c	/^int do_command(int argc, char *argv[], int exec_style,$/;"	f
+dport	../include/linux/netfilter_bridge/ebt_ip.h	/^	uint16_t dport[2];$/;"	m	struct:ebt_ip_info
+dport	../include/linux/netfilter_bridge/ebt_ip6.h	/^	uint16_t dport[2];$/;"	m	struct:ebt_ip6_info
+dsap	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t dsap;$/;"	m	struct:hdr_ni
+dsap	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t dsap;$/;"	m	struct:hdr_ui
+e	../libebtc.c	/^	struct ebt_u_entry *e;$/;"	m	struct:ebt_u_stack	typeref:struct:ebt_u_stack::ebt_u_entry	file:
+e_aliases	../include/ethernetdb.h	/^	char **e_aliases;	\/* Alias list.  *\/$/;"	m	struct:ethertypeent
+e_ethertype	../include/ethernetdb.h	/^	int e_ethertype;	\/* Ethernet type number.  *\/$/;"	m	struct:ethertypeent
+e_name	../include/ethernetdb.h	/^	char *e_name;		\/* Official ethernet type name.  *\/$/;"	m	struct:ethertypeent
+ebt_802_3_hdr	../include/linux/netfilter_bridge/ebt_802_3.h	/^static inline struct ebt_802_3_hdr *ebt_802_3_hdr(const struct sk_buff *skb)$/;"	f
+ebt_802_3_hdr	../include/linux/netfilter_bridge/ebt_802_3.h	/^struct ebt_802_3_hdr {$/;"	s
+ebt_802_3_info	../include/linux/netfilter_bridge/ebt_802_3.h	/^struct ebt_802_3_info $/;"	s
+ebt_add_match	../libebtc.c	/^void ebt_add_match(struct ebt_u_entry *new_entry, struct ebt_u_match *m)$/;"	f
+ebt_add_rule	../libebtc.c	/^void ebt_add_rule(struct ebt_u_replace *replace, struct ebt_u_entry *new_entry, int rule_nr)$/;"	f
+ebt_add_watcher	../libebtc.c	/^void ebt_add_watcher(struct ebt_u_entry *new_entry, struct ebt_u_watcher *w)$/;"	f
+ebt_among_info	../include/linux/netfilter_bridge/ebt_among.h	/^struct ebt_among_info$/;"	s
+ebt_among_wh_dst	../include/linux/netfilter_bridge/ebt_among.h	58;"	d
+ebt_among_wh_src	../include/linux/netfilter_bridge/ebt_among.h	60;"	d
+ebt_arp_info	../include/linux/netfilter_bridge/ebt_arp.h	/^struct ebt_arp_info$/;"	s
+ebt_arpreply_info	../include/linux/netfilter_bridge/ebt_arpreply.h	/^struct ebt_arpreply_info$/;"	s
+ebt_change_counters	../libebtc.c	/^void ebt_change_counters(struct ebt_u_replace *replace,$/;"	f
+ebt_change_policy	../libebtc.c	/^void ebt_change_policy(struct ebt_u_replace *replace, int policy)$/;"	f
+ebt_check_for_loops	../libebtc.c	/^void ebt_check_for_loops(struct ebt_u_replace *replace)$/;"	f
+ebt_check_for_references	../libebtc.c	/^int ebt_check_for_references(struct ebt_u_replace *replace, int print_err)$/;"	f
+ebt_check_for_references2	../libebtc.c	/^int ebt_check_for_references2(struct ebt_u_replace *replace, int chain_nr,$/;"	f
+ebt_check_inverse	../include/ebtables_u.h	294;"	d
+ebt_check_inverse2	../include/ebtables_u.h	325;"	d
+ebt_check_option	../useful_functions.c	/^void ebt_check_option(unsigned int *flags, unsigned int mask)$/;"	f
+ebt_check_option2	../include/ebtables_u.h	321;"	d
+ebt_check_rule_exists	../libebtc.c	/^int ebt_check_rule_exists(struct ebt_u_replace *replace,$/;"	f
+ebt_classify_target_info	../include/linux/netfilter_bridge/ebt_classify.h	/^struct ebt_classify_target_info$/;"	s
+ebt_cleanup_replace	../libebtc.c	/^void ebt_cleanup_replace(struct ebt_u_replace *replace)$/;"	f
+ebt_cntchanges	../include/ebtables_u.h	/^struct ebt_cntchanges$/;"	s
+ebt_counter	../include/ebtables.h	/^struct ebt_counter$/;"	s
+ebt_counter	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_counter$/;"	s
+ebt_delete_a_chain	../libebtc.c	/^static int ebt_delete_a_chain(struct ebt_u_replace *replace, int chain, int print_err)$/;"	f	file:
+ebt_delete_cc	../libebtc.c	/^void ebt_delete_cc(struct ebt_cntchanges *cc)$/;"	f
+ebt_delete_chain	../libebtc.c	/^void ebt_delete_chain(struct ebt_u_replace *replace)$/;"	f
+ebt_delete_rule	../libebtc.c	/^void ebt_delete_rule(struct ebt_u_replace *replace,$/;"	f
+ebt_deliver_counters	../communication.c	/^void ebt_deliver_counters(struct ebt_u_replace *u_repl)$/;"	f
+ebt_deliver_table	../communication.c	/^void ebt_deliver_table(struct ebt_u_replace *u_repl)$/;"	f
+ebt_do_final_checks	../libebtc.c	/^void ebt_do_final_checks(struct ebt_u_replace *replace, struct ebt_u_entry *e,$/;"	f
+ebt_double_chains	../libebtc.c	/^void ebt_double_chains(struct ebt_u_replace *replace)$/;"	f
+ebt_early_init_once	../ebtables.c	/^void ebt_early_init_once()$/;"	f
+ebt_empty_chain	../libebtc.c	/^void ebt_empty_chain(struct ebt_u_entries *entries)$/;"	f
+ebt_entries	../include/ebtables.h	/^struct ebt_entries {$/;"	s
+ebt_entries	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_entries {$/;"	s
+ebt_entry	../include/ebtables.h	/^struct ebt_entry {$/;"	s
+ebt_entry	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_entry {$/;"	s
+ebt_entry_match	../include/ebtables.h	/^struct ebt_entry_match$/;"	s
+ebt_entry_match	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_entry_match$/;"	s
+ebt_entry_target	../include/ebtables.h	/^struct ebt_entry_target$/;"	s
+ebt_entry_target	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_entry_target$/;"	s
+ebt_entry_watcher	../include/ebtables.h	/^struct ebt_entry_watcher$/;"	s
+ebt_entry_watcher	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_entry_watcher$/;"	s
+ebt_errormsg	../libebtc.c	/^char ebt_errormsg[ERRORMSG_MAXLEN];$/;"	v
+ebt_find_match	../libebtc.c	/^struct ebt_u_match *ebt_find_match(const char *name)$/;"	f
+ebt_find_table	../libebtc.c	/^struct ebt_u_table *ebt_find_table(const char *name)$/;"	f
+ebt_find_target	../libebtc.c	/^struct ebt_u_target *ebt_find_target(const char *name)$/;"	f
+ebt_find_watcher	../libebtc.c	/^struct ebt_u_watcher *ebt_find_watcher(const char *name)$/;"	f
+ebt_flush_chains	../libebtc.c	/^void ebt_flush_chains(struct ebt_u_replace *replace)$/;"	f
+ebt_free_u_entry	../libebtc.c	/^void ebt_free_u_entry(struct ebt_u_entry *e)$/;"	f
+ebt_ftos_t_info	../include/linux/netfilter_bridge/ebt_ftos_t.h	/^struct ebt_ftos_t_info$/;"	s
+ebt_get_chainnr	../libebtc.c	/^int ebt_get_chainnr(const struct ebt_u_replace *replace, const char* arg)$/;"	f
+ebt_get_kernel_table	../libebtc.c	/^int ebt_get_kernel_table(struct ebt_u_replace *replace, int init)$/;"	f
+ebt_get_mac_and_mask	../useful_functions.c	/^int ebt_get_mac_and_mask(const char *from, unsigned char *to,$/;"	f
+ebt_get_table	../communication.c	/^int ebt_get_table(struct ebt_u_replace *u_repl, int init)$/;"	f
+ebt_hooknames	../libebtc.c	/^const char *ebt_hooknames[NF_BR_NUMHOOKS] =$/;"	v
+ebt_initialize_entry	../libebtc.c	/^void ebt_initialize_entry(struct ebt_u_entry *e)$/;"	f
+ebt_invert	../useful_functions.c	/^int ebt_invert = 0;$/;"	v
+ebt_ip6_info	../include/linux/netfilter_bridge/ebt_ip6.h	/^struct ebt_ip6_info$/;"	s
+ebt_ip6_to_numeric	../useful_functions.c	/^char *ebt_ip6_to_numeric(const struct in6_addr *addrp)$/;"	f
+ebt_ip_info	../include/linux/netfilter_bridge/ebt_ip.h	/^struct ebt_ip_info$/;"	s
+ebt_iterate_matches	../libebtc.c	/^void ebt_iterate_matches(void (*f)(struct ebt_u_match *))$/;"	f
+ebt_iterate_targets	../libebtc.c	/^void ebt_iterate_targets(void (*f)(struct ebt_u_target *))$/;"	f
+ebt_iterate_watchers	../libebtc.c	/^void ebt_iterate_watchers(void (*f)(struct ebt_u_watcher *))$/;"	f
+ebt_limit_info	../include/linux/netfilter_bridge/ebt_limit.h	/^struct ebt_limit_info$/;"	s
+ebt_list_extensions	../libebtc.c	/^void ebt_list_extensions()$/;"	f
+ebt_log_info	../include/linux/netfilter_bridge/ebt_log.h	/^struct ebt_log_info$/;"	s
+ebt_mac_wormhash	../include/linux/netfilter_bridge/ebt_among.h	/^struct ebt_mac_wormhash$/;"	s
+ebt_mac_wormhash_size	../include/linux/netfilter_bridge/ebt_among.h	45;"	d
+ebt_mac_wormhash_tuple	../include/linux/netfilter_bridge/ebt_among.h	/^struct ebt_mac_wormhash_tuple$/;"	s
+ebt_mark_m_info	../include/linux/netfilter_bridge/ebt_mark_m.h	/^struct ebt_mark_m_info$/;"	s
+ebt_mark_t_info	../include/linux/netfilter_bridge/ebt_mark_t.h	/^struct ebt_mark_t_info$/;"	s
+ebt_mask_to_dotted	../useful_functions.c	/^char *ebt_mask_to_dotted(uint32_t mask)$/;"	f
+ebt_matches	../libebtc.c	/^struct ebt_u_match *ebt_matches;$/;"	v	typeref:struct:ebt_u_match
+ebt_modprobe	../libebtc.c	/^char *ebt_modprobe;$/;"	v
+ebt_name_to_chain	../libebtc.c	/^struct ebt_u_entries *ebt_name_to_chain(const struct ebt_u_replace *replace, const char* arg)$/;"	f
+ebt_nat_info	../include/linux/netfilter_bridge/ebt_nat.h	/^struct ebt_nat_info$/;"	s
+ebt_new_chain	../libebtc.c	/^void ebt_new_chain(struct ebt_u_replace *replace, const char *name, int policy)$/;"	f
+ebt_nflog_info	../include/linux/netfilter_bridge/ebt_nflog.h	/^struct ebt_nflog_info {$/;"	s
+ebt_options	../ebtables.c	/^static struct option *ebt_options = ebt_original_options;$/;"	v	typeref:struct:option	file:
+ebt_original_options	../ebtables.c	/^static struct option ebt_original_options[] =$/;"	v	typeref:struct:option	file:
+ebt_parse_ip6_address	../useful_functions.c	/^void ebt_parse_ip6_address(char *address, struct in6_addr *addr,$/;"	f
+ebt_parse_ip_address	../useful_functions.c	/^void ebt_parse_ip_address(char *address, uint32_t *addr, uint32_t *msk)$/;"	f
+ebt_pkttype_info	../include/linux/netfilter_bridge/ebt_pkttype.h	/^struct ebt_pkttype_info$/;"	s
+ebt_print_bug	../include/ebtables_u.h	316;"	d
+ebt_print_error	../include/ebtables_u.h	318;"	d
+ebt_print_error2	../include/ebtables_u.h	319;"	d
+ebt_print_mac	../useful_functions.c	/^void ebt_print_mac(const unsigned char *mac)$/;"	f
+ebt_print_mac_and_mask	../useful_functions.c	/^void ebt_print_mac_and_mask(const unsigned char *mac, const unsigned char *mask)$/;"	f
+ebt_print_memory	../include/ebtables_u.h	334;"	d
+ebt_printstyle_mac	../useful_functions.c	/^int ebt_printstyle_mac;$/;"	v
+ebt_redirect_info	../include/linux/netfilter_bridge/ebt_redirect.h	/^struct ebt_redirect_info$/;"	s
+ebt_register_match	../libebtc.c	/^void ebt_register_match(struct ebt_u_match *m)$/;"	f
+ebt_register_table	../libebtc.c	/^void ebt_register_table(struct ebt_u_table *t)$/;"	f
+ebt_register_target	../libebtc.c	/^void ebt_register_target(struct ebt_u_target *t)$/;"	f
+ebt_register_watcher	../libebtc.c	/^void ebt_register_watcher(struct ebt_u_watcher *w)$/;"	f
+ebt_reinit_extensions	../libebtc.c	/^void ebt_reinit_extensions()$/;"	f
+ebt_rename_chain	../libebtc.c	/^void ebt_rename_chain(struct ebt_u_replace *replace, const char *name)$/;"	f
+ebt_replace	../include/ebtables.h	/^struct ebt_replace$/;"	s
+ebt_replace	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_replace$/;"	s
+ebt_silent	../libebtc.c	/^int ebt_silent;$/;"	v
+ebt_standard_target	../include/ebtables.h	/^struct ebt_standard_target$/;"	s
+ebt_standard_target	../include/linux/netfilter_bridge/ebtables.h	/^struct ebt_standard_target$/;"	s
+ebt_standard_targets	../libebtc.c	/^const char* ebt_standard_targets[NUM_STANDARD_TARGETS] =$/;"	v
+ebt_stp_config_info	../include/linux/netfilter_bridge/ebt_stp.h	/^struct ebt_stp_config_info$/;"	s
+ebt_stp_info	../include/linux/netfilter_bridge/ebt_stp.h	/^struct ebt_stp_info$/;"	s
+ebt_tables	../libebtc.c	/^struct ebt_u_table *ebt_tables;$/;"	v	typeref:struct:ebt_u_table
+ebt_targets	../libebtc.c	/^struct ebt_u_target *ebt_targets;$/;"	v	typeref:struct:ebt_u_target
+ebt_tbs_vlan_info	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	/^struct ebt_tbs_vlan_info {$/;"	s
+ebt_time_info	../include/linux/netfilter_bridge/ebt_time.h	/^struct ebt_time_info {$/;"	s
+ebt_to_chain	../include/ebtables_u.h	311;"	d
+ebt_translate_chains	../communication.c	/^ebt_translate_chains(struct ebt_entry *e, int *hook,$/;"	f	file:
+ebt_translate_entry	../communication.c	/^ebt_translate_entry(struct ebt_entry *e, int *hook, int *n, int *cnt,$/;"	f	file:
+ebt_translate_match	../communication.c	/^ebt_translate_match(struct ebt_entry_match *m, struct ebt_u_match_list ***l)$/;"	f	file:
+ebt_translate_watcher	../communication.c	/^ebt_translate_watcher(struct ebt_entry_watcher *w,$/;"	f	file:
+ebt_u_entries	../include/ebtables_u.h	/^struct ebt_u_entries$/;"	s
+ebt_u_entry	../include/ebtables_u.h	/^struct ebt_u_entry$/;"	s
+ebt_u_match	../include/ebtables_u.h	/^struct ebt_u_match$/;"	s
+ebt_u_match_list	../include/ebtables_u.h	/^struct ebt_u_match_list$/;"	s
+ebt_u_replace	../include/ebtables_u.h	/^struct ebt_u_replace$/;"	s
+ebt_u_stack	../libebtc.c	/^struct ebt_u_stack$/;"	s	file:
+ebt_u_table	../include/ebtables_u.h	/^struct ebt_u_table$/;"	s
+ebt_u_target	../include/ebtables_u.h	/^struct ebt_u_target$/;"	s
+ebt_u_watcher	../include/ebtables_u.h	/^struct ebt_u_watcher$/;"	s
+ebt_u_watcher_list	../include/ebtables_u.h	/^struct ebt_u_watcher_list$/;"	s
+ebt_ulog_info	../include/linux/netfilter_bridge/ebt_ulog.h	/^struct ebt_ulog_info {$/;"	s
+ebt_ulog_packet_msg	../include/linux/netfilter_bridge/ebt_ulog.h	/^typedef struct ebt_ulog_packet_msg {$/;"	s
+ebt_ulog_packet_msg_t	../include/linux/netfilter_bridge/ebt_ulog.h	/^} ebt_ulog_packet_msg_t;$/;"	t	typeref:struct:ebt_ulog_packet_msg
+ebt_vlan_info	../include/linux/netfilter_bridge/ebt_vlan.h	/^struct ebt_vlan_info {$/;"	s
+ebt_vlan_t_info	../include/linux/netfilter_bridge/ebt_vlan_t.h	/^struct ebt_vlan_t_info$/;"	s
+ebt_watchers	../libebtc.c	/^struct ebt_u_watcher *ebt_watchers;$/;"	v	typeref:struct:ebt_u_watcher
+ebt_wmm_mark_t_info	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	/^struct ebt_wmm_mark_t_info$/;"	s
+ebt_zero_counters	../libebtc.c	/^void ebt_zero_counters(struct ebt_u_replace *replace)$/;"	f
+ebtables_insmod	../libebtc.c	/^int ebtables_insmod(const char *modname)$/;"	f
+ebtrest_print_error	../ebtables-restore.c	41;"	d	file:
+eight_priority	../extensions/ebt_log.c	/^static CODE eight_priority[] = {$/;"	v	file:
+elems	../include/ebtables.h	/^	unsigned char elems[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry
+elems	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char elems[0] __attribute__ ((aligned (__alignof__(struct ebt_replace))));$/;"	m	struct:ebt_entry
+encap	../examples/ulog/test_ulog.c	/^	unsigned short encap;$/;"	m	struct:vlan_hdr	file:
+encap	../include/linux/netfilter_bridge/ebt_vlan.h	/^	__be16 encap;		\/* VLAN Encapsulated frame code {0-65535} *\/$/;"	m	struct:ebt_vlan_info
+endethertypeent	../getethertype.c	/^void endethertypeent(void)$/;"	f
+entries	../include/ebtables.h	/^	char *entries;$/;"	m	struct:ebt_replace
+entries	../include/ebtables.h	/^	uint64_t entries;$/;"	m	struct:ebt_replace
+entries	../include/ebtables_u.h	/^	struct ebt_u_entry *entries;$/;"	m	struct:ebt_u_entries	typeref:struct:ebt_u_entries::ebt_u_entry
+entries	../include/linux/netfilter_bridge/ebtables.h	/^	char *entries;$/;"	m	struct:ebt_replace
+entries	../include/linux/netfilter_bridge/ebtables.h	/^	uint64_t entries;$/;"	m	struct:ebt_replace
+entries	../libebtc.c	/^	struct ebt_u_entries *entries;$/;"	m	struct:ebt_u_stack	typeref:struct:ebt_u_stack::ebt_u_entries	file:
+entries_size	../include/ebtables.h	/^	unsigned int entries_size;$/;"	m	struct:ebt_replace
+entries_size	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int entries_size;$/;"	m	struct:ebt_replace
+et_ent	../getethertype.c	/^static struct ethertypeent et_ent;$/;"	v	typeref:struct:ethertypeent	file:
+eth_hdr	../include/linux/if_ether.h	/^static inline struct ethhdr *eth_hdr(const struct sk_buff *skb)$/;"	f
+ethent	../extensions/ebt_vlan.c	/^struct ethertypeent *ethent;$/;"	v	typeref:struct:ethertypeent
+ether_aton	../ether_addr.c	/^struct ether_addr *ether_aton(const char *asc)$/;"	f
+ether_aton_r	../ether_addr.c	/^struct ether_addr *ether_aton_r(const char *asc, struct ether_addr *addr)$/;"	f
+ether_ntoa	../ether_addr.c	/^char *ether_ntoa(const struct ether_addr *addr)$/;"	f
+ether_ntoa_r	../ether_addr.c	/^char *ether_ntoa_r(const struct ether_addr *addr, char *buf)$/;"	f
+etherf	../getethertype.c	/^static FILE *etherf = NULL;$/;"	v	file:
+ethertype_aliases	../getethertype.c	/^static char *ethertype_aliases[MAXALIASES];$/;"	v	file:
+ethertype_stayopen	../getethertype.c	/^static int ethertype_stayopen;$/;"	v	file:
+ethertypeent	../include/ethernetdb.h	/^struct ethertypeent {$/;"	s
+ethhdr	../include/linux/if_ether.h	/^struct ethhdr {$/;"	s
+ethproto	../include/ebtables.h	/^	uint16_t ethproto;$/;"	m	struct:ebt_entry
+ethproto	../include/ebtables_u.h	/^	uint16_t ethproto;$/;"	m	struct:ebt_u_entry
+ethproto	../include/linux/netfilter_bridge/ebtables.h	/^	uint16_t ethproto;$/;"	m	struct:ebt_entry
+extra_ops	../include/ebtables_u.h	/^	const struct option *extra_ops;$/;"	m	struct:ebt_u_match	typeref:struct:ebt_u_match::option
+extra_ops	../include/ebtables_u.h	/^	const struct option *extra_ops;$/;"	m	struct:ebt_u_target	typeref:struct:ebt_u_target::option
+extra_ops	../include/ebtables_u.h	/^	const struct option *extra_ops;$/;"	m	struct:ebt_u_watcher	typeref:struct:ebt_u_watcher::option
+f_fname	../include/linux/types.h	/^	char			f_fname[6];$/;"	m	struct:ustat
+f_fpack	../include/linux/types.h	/^	char			f_fpack[6];$/;"	m	struct:ustat
+f_tfree	../include/linux/types.h	/^	__kernel_daddr_t	f_tfree;$/;"	m	struct:ustat
+f_tinode	../include/linux/types.h	/^	__kernel_ino_t		f_tinode;$/;"	m	struct:ustat
+fcmp	../extensions/ebt_among.c	/^static int fcmp(const void *va, const void *vb) {$/;"	f	file:
+fd_set	../include/linux/types.h	/^typedef __kernel_fd_set		fd_set;$/;"	t
+filename	../include/ebtables_u.h	/^	char *filename;$/;"	m	struct:ebt_u_replace
+final_check	../extensions/ebt_802_3.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_among.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_arp.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_arpreply.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_classify.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_ftos.c	/^final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_ip.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_ip6.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_limit.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_log.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_mark.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_mark_m.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_pkttype.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_realdev.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_redirect.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_standard.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_stp.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_tbs_vlan_m.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_time.c	/^final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_ulog.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_vlan.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_vlan_t.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../extensions/ebt_wmm_mark.c	/^static void final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check	../include/ebtables_u.h	/^	void (*final_check)(const struct ebt_u_entry *entry,$/;"	m	struct:ebt_u_match
+final_check	../include/ebtables_u.h	/^	void (*final_check)(const struct ebt_u_entry *entry,$/;"	m	struct:ebt_u_target
+final_check	../include/ebtables_u.h	/^	void (*final_check)(const struct ebt_u_entry *entry,$/;"	m	struct:ebt_u_watcher
+final_check_d	../extensions/ebt_nat.c	/^static void final_check_d(const struct ebt_u_entry *entry,$/;"	f	file:
+final_check_s	../extensions/ebt_nat.c	/^static void final_check_s(const struct ebt_u_entry *entry,$/;"	f	file:
+flags	../include/ebtables_u.h	/^	unsigned int flags;$/;"	m	struct:ebt_u_match
+flags	../include/ebtables_u.h	/^	unsigned int flags;$/;"	m	struct:ebt_u_replace
+flags	../include/ebtables_u.h	/^	unsigned int flags;$/;"	m	struct:ebt_u_target
+flags	../include/ebtables_u.h	/^	unsigned int flags;$/;"	m	struct:ebt_u_watcher
+flags	../include/linux/netfilter_bridge/ebt_nflog.h	/^	u_int16_t flags;$/;"	m	struct:ebt_nflog_info
+flags	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint8_t flags;$/;"	m	struct:ebt_stp_config_info
+fmode_t	../include/linux/types.h	/^typedef unsigned __bitwise__ fmode_t;$/;"	t
+forward_delayl	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t forward_delayl, forward_delayu;$/;"	m	struct:ebt_stp_config_info
+forward_delayu	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t forward_delayl, forward_delayu;$/;"	m	struct:ebt_stp_config_info
+ftos	../include/linux/netfilter_bridge/ebt_ftos_t.h	/^	unsigned char ftos;$/;"	m	struct:ebt_ftos_t_info
+ftos_set	../include/linux/netfilter_bridge/ebt_ftos_t.h	/^    int           ftos_set;$/;"	m	struct:ebt_ftos_t_info
+ftos_supplied	../extensions/ebt_ftos.c	/^static int ftos_supplied;$/;"	v	file:
+ftos_target	../extensions/ebt_ftos.c	/^struct  ebt_u_target ftos_target = $/;"	v	typeref:struct:ebt_u_target	file:
+g_rates	../extensions/ebt_limit.c	/^static struct rates g_rates[] =$/;"	v	typeref:struct:rates	file:
+get_modprobe	../libebtc.c	/^static char *get_modprobe(void)$/;"	f	file:
+get_sockfd	../communication.c	/^static int get_sockfd()$/;"	f	file:
+getethertypebyname	../getethertype.c	/^struct ethertypeent *getethertypebyname(const char *name)$/;"	f
+getethertypebynumber	../getethertype.c	/^struct ethertypeent *getethertypebynumber(int type)$/;"	f
+getethertypeent	../getethertype.c	/^struct ethertypeent *getethertypeent(void)$/;"	f
+gfp_t	../include/linux/types.h	/^typedef unsigned __bitwise__ gfp_t;$/;"	t
+gid16_t	../include/linux/types.h	/^typedef __kernel_gid16_t        gid16_t;$/;"	t
+gid_t	../include/linux/types.h	/^typedef __kernel_gid32_t	gid_t;$/;"	t
+global_option_offset	../ebtables.c	/^static int global_option_offset;$/;"	v	file:
+globaldays	../extensions/ebt_time.c	/^static int globaldays;$/;"	v	file:
+group	../include/linux/netfilter_bridge/ebt_nflog.h	/^	u_int16_t group;$/;"	m	struct:ebt_nflog_info
+h_dest	../include/linux/if_ether.h	/^	unsigned char	h_dest[ETH_ALEN];	\/* destination eth addr	*\/$/;"	m	struct:ethhdr
+h_proto	../include/linux/if_ether.h	/^	__be16		h_proto;		\/* packet type ID field	*\/$/;"	m	struct:ethhdr
+h_source	../include/linux/if_ether.h	/^	unsigned char	h_source[ETH_ALEN];	\/* source ether addr	*\/$/;"	m	struct:ethhdr
+hdr_ni	../include/linux/netfilter_bridge/ebt_802_3.h	/^struct hdr_ni {$/;"	s
+hdr_ui	../include/linux/netfilter_bridge/ebt_802_3.h	/^struct hdr_ui {$/;"	s
+hello_timel	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t hello_timel, hello_timeu;$/;"	m	struct:ebt_stp_config_info
+hello_timeu	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t hello_timel, hello_timeu;$/;"	m	struct:ebt_stp_config_info
+help	../extensions/ebt_time.c	/^help(void)$/;"	f	file:
+help	../include/ebtables_u.h	/^	void (*help)(const char **);$/;"	m	struct:ebt_u_table
+help	../include/ebtables_u.h	/^	void (*help)(void);$/;"	m	struct:ebt_u_match
+help	../include/ebtables_u.h	/^	void (*help)(void);$/;"	m	struct:ebt_u_target
+help	../include/ebtables_u.h	/^	void (*help)(void);$/;"	m	struct:ebt_u_watcher
+hexdump	../extensions/ebt_among.c	/^static void hexdump(const void *mem, int howmany)$/;"	f	file:
+hook	../include/linux/netfilter_bridge/ebt_ulog.h	/^	unsigned int hook;$/;"	m	struct:ebt_ulog_packet_msg
+hook_entry	../include/ebtables.h	/^	struct ebt_entries *hook_entry[NF_BR_NUMHOOKS];$/;"	m	struct:ebt_replace	typeref:struct:ebt_replace::ebt_entries
+hook_entry	../include/ebtables.h	/^	uint64_t hook_entry[NF_BR_NUMHOOKS];$/;"	m	struct:ebt_replace
+hook_entry	../include/linux/netfilter_bridge/ebtables.h	/^	struct ebt_entries *hook_entry[NF_BR_NUMHOOKS];$/;"	m	struct:ebt_replace	typeref:struct:ebt_replace::ebt_entries
+hook_entry	../include/linux/netfilter_bridge/ebtables.h	/^	uint64_t hook_entry[NF_BR_NUMHOOKS];$/;"	m	struct:ebt_replace
+hook_mask	../include/ebtables_u.h	/^	unsigned int hook_mask;$/;"	m	struct:ebt_u_entries
+hookstr	../examples/ulog/test_ulog.c	/^static const char *hookstr[NF_BR_NUMHOOKS] =$/;"	v	file:
+htype	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be16 htype;$/;"	m	struct:ebt_arp_info
+id	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	/^    uint32_t id;        \/* VLAN ID {1-4095} *\/$/;"	m	struct:ebt_tbs_vlan_info
+id	../include/linux/netfilter_bridge/ebt_vlan.h	/^	uint16_t id;		\/* VLAN ID {1-4095} *\/$/;"	m	struct:ebt_vlan_info
+in	../include/ebtables.h	/^	char in[IFNAMSIZ];$/;"	m	struct:ebt_entry
+in	../include/ebtables_u.h	/^	char in[IFNAMSIZ];$/;"	m	struct:ebt_u_entry
+in	../include/linux/netfilter_bridge/ebtables.h	/^	char in[IFNAMSIZ];$/;"	m	struct:ebt_entry
+in6addrcpy	../useful_functions.c	/^in6addrcpy(struct in6_addr *dst, struct in6_addr *src)$/;"	f	file:
+indev	../include/linux/netfilter_bridge/ebt_ulog.h	/^	char indev[IFNAMSIZ];$/;"	m	struct:ebt_ulog_packet_msg
+index_table	../extensions/ebt_among.c	/^static void index_table(struct ebt_mac_wormhash *wh)$/;"	f	file:
+init	../extensions/ebt_802_3.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_among.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_arp.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_arpreply.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../extensions/ebt_classify.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../extensions/ebt_ftos.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../extensions/ebt_ip.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_ip6.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_limit.c	/^static void init(struct ebt_entry_match *m)$/;"	f	file:
+init	../extensions/ebt_log.c	/^static void init(struct ebt_entry_watcher *watcher)$/;"	f	file:
+init	../extensions/ebt_mark.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../extensions/ebt_mark_m.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_nflog.c	/^static void init(struct ebt_entry_watcher *watcher)$/;"	f	file:
+init	../extensions/ebt_pkttype.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_realdev.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_redirect.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../extensions/ebt_standard.c	/^static void init(struct ebt_entry_target *t)$/;"	f	file:
+init	../extensions/ebt_stp.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_tbs_vlan_m.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_time.c	/^init(struct ebt_entry_match *m)$/;"	f	file:
+init	../extensions/ebt_ulog.c	/^static void init(struct ebt_entry_watcher *watcher)$/;"	f	file:
+init	../extensions/ebt_vlan.c	/^static void init(struct ebt_entry_match *match)$/;"	f	file:
+init	../extensions/ebt_vlan_t.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../extensions/ebt_wmm_mark.c	/^static void init(struct ebt_entry_target *target)$/;"	f	file:
+init	../include/ebtables_u.h	/^	void (*init)(struct ebt_entry_match *m);$/;"	m	struct:ebt_u_match
+init	../include/ebtables_u.h	/^	void (*init)(struct ebt_entry_target *t);$/;"	m	struct:ebt_u_target
+init	../include/ebtables_u.h	/^	void (*init)(struct ebt_entry_watcher *w);$/;"	m	struct:ebt_u_watcher
+init_d	../extensions/ebt_nat.c	/^static void init_d(struct ebt_entry_target *target)$/;"	f	file:
+init_s	../extensions/ebt_nat.c	/^static void init_s(struct ebt_entry_target *target)$/;"	f	file:
+ino_t	../include/linux/types.h	/^typedef __kernel_ino_t		ino_t;$/;"	t
+int16_t	../include/linux/types.h	/^typedef		__s16		int16_t;$/;"	t
+int32_t	../include/linux/types.h	/^typedef		__s32		int32_t;$/;"	t
+int64_t	../include/linux/types.h	/^typedef		__s64		int64_t;$/;"	t
+int8_t	../include/linux/types.h	/^typedef		__s8		int8_t;$/;"	t
+invert	../include/linux/netfilter_bridge/ebt_mark_m.h	/^	uint8_t invert;$/;"	m	struct:ebt_mark_m_info
+invert	../include/linux/netfilter_bridge/ebt_pkttype.h	/^	uint8_t invert;$/;"	m	struct:ebt_pkttype_info
+invflags	../include/ebtables.h	/^	unsigned int invflags;$/;"	m	struct:ebt_entry
+invflags	../include/ebtables_u.h	/^	unsigned int invflags;$/;"	m	struct:ebt_u_entry
+invflags	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t  invflags;$/;"	m	struct:ebt_802_3_info
+invflags	../include/linux/netfilter_bridge/ebt_arp.h	/^	uint8_t  invflags;$/;"	m	struct:ebt_arp_info
+invflags	../include/linux/netfilter_bridge/ebt_ip.h	/^	uint8_t  invflags;$/;"	m	struct:ebt_ip_info
+invflags	../include/linux/netfilter_bridge/ebt_ip6.h	/^	uint8_t  invflags;$/;"	m	struct:ebt_ip6_info
+invflags	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t invflags;$/;"	m	struct:ebt_stp_info
+invflags	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	/^    uint32_t invflags;       \/* Inverse bitmask  bit 1=1 - inversed ID arg, $/;"	m	struct:ebt_tbs_vlan_info
+invflags	../include/linux/netfilter_bridge/ebt_vlan.h	/^	uint8_t invflags;		\/* Inverse bitmask  bit 1=1 - inversed ID arg, $/;"	m	struct:ebt_vlan_info
+invflags	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int invflags;$/;"	m	struct:ebt_entry
+ip	../include/linux/netfilter_bridge/ebt_among.h	/^	__be32 ip;$/;"	m	struct:ebt_mac_wormhash_tuple
+ip6_match	../extensions/ebt_ip6.c	/^static struct ebt_u_match ip6_match =$/;"	v	typeref:struct:ebt_u_match	file:
+ip_mask	../useful_functions.c	/^static int ip_mask(char *mask, unsigned char *mask2)$/;"	f	file:
+ip_match	../extensions/ebt_ip.c	/^static struct ebt_u_match ip_match =$/;"	v	typeref:struct:ebt_u_match	file:
+ipv4	../include/linux/netfilter_bridge.h	/^		__be32 ipv4;$/;"	m	union:bridge_skb_cb::__anon6
+iterate_entries	../libebtc.c	/^static int iterate_entries(struct ebt_u_replace *replace, int type)$/;"	f	file:
+kernel_start	../include/ebtables_u.h	/^	char *kernel_start;$/;"	m	struct:ebt_u_entries
+kerneltime	../include/linux/netfilter_bridge/ebt_time.h	/^	u_int8_t  kerneltime;   \/* ignore skb time (and use kerneltime) or not. *\/$/;"	m	struct:ebt_time_info
+key_t	../include/linux/types.h	/^typedef __kernel_key_t		key_t;$/;"	t
+len	../include/linux/netfilter_bridge/ebt_802_3.h	/^	__be16 len;$/;"	m	struct:ebt_802_3_hdr
+len	../include/linux/netfilter_bridge/ebt_nflog.h	/^	u_int32_t len;$/;"	m	struct:ebt_nflog_info
+limit_match	../extensions/ebt_limit.c	/^static struct ebt_u_match limit_match =$/;"	v	typeref:struct:ebt_u_match	file:
+line	../getethertype.c	/^static char line[BUFSIZ + 1];$/;"	v	file:
+list_em	../ebtables.c	/^static void list_em(struct ebt_u_entries *entries)$/;"	f	file:
+list_rules	../ebtables.c	/^static void list_rules()$/;"	f	file:
+llc	../include/linux/netfilter_bridge/ebt_802_3.h	/^	} llc;$/;"	m	struct:ebt_802_3_hdr	typeref:union:ebt_802_3_hdr::__anon2
+loff_t	../include/linux/types.h	/^typedef __kernel_loff_t		loff_t;$/;"	t
+log_watcher	../extensions/ebt_log.c	/^static struct ebt_u_watcher log_watcher =$/;"	v	typeref:struct:ebt_u_watcher	file:
+logical_in	../include/ebtables.h	/^	char logical_in[IFNAMSIZ];$/;"	m	struct:ebt_entry
+logical_in	../include/ebtables_u.h	/^	char logical_in[IFNAMSIZ];$/;"	m	struct:ebt_u_entry
+logical_in	../include/linux/netfilter_bridge/ebtables.h	/^	char logical_in[IFNAMSIZ];$/;"	m	struct:ebt_entry
+logical_out	../include/ebtables.h	/^	char logical_out[IFNAMSIZ];$/;"	m	struct:ebt_entry
+logical_out	../include/ebtables_u.h	/^	char logical_out[IFNAMSIZ];$/;"	m	struct:ebt_u_entry
+logical_out	../include/linux/netfilter_bridge/ebtables.h	/^	char logical_out[IFNAMSIZ];$/;"	m	struct:ebt_entry
+loglevel	../include/linux/netfilter_bridge/ebt_log.h	/^	uint8_t loglevel;$/;"	m	struct:ebt_log_info
+m	../include/ebtables_u.h	/^	struct ebt_entry_match *m;$/;"	m	struct:ebt_u_match	typeref:struct:ebt_u_match::ebt_entry_match
+m	../include/ebtables_u.h	/^	struct ebt_entry_match *m;$/;"	m	struct:ebt_u_match_list	typeref:struct:ebt_u_match_list::ebt_entry_match
+m_list	../include/ebtables_u.h	/^	struct ebt_u_match_list *m_list;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_u_match_list
+mac	../include/linux/netfilter_bridge/ebt_arpreply.h	/^	unsigned char mac[ETH_ALEN];$/;"	m	struct:ebt_arpreply_info
+mac	../include/linux/netfilter_bridge/ebt_nat.h	/^	unsigned char mac[ETH_ALEN];$/;"	m	struct:ebt_nat_info
+mac_supplied	../extensions/ebt_arpreply.c	/^static int mac_supplied;$/;"	v	file:
+mac_type_bridge_group	../useful_functions.c	/^const unsigned char mac_type_bridge_group[ETH_ALEN] = {0x01,0x80,0xc2,0,0,0};$/;"	v
+mac_type_broadcast	../useful_functions.c	/^const unsigned char mac_type_broadcast[ETH_ALEN] = {255,255,255,255,255,255};$/;"	v
+mac_type_multicast	../useful_functions.c	/^const unsigned char mac_type_multicast[ETH_ALEN] = {1,0,0,0,0,0};$/;"	v
+mac_type_unicast	../useful_functions.c	/^const unsigned char mac_type_unicast[ETH_ALEN] =   {0,0,0,0,0,0};$/;"	v
+main	../ebtables-restore.c	/^int main(int argc_, char *argv_[])$/;"	f
+main	../ebtables-standalone.c	/^int main(int argc, char *argv[])$/;"	f
+main	../ebtablesd.c	/^int main(int argc_, char *argv_[])$/;"	f
+main	../ebtablesu.c	/^int main(int argc, char *argv[])$/;"	f
+main	../examples/ulog/test_ulog.c	/^int main(int argc, char **argv)$/;"	f
+mark	../include/linux/netfilter_bridge/ebt_mark_m.h	/^	unsigned long mark, mask;$/;"	m	struct:ebt_mark_m_info
+mark	../include/linux/netfilter_bridge/ebt_mark_t.h	/^	unsigned long mark;$/;"	m	struct:ebt_mark_t_info
+mark	../include/linux/netfilter_bridge/ebt_ulog.h	/^	unsigned long mark;$/;"	m	struct:ebt_ulog_packet_msg
+mark	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	/^	int mark; $/;"	m	struct:ebt_wmm_mark_t_info
+mark_match	../extensions/ebt_mark_m.c	/^static struct ebt_u_match mark_match =$/;"	v	typeref:struct:ebt_u_match	file:
+mark_supplied	../extensions/ebt_mark.c	/^static int mark_supplied;$/;"	v	file:
+mark_target	../extensions/ebt_mark.c	/^static struct ebt_u_target mark_target =$/;"	v	typeref:struct:ebt_u_target	file:
+mark_target	../extensions/ebt_wmm_mark.c	/^static struct ebt_u_target mark_target =$/;"	v	typeref:struct:ebt_u_target	file:
+markpos	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	/^	int markpos;$/;"	m	struct:ebt_wmm_mark_t_info
+markset	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	/^	int markset;$/;"	m	struct:ebt_wmm_mark_t_info
+mask	../include/linux/netfilter_bridge/ebt_mark_m.h	/^	unsigned long mark, mask;$/;"	m	struct:ebt_mark_m_info
+match	../include/ebtables.h	/^		struct ebt_match *match;$/;"	m	union:ebt_entry_match::__anon9	typeref:struct:ebt_entry_match::__anon9::ebt_match
+match	../include/linux/netfilter_bridge/ebtables.h	/^		struct ebt_match *match;$/;"	m	union:ebt_entry_match::__anon3	typeref:struct:ebt_entry_match::__anon3::ebt_match
+match_size	../include/ebtables.h	/^	unsigned int match_size;$/;"	m	struct:ebt_entry_match
+match_size	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int match_size;$/;"	m	struct:ebt_entry_match
+max_agel	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t max_agel, max_ageu;$/;"	m	struct:ebt_stp_config_info
+max_ageu	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t max_agel, max_ageu;$/;"	m	struct:ebt_stp_config_info
+max_chains	../include/ebtables_u.h	/^	unsigned int max_chains;$/;"	m	struct:ebt_u_replace
+merge_match	../ebtables.c	/^static void merge_match(struct ebt_u_match *m)$/;"	f	file:
+merge_options	../ebtables.c	/^static struct option *merge_options(struct option *oldopts,$/;"	f	file:
+merge_target	../ebtables.c	/^static void merge_target(struct ebt_u_target *t)$/;"	f	file:
+merge_watcher	../ebtables.c	/^static void merge_watcher(struct ebt_u_watcher *w)$/;"	f	file:
+mode_t	../include/linux/types.h	/^typedef __kernel_mode_t		mode_t;$/;"	t
+mqd_t	../include/linux/types.h	/^typedef __kernel_mqd_t		mqd_t;$/;"	t
+msg_agel	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t msg_agel, msg_ageu;$/;"	m	struct:ebt_stp_config_info
+msg_ageu	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t msg_agel, msg_ageu;$/;"	m	struct:ebt_stp_config_info
+msk_type_bridge_group	../useful_functions.c	/^const unsigned char msk_type_bridge_group[ETH_ALEN] = {255,255,255,255,255,255};$/;"	v
+msk_type_broadcast	../useful_functions.c	/^const unsigned char msk_type_broadcast[ETH_ALEN] = {255,255,255,255,255,255};$/;"	v
+msk_type_multicast	../useful_functions.c	/^const unsigned char msk_type_multicast[ETH_ALEN] = {1,0,0,0,0,0};$/;"	v
+msk_type_unicast	../useful_functions.c	/^const unsigned char msk_type_unicast[ETH_ALEN] =   {1,0,0,0,0,0};$/;"	v
+mult	../extensions/ebt_limit.c	/^	u_int32_t mult;$/;"	m	struct:rates	file:
+n	../libebtc.c	/^	int n;$/;"	m	struct:ebt_u_stack	file:
+name	../extensions/ebt_limit.c	/^	const char *name;$/;"	m	struct:rates	file:
+name	../include/ebtables.h	/^		char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	union:ebt_entry_match::__anon9
+name	../include/ebtables.h	/^		char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	union:ebt_entry_target::__anon11
+name	../include/ebtables.h	/^		char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	union:ebt_entry_watcher::__anon10
+name	../include/ebtables.h	/^	char name[EBT_CHAIN_MAXNAMELEN];$/;"	m	struct:ebt_entries
+name	../include/ebtables.h	/^	char name[EBT_TABLE_MAXNAMELEN];$/;"	m	struct:ebt_replace
+name	../include/ebtables_u.h	/^	char name[EBT_CHAIN_MAXNAMELEN];$/;"	m	struct:ebt_u_entries
+name	../include/ebtables_u.h	/^	char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	struct:ebt_u_match
+name	../include/ebtables_u.h	/^	char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	struct:ebt_u_target
+name	../include/ebtables_u.h	/^	char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	struct:ebt_u_watcher
+name	../include/ebtables_u.h	/^	char name[EBT_TABLE_MAXNAMELEN];$/;"	m	struct:ebt_u_replace
+name	../include/ebtables_u.h	/^	char name[EBT_TABLE_MAXNAMELEN];$/;"	m	struct:ebt_u_table
+name	../include/linux/netfilter_bridge/ebtables.h	/^		char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	union:ebt_entry_match::__anon3
+name	../include/linux/netfilter_bridge/ebtables.h	/^		char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	union:ebt_entry_target::__anon5
+name	../include/linux/netfilter_bridge/ebtables.h	/^		char name[EBT_FUNCTION_MAXNAMELEN];$/;"	m	union:ebt_entry_watcher::__anon4
+name	../include/linux/netfilter_bridge/ebtables.h	/^	char name[EBT_CHAIN_MAXNAMELEN];$/;"	m	struct:ebt_entries
+name	../include/linux/netfilter_bridge/ebtables.h	/^	char name[EBT_TABLE_MAXNAMELEN];$/;"	m	struct:ebt_replace
+name_to_loglevel	../extensions/ebt_log.c	/^static int name_to_loglevel(char* arg)$/;"	f	file:
+nentries	../include/ebtables.h	/^	unsigned int nentries;$/;"	m	struct:ebt_entries
+nentries	../include/ebtables.h	/^	unsigned int nentries;$/;"	m	struct:ebt_replace
+nentries	../include/ebtables_u.h	/^	unsigned int nentries;$/;"	m	struct:ebt_u_entries
+nentries	../include/ebtables_u.h	/^	unsigned int nentries;$/;"	m	struct:ebt_u_replace
+nentries	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int nentries;$/;"	m	struct:ebt_entries
+nentries	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int nentries;$/;"	m	struct:ebt_replace
+new_entry	../ebtables.c	/^static struct ebt_u_entry *new_entry;$/;"	v	typeref:struct:ebt_u_entry	file:
+new_wormhash	../extensions/ebt_among.c	/^static struct ebt_mac_wormhash *new_wormhash(int n)$/;"	f	file:
+next	../include/ebtables_u.h	/^	struct ebt_cntchanges *next;$/;"	m	struct:ebt_cntchanges	typeref:struct:ebt_cntchanges::ebt_cntchanges
+next	../include/ebtables_u.h	/^	struct ebt_u_entry *next;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_u_entry
+next	../include/ebtables_u.h	/^	struct ebt_u_match *next;$/;"	m	struct:ebt_u_match	typeref:struct:ebt_u_match::ebt_u_match
+next	../include/ebtables_u.h	/^	struct ebt_u_match_list *next;$/;"	m	struct:ebt_u_match_list	typeref:struct:ebt_u_match_list::ebt_u_match_list
+next	../include/ebtables_u.h	/^	struct ebt_u_table *next;$/;"	m	struct:ebt_u_table	typeref:struct:ebt_u_table::ebt_u_table
+next	../include/ebtables_u.h	/^	struct ebt_u_target *next;$/;"	m	struct:ebt_u_target	typeref:struct:ebt_u_target::ebt_u_target
+next	../include/ebtables_u.h	/^	struct ebt_u_watcher *next;$/;"	m	struct:ebt_u_watcher	typeref:struct:ebt_u_watcher::ebt_u_watcher
+next	../include/ebtables_u.h	/^	struct ebt_u_watcher_list *next;$/;"	m	struct:ebt_u_watcher_list	typeref:struct:ebt_u_watcher_list::ebt_u_watcher_list
+next_offset	../include/ebtables.h	/^	unsigned int next_offset;$/;"	m	struct:ebt_entry
+next_offset	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int next_offset;$/;"	m	struct:ebt_entry
+nf_br_hook_priorities	../include/linux/netfilter_bridge.h	/^enum nf_br_hook_priorities {$/;"	g
+nf_bridge_encap_header_len	../include/linux/netfilter_bridge.h	/^static inline unsigned int nf_bridge_encap_header_len(const struct sk_buff *skb)$/;"	f
+nf_bridge_maybe_copy_header	../include/linux/netfilter_bridge.h	/^static inline int nf_bridge_maybe_copy_header(struct sk_buff *skb)$/;"	f
+nf_bridge_maybe_copy_header	../include/linux/netfilter_bridge.h	87;"	d
+nf_bridge_pad	../include/linux/netfilter_bridge.h	/^static inline unsigned int nf_bridge_pad(const struct sk_buff *skb)$/;"	f
+nf_bridge_pad	../include/linux/netfilter_bridge.h	88;"	d
+nflog_compare	../extensions/ebt_nflog.c	/^static int nflog_compare(const struct ebt_entry_watcher *w1,$/;"	f	file:
+nflog_final_check	../extensions/ebt_nflog.c	/^static void nflog_final_check(const struct ebt_u_entry *entry,$/;"	f	file:
+nflog_help	../extensions/ebt_nflog.c	/^static void nflog_help()$/;"	f	file:
+nflog_opts	../extensions/ebt_nflog.c	/^static struct option nflog_opts[] = {$/;"	v	typeref:struct:option	file:
+nflog_parse	../extensions/ebt_nflog.c	/^static int nflog_parse(int c, char **argv, int argc,$/;"	f	file:
+nflog_print	../extensions/ebt_nflog.c	/^static void nflog_print(const struct ebt_u_entry *entry,$/;"	f	file:
+nflog_watcher	../extensions/ebt_nflog.c	/^static struct ebt_u_watcher nflog_watcher = {$/;"	v	typeref:struct:ebt_u_watcher	file:
+ni	../include/linux/netfilter_bridge/ebt_802_3.h	/^		struct hdr_ni ni;$/;"	m	union:ebt_802_3_hdr::__anon2	typeref:struct:ebt_802_3_hdr::__anon2::hdr_ni
+nlgroup	../include/linux/netfilter_bridge/ebt_ulog.h	/^	uint32_t nlgroup;$/;"	m	struct:ebt_ulog_info
+nlink_t	../include/linux/types.h	/^typedef __kernel_nlink_t	nlink_t;$/;"	t
+num_chains	../include/ebtables_u.h	/^	unsigned int num_chains;$/;"	m	struct:ebt_u_replace
+num_counters	../include/ebtables.h	/^	unsigned int num_counters;$/;"	m	struct:ebt_replace
+num_counters	../include/ebtables_u.h	/^	unsigned int num_counters;$/;"	m	struct:ebt_u_replace
+num_counters	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int num_counters;$/;"	m	struct:ebt_replace
+numeric_to_addr	../useful_functions.c	/^static struct in6_addr *numeric_to_addr(const char *num)$/;"	f	file:
+off_t	../include/linux/types.h	/^typedef __kernel_off_t		off_t;$/;"	t
+old_gid_t	../include/linux/types.h	/^typedef __kernel_old_gid_t	old_gid_t;$/;"	t
+old_size	../extensions/ebt_among.c	/^static int old_size;$/;"	v	file:
+old_uid_t	../include/linux/types.h	/^typedef __kernel_old_uid_t	old_uid_t;$/;"	t
+opcode	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be16 opcode;$/;"	m	struct:ebt_arp_info
+opcodes	../extensions/ebt_arp.c	/^static char *opcodes[] =$/;"	v	file:
+open_method	../ebtablesd.c	/^static int open_method[3];$/;"	v	file:
+option_offset	../include/ebtables_u.h	/^	unsigned int option_offset;$/;"	m	struct:ebt_u_match
+option_offset	../include/ebtables_u.h	/^	unsigned int option_offset;$/;"	m	struct:ebt_u_target
+option_offset	../include/ebtables_u.h	/^	unsigned int option_offset;$/;"	m	struct:ebt_u_watcher
+opts	../extensions/ebt_802_3.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_among.c	/^static struct option opts[] = {$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_arp.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_arpreply.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_classify.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_ftos.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_ip.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_ip6.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_limit.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_log.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_mark.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_mark_m.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_pkttype.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_realdev.c	/^static struct option opts[] = {$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_redirect.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_standard.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_stp.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_tbs_vlan_m.c	/^static struct option opts[] = {$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_time.c	/^static struct option opts[] = {$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_ulog.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_vlan.c	/^static struct option opts[] = {$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_vlan_t.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts	../extensions/ebt_wmm_mark.c	/^static struct option opts[] =$/;"	v	typeref:struct:option	file:
+opts_d	../extensions/ebt_nat.c	/^static struct option opts_d[] =$/;"	v	typeref:struct:option	file:
+opts_s	../extensions/ebt_nat.c	/^static struct option opts_s[] =$/;"	v	typeref:struct:option	file:
+orig	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t  orig[3];$/;"	m	struct:hdr_ni
+orig	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t orig[3];$/;"	m	struct:hdr_ui
+out	../include/ebtables.h	/^	char out[IFNAMSIZ];$/;"	m	struct:ebt_entry
+out	../include/ebtables_u.h	/^	char out[IFNAMSIZ];$/;"	m	struct:ebt_u_entry
+out	../include/linux/netfilter_bridge/ebtables.h	/^	char out[IFNAMSIZ];$/;"	m	struct:ebt_entry
+outdev	../include/linux/netfilter_bridge/ebt_ulog.h	/^	char outdev[IFNAMSIZ];$/;"	m	struct:ebt_ulog_packet_msg
+pad	../include/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_entry_match
+pad	../include/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_entry_target
+pad	../include/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_entry_watcher
+pad	../include/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_standard_target
+pad	../include/linux/netfilter_bridge/ebt_nflog.h	/^	u_int16_t pad;$/;"	m	struct:ebt_nflog_info
+pad	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_entry_match
+pad	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_entry_target
+pad	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_entry_watcher
+pad	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int pad;$/;"	m	struct:ebt_standard_target
+parse	../extensions/ebt_802_3.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_among.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_arp.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_arpreply.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_classify.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_ftos.c	/^parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_ip.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_ip6.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_limit.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_log.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_mark.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_mark_m.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_pkttype.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_realdev.c	/^parse(int c,$/;"	f	file:
+parse	../extensions/ebt_redirect.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_standard.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_stp.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_tbs_vlan_m.c	/^parse(int c,$/;"	f	file:
+parse	../extensions/ebt_time.c	/^parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_ulog.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_vlan.c	/^static int parse(int c, char **argv, int argc, const struct ebt_u_entry *entry,$/;"	f	file:
+parse	../extensions/ebt_vlan_t.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../extensions/ebt_wmm_mark.c	/^static int parse(int c, char **argv, int argc,$/;"	f	file:
+parse	../include/ebtables_u.h	/^	int (*parse)(int c, char **argv, int argc,$/;"	m	struct:ebt_u_match
+parse	../include/ebtables_u.h	/^	int (*parse)(int c, char **argv, int argc,$/;"	m	struct:ebt_u_target
+parse	../include/ebtables_u.h	/^	int (*parse)(int c, char **argv, int argc,$/;"	m	struct:ebt_u_watcher
+parse_change_counters_rule	../ebtables.c	/^static int parse_change_counters_rule(int argc, char **argv, int *rule_nr, int *rule_nr_end, int exec_style)$/;"	f	file:
+parse_d	../extensions/ebt_nat.c	/^static int parse_d(int c, char **argv, int argc,$/;"	f	file:
+parse_day	../extensions/ebt_time.c	/^parse_day(int *days, int from, int to, const char *string)$/;"	f	file:
+parse_days_string	../extensions/ebt_time.c	/^parse_days_string(int *days, const char *daystring)$/;"	f	file:
+parse_iface	../ebtables.c	/^static int parse_iface(char *iface, char *option)$/;"	f	file:
+parse_ip6_mask	../useful_functions.c	/^static struct in6_addr *parse_ip6_mask(char *mask)$/;"	f	file:
+parse_port	../extensions/ebt_ip.c	/^static uint16_t parse_port(const char *protocol, const char *name)$/;"	f	file:
+parse_port	../extensions/ebt_ip6.c	/^static uint16_t parse_port(const char *protocol, const char *name)$/;"	f	file:
+parse_port_range	../extensions/ebt_ip.c	/^parse_port_range(const char *protocol, const char *portstring, uint16_t *ports)$/;"	f	file:
+parse_port_range	../extensions/ebt_ip6.c	/^parse_port_range(const char *protocol, const char *portstring, uint16_t *ports)$/;"	f	file:
+parse_range	../extensions/ebt_stp.c	/^static int parse_range(const char *portstring, void *lower, void *upper,$/;"	f	file:
+parse_rate	../extensions/ebt_limit.c	/^static int parse_rate(const char *rate, u_int32_t *val)$/;"	f	file:
+parse_rule_range	../ebtables.c	/^static int parse_rule_range(const char *argv, int *rule_nr, int *rule_nr_end)$/;"	f	file:
+parse_s	../extensions/ebt_nat.c	/^static int parse_s(int c, char **argv, int argc,$/;"	f	file:
+parse_time_string	../extensions/ebt_time.c	/^parse_time_string(unsigned int *hour, unsigned int *minute, const char *time)$/;"	f	file:
+parseethertypebynumber	../useful_functions.c	/^struct ethertypeent *parseethertypebynumber(int type)$/;"	f
+pcnt	../include/ebtables.h	/^	uint64_t pcnt;$/;"	m	struct:ebt_counter
+pcnt	../include/linux/netfilter_bridge/ebtables.h	/^	uint64_t pcnt;$/;"	m	struct:ebt_counter
+pgoff_t	../include/linux/types.h	147;"	d
+phys_addr_t	../include/linux/types.h	/^typedef u32 phys_addr_t;$/;"	t
+phys_addr_t	../include/linux/types.h	/^typedef u64 phys_addr_t;$/;"	t
+physindev	../include/linux/netfilter_bridge/ebt_ulog.h	/^	char physindev[IFNAMSIZ];$/;"	m	struct:ebt_ulog_packet_msg
+physoutdev	../include/linux/netfilter_bridge/ebt_ulog.h	/^	char physoutdev[IFNAMSIZ];$/;"	m	struct:ebt_ulog_packet_msg
+pid_t	../include/linux/types.h	/^typedef __kernel_pid_t		pid_t;$/;"	t
+pkt_type	../include/linux/netfilter_bridge/ebt_pkttype.h	/^	uint8_t pkt_type;$/;"	m	struct:ebt_pkttype_info
+pkttype_match	../extensions/ebt_pkttype.c	/^static struct ebt_u_match pkttype_match =$/;"	v	typeref:struct:ebt_u_match	file:
+policy	../include/ebtables.h	/^	int policy;$/;"	m	struct:ebt_entries
+policy	../include/ebtables_u.h	/^	int policy;$/;"	m	struct:ebt_u_entries
+policy	../include/linux/netfilter_bridge/ebtables.h	/^	int policy;$/;"	m	struct:ebt_entries
+pool	../include/linux/netfilter_bridge/ebt_among.h	/^	struct ebt_mac_wormhash_tuple pool[0];$/;"	m	struct:ebt_mac_wormhash	typeref:struct:ebt_mac_wormhash::ebt_mac_wormhash_tuple
+poolsize	../include/linux/netfilter_bridge/ebt_among.h	/^	int poolsize;$/;"	m	struct:ebt_mac_wormhash
+portl	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t portl, portu;$/;"	m	struct:ebt_stp_config_info
+portu	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t portl, portu;$/;"	m	struct:ebt_stp_config_info
+prefix	../include/linux/netfilter_bridge/ebt_log.h	/^	uint8_t prefix[EBT_LOG_PREFIX_SIZE];$/;"	m	struct:ebt_log_info
+prefix	../include/linux/netfilter_bridge/ebt_nflog.h	/^	char prefix[EBT_NFLOG_PREFIX_SIZE];$/;"	m	struct:ebt_nflog_info
+prefix	../include/linux/netfilter_bridge/ebt_ulog.h	/^	char prefix[EBT_ULOG_PREFIX_LEN];$/;"	m	struct:ebt_ulog_info
+prefix	../include/linux/netfilter_bridge/ebt_ulog.h	/^	char prefix[EBT_ULOG_PREFIX_LEN];$/;"	m	struct:ebt_ulog_packet_msg
+prev	../include/ebtables_u.h	/^	struct ebt_cntchanges *prev;$/;"	m	struct:ebt_cntchanges	typeref:struct:ebt_cntchanges::ebt_cntchanges
+prev	../include/ebtables_u.h	/^	struct ebt_u_entry *prev;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_u_entry
+prev	../include/linux/netfilter_bridge/ebt_limit.h	/^	unsigned long prev;$/;"	m	struct:ebt_limit_info
+print	../extensions/ebt_802_3.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_among.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_arp.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_arpreply.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_classify.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_ftos.c	/^print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_ip.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_ip6.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_limit.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_log.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_mark.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_mark_m.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_pkttype.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_realdev.c	/^print(const struct ebt_u_entry *entry, const struct ebt_entry_match *match)$/;"	f	file:
+print	../extensions/ebt_redirect.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_standard.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_stp.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_tbs_vlan_m.c	/^print(const struct ebt_u_entry *entry, const struct ebt_entry_match *match)$/;"	f	file:
+print	../extensions/ebt_time.c	/^print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_ulog.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_vlan.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_vlan_t.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../extensions/ebt_wmm_mark.c	/^static void print(const struct ebt_u_entry *entry,$/;"	f	file:
+print	../include/ebtables_u.h	/^	void (*print)(const struct ebt_u_entry *entry,$/;"	m	struct:ebt_u_match
+print	../include/ebtables_u.h	/^	void (*print)(const struct ebt_u_entry *entry,$/;"	m	struct:ebt_u_target
+print	../include/ebtables_u.h	/^	void (*print)(const struct ebt_u_entry *entry,$/;"	m	struct:ebt_u_watcher
+print_class	../extensions/ebt_classify.c	/^static void print_class(unsigned int priority)$/;"	f	file:
+print_d	../extensions/ebt_nat.c	/^static void print_d(const struct ebt_u_entry *entry,$/;"	f	file:
+print_days	../extensions/ebt_time.c	/^print_days(int daynum)$/;"	f	file:
+print_help	../ebtables.c	/^static void print_help()$/;"	f	file:
+print_help	../ebtablesu.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_802_3.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_among.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_arp.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_arpreply.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_classify.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_ftos.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_ip.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_ip6.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_limit.c	/^static void print_help(void)$/;"	f	file:
+print_help	../extensions/ebt_log.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_mark.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_mark_m.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_pkttype.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_realdev.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_redirect.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_standard.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_stp.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_tbs_vlan_m.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_ulog.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_vlan.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_vlan_t.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebt_wmm_mark.c	/^static void print_help()$/;"	f	file:
+print_help	../extensions/ebtable_aroute.c	/^static void print_help(char **hn)$/;"	f	file:
+print_help	../extensions/ebtable_broute.c	/^static void print_help(const char **hn)$/;"	f	file:
+print_help	../extensions/ebtable_filter.c	/^static void print_help(const char **hn)$/;"	f	file:
+print_help	../extensions/ebtable_nat.c	/^static void print_help(const char **hn)$/;"	f	file:
+print_help	../extensions/ebtable_proute.c	/^static void print_help(const char **hn)$/;"	f	file:
+print_help_d	../extensions/ebt_nat.c	/^static void print_help_d()$/;"	f	file:
+print_help_s	../extensions/ebt_nat.c	/^static void print_help_s()$/;"	f	file:
+print_iface	../ebtables.c	/^static void print_iface(const char *iface)$/;"	f	file:
+print_port_range	../extensions/ebt_ip.c	/^static void print_port_range(uint16_t *ports)$/;"	f	file:
+print_port_range	../extensions/ebt_ip6.c	/^static void print_port_range(uint16_t *ports)$/;"	f	file:
+print_range	../extensions/ebt_stp.c	/^static void print_range(unsigned int l, unsigned int u)$/;"	f	file:
+print_rate	../extensions/ebt_limit.c	/^static void print_rate(u_int32_t period)$/;"	f	file:
+print_s	../extensions/ebt_nat.c	/^static void print_s(const struct ebt_u_entry *entry,$/;"	f	file:
+prio	../include/linux/netfilter_bridge/ebt_tbs_vlan_m.h	/^    uint32_t prio;       \/* VLAN User Priority {0-7} *\/$/;"	m	struct:ebt_tbs_vlan_info
+prio	../include/linux/netfilter_bridge/ebt_vlan.h	/^	uint8_t prio;		\/* VLAN User Priority {0-7} *\/$/;"	m	struct:ebt_vlan_info
+priority	../include/linux/netfilter_bridge/ebt_classify.h	/^	u_int32_t priority;$/;"	m	struct:ebt_classify_target_info
+priority	../include/linux/netfilter_bridge/ebt_vlan_t.h	/^	unsigned char priority;$/;"	m	struct:ebt_vlan_t_info
+protocol	../include/linux/netfilter_bridge/ebt_ip.h	/^	uint8_t  protocol;$/;"	m	struct:ebt_ip_info
+protocol	../include/linux/netfilter_bridge/ebt_ip6.h	/^	uint8_t  protocol;$/;"	m	struct:ebt_ip6_info
+ptrdiff_t	../include/linux/types.h	/^typedef __kernel_ptrdiff_t	ptrdiff_t;$/;"	t
+ptype	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be16 ptype;$/;"	m	struct:ebt_arp_info
+qthreshold	../include/linux/netfilter_bridge/ebt_ulog.h	/^	unsigned int qthreshold;$/;"	m	struct:ebt_ulog_info
+rates	../extensions/ebt_limit.c	/^struct rates$/;"	s	file:
+read_until	../extensions/ebt_among.c	/^static int read_until(const char **pp, const char *delimiters,$/;"	f	file:
+realdev_match	../extensions/ebt_realdev.c	/^static struct ebt_u_match realdev_match = {$/;"	v	typeref:struct:ebt_u_match	file:
+redir_ifindex	../include/linux/netfilter_bridge/ebt_vlan_t.h	/^	int  redir_ifindex;  \/*redirect device*\/$/;"	m	struct:ebt_vlan_t_info
+redirect_target	../extensions/ebt_redirect.c	/^static struct ebt_u_target redirect_target =$/;"	v	typeref:struct:ebt_u_target	file:
+replace	../ebtables-restore.c	/^static struct ebt_u_replace replace[5];$/;"	v	typeref:struct:ebt_u_replace	file:
+replace	../ebtables-standalone.c	/^static struct ebt_u_replace replace;$/;"	v	typeref:struct:ebt_u_replace	file:
+replace	../ebtables.c	/^static struct ebt_u_replace *replace;$/;"	v	typeref:struct:ebt_u_replace	file:
+replace	../ebtablesd.c	/^static struct ebt_u_replace replace[3];$/;"	v	typeref:struct:ebt_u_replace	file:
+replace	../include/ebtables_u.h	/^	struct ebt_u_replace *replace;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_u_replace
+resource_size_t	../include/linux/types.h	/^typedef phys_addr_t resource_size_t;$/;"	t
+retrieve_from_file	../communication.c	/^static int retrieve_from_file(char *filename, struct ebt_replace *repl,$/;"	f	file:
+retrieve_from_kernel	../communication.c	/^static int retrieve_from_kernel(struct ebt_replace *repl, char command,$/;"	f	file:
+root_addr	../include/linux/netfilter_bridge/ebt_stp.h	/^	char root_addr[6], root_addrmsk[6];$/;"	m	struct:ebt_stp_config_info
+root_addrmsk	../include/linux/netfilter_bridge/ebt_stp.h	/^	char root_addr[6], root_addrmsk[6];$/;"	m	struct:ebt_stp_config_info
+root_costl	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint32_t root_costl, root_costu;$/;"	m	struct:ebt_stp_config_info
+root_costu	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint32_t root_costl, root_costu;$/;"	m	struct:ebt_stp_config_info
+root_priol	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t root_priol, root_priou;$/;"	m	struct:ebt_stp_config_info
+root_priou	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t root_priol, root_priou;$/;"	m	struct:ebt_stp_config_info
+sa_kernel	../examples/ulog/test_ulog.c	/^static struct sockaddr_nl sa_kernel =$/;"	v	typeref:struct:sockaddr_nl	file:
+sa_local	../examples/ulog/test_ulog.c	/^static struct sockaddr_nl sa_local =$/;"	v	typeref:struct:sockaddr_nl	file:
+saddr	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t  saddr[6];$/;"	m	struct:ebt_802_3_hdr
+saddr	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be32 saddr;$/;"	m	struct:ebt_arp_info
+saddr	../include/linux/netfilter_bridge/ebt_ip.h	/^	__be32 saddr;$/;"	m	struct:ebt_ip_info
+saddr	../include/linux/netfilter_bridge/ebt_ip6.h	/^	struct in6_addr saddr;$/;"	m	struct:ebt_ip6_info	typeref:struct:ebt_ip6_info::in6_addr
+sap	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t  sap;$/;"	m	struct:ebt_802_3_info
+sector_t	../include/linux/types.h	/^typedef u64 sector_t;$/;"	t
+sector_t	../include/linux/types.h	/^typedef unsigned long sector_t;$/;"	t
+selected_chain	../include/ebtables_u.h	/^	int selected_chain;$/;"	m	struct:ebt_u_replace
+sender_addr	../include/linux/netfilter_bridge/ebt_stp.h	/^	char sender_addr[6], sender_addrmsk[6];$/;"	m	struct:ebt_stp_config_info
+sender_addrmsk	../include/linux/netfilter_bridge/ebt_stp.h	/^	char sender_addr[6], sender_addrmsk[6];$/;"	m	struct:ebt_stp_config_info
+sender_priol	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t sender_priol, sender_priou;$/;"	m	struct:ebt_stp_config_info
+sender_priou	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint16_t sender_priol, sender_priou;$/;"	m	struct:ebt_stp_config_info
+setethertypeent	../getethertype.c	/^void setethertypeent(int f)$/;"	f
+sfd	../examples/ulog/test_ulog.c	/^static int sfd;$/;"	v	file:
+sigpipe_handler	../ebtablesd.c	/^static void sigpipe_handler(int sig)$/;"	f	file:
+size	../include/ebtables_u.h	/^	unsigned int size;$/;"	m	struct:ebt_u_match
+size	../include/ebtables_u.h	/^	unsigned int size;$/;"	m	struct:ebt_u_target
+size	../include/ebtables_u.h	/^	unsigned int size;$/;"	m	struct:ebt_u_watcher
+size_t	../include/linux/types.h	/^typedef __kernel_size_t		size_t;$/;"	t
+smaddr	../include/linux/netfilter_bridge/ebt_arp.h	/^	unsigned char smaddr[ETH_ALEN];$/;"	m	struct:ebt_arp_info
+smmsk	../include/linux/netfilter_bridge/ebt_arp.h	/^	unsigned char smmsk[ETH_ALEN];$/;"	m	struct:ebt_arp_info
+smsk	../include/linux/netfilter_bridge/ebt_arp.h	/^	__be32 smsk;$/;"	m	struct:ebt_arp_info
+smsk	../include/linux/netfilter_bridge/ebt_ip.h	/^	__be32 smsk;$/;"	m	struct:ebt_ip_info
+smsk	../include/linux/netfilter_bridge/ebt_ip6.h	/^	struct in6_addr smsk;$/;"	m	struct:ebt_ip6_info	typeref:struct:ebt_ip6_info::in6_addr
+snat_target	../extensions/ebt_nat.c	/^static struct ebt_u_target snat_target =$/;"	v	typeref:struct:ebt_u_target	file:
+sockfd	../communication.c	/^int sockfd = -1;$/;"	v
+sourcemac	../include/ebtables.h	/^	unsigned char sourcemac[ETH_ALEN];$/;"	m	struct:ebt_entry
+sourcemac	../include/ebtables_u.h	/^	unsigned char sourcemac[ETH_ALEN];$/;"	m	struct:ebt_u_entry
+sourcemac	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char sourcemac[ETH_ALEN];$/;"	m	struct:ebt_entry
+sourcemsk	../include/ebtables.h	/^	unsigned char sourcemsk[ETH_ALEN];$/;"	m	struct:ebt_entry
+sourcemsk	../include/ebtables_u.h	/^	unsigned char sourcemsk[ETH_ALEN];$/;"	m	struct:ebt_u_entry
+sourcemsk	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned char sourcemsk[ETH_ALEN];$/;"	m	struct:ebt_entry
+sparc_cast	../communication.c	28;"	d	file:
+sparc_cast	../communication.c	30;"	d	file:
+split_time	../extensions/ebt_time.c	/^split_time(char **part1, char **part2, const char *str_2_parse)$/;"	f	file:
+sport	../include/linux/netfilter_bridge/ebt_ip.h	/^	uint16_t sport[2];$/;"	m	struct:ebt_ip_info
+sport	../include/linux/netfilter_bridge/ebt_ip6.h	/^	uint16_t sport[2];$/;"	m	struct:ebt_ip6_info
+ssap	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t ssap;$/;"	m	struct:hdr_ni
+ssap	../include/linux/netfilter_bridge/ebt_802_3.h	/^	uint8_t ssap;$/;"	m	struct:hdr_ui
+ssize_t	../include/linux/types.h	/^typedef __kernel_ssize_t	ssize_t;$/;"	t
+stamp	../include/linux/netfilter_bridge/ebt_ulog.h	/^	struct timeval stamp;$/;"	m	struct:ebt_ulog_packet_msg	typeref:struct:ebt_ulog_packet_msg::timeval
+standard	../extensions/ebt_standard.c	/^static struct ebt_u_target standard =$/;"	v	typeref:struct:ebt_u_target	file:
+store_counters_in_file	../communication.c	/^static int store_counters_in_file(char *filename, struct ebt_u_replace *repl)$/;"	f	file:
+store_table_in_file	../communication.c	/^static void store_table_in_file(char *filename, struct ebt_replace *repl)$/;"	f	file:
+stp_match	../extensions/ebt_stp.c	/^static struct ebt_u_match stp_match =$/;"	v	typeref:struct:ebt_u_match	file:
+string_to_number	../extensions/ebt_limit.c	/^static int string_to_number(const char *s, unsigned int min, unsigned int max,$/;"	f	file:
+string_to_number	../extensions/ebt_time.c	/^string_to_number(const char *s, unsigned int min, unsigned int max,$/;"	f	file:
+string_to_number	../useful_functions.c	/^int string_to_number(const char *s, unsigned int min, unsigned int max,$/;"	f
+string_to_number_l	../useful_functions.c	/^int string_to_number_l(const char *s, unsigned long min, unsigned long max,$/;"	f
+string_to_number_ll	../useful_functions.c	/^int string_to_number_ll(const char *s, unsigned long long min,$/;"	f
+string_to_priority	../extensions/ebt_classify.c	/^int string_to_priority(const char *s, unsigned int *p)$/;"	f
+suseconds_t	../include/linux/types.h	/^typedef __kernel_suseconds_t	suseconds_t;$/;"	t
+t	../include/ebtables_u.h	/^	struct ebt_entry_target *t;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_entry_target
+t	../include/ebtables_u.h	/^	struct ebt_entry_target *t;$/;"	m	struct:ebt_u_target	typeref:struct:ebt_u_target::ebt_entry_target
+table	../ebtables.c	/^static struct ebt_u_table *table;$/;"	v	typeref:struct:ebt_u_table	file:
+table	../extensions/ebtable_aroute.c	/^ebt_u_table table =$/;"	v	typeref:struct:ebt_u_table	file:
+table	../extensions/ebtable_broute.c	/^ebt_u_table table =$/;"	v	typeref:struct:ebt_u_table	file:
+table	../extensions/ebtable_filter.c	/^static struct ebt_u_table table =$/;"	v	typeref:struct:ebt_u_table	file:
+table	../extensions/ebtable_nat.c	/^ebt_u_table table =$/;"	v	typeref:struct:ebt_u_table	file:
+table	../extensions/ebtable_proute.c	/^ebt_u_table table =$/;"	v	typeref:struct:ebt_u_table	file:
+table	../include/linux/netfilter_bridge/ebt_among.h	/^	int table[257];$/;"	m	struct:ebt_mac_wormhash
+target	../include/ebtables.h	/^		struct ebt_target *target;$/;"	m	union:ebt_entry_target::__anon11	typeref:struct:ebt_entry_target::__anon11::ebt_target
+target	../include/ebtables.h	/^	struct ebt_entry_target target;$/;"	m	struct:ebt_standard_target	typeref:struct:ebt_standard_target::ebt_entry_target
+target	../include/linux/netfilter_bridge/ebt_arpreply.h	/^	int target;$/;"	m	struct:ebt_arpreply_info
+target	../include/linux/netfilter_bridge/ebt_classify.h	/^	int target;$/;"	m	struct:ebt_classify_target_info
+target	../include/linux/netfilter_bridge/ebt_ftos_t.h	/^	int target;$/;"	m	struct:ebt_ftos_t_info
+target	../include/linux/netfilter_bridge/ebt_mark_t.h	/^	int target;$/;"	m	struct:ebt_mark_t_info
+target	../include/linux/netfilter_bridge/ebt_nat.h	/^	int target;$/;"	m	struct:ebt_nat_info
+target	../include/linux/netfilter_bridge/ebt_redirect.h	/^	int target;$/;"	m	struct:ebt_redirect_info
+target	../include/linux/netfilter_bridge/ebt_vlan_t.h	/^	int target;$/;"	m	struct:ebt_vlan_t_info
+target	../include/linux/netfilter_bridge/ebt_wmm_mark_t.h	/^	int target;$/;"	m	struct:ebt_wmm_mark_t_info
+target	../include/linux/netfilter_bridge/ebtables.h	/^		struct ebt_target *target;$/;"	m	union:ebt_entry_target::__anon5	typeref:struct:ebt_entry_target::__anon5::ebt_target
+target	../include/linux/netfilter_bridge/ebtables.h	/^	struct ebt_entry_target target;$/;"	m	struct:ebt_standard_target	typeref:struct:ebt_standard_target::ebt_entry_target
+target_offset	../include/ebtables.h	/^	unsigned int target_offset;$/;"	m	struct:ebt_entry
+target_offset	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int target_offset;$/;"	m	struct:ebt_entry
+target_size	../include/ebtables.h	/^	unsigned int target_size;$/;"	m	struct:ebt_entry_target
+target_size	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int target_size;$/;"	m	struct:ebt_entry_target
+tbs_vlan_match	../extensions/ebt_tbs_vlan_m.c	/^static struct ebt_u_match tbs_vlan_match = {$/;"	v	typeref:struct:ebt_u_match	file:
+tclass	../include/linux/netfilter_bridge/ebt_ip6.h	/^	uint8_t  tclass;$/;"	m	struct:ebt_ip6_info
+threshold	../include/linux/netfilter_bridge/ebt_nflog.h	/^	u_int16_t threshold;$/;"	m	struct:ebt_nflog_info
+time_match	../extensions/ebt_time.c	/^struct ebt_u_match time_match$/;"	v	typeref:struct:ebt_u_match	file:
+time_start	../include/linux/netfilter_bridge/ebt_time.h	/^	u_int16_t time_start;   \/* 0 < time_start < 23*60+59 = 1439             *\/$/;"	m	struct:ebt_time_info
+time_stop	../include/linux/netfilter_bridge/ebt_time.h	/^	u_int16_t time_stop;    \/* 0:0 < time_stat < 23:59                      *\/$/;"	m	struct:ebt_time_info
+time_t	../include/linux/types.h	/^typedef __kernel_time_t		time_t;$/;"	t
+timer_t	../include/linux/types.h	/^typedef __kernel_timer_t	timer_t;$/;"	t
+tmp1	../Makefile	/^tmp1:=$(shell printf $(BINDIR) | sed 's\/\\\/\/\\\\\\\/\/g')$/;"	m
+tmp2	../Makefile	/^tmp2:=$(shell printf $(SYSCONFIGDIR) | sed 's\/\\\/\/\\\\\\\/\/g')$/;"	m
+tmp3	../Makefile	/^tmp3:=$(shell printf $(PIPE) | sed 's\/\\\/\/\\\\\\\/\/g')$/;"	m
+to_dest_supplied	../extensions/ebt_nat.c	/^static int to_source_supplied, to_dest_supplied;$/;"	v	file:
+to_source_supplied	../extensions/ebt_nat.c	/^static int to_source_supplied, to_dest_supplied;$/;"	v	file:
+tos	../include/linux/netfilter_bridge/ebt_ip.h	/^	uint8_t  tos;$/;"	m	struct:ebt_ip_info
+translate_user2kernel	../communication.c	/^static struct ebt_replace *translate_user2kernel(struct ebt_u_replace *u_repl)$/;"	f	file:
+type	../include/ebtables_u.h	/^	unsigned short type;$/;"	m	struct:ebt_cntchanges
+type	../include/linux/netfilter_bridge/ebt_802_3.h	/^	__be16 type;$/;"	m	struct:ebt_802_3_info
+type	../include/linux/netfilter_bridge/ebt_802_3.h	/^	__be16 type;$/;"	m	struct:hdr_ni
+type	../include/linux/netfilter_bridge/ebt_802_3.h	/^	__be16 type;$/;"	m	struct:hdr_ui
+type	../include/linux/netfilter_bridge/ebt_stp.h	/^	uint8_t type;$/;"	m	struct:ebt_stp_info
+u	../include/ebtables.h	/^	} u;$/;"	m	struct:ebt_entry_match	typeref:union:ebt_entry_match::__anon9
+u	../include/ebtables.h	/^	} u;$/;"	m	struct:ebt_entry_target	typeref:union:ebt_entry_target::__anon11
+u	../include/ebtables.h	/^	} u;$/;"	m	struct:ebt_entry_watcher	typeref:union:ebt_entry_watcher::__anon10
+u	../include/linux/netfilter_bridge/ebtables.h	/^	} u;$/;"	m	struct:ebt_entry_match	typeref:union:ebt_entry_match::__anon3
+u	../include/linux/netfilter_bridge/ebtables.h	/^	} u;$/;"	m	struct:ebt_entry_target	typeref:union:ebt_entry_target::__anon5
+u	../include/linux/netfilter_bridge/ebtables.h	/^	} u;$/;"	m	struct:ebt_entry_watcher	typeref:union:ebt_entry_watcher::__anon4
+u_char	../include/linux/types.h	/^typedef unsigned char		u_char;$/;"	t
+u_int	../include/linux/types.h	/^typedef unsigned int		u_int;$/;"	t
+u_int16_t	../include/linux/types.h	/^typedef		__u16		u_int16_t;$/;"	t
+u_int32_t	../include/linux/types.h	/^typedef		__u32		u_int32_t;$/;"	t
+u_int64_t	../include/linux/types.h	/^typedef		__u64		u_int64_t;$/;"	t
+u_int8_t	../include/linux/types.h	/^typedef		__u8		u_int8_t;$/;"	t
+u_long	../include/linux/types.h	/^typedef unsigned long		u_long;$/;"	t
+u_short	../include/linux/types.h	/^typedef unsigned short		u_short;$/;"	t
+ui	../include/linux/netfilter_bridge/ebt_802_3.h	/^		struct hdr_ui ui;$/;"	m	union:ebt_802_3_hdr::__anon2	typeref:struct:ebt_802_3_hdr::__anon2::hdr_ui
+uid16_t	../include/linux/types.h	/^typedef __kernel_uid16_t        uid16_t;$/;"	t
+uid_t	../include/linux/types.h	/^typedef __kernel_uid32_t	uid_t;$/;"	t
+uint	../include/linux/types.h	/^typedef unsigned int		uint;$/;"	t
+uint16_t	../include/linux/types.h	/^typedef		__u16		uint16_t;$/;"	t
+uint32_t	../include/linux/types.h	/^typedef		__u32		uint32_t;$/;"	t
+uint64_t	../include/linux/types.h	/^typedef		__u64		uint64_t;$/;"	t
+uint8_t	../include/linux/types.h	/^typedef		__u8		uint8_t;$/;"	t
+uintptr_t	../include/linux/types.h	/^typedef unsigned long		uintptr_t;$/;"	t
+ulog_get_packet	../examples/ulog/test_ulog.c	/^ebt_ulog_packet_msg_t *ulog_get_packet()$/;"	f
+ulog_watcher	../extensions/ebt_ulog.c	/^static struct ebt_u_watcher ulog_watcher =$/;"	v	typeref:struct:ebt_u_watcher	file:
+ulong	../include/linux/types.h	/^typedef unsigned long		ulong;$/;"	t
+unchar	../include/linux/types.h	/^typedef unsigned char		unchar;$/;"	t
+undot_ip	../useful_functions.c	/^static int undot_ip(char *ip, unsigned char *ip2)$/;"	f	file:
+used	../include/ebtables_u.h	/^	unsigned int used;$/;"	m	struct:ebt_u_match
+used	../include/ebtables_u.h	/^	unsigned int used;$/;"	m	struct:ebt_u_target
+used	../include/ebtables_u.h	/^	unsigned int used;$/;"	m	struct:ebt_u_watcher
+ushort	../include/linux/types.h	/^typedef unsigned short		ushort;$/;"	t
+ustat	../include/linux/types.h	/^struct ustat {$/;"	s
+valid_hooks	../include/ebtables.h	/^	unsigned int valid_hooks;$/;"	m	struct:ebt_replace
+valid_hooks	../include/ebtables_u.h	/^	unsigned int valid_hooks;$/;"	m	struct:ebt_u_replace
+valid_hooks	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int valid_hooks;$/;"	m	struct:ebt_replace
+verdict	../include/ebtables.h	/^	int verdict;$/;"	m	struct:ebt_standard_target
+verdict	../include/linux/netfilter_bridge/ebtables.h	/^	int verdict;$/;"	m	struct:ebt_standard_target
+version	../include/linux/netfilter_bridge/ebt_ulog.h	/^	int version;$/;"	m	struct:ebt_ulog_packet_msg
+vlan	../include/linux/netfilter_bridge/ebt_vlan_t.h	/^	unsigned short vlan;$/;"	m	struct:ebt_vlan_t_info
+vlan_hdr	../examples/ulog/test_ulog.c	/^struct vlan_hdr {$/;"	s	file:
+vlan_match	../extensions/ebt_vlan.c	/^static struct ebt_u_match vlan_match = {$/;"	v	typeref:struct:ebt_u_match	file:
+vlan_supplied	../extensions/ebt_vlan_t.c	/^static int vlan_supplied;$/;"	v	file:
+vlan_target	../extensions/ebt_vlan_t.c	/^static struct ebt_u_target vlan_target =$/;"	v	typeref:struct:ebt_u_target	file:
+w	../include/ebtables_u.h	/^	struct ebt_entry_watcher *w;$/;"	m	struct:ebt_u_watcher	typeref:struct:ebt_u_watcher::ebt_entry_watcher
+w	../include/ebtables_u.h	/^	struct ebt_entry_watcher *w;$/;"	m	struct:ebt_u_watcher_list	typeref:struct:ebt_u_watcher_list::ebt_entry_watcher
+w_list	../include/ebtables_u.h	/^	struct ebt_u_watcher_list *w_list;$/;"	m	struct:ebt_u_entry	typeref:struct:ebt_u_entry::ebt_u_watcher_list
+watcher	../include/ebtables.h	/^		struct ebt_watcher *watcher;$/;"	m	union:ebt_entry_watcher::__anon10	typeref:struct:ebt_entry_watcher::__anon10::ebt_watcher
+watcher	../include/linux/netfilter_bridge/ebtables.h	/^		struct ebt_watcher *watcher;$/;"	m	union:ebt_entry_watcher::__anon4	typeref:struct:ebt_entry_watcher::__anon4::ebt_watcher
+watcher_size	../include/ebtables.h	/^	unsigned int watcher_size;$/;"	m	struct:ebt_entry_watcher
+watcher_size	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int watcher_size;$/;"	m	struct:ebt_entry_watcher
+watchers_offset	../include/ebtables.h	/^	unsigned int watchers_offset;$/;"	m	struct:ebt_entry
+watchers_offset	../include/linux/netfilter_bridge/ebtables.h	/^	unsigned int watchers_offset;$/;"	m	struct:ebt_entry
+wh_dst_ofs	../include/linux/netfilter_bridge/ebt_among.h	/^	int wh_dst_ofs;$/;"	m	struct:ebt_among_info
+wh_src_ofs	../include/linux/netfilter_bridge/ebt_among.h	/^	int wh_src_ofs;$/;"	m	struct:ebt_among_info
+wormhash_debug	../extensions/ebt_among.c	/^static void wormhash_debug(const struct ebt_mac_wormhash *wh)$/;"	f	file:
+wormhash_printout	../extensions/ebt_among.c	/^static void wormhash_printout(const struct ebt_mac_wormhash *wh)$/;"	f	file:

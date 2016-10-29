@@ -1,0 +1,87 @@
+﻿var data_language = 
+{
+	innerHTML : 
+	{
+		lang_BlockWebsite : 'Filtro IP',
+		lang_dsc : 'En esta página, puede especificar un nombre de filtro y por lo menos una condición para crear un filtro para identificar el tráfico IP entrante. Todas las condiciones especificadas toman efecto de forma simultánea. Haga clic en "Aplicar" para guardar el filtro y habilitarlo.',
+		lang_BlockWebsite1 : 'Firewall',
+		lang_Name: 'Nombre',
+		lang_Inter : 'Interfaz',
+		lang_In : 'Entrada/Salida',
+		lang_Default : 'Acción predeterminada ',
+		lang_Bytes : 'Bytes',
+		lang_Pkts : 'Pkts',
+		lang_Local  :  'Local/Adelante',
+		lang_Info : 'Información de Filtro',
+		lang_Name1 :'Nombre:',
+		lang_Inter1 : 'Interfaz:',
+		lang_In1 : 'Entrada/Salida:',
+		lang_Default1 : 'Acción predeterminada:',
+		lang_Local  :  'Local/Adelante:',
+		lang_Rule   : 'Regla',
+		lang_Enabled       : 'Habilitado',
+		lang_Protocol      : 'Protocolo',
+		lang_IPVersionType : 'Tipo de Versión IP',
+		lang_Action        : 'Acción',
+		lang_RejectType      : 'RejectType',
+		lang_IcmpType       : 'IcmpType',
+		lang_OrigIP       : 'OrigIP/Máscara',
+		lang_OrigPort       : 'OrigPort',
+		lang_DestIP       : 'DestIP/Máscara',
+		lang_DestPort      : 'DestPort',
+		lang_RuleInfo    :'Información de Regla',
+		lang_dsc1     :'Notas: <br>1.Cuando el Protocolo es \'ICMP\',uno de IcmpType para ser seleccionado; <br>2.Cuando la acción es \' rechazar \', una RejectType se selecciona; <br>3.Cuando el "Tipo de Versión IP" es IPv4, Por favor, introduzca la dirección IPv4 y la máscara de la correspondiente;<br>4. Cuando el "Tipo de Versión IP" es compatible con IPv6, por favor ingrese la dirección IPv6 y la longitud del prefijo de la correspondiente;<br>',
+		lang_Enable1        :'Habilitado:',
+		INPUT_Enabled      :'',
+		lang_Protocol1      : 'Protocolo:',
+		lang_IPVersionType1 : 'Tipo de Versión IP:',
+		lang_Action1        : 'Acción:',
+		lang_RejectType1      : 'RejectType:',
+		lang_IcmpType       : 'IcmpType',
+		lang_ipv4           :'Tipo ICMP para IPv4:',
+		lang_ipv6           :'Tipo ICMP para IPv6:',
+		lang_ALG            :'ALG:',
+		INPUT_ALG_Enable    :'Habilitar',
+		lang_DSCP      :'DSCP:',
+		lang_TC        :'TC:',
+		lang_PL        :'Longitud del paquete:',
+		lang_TcpF     :'Señales Tcp:',
+	  INPUT_TCP_SYN :'SYN',
+		INPUT_TCP_ACK :'ACK',
+		INPUT_TCP_FIN :'FIN',
+		INPUT_TCP_RST :'RST',
+    INPUT_TCP_URG :'URG',
+    INPUT_TCP_PSH :'PSH',
+    INPUT_ALG_FTP  :'FTP',
+    INPUT_ALG_TFTP :'TFTP',
+    INPUT_ALG_PPTP :'PPTP',
+    INPUT_ALG_SIP  :'SIP',
+    INPUT_ALG_RTSP :'RTSP',
+    selectAllALG   :'Seleccionar todo',
+		lang_Setting  :'Ajuste de Origen',
+		lang_IPA      :'Dirección IP:',
+		lang_PM       :'PrefixLength/Máscara:',
+		lang_SP       :'Puerto de Inicio:',
+		lang_EP       :'Puerto de finalización:',
+		lang_DS       :'Ajuste de Destino',
+		lang_FQDN     :'FQDN Habilitado',
+		lang_FQDN1    :'FQDN:'
+	},
+	
+	value : 
+	{
+		addFilterEntry   :'Añadir Filtro',
+		editFilterEntry   :'Editar Filtro',
+		removeFilterEntry :'Borrar Filtro',
+		addRuleEntry:'Añadir Regla',
+		editRuleEntry:'Editar Regla',
+		removeRuleEntry:'Borrar Regla',
+		Cancel : 'Cancelar',
+    submit :'Aplicar'
+    
+    
+		
+	}
+	
+	
+}

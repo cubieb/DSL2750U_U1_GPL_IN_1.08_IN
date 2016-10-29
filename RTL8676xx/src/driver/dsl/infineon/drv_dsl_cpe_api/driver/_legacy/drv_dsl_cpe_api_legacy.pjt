@@ -1,0 +1,183 @@
+;Codewright Project File (do not remove or modify this line)
+[ProjInit]
+ConfigSetExtMode=2
+ProjSetConfigFlags=0x04110940
+
+[State]
+SysSetCwd='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control'
+SrchSetFlags=0x0618684a
+SrchSetAgainFlags=0x8418684a,0
+SrchSetAgainFlags=0x0618684a,1
+SrchSetAttrElements=
+SrchSetAgainAttrElements=
+FileSortMode=0x13
+_StateHistory=FILELIST,'E:\work_ext\drews_dsl_api_dev_generic\vob\comacsd_lib\lib_dsl_api\src\linux\lib_dsl_linux.c','E:\work_ext\drews_dsl_api_dev_generic\vob\comacsd_lib\lib_dsl_api\src\include\lib_dsl_vxworks.h','E:\work_ext\drews_dsl_api_dev_generic\vob\comacsd_lib\lib_dsl_api\src\vxworks\lib_dsl_vxworks.c','E:\work_ext\drews_dsl_api_dev_generic\vob\comacsd_lib\lib_dsl_api\src\include\lib_dsl_api_g997.h','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\common\ifx_adsl_ceoc.c','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\doc\mib\doxyconfig_mib.danube','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\doc\api\fm\drv_dsl_cpe_api_reference_web.xml','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\include\drv_dsl_cpe_api_danube_kernel_config.h','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\doc\doxyconfig.danube'
+_StateHistory=SEARCH,'adslLineRate','adslNearEndPerfStats','adslATUCSubcarrierInfo','adslLineInfo','struct_adslLineInfo','adslATURSubcarrierInfo','adslFarEndPerfStats','typedef struct','adslLineExtTableEntry','adslLineStatusInfo'
+_StateHistory=REPLACE,'[n]'
+_StateHistory=EDITFILE,'build_danube_mips.sh','blacklist.xml','dsl_cpe_soap_interface.h','generate.cmd','dsl_cpe_cli.c','dsl_cpe_control.c','dsl_cpe_control.h','dsl_cpe_legacy.c','ifx_types.h','Makefile.am'
+_StateHistory=DIRECTORY,'M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube\source\kernel\ifx\bsp\drivers\char\\','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube\source\kernel\ifx\bsp','E:\work_ext\dsl_api_maint_1_5_x\vob\comacsd_lib\lib_dsl_api','E:\WORK_EXT\DREWS_DSL_CPE_API_DEV_GENERIC\VOB\COMACSD_DRIVER\DRV_DSL_CPE_API\DRIVER\_LEGACY\SRC'
+_StateHistory=FGREP,'adslLineStatus','adslLineRate','adslNearEndPerfStats','adslATUCSubcarrierInfo','adslLineExtTableEntry','adslLineInfo','struct_adslLineInfo','adslATURSubcarrierInfo','adslFarEndPerfStats','adslLineStatusInfo'
+_StateHistory=GREPSCOPE,'*.c; *.cpp; *.h'
+_StateHistory=FGREPDIR,'M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube\source\kernel\ifx\bsp\drivers\char\\','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube\source\kernel\ifx\bsp','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube\source\kernel\ifx\bsp\drivers\char','E:\work_ext\dsl_api_maint_1_5_x\vob\comacsd_lib\lib_dsl_api','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src'
+_StateHistory=DOCUMENTVISIT,'16          1           E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_bsp.h','76          40          E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\include\ifx_adsl_bsp.h','1           1           E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\include\ifx_adsl_ceoc.h','42          5           E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\common\ifx_adsl_led.c','4           12          E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\include\ifx_adsl_led.h','78          9           E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\include\ifx_adsl_cmvs.h','370         2           E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\common\ifx_adsl_autoboot.c'
+_StateDocumentVisit=7
+
+[Editor]
+_RestoreSysFlags=0x7b8f7fca, 0xfffffffc, 0
+FilterProjDeleteList
+FilterProjAdd='Source Files','*.c;*.cs;*.cpp;*.cxx;*.hxx;*.prg;*.pas;*.asm;*.bas;*.sc;*.jav*',-1
+FilterProjAdd='Header Files','*.h;*.hpp;*.inc',-1
+FilterProjAdd='Web Files','*.htm;*.html;*.shtm;*.asp;*.css',-1
+FilterProjAdd='XML Files','*.xml;*.xsl;*.dtd;*.xhtml;*.xdr;*.dcd',-1
+FilterProjAdd='Resources','*.rc;*.bmp;*.ico;*.cur;*.dlg',-1
+FilterProjAdd='Installer','*.nsi',-1
+FilterProjAdd='Other Files','*.*',-1
+VCSProject='E:\\'
+VCSProjectPath=''
+VCSProjectLocalPath='E:\\'
+ScrapSetCount=2
+ClipboardSetCount=2
+ClipboardEnableSepStr=1
+ClipboardSetSepStr='\r\n',0
+ClipboardEnableTermStr=1
+ClipboardSetTermStr='\r\n',0
+
+[Tools]
+ToolDeleteList
+ToolAddCmd='$_custom_tool_$_1','Lint current file - last settings',1342177680,'%xlint.cmd %b%e'
+ToolAddCmd='$_custom_tool_$_2','Lint Project - last settings',1342177680,'%xlint.cmd'
+ToolAddCmd='$_custom_tool_$_3','Lint Project - Geminax',1342177680,'%xlint_geminax.cmd'
+ToolAddCmd='$_custom_tool_$_4','Lint Project - Soc4e',1342177680,'%xlint_soc4e.cmd'
+ToolAddCmd='$_custom_tool_$_5','Lint Project - Vinax',1342177680,'%xlint_vinax.cmd'
+ToolAddCmd='$_custom_tool_$_6','Doxygen Project',1342178688,'%xdoxy.cmd %x'
+
+[Compiler]
+TagSetCmd='"${HOME}${WTAGS}" -oc -d -t"${TAGFILE}.tag" -p"${TAGFILE}.ptg"',0x8000060
+BrowseSetFile='C:\cw_db\drv_dsl_cpe_api_legacy.ptg'
+TagSetFile='C:\cw_db\drv_dsl_cpe_api_legacy.tag'
+CompilerAddCmdEx='Default Compiler Settings','',1073741904,'',1073741904,'',144,'',144,'',144,'',144,'',0,'',0,'','','','',''
+CompilerAddResponse='Default Compiler Settings',
+CompilerAddCmdEx='$_cw_proj_hash_$','',1073741824,'',0,'${FTEE} build.bat',432,'${FTEE} nmake',176,'${FTEE} rebuild.bat',432,'${FTEE} nmake',176,'${FTEE} lint-nt +v -u std.lnt %b%e',432,'${FTEE} lint-nt +v std.lnt files.lnt',432,'_ErrorInfoDefault','','','proj.err','%x\src'
+CompilerAddResponse='$_cw_proj_hash_$',
+CompilerNewExt=.htm
+CompilerNewExt=.v
+CompilerNewExt=.cls
+CompilerNewExt=.frm
+CompilerNewExt=.awk
+CompilerNewExt=.bas
+CompilerNewExt=.adb
+CompilerNewExt=.cfml
+CompilerNewExt=.jsp
+CompilerNewExt=.pl
+CompilerNewExt=.vhd
+CompilerNewExt=.pas
+CompilerNewExt=.cdf
+CompilerNewExt=.tk
+CompilerNewExt=.asp
+CompilerNewExt=.am
+CompilerNewExt=.rul
+CompilerNewExt=.ctl
+CompilerNewExt=.py
+CompilerNewExt=.zrx
+CompilerNewExt=.cob
+CompilerNewExt=.js
+CompilerNewExt=.wsdl
+CompilerNewExt=.php
+CompilerNewExt=.rc
+CompilerNewExt=.tcl
+CompilerNewExt=.dsr
+CompilerNewExt=.ini
+CompilerNewExt=.cs
+CompilerNewExt=.bat
+CompilerNewExt=.html
+CompilerNewExt=.pag
+CompilerNewExt=.vb
+CompilerAssign='Default Compiler Settings','.*'
+CompilerNewExt=.dob
+CompilerNewExt=.txt
+CompilerNewExt=.nrx
+CompilerNewExt=.xml
+CompilerNewExt=.java
+CompilerNewExt=.jav
+CompilerNewExt=.sqlj
+CompilerNewExt=.cwb
+
+[VersionControl:PVCS]
+VCSSetCmd=VCS_CHECKIN_ID,'put -n -T@"%Q" -M@"%Q" "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'put -n -T@"%Q" -M@"%Q" -l "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'get -y "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'get -y -l "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'vcs -y -l "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'vcs -y -u "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'vcs -y -v"${VCSLABEL}" "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'vlog "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'vlog -b "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'vdiff -r "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'pvcsvmwn',0x8000000
+VCSSetCmd=VCS_ADD_ID,'vcs -i -t@"%Q" "%b%e"',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'del /f "%b%{??v|___}e"',0x8000040
+
+[Project]
+ConfigSetUserMakefile=''
+ConfigSetUserMakefileParser=''
+ConfigSetUserMakefileTimeStamp=0
+ConfigSetUserMakefileAutoSync=0
+ConfigSetLinkDBFilename='C:\Program Files\CodeWright\cwright.ldb'
+ConfigSetMarkDBFilename='C:\Program Files\CodeWright\cwright.mrk'
+ConfigSetSymbolDBFilename='C:\cw_db\drv_dsl_cpe_api_legacy.sbl'
+EditSetPath=''
+
+[Files]
+.\AUTHORS
+.\ChangeLog
+.\configure.in
+.\NEWS
+.\README
+.\TODO
+.\build\build.sh
+.\doc\doxyconfig.danube
+.\src\Makefile.am
+.\src\common\ifx_adsl_autoboot.c
+.\src\common\ifx_adsl_basic.c
+.\src\common\ifx_adsl_ceoc.c
+.\src\common\ifx_adsl_led.c
+.\src\common\ifx_adsl_mib.c
+.\src\include\ifx_adsl_autoboot.h
+.\src\include\ifx_adsl_basic.h
+.\src\include\ifx_adsl_basic_ioctl.h
+.\src\include\ifx_adsl_bsp.h
+.\src\include\ifx_adsl_ceoc.h
+.\src\include\ifx_adsl_cmvs.h
+.\src\include\ifx_adsl_led.h
+.\src\include\ifx_adsl_linux.h
+.\src\include\ifx_adsl_mib.h
+.\src\include\ifx_adsl_mib_cmv.h
+.\src\include\ifx_adsl_mib_ioctl.h
+.\src\include\ifx_adsl_mib_ioctl_old.h
+.\src\kernel\drv_dsl_linux_kernel.c
+.\build\build_danube_mips.sh
+.\build\strip_danube_mips.sh
+.\Makefile.am
+.\build\build_lxdb.sh
+.\src\include\drv_dsl_cpe_api_danube_kernel_config.h
+.\doc\common\doxyconfig_common.danube
+.\doc\mib\doxyconfig_mib.danube
+.\doc\web\doxyconfig_web.danube
+.\scripts\doxy2fm_mib.cmd
+.\scripts\doxy2fm_web.cmd
+.\scripts\doxy2fm_common.cmd
+
+[VersionControl:SourceSafe]
+VCSSetCmd=VCS_CHECKIN_ID,'ss UPDATE -I- -C@%Q -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'ss UPDATE -I- -C@%Q -K -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'ss GET -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'ss CHECKOUT -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'ss CHECKOUT -I- -G- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'ss UNCHECKOUT -I- -G- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'ss LABEL -I- -L"${VCSLABEL}" -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'ss HISTORY -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'ss PROPERTIES -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'ss DIFF -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'ssexp',0x8000000
+VCSSetCmd=VCS_ADD_ID,'ss ADD -I- -Y${USER} "%r%e"',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'ss DELETE -I- -Y${USER} "%r%e"',0x8000040

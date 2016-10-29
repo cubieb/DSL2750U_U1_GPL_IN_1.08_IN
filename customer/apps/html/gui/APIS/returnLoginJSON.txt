@@ -1,0 +1,9 @@
+{	"RETURN":{
+		"success": true
+	},
+	
+	"STATUS":{
+		"LOGGED": false,
+		"USER": "Admin"
+	}
+}

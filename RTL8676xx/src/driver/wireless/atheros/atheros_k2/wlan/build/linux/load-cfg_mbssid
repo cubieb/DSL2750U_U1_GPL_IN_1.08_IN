@@ -1,0 +1,32 @@
+#!/bin/bash
+
+SSID="aed-test-ssid"
+NUM=$2
+
+if [ $1 ] 
+then
+  SSID = $1
+fi
+
+if [ -n "$NUM" ] 
+then
+  echo "Usage: load-cfg_mbssid <ssid> <number>"
+  exit
+fi
+
+./athcfg wifi0 vapcreate set ath0 hostap 1
+./athcfg ath$1 param set bg-scan 0
+./athcfg ath$1 mode set 11NA
+./athcfg wifi0 fftxq-min set 1000
+./athcfg ath$1 param set half-gi 1
+./athcfg ath$1 param set cwm-mode 1
+./athcfg ath$1 param set ext-chan -1
+./athcfg ath$1 param set extchan-protspace 0
+./athcfg ath$1 param set 11n-ampdu 1
+./athcfg ath$1 param set txchan-mask 5
+./athcfg ath$1 param set rxchan-mask 5
+./athcfg ath$1 freq set 40 0
+./athcfg ath$1 ssid ${SSID}-${NUM}
+ifconfig ath$1 192.168.${NUM}.10 up
+#./athcfg ath0 key set 0 wep 1234567890 00:03:7f:0b:a9:f7
+

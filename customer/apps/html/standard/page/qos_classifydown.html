@@ -1,0 +1,177 @@
+<!-- config -->
+<style type="text/css"><!--
+	.td_table_s  input { width:60px;}
+ --></style>
+<td>
+	<div class="config2">
+		<p class="bk_orange"  id="lang_QoSlassifyConfiguration">QoS Classify Down Configuration</p>
+		<div class="div_orange">
+		<p id="lang_dsc1">
+			This page is used to configure the Qos Classification Down .
+		</p>
+	
+		</div>
+		<p class="do bk_black"  id="lang_Lists">Lists</p>
+		<div class="div_black">
+			<table class="td_table_s" id='class_table'>
+				<tr class="tr_bold">
+					<td >&nbsp;</td>
+					<td >&nbsp;</td>
+					<td colspan="1"  id="lang_ClassificationResul">Classification Down Result</td>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="tr_bold">
+					<td>&nbsp;</td>
+					<td  id="lang_ClassName">Class Name</td>
+					<td   id="lang_AssociatedQueue">Associated Queue</td>
+					<td   id="lang_state">state</td>
+					<td   id="lang_Details" style="width:88px;">Details</td>
+				<tr>
+			</table>
+		</div>
+		
+		
+		<div class="div_button">
+			<input type="button" value="Add" id="add" onClick="uiAdd()" /> 
+			<input type="button" value="Edit" id="edit" onClick="uiEdit()" />  	   	                    
+			<input type="button" value="Delete" id="delete" onClick="uiDelete()" />				                
+		</div>
+		<div id="classify_config" style="display:none">
+			<p class="do bk_black"  id="lang_QoSClassifyConfiguration">QoS Classify Down Configuration</p>
+			<div class="div_black">
+				
+			<div class="div_left" id="lang_TrafficClassName">Traffic Class Name :</div>
+			<div class="div_right"><input type="text" name="input_c_name" id="input_c_name" value=""></div>
+			
+			<div class="div_left" id="lang_Enable">Enable Classification :</div>
+			<div class="div_right"><input type="checkbox" name="input_c_enable" id="input_c_enable" value=""></div>
+			<p></p>
+			<div id="lang_discription_1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPECIFY TRAFFIC CLASSIFICATION RULES</b></div>
+			<p></p>
+			 <div class="div_left"   id="WConnection" >Wan Connection : </div>
+			<div class="div_right">
+			     <select id="selectConnectionName" >
+					 <option></option>
+			  </select>
+		       </div>			
+                     <div class="div_left"><label for="INPUT_Visible"><span id = "lang_Status">Status :</span></label></div>
+					<div class="div_right">
+					       <input type="radio" name="vb_status" id="INPUT_In" checked="checked" value="0"  onclick="changestatus()"/> <label for="INPUT_In"><span id = "lang_in">In</span></label> 
+						   <input type="radio" name="vb_status" id="INPUT_Out" value="1" /> <label for="INPUT_Out"><span id = "lang_out">Out</span></label></div>
+				<div class="div_left" id="lang_src_ip_addr">Source IP Address :</div>
+				<div class="div_right">
+					<input type="text" name="input_c_src_ip_addr" id="input_c_src_ip_addr" value=""  />
+				</div>
+				
+				<div class="div_left" id="lang_src_ip_mask">Source Subnet Mask :</div>
+				<div class="div_right">
+					<input type="text" name="input_c_src_ip_mask" id="input_c_src_ip_mask" value=""  />
+				</div>
+			
+				<div class="div_left" id="lang_dst_ip_addr">Destination IP Address :</div>
+				<div class="div_right">
+					<input type="text" name="input_c_dst_ip_addr" id="input_c_dst_ip_addr" value=""  />
+				</div>
+				
+				<div class="div_left" id="lang_dst_ip_mask">Destination Subnet Mask :</div>
+				<div class="div_right">
+					<input type="text" name="input_c_dst_ip_mask" id="input_c_dst_ip_mask" value=""  />
+				</div>
+				<div class="div_left">
+					<input name="RADIO_Check" id="RADIO_SelectDSCPCheck" value="0" onclick="changeScheduleMode()" checked="checked"  type="radio">
+								  <label for="RADIO_SelectDSCPCheck" id="lang_DSCPCheck">DSCP Check :</label>
+				</div>
+				<div class="div_right">
+					<select name="select_c_dscp_check" id="select_c_dscp_check">
+					 <option value=-1>any</option>
+					 <option value=0>default(000000)</option>
+					 <option value=56> AF13(001110)</option>
+					 <option value=48> AF12(001100)</option>
+					 <option value=40> AF11(001010)</option>
+					 <option value=32> CS1(001000)</option>
+					 <option value=88> AF23(010110)</option>
+					 <option value=80> AF22(010100)</option>
+					 <option value=72> AF21(010010)</option>
+					 <option value=64> CS2(010000)</option>
+					 <option value=120> AF33(011110)</option>
+					 <option value=112> AF32(011100)</option>
+					 <option value=104> AF31(011010)</option>
+					 <option value=96> CS3(011000)</option>
+					 <option value=152> AF43(100110)</option>
+					 <option value=144> AF42(100100)</option>
+					 <option value=136> AF41(100010)</option>
+					 <option value=128> CS4(100000)</option>
+					 <option value=184> EF(101110)</option>
+					 <option value=160> CS5(101000)</option>
+					 <option value=192> CS6(110000)</option>
+					 <option value=224> CS7(111000)</option>	
+					</select>
+				</div>
+				<div class="div_left">
+					<input name="RADIO_Check" id="RADIO_SelectTosCheck" value="1" onclick="changeScheduleMode()" type="radio">
+								  <label for="RADIO_SelectTosCheck" id="lang_TosCheck">Tos Check :</label>
+				</div>
+				<div class="div_right">
+					<input type="text" name="input_Tos" id="input_Tos">
+				</div>
+				<div class="div_left" id="lang_protocol">Protocol :</div>
+				<div class="div_right">
+					<select name="select_c_protocol" id="select_c_protocol" onchange="select_c_protocol_change()">
+					<option value="-1">any</option>
+					<option value="0">TCP/UDP</option>
+					<option value="6">TCP</option>
+					<option value="17">UDP</option>
+					<option value="1">ICMP</option>
+					</select>
+				</div>
+				
+				<div class="div_left" id="lang_src_port">Source Port :</div>
+				<div class="div_right">
+					<input type="text" name="input_c_src_port" id="input_c_src_port" /><span id="lang_portorpor1">(port or port:port)</span>
+				</div>
+				
+				<div class="div_left" id="lang_dst_port">Destination Port :</div>
+				<div class="div_right">
+					<input type="text" name="input_c_dst_port" id="input_c_dst_port" /><span id="lang_portoror2">(port or port:port)</span>
+				</div>
+			</div>
+			<p></p>
+			<div id="lang_discription_2"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPECIFY TRAFFIC CLASSIFICATION RESULT</b></div
+			><p></p>
+			<div class="div_black">
+			<div class="div_left" id="lang_assign_queue">Assign Classification Queue:</div>
+			<div class="div_right">
+				<select name="select_c_queue" id="select_c_queue">
+				<option value=-1>no assign</option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				</select>
+			</div>		
+			
+			</div>
+			
+			<div class="div_button">
+					<input type="button" value="Apply" name="apply" id="apply" onClick="uiSubmit()" /> 
+					<input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+			</div>
+			
+		</div>
+	</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc">
+		</form>	
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5  id="lang_help">Helpful Hints...</h5>
+		<div>
+		<p  id="lang_help_dsc">
+			QoS Classify Down Configuration.
+		</p>
+		</div>
+		<h5><a href="#" id="lang_More">More...</a></h5>
+	</div>
+</td>
+</form>

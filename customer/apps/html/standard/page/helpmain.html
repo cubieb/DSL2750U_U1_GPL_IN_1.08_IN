@@ -1,0 +1,139 @@
+
+<td>
+	<div class="config1">
+	
+		<p class="bk_orange" id = "lang_management_help">Management Help</p>
+		<div do class="div_black help_table">
+			<ul>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain#System"><span id = "lang_system_management">System</span></a></li>
+				<li class="SecLevel firmwareupdate"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain#Update"><span id = "lang_firmware_update">Firmware Update</span></a></li>
+				<li><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain#Access"><span id = "lang_access_control">Access Controls</span></a></li>
+				<li class="SecLevel diagnostics"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain#Diagnostics"><span id = "lang_dgn">Diagnostics</span></a></li>
+				<li class="SecLevel syslog"><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpmain#Log"><span id = "lang_log">System Log</span></a></li>
+			</ul>
+		</div>
+		
+		<p class="do bk_black"><a name="System"><span id = "lang_system_subtitle">System</span></a></p>
+		<div do class="div_black help_table" id = "lang_system_help">
+			<dl>
+				<dd>In this page, you can manage the configuration of the router, reboot the router, 
+				back up the current configuration, load previously saved settings, 
+				and restore the router to factory default settings. Restoring the router to factory defaults 
+				will erase all the current settings, including the created rules.
+				<dt>Reboot
+				<dd>This function is to restart the router for the settings to take effect.
+				<dt>Back Up Settings
+				<dd>You can use this function to save the configuration in a file on the computer for later use.
+				 Be sure to save the configuration before updating the firmware.
+				<dt>Update Settings
+				<dd>You can use this function to restore the settings of the router previously saved.
+				<dt>Restore Default Settings
+			<dd>This function is to restore all the settings to the settings configured when the router 
+			was shipped from the factory. All current settings will be lost. 
+			If you want to save the current settings, please click Back Up Settings.
+				</dd>
+			</dl>
+
+		</div>
+
+		
+		<div id = "div_FirmwareUpdate">
+		<p class="do bk_black"><a name="Update"><span id = "lang_upgrade_subtitle">Firmware Update</span></a></p>
+		<div do class="div_black help_table" id = "lang_upgrade_help">
+			<dl>
+				<dd>In the "Firmware Update" page, you can update the firmware of the router to the latest,
+				 to improve the functionality and performance.
+				<p>To update the firmware, do as follows: </p>
+				<ol>
+					<li> Click <span class=button_ref>Browse</span>to locate the update file on your computer.
+					<li> Select the file and click <spanclass=button_ref>Update Firmware</span> to start updating the firmware. This process takes about a minute.
+					<li> Wait for the router to reboot. The rebooting process takes about a minute.
+				</ol>
+				
+				<dd>Note: Some firmware updates reset the settings of the router to factory defaults. Before performing an update, be sure to save the current settings. The navigation path is as follows: 
+				<a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=maintenance&var:page=system">Maintenance -> System</a> .
+				</dd>
+			</dl>
+		</div>
+		</div>
+		
+		<p class="do bk_black"><a name="Access" ><span id = "lang_access_subtitle">Access Controls</span></a></p>
+		<div do class="div_black help_table" id = "lang_access_help">
+			<dl>
+			<dt>Account Password
+			<dd>
+			<p>In this page, you can set a password for accessing the Web management interface. 
+			By default, no password is configured. You are recommended to create a password to keep 
+			your new router secure.</p>
+			<p>You can access the DSL router as one of the three user accounts: admin, support, and user.
+			</p>
+			<dl>
+			<dt>admin Password
+			<dd>Enter a password for the "admin" user, who has full access to the Web management interface. 
+			<dt>support Password
+				<dd>The "support" user can be used by an ISP technician to access the DSL router for maintenance and to run diagnosis. 
+			<dt>user Password
+			<dd>The "user" user can view settings and statistics, as well as update the firmware of the router.
+				</dd>
+			
+			</dl>
+			</dd>
+			</dl>
+			<dl>
+			<dt>Services
+			<dd>Allows access to the router via FTP, HTTP, ICMP, SNMP, SSH, TELNET, and TFTP.
+			<dl>
+				<dt>LAN
+				<dd>Accesses the DSL router from the local network (LAN) side.
+				<dt>WAN
+				<dd>Accesses the DSL router from the ISP side.
+				</dd>
+			
+			</dl>
+			</dd>
+			</dl>
+			<dl>
+			<dt>IP Address
+			<dd>If this option is enabled, only specified IP addresses can access the router. This option works with
+			<b>Services</b>.
+			</dd>
+			</dl>
+		</div>
+
+		<div id = "div_Diagnostics">
+		<p class="do bk_black"><a name="Diagnostics"><span id = "lang_dgn_subtitle">Diagnostics</span></a></p>
+		<div do class="div_black help_table" id = "lang_dng_help">
+			<p>Diagnostics runs diagnostic tests to check the DSL connection.
+			 The results are about the following three connections:</p>
+			<ul>
+
+				<li>Connection to the local network
+				<li>Connection to the DSL service provider
+				<li>Connection to the Internet service provider
+			</ul>
+		</div>
+		</div>
+
+		<div id = "div_SystemLog">
+		<p class="do bk_black"><a name="Log"><span id = "lang_log_subtitle">System Log</span></a></p>
+		<div do class="div_black help_table" id = "lang_log_help">
+			<p>If the log is enabled, the system starts to log all selected events.</p>
+			<dl>
+				<dt>Log Level
+				<dd>The level of logs to be saved. 
+				<dt>Display Level
+				<dd>The level of logs to be displayed in the log page.
+				<p>If the mode is set to "Remote", logs are sent to the specified IP address and UDP port of a 
+				remote syslog server. If the mode is set to "Local", logs are recorded in the local computer.
+				 If you set "Both", logs are saved in both the local computer and the remote syslog server. 
+				 Select the desired values and click "Apply" to save the system log settings.</p>
+				<dt>View System Log
+				<dd>In this page, you can view logs corresponds with the level you set.
+				</dd>
+			</dl>
+
+		</div>
+		</div>
+		
+	</div>
+</td>

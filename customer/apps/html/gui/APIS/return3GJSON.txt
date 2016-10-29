@@ -1,0 +1,10 @@
+{	
+	"RETURN":{
+		"success": <? if eq "<?error found?>" "0"  `true`  `false` ?>
+   	},
+	"ThreeG":{
+		"Enable":<?if eq "<?get:InternetGatewayDevice.WANDevice.2.X_TWSZ-COM_WAN3GInterfaceConfig.PinEnable?>" "1" `true` `false`?>,
+		"PINCode":"<?get :InternetGatewayDevice.WANDevice.2.X_TWSZ-COM_WAN3GInterfaceConfig.PIN?>"
+	}
+
+}

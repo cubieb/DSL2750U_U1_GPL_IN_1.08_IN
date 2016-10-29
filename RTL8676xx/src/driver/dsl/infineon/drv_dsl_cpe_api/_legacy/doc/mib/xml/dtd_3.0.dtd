@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DTD for Book. Typically invoked by
+      <!DOCTYPE  Book  SYSTEM
+    "H:\FM7_XML\tools\dtd\dtd_3.0.dtd">
+-->
+<!--EDD Release 3.0, 2005-03-10-->
+<!--Enhancements since Release 2.2 - - - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - -->
+<!--Instruction elements added -> Release 2.2.1 (not official)-->
+<!--Main Elements-->
+<!ENTITY % IFXvtdd PUBLIC "Infineon//ENTITIES Symbols//EN//XML" "ifx-vtdd.ent">
+%IFXvtdd;
+<!ELEMENT Book (Cover, Imprint?, Revision_History, Generated+, Document+, Generated?, BackCover?)>
+<!ATTLIST Book
+	Date CDATA #IMPLIED
+	Person CDATA #IMPLIED
+>
+<!ELEMENT Cover (#PCDATA)>
+<!ELEMENT Imprint EMPTY>
+<!ELEMENT Revision_History (Table, Block?, BlockInset?)>
+<!ELEMENT Generated (#PCDATA)>
+<!ELEMENT Document (Special_Chapter | Chapter | RegistersChapter)*>
+<!ATTLIST Document
+	Date CDATA #IMPLIED
+	Person CDATA #IMPLIED
+	Level CDATA "1"
+>
+<!ELEMENT BackCover (#PCDATA)>
+<!ELEMENT Special_Chapter (Title, (Reference | Paragraph | List | Comments | Attention | Figure | Formula | Table | Block)+)>
+<!ATTLIST Special_Chapter
+	Id ID #IMPLIED
+	Type CDATA #IMPLIED
+	NewPage CDATA "No"
+>
+<!--Chapter: Angepa޴ f�ckInsets, SE, 09.11.04-->
+<!ELEMENT Chapter (Title, Paragraph, (Paragraph | List | Code | Comments | Attention | Figure | InlineFigure | Formula | Table | Block | Requirement | Instruction | BlockInset)*, (Chapter | SW_Component | RegistersChapter)*)>
+<!ATTLIST Chapter
+	Id ID #IMPLIED
+	NewPage CDATA "No"
+	Date CDATA #IMPLIED
+	Person CDATA #IMPLIED
+	FilePath CDATA #IMPLIED
+	FlowTag CDATA #IMPLIED
+	MasterPage CDATA #IMPLIED
+>
+<!ELEMENT Title (#PCDATA | cross-ref | index | index-main | Regular | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | PhysicalSymbol | Bin | Dec | Hex | CrossRef | UserVariable)*>
+<!ATTLIST Title
+	Id ID #IMPLIED
+>
+<!ELEMENT Paragraph (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | CodeFragment | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable | TM_Trademark | R_Trademark | TextInset)*>
+<!ATTLIST Paragraph
+	NewPage CDATA "No"
+	InColumn CDATA "No"
+>
+<!ELEMENT Block (Title, (Paragraph | List | Code | Comments | Attention | Figure | InlineFigure | Formula | Table)*)>
+<!ATTLIST Block
+	Id ID #IMPLIED
+	NewPage CDATA "No"
+>
+<!ELEMENT CodeFragment (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Hyperlink (#PCDATA | hypertext)*>
+<!ELEMENT Emphasis (#PCDATA | Deleted | Inserted | Superscript | Subscript | Underscore | Negation | Symb_Char | ZD_Char | CrossRef | UserVariable)*>
+<!ELEMENT Regular (#PCDATA | Deleted | Inserted | Superscript | Subscript | Underscore | Negation | Symb_Char | ZD_Char)*>
+<!ELEMENT Superscript (#PCDATA | Deleted | Inserted | Symb_Char)*>
+<!ELEMENT Subscript (#PCDATA | Deleted | Inserted | Symb_Char)*>
+<!ELEMENT Negation (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Underscore (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Deleted (#PCDATA | CrossRef)*>
+<!ELEMENT Inserted (#PCDATA | CrossRef)*>
+<!ELEMENT Symb_Char (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT ZD_Char (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Bin (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Dec (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Hex (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT PhysicalSymbol (#PCDATA | Deleted | Inserted | Subscript | Symb_Char | PhysicalValue)*>
+<!ELEMENT PhysicalValue (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Attention (#PCDATA | index | index-main | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | PhysicalSymbol | Hyperlink | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT Comments (Title?, Comment+)>
+<!ATTLIST Comments
+	InColumn CDATA "No"
+>
+<!ELEMENT Comment (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT Code (#PCDATA | Deleted | Inserted | CrossRef)*>
+<!ELEMENT List (Item, SubList?)+>
+<!ATTLIST List
+	type CDATA "unordered"
+	InColumn CDATA "No"
+>
+<!ELEMENT SubList (Item+)>
+<!ELEMENT Item (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | CodeFragment | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT Reference (#PCDATA | cross-ref | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Hyperlink | Footnote | CrossRef | UserVariable)*>
+<!ATTLIST Reference
+	Id ID #IMPLIED
+>
+<!ELEMENT Figure (Image, Title)>
+<!ATTLIST Figure
+	InColumn CDATA "No"
+>
+<!ELEMENT InlineFigure (Image)>
+<!ELEMENT Image EMPTY>
+<!ATTLIST Image
+	autogen CDATA "No"
+	file CDATA #IMPLIED
+	height CDATA #IMPLIED
+	width CDATA #IMPLIED
+	position NMTOKEN #IMPLIED
+	xoffset CDATA #IMPLIED
+	yoffset CDATA #IMPLIED
+	impsize CDATA #IMPLIED
+	sideways NMTOKEN #IMPLIED
+	impang CDATA #IMPLIED
+	nsoffset CDATA #IMPLIED
+>
+<!ELEMENT Formula (#PCDATA | Equation | cross-ref | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | PhysicalSymbol)*>
+<!ATTLIST Formula
+	Id ID #IMPLIED
+	InColumn CDATA "No"
+>
+<!ELEMENT Equation EMPTY>
+<!ATTLIST Equation
+	file CDATA #IMPLIED
+	position NMTOKEN #IMPLIED
+	align NMTOKEN #IMPLIED
+	width CDATA #IMPLIED
+	height CDATA #IMPLIED
+	bloffset CDATA #IMPLIED
+	nsoffset CDATA #IMPLIED
+>
+<!ELEMENT Table (S_Table | IO_Table | RO_Table | CV_Table | EC_Table | RequirementTable)>
+<!ATTLIST Table
+	NewPage CDATA "No"
+	InColumn CDATA "No"
+>
+<!--TableTitle: Element TableTitle is used for all types of tables.-->
+<!ELEMENT TableTitle (TCaption)>
+<!ELEMENT TCaption (#PCDATA | cross-ref | index | index-main | Regular | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | PhysicalSymbol | Bin | Dec | Hex | Footnote | CrossRef | UserVariable | TableContinuation)*>
+<!ATTLIST TCaption
+	Id ID #IMPLIED
+>
+<!--S_Table: Attribute Type added (for Mr. Krause)-->
+<!ELEMENT S_Table (TableTitle?, S_Head?, S_Body)>
+<!ATTLIST S_Table
+	Type CDATA "Normal"
+	Source CDATA "Initial"
+	frame (top | bottom | topbot | all | sides | none) #IMPLIED
+	cols NMTOKEN #REQUIRED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	cwidths CDATA #IMPLIED
+>
+<!ELEMENT S_Head (S_HRow+)>
+<!ELEMENT S_HRow (S_HCell+)>
+<!ATTLIST S_HRow
+	rowsep NMTOKEN #IMPLIED
+>
+<!ELEMENT S_HCell (S_HCellBody+)>
+<!ATTLIST S_HCell
+	hAlign CDATA "Normal"
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT S_HCellBody (#PCDATA | Regular | Deleted | Inserted | Subscript | Superscript | Negation | Symb_Char | ZD_Char | PhysicalSymbol | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT S_Body (SHRow?, S_Row+)+>
+<!ELEMENT SHRow (SHCell)>
+<!ATTLIST SHRow
+	rowsep NMTOKEN #IMPLIED
+>
+<!ELEMENT SHCell (TableSubHeading)>
+<!ATTLIST SHCell
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT TableSubHeading (#PCDATA | cross-ref | index | index-main | Regular | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ATTLIST TableSubHeading
+	Id ID #IMPLIED
+>
+<!ELEMENT S_Row (S_Cell+)>
+<!ATTLIST S_Row
+	rowsep NMTOKEN #IMPLIED
+>
+<!ELEMENT S_Cell (S_CellBody | S_CellBodyEmphased | InlineFigure | Formula | Identifier | RowIdentifier | Comments | List | Constant)*>
+<!ATTLIST S_Cell
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT S_CellBody (#PCDATA | cross-ref | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | CodeFragment | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ATTLIST S_CellBody
+	Id ID #IMPLIED
+>
+<!ELEMENT S_CellBodyEmphased (#PCDATA | cross-ref | index | index-main | Regular | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | CodeFragment | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ATTLIST S_CellBodyEmphased
+	Id ID #IMPLIED
+>
+<!ELEMENT Identifier (#PCDATA | cross-ref | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Hyperlink | Footnote | CrossRef | UserVariable)*>
+<!ATTLIST Identifier
+	Id ID #IMPLIED
+>
+<!ELEMENT RowIdentifier EMPTY>
+<!ATTLIST RowIdentifier
+	Id ID #IMPLIED
+>
+<!ELEMENT IO_Table (TableTitle, IO_Head, IO_Body)>
+<!ATTLIST IO_Table
+	cwidths CDATA #IMPLIED
+	Colorgroup CDATA "White"
+	Source CDATA "Initial"
+	Package CDATA #REQUIRED
+>
+<!ELEMENT IO_Head (IO_HRow)>
+<!ELEMENT IO_HRow (HPinNo, HName, HPinType, HBufType, HFunc)>
+<!ELEMENT IO_Body (SHRow?, IO_Row+)+>
+<!ELEMENT IO_Row (PinNo?, Name, PinType?, BufType?, Function?)>
+<!ELEMENT HPinNo (AutoText)>
+<!ELEMENT HName (AutoText)>
+<!ELEMENT HPinType (AutoText)>
+<!ELEMENT HBufType (AutoText)>
+<!ELEMENT HFunc (AutoText)>
+<!ELEMENT PinNo (Pin+)>
+<!ATTLIST PinNo
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT Pin (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Footnote)*>
+<!ATTLIST Pin
+	Id ID #IMPLIED
+>
+<!ELEMENT Name (#PCDATA | cross-ref | index | index-main | Deleted | Inserted | Subscript | Negation | PhysicalSymbol | Footnote)*>
+<!ATTLIST Name
+	Id ID #IMPLIED
+	PadName CDATA "No"
+>
+<!ELEMENT PinType (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST PinType
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT BufType (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST BufType
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT Function (LongName, DescriptionText*, ResetDescription?, Strapping?, BufferChar?, Comments?, Constant*)>
+<!ATTLIST Function
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT LongName (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST LongName
+	PinMode CDATA #IMPLIED
+>
+<!ELEMENT DescriptionText (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | PhysicalSymbol | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT ResetDescription (#PCDATA | CrossRef)*>
+<!ELEMENT Strapping (#PCDATA)>
+<!ELEMENT BufferChar (#PCDATA)>
+<!ELEMENT Constant (ConstantValue, ConstantShortName, ConstantDescription, Comment*)>
+<!ATTLIST Constant
+	Id ID #IMPLIED
+	Indent CDATA "Normal"
+>
+<!ELEMENT ConstantValue (Hex | Bin | Dec)>
+<!ELEMENT ConstantShortName (#PCDATA)>
+<!ATTLIST ConstantShortName
+	Id ID #IMPLIED
+>
+<!ELEMENT ConstantDescription (#PCDATA | Deleted | Inserted | Symb_Char | Negation | Bin | Dec | Hex | Footnote | CrossRef)*>
+<!ELEMENT CV_Table (TableTitle, CV_Head, CV_Body)>
+<!ELEMENT CV_Head (CV_HRow)>
+<!ELEMENT CV_HRow (HConst, HConstValue)>
+<!ELEMENT CV_Body (SHRow?, CV_Row+)+>
+<!ELEMENT CV_Row (Const, ConstValue)>
+<!ELEMENT HConst (AutoText)>
+<!ELEMENT HConstValue (AutoText)>
+<!ELEMENT Const (ConstName, ConstDescription?)>
+<!ELEMENT ConstName (#PCDATA)>
+<!ATTLIST ConstName
+	Id ID #IMPLIED
+>
+<!ELEMENT ConstDescription (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | PhysicalSymbol | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT ConstValue (Bin | Dec | Hex | CrossRef)>
+<!ELEMENT EC_Table (TableTitle, EC_Head, EC_Body)>
+<!ATTLIST EC_Table
+	cwidths CDATA #IMPLIED
+>
+<!ELEMENT EC_Head (EC_HRow1, EC_HRow2)>
+<!ELEMENT EC_HRow1 (HParam, HSymb, HVal, HUnit, HNote)>
+<!ELEMENT EC_HRow2 (HMin, HTyp, HMax)>
+<!ELEMENT EC_Body (SHRow?, EC_Row+)+>
+<!ELEMENT EC_Row (Param?, Symbol?, Min, Typ, Max, Unit, Note)>
+<!ELEMENT HParam (AutoText)>
+<!ATTLIST HParam
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT HSymb (AutoText)>
+<!ATTLIST HSymb
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT HVal (AutoText)>
+<!ATTLIST HVal
+	colspan CDATA #IMPLIED
+>
+<!ELEMENT HUnit (AutoText)>
+<!ATTLIST HUnit
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT HNote (AutoText)>
+<!ATTLIST HNote
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT HMin (AutoText)>
+<!ELEMENT HTyp (AutoText)>
+<!ELEMENT HMax (AutoText)>
+<!ELEMENT Param (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Symb_Char | ZD_Char | Negation | PhysicalSymbol | Footnote | CrossRef | UserVariable)*>
+<!ATTLIST Param
+	rowspan CDATA #IMPLIED
+	Id ID #IMPLIED
+>
+<!ELEMENT Symbol (#PCDATA | Deleted | Inserted | Subscript | Symb_Char | PhysicalValue)*>
+<!ATTLIST Symbol
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT Min (#PCDATA | Deleted | Inserted | Subscript | PhysicalSymbol | Footnote)*>
+<!ELEMENT Typ (#PCDATA | Deleted | Inserted | Subscript | PhysicalSymbol | Footnote)*>
+<!ELEMENT Max (#PCDATA | Deleted | Inserted | Subscript | PhysicalSymbol | Footnote)*>
+<!ELEMENT Unit (#PCDATA | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char)*>
+<!ELEMENT Note (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | Footnote | CrossRef | UserVariable)*>
+<!ELEMENT RequirementTable (TableTitle, RQ_Head, RQ_Body)>
+<!ELEMENT RQ_Head (RQ_HRow)>
+<!ELEMENT RQ_HRow (HReqNumCell, HReqVersID, HReqShortDesc)>
+<!ELEMENT RQ_Body (SHRow?, RQ_Row+)+>
+<!ELEMENT RQ_Row (ReqNumCell, ReqVersID?, ReqShortDesc)>
+<!ELEMENT HReqNumCell (AutoText)>
+<!ELEMENT HReqVersID (AutoText)>
+<!ELEMENT HReqShortDesc (AutoText)>
+<!ELEMENT ReqNumCell (CrossRef | index | index-main)*>
+<!ELEMENT ReqVersID (CrossRef | index | index-main)*>
+<!ATTLIST ReqVersID
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT ReqShortDesc (RequirementName?, ReqShortDescription)>
+<!ELEMENT RequirementName (#PCDATA | Deleted | Inserted | CrossRef)*>
+<!ELEMENT RegistersChapter (Title, RegistersPreface, RegistersSubChapter+)>
+<!ATTLIST RegistersChapter
+	NewPage CDATA "Yes"
+	RegChapterShortName CDATA #IMPLIED
+>
+<!ELEMENT RegistersPreface (Paragraph+, Block?, RegistersAddressSpace, RegistersOverview, RegistersAccess, RegistersClockDomains)>
+<!ELEMENT RegistersAddressSpace (Paragraph | RegistersAddressSpaceTable)>
+<!ELEMENT RegistersAccess (RegistersAddressMode, RegistersAccessConditions?, Paragraph?, RegistersAccessType)>
+<!ELEMENT RegistersAddressMode EMPTY>
+<!ATTLIST RegistersAddressMode
+	Mode CDATA "wordwise"
+>
+<!ELEMENT RegistersAccessConditions (Paragraph | RegistersAccessConditionsTable)>
+<!ELEMENT RegistersAccessType (Paragraph | RegistersAccessTypeTable)>
+<!ELEMENT RegistersAccessTypeTable (S_Table)>
+<!ATTLIST RegistersAccessTypeTable
+	NewPage CDATA "No"
+>
+<!ELEMENT RegistersClockDomains (Paragraph | RegistersClockDomainsTable)>
+<!ELEMENT RegistersOverview (Paragraph | RegistersOverviewTable)>
+<!ELEMENT RegistersOverviewTable (RO_Table)>
+<!ATTLIST RegistersOverviewTable
+	NewPage CDATA "No"
+>
+<!ELEMENT RegistersSubChapter (Title, Paragraph+, Block?, Register+)>
+<!ATTLIST RegistersSubChapter
+	NewPage CDATA "No"
+>
+<!ELEMENT Register (Title, Paragraph+, Comments?, RegContent)>
+<!ATTLIST Register
+	Id ID #IMPLIED
+	NewPage CDATA "No"
+	RegisterSize CDATA "32-bit"
+	RegisterLocation CDATA #IMPLIED
+	RowsPerRegister CDATA "1"
+	TextRows CDATA "2"
+	VHDL_Generation CDATA "Yes"
+	E_Code_Generation CDATA "Yes"
+>
+<!ELEMENT RegContent (RegClockDomain?, RegGenerate?, RegAccessCondition?, RegLayout, RegData, RegisterReset?, Block*)>
+<!ELEMENT RegClockDomain (#PCDATA | CrossRef)*>
+<!--RegGenerate: ConnectionCondition is already defined in Registers Access
+ Conditions Table.-->
+<!ELEMENT RegGenerate (GenericName, Size, ConnectionCondition)+>
+<!ELEMENT GenericName (#PCDATA)>
+<!ELEMENT Size (Bin | Dec | Hex)>
+<!ATTLIST Size
+	Value CDATA #REQUIRED
+>
+<!ELEMENT RegAccessCondition (WriteCondition, ReadCondition)>
+<!--WriteCondition: ConnectionCondition is already defined in Registers Access
+ Conditions Table.-->
+<!ELEMENT WriteCondition (AccessName, ConnectionCondition)*>
+<!ATTLIST WriteCondition
+	When CDATA "Defined"
+>
+<!--ReadCondition: ConnectionCondition is already defined in Registers Access
+ Conditions Table.-->
+<!ELEMENT ReadCondition (AccessName, ConnectionCondition)*>
+<!ATTLIST ReadCondition
+	When CDATA "Defined"
+>
+<!ELEMENT AccessName (#PCDATA | CrossRef)*>
+<!ATTLIST AccessName
+	Equals CDATA "Describe"
+	If CDATA "No"
+>
+<!ELEMENT RegLayout ((RN_Table, InlineFigure) | RegisterImage)>
+<!ELEMENT RegData (RD_Table)>
+<!ELEMENT RegisterReset (RegisterResetTable)>
+<!ELEMENT RegistersAddressSpaceTable (TableTitle, AS_Head, AS_Body)>
+<!ELEMENT AS_Head (AS_HRow)>
+<!ELEMENT AS_HRow (HModule, HBA, HEA, HGNote)>
+<!ELEMENT AS_Body (SHRow?, AS_Row+)+>
+<!ELEMENT AS_Row (Module, BA, EA, GNote)>
+<!ELEMENT HModule (AutoText)>
+<!ELEMENT HBA (AutoText)>
+<!ELEMENT HEA (AutoText)>
+<!ELEMENT HGNote (AutoText)>
+<!ELEMENT Module (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT BA (Hex)>
+<!ELEMENT EA (Hex?)>
+<!ELEMENT GNote (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT RegistersAccessConditionsTable (TableTitle, AC_Head, AC_Body)>
+<!ELEMENT AC_Head (AC_HRow)>
+<!ELEMENT AC_HRow (HACSN, HDependency)>
+<!ELEMENT AC_Body (AC_Row+)>
+<!ELEMENT AC_Row (ACSN, Dependency)>
+<!ELEMENT HACSN (AutoText)>
+<!ELEMENT HDependency (AutoText)>
+<!ELEMENT ACSN (#PCDATA | index | index-main | CrossRef)*>
+<!ATTLIST ACSN
+	Id ID #IMPLIED
+>
+<!ELEMENT Dependency (Signal, Val, ConnectionCondition)+>
+<!ELEMENT Signal (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT Val (Bin | Dec | Hex | CrossRef)>
+<!ELEMENT ConnectionCondition EMPTY>
+<!ATTLIST ConnectionCondition
+	ConnectionType CDATA "None"
+>
+<!ELEMENT RegistersClockDomainsTable (TableTitle, RCD_Head, RCD_Body)>
+<!ELEMENT RCD_Head (RCD_HRow)>
+<!ELEMENT RCD_HRow (HClockSN, HClockDesc)>
+<!ELEMENT RCD_Body (RCD_Row+)>
+<!ELEMENT RCD_Row (ClockSN, ClockDesc)>
+<!ELEMENT HClockSN (AutoText)>
+<!ELEMENT HClockDesc (AutoText)>
+<!ELEMENT ClockSN (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT ClockDesc (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT RO_Table (TableTitle, RO_Head, RO_Body)>
+<!ATTLIST RO_Table
+	Source CDATA "Initial"
+>
+<!ELEMENT RO_Head (RO_HRow)>
+<!ELEMENT RO_HRow (HRSN, HRLN, HOff, HPageNum)>
+<!ELEMENT RO_Body (SHRow?, RO_Row+)+>
+<!ELEMENT RO_Row (RSN, RLN, Off, PageNum)>
+<!ELEMENT HRSN (AutoText)>
+<!ELEMENT HRLN (AutoText)>
+<!ELEMENT HOff (AutoText)>
+<!ELEMENT HPageNum (AutoText)>
+<!ELEMENT RSN (#PCDATA | index | index-main | CrossRef)*>
+<!ATTLIST RSN
+	Id ID #IMPLIED
+>
+<!ELEMENT RLN (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT Off (Hex)>
+<!ELEMENT PageNum (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT RN_Table (RN_Head, RN_Body)>
+<!ELEMENT RN_Head (RN_HRow)>
+<!ELEMENT RN_HRow (RS_Name, HOffset, HResVal)>
+<!ELEMENT RN_Body (RN_Row)>
+<!ELEMENT RN_Row (RL_Name, Offset, ResVal)>
+<!ELEMENT HOffset (AutoText)>
+<!ELEMENT HResVal (AutoText)>
+<!ELEMENT RS_Name (#PCDATA | cross-ref | index | index-main)*>
+<!ATTLIST RS_Name
+	Id ID #IMPLIED
+>
+<!ELEMENT RL_Name (#PCDATA | cross-ref | index | index-main)*>
+<!ATTLIST RL_Name
+	Id ID #IMPLIED
+>
+<!ELEMENT Offset (Hex | Footnote)>
+<!ELEMENT ResVal (Hex | CrossRef | Footnote)>
+<!ELEMENT RD_Table (RD_Head, RD_Body)>
+<!ELEMENT RD_Head (RD_HRow)>
+<!ELEMENT RD_HRow (HField, HBits, HAccType, HDesc)>
+<!ELEMENT RD_Body (RD_Row+)>
+<!ELEMENT RD_Row (Field, Bits, AccType?, Desc?)>
+<!ELEMENT HField (AutoText)>
+<!ELEMENT HBits (AutoText)>
+<!ELEMENT HAccType (AutoText)>
+<!ELEMENT HDesc (AutoTextSpec)>
+<!ELEMENT Field (#PCDATA)>
+<!ATTLIST Field
+	Id ID #IMPLIED
+>
+<!ELEMENT Bits (Start, End?)>
+<!ATTLIST Bits
+	BitParameter CDATA #IMPLIED
+	E_CodeEnumeration CDATA "Yes"
+>
+<!ELEMENT AccType (#PCDATA)>
+<!ATTLIST AccType
+	TypeParameter CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT Desc (LongName, (DescriptionText | List | Formula)*, BitGenerate?, Comments?, (ConstRef | Constant)*, (rwhType | roType)?, wEnable?)+>
+<!ATTLIST Desc
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT Start (#PCDATA)>
+<!ELEMENT End (#PCDATA)>
+<!ELEMENT BitGenerate (GenericName, Size, ConnectionCondition)+>
+<!ELEMENT rwhType EMPTY>
+<!ATTLIST rwhType
+	Priority CDATA #REQUIRED
+>
+<!ELEMENT roType (HW_Set, SW_Set, SW_Clear, Priority)>
+<!ELEMENT HW_Set (#PCDATA)>
+<!ATTLIST HW_Set
+	HwSet CDATA #IMPLIED
+>
+<!ELEMENT SW_Set (RegShortName, RegBit)>
+<!ELEMENT SW_Clear (RegShortName, RegBit)>
+<!ELEMENT Priority EMPTY>
+<!ATTLIST Priority
+	Priority CDATA #IMPLIED
+>
+<!ELEMENT RegShortName (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT RegBit (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT wEnable (RegShortName, RegBit, ConstantShortName)?>
+<!ATTLIST wEnable
+	Mode CDATA "Sw"
+>
+<!ELEMENT RegisterResetTable (TableTitle, RR_Head, RR_Body)>
+<!ELEMENT RR_Head (RR_HRow)>
+<!ELEMENT RR_HRow (HResType, HResValue, HResSN, HResMode, HGNote)>
+<!ELEMENT RR_Body (RR_Row+)>
+<!ELEMENT RR_Row (ResType, ResValue, ResSN, ResMode, GNote)>
+<!ELEMENT HResType (AutoText)>
+<!ELEMENT HResValue (AutoText)>
+<!ELEMENT HResSN (AutoText)>
+<!ELEMENT HResMode (AutoText)>
+<!ELEMENT ResType (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT ResValue (Hex)>
+<!ELEMENT ResSN (#PCDATA | index | index-main | CrossRef)*>
+<!ELEMENT ResMode (#PCDATA)>
+<!ELEMENT SW_Component (Title, Paragraph*, Comments?, SW_Identifier?, SW_Block*, Block*)>
+<!ATTLIST SW_Component
+	Id ID #IMPLIED
+	NewPage CDATA "No"
+	Role CDATA #IMPLIED
+>
+<!ELEMENT SW_Block (Title, (Paragraph | Code | InlineFigure | Comments | SW_Table | Attention | List)+)>
+<!ATTLIST SW_Block
+	Id ID #IMPLIED
+	Role CDATA #IMPLIED
+>
+<!ELEMENT SW_Identifier (Bin | Dec | Hex)>
+<!ATTLIST SW_Identifier
+	Id ID #IMPLIED
+	Role CDATA #IMPLIED
+>
+<!ELEMENT SW_Table (DataTypeDirectionTable | DataTypeTable | DefinitionTable | S_Table | ReturnValuesTable)>
+<!ATTLIST SW_Table
+	NewPage CDATA "No"
+>
+<!ELEMENT DataTypeDirectionTable (TableTitle?, DTD_Head, DTD_Body)>
+<!ATTLIST DataTypeDirectionTable
+	Role CDATA "other"
+	RowsPerParameter CDATA "1"
+	cwidths CDATA #IMPLIED
+>
+<!ELEMENT DTD_Head (DTD_HRow)>
+<!ELEMENT DTD_HRow (HDataType, HParamName, HSW_Description, HDirection)>
+<!ELEMENT DTD_Body (SHRow?, DTD_Row+)+>
+<!ELEMENT DTD_Row (DataType, ParamName, SW_Description, Direction)>
+<!ELEMENT HDataType (AutoText)>
+<!ELEMENT HParamName (AutoText)>
+<!ELEMENT HSW_Description (AutoText)>
+<!ELEMENT HDirection (AutoText)>
+<!ELEMENT DataType (#PCDATA | CrossRef)*>
+<!ELEMENT ParamName (#PCDATA | cross-ref | index | index-main | Deleted | Inserted | Bin | Dec | Hex | Footnote | CrossRef)*>
+<!ATTLIST ParamName
+	Id ID #IMPLIED
+>
+<!ELEMENT SW_Description (LongName?, ((DescriptionText | List | Formula | ConstRef | Constant)*, DefaultValue?, (MinValue, MaxValue)?, Comments?)+)>
+<!ELEMENT Direction (#PCDATA)>
+<!ELEMENT ConstRef (#PCDATA | CrossRef)*>
+<!ELEMENT DefaultValue (Bin | Dec | Hex | CrossRef)>
+<!ELEMENT MinValue (Bin | Dec | Hex)>
+<!ATTLIST MinValue
+	Id ID #IMPLIED
+>
+<!ELEMENT MaxValue (Bin | Dec | Hex)>
+<!ATTLIST MaxValue
+	Id ID #IMPLIED
+>
+<!ELEMENT DataTypeTable (TableTitle?, DT_Head, DT_Body)>
+<!ATTLIST DataTypeTable
+	Role CDATA "other"
+	RowsPerParameter CDATA "1"
+	cwidths CDATA #IMPLIED
+>
+<!ELEMENT DT_Head (DT_HRow)>
+<!ELEMENT DT_HRow (HDataType, HParamName, HSW_Description)>
+<!ELEMENT DT_Body (SHRow?, DT_Row+)+>
+<!ELEMENT DT_Row (DataType, ParamName, SW_Description)>
+<!ELEMENT DefinitionTable (TableTitle?, D_Head, D_Body)>
+<!ATTLIST DefinitionTable
+	cwidths CDATA #IMPLIED
+>
+<!ELEMENT D_Head (D_HRow)>
+<!ELEMENT D_HRow (HDefName, HValue, HSW_Description)>
+<!ELEMENT D_Body (SHRow?, D_Row+)+>
+<!ELEMENT D_Row (DefName, Value, SW_Description)>
+<!ELEMENT HDefName (AutoText)>
+<!ELEMENT HValue (AutoText)>
+<!ELEMENT DefName (#PCDATA | cross-ref | index | index-main | Deleted | Inserted | Footnote | CrossRef)*>
+<!ATTLIST DefName
+	Id ID #IMPLIED
+>
+<!ELEMENT Value (#PCDATA | cross-ref | index | index-main | Deleted | Inserted | Bin | Dec | Hex | Footnote | CrossRef)*>
+<!ATTLIST Value
+	Id ID #IMPLIED
+>
+<!ELEMENT ReturnValuesTable (TableTitle?, RV_Head, RV_Body)>
+<!ELEMENT RV_Head (RV_HRow)>
+<!ELEMENT RV_HRow (HDataType, HSW_Description)>
+<!ELEMENT RV_Body (SHRow?, RV_Row+)+>
+<!ELEMENT RV_Row (DataType, SW_Description)>
+<!ELEMENT Requirement (ReqNumber, ReqName, ReqVersionID?, ReqShortDescription, SubRequirement*, ReqLongDescription?)>
+<!ATTLIST Requirement
+	NewPage CDATA "No"
+>
+<!ELEMENT ReqNumber (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST ReqNumber
+	Id ID #IMPLIED
+	Numbering CDATA "Generated"
+>
+<!ELEMENT ReqName (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST ReqName
+	Id ID #IMPLIED
+>
+<!ELEMENT ReqVersionID (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST ReqVersionID
+	Id ID #IMPLIED
+>
+<!ELEMENT ReqShortDescription (#PCDATA | index | index-main | Emphasis | Deleted | Inserted | Subscript | Superscript | Hex | CrossRef | UserVariable)*>
+<!ELEMENT ReqLongDescription (Paragraph | List | Code | Comments | Attention | Figure | InlineFigure | Formula | Table)*>
+<!ELEMENT SubRequirement (SubReqNumber, SubReqName, SubReqDescription?)>
+<!ELEMENT SubReqNumber (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST SubReqNumber
+	Id ID #IMPLIED
+>
+<!ELEMENT SubReqName (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST SubReqName
+	Id ID #IMPLIED
+>
+<!ELEMENT SubReqDescription (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT Instruction ((InstrMnemonic, InstrLongName)+, InstrBlock*, (InstrSyntax, InlineFigure, InstrOperation)+, InstrBlock+)>
+<!ATTLIST Instruction
+	NewPage CDATA "Yes"
+>
+<!ELEMENT InstrMnemonic EMPTY>
+<!ATTLIST InstrMnemonic
+	Id ID #IMPLIED
+	InstrMnemonic CDATA #REQUIRED
+>
+<!ELEMENT InstrLongName (#PCDATA)>
+<!ELEMENT InstrSyntax (#PCDATA)>
+<!ELEMENT InstrOperation (Paragraph+)>
+<!ELEMENT InstrBlock (Title, (Paragraph | List | Code | InstrStatusFlags | Instr16Bit)+)>
+<!ATTLIST InstrBlock
+	Role CDATA #REQUIRED
+>
+<!ELEMENT InstrStatusFlags (InstructionStatusTable)>
+<!ELEMENT Instr16Bit (InstructionTable16Bit)>
+<!ELEMENT InstructionStatusTable (IS_Body)>
+<!ELEMENT IS_Body (IS_Row+)>
+<!ELEMENT IS_Row (Flag, FlagDescription)>
+<!ELEMENT Flag (#PCDATA | index | index-main)*>
+<!ELEMENT FlagDescription (DescriptionText | Code)+>
+<!ELEMENT InstructionTable16Bit (Instr_Body16Bit)>
+<!ELEMENT Instr_Body16Bit (Instr_Row16Bit+)>
+<!ELEMENT Instr_Row16Bit (Instr_Cell16Bit)>
+<!ELEMENT Instr_Cell16Bit (DescriptionText | Code)+>
+<!ELEMENT R_Trademark (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST R_Trademark
+	Id ID #IMPLIED
+>
+<!ELEMENT TM_Trademark (#PCDATA | Deleted | Inserted)*>
+<!ATTLIST TM_Trademark
+	Id ID #IMPLIED
+>
+<!ELEMENT Footnote (#PCDATA | cross-ref | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | CrossRef | UserVariable | TextInset)*>
+<!ATTLIST Footnote
+	Id ID #IMPLIED
+>
+<!ELEMENT CrossRef EMPTY>
+<!ATTLIST CrossRef
+	Idref IDREF #IMPLIED
+	type CDATA #IMPLIED
+	srcfile CDATA #IMPLIED
+>
+<!ELEMENT cross-ref EMPTY>
+<!ATTLIST cross-ref
+	comment CDATA #IMPLIED
+	type CDATA #IMPLIED
+>
+<!ELEMENT hypertext EMPTY>
+<!ATTLIST hypertext
+	comment CDATA #IMPLIED
+	type CDATA #IMPLIED
+>
+<!ELEMENT index EMPTY>
+<!ATTLIST index
+	comment CDATA #IMPLIED
+	type CDATA #IMPLIED
+>
+<!ELEMENT index-main EMPTY>
+<!ATTLIST index-main
+	comment CDATA #IMPLIED
+	type CDATA #IMPLIED
+>
+<!ELEMENT TableContinuation EMPTY>
+<!ELEMENT UserVariable (#PCDATA | Deleted | Inserted)*>
+<!ELEMENT BlockInset (Paragraph | List | Code | Comments | Attention | Figure | InlineFigure | Formula | Table | Block)+>
+<!ATTLIST BlockInset
+	Date CDATA #IMPLIED
+	Person CDATA #REQUIRED
+	FilePath CDATA #REQUIRED
+	FlowTag CDATA #IMPLIED
+>
+<!ELEMENT TextInset (#PCDATA | Emphasis | Deleted | Inserted | Subscript | Superscript | Symb_Char | ZD_Char | Negation | Underscore | CodeFragment | PhysicalSymbol | Hyperlink | Bin | Dec | Hex | UserVariable)*>
+<!ATTLIST TextInset
+	Date CDATA #IMPLIED
+	Person CDATA #REQUIRED
+	FilePath CDATA #REQUIRED
+	FlowTag CDATA #IMPLIED
+>
+<!ELEMENT AutoText EMPTY>
+<!ELEMENT AutoTextSpec (TableContinuation?)>
+<!ELEMENT RegisterImage (RegTitle, RegBody)>
+<!ATTLIST RegisterImage
+	cols NMTOKEN #REQUIRED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	cwidths CDATA #IMPLIED
+>
+<!ELEMENT RegTitle (RegShortcut, RegName)+>
+<!ELEMENT RegBody (RegRow, S_Row?)+>
+<!ELEMENT RegRow (RegAccess | RegIndex | RegOverviewBit | RegEmptyCell)+>
+<!ATTLIST RegRow
+	rowsep NMTOKEN #IMPLIED
+>
+<!ELEMENT RegAccess (#PCDATA)>
+<!ATTLIST RegAccess
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT RegIndex (#PCDATA)>
+<!ATTLIST RegIndex
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT RegOverviewBit (#PCDATA)>
+<!ATTLIST RegOverviewBit
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT RegEmptyCell (#PCDATA)>
+<!ATTLIST RegEmptyCell
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	colsep NMTOKEN #IMPLIED
+	rowsep NMTOKEN #IMPLIED
+	rotate NMTOKEN #IMPLIED
+	colspan CDATA #IMPLIED
+	rowspan CDATA #IMPLIED
+>
+<!ELEMENT RegShortcut (#PCDATA | cross-ref | index | index-main | Subscript | Superscript | PhysicalValue | Footnote)*>
+<!ATTLIST RegShortcut
+	Id ID #IMPLIED
+>
+<!ELEMENT RegName (#PCDATA | cross-ref | index | index-main | Subscript | Superscript | PhysicalValue | Footnote | CrossRef)*>
+<!ATTLIST RegName
+	Id ID #IMPLIED
+>

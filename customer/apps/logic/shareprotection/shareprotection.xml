@@ -1,0 +1,11 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_ShareProtection type="object">
+		<IPIDEnable type="boolean">1</IPIDEnable>
+		<TTLEnable type="boolean">1</TTLEnable>
+		<CONNLIMITEnable type="boolean">1</CONNLIMITEnable>
+		<TTLValue type="unsignedInt">128</TTLValue>
+		<TCPCONNValue type="unsignedInt">100</TCPCONNValue>
+		<UDPCONNValue type="unsignedInt">50</UDPCONNValue>
+	</X_TWSZ-COM_ShareProtection>
+</InternetGatewayDevice>

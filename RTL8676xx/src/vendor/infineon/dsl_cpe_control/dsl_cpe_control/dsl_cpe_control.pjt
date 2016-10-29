@@ -1,0 +1,162 @@
+;Codewright Project File (do not remove or modify this line)
+[State]
+SysSetCwd='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src'
+SrchSetFlags=0x041e68cb
+SrchSetAgainFlags=0x841e68cb,0
+SrchSetAgainFlags=0x061e68cb,1
+SrchSetAttrElements=
+SrchSetAgainAttrElements=
+FileSortMode=0x13
+_StateHistory=FILELIST,'O:\open_wrt_adm5120\package\ifx-dsl-cpe-control-vinax\Makefile','C:\Program Files\ZOC\log\ZOC0707.LOG','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug_danube.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug_danube.h','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_linux.h','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_linux.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug.h','P:\buildroot\build_mips\fs.24\easy50712\opt\ifx\inst_drv_dsl_cpe_api_danube.sh','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug_vinax.c'
+_StateHistory=SEARCH,'DSL_CCA_DBG_BLOCK','DSL_Fprintf','printf','--','configure','static','DSL_CPE_STATIC_DELT_DATA','DSL_DANUBE_CmvPrepare','>>>','_LAST_'
+_StateHistory=REPLACE,'DSL_CPE_DEBUG_DISABLE','nRxBufBaseAddr32'
+_StateHistory=EDITFILE,'E:\work_ext\dsl_api_maint_1_5_x\vob\comacsd_lib\lib_dsl_api\lib_dsl_api.pjt','drv_dsl_cpe_api.pjt','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\drv_dsl_cpe_api.psp','drv_dsl_cpe_api.pjt','drv_dsl_cpe_api.psp','lib_dsl_api.pjt','M:\drews_dsl_api_dev_generic\comacsd_lib\lib_dsl_api\lib_dsl_api.pjt','drv_dsl_cpe_api_legacy.pjt','lib_dsl_api.psp','drv_dsl_cpe_api.psp'
+_StateHistory=DIRECTORY,'M:\drews_danube_rel\comacsd_amazon_lxdb1.1\source\kernel\ifx\os','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\source\kernel','M:\DREWS_DANUBE_REL\COMACSD_AMAZON_LXDB1.1\SOURCE\KERNEL\OPENSOURCE\LINUX-2.4.31\DRIVERS\CHAR','M:\DREWS_DANUBE_REL\COMACSD_AMAZON_LXDB1.1\SOURCE\KERNEL\OPENSOURCE\LINUX-2.4.31\KERNEL','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\source\kernel\ifx\os\drivers\char','M:\DREWS_DANUBE_REL\COMACSD_AMAZON_LXDB1.1\SOURCE\KERNEL\OPENSOURCE\LINUX-2.4.31\SCRIPTS','W:\\','W:\temp\test\1\drv_vdsl2_eb-0.6.2','E:\WORK_EXT\DREWS_DSL_CPE_API_DEV_GENERIC\VOB\COMACSD_DRIVER\DRV_DSL_CPE_API\DRIVER\_LEGACY'
+_StateHistory=FGREP,'DSL_EVENT_S_PM_SYNC','DSL_EVENT_S_LINE_TRANSMISSION_STATUS','DSL_EVENT_S_SHOWTIME_LOGGING','Message for modem, not DCE','not DCE','Message for modem, not','RxMsg','Message for modem','DSL_DANUBE_CmvPrepare','>>>'
+_StateHistory=GREPSCOPE,'*.c; *.cpp; *.h','*.*','*.h','*.c*; *.h'
+_StateHistory=FGREPDIR,'E:\work_ext\drews_dsl_cpe_api_int\var\vob\comacsd\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control','M:\dsl_cpe_api_int','H:\\','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\scripts','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src'
+_StateHistory=DOCUMENTVISIT,'103         56          M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\geminaxd\lib_dsl_geminaxd_psd.c','67          1           M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\common\lib_dsl_common.c','155         11          M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\g997\lib_dsl_g997_common.c','8           72          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\ChangeLog','56          62          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\ChangeLog','29          4           M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_cmv_danube.h','399         72          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\pm\drv_dsl_cpe_api_pm_danube.c','1           1           M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\Makefile.am','12          1           O:\open_wrt_adm5120\build_mipsel\drv_dsl_cpe_api_vinax_build\src\include\drv_dsl_cpe_api_config.h','49          25          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_control.c'
+_StateDocumentVisit=10
+
+[ProjInit]
+ConfigSetExtMode=2
+ProjSetConfigFlags=0x04110940
+
+[Editor]
+_RestoreSysFlags=0x7b8f7fca, 0xfffffffc, 0
+VCSProject='dsl_cpe_api_int'
+VCSProjectPath=''
+VCSProjectLocalPath='M:\dsl_cpe_api_int'
+ScrapSetCount=2
+ClipboardSetCount=2
+ClipboardEnableSepStr=1
+ClipboardSetSepStr='\r\n',0
+ClipboardEnableTermStr=1
+ClipboardSetTermStr='\r\n',0
+
+[Tools]
+ToolDeleteList
+ToolAddCmd='$_custom_tool_$_1','Lint current file - last settings',1342177680,'%xlint.cmd %b%e'
+ToolAddCmd='$_custom_tool_$_2','Lint Project - last settings',1342177680,'%xlint.cmd'
+ToolAddCmd='$_custom_tool_$_3','Doxygen Project',1342178688,'%xdoxy.cmd %x'
+
+[Compiler]
+TagSetCmd='${HOME}${WTAGS} -oc -d -t${TAGFILE}.tag -p${TAGFILE}.ptg',0x0
+BrowseSetFile='C:\cw_db\dsl_cpe_control.ptg'
+TagSetFile='C:\cw_db\dsl_cpe_control.tag'
+CompilerAddCmdEx='$_cw_proj_hash_$','',1073741824,'',0,'${FTEE} nmake',176,'${FTEE} nmake',0,'${FTEE} nmake',176,'${FTEE} nmake',0,'',0,'',0,'_ErrorInfoDefault','','','proj.err','%x\src'
+CompilerAddResponse='$_cw_proj_hash_$',
+CompilerNewExt=.frm
+CompilerNewExt=.cls
+CompilerNewExt=.htm
+CompilerNewExt=.bas
+CompilerNewExt=.pas
+CompilerNewExt=.asp
+CompilerNewExt=.ctl
+CompilerNewExt=.zrx
+CompilerNewExt=.dsr
+CompilerNewExt=.ini
+CompilerNewExt=.cs
+CompilerNewExt=.vb
+CompilerNewExt=.pag
+CompilerNewExt=.html
+CompilerNewExt=.dob
+CompilerNewExt=.txt
+CompilerNewExt=.xml
+CompilerNewExt=.java
+CompilerNewExt=.jav
+CompilerNewExt=.cwb
+
+[VersionControl:SourceSafe]
+VCSSetCmd=VCS_CHECKIN_ID,'ss UPDATE -I- -C@%Q -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'ss UPDATE -I- -C@%Q -K -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'ss GET -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'ss CHECKOUT -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'ss CHECKOUT -I- -G- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'ss UNCHECKOUT -I- -G- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'ss LABEL -I- -L"${VCSLABEL}" -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'ss HISTORY -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'ss PROPERTIES -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'ss DIFF -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'ssexp',0x8000000
+VCSSetCmd=VCS_ADD_ID,'ss ADD -I- -Y${USER} "%r%e"',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'ss DELETE -I- -Y${USER} "%r%e"',0x8000040
+
+[Project]
+ConfigSetUserMakefile=''
+ConfigSetUserMakefileParser=''
+ConfigSetUserMakefileTimeStamp=0
+ConfigSetUserMakefileAutoSync=0
+ConfigSetLinkDBFilename='C:\Program Files\CodeWright\cwright.ldb'
+ConfigSetMarkDBFilename='C:\Program Files\CodeWright\cwright.mrk'
+ConfigSetSymbolDBFilename='C:\cw_db\dsl_cpe_control.sbl'
+EditSetPath=''
+
+[Files]
+.\configure.in
+.\ChangeLog
+.\AUTHORS
+.\NEWS
+.\README
+.\TODO
+.\Makefile.am
+.\build\build.sh
+.\build\build_danube_mips.sh
+.\scripts\blacklist.xml
+.\soap\dsl_cpe_soap_interface.h
+.\soap\generate.cmd
+.\src\dsl_cpe_control.c
+.\src\dsl_cpe_control.h
+.\src\dsl_cpe_legacy.c
+.\src\Makefile.am
+.\src\dsl_cpe_cli_danube.c
+.\src\dsl_cpe_cli_vinax.c
+.\src\dsl_cpe_init_cfg.h
+.\src\dsl_cpe_linux.c
+.\src\dsl_cpe_linux.h
+.\src\dsl_cpe_os.h
+.\src\dsl_cpe_simulator.c
+.\src\dsl_cpe_simulator.h
+.\src\dsl_cpe_win32.c
+.\src\dsl_cpe_win32.h
+.\build\build_vinax_mips.sh
+.\build\build_vinax_ppc.sh
+.\scripts\header2cli.cmd
+.\scripts\swig2cli.xsl
+.\src\dsl_cpe_cli.c
+.\src\dsl_cpe_cli.h
+.\src\dsl_cpe_cli_access.c
+.\src\dsl_cpe_cli_console.c
+.\src\dsl_cpe_cli_console.h
+.\src\dsl_cpe_soap.c
+.\build\clean_package.sh
+.\src\dsl_cpe_init_cfg.c
+.\src\dsl_cpe_debug.c
+.\src\dsl_cpe_debug.h
+.\src\dsl_cpe_cli_pipe.c
+.\build\cfg_typical.sh
+.\build\cfg_lite.sh
+.\build\cfg_full.sh
+.\build\cfg_footprint.sh
+.\build\build_mips_cfg.sh
+.\build\build_mips_all.sh
+.\src\dsl_cpe_debug_danube.h
+.\src\dsl_cpe_debug_vinax.h
+.\scripts\dsl_cpe_pipe.sh
+.\src\dsl_cpe_debug_danube.c
+.\src\dsl_cpe_debug_vinax.c
+
+[VersionControl:PVCS]
+VCSSetCmd=VCS_CHECKIN_ID,'put -n -T@%Q -M@%Q %b%e',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'put -n -T@%Q -M@%Q -l %b%e',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'get -y %b%e',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'get -y -l %b%e',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'vcs -y -l %b%e',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'vcs -y -u %b%e',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'vcs -y -v"${VCSLABEL}" %b%e',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'vlog %b%e',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'vlog -b %b%e',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'vdiff -r %b%e',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'pvcsvmwn',0x8000000
+VCSSetCmd=VCS_ADD_ID,'vcs -i -t@"%Q" "%b%e"',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'del /f "%b%{??v|___}e"',0x8000040

@@ -1,0 +1,35 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_URL_Filter type="object" Standard="0">
+		<MaxWhiteListEntryNumber type="unsignedInt" Writable="0">20</MaxWhiteListEntryNumber>
+		<WhiteListEntryNumber type="unsignedInt" Writable="0">0</WhiteListEntryNumber>
+		<MaxBlackListEntryNumber type="unsignedInt" Writable="0">20</MaxBlackListEntryNumber>
+		<BlackListEntryNumber type="unsignedInt" Writable="0">0</BlackListEntryNumber>
+		<Enable type="boolean">1</Enable>
+		<FilterMode type="string">Deny</FilterMode>
+		<WhiteList type="object" MaxNode="MaxWhiteListEntryNumber" CurNode="WhiteListEntryNumber">
+			<i type="object">
+				<URL type="string">www.34786735842black.com</URL>
+				<ScheduleMode type="string">Select</ScheduleMode>
+				<SchedulePath type="string">Always</SchedulePath>
+				<EnableAllDays type="boolean">1</EnableAllDays>
+				<Days type="string">Sun,Mon,Tue,Wed,Thu,Fri,Sat,</Days>
+				<EnableAllTimes type="boolean">1</EnableAllTimes>
+				<StartTime type="string">00:00</StartTime>
+				<EndTime type="string">23:59</EndTime>
+			</i>
+		</WhiteList>
+		<BlackList type="object" MaxNode="MaxBlackListEntryNumber" CurNode="BlackListEntryNumber">
+			<i type="object">
+				<URL type="string">www.34786735842black.com</URL>
+				<ScheduleMode type="string">Select</ScheduleMode>
+				<SchedulePath type="string">Always</SchedulePath>
+				<EnableAllDays type="boolean">1</EnableAllDays>
+				<Days type="string">Sun,Mon,Tue,Wed,Thu,Fri,Sat,</Days>
+				<EnableAllTimes type="boolean">1</EnableAllTimes>
+				<StartTime type="string">00:00</StartTime>
+				<EndTime type="string">23:59</EndTime>
+			</i>
+		</BlackList>
+	</X_TWSZ-COM_URL_Filter>
+</InternetGatewayDevice>

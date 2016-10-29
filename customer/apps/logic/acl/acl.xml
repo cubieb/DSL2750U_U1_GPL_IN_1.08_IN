@@ -1,0 +1,47 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_ACL type="object">
+		<RACLEnable type="boolean">0</RACLEnable>
+		<RACLNumberOfEntries type="unsignedInt" Writable="0">0</RACLNumberOfEntries>
+		<RACL type="object" Writable="0" CurNode="RACLNumberOfEntries">
+			<i type="object">
+				<DevPath type="string" Writable="0"></DevPath>
+				<Cache_DeviceName type="string" Writable="0"> </Cache_DeviceName>
+				<Cache_DeviceIP type="string" Writable="0"> </Cache_DeviceIP>
+				<ServiceNumberOfEntries type="unsignedInt" Writable="0">0</ServiceNumberOfEntries>
+				<Service type="object" Writable="0" CurNode="ServiceNumberOfEntries">
+					<i type="object">
+						<Name type="string" Writable="0"></Name>
+						<Enable type="boolean">1</Enable>
+						<Protocol type="string" Writable="0"></Protocol>
+						<SrcIP type="string">0.0.0.0</SrcIP>
+						<SrcMask type="string">0.0.0.0</SrcMask>
+						<InternalPort type="unsignedInt" Writable="0">0</InternalPort>
+						<ExternalPort type="unsignedInt">0</ExternalPort>
+					</i>
+				</Service>
+			</i>
+		</RACL>
+		<LACLEnable type="boolean">0</LACLEnable>
+		<LACLNumberOfEntries type="unsignedInt" Writable="0">0</LACLNumberOfEntries>
+		<LACL type="object" Writable="0" CurNode="LACLNumberOfEntries">
+			<i type="object">
+				<DevPath type="string" Writable="0"></DevPath>
+				<Cache_DeviceName type="string" Writable="0"> </Cache_DeviceName>
+				<Cache_DeviceIP type="string" Writable="0"> </Cache_DeviceIP>
+				<ServiceNumberOfEntries type="unsignedInt" Writable="0">0</ServiceNumberOfEntries>
+				<Service type="object" Writable="0" CurNode="ServiceNumberOfEntries">
+					<i type="object">
+						<Name type="string" Writable="0"></Name>
+						<Enable type="boolean">1</Enable>
+						<Protocol type="string" Writable="0"></Protocol>
+						<SrcIP type="string">0.0.0.0</SrcIP>
+						<SrcMask type="string">0.0.0.0</SrcMask>
+						<InternalPort type="unsignedInt" Writable="0">0</InternalPort>
+						<ExternalPort type="unsignedInt">0</ExternalPort>
+					</i>
+				</Service>
+			</i>
+		</LACL>
+	</X_TWSZ-COM_ACL>
+</InternetGatewayDevice>

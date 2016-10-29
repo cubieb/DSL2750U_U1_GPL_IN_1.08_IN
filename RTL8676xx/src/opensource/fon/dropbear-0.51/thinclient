@@ -1,0 +1,92 @@
+#!/bin/sh
+#
+#version 1.0.6 (modified for custom firmwares)
+#
+
+THINCLIENTPATH="/tmp" # path of this file
+ROOTHOME="/tmp" # root's home dir
+SSHPATH="/tmp/ssh" # path to ssh
+KEY="/tmp/fonkey" # private key for fetching the info from the FON server
+THINCLIENTOUT="/tmp/.thinclient.sh" # output file
+
+THINCLIENTOUTDEFAULT="33" # default size of the output file
+
+THCLVER="1.0"
+CHILLVER="1.0-1"
+FONREV="3" # /etc/fon_revision
+FIRMWARE="0.6.6" # taken from /etc/banner (without Beta)
+
+
+USER="openwrt"
+SERVER="download.fon.com"
+PORT="1937"
+FONSIG="$SERVER ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEA0zJFtj5NtrVsj8+qG0dtPE8WpHHDpTXp5+d3vvtSS7Hx7vYHyrfN/8PBVrrYOgl4dySY65sGtq34EU04VN4a7xQHSKJBunDUSQ/2Xz+eyo53LCVeFy1zNRCmB6jrFlJQvl5yviLvXmMtOGxG8Z1dfu4qavfGtBxwtwxKPKuiyhs="
+
+# gather information about this machine
+#WLMAC="$(/usr/sbin/nvram get wl0_hwaddr)" # original: WLMAC="$(nvram get il0macaddr)"
+#ETMAC="$(/usr/sbin/nvram get et0macaddr)"
+#MAC=`echo $WLMAC|tr A-Z a-z`
+WLMAC="00-18-84-0a-02-02"
+ETMAC="00-18-84-0a-02-01"
+MAC=`echo $WLMAC|tr A-Z a-z`
+
+
+check_env () {
+	[ -d "$ROOTHOME/.ssh" ] || mkdir $ROOTHOME/.ssh
+	[ -f "$ROOTHOME/.ssh/known_hosts" ] || touch $ROOTHOME/.ssh/known_hosts
+	[ `grep -c $SERVER $ROOTHOME/.ssh/known_hosts` = "0" ] && echo $FONSIG >> $ROOTHOME/.ssh/known_hosts
+}
+
+exec_cron_mode () {
+	check_env
+	sleep "$((0x$(head /dev/urandom |hexdump |awk '$2 > 0 {print $2}'|head -n1) % 60))"
+	echo "mode='cron' wlmac='$MAC' mac='$ETMAC' fonrev='$FONREV' firmware='$FIRMWARE'" | $SSHPATH -T ${PORT:+ -p $PORT}${KEY:+ -i $KEY} "${USER}@${SERVER}" > $THINCLIENTOUT
+	echo "sent: mode='cron' wlmac='$MAC' mac='$ETMAC' fonrev='$FONREV' firmware='$FIRMWARE'"
+	exec_check_thinclient
+}
+
+exec_start_mode () {
+	sleep 60 # make sure WAN is up and crond is running
+	check_env
+	[ -f "/tmp/crontab" ] || touch /tmp/crontab
+	[ `grep -c thinclient /tmp/crontab` = "0" ] && echo "24,54	*	*	*	*	root $THINCLIENTPATH/thinclient cron >/dev/null 2>&1 &" >> /tmp/crontab
+	echo "mode='start' wlmac='$MAC' mac='$ETMAC' fonrev='$FONREV' firmware='$FIRMWARE' chillver='$CHILLVER' thclver='$THCLVER'" | $SSHPATH -T ${PORT:+ -p $PORT}${KEY:+ -i $KEY} "${USER}@${SERVER}" > $THINCLIENTOUT
+	echo "sent: mode='start' wlmac='$MAC' mac='$ETMAC' fonrev='$FONREV' firmware='$FIRMWARE' chillver='$CHILLVER' thclver='$THCLVER'"
+	exec_check_thinclient
+}
+
+exec_check_thinclient () {
+	if [ -f $THINCLIENTOUT ]
+	then
+		THINSIZE="$(wc -c < $THINCLIENTOUT)"
+		if [ $THINSIZE = "0" ]
+		then
+			echo "Something is wrong, $THINCLIENTOUT is empty"
+		elif [ $THINSIZE != "33" ]
+		then
+			echo "Something is different in $THINCLIENTOUT:"
+			cat $THINCLIENTOUT
+		else
+			echo "$THINCLIENTOUT is the default one, deleted"
+			rm $THINCLIENTOUT
+		fi
+	else
+		echo "Something is wrong, $THINCLIENTOUT does not exist!"
+	fi
+}
+
+case "$1" in
+	cron)
+		exec_cron_mode
+		;;
+	start)
+		exec_start_mode
+		;;
+	check)
+		exec_check_thinclient
+		;;
+	*)
+		echo "Usage: `basename $0` {cron|start|check}"
+		exit
+esac
+

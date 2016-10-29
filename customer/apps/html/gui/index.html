@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>HomeStation</title>
+	<link type="text/css" rel="stylesheet" href="css/jScrollPane.css"/>
+	<link type="text/css" rel="stylesheet" href="css/iphone-checkboxes.css"/>	 
+	<link type="text/css" rel="stylesheet" href="css/jquery.selectbox.css"/>
+	<link type="text/css" rel="stylesheet" href="css/jquery.jqplot.css" />
+	<link type="text/css" rel="stylesheet" href="css/jquery.ui.core.css"/>
+	<link type="text/css" rel="stylesheet" href="css/styles.css"/>
+	<link type="text/css" rel="stylesheet" href="css/network_map.css"/>
+	<link type="text/css" rel="stylesheet" href="css/defaultBranding.css"/>
+</head>
+
+<body>	
+	<div id="panel_general" >		
+		<div id="panel_header"></div>
+		<div id="panel_content"></div>
+		<a href="./html/welcomeSplash/welcome_splash1.html"><div id="panel_footer"></div></a>
+	</div>					
+  		
+	<div id="help_dialog" class="dialog"></div>
+	<div id="dialog" class="dialog dialog_text"></div>	
+	<div id="dialogWarning" class="dialog dialog_text"></div>
+	
+	<script type="text/javascript" src="js/apis/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/apis/jquery-ui-1.8rc2.custom.min.js"></script>	
+	<script type="text/javascript" src="js/index.js"></script>		
+	<script type="text/javascript" src="js/apis/jquery.utils.homestation.min.js"></script>	
+	<script type="text/javascript" src="js/languages.js"></script>	
+	<script type="text/javascript" src="js/apis/jScrollPane-1.2.3.min.js"></script>
+	<script type="text/javascript" src="js/apis/iphone-checkboxes.js"></script>
+	<script type="text/javascript" src="js/apis/jquery.selectbox-homestation-0.6.1.js"></script>
+	<script type="text/javascript" src="js/apis/jquery.json-2.2.js"></script>
+	<script type="text/javascript" src="js/apis/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="js/apis/jqplot.pieRenderer.js"></script>
+	<!--[if IE]><script language="javascript" type="text/javascript" src="js/apis/excanvas.min.js"></script><![endif]-->
+	<script type="text/javascript" src="js/commons.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.fx.speeds._default = 500;		
+		jQuery.getJSON('config.json.txt', function(data, textStatus){
+			CONFIG = data.CONFIG;
+			configurationLoaded();
+		});	
+	});
+	</script>
+
+</body>
+</html>

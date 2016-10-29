@@ -1,0 +1,168 @@
+#!/bin/sh
+#Make the "build" directory
+#if [ ! -f .config ]; then
+#	echo "Please make menuconfig first"
+#	exit -1;
+#fi
+#ConfigLine=`grep "^CONFIG_HW_.*=y$" .config`
+#ARCH=`expr match "$ConfigLine" "CONFIG_HW_\(.*\)=y"`
+function SelectProduct
+{
+  index=1;
+  echo "*************************************************"
+  echo "* Please select a product:"
+  cd ../${CUSTOMER}/product
+  find *  -maxdepth 0 -type d > .productlist 
+  while read ProductName; do
+    cd $ProductName
+
+    profile_index=0;
+    
+    find * -maxdepth 0  -type d | grep -v "init.d" | grep -v "modules.d" > .profilelist
+    while read ProfileName; do
+     echo "* $index: $ProductName $ProfileName"
+     eval VAR$index='$ProductName'
+     eval VAR_Profile$index='$ProfileName'
+     index=`expr $index + 1`
+     profile_index=`expr $profile_index + 1`
+    done < .profilelist
+    rm -f .profilelist
+    
+#    if [ $profile_index -eq 0 ];then
+     echo "* $index: $ProductName"
+     eval VAR$index='$ProductName'
+     eval VAR_Profile$index=
+    index=`expr $index + 1` 
+#    fi
+
+    cd ..
+  done < .productlist
+  rm -f .productlist
+  echo "*************************************************"
+  read item;
+  eval "Product=\"\$VAR$item\""
+  eval "Profile=\"\$VAR_Profile$item\""
+  if [ "-${Profile}" == "-" ];then
+   eval "CurProfile=$Product"
+  else
+   eval "CurProfile=${Product}__${Profile}"
+  fi
+  cd ../../${RTL8676V}
+}
+
+OLDPWD=${PWD}
+if [ "-${ROOTDIR}" == "-" ]; then
+  echo "Please set environ variable ROOTDIR"
+  exit 1
+fi
+
+cd ${ROOTDIR}
+if [ "-$1" = "-" ]; then
+SelectProduct
+else
+CurProfile=$1
+Product=${CurProfile%%__*}
+Profile=${CurProfile##*__}
+if [ -$Profile = -$Product ]; then
+  Profile=
+fi
+fi
+
+export PRODUCT=$Product
+export PROFILE=$Profile
+export CURPROFILE=$CurProfile
+
+echo "Prepare $CurProfile ..."
+
+#if [ ! -f product/${Product}/arch.mk ]; then
+#  echo "The product/${Product}/arch.mk not exists";
+#  exit 1;
+#fi
+
+if [ -d build.${CurProfile} ]; then
+  echo "The Profile \"${CurProfile}\"'s directory had been existed,do you want clean it?(yes/no)"
+  if [ "-$1" = "-" ]; then
+    read choice
+  else
+    choice=yes
+  fi
+  if [ "$choice" = "yes" ]; then
+	  echo "Cleaing ${CurProfile} ..."
+	  rm -rf build.${CurProfile}
+  else
+	exit 0;
+  fi
+fi
+
+mkdir -p build.${CurProfile}
+rm -rf build
+ln -s ${ROOTDIR}/build.${CurProfile} build
+
+#将产品名称保存在.product文件中供BaseVar.mk文件引用
+echo "PRODUCT="$Product > build/.product
+
+#链接隐藏页面
+ln -sf ${ROOTDIR}/../${CUSTOMER}/product/${Product}/getverinfo.sh ./
+ln -sf ${ROOTDIR}/../${CUSTOMER}/product/${Product}/hidenPage.sh ./
+ln -sf ${ROOTDIR}/../${CUSTOMER}/product/${Product}/releasenotes.html ./
+ln -sf ${ROOTDIR}/../${CUSTOMER}/product/${Product}/hidden_page.html ./
+
+echo "Making Symbolic Links for PRODUCT...."
+mkdir -p build/product
+#先把PRODUCT下的文件链接过来，再链接PROFILE目录文件进行覆盖
+for i in `find ../${CUSTOMER}/product/${Product} -maxdepth 1 -type f`; do
+    ln -s ${ROOTDIR}/${i} build/product/`basename ${i}`
+done
+if [ "-${Profile}" != "-" ];then
+    for i in `ls ../${CUSTOMER}/product/${Product}/${Profile}`; do
+        ln -sf ${ROOTDIR}/../${CUSTOMER}/product/${Product}/${Profile}/${i} build/product/${i}
+    done
+fi
+
+#组合KERNEL_DIR
+ln -s ${BUILDDIR}/product/arch.mk ${BUILDDIR}/arch.mk
+source ${BUILDDIR}/arch.mk
+KERNEL_DIR=${BUILDDIR}/kernel/${TBS_KERNEL_VERSION}
+
+echo "DIGIT_SIG="${DIGIT_SIG} >> build/.product
+
+cp build/product/defconfig build/.config
+ls ${ROOTDIR}/src/ | grep -v kernel | while read I; do
+	if [ -d ${ROOTDIR}/src/$I ]; then
+		mkdir -p build/$I
+		echo Make Symbolic Links for $I
+		sh ${ROOTDIR}/tools/mksymlink ${ROOTDIR}/src/$I ${BUILDDIR}/$I
+	fi
+	if [ -f ${ROOTDIR}/src/$I ]; then
+		ln -sfv ${ROOTDIR}/src/$I build/$I
+	fi
+    done
+ls ${ROOTDIR}/../${CUSTOMER}/apps | while read I; do
+	if [ -d ${ROOTDIR}/../${CUSTOMER}/apps/$I ]; then
+		mkdir -p build/apps/$I
+		echo Make Symbolic Links for $I
+		sh ${ROOTDIR}/tools/mksymlink ${ROOTDIR}/../${CUSTOMER}/apps/$I ${BUILDDIR}/apps/$I
+	fi
+	if [ -f ${ROOTDIR}/../${CUSTOMER}/apps/$I ]; then
+		ln -sfv ${ROOTDIR}/../${CUSTOMER}/apps/$I build/apps/$I
+	fi
+    done
+mkdir -p $KERNEL_DIR
+mkdir -p ${BUILDDIR}/romfs/rootfs
+mkdir -p ${BUILDDIR}/tmpdist
+echo -n "Make Symbolic Links for kernel "
+echo $TBS_KERNEL_VERSION
+ls ${ROOTDIR}/src/kernel/ | while read I; do
+	if [ ! -d ${ROOTDIR}/src/kernel/$I ]; then
+		ln -sfv ${ROOTDIR}/src/kernel/$I ${BUILDDIR}/kernel/$I
+	fi
+	done
+sh ${ROOTDIR}/tools/mksymlink ${ROOTDIR}/src/kernel/${TBS_KERNEL_VERSION} $KERNEL_DIR
+if [ ! -d ${KERNEL_DIR}/drivers/product ]; then
+	echo "ERROR: No product directory exist in kernel source"
+	exit -1
+fi
+echo "Done"
+ln -sfv ${BUILDDIR}/product/product.c ${KERNEL_DIR}/drivers/product/product.c
+ln -sfv ${BUILDDIR}/product/app_btn_cfg.c ${BUILDDIR}/apps/ssap/button/app_btn_cfg.c
+

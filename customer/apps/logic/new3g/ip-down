@@ -1,0 +1,14 @@
+#!/bin/sh
+#Create by scb at 2011-7-13 for new 3g
+#This file come from apps/logic/new3g.
+#If any other function need this file, please add the following two lines to that file,
+#and delete this file.
+
+#set -x
+
+
+export PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+[ $1 == "ppp10" ] &&  3g-mngr ipdown
+
+exit 0

@@ -1,0 +1,291 @@
+<html>
+<head>
+ <title>831II</title>
+ <!--link rel="stylesheet" href='guidecolors.css' type='text/css'-->
+  <!--meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--meta http-equiv="refresh" content="5"-->
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- hide
+  <meta http-equiv="refresh" content="2">
+  -->
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/secboot.js"></script>
+<style type="text/css">
+body { background:#081273;}
+</style>
+<script language="javascript">
+<!-- hide
+removeListeners(TopSelfMenu);
+removeListeners(initSubMenu);
+var G_Conns = [];
+var m = 0;
+ var pvcpath ;
+ var username;
+ var password;
+ var xvci ;
+ var userLevel=1;
+<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice. "WANPPPConnectionNumberOfEntries"
+`	<?if gt $11 0
+	`	<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice.$20.WANPPPConnection. "Name Password Username"
+	       `      G_Conns[m] = new Array();
+			G_Conns[m][0] = m; 
+			G_Conns[m][1] ="<?echo $11?>"; //Name
+                     G_Conns[m][2] ="<?echo $12?>"; //Password
+                     G_Conns[m][3] = "<?echo $13?>"; //Username
+			G_Conns[m][4] = ":InternetGatewayDevice.WANDevice.1.WANConnectionDevice.<?echo $30?>.WANPPPConnection.<?echo $10?>.";//path
+			++m;
+		`?>
+	`?>
+`?>
+
+function findPathandAccouts()
+{    
+      
+      for (var i = 0; i <G_Conns.length; i++)
+	{
+	          if((G_Conns[i][1].indexOf("pppoe")!=-1)&&(G_Conns[i][1].indexOf("8")!=-1)&&(G_Conns[i][1].indexOf("35")!=-1))
+			{
+			  	   pvcpath=G_Conns[i][4];
+				   username=G_Conns[i][3];
+				   password=G_Conns[i][2];
+				   break;
+	          	}
+				   
+				   
+		  else
+		  	{
+			  	   pvcpath="None";
+				   username=" ";
+				   password=" ";
+	          	}
+	    
+	}
+	  
+			
+}
+
+var Cache_data = '<?echo $var:data?>';
+function uiOnload(){
+	var pppoe= [], new_data;
+//	alert(Cache_data);
+	if(Cache_data == '-')
+		$('INPUT_Telefonica').checked =true;
+	if(Cache_data != '-'){
+		Cache_data = Base64.Decode(Cache_data);
+		new_data = eval('({' +Cache_data + '})');
+		pppoe = new_data['pppoe'];
+	}
+	 findPathandAccouts();
+	setJSONValue({
+		'INPUT_Username'      : (pppoe && pppoe['INPUT_Username']) || username,
+		'INPUT_Psd'  : (pppoe && pppoe['INPUT_Psd']) || '1111111',
+		'INPUT_Telefonica'  : (pppoe && pppoe['INPUT_Telefonica']),
+		
+		'INPUT_Telecom'    : (pppoe && pppoe['INPUT_Telecom']),
+		'Servicios' : (pppoe && pppoe['Servicios']) || '0'
+		
+	});
+	if(Cache_data != '-'){
+		if((pppoe && pppoe['INPUT_Telefonica'])==1)
+			{
+			   $('INPUT_Telefonica').checked =true;
+			   $('INPUT_Telecom').checked =false;
+			}
+		if((pppoe && pppoe['INPUT_Telecom'])==1)
+			{
+			   $('INPUT_Telecom').checked =true;
+			   $('INPUT_Telefonica').checked =false;
+			}
+		}
+				
+	
+}
+
+function uiToNextPage()
+{
+       if($('Servicios').checked )
+       {
+       
+   	   $H({
+		'getpage' : 'html/wizard/guidethird.html',
+		'var:page' : '*',
+		'var:data' : Base64.Encode(ctrJsonData()),
+       //       'var:data' : ctrJsonData(),
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	    },true);
+	}
+	 else
+	 {	
+   	   $H({
+		'getpage' : 'html/wizard/guidefourth.html',
+		'var:page' : '*',
+		'var:data' : Base64.Encode(ctrJsonData()),
+	//	 'var:data' : ctrJsonData(),
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	    },true);
+	}
+	 	
+	$('uiPostForm').submit();
+       	
+}
+function uiToLoginPage(){
+	//alert(1)
+	$H({
+		'getpage' : 'html/main.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function ctrJsonData(){
+	var _json = 'pppoe:{';
+	var nodes_pppoe = $('INPUT_Username','INPUT_Psd','INPUT_Telefonica','INPUT_Telecom','Servicios');
+	if(nodes_pppoe[2].checked )
+	{   
+	       _json += 'INPUT_Telefonica:"' +(nodes_pppoe[2].checked ? 1 : 0)  + '",';
+		_json += 'INPUT_Telecom:"' +(nodes_pppoe[3].checked ? 1 : 0)  + '",';
+		_json += 'Servicios:"' + (nodes_pppoe[4].checked ? 1 : 0)  + '",';
+	       _json += 'path:"' + pvcpath + '",';
+		_json += 'INPUT_Username:"' + nodes_pppoe[0].value + '",';
+		_json += 'INPUT_Psd:"' + nodes_pppoe[1].value + '"}';
+	}
+	else if(nodes_pppoe[3].checked)
+		{
+		      _json += 'INPUT_Telefonica:"' + (nodes_pppoe[2].checked ? 1 : 0)  + '",';
+		      _json += 'INPUT_Telecom:"' + (nodes_pppoe[3].checked ? 1 : 0)  + '",';
+		      _json += 'Servicios:"' + (nodes_pppoe[4].checked ? 1 : 0)  + '",';
+		     _json += 'path:"' + pvcpath + '",';
+		     _json += 'INPUT_Username:"' + nodes_pppoe[0].value + '",';
+		     _json += 'INPUT_Psd:"' + nodes_pppoe[1].value +  '"}';
+		   
+		}		
+	Cache_data +=_json;
+	if(Cache_data == '-')
+		return '';
+	 else 
+		return  _json ;
+	
+	}	
+	
+function uiToPrevPage(){
+	
+	$H({
+	       'getpage' : 'html/wizard/guidefirst.html',
+		'var:page' : '*',
+		'var:data' : Base64.Encode(ctrJsonData()),
+	//	 'var:data' : ctrJsonData(),
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function TelefonicaEnable()
+{
+     $('INPUT_Telefonica').checked =true;
+     $('INPUT_Telecom').checked=false;
+}
+function TelecomEnable()
+{
+     $('INPUT_Telecom').checked =true;
+     $('INPUT_Telefonica').checked=false;
+}
+//done hiding -->
+</script>
+</head>
+<body onLoad="uiOnload()">
+	<table width="100%">
+<tr><td width="178" height="90"><!--img src="/html/wizard/logo.jpg" width="178" height="90"--></td></tr>
+  <tr>
+    <td><strong><font Bienvenido ></font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade></td>
+  </tr>
+</table>
+		<table width="75%"  align="center" border="0">
+			<tr>
+			<td><font color=white size=4><b>Ingrese los datos de su cuenta PPPoE</b></font></td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+		</table>
+		
+		<table width="75%"  align="center" border="0">
+			<tr>
+			<td width="260" align=right ><font color=white>Nombre de usuario:</font></td><td><input name="pppUserName" id="INPUT_Username" type="text" maxlength="64" size="32"></td>
+			</tr>
+			<tr></tr>
+			<tr>
+			<td width="260" align=right ><font Bienvenido color=white>Contraseña:</font></td><td><input name="pppPassword" id="INPUT_Psd" type="password" maxlength="32" size="32"></td>
+			</tr>
+		</table>
+		<table width="75%"  align="center" border="0">
+			<tr>
+			<td><font Bienvenido color=white>Seleccione su prestador de servicio telefónico</font></td>
+			</tr>
+		</table>
+		
+		<table width="75%"  align="center" border="0">
+			<tr>
+			<td width="260" align="right"><input type="radio" name="INPUT_Telefonica" id="INPUT_Telefonica" value="Telefonica" onClick="TelefonicaEnable()" ></td><td><font Bienvenido color=white>Telefónica</font></td>
+			</tr>
+			<tr>
+			<td width="260" align="right"><input type="radio" name="INPUT_Telecom" id="INPUT_Telecom" value="Telecom" onClick="TelecomEnable()"></td><td><font Bienvenido color=white>Telecom</font></td>
+			</tr>
+		</table>
+		
+		<table width="75%"  align="center" border="0">
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+			<td><center>
+			<input type="button" value="Siguiente" onClick="uiToNextPage()"> &nbsp;&nbsp;&nbsp;
+			<input type="button" value="Cancelar" onClick="uiToPrevPage()">&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="Configuración avanzada" onClick="uiToLoginPage()"> &nbsp;&nbsp;&nbsp;&nbsp;
+			</center>
+			</td>
+			</tr>
+		</table>
+		 <table width="75%" align="center">
+<tr><td width="178" height="40"></td></tr>
+  <tr>
+    <td><input name="Servicios" id="Servicios" type="checkbox" ><font Bienvenido color=white>Servicios adicionales</font></td>
+  </tr>
+</table>
+		<table width="100%">
+  <tr>
+    <td><strong><font Bienvenido></font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade size=1></td>
+  </tr>
+</table>
+	  
+<table width="75%" align="center">
+  <tr>
+    <td><font Bienvenido color=white>Copyright @ 2010 All Right Reserved</font></td>
+  </tr>
+</table>
+<table id='Content'></table>
+<table id='Menu'></table>
+<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

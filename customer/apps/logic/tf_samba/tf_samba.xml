@@ -1,0 +1,28 @@
+
+<InternetGatewayDevice type="object">
+    <X_TELEFONICA-ES_CIFS type="object" Standard="0">
+        <Enable type="boolean" Standard="0" Writable="1">0</Enable>
+        <Status type="int[0:3]" Writable="0" Standard="0">0</Status>
+        <WorkgroupName type="string" Standard="0" Writable="1">Workgroup</WorkgroupName>
+        <NetbiosName type="string" Standard="1" Wirtable="1">dsl_route</NetbiosName>
+        <Newpassword type="string" Standard="1" Wirtable="1">123456</Newpassword>
+        <USBEnable type="boolean" Standard="1" Writable="1">1</USBEnable>
+        <CIFSNumberOfEntries type="unsignedInt" Writable="0">0</CIFSNumberOfEntries>
+        <UserNumberOfEntries type="unsignedInt" Writable="0">0</UserNumberOfEntries>
+        <CIFS type="object" CurNode="CIFSNumberOfEntries">
+            <i type="object">
+    			<ReadOnly type="boolean" Writable="1">1</ReadOnly>
+    			<Description type="string(128)" Writable="1"></Description>
+    			<Name type="string(16)" Writable="1"></Name>
+    			<Directory type="string" Writable="1"></Directory>
+    		</i>
+    	</CIFS>
+        <User type="object" CurNode="UserNumberOfEntries">
+            <i type="object">
+    			<Password type="string" Writable="1"></Password>
+    			<Name type="string" Writable="1"></Name>
+    			<Enabled type="boolean" Writable="1">0</Enabled>
+    		</i>
+    	</User>
+    </X_TELEFONICA-ES_CIFS>
+</InternetGatewayDevice>

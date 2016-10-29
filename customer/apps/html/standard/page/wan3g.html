@@ -1,0 +1,109 @@
+		<style type="text/css"><!-- 
+			.div_left { width:245px;}
+			.sh { width:80px;}
+			.bo { font-weight:bold;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_internet_config">Internet Setup</p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						This screen allows you to configure a 3G Internet connection.
+					</p>
+				</div>
+				<!-- PPPoE -->
+				<div id="pppou">
+					<p class="do bk_black" id = "lang_USB_Adapter">3G USB Adapter</p>
+					<div class="div_black">
+												
+						<div class="div_left">ISP :</div>
+						<div class="div_right">
+							<select id="INPUT_PPPOU_Isp" style="width:100px">
+								<option value="TD-SCDMA">TD-SCDMA</option>
+								<option value="CDMA2000">CDMA2000</option>
+								<option value="WCDMA">WCDMA</option>
+							</select>
+						</div>
+						
+												
+						<div class="div_left" id = "lang_Account">Account :</div>
+						<div class="div_right"><input type="text" id="INPUT_PPPOU_Act" style="width:100px"/></div>
+						
+						<div class="div_left" id = "lang_Password">Password :</div>
+						<div class="div_right"><input type="password" id="INPUT_PPPOU_Psd" style="width:100px"/></div>
+						
+						<div class="div_left" id = "lang_Confirm_Password">Confirm Password :</div>
+						<div class="div_right"><input type="password" id="INPUT_PPPOU_ConfirmPsd" style="width:100px"/></div>
+						
+						<div class="div_left" id = "lang_Dial_Num">Dial_Number :</div>
+						<div class="div_right"><input type="text" id="INPUT_PPPOU_DialNumber" style="width:100px"/></div>
+						
+						<div class="div_left" id = "lang_Modem_Baudrate">Modem_Baudrate :</div>
+						<div class="div_right">
+							<select id="INPUT_PPPOU_ModemBaud" style="width:100px">
+								<option value="115200">115200</option>
+								<option value="230400">230400</option>
+								<option value="460800" selected="selected">460800</option>
+								<option value="921600">921600</option>
+							</select>
+						</div>
+						
+						<div class="div_left" id = "lang_Authentication_Method">Authentication Method :</div>
+						<div class="div_right">
+							<select id="SELECT_PPPOU_AuthMethod" style="width:100px">
+								<option value="Auto">AUTO</option>
+								<option value="PAP">PAP</option>
+								<option value="CHAP">CHAP</option>
+								<option value="MS-CHAP">MS-CHAP</option>
+							</select>
+						</div>
+						
+						<div class="div_left">APN :</div>
+					  	<div class="div_right"><input type="text" id="INPUT_PPPOU_Apn" style="width:100px"/></div>
+
+						<div class="div_left" id = "lang_dialup">Dial-up mode :</div><div class="div_right"><select id="SELECT_DialupMode" onChange="uiDialUp()" style="width:100px">
+																						<option value="Manual">Manual</option>
+																						<option value="AlwaysOn">AlwaysOn</option>
+																						<option value="OnDemand">OnDemand</option>
+																					 </select>
+						</div>
+
+						<div id="inatimeout">
+						<div class="div_left" id = "lang_timeout">Inactivity Timeout :</div><div class="div_right"><input type="text" id="INPUT_InaTimeout" maxlength="5" style="width:100px"/><span id = "lang_second"> (Seconds [0-65535])</span></div>
+						</div>
+						
+						<div class="div_left">MTU</div>
+						<div class="div_right"><input type="text" id="INPUT_PPPOU_MTU" value="1492" maxlength="4" style="width:100px"/> (64-1492)</div>
+
+						<div class="div_left" id = "lang_backup_enable">Enable Backup for Adsl :</div><div class="div_right"><input type="checkbox" id="INPUT_EnableBackup" onClick="uiBackupEnable()"/></div>
+						<div id="indelay_timeout">
+						<div class="div_left" id = "lang_delay_timeout">Backup delay time :</div><div class="div_right"><input type="text" id="INPUT_DelayTimeout" maxlength="3" style="width:100px"/><span id = "lang_second2"> (Seconds [0-600])</span></div>
+						</div>
+						
+					</div>
+				</div>				
+				<!-- Network -->
+				<p class="do bk_black" id = "lang_net_config">Network Address Translation Settings</p>
+				<div class="div_black">
+					<!-- PPPoA/PPPoE/IPoA/MER -->
+					<div id="non-bridge">
+					<div class="div_left" id = "lang_nat_enable">Enable NAT :</div><div class="div_right"><input type="checkbox" id="INPUT_EnableNat" /></div>
+					<div class="div_left" id = "lang_WAN_service">Enable WAN Service :</div><div class="div_right"><input type="checkbox" id="INPUT_EnableWanSv" /></div>
+					</div>					
+					<div class="div_left" id = "lang_service_name">Service Name :</div><div class="div_right"><input type="text" id="INPUT_ServiceName" style="width:100px" readonly/></div>
+				</div>
+				<div class="div_button"><input type="button" id = "Apply" value="Apply" onClick="uiSubmit()"/> <input type="button" id = "Cancel" value="Cancel" onClick="uiPageRefresh()"/></div>
+			</div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<p id = "lang_help1">
+					When configuring the router to access the Internet, select the correct <b>Connection Type</b> from the list.
+				</p>
+				<p id = "lang_help2">
+					Note that the  <b>user name</b> and <b>password</b>  are case-sensitive.  Most connection issues are caused by incorrect <b>user name</b> or <b>password</b> combinations.				
+				</p>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>

@@ -1,0 +1,23 @@
+############################
+############################
+##      MAGPIE AP-UP      ##
+############################
+############################
+#!/bin/sh
+athcfg wifi0 vapcreate set ath0 hostap 1
+athcfg ath0 param set bg-scan 0
+athcfg ath0 mode set 11NA
+athcfg wifi0 fftxq-min set 1000
+athcfg ath0 param set half-gi 1
+athcfg ath0 param set cwm-mode 1
+athcfg ath0 param set ext-chan -1
+athcfg ath0 param set extchan-protspace 0
+athcfg ath0 param set 11n-ampdu 1
+athcfg ath0 param set txchan-mask 3
+athcfg ath0 param set rxchan-mask 3
+athcfg ath0 freq set 40 0
+athcfg ath0 ssid set pb-magpie
+sleep 1
+brctl addif br0 ath0
+sleep 2
+ifconfig ath0 up

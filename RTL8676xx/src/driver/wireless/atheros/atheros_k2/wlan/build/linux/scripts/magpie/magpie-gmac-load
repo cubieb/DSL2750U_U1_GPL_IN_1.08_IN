@@ -1,0 +1,18 @@
+#!/bin/sh
+
+ATH_MOD_PATH=/lib/modules/2.6.15/net/11n/magpie_gmac
+
+brctl delif br0 eth0 && sleep 2
+
+
+insmod ${ATH_MOD_PATH}/adf.ko
+insmod ${ATH_MOD_PATH}/hif_gmac.ko && sleep 1
+insmod ${ATH_MOD_PATH}/hst_fwd.ko && sleep 10
+
+insmod ${ATH_MOD_PATH}/hst_htc.ko && sleep 1
+
+insmod ${ATH_MOD_PATH}/hst_hal.ko && sleep 1
+insmod ${ATH_MOD_PATH}/hst_wlan.ko && sleep 1
+insmod ${ATH_MOD_PATH}/hst_scansta.ko && sleep 1
+insmod ${ATH_MOD_PATH}/hst_rate.ko && sleep 1
+insmod ${ATH_MOD_PATH}/hst_ath.ko && sleep 1

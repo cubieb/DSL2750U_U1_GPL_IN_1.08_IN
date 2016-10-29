@@ -1,0 +1,28 @@
+
+<!-- config -->
+<td>
+	<div class="config1">	
+	<?if eq 1 $var:mod_FIREWALL
+	`
+	      <p class="do bk_black" id="lang_OptionsIP">Filtering Options -- IP Filtering</p>
+		<div do class="div_black">
+			<p id="lang_UsesIPaddress">Uses IP address to implement filtering. </p>
+			<div class="div_button"><input type="button" value="IP Filtering" onClick="toIPList()" id="toIPList"></div>
+		</div>
+    `?>
+	<?if eq 1 $var:mod_TF_FIREWALL
+	`
+	      <p class="do bk_black" id="lang_OptionsIP">Filtering Options -- IP Filtering</p>
+		<div do class="div_black">
+			<p id="lang_UsesIPaddress">Uses IP address to implement filtering. </p>
+			<div class="div_button"><input type="button" value="IP Filtering" onClick="toTFIPList()" id="toTFIPList"></div>
+		</div>
+	`?>	
+		<p class="do bk_black" id="lang_OptionsBridge">Filtering Options -- Bridge Filtering</p>
+		<div do class="div_black">
+			<p id="lang_UsesMACaddress">Uses MAC address to implement filtering. Usefull only in bridge mode.</p>
+			<div class="div_button"><input type="button" value="Bridge Filtering" onClick="toBridgeList()" id="toBridgeList"></div>
+		</div>
+	</div>
+</td>
+

@@ -1,0 +1,344 @@
+;Codewright Project File (do not remove or modify this line)
+[ProjInit]
+ConfigSetExtMode=2
+ProjSetConfigFlags=0x04110940
+
+[State]
+SysSetCwd='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src'
+SrchSetFlags=0x061ee8ca
+SrchSetAgainFlags=0x841ee8ca,0
+SrchSetAgainFlags=0x0206e04a,1
+SrchSetAttrElements=
+SrchSetAgainAttrElements=
+FileSortMode=0x13
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\ChangeLog',0,0,887,729,-1,-1,3,22,1,1,13,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\common\lib_dsl_api.c',154,154,997,549,-1,-1,2277,34,2265,1,3,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\include\lib_dsl_api.h',0,0,969,563,-1,-1,5564,28,5564,1,2,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\device\drv_dsl_cpe_device_vinax.c',198,198,997,549,-1,-1,8369,13,8359,1,22,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\device\drv_dsl_cpe_device_danube.c',621,0,621,1081,-1,-1,1743,38,1723,1,5,'',0x00100009,80,80,0,0,'',0,0
+_StateView='C:\Program Files\ZOC\script\dsl_cpe_api_test.zrx',220,220,985,549,-1,-1,116,4,91,1,32,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_debug.c',22,22,875,729,-1,-1,72,1,27,1,20,'',0x00100009,80,80,0,0,'',0,0
+_StateView='C:\temp\tmp\mei_bsp\danube_mei_bsp.c',157,91,1009,915,-1,-1,1657,2,1646,1,11,'',0x0010000d,80,80,0,0,'',0,0
+_StateView='C:\temp\tmp\mei_bsp\danube_mei_bsp.h',242,242,997,549,-1,-1,440,9,419,1,31,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug.c',242,242,951,533,-1,-1,61,1,29,1,21,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_debug.h',264,264,951,533,-1,-1,30,38,1,1,19,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug.h',0,0,951,533,-1,-1,23,30,1,1,30,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\geminaxd\lib_dsl_geminaxd.c',0,0,997,549,-1,-1,49,6,22,1,40,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\ChangeLog',22,22,887,729,-1,-1,10,5,1,1,12,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\build_danube_mips.sh',132,132,887,729,-1,-1,28,1,1,1,45,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_full.sh',154,154,887,729,-1,-1,8,25,1,1,44,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_lite.sh',176,176,887,729,-1,-1,9,1,1,1,43,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_typical.sh',198,198,887,729,-1,-1,9,1,1,1,42,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_footprint.sh',242,242,887,729,-1,-1,9,1,1,1,41,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_api.c',0,0,621,1081,-1,-1,3458,25,3442,1,4,'',0x0010000d,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_intern_g997.h',242,242,887,729,-1,-1,454,43,413,1,36,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_access.c',637,0,646,1081,-1,-1,402,25,394,1,25,'',0x00100009,80,80,0,0,'',0,0
+_StateView='C:\temp\tmp\mei_bsp\ifx_dsl_autoboot_daemon.c',639,0,640,1081,-1,-1,132,21,89,1,10,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_cmv_danube.h',132,132,956,580,-1,-1,77,39,70,1,7,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_control.h',639,108,643,915,-1,-1,222,20,201,1,17,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_soap.c',154,154,1039,543,-1,-1,249,1,227,1,24,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_control.c',1,0,640,1081,-1,-1,2139,13,2103,1,1,'',0x00100019,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_pipe.c',110,110,956,580,-1,-1,65,16,56,1,15,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli.c',220,220,1000,525,-1,-1,179,13,154,1,16,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_danube.c',66,66,956,577,-1,-1,382,1,352,1,23,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_win32.c',44,44,956,577,-1,-1,213,17,202,1,27,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_linux.c',132,132,1041,404,-1,-1,443,17,433,1,28,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_console.c',132,132,1039,513,-1,-1,283,18,254,1,26,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\g997\drv_dsl_cpe_api_g997_danube.c',88,88,975,539,-1,-1,2210,15,2182,1,9,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_g997.h',132,132,997,495,-1,-1,1041,3,1012,1,29,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api.h',343,58,638,729,-1,-1,1883,42,1839,1,18,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_os_linux.c',352,352,887,729,-1,-1,415,13,382,1,38,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_error.h',330,330,887,729,-1,-1,141,51,96,1,33,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\g997\drv_dsl_cpe_api_g997.c',286,286,887,729,-1,-1,1038,18,1012,1,34,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_autoboot.c',330,330,875,729,-1,-1,865,68,818,1,6,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_autoboot.h',352,352,875,729,-1,-1,31,32,8,1,35,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_intern.h',264,264,887,729,-1,-1,225,17,202,1,8,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_ioctl.h',308,308,887,729,-1,-1,2430,41,2395,1,37,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\configure.in',44,44,887,729,-1,-1,526,1,492,1,47,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\configure.in',110,110,887,729,-1,-1,517,48,485,1,46,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_amazon_se_kernel_config.h',66,66,887,729,-1,-1,84,63,49,1,14,'',0x00100009,80,80,0,0,'',0,0
+_StateView='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_danube_kernel_config.h',88,88,887,729,-1,-1,71,24,45,1,39,'',0x00100009,80,80,0,0,'',0,0
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\ChangeLog',0x840004ce,3,22,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\common\lib_dsl_api.c',0x840004ca,2277,34,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\include\lib_dsl_api.h',0x840004ca,5564,28,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\device\drv_dsl_cpe_device_vinax.c',0x840004ca,8369,13,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\device\drv_dsl_cpe_device_danube.c',0x840004ca,1743,38,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='C:\Program Files\ZOC\script\dsl_cpe_api_test.zrx',0x840004ca,116,4,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_debug.c',0x840004ca,72,1,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='C:\temp\tmp\mei_bsp\danube_mei_bsp.c',0x840004ca,1657,2,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='C:\temp\tmp\mei_bsp\danube_mei_bsp.h',0x840004ca,440,9,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug.c',0x840004ca,61,1,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_debug.h',0x840004ca,30,38,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_debug.h',0x840004ca,23,30,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\geminaxd\lib_dsl_geminaxd.c',0x840004ca,49,6,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\ChangeLog',0x840004ce,10,5,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\build_danube_mips.sh',0x840004ce,28,1,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_full.sh',0x840004ce,8,25,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_lite.sh',0x840004ce,9,1,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_typical.sh',0x840004ce,9,1,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build\cfg_footprint.sh',0x840004ce,9,1,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_api.c',0x840004ca,3458,25,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_intern_g997.h',0x840004ca,454,43,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_access.c',0x840004ca,402,25,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='C:\temp\tmp\mei_bsp\ifx_dsl_autoboot_daemon.c',0x840004ca,132,21,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_cmv_danube.h',0x840004ca,77,39,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_control.h',0x840004ca,222,20,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_soap.c',0x840004ca,249,1,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_control.c',0x8c0004ca,2139,13,25,'4 7','',0x0,'',1,72,1,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_pipe.c',0x840004ca,65,16,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli.c',0x840004ca,179,13,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_danube.c',0x840004ca,382,1,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_win32.c',0x840004ca,213,17,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_linux.c',0x840004ca,443,17,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_console.c',0x840004ca,283,18,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\g997\drv_dsl_cpe_api_g997_danube.c',0x840004ca,2210,15,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_g997.h',0x840004ca,1041,3,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api.h',0x840004ca,1883,42,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_os_linux.c',0x8c0004ca,415,13,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_error.h',0x8c0004ca,141,51,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\g997\drv_dsl_cpe_api_g997.c',0x840004ca,1038,18,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_autoboot.c',0x840004ca,865,68,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_autoboot.h',0x840004ca,31,32,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_intern.h',0x840004ca,225,17,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_ioctl.h',0x840004ca,2430,41,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\configure.in',0x840004ce,526,1,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\configure.in',0x840004ce,517,48,25,'5 9','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_amazon_se_kernel_config.h',0x840004ca,84,63,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateBuffer='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_api_danube_kernel_config.h',0x840004ca,71,24,25,'4 7','',0x0,'',1,72,0,0,'',''
+_StateHistory=FILELIST,'M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_soap.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_win32.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_danube.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_cli_pipe.c','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_cmv_danube.h','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\common\ifx_adsl_autoboot.c','M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\include\lib_dsl_api.h','C:\view\drews_dsl_cpe_api_int_win\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\lint.cmd'
+_StateHistory=SEARCH,'DSL_CMV_ADDRESS_INFO_DELT_SNR_PS_DS','minsnr','nSnrm','nSnrmDs','DSL_DANUBE_SnrmDsUpdate','DSL_DEV_ShowtimeStatusUpdate','DSL_ShowtimeStatusUpdate','bInit','DSL_LinePathCounterTotalData_t','bOptimize'
+_StateHistory=REPLACE,'DSL_DEV_Version_t','DIR_SCRIPT','DIR_BIN','BASE_SCRIPT','LOG_FILE_TMP','LOG_FILE','g_bFirmware1','g_bFirmware2','pcArg','printf'
+_StateHistory=XSYMBOL,'VOS_Write_Device','HWDEBUG','VOS_Open_Mtc_Pipe','FALSE','MSG_TYPE','UINT16','tBoardCtrl_Init','TRACE','SOC4E_EB_FPGA_REG_OFFSET_MASK','Soc4e_Eb_Reset_SDFE4'
+_StateHistory=EDITFILE,'drv_dsl_cpe_api_legacy.pjt','dsl_cpe_cli_danube.c','dsl_cpe_cli_vinax.c','drv_dsl_cpe_api_legacy.pjt','dsl_cpe_control.pjt','dsl_cpe_batch.c','dsl_cpe_init_cfg.c','drv_dsl_cpe_intern_mib.h','drv_dsl_cpe_adslmib.c','dsl_cpe_cli_pipe.c'
+_StateHistory=DIRECTORY,'M:\drews_danube_rel\comacsd_amazon_lxdb1.1\platforms\Danube\source','M:\drews_danube_rel\comacsd_amazon_lxdb1.1\source\user','E:\WORK_EXT\DREWS_DSL_CPE_API_DEV_GENERIC\VOB\COMACSD_DRIVER\DRV_DSL_CPE_API\DRIVER\_LEGACY\BUILD','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api\driver','E:\work_ext\drews_dsl_api_dev_generic\vob\comacsd_lib\lib_dsl_api\src','E:\WORK_EXT\DREWS_DSL_CPE_API_DEV_GENERIC\VOB\COMACSD_DRIVER\DRV_DSL_CPE_API\APPLICATION\DSL_CPE_CONTROL','E:\work_ext\drews_dsl_cpe_api_dev_generic\vob\comacsd_driver\drv_dsl_cpe_api','C:\Tornado\target\h','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src'
+_StateHistory=GOTOMARK,'2','1','2','1','2','1','2','1','2','1'
+_StateHistory=FILTER,'DSL'
+_StateHistory=FFIND,'*.contri*;*.bak'
+_StateHistory=FGREP,'Autoboot Load Firmware failed!','DSL_CLI_Init','DSL_CPE_Pipe_Init','DSL_CMV_ADDRESS_INFO_DELT_SNR_PS_DS','minsnr','nSnrmDs','DSL_DANUBE_SnrmDsUpdate','DSL_DEV_ShowtimeStatusUpdate','DSL_ShowtimeStatusUpdate','DSL_LinePathCounterTotalData_t'
+_StateHistory=GREPSCOPE,'*.c; *.h','*.c*;*.h;*.s','*.c;*.cpp; *.h','*.c;*.h','*.*','*.h','*.c; *.cpp; *.h','*.c*; *.h'
+_StateHistory=DOSHISTORY,'doxygen doxyconfig','M:\langerth_iu72_dev_vdsl2\comacsd_lib\lib_dsl_api>','lint src/daemon/dsl_cli.c','lint .','cd ..','lint .','lint .M:\langerth_iu72_dev_vdsl2\comacsd_lib\lib_dsl_api>','lint M:\langerth_iu72_dev_vdsl2\comacsd_lib\lib_dsl_api','E:\work_ext\drews_dsl_api_dev_generic\vob\comacsd_lib\lib_dsl_api>','help'
+_StateHistory=SDISPLAY,'^','^DSL'
+_StateHistory=DIFFFILE,'O:\project\system2908\SocBis\Soc16-Connectix\common\wineasy\tsk_MPC_HDLCCtrl.c','O:\project\system2908\SocBis\Soc16-Connectix\common\wineasy\prj_msg.h','O:\project\system2908\SocBis\Soc16-Connectix\common\wineasy\prj_string.h','O:\project\system2908\SocBis\Soc16-Connectix\common\wineasy\tsk_DeviceCtrl.h','O:\project\system2908\SocBis\Soc16-Connectix\common\wineasy\tsk_MPC_HDLCCtrl.h','O:\project\system2908\SocBis\Soc16-Connectix\common\eoc\lib_eocProtHandler.c','O:\project\system2908\SocBis\Soc16-Connectix\common\boards\SDFE4EB\board_sdfe4_eval.c','O:\project\system2908\SocBis\Soc16-Connectix\common\boards\SDFE4EB\tsk_BoardCtrl.c','O:\project\system2908\SocBis\Soc16-Connectix\common\boards\SDFE4EB\tsk_BoardCtrl.h','O:\project\system\SocBis\common\doxygen\doxygen.config'
+_StateHistory=DIFFTARGET,'O:\project\system\SocBis\Soc16-Connectix\common\wineasy\prj_msg.h','O:\project\system\SocBis\Soc16-Connectix\common\wineasy\prj_string.h','O:\project\system\SocBis\Soc16-Connectix\common\wineasy\tsk_DeviceCtrl.h','O:\project\system\SocBis\Soc16-Connectix\common\wineasy\tsk_MPC_HDLCCtrl.h','O:\project\system\SocBis\Soc16-Connectix\common\eoc\lib_eocProtHandler.c','O:\project\system\SocBis\Soc16-Connectix\common\boards\SDFE4EB\board_sdfe4_eval.c','O:\project\system\SocBis\Soc16-Connectix\common\boards\SDFE4EB\tsk_BoardCtrl.c','O:\project\system\SocBis\Soc16-Connectix\common\boards\SDFE4EB\tsk_BoardCtrl.h','O:\project\system\SocBis\common\doxygen\doxygen.linux.config','O:\project\system\SocBis\common\doxygen\doxygen_sdfe4.config'
+_StateHistory=FFINDDIR,'M:\langerth_iu72_dev_vdsl2\comacsd_lib\lib_dsl_api'
+_StateHistory=FGREPDIR,'E:\work_ext\drews_dsl_cpe_api_int\var\vob\comacsd\comacsd_driver\drv_dsl_cpe_api\\','E:\work_ext\drews_dsl_cpe_api_int\var\vob\comacsd\comacsd_driver\drv_dsl_cpe_api\driver\src\pm','E:\work_ext\drews_dsl_cpe_api_int\var\vob\comacsd\comacsd_driver\drv_dsl_cpe_api','E:\work_ext\drews_dsl_cpe_api_int\var\vob\comacsd\comacsd_driver\drv_dsl_cpe_api\driver\build','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\build','M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src'
+_StateHistory=DOCUMENTVISIT,'77          39          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\include\drv_dsl_cpe_cmv_danube.h','1799        44          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\device\drv_dsl_cpe_device_danube.c','327         36          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\_legacy\src\common\ifx_adsl_autoboot.c','3257        37          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_api.c','1743        38          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\device\drv_dsl_cpe_device_danube.c','3458        25          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\driver\src\common\drv_dsl_cpe_api.c','2277        34          M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\common\lib_dsl_api.c','5564        28          M:\drews_dsl_api_int\comacsd_lib\lib_dsl_api\src\include\lib_dsl_api.h','2139        13          M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\src\dsl_cpe_control.c','19          1           C:\view\drews_dsl_cpe_api_int_win\comacsd_driver\drv_dsl_cpe_api\application\dsl_cpe_control\lint.cmd'
+_StateHistory=XOBJECTS,'__TIME__','BOARD_CTRL','DevNames'
+_StateDocumentVisit=10
+
+[Editor]
+_RestoreSysFlags=0x7b8f7fca, 0xfffffffc, 0
+VCSProject='drv_dsl_cpe_api'
+VCSProjectPath=''
+VCSProjectLocalPath='M:\drews_dsl_cpe_api_int\comacsd_driver\drv_dsl_cpe_api'
+FilterProjDeleteList
+FilterProjAdd='Source Files','*.c;*.cs;*.cpp;*.cxx;*.hxx;*.prg;*.pas;*.asm;*.bas;*.sc;*.jav*',-1
+FilterProjAdd='Header Files','*.h;*.hpp;*.inc',-1
+FilterProjAdd='Web Files','*.htm;*.html;*.shtm;*.asp;*.css',-1
+FilterProjAdd='XML Files','*.xml;*.xsl;*.dtd;*.xhtml;*.xdr;*.dcd',-1
+FilterProjAdd='Resources','*.rc;*.bmp;*.ico;*.cur;*.dlg',-1
+FilterProjAdd='Installer','*.nsi',-1
+FilterProjAdd='Other Files','*.*',-1
+ScrapSetCount=2
+ClipboardSetCount=2
+ClipboardEnableSepStr=1
+ClipboardSetSepStr='\r\n',0
+ClipboardEnableTermStr=1
+ClipboardSetTermStr='\r\n',0
+
+[Tools]
+ToolDeleteList
+ToolAddCmd='$_custom_tool_$_1','Lint current file - last settings',1342177680,'%xlint.cmd %b%e'
+ToolAddCmd='$_custom_tool_$_2','Lint Project - last settings',1342177680,'%xlint.cmd'
+ToolAddCmd='$_custom_tool_$_3','Lint Project - Geminax',1342177680,'%xlint_geminax.cmd'
+ToolAddCmd='$_custom_tool_$_4','Lint Project - Soc4e',1342177680,'%xlint_soc4e.cmd'
+ToolAddCmd='$_custom_tool_$_5','Lint Project - Vinax',1342177680,'%xlint_vinax.cmd'
+ToolAddCmd='$_custom_tool_$_6','Doxygen Project',1342178688,'%xdoxy.cmd %x'
+
+[Compiler]
+TagSetCmd='"${HOME}${WTAGS}" -oc -d -t"${TAGFILE}.tag" -p"${TAGFILE}.ptg"',0x8000060
+BrowseSetFile='C:\cw_db\drv_dsl_cpe_api.ptg'
+TagSetFile='C:\cw_db\drv_dsl_cpe_api.tag'
+CompilerAddCmdEx='Default Compiler Settings','',1073741904,'',1073741904,'',144,'',144,'',144,'',144,'',0,'',0,'','','','',''
+CompilerAddResponse='Default Compiler Settings',
+CompilerAddCmdEx='$_cw_proj_hash_$','',1073741824,'',0,'${FTEE} build.bat',432,'${FTEE} nmake',176,'${FTEE} rebuild.bat',432,'${FTEE} nmake',176,'${FTEE} lint-nt +v -u std.lnt %b%e',432,'${FTEE} lint-nt +v std.lnt files.lnt',432,'_ErrorInfoDefault','','','proj.err','%x\src'
+CompilerAddResponse='$_cw_proj_hash_$',
+CompilerNewExt=.v
+CompilerNewExt=.frm
+CompilerNewExt=.cls
+CompilerNewExt=.htm
+CompilerNewExt=.awk
+CompilerNewExt=.bas
+CompilerNewExt=.jsp
+CompilerNewExt=.cfml
+CompilerNewExt=.adb
+CompilerNewExt=.vhd
+CompilerNewExt=.pl
+CompilerNewExt=.pas
+CompilerNewExt=.tk
+CompilerNewExt=.cdf
+CompilerNewExt=.rul
+CompilerNewExt=.am
+CompilerNewExt=.asp
+CompilerNewExt=.ctl
+CompilerNewExt=.js
+CompilerNewExt=.cob
+CompilerNewExt=.py
+CompilerNewExt=.zrx
+CompilerNewExt=.tcl
+CompilerNewExt=.rc
+CompilerNewExt=.php
+CompilerNewExt=.wsdl
+CompilerNewExt=.dsr
+CompilerNewExt=.ini
+CompilerNewExt=.bat
+CompilerNewExt=.cs
+CompilerNewExt=.vb
+CompilerNewExt=.pag
+CompilerNewExt=.html
+CompilerAssign='Default Compiler Settings','.*'
+CompilerNewExt=.dob
+CompilerNewExt=.txt
+CompilerNewExt=.nrx
+CompilerNewExt=.sqlj
+CompilerNewExt=.xml
+CompilerNewExt=.java
+CompilerNewExt=.jav
+CompilerNewExt=.cwb
+
+[VersionControl:PVCS]
+VCSSetCmd=VCS_CHECKIN_ID,'put -n -T@"%Q" -M@"%Q" "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'put -n -T@"%Q" -M@"%Q" -l "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'get -y "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'get -y -l "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'vcs -y -l "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'vcs -y -u "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'vcs -y -v"${VCSLABEL}" "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'vlog "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'vlog -b "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'vdiff -r "%b%e"',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'pvcsvmwn',0x8000000
+VCSSetCmd=VCS_ADD_ID,'vcs -i -t@"%Q" "%b%e"',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'del /f "%b%{??v|___}e"',0x8000040
+
+[Project]
+ConfigSetUserMakefile=''
+ConfigSetUserMakefileParser=''
+ConfigSetUserMakefileTimeStamp=0
+ConfigSetUserMakefileAutoSync=0
+ConfigSetLinkDBFilename='C:\Program Files\CodeWright\cwright.ldb'
+ConfigSetMarkDBFilename='C:\Program Files\CodeWright\cwright.mrk'
+ConfigSetSymbolDBFilename='C:\cw_db\drv_dsl_cpe_api.sbl'
+EditSetPath=''
+
+[Files]
+.\src\include\drv_dsl_cpe_debug.h
+.\src\include\drv_dsl_cpe_intern.h
+.\src\include\drv_dsl_cpe_api.h
+.\src\include\drv_dsl_cpe_api_error.h
+.\src\include\drv_dsl_cpe_api_g997.h
+.\src\include\drv_dsl_cpe_api_ioctl.h
+.\doc\doxyconfig.danube
+.\src\include\drv_dsl_cpe_api_types.h
+.\src\include\drv_dsl_cpe_intern_g997.h
+.\src\include\drv_dsl_cpe_api_pm.h
+.\src\include\drv_dsl_cpe_intern_pm.h
+.\src\ceoc\drv_dsl_cpe_ceoc.c
+.\src\common\drv_dsl_cpe_api.c
+.\src\common\drv_dsl_cpe_debug.c
+.\src\common\drv_dsl_cpe_os_linux.c
+.\src\device\drv_dsl_cpe_device_danube.c
+.\src\include\drv_dsl_cpe_device.h
+.\src\include\drv_dsl_cpe_intern_mib.h
+.\src\include\drv_dsl_cpe_os.h
+.\src\include\drv_dsl_cpe_os_linux.h
+.\src\led\drv_dsl_cpe_led.c
+.\AUTHORS
+.\ChangeLog
+.\configure.in
+.\NEWS
+.\README
+.\TODO
+.\src\Makefile.am
+.\build\build.sh
+.\build\build_danube_mips.sh
+.\build\build_danube_ppc.sh
+.\build\strip_danube_mips.sh
+.\build\strip_danube_ppc.sh
+.\Makefile.am
+.\src\include\drv_dsl_cpe_api_danube_kernel_config.h
+.\src\common\drv_dsl_cpe_autoboot.c
+.\src\g997\drv_dsl_cpe_api_g997.c
+.\src\sar\drv_dsl_cpe_sar.c
+.\src\pm\drv_dsl_cpe_api_pm.c
+.\src\include\drv_dsl_cpe_api_sar.h
+.\src\include\drv_dsl_cpe_intern_sar.h
+.\doc\doxyconfig.vinax
+.\src\include\drv_dsl_cpe_autoboot.h
+.\src\include\drv_dsl_cpe_cmv_danube.h
+.\src\include\drv_dsl_cpe_danube.h
+.\src\include\drv_dsl_cpe_device_danube.h
+.\src\include\drv_dsl_cpe_device_vinax.h
+.\src\include\drv_dsl_cpe_intern_ceoc.h
+.\src\include\drv_dsl_cpe_intern_led.h
+.\src\include\drv_dsl_cpe_vinax_msg.h
+.\src\include\drv_dsl_cpe_vinax_msg_const.h
+.\src\include\drv_dsl_cpe_vinax_msg_tc_counters.h
+.\src\device\drv_dsl_cpe_device_vinax.c
+.\build\build_vinax_ppc.sh
+.\installer\setup.nsi
+.\installer\setup_danube.nsi
+.\installer\setup_vinax.nsi
+.\src\include\drv_dsl_cpe_danube_ctx.h
+.\src\include\drv_dsl_cpe_vinax_ctx.h
+.\src\g997\drv_dsl_cpe_api_g997_danube.c
+.\src\g997\drv_dsl_cpe_api_g997_vinax.c
+.\src\pm\drv_dsl_cpe_api_pm_danube.c
+.\src\pm\drv_dsl_cpe_api_pm_vinax.c
+.\build\build_lxdb.sh
+.\src\include\drv_dsl_cpe_timeout.h
+.\src\common\drv_dsl_cpe_timeout.c
+.\src\include\drv_dsl_cpe_vinax_msg_dmt_scope.h
+.\src\common\drv_dsl_cpe_fifo.c
+.\src\include\drv_dsl_cpe_fifo.h
+.\src\include\drv_dsl_cpe_api_adslmib_ioctl.h
+.\src\include\drv_dsl_cpe_api_adslmib.h
+.\src\include\drv_dsl_cpe_device_g997.h
+.\src\include\drv_dsl_cpe_vinax_mdio.h
+.\src\include\drv_dsl_cpe_vinax_msg_utopia_posphy.h
+.\src\include\drv_dsl_cpe_vinax_msg_xtc.h
+.\src\include\drv_dsl_cpe_device_pm.h
+.\src\include\drv_dsl_cpe_pm_core.h
+.\src\mib\drv_dsl_cpe_adslmib.c
+.\src\ceoc\drv_dsl_cpe_danube_ceoc.c
+.\src\ceoc\drv_dsl_cpe_intern_ceoc.c
+.\src\ceoc\drv_dsl_cpe_vinax_ceoc.c
+.\src\include\drv_dsl_cpe_api_ceoc.h
+.\src\include\drv_dsl_cpe_api_ceoc_intern.h
+.\src\include\drv_dsl_cpe_device_ceoc.h
+.\src\include\drv_dsl_cpe_api_config.h.in
+.\src\pm\drv_dsl_cpe_pm_core.c
+.\src\include\drv_dsl_cpe_api_amazon_se_kernel_config.h
+.\build\build_vinax_mips.sh
+.\build\cfg_typical.sh
+.\build\cfg_lite.sh
+.\build\cfg_full.sh
+.\build\cfg_footprint.sh
+.\build\clean_package.sh
+.\build\build_mips_all.sh
+.\build\build_mips_cfg.sh
+
+[VersionControl:SourceSafe]
+VCSSetCmd=VCS_CHECKIN_ID,'ss UPDATE -I- -C@%Q -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKINLOCK_ID,'ss UPDATE -I- -C@%Q -K -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKOUT_ID,'ss GET -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKOUTLOCK_ID,'ss CHECKOUT -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLOCK_ID,'ss CHECKOUT -I- -G- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKUNLOCK_ID,'ss UNCHECKOUT -I- -G- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLABEL_ID,'ss LABEL -I- -L"${VCSLABEL}" -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKLOG_ID,'ss HISTORY -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKPROP_ID,'ss PROPERTIES -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKDIFF_ID,'ss DIFF -I- -Y${USER} %r%e',0x8000040
+VCSSetCmd=VCS_CHECKMENU_ID,'ssexp',0x8000000
+VCSSetCmd=VCS_ADD_ID,'ss ADD -I- -Y${USER} "%r%e"',0x8000040
+VCSSetCmd=VCS_REMOVE_ID,'ss DELETE -I- -Y${USER} "%r%e"',0x8000040

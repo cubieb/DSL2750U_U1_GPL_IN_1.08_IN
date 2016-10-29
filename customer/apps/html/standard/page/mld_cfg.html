@@ -1,0 +1,56 @@
+<style type="text/css">
+<!--
+	.div_left{ width: 233px;}
+	.doo { padding-top:0px;}
+ -->
+ </style>
+
+<td>
+<div class="config2">
+	<p class="bk_orange">MLD Settings </p>
+	<div class="div_orange">
+	<p>In this page, you can configure the MLD Setup settings of your Router. Please note that settings in this page are optional and you need not change any of the settings in this page to get your network up and running.</p>	
+</div>
+
+<p class="do bk_black">MLD Proxy</p>
+<div class="div_black">
+        <div class="div_left doo">
+            <input type="checkbox" name="Enable" id="INPUT_MLDProxyEnable"/> &nbsp;&nbsp;Enable Mld Proxy 
+        </div>
+        <div class="div_right"></div>
+			
+	<div class="div_left" id = "lang_wanInterface">WAN Connection :</div>
+	<div class="div_right">
+    		<select id="SELECT_WanInterface" name="SELECT_WanInterface">
+        		<option>-
+        		</option>
+    		</select>
+	</div>      
+</div>	
+
+<p class="do bk_black">MLD Snooping</p>
+<div class="div_black">
+        <div class="div_left doo" style="width:256px;">
+            <input type="checkbox" name="Enable" id="INPUT_MLDSnoopingEnable"/> &nbsp;&nbsp;Enable Mld Snooping 
+        </div>
+        <div class="div_right"></div>    
+</div>	
+
+<div class="div_button">
+	<input type="button" id="btn" onClick="uiSubmit();"  value="Apply"/>
+	<input type="button" id="refresh" onClick="uiPageRefresh();" value="Cancel"/>
+</div> 
+</td>
+
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+		<p id = "lang_help">
+			IGMP for IPv6.
+		</p></div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>
+	

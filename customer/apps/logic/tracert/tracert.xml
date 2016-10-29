@@ -1,0 +1,24 @@
+<InternetGatewayDevice type="object">
+	<TracerouteDiagnostics type="object">
+		<DiagnosticsState type="string">None</DiagnosticsState>
+		<NumberOfTries type="unsignedInt[1:3]">3</NumberOfTries>
+		<Timeout type="unsignedInt[1:]">5000</Timeout>
+		<DataBlockSize type="unsignedInt[1:65535]">38</DataBlockSize>
+		<DSCP type="unsignedInt[0:63]">0</DSCP>
+		<MaxHopCount type="unsignedInt[1:64]">30</MaxHopCount>
+		<ResponseTime type="unsignedInt" Writable="0">0</ResponseTime>
+		<RouteHopsNumberOfEntries type="unsignedInt" Writable="0"></RouteHopsNumberOfEntries>
+		<RouteHops type="object" CurNode="RouteHopsNumberOfEntries">
+					<i type="object">
+						<HopHost type="string(256)" Writable="0"></HopHost>
+						<HopHostAddress type="string" Writable="0"></HopHostAddress>
+						<HopErrorCode type="unsignedInt"></HopErrorCode>
+						<HopRTTimes type="string(16)"></HopRTTimes>
+					</i>
+		</RouteHops>
+		<Interface type="string(256)">InternetGatewayDevice.WANDevice.1.WANConnectionDevice.5.WANPPPConnection.1</Interface>
+		<Host type="string(256)"></Host>
+		<X_TWSZ-COM_TracertResult type="string(65535)" Writable="0"></X_TWSZ-COM_TracertResult>
+	</TracerouteDiagnostics>
+</InternetGatewayDevice>
+

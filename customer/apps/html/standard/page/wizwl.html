@@ -1,0 +1,89 @@
+		<style type="text/css"><!-- 
+			.div_left { width:320px;}
+		 --></style>
+		<td width="840">
+			<div class="config1" style="margin:0px auto;">
+				<p class="bk_orange"><font color="white"></font><span id = "lang_config">Step 3: Configure Wireless Network</span><font color="white"> &#8594; 4 &#8594; 5</font></p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						The wireless network is enabled by default. You can deselect it to disable it and click "Next" to skip the configuration of wireless network.
+					</p>
+					<div class="div_left" id = "lang_enable_wireless">Enable Your Wireless Network :</div><div class="div_right"><input type="checkbox" id="INPUT_WlanEnable" /></div>
+					<p id = "lang_introduction1">
+						For security concerns, it is highly recommended to change the pre-configured network name. Please set a name for your wireless network that can be easily recognized by wireless clients.
+					</p>
+					<div class="div_left" id = "lang_ssid">Wireless Network Name (SSID) :</div><div class="div_right"><input type="text" id="INPUT_SSID" maxlength="32" /></div>
+					<p id = "lang_introduction2">
+						If you select "Visible", the SSID of your wireless network can be found by wireless clients. If you select "Invisible", your wireless network is hidden and users need to manually enter the SSID in order to connect to your wireless network.
+					</p>
+					<div class="div_left" id = "lang_visibility">Visibility Status :</div><div class="div_right"><input type="radio" name="vb_status" value="1" /> <span id = "lang_visible">Visible</span> <input type="radio" name="vb_status" value="0" /> <span id = "lang_invisible">Invisible</span></div>
+					<p id = "lang_introduction3">
+						In order to protect your network from hackers and unauthorized users, you are highly recommended to select one of the following wireless network security settings.
+					</p>
+					<div align="center"><img src="/html/skin/wllevel.gif" alt="security"/></div>
+					<div class="div_left" style="width:48px;"></div><div class="div_right">
+						<input type="radio" name="auth" value="None" onClick="ctrlSecType()" checked /> None &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="auth" value="Basic" onClick="ctrlSecType()" /> WEP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="auth" value="WPA" onClick="ctrlSecType()" /> WPA-PSK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="auth" value="11i" onClick="ctrlSecType()" /> WPA2-PSK 
+					</div>
+					<!-- None -->
+					<div id="none">
+					<p style="margin:0px 48px 10px 48px; padding:4px; border:1px solid gray;">
+						<b><span id = "lang_mode">Security Mode:</span></b>None<br />
+						<span id = "lang_mode_in">Select this option if you do not wish to enable any security features.</span>
+					</p>
+					</div>
+					<!-- WEP -->
+					<div id="wep">
+					<p style="margin:0px 48px 10px 48px; padding:4px; border:1px solid gray;">
+						<b><span id = "lang_mode1">Security Mode:</span></b>WEP <br />
+						<span id = "lang_mode1_in">Select this option if your wireless adapters only support WEP and do NOT support WPA.</span>
+					</p>
+					<p id = "lang_now">
+						Now, please enter your wireless security key :
+					</p>
+					<div class="div_left" id = "lang_wep_key">WEP Key :</div><div class="div_right"><input id="INPUT_WepKey" /></div>
+					<div align="center" id = "lang_wep">(5 characters, such as a~z, A~Z, or 0~9, or 10 hex digits, such as 0~9, a~f, or A~F, i.e. <b>@abcde</b> or <b>abcde12345</b>)</div>
+					<p id = "lang_wep_note">
+						<b>Note:</b> You will need to enter the same key here into your wireless clients in order to enable proper wireless connection.
+					</p>
+					</div>
+					<!-- WPA-PSK -->
+					<div id="wpa_psk">
+					<p style="margin:0px 48px 10px 48px; padding:4px; border:1px solid gray;">
+						<b><span id = "lang_mode2">Security Mode:</span></b>WPA-PSK<br />
+						<span id = "lang_mode2_in">Select this option if your wireless adapters support WPA-PSK.</span>
+					</p>
+					<p id = "lang_now1">
+						Please enter your wireless security key:
+					</p>
+					<div class="div_left" id = "lang_wpa_key">WPA Pre-Shared Key :</div><div class="div_right"><input type="password" id="INPUT_WPA_Key" /></div>
+					<div align="center" id = "lang_wpa">(8-63 characters, such as a~z, A~Z, or 0~9, i.e. <b>'%Fortress123&'</b>) </div>
+					<p id = "lang_wpa_note">
+						<b>Note:</b> Please enter the same key on your wireless clients to enable proper wireless connection.
+					</p>
+					</div>
+					<!-- WPA2-PSK -->
+					<div id="wpa2_psk">
+					<p style="margin:0px 48px 10px 48px; padding:4px; border:1px solid gray;">
+						<b><span id = "lang_mode3">Security Mode:</span></b>WPA2-PSK <br />
+						<span id = "lang_mode3_in">Select this option if your wireless adapters support WPA2-PSK.</span>
+					</p>
+					<p id = "lang_now2">
+						Please enter your wireless security key:
+					</p>
+					<div class="div_left" id = "lang_wpa2_key">WPA2 Pre-Shared Key :</div><div class="div_right"><input type="password" id="INPUT_WPA2_Key" maxlength="63" /></div>
+					<div align="center" id = "lang_wpa2">(8-63 characters, such as a~z, A~Z, or 0~9, i.e. <b>'%Fortress123&'</b>) </div>
+					<p id = "lang_wpa2_note">
+						<b>Note:</b> Please enter the same key on your wireless clients to enable proper wireless connection.
+					</p>
+					</div>
+				</div>
+				<div class="div_button">
+					<input type="button" id="back" value="Back" onClick="uiBack()" /> 
+					<input type="submit" id="submit" value="Next" onClick="uiNextPage()" /> 
+					<input type="button" id="cancle" value="Cancel" onClick="uiCancle()" /> 
+					</div>
+			</div>
+		</td>

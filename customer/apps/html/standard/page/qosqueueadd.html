@@ -1,0 +1,48 @@
+<td>
+    <div class="config1">
+	    <p class="bk_orange">QUEUE CONFIG</p>
+		<div class="div_orange">
+		    <p>
+			   In this page, you can configure a QoS queue entry and assign it to a specific network interface. Each QoS-enabled interface will have 3 queues by default. You can set precedence for each queue. The classifier uses the queue entry configured to handle the incoming packets accordingly. 
+			   <br><b>
+			   Note: A smaller integer value of the precedence indicates higher priority of a queue. </b>
+			   <br>
+               Click "Save/Reboot" to save and activate the queue entry.
+			</P>
+		</div>
+		<p class="do bk_black">ADD QUEUE CONFIG </p>
+		<div class="div_black">
+		    <div class="div_left"   id="WConnection">Status :</div>
+			<div class="div_right">
+			     <select id="selectConnectionName" onChange="onChangeSelected();"  style="width:150px">
+					 <option>(Click to Select)</option>
+					 <option>Disable</option>
+					 <option>Enable</option>
+			  </select>
+		    </div>
+			<div class="div_left"   id="WConnection">Queue :</div>
+			<div class="div_right">
+			     <select id="selectConnectionName" onChange="onChangeSelected();" style="width:150px">
+					 <option>(Click to Select)</option>
+					 <option>pvc 0/0/35</option>
+					 <option>pvc 0/8/35 </option>
+			  </select>
+		    </div>
+			<div class="div_left"   id="WConnection">Queue Precedence :</div>
+			<div class="div_right">
+			     <select id="selectConnectionName" onChange="onChangeSelected();" style="width:150px">
+					 <option>(Click to Select)</option>
+					 <option>1</option>
+					 <option>2</option>
+					 <option>3</option>
+			  </select>
+		    </div>						
+		  	
+		</div>
+		<br>
+		 <div class="div_button"> 
+			   <input type="button" value="Apply" >
+			   <input type="button" value="Cancel">					  
+		 </div>	
+	</div>	
+</td>

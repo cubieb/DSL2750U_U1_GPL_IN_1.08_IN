@@ -1,0 +1,18 @@
+<InternetGatewayDevice type="object">
+	<LANDevice type="object" Writable="0" CurNode="LANDeviceNumberOfEntries">
+		<i type="object">
+			<X_TELEFONICA-ES_IPv6LANHostConfigManagement type="object">
+				<AutoConfigurationAddress type="boolean">1</AutoConfigurationAddress>
+				<ServerType type="object">
+					<Stateless type="boolean">1</Stateless>
+					<StatefullDHCPv6 type="object">
+						<MinInterfaceID type="string">0:0:0:1</MinInterfaceID>
+						<MaxInterfaceID type="string">0:0:0:ff</MaxInterfaceID>
+						<DHCPv6LeaseTime type="int">86400</DHCPv6LeaseTime>
+						<IPv6DomainName type="string">.com</IPv6DomainName>
+					</StatefullDHCPv6>
+				</ServerType>
+			</X_TELEFONICA-ES_IPv6LANHostConfigManagement>
+		</i>
+	</LANDevice>
+</InternetGatewayDevice>

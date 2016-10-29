@@ -1,0 +1,39 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="lang_DMZ">DMZ</p>
+		<div class="div_orange">
+			<p id="lang_dsc">The DSL router forwards IP packets that do not belong to any application configured in the Port Forwarding list, from WAN to the DMZ host.</p>
+			<p id="lang_dsc1">Enter IP address of the computer and click "Apply" to enable the DMZ host.</p>
+			<p id="lang_dsc2">Clear the field of the IP address and click "Apply" to disable the DMZ host.</p>
+		</div>
+		<p class="do bk_black" id="lang_DMZHOST">DMZ HOST</p>
+		<div class="div_black">
+			<div class="div_left" id="lang_WANConnection">WAN Connection :</div>
+			<div class="div_right">
+			<select name="SELECT_WanConnection" id="SELECT_WanConnection" onchange="setDmzValue();" style="width:180px">
+				<option></option>
+			</select>
+			</div>
+			<div class="div_left" id="lang_enableDmz" >Enable DMZ :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_DMZEnable" id="INPUT_DMZEnable"></div>
+			
+			<div class="div_left" id="lang_dmzAddress" >DMZ Host IP Address :</div>
+			<div class="div_right"><input type="text" name="INPUT_DMZHostIP" id="INPUT_DMZHostIP" style="width:180px"></div>	
+		</div>
+		<div class="SecLevel div_button"><input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/> 	            <input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc">
+				Enable the DMZ option only as the last resort. If you are having trouble using an application from a computer behind the router, try opening ports associated with the application first. The navigation path is as follows: <h5><a href="#"  id="AdvancedPorForwarding">Advanced -> Port Forwarding</a></h5> <span id="section">section.</span>
+			</p>
+		</div>
+		<h5><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>

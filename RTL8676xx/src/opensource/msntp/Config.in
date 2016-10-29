@@ -1,0 +1,9 @@
+############config for msntp######################################
+config OPENSOURCE_MSNTP
+	bool 'MSNTP'
+	default n
+	depends on OPENSOURCE
+	help
+	Mini Simple Network Time Protocol for time synchronization
+
+##################################################################

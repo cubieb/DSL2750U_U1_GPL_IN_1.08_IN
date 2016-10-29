@@ -1,0 +1,16 @@
+######################################
+#
+#
+######################################
+menuconfig VENDOR_ATHERNOS 
+  bool "Athernos Applications"
+  depends on VENDOR
+  default y
+
+config VENDOR_ATHERNOS_HOSTAPD_CFG
+	bool 'HOSTAPD_CFG'
+	default y
+	depends on VENDOR_ATHERNOS
+  	help 
+        athernos hostapd cfg cli tool	
+  

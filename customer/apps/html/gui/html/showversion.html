@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>HomeStation</title>
+<link type="text/css" rel="stylesheet" href="../css/styles.css"/>
+<link type="text/css" rel="stylesheet" href="../css/defaultBranding.css"/>
+<link type="text/css" rel="stylesheet" href="../css/telefonica.css"/>
+<link type="text/css" rel="stylesheet" href="../css/jScrollPane.css"/>
+
+<style type="text/css">
+	#version_pane {
+	   margin-left:50px;
+	   margin-top:20px;
+	}
+	#improvements_pane {
+	   margin-top:25px;
+	   margin-left:50px;
+	}
+	#pendingissues_pane {
+		margin-left:50px;
+		margin-top:15px;
+	}
+	#improvements,#version,#pendingissues {
+		font-size:14px;
+		text-decoration:underline;
+		margin-bottom:10px;
+	}
+	.improve_entry,.pending_entry,.version_entry {
+		margin-left:10px;
+		margin-bottom:5px;
+	}
+	#version_content{
+		height: 551px;
+		/*margin-right: 10px;*/	
+		width:934px;	
+	}
+	.scroll_version{		
+		margin-top: 30px;	
+		height: 551px;	
+		display: block;
+	}
+</style>
+</head>
+<body>	
+	<div id="panel_general" >		
+		<div id="panel_header">
+            <div class="header_content">
+				<div class="header_left">
+					<div class="home_station"></div>					
+				</div>
+				<div class="movistar"></div>
+			</div>
+        </div>
+        <div class="scroll_version">
+
+		<div id="version_content" >
+<b>
+       	    <div id="version_pane">
+	   			<div id="version">Version</div>
+	   			<div class="version_entry">GUI version: BARRACUDA1.2</div>
+				<div class="version_entry">Gateway Version: api_fake</div>
+				<div class="version_entry">Date: 08/02/2010</div>
+   			</div>
+       		
+			<div id="improvements_pane">
+				<div id="improvements">Improvements in GUI version (BARRACUDA1.2):</div>
+				<div class="improve_entry"><li>Home Network Tips section completed and adapted for LATAM (spanish language).</div>
+				<div class="improve_entry"><li>New LAN form, for PPPoE configuration. For Latam.</div>
+				<div class="improve_entry"><li>New specific branding for Chile.</div>
+				<div class="improve_entry"><li>HNT texts taken out to a specific file.</div>
+				<div class="improve_entry"><li>USB script for MAC, now released as .dmg file.</div>
+				<div class="improve_entry"><li>JQuery Utils library trunked to save space.</div>
+				<div class="improve_entry"><li>New HTML page describing all js libraries used ('/html/libraries.html').</div>
+			</div>
+</b>	
+       		<div id="improvements_pane">
+				<div id="improvements">Improvements in GUI version (BARRACUDA1.1):</div>
+				<div class="improve_entry"><li>Bug fixed. TCP/UDP select is usable when there are lots of rules.</div>
+				<div class="improve_entry"><li>Bug fixed. Now, HomeStation Configuration dialog saves correctly when config parameter "LanConfEnabled" is false.</div>
+				<div class="improve_entry"><li>setInternet function is added in api.js to configure Internet parameters.</div>
+				<div class="improve_entry"><li>The bar '|' does not appear when there are only two languages configured in config.json.txt.</div>
+				<div class="improve_entry"><li>New texts inside USB and Printer scripts.</div>
+				<div class="improve_entry"><li>Network Tips now available in english</div>
+				<div class="improve_entry"><li>L0 Support now available in english</div>
+				<div class="improve_entry"><li>New alert warning "Browser not supported" for IE6. </div>
+			</div>
+			
+			<div id="improvements_pane">
+				<div id="improvements">Improvements in GUI version (BARRACUDA1.0):</div>
+				<div class="improve_entry"><li>Disk space optimization. Now, the BHS Core GUI weight less than 800KB zipped.</div>
+				<div class="improve_entry"><li>New Feature: Multi Branding support.</div>
+				<div class="improve_entry">- Movistar branding adopted.</div>
+				<div class="improve_entry">- O2 branding adopted.</div>
+				<div class="improve_entry">- Telefonica branding adopted.</div>
+				<div class="improve_entry"><li>New USB and Printer scripts generated for every branding.</div>
+				<div class="improve_entry"><li>Modifications performed due to comments from countries:</div>
+				<div class="improve_entry">- New link for Vendor's GUI. Link presence or absence is configurable.</div>
+				<div class="improve_entry">- New config variable "Country".</div>
+				<div class="improve_entry">- Both WiFi security options, WPA1 and WPA2 are selectable.</div>
+				<div class="improve_entry">- HomeStation's IP is configurable now. The new form appears or not depending on new configuration variable "LanConfEnabled".</div>
+				<div class="improve_entry">- DHCP range is updated autmatically to be coherend with network range.</div>
+				<div class="improve_entry">- Added information about Network Mask. That is fixed to 255.255.255.0</div>
+				<div class="improve_entry">- New WiFi colour criteria, according to LEDs. Green: WiFi active. Grey: WiFi desactived</div>
+				<div class="improve_entry">- WiFi security is shown using text.</div>
+				<div class="improve_entry"><li>Modifications performed due to O2 branding feedback:</div>
+				<div class="improve_entry">- Pie now is rendered differently depending on "Country" config variable</div>
+				<div class="improve_entry">- Star icon modified.</div>
+				<div class="improve_entry">- Bigger font for links under the header.</div>
+				<div class="improve_entry"><li>New configuration variable "Supported3G".</div>
+				<div class="pending_entry"><li>Strange effects in WiFi configuration when dissabling WiFi or DHCP were fixed.</div>
+			</div>
+
+			<div id="improvements_pane">
+				<div id="improvements">Improvements in GUI version (ANACONDA1.1):</div>
+				<div class="improve_entry"><li>Update of key strength meter when pressing backspace key works fine.</div>
+				<div class="improve_entry"><li>Bug about focus in the applications page is fixed.</div>
+				<div class="improve_entry"><li>Minor bugs in tips page have been fixed.</div>
+				<div class="improve_entry"><li>Some effects in wifi page have been improved.</div>
+				<div class="improve_entry"><li>New Brandings partially adopted.</div>
+			</div>
+			<div id="pendingissues_pane">
+                <div id="pendingissues">Pending issues:</div>
+				<div class="pending_entry"><li>To provide scripts adapted to every gateway.</div>
+            </div>
+		</div>
+		</div>
+		<div id="panel_footer" style="clear:both; padding-top:40px;">
+            <div class="footer_text">&copy; 2010 Telef&oacute;nica S.A. All rights reserved</div>
+        </div>
+	</div>
+	
+	<script type="text/javascript" src="../js/apis/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/apis/jScrollPane-1.2.3.min.js"></script>
+	<script type="text/javascript" src="../js/apis/jquery-ui-1.8rc2.custom.min.js"></script>
+	<script type="text/javascript" src="../js/commons.js"></script>	
+	<script type="text/javascript" src="../js/apis/jquery.utils.homestation.min.js"></script>	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		loadScroll("#version_content");
+	});
+	</script>
+</body>
+</html>		

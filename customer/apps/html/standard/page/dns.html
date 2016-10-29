@@ -1,0 +1,60 @@
+		<style type="text/css"><!-- 
+			.div_left { width:230px;}
+		 --></style>
+ <td>
+  <div class="config2">
+       <p class="bk_orange"  id="lang_DNS"> DNS </p>
+	    <div class="div_orange">
+		    <p id="lang_dsc">Click "Apply" to save the configuration. If you want to make the DNS effective immediately, Please ensure that the WAN connection is the default gateway connection. You can change the default gateway connection in the "Advanced->routing->default gateway" page./p>
+		</div>
+		<p class="do bk_black" id="lang_DNSServerConfi">DNS Server Configuration</p>
+		<div class="div_black">
+			<div class="div_left"   id="WConnection" >Wan Connection : </div>
+			<div class="div_right">
+			     <select id="selectConnectionName" onChange="onChangeSelected();" style="width:180px">
+					 <option></option>
+			  </select>
+		    </div>
+			<div id="IPv4_DNS_Setting">			
+				<div class="div_left">
+					 <input type="radio" name="INPUT_DNSOverrideAllowed"  id="INPUT_DNSOverrideAllowedFalse" value="0"  onclick="onDNSOverrideAllowedClick()"/> 
+				</div> 
+				<div class="div_right" id="lang_ObtainDNSserv">  Obtain DNS server address automatically  </div>
+				<div class="div_left">
+					 <input type="radio"  name="INPUT_DNSOverrideAllowed" id="INPUT_DNSOverrideAllowedTrue"  onclick="onDNSOverrideAllowedClick()" value="1" />
+				 </div> 
+				<div class="div_right" id="lang_UsethefollowingDN">  Use the following DNS server addresses  </div>
+				<div class="div_left"  id="FSTDNSserver" >Primary DNS server : </div> 
+				<div class="div_right"> <input type="text" maxlength=17 id="INPUT_DNS1" value="" style="width:180px"> </div>
+				<div class="div_left"  id="AltDNSserver" >  Secondary DNS server :</div> 
+				<div class="div_right"> <input type="text" maxlength=17 id="INPUT_DNS2" value="" style="width:180px"> </div>
+			</div>
+			<div id="IPv6_DNS_Setting">
+				<div class="div_left">
+					<input type="radio" name="INPUT_IPv6_DNSOverrideAllowed"  id="IPv6_DNSOverrideAllowedFalse" value="0"  onclick="onDNSOverrideAllowedClick()"/> 
+				 </div> 
+				<div class="div_right" id="lang_IPv6_ObtainDNSserv">  Obtain IPv6 DNS server address automatically  </div>
+				<div class="div_left">
+					<input type="radio" name="INPUT_IPv6_DNSOverrideAllowed" id="IPv6_DNSOverrideAllowedTrue" onclick="onDNSOverrideAllowedClick()" value="1"/>
+				</div> 
+				<div class="div_right" id="lang_IPv6_UsethefollowingDN">  Use the following IPv6 DNS server addresses  </div>
+				<div class="div_left"  id="IPv6_FSTDNSserver" >Preferred IPv6 DNS server :  </div> 
+				<div class="div_right"> <input type="text" maxlength=49 id="INPUT_IPv6_DNS1" value="" style="width:180px"> </div>
+				<div class="div_left"  id="IPv6_AltDNSserver" >Alternate IPv6 DNS server :</div> 
+				<div class="div_right"> <input type="text" maxlength=49 id="INPUT_IPv6_DNS2" value="" style="width:180px"> </div>
+			</div>	
+	 	</div>
+		<div class="SecLevel div_button"> 
+				<input type="submit" name="submit" id="submit" value="Apply" onClick="uiSubmit()">
+				<input type="button" name="refresh" id="refresh" value="Cancel" onClick="uiPageRefresh()">				  
+		 </div>		
+		       <form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>		
+  </div>
+  </td>
+  <td class="td_help">
+     <div  class="help" >
+     <h5 id="lang_help">Helpful Hints... </h5>
+	 <p id="lang_helpdsc">If you select "Obtain DNS server address automatically", the router uses the first DNS assignment obtained from one of the PPPoA, PPPoE, or MER/DHCP enabled PVCs, when the connection is established. If you select "Use the following DNS server addresses", enter the IP addresses of the primary and secondary DNS servers. The "Obtain DNS server address automatically" option is recommended unless the DNS servers do not work.</p>
+	 <h5><a href="#" id="lang_help_more">More...</a></h5>
+	 </div>
+  </td>

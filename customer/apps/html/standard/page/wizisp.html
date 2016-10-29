@@ -1,0 +1,92 @@
+<style type="text/css">
+<!-- 
+.div_left { width:300px;}
+--></style>
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<td width="840">
+<div class="config1" style="margin:0px auto;">
+	<p class="bk_orange"><font color="white"></font><span id = "lang_config_start">Step 2: Setup Internet Connection</span><font color="white"> &#8594; 3 &#8594; 4 &#8594; 5</font></p>
+	<div class="div_orange">
+		<!-- ***************************************start Ethernet ************************ -->
+		<?if eq 1 $var:mod_ETHWAN
+		`	
+			<p id = "lang_introduction_eth1">If you want to change WAN access type, you can click on "Ethernet" or "DSL".</p>
+			<p id = "lang_introduction_eth2" style="color:red;" >note : If you select the WAN access type is "Ethernet",
+																 Please send line to LAN4 port!</p>
+			<p id = "lang_introduction_eth3" style="color:red;" >&nbsp; &nbsp;  &nbsp;  &nbsp; When search available PVC, according to different condition, need the time is different!</p>
+			<div class="div_left" style="width:270px;"><span id = "lang_wan_type">WAN Access Type :</span></div> 
+			<div class="div_right">
+			<input type="radio" name="INPUT_WanAcsType" value="1" onClick="changetypeSelect(1)" /><span id = "lang_ethernet">Ethernet </span>
+			<input type="radio" name="INPUT_WanAcsType" value="0" onClick="changetypeSelect(0)"/><span id = "lang_dsl">DSL</span>
+			</div>
+			<br>
+		`?>
+		<!--*************************************** end Ethernet*****************************  -->
+		<!-- *****************************************set DSL&Ethernet start******************************** -->
+		<p id = "lang_introduction_DSL">Please select your ISP (Internet Service Provider) from the list below.</p>
+		<div class="div_left" id = "lang_protocol_DSL">Protocol :</div>
+		<div class="div_right"><select id="SELECT_Protocol" onChange="onchgProtocol()"><option> </option></select></div>
+		<!-- DSL -->
+		<div id="isDsl">
+			<div class="div_left" id = "lang_encap_DSL">Encapsulation Mode:</div>
+			<div class="div_right"><select id="SELECT_ConnType"><option> </option></select></div>
+			<div class="div_left"><span id = "lang_vpi_DSL">VPI :</span></div>
+			<div class="div_right"><input type="text" id="INPUT_VPI" maxlength="3" size="4" /> (0-255)</div>
+			<div class="div_left"><span id = "lang_vci_DSL">VCI :</span></div>
+			<div class="div_right"><input type="text" id="INPUT_VCI" maxlength="5" size="4" /> (32-65535)</div>
+			<div class="div_left" style="padding-top:0px;" id = "lang_pvc">Search Available PVC :</div>
+			<div class="div_right"><input type="button" id="Scan" value="Scan"  onClick="autoSearchPVC()" /> 
+				<span id = "display_access">
+					<span id= "lang_pvcresult" style="color:red;">finding......</span>
+					<span id="SPAN_PvcResult" style="color:red;">
+						<marquee style='border:1px solid #000000' direction=right width=100 scrollamount=10 scrolldelay=1 bgcolor=#FFFFFF>
+							<table cellspacing=0 cellpadding=0><tr height=15><td bgcolor=#ff7700 width=20></td></tr></table>
+						</marquee>
+					</span>
+				</span>
+			</div>
+			<br></br>
+		</div>
+		<!-- *****************************************set DSL&Ethernet end ******************************** -->
+	</div><!-- end div class="div_orange" -->
+	
+	<!--****************************************** pppoe/pppoa******************************* -->
+	<div id="ppp">
+		<p class="do bk_black"><span id="lang_pppoe">PPPoE</span> <span id="lang_pppoa">PPPoA</span></p>
+		<div class="div_black">
+			<p id = "lang_introduction_pppoe">Please enter the user name and password provided by your Internet  service provider (ISP). 
+												Note that the information is case-sensitive. Click "Next" to continue.</p>
+			<div class="div_left" id = "lang_name">Username :</div>
+			<div class="div_right"><input type="text" id="INPUT_Username" style="width:140px"/></div>
+			<div class="div_left" id = "lang_password">Password :</div>
+			<div class="div_right"><input type="password" id="INPUT_Psd" /></div>
+			<div class="div_left" id = "lang_con_password">Confirm Password :</div>
+			<div class="div_right"><input type="password" id="INPUT_CfmPsd" /></div>
+		</div>
+	</div>
+	<!--************************************* static ip/ipoa ****************************************-->
+	<div id="ip">
+		<p class="do bk_black" id = "lang_config_static1">Static IP/IPOA</p>
+		<div class="div_black">
+			<p id = "lang_introduction_static2">You have selected Static IP or IPOA Internet connection. 
+												Please enter the appropriate information as provided by your ISP.</p>
+			<p id = "lang_introduction_static3">To guarantee the performance of the auto PVC scan feature, 
+												please enter the information of VPI/VCI numbers if your ISP has provided it.</p>
+			<p id = "lang_introduction_static4">Click Next to continue.</p>
+			<div class="div_left" id = "lang_IP_static">IP Address :</div>
+			<div class="div_right"><input type="text" id="INPUT_IPAddress_static" /></div>
+			<div class="div_left" id = "lang_mask_static">Subnet Mask :</div>
+			<div class="div_right"><input type="text" id="INPUT_SubMask_static" /></div>
+			<div class="div_left" id = "lang_defaultgw_static">Default Gateway :</div>
+			<div class="div_right"><input type="text" id="INPUT_DefaultGy_static"/></div>
+			<div class="div_left" id = "lang_dns_static">Primary DNS Server :</div>
+			<div class="div_right"><input type="text" id="INPUT_PryDnsServer_static"/></div>
+		</div>
+	</div>
+	<div class="div_button">
+		<input type="button" id="back" value="Back" onClick="uiBack()" /> 
+		<input type="submit" id="submit" value="Next" onClick="uiNextPage()" /> 
+		<input type="button" id="cancle" value="Cancel" onClick="uiCancle()" /> 
+	</div>
+</div>
+</td>

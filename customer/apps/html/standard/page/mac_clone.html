@@ -1,0 +1,39 @@
+ <td>
+
+  <div class="config2">
+       <p class="bk_orange"  id="lang_macclone"> MAC Clone </p>
+	    <div class="div_orange">
+		    <p id="lang_dsc"> Click "Apply" button to save the new configuration.</p>
+		    <br><font color="#FF0000" id="lang_note"><b> Note:</b> When you configure MAC cloning finished, please restart the device, so that configuration to take effect!</font></br>
+   		</div>
+		<p class="do bk_black" id="lang_MAC_Clone_Confi">MAC Clone Configuration</p>
+		<div class="div_black">
+		   <div class="div_left" id="lang_enableMACCLONE">Enable MAC Clone :</div>
+			<div class="div_right"><input name="INPUT_MACCLONEEnable" id="INPUT_MACCLONEEnable" type="checkbox"></div>
+			<div class="div_left"   id="WConnection" >Wan Connection : </div>
+			<div class="div_right">
+			     <select id="selectConnectionName" onChange="onChangeSelected();">
+					 <option></option>
+			  </select>
+		    </div>			
+			<div class="div_left"  id="lang_MACAD" >WAN MAC Address :  </div> 
+			<div class="div_right"> <input type="text" maxlength=17 id="INPUT_WANMAC" value=""> </div>
+			<div class="div_left"  id="PCMac" >  Current PC's MACAddress :</div> 
+			<div class="div_right"> <input type="text" maxlength=17 id="INPUT_PCMAC" value="" disabled> 
+			<input type='button' name='btnmacclone' id="clonemac" value=' Clone  ' onclick='clonemac()' >
+			</div>
+		 </div>
+		 <div class="div_button"> 
+				     <input type="submit" name="submit" id="submit" value="Apply" onClick="uiSubmit()">
+				     <input type="button" name="refresh" id="refresh" value="Cancel" onClick="uiPageRefresh()">				  
+		 </div>		
+		       <form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>		
+  </div>
+  </td>
+  <td class="td_help">
+     <div  class="help" >
+     <h5 id="lang_help">Helpful Hints... </h5>
+	 <p id="lang_helpdsc">Mac clone help information.</p>
+	 <h5><a href="#" id="lang_help_more">More...</a></h5>
+	 </div>
+  </td>

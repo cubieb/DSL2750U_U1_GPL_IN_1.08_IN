@@ -1,0 +1,58 @@
+#!/bin/sh
+
+. /etc/functions.sh
+
+echo "@@@@@@@Welcome to TBS System@@@@@@@"
+
+###set environment variable
+source /etc/init.d/env.rc
+
+###mount filesystem
+/etc/init.d/filesystem.rc
+
+mount -t tmpfs tmpfs /mnt
+mount -t usbfs none /proc/bus/usb
+mount -t tmpfs tmpfs /dev
+mkdir -p /var/run/usb
+
+
+if [ -x /etc/init.d/mkdev.rc ]; then
+  /etc/init.d/mkdev.rc
+fi
+
+if [ -x /etc/init.d/led.rc ]; then
+ /etc/init.d/led.rc
+fi
+
+###install usb driver
+if [ -x /etc/init.d/usb.rc ]; then
+  /etc/init.d/usb.rc
+fi
+
+load_modules /etc/modules.d/*
+
+mount -t devpts devpts /dev/pts
+
+###install wlan driver
+if [ -x /etc/init.d/wlan.rc ]; then
+  /etc/init.d/wlan.rc
+fi
+
+###install dsl driver
+if [ -x /etc/init.d/dsl.rc ]; then
+  /etc/init.d/dsl.rc
+fi
+
+###config network
+ifconfig lo 127.0.0.1 up
+echo 1 > /proc/sys/net/ipv4/ip_forward
+/etc/init.d/network.rc
+
+###start daemon
+/etc/init.d/daemon.rc
+
+###Others
+if [ -x /etc/init.d/private.rc ]; then
+	/etc/init.d/private.rc
+fi
+

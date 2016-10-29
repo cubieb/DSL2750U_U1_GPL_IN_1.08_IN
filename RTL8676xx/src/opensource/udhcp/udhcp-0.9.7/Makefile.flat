@@ -1,0 +1,18 @@
+include ../../TI_Build.make
+
+export PATH := $(TI_uclibc_path):$(shell echo -n $(PATH))
+
+export CROSS_COMPILE_PREFIX=$(TI_uclibc_base)
+
+all: build install
+
+build:
+	$(MAKE) TI_FILESYSTEM=$(TI_base)$(TI_rusrdir)
+
+install: 
+	$(MAKE) TI_FILESYSTEM=$(TI_base)$(TI_rusrdir) install
+
+clean: 
+	$(MAKE) clean
+
+

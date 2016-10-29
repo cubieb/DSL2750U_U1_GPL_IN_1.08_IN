@@ -1,0 +1,22 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANEthernetInterfaceConfig type="object">
+				<Enable type="boolean">1</Enable>
+				<Status type="string" Writable="0"></Status>
+				<MACAddress type="string" Writable="0"></MACAddress>
+				<MaxBitRate type="string">Auto</MaxBitRate>
+				<DuplexMode type="string">Auto</DuplexMode>
+				<ShapingRate type="int[-1:]"></ShapingRate>
+				<ShapingBurstSize type="unsignedInt">0</ShapingBurstSize>				
+				<Stats type="object">
+					<BytesSent type="unsignedInt" Writable="0"></BytesSent>
+					<BytesReceived type="unsignedInt" Writable="0"></BytesReceived>
+					<PacketsSent type="unsignedInt" Writable="0"></PacketsSent>
+					<PacketsReceived type="unsignedInt" Writable="0"></PacketsReceived>
+				</Stats>
+			</WANEthernetInterfaceConfig>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

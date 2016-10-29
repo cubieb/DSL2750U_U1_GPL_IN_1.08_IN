@@ -1,0 +1,48 @@
+Summary
+-------
+The athconf utility allows a user to configure the transmit power per rate settings in the MAC/BB registers of the Owl chip.
+
+Requirements:
+---------------
+Linux Madwifi driver version 7.0.0.20 and above.
+
+Build/installation instructions
+-------------------------------
+
+1. Copy the athconf directory to the following directory location: <src tree head>/wlan/madwifi/madwifi/
+2. Add an entry athconf to the Makefile in the directory
+3. Build the madwifi driver (follow instructions).
+4. The module athconf.ko will be available in the athconf directory.
+5. Tftp the module athconf.ko to the AP.
+
+Operation:
+----------
+1. Start the AP
+
+2. Load the module and (you must be in the directory where the module has been saved): 
+#insmod athconf.ko
+#cd /proc/sys/athconf/<device name>/powerperate            (the device name is wifi0, wifi1 etc.)
+
+3. Change power per rate (the MAC registers store power in 0.5dBm units)
+  
+#echo <power in 0.5 dbm units> > <rate>
+E.g.   #echo 10 > rateHt40_7                                 (this instruction sets power for HT 40 MCS 7 to 5dBm)
+
+4. Write the new rate to the MAC/BB regs:
+#echo 1 > write
+
+5. Read the current MAC/BB settings
+#echo 1 > print
+
+Note: The initial values for the power per rate are read from the eeprom. Once the module is loaded, 
+the driver will not read the power per rate values from the eeprom anymore. Even after a reset, 
+the values configured through athconf will be used. To reinitialize to the eeprom setting, unload the 
+athconf module and restart the AP.
+
+Limitations
+-----------
+
+1. If the AP is brought down, athconf must be removed via rmmod. Then the AP must be brought up and 
+athconf must be reload via insmod.
+2. The max power per rate is intentionally limited to 25dB. 
+

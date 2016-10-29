@@ -1,0 +1,12 @@
+
+<InternetGatewayDevice type="object">
+			<X_TWSZ-COM_PolicyRoute type="object" >
+				<i type="object">
+					<WANDescription type="string" Writable="0"></WANDescription>
+					<LANDescription type="string" Writable="0"></LANDescription>
+					<WANPathName type="string" Writable="0"></WANPathName>
+					<LANPathName type="string" Writable="0"></LANPathName>
+				</i>
+			</X_TWSZ-COM_PolicyRoute>
+</InternetGatewayDevice>
+

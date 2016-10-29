@@ -1,0 +1,268 @@
+#!/bin/sh
+
+TARGET=$1
+OBJDIR=linux/obj/${TARGET}
+
+# There is support for 4 "generations" of Atheros hardware devices:
+#
+# AH_SUPPORT_AR5210	802.11a only MAC
+# AH_SUPPORT_AR5211	802.11a+802.11b MAC (also pure g, but not yet supported)
+# AH_SUPPORT_AR5212	802.11a+802.11b+802.11g MAC
+# AH_SUPPORT_AR5312     5212 MAC WiSoC (requires AH_SUPPORT_AR5212)
+# AH_SUPPORT_AR5416	802.11a+802.11b+802.11g+802.11n-ready MAC
+#
+# AH_SUPPORT_5111	5111 RF support for 5212 et. al.
+# AH_SUPPORT_5112	5112 RF support for 5212 et. al.
+# AH_SUPPORT_2413	2413 RF support for 5212 et. al.
+# AH_SUPPORT_5413	5413 RF support for 5212 et. al.
+# AH_SUPPORT_2316	2316 RF (Cobra) support for 5212 et. al.
+# AH_SUPPORT_2317	2317 RF (Spider) support for 5212 et. al.
+# AH_SUPPORT_2417	2417 RF (Nala) support for 5212 et. al.
+# AH_SUPPORT_2425	2425 RF (Swan) support for 5212 et. al.
+# AH_SUPPORT_2133	2133 RF support for 5416 et. al.
+#
+# and numerous optional debugging facilities (typically named AH_DEBUG_*):
+#
+# AH_DEBUG		enables debugging stuff that's controlled by the sysctl:
+# 			hw.ath.hal.debug
+# AH_ASSERT 		enables assertions that panic or trap into the debugger.
+# AH_DEBUG_ALQ 		enables support for tracing register reads+writes
+#			via alq
+# AH_DEBUG_COUNTRY	accept the CTR_DEBUG country code (for debugging
+#			the regulatory domain support)
+# AH_REGOPS_FUNC	arrange for OS_REG_READ and OS_REG_WRITE to be function
+#			calls and not inline expanded to memory references
+# AH_ENABLE_AP_SUPPORT	enables AP-specific support not publicly available
+#			(e.g. don't cap turbo power limits)
+# AH_DISABLE_WME	disable HAL_TXQ_USE_LOCKOUT_BKOFF_DIS support
+#
+# AH_PRIVATE_DIAG	enable private diagnostic support
+# AH_WRITE_EEPROM	permit EEPROM writes (use with AH_PRIVATE_DIAG)
+# AH_WRITE_REGDOMAIN	permit EEPROM writes of the regulatory domain through
+#			ah_setRegulatoryDomain (implies AH_WRITE_EEPROM)
+# AH_SUPPORT_XR		enable XR support
+# AH_RADAR_CALIBRATE	level of radar messages used for calibrating threshold of radar
+#			detection (Valid values: {1,2} - 1 minimal info, 
+#					2 detailed info, 3 detailed info)
+# AH_SUPPORT_WRITE_REG	permit direct writing of any HAL register via ioctl
+#
+
+#
+# Default settings...
+#
+AH_SUPPORT_AR5210=0		# 5210 support
+AH_SUPPORT_AR5211=0		# 5211 support
+AH_SUPPORT_AR5212=0		# 5212 support
+AH_SUPPORT_AR5312=0		# 5312 support
+AH_SUPPORT_AR5416=1		# 5416 support
+AH_SUPPORT_2133=1      # 2133 RF Support    
+AH_SUPPORT_5111=0		# 5111 RF support
+AH_SUPPORT_5112=0		# 5112 RF support
+AH_SUPPORT_2413=0		# 2413 RF support
+AH_SUPPORT_5413=1		# 5413 RF support
+AH_SUPPORT_2316=0		# 2316 RF support
+AH_SUPPORT_2317=0		# 2317 RF support
+AH_SUPPORT_2417=0		# 2417 RF support
+AH_SUPPORT_2425=0		# 2425 RF support
+AH_DEBUG=1			# debugging (e.g. hw.ath.hal.debug)
+AH_ASSERT=0			# assertions (pretty lame)
+AH_DEBUG_ALQ=0			# ALQ register tracing support
+AH_REGOPS_FUNC=0		# use inline memory references
+AH_WRITE_REGDOMAIN=0		# support EEPROM writes of the regulatory domain
+AH_DEBUG_COUNTRY=0		# accept CTR_DEBUG country code
+AH_DISABLE_WME=0		# disable HAL_TXQ_USE_LOCKOUT_BKOFF_DIS
+AH_ENABLE_AP_SUPPORT=0		# enable AP-specific support
+AH_WRITE_EEPROM=0		# support EEPROM writes
+AH_PRIVATE_DIAG=0		# non-public diagnostic support
+AH_NEED_DESC_SWAP=0		# Need to swap TX descriptor
+AH_SUPPORT_XR=0		# disable XR
+AH_SUPPORT_DFS=1		# support DFS
+AH_RADAR_CALIBRATE=0		# don't display any info for calibration
+AH_SUPPORT_WRITE_REG=0		# don't support ioctl writing of regs
+AR5416_EMULATION=1		# AR5416 emulation specific code
+K2_EMULATION=0	#K2 emulation specific code - for FPGA board
+
+ATH_FORCE_PPM=1		# Force Ppm workaround code
+ATH_FORCE_BIAS=1		# Force Bias current workaround code
+
+ATH_SOWL_INI=0                 # Compile using SOWL INI (ar5416_sowl.ini)
+
+#
+# If 5312 support is enabled it's almost certain we're not going
+# to use the 5210 or 5211 support so disable it to save some space.
+#
+if [ "${AH_SUPPORT_AR5312}" = "1" ]; then
+AH_SUPPORT_AR5210=0
+AH_SUPPORT_AR5211=0
+AH_SUPPORT_AR5414=0
+fi
+
+if [ -e ${OBJDIR}/opt_ah.h ]; then
+	rm ${OBJDIR}/opt_ah.h
+fi
+
+test -d ${OBJDIR} || mkdir -p ${OBJDIR}
+if [ "${AH_SUPPORT_AR5210}" = "1" ]; then
+	echo "#define AH_SUPPORT_AR5210	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_AR5211}" = "1" ]; then
+	echo "#define AH_SUPPORT_AR5211	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_AR5212}" = "1" ]; then
+	echo "#define AH_SUPPORT_AR5212	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_AR5312}" = "1" ]; then
+	echo "#define AH_SUPPORT_AR5312	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_AR5416}" = "1" ]; then
+	echo "#define AH_SUPPORT_AR5416	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_5111}" = "1" ]; then
+	echo "#define AH_SUPPORT_5111	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_5112}" = "1" ]; then
+	echo "#define AH_SUPPORT_5112	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_2133}" = "1" ]; then
+	echo "#define AH_SUPPORT_2133	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_2413}" = "1" ]; then
+	echo "#define AH_SUPPORT_2413	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_5413}" = "1" ]; then
+	echo "#define AH_SUPPORT_5413	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_2316}" = "1" ]; then
+	echo "#define AH_SUPPORT_2316	1"	>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_2317}" = "1" ]; then
+	echo "#define AH_SUPPORT_2317   1"  >> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_2417}" = "1" ]; then
+	echo "#define AH_SUPPORT_2417   1"  >> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_2425}" = "1" ]; then
+	echo "#define AH_SUPPORT_2425   1"      >> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_ASSERT}" = "1" ]; then
+	echo "#define AH_ASSERT	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_DEBUG_ALQ}" = "1" ]; then
+	echo "#define AH_DEBUG_ALQ 1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_DEBUG}" = "1" ]; then
+	echo "#define AH_DEBUG	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AR5416_EMULATION}" = "1" ]; then
+	echo "#define AR5416_EMULATION	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${K2_EMULATION}" = "1" ]; then
+	echo "#define K2_EMULATION	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AR5416_2_CHAIN}" = "1" ]; then
+	echo "#define AR5416_2_CHAIN	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AR5416_3_CHAIN}" = "1" ]; then
+	echo "#define AR5416_3_CHAIN	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AR5416_CES_DEMO}" = "1" ]; then
+	echo "#define AR5416_CES_DEMO	1"		    >> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${ATH_FORCE_PPM}" = "1" ]; then
+	echo "#define ATH_FORCE_PPM	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${ATH_FORCE_BIAS}" = "1" ]; then
+	echo "#define ATH_FORCE_BIAS	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${ATH_SOWL_INI}" = "1" ]; then
+	echo "#define ATH_SOWL_INI	1"		>> ${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_WRITE_REGDOMAIN}" =  "1" ]; then
+	echo "#define AH_SUPPORT_WRITE_REGDOMAIN 1" >>${OBJDIR}/opt_ah.h
+	echo "#define AH_SUPPORT_WRITE_EEPROM 1" >>${OBJDIR}/opt_ah.h
+else
+	if [ "${AH_WRITE_EEPROM}" = "1" ]; then
+	echo "#define AH_SUPPORT_WRITE_EEPROM 1">>${OBJDIR}/opt_ah.h
+fi
+fi
+
+if [ "${AH_DEBUG_COUNTRY}" = "1" ]; then
+	echo "#define AH_DEBUG_COUNTRY 1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_REGOPS_FUNC}" = "1" ]; then
+	echo "#define AH_REGOPS_FUNC 1"		>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_DISABLE_WME}" = "1" ]; then
+	echo "#define AH_DISABLE_WME 1"		>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_ENABLE_AP_SUPPORT}" = "1" ]; then
+	echo "#define AH_ENABLE_AP_SUPPORT 1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_PRIVATE_DIAG}" = "1" ]; then
+	echo "#define AH_PRIVATE_DIAG 1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_NEED_DESC_SWAP}" = "1" ]; then
+	echo "#define AH_NEED_DESC_SWAP 1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_XR}" = "1" ]; then
+	echo "#define AH_SUPPORT_XR	1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_RADAR_CALIBRATE}" = "1" ]; then
+	echo "#define AH_RADAR_CALIBRATE	1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_RADAR_CALIBRATE}" = "2" ]; then
+	echo "#define AH_RADAR_CALIBRATE	2"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_RADAR_CALIBRATE}" = "3" ]; then
+	echo "#define AH_RADAR_CALIBRATE	3"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_DFS}" = "1" ]; then
+	echo "#define AH_SUPPORT_DFS	1"	>>${OBJDIR}/opt_ah.h
+fi
+
+if [ "${AH_SUPPORT_WRITE_REG}" = "1" ]; then
+	echo "#define AH_SUPPORT_WRITE_REG	1"	>>${OBJDIR}/opt_ah.h
+fi
+
+#	echo "#define DEBUG_PKTLOG	1"	>>${OBJDIR}/opt_ah.h
+
+if [ "${AR9100}" = "1" ]; then
+	echo "#define AR9100	1"	>>${OBJDIR}/opt_ah.h
+fi
+
+

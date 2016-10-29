@@ -1,0 +1,5 @@
+0xe3d7679c	LzmaDecodeProperties	/work/TBS_ForSQFS/tools/src/sqlzma/lzma457/C/Compress/Lzma/kmod/unlzma	EXPORT_SYMBOL
+0x1d6a3467	sqlzma_un	/work/TBS_ForSQFS/tools/src/sqlzma/lzma457/C/Compress/Lzma/kmod/sqlzma	EXPORT_SYMBOL
+0x0e44df72	sqlzma_fin	/work/TBS_ForSQFS/tools/src/sqlzma/lzma457/C/Compress/Lzma/kmod/sqlzma	EXPORT_SYMBOL
+0xe1c442fa	LzmaDecode	/work/TBS_ForSQFS/tools/src/sqlzma/lzma457/C/Compress/Lzma/kmod/unlzma	EXPORT_SYMBOL
+0xd15add56	sqlzma_init	/work/TBS_ForSQFS/tools/src/sqlzma/lzma457/C/Compress/Lzma/kmod/sqlzma	EXPORT_SYMBOL

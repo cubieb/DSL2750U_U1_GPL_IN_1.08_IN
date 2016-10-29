@@ -1,0 +1,194 @@
+<style type="text/css"><!--
+	.td_bold { font-weight:bold;}
+	.td_table_s td { text-align:left;width:323px;}
+ --></style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="deviceinfo">device info</p>
+		<div class="div_orange">
+				<p id="Thisinformation">It indicates the current status of all the connections.</p>
+		</div>
+			
+		<p class="do bk_black" id="systeminfo">system info</p>
+		<div class="div_black">
+			<table class="td_table_s" id='system_info_table'>
+				<tr>
+					<td class="td_bold"><span id="ModelName" >Modem Name :</span></td><td id="system_info_model_name">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold"><span id="SerialNumber" >Serial Number :</span></td><td id="serial_number">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold"><span id="TimeandDate" >Time and Date :</span></td><td id="system_info_time">&nbsp;</td>
+				</tr>
+				<tr>	
+					<td class="td_bold"><span id="HardwareVersion" >HardwareVersion :</span></td><td id="system_info_HardwareVersion">&nbsp;</td>
+				</tr>
+				<tr class="SoftwareVersion_info">	
+					<td class="td_bold"><span id="SoftwareVersion" >SoftwareVersion :</span></td><td id="system_info_SoftwareVersion">&nbsp;</td>
+				</tr>
+				<tr>	
+					<td class="td_bold"><span id="FirmwareVersion" >Firmware Version :</span></td><td id="system_info_firmware">&nbsp;</td>
+				</tr>
+				<tr>	
+					<td class="td_bold"><span id="UpTime" >System Up Time :</span></td><td id="system_info_uptime">&nbsp;</td>
+				</tr>								
+			</table>
+		</div> 
+
+		<p class="do bk_black" id="InternetInfo">Internet Info</p>
+		<div class="div_black">
+			<div class="div_left" style="width:auto;" id="InternetConnectionStatus">Internet Connection Status :</div>
+			<div class="div_right"><select name='select_wan_interface' id = "select_wan_interface" onchange="select_wan()"></select></div>
+			<div id="internet_info">
+				<table class="td_table_s">
+					<tr>
+						<td class="td_bold"><span id="InternetConnectionStatus1" >Internet Connection Status:</span></td>
+						<td id="internet_connection_status">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="WanServiceType" >Wan service type:</span></td><td id="wan_service_type">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="DefaultGateway" >Default Gateway:</span></td><td id="internet_gateway">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="PreferredDnsServer" >Preferred DNS Server:</span></td><td id="internet_first_dns">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="AlternateDnsServer" >Alternate DNS Server:</span></td><td id="internet_second_dns">&nbsp;</td>
+					</tr>
+		
+					<? if eq 1 `$var:mod_SUPPORT_IPV6`
+					`
+						 <tr>
+							<td class="td_bold"><span id="IPV6_LINKLOCAL" >Ipv6 link local addr :</span></td><td id=//"internet_link_local">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="td_bold"><span id="IPV6_RA" >IPv6 RA addr</span></td><td id="internet_RA">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="td_bold"><span id="IPV6_DHCP" >IPv6 DHCP:</span></td><td id="internet_dhcp">&nbsp;</td>
+						</tr>
+					`?>
+					<!--		
+					<tr>
+						<td class="td_bold">Connection Up Time:</td><td id="internet_up_time">&nbsp;</td>
+					</tr> 
+					-->
+				</table>
+				<table class="td_table_s">
+					<tr>
+						<td class="td_bold"><span id="DataTimeCounter" >Data Time Counter (Second):</span></td><td id="internet_time_counter">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+			<div id="internet_info_bridge" style="display:none;">
+				<table class="td_table_s">
+					<tr>
+						<td class="td_bold"><span id="InternetConnectionStatus2" >Internet Connection Status:</span></td>
+						<td id="internet_connection_status_bridge">&nbsp;</td>
+					</tr>
+					<!--		
+					<tr>
+						<td class="td_bold">Connection Up Time:</td><td id="internet_up_time_bridge">&nbsp;</td>
+					</tr>
+					 -->
+					<tr>
+						<td class="td_bold"><span id="WanServiceType1" >Wan service Type:</span></td><td id="wan_service_type1">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+			
+			<p></p>
+			<p></p>
+			
+			<table class="td_table_s" id="streamLineRate">
+					<tr class="tr_bold">
+						<td colspan="7"><span id="lang_LineRate" >Line Rate :</span></td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="DownstreamLineRate" >Downstream Line Rate (Kbps):</span></td><td id="internet_down_rate">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="UpstreamLineRate" >Upstream Line Rate (Kbps):</span></td><td id="internet_up_rate">&nbsp;</td>
+					</tr>
+			</table>
+			
+			<p></p>
+			<p></p>
+			
+			<table class="td_table_s" id="wan_info">
+				<tr class="tr_bold">
+					<td colspan="7"><span id="lang_EnabledWANConnections" >Enabled WAN Connections :</span></td>
+				</tr>
+				<tr class="tr_bold">
+					<td>VPI/VCI</td><td><span id="lang_ServiceName">Service Name</span></td>
+					<td>
+						<span id="lang_Protocol">Protocol</span></td><td><span id="lang_IGMP" >IGMP</span>
+					</td>
+					<td>
+						<span id="lang_QoS" >QoS</span></td><td><span id="lang_IPAddress2" >IP Address</span>
+					</td>
+				</tr>
+			</table>
+		</div> 
+		
+		<p class="do bk_black" id="lang_wirelessInfo">wireless Info</p>
+		<div class="div_black">
+			<div class="div_left" style="width:auto; text-align:left;" id="lang_selectwireless">select wireless :</div>
+			<div class="div_right"><select name='select_wireless' id = "select_wireless" onchange="select_wireless()"></select></div>
+				<table class="td_table_s" id='wireless_info_table'>
+					<tr>
+						<td class="td_bold"><span id="lang_MACAddress1" >MAC Address:</span></td><td id="wireless_mac_address">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="td_bold"><span id="lang_Status2" >Status:</span></td><td id="wireless_status">&nbsp;</td>
+					</tr>
+					<tr>	
+						<td class="td_bold"><span id="lang_NetworkName" >Network Name (SSID):</span></td><td id="wireless_ssid">&nbsp;</td>
+					</tr>
+					<tr>	
+						<td class="td_bold"><span id="lang_Visibility" >Visibility:</span></td><td id="wireless_visibility">&nbsp;</td>
+					</tr>
+					<tr>	
+						<td class="td_bold"><span id="lang_SecurityMode" >Security Mode:</span></td><td id="wireless_security">&nbsp;</td>
+					</tr>
+				</table>
+		</div> 
+		
+		<p class="do bk_black" id="lang_localinfo">local network Info</p>
+		<div class="div_black">
+			<table class="td_table_s" id='local_info_table'>
+			<tr>
+				<td class="td_bold"><span id="lang_MACAddress" >MAC Address:</span></td><td id="local_mac_address">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="td_bold"><span id="lang_IPAddress" >IP Address:</span></td><td id="local_ip_address">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="td_bold"><span id="lang_SubnetMask" >Subnet Mask:</span></td><td id="local_netmask">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="td_bold"><span id="lang_DHCPServer" >DHCP Server:</span></td><td id="lccal_dhcp_enable">&nbsp;</td>
+			</tr>
+			</table>
+		</div>
+	</div>
+</td>
+		
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdec">
+				Helpful Hints... 
+				This page shows a summary of the status of your router, including the software version and summary of the Internet configuration, such as wireless and Ethernet connection.
+				More¡­
+			</p>
+		</div>
+		<h5 ><a href="#" id="lang_more">More...</a></h5>
+	</div>
+</td>
+
+

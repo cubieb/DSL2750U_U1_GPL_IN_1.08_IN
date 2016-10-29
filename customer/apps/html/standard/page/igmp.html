@@ -1,0 +1,73 @@
+<!-- config -->
+<style type="text/css">
+.div_left { width:250px;}
+</style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_config">IGMP Proxy</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">IGMP proxy enables the system to issue IGMP host messages on behalf of
+			hosts that the system discovered through standard IGMP interfaces.
+			The system acts as a proxy for its hosts when you enable it by:
+			<br><span id = "lang_introduction1">1. Enabling IGMP proxy on a WAN interface (upstream), which connects to a router running IGMP.</span>
+			<br><span id = "lang_introduction2">2. Enabling IGMP on a LAN interface (downstream), which connects to its host.</span>
+			<br><br></p>
+		</div>
+		<p class="do bk_black"><span  id = "lang_config1">IGMP Proxy Configuration</span></p>
+		<div class="div_black">
+			 <div class="div_left">
+				<input type="checkbox" name="INPUT_IGMPProxyEnable" id="INPUT_IGMPProxyEnable" value="" checked/></div>
+				<div class="div_right"><label for="INPUT_IGMPProxyEnable" id = "lang_enable"><b>Enable IGMP Proxy</b></label></div>
+			<div class="div_left" id = "lang_wan">WAN Connection :</div>
+			<div class="div_right">
+			<select id="SELECT_WanInterface" name="SELECT_WanInterface" style="width:80px">
+			</select>
+			</div>
+			<div class="div_left" id = "lang_lan">LAN Connection :</div>
+			<div class="div_right">
+			<select id="SELECT_LanInterface" name="SELECT_LanInterface" style="width:80px">
+			</select>
+			</div>
+
+			<?if eq 1 $var:mod_IGMP_PASSTHROUGH
+				`
+			<div class="div_left" id = "lang_PassThroughEnable">Enable PassThrough :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_PassThroughEnable" id="INPUT_PassThroughEnable" value="" /></div>
+		`?>	
+			<div class="div_left" id = "lang_FastLeavingEnable">Enable FastLeaving :</div>
+			<div class="div_right"><input type="checkbox" name="INPUT_FastLeavingEnable" id="INPUT_FastLeavingEnable" value="" /></div>
+			<div class="div_left" id = "lang_GQ_Interval">General Query Interval :</div>
+			<div class="div_right"><input type="text" name="INPUT_GQ_Interval" id="INPUT_GQ_Interval" style="width:80px" /> <span id="lang_seconds1">(seconds)</span></div>
+			<div class="div_left" id = "lang_GQR_Interval">General Query Response Interval:</div>
+			<div class="div_right"><input type="text" name="INPUT_GQR_Interval" id="INPUT_GQR_Interval" style="width:80px"/> <span id="lang_milliseconds1">(*100 milliseconds)</span></div>
+			<div class="div_left" id = "lang_MQ_Interval">Group Query Interval :</div>
+			<div class="div_right"><input type="text" name="INPUT_MQ_Interval" id="INPUT_MQ_Interval" style="width:80px"/> <span id="lang_seconds2">(seconds)</span></div>
+			<div class="div_left" id = "lang_MQR_Interval">Group Query Response Interval:</div>
+			<div class="div_right"><input type="text" name="INPUT_MQR_Interval" id="INPUT_MQR_Interval" style="width:80px"/> <span id="lang_milliseconds2">(*100 milliseconds)</span></div>
+			<div class="div_left" id = "lang_MQ_Count">Group Query Count :</div>
+			<div class="div_right"><input type="text" name="INPUT_MQ_Count" id="INPUT_MQ_Count" style="width:80px"/></div>
+			<div class="div_left" id = "lang_LQ_Interval">Last Member Query Interval :</div>
+			<div class="div_right"><input type="text" name="INPUT_LQ_Interval" id="INPUT_LQ_Interval" style="width:80px"/> <span id="lang_seconds3">(seconds)</span></div>
+			<div class="div_left" id = "lang_LQ_Count">Last Member Query Count :</div>
+			<div class="div_right"><input type="text" name="INPUT_LQ_Count" id="INPUT_LQ_Count" style="width:80px"/></div>
+		
+			
+		</div>
+		<div class="div_button">
+			<input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/> 
+			<input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+		<p id = "lang_help">
+			IGMP proxy enables the system to issue IGMP host messages on behalf of hosts that the system discovered through standard IGMP interfaces.
+		</p></div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>
+

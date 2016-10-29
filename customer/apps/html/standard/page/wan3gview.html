@@ -1,0 +1,51 @@
+             <meta http-equiv='refresh' content='10'>
+		<td>
+		<div class="config2">
+			<p class="bk_orange" id = "lang_3g">3G</p>
+			<div class="div_orange" id="3g1">
+				<p id = "lang_introduction2">
+					Choose "Add", "Edit", or "Delete" to configure 3G WAN interfaces.
+				</p>
+				<p id = "lang_introduction3">
+					When you want to edit the 3G configuration, please ensure the 3G is in disconnection status at first.
+				</p>
+			</div>
+			
+			<div id="3g1_state">
+				<p class="do bk_black" id = "lang_3g_state">3G STATUS</p>
+				<div class="div_orange" id="3g1_state_1">
+					<script language="javascript"> 
+					<!-- hide 
+						document.writeln("<p style = \"color:red;\" id = \"lang_introduction2\">&nbsp 3G Status: " + G_3gInform + "</p>");
+						document.writeln("<p style = \"color:red;\" id = \"lang_introduction2\">&nbsp Inform: " +  G_3gStatus + "</p>");
+					-->
+					</script>
+				</div>
+			</div>
+			
+			<div id="3g1_setup">
+				<p class="do bk_black" id = "lang_3g_state">3G SETUP</p>
+				<div class="div_black" id="3g2">
+					<table class="td_table_l" id="wan_conns_list_3g">
+						<tr class="tr_bold">				
+							<td id = "lang_name_3g">Service Name</td>
+							<td id = "lang_protocol_3g">Protocol</td>
+							<td id = "lang_state_3g">State</td>
+							<td id = "lang_status1_3g">Status</td>
+							<td id = "lang_defaultgw_3g">Default Gateway</td>
+							<td id = "lang_action_3g">Action</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="div_button" id="3g3">
+				<input class="SecLevel" type="button" id = "add_3g" value="Add" onClick="uiAdd3g()" />
+				<input class="SecLevel"  type="button" id = "edit1_3g" value="Edit" onClick="uiEdit3g()" />
+				<input class="SecLevel"  type="button" id = "del_3g" value="Delete" onClick="uiDelete3g()" />
+
+				<input type="button" id = "pin_3g" value="Pin Manage" onClick="uiPin3g()" />
+				<input type="button" id = "info_3g" value="DongleInfo" onClick="uiInfo3g()" />
+				<input type="button" id = "driver_3g" value="UpdateDriver" onClick="uiDriver3g()" />
+			</div>
+		</div>
+		</td>

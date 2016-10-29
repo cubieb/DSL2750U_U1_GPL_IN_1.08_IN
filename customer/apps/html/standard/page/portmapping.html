@@ -1,0 +1,87 @@
+<!-- config -->
+<style type="text/css">
+<!--
+.div_left{ width:200px}
+.groupname_left { font-weight:bold; float:left; width:240px; text-align:right; padding-right:50px;}
+.groupname_right { font-weight:bold; height:27px;}
+.Grouped_Interfaces { text-align:right; width:250px;}
+.Available_Interfaces {}
+-->
+</style>
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<td>
+<div class="config2">
+	<p class="bk_orange" id = "lang_cofnig">Port Mapping </p>
+	<div class="div_orange">
+		<p id = "lang_introduction"> Port Mapping -- A maximum 5 entries can be configured</p>
+		<p id = "lang_introduction1">Port mapping supports mapping multiple ports to PVC and bridging groups. Each group serves as an independent network.
+Before using this feature, you must click "Add" and create mapping groups with appropriate LAN and WAN interfaces. 
+If you select a group and click "Delete", the group is removed and the interfaces that are used to be in that group are automatically added to the Default group.
+		</p>
+	</div>
+	<p class="do bk_black" id = "lang_config1">Port Mapping Setup </p>
+	<div class="div_black">
+		<table class="td_table_s" id="td_BridgeList">
+			<tr class="tr_bold">
+				<td></td>
+				<td id = "lang_name">Group Name</td>
+				<td id = "lang_interface">Interfaces</td>
+			</tr>
+		</table>
+	</div>
+		<div class="div_button"><input type='button' id='addEntry' name='addEntry' onClick='AddEntry()' value=' Add '>
+			<input type="button" id="editEntry" name="editEntry"  onClick="EditEntry()" value=" Edit ">
+			<input type="submit" id="removeEntry" name="removeEntry" onClick="RemoveEntry()" value=" Delete ">
+	</div>
+	
+	<div id="EntryInfo" style="display:none">
+	<p class="do bk_orange" id = "lang_config2">Add Port Mapping</p>
+		<div class="div_orange">
+		<p id = "lang_introduction2">To create a mapping group, do as follows: </p>
+		<p id = "lang_introduction3">1. Enter the group name, select interfaces from the available interface list and use the arrow button to add them to the grouped interface list, to create the required port mapping. Note that the group name must be unique. 
+	     </p>
+		<p id = "lang_introduction4">2. Click "Apply" to take the changes into effect immediately.  </p>
+		</div>
+		<p class="do bk_black" id = "lang_config3">Port Mapping Configuration</p>
+		<div class="div_black">
+			<div class="div_left" id = "lang_name1">Group Name: </div><div class="div_right"><input type="text" id="GroupName" maxlength="15"></div>
+			<div class="groupname_left" id = "lang_group_interface">Grouped Interfaces</div><div class="groupname_right"id = "lang_avalilable_interface">Available Interfaces</div>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="Grouped_Interfaces"><select multiple id="Grouped_Interfaces" style="width: 130px; height:170px;"></select></td>
+					<td style="vertical-align:middle;">
+						<table>
+							<tr>
+								<td>
+									<input type="button" value="->" id='portRemoveItem' onClick="RemoveInterface()" style="width: 30px; height: 30px;">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="button" value="<-" id='portAddItem' onClick="AddInterface()" style="width: 30px; height: 30px; ">
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="Available_Interfaces"><select multiple id="AvailableInterface" style="width: 130px; height:170px;"></select></td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button"><input type="button" id="submit" value="Apply" onClick="uiSubmit()">
+					<input type='button' value="Cancel" id="cancel" onClick='uiPageRefresh()'>
+		</div>
+	 
+</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+			<p id = "lang_help1">You can map PVC1 to ports 1-3 to create a network (broadcast domain) for PCs that want to access the Internet, and map PVC2 to port 4 to create another network (broadcast domain) for IPTV service (devices).</p>
+			<p id = "lang_help2">Note that the selected interfaces will be removed from their original groups and added to the new group.
+		</div>
+		<h5><a href="#"><span id = "lang_more">More..</span>.</a></h5>
+	</div>
+</td>
+

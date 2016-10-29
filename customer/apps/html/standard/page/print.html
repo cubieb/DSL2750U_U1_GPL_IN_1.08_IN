@@ -1,0 +1,43 @@
+		<!-- config -->
+<style type="text/css">
+.div_left { width:250px;}
+</style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_config">Print Server Settings</p>
+				<div class="div_orange">
+ 				 <p id = "lang_introduction">This page allows you to enable/disable printer support</p>
+				</div>
+				<br>
+				<div class="div_left" id = "lang_enable">Enable</div> <div class = "div_right"><input type="checkbox" name="print_enable" id="print_enable" /></div>
+
+				<div class="div_left" id = "lang_name">Printer Name</div> <div class = "div_right"><input type ='text' name="print_name" id="print_name" maxlength="16" /></div>
+				<div class = "div_left" >URL:</div><div class = "div_right" id = 'URL'></div>
+				<p class="do bk_black" id = "lang_config1">display list</p>
+				<div class="div_black">
+					<table class="td_table_s" id='print_info_table'>
+					<tr class="tr_bold">
+					<td id = "lang_manufacturer">Manufacturer</td><td id = "lang_model">Model</td><td>CMD</td><td id = "lang_firmware">Firmware Version</td>
+					</tr>
+					</table>
+				</div> 
+
+				 <div class="div_button"><input type='button' name="Submit" id = "Submit" onClick='return Submit()' value='Apply' /><input type='button' id = "Cancel" onClick='uiPageRefresh()' value='Cancel' /></div>
+			</div>
+
+			 <form name="uiPostForm" id="uiPostForm" method="post" action="webproc">
+			
+		</td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<div>
+				<p id = "lang_help1">
+					You can use printer server to print the information from LAN or WAN. To configure the network printer on your PC, copy the URL in this page to your printer.
+				</p></div>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>
+
+

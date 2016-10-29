@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+/*========================================================================================================
+	SPECIFIC STYLES FOR MOVISTAR BRANDING
+========================================================================================================*/
+
+/*========================================================================================================
+	HEADER
+========================================================================================================*/
+
+#panel_header {
+	visibility: visible;
+	background: url(../images/brd_movistar/header_m2.png) no-repeat;	
+}
+
+.home_station{
+	background: none;
+}
+
+/*========================================================================================================
+	DIALOG HEADER
+========================================================================================================*/
+.ui-dialog .ui-dialog-titlebar { 
+	background: url(../images/brd_movistar/titlebar_m.png) repeat-x;
+}
+
+.dialog_faq { 
+	background: url(../images/brd_movistar/faq.png) no-repeat; 
+}
+.dialog_faq:hover{
+	background: url(../images/brd_movistar/faq_hover.png) no-repeat; 
+}
+
+.ui-dialog .ui-dialog-titlebar-close { 
+	background: url(../images/dialog/cancel_sprite.png) no-repeat;
+		background-position: -44px 0;
+}
+.ui-dialog .ui-dialog-titlebar-close:hover {	
+	background-position: -66px 0;	
+}
+
+
+
+/*========================================================================================================
+	WELCOME SPLASH IMAGE
+========================================================================================================*/
+.welcomepan_icon{
+	background: url(../images/brd_movistar/welcome_pantalla_m.png) no-repeat;	
+}
+
+.welcomepan_icon:hover{
+	background: url(../images/brd_movistar/welcome_pantalla_m.png) 270px 0px; 	
+}
+.welcome_fav_icon{
+	background: url(../images/brd_movistar/favoritos_m.png) no-repeat;	
+	width: 217px;
+	height: 54px;	
+}
+.welcome_fav_icon.hover{
+	background: url(../images/brd_movistar/favoritos_m.png)  217px 0px;	
+}
+
+/* HELP DIALOG */
+#help_dialog{
+	border: 3px solid #43b1c8;
+}
+
+/* PRINTER AND USB ICONS */
+.usb_icon{
+	background: url(../images/brd_movistar/down_usb_m.png) no-repeat;	
+}
+.print_icon{
+	background: url(../images/brd_movistar/down_print_m.png) no-repeat;
+}
+
+
+/*OTHERS*/
+.wifi_ico{
+	background:       url(../images/brd_movistar/router_m.png) no-repeat;
+}
+.imgStiker{
+	background-image: url(../images/brd_movistar/gateway_sticker_m.png);
+}
+.imgDefaultStiker{
+	background-image: url(../images/brd_movistar/gateway_sticker_m.png);
+}
+
+.gateway_reset_ico{
+	width:100px; 
+	height:113px;
+	background-image: url(../images/brd_movistar/reset_m.png);
+}

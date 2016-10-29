@@ -1,0 +1,7 @@
+
+config OPENSOURCE_LIB_PNG
+	bool 'libpng'
+	default n
+	depends on OPENSOURCE
+	help
+	Enable libpng

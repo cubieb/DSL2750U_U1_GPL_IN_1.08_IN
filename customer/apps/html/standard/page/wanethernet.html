@@ -1,0 +1,209 @@
+<script type="text/javascript" src="/html/js/ajax.js"></script>		
+		<style type="text/css"><!-- 
+			.div_left { width:245px;}
+			.sh { width:80px;}
+			.bo { font-weight:bold;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id = "lang_internet_config">Internet Setup</p>
+				<div class="div_orange">
+					<p id = "lang_introduction">
+						In this page, you can configure an Ethernet-LAN identifier and select a service category.
+					</p>
+				</div>
+				<!-- Connection Type -->
+				<p class="do bk_black" id = "lang_type_config">Connection Type</p>
+				<div class="div_black">
+					<div class="div_left" id = "lang_protocol">Protocol :</div><div class="div_right"><select id="SELECT_Protocol" onChange="onchgProtocol()" style="width:160px">
+																					<option value="PPPoE">PPP over Ethernet (PPPoE)</option>
+																					<option value="DHCP">Dynamic IP</option>
+																					<option value="Static">Static IP</option>
+																					<option value="Bridging">Bridging</option>
+																				 </select>
+					</div>
+					<!-- 802.1Q -->
+					<div id="802.1q">
+					<div class="div_left">802.1Q VLAN ID :</div><div class="div_right"><input type="text" id="INPUT_VlanId" maxlength="4" size="8" onChange="onchgSetVlan()" style="width:160px"/> <span id="lang_disable45">(0 = disable, 1 - 4094)</span></div>
+					</div>
+			        <!--ipv4&ipv6-->
+			        <div id="SELECT_Protocol_V4_6" >
+				        <div class="div_left"  id = "lang_ipv4_enable" >IPv4 Enable :</div>
+				        <div class="div_right"><input type="checkbox" id="INPUT_EnableIPv4" onClick="change_ipv4_enable()"/></div>	
+				    <?if eq $var:G_IPv6Enable 1	
+				    `
+					    <div class="div_left" id = "lang_ipv6_enable">IPv6 Enable :</div>
+					    <div class="div_right"><input type="checkbox" id="INPUT_EnableIPv6" onClick="change_ipv6_enable()" /></div>	
+				    `?>
+			        </div>					
+				</div>
+				<!-- PPPoE -->
+				<div id="pppoe">
+				<p class="do bk_black" id = "lang_PPP_config">PPP Username and Password</p>
+				<div class="div_black">
+					<div class="div_left" id = "lang_ppp_name">PPP Username :</div><div class="div_right"><input type="text" id="INPUT_UserName" style="width:160px"/></div>
+					<div class="div_left" id = "lang_ppp_password">PPP Password :</div><div class="div_right"><input type="password" id="INPUT_Psd" style="width:160px"/></div>
+					<div class="div_left" id = "lang_ppp_conf_password">Confirm PPP Password :</div><div class="div_right"><input type="password" id="INPUT_ConfirmPsd" style="width:160px"/></div>
+					<div class="div_left" id = "lang_auth">Authentication Method :</div><div class="div_right"><select id="SELECT_AuthMethod" style="width:160px">
+																								<option value="Auto">AUTO</option>
+																								<option value="PAP">PAP</option>
+																								<option value="CHAP">CHAP</option>
+																								<option value="MS-CHAP">MS-CHAP</option>
+																							  </select>
+					</div>
+					<div class="div_left" id = "lang_dialup">Dial-up mode :</div><div class="div_right"><select id="SELECT_DialupMode" onChange="uiDialUp()" style="width:160px">
+																						<option value="Manual">Manual</option>
+																						<option value="AlwaysOn">AlwaysOn</option>
+																						<option value="OnDemand">OnDemand</option>
+																					 </select>
+					</div>
+					<!-- Inactivity Timeout -->
+					<div id="inatimeout">
+					<div class="div_left" id = "lang_timeout">Inactivity Timeout :</div><div class="div_right"><input type="text" id="INPUT_InaTimeout" maxlength="5" style="width:160px"/><span id = "lang_second"> (Seconds [60-65535])</span></div>
+					</div>
+					<div class="div_left" id = "lang_MRU">MRU Size :</div><div class="div_right"><input type="text" id="INPUT_MTUSize" maxlength="4" style="width:160px"/> (576~1492)</div>
+					<div class="div_left" id = "lang_alive">Keep Alive :</div><div class="div_right"><input type="checkbox" id="INPUT_KeepAlive" onClick="uiKeepAliveEnable()"/></div>
+					<!-- LCP ECHO Configuation -->
+					<div id="s_LcpEchoConfig">
+					<div class="div_left" id = "lang_lcpechointerval">Lcp Echo Interval (sec) :</div><div class="div_right"><input type="text" id="INPUT_LCPEchoInterval" maxlength="5" style="width:160px"/></div>
+					<div class="div_left" id = "lang_lcpechoretry">Lcp Echo Failure :</div><div class="div_right"><input type="text" id="INPUT_LCPEchoRetry" maxlength="5" style="width:160px"/></div>
+					</div>
+					<div class="div_left" id = "lang_static_enable">Use Static IP Address :</div><div class="div_right"><input type="checkbox" id="INPUT_StaticIpAddr" onClick="disCtrl('s_ipAddr',this.checked)"/></div>
+					<!-- IP Address -->
+					<div id="s_ipAddr">
+					<div class="div_left" id = "lang_static_IP">IP Address :</div><div class="div_right"><input type="text" id="INPUT_IPAddress" maxlength="15" style="width:160px"/></div>
+					</div>
+					<div id="ppp_gw" style="display:none;">  <!-- ppp gw -->
+					<div class="div_left sh"></div><div class="div_right bo"><input type="radio" name="ppp_gw" id="INPUT_PPP_DefaultGw_A" value="0" onClick="onclkPppAddr()" checked/> <label for="INPUT_PPP_DefaultGw_A">Obtain default gateway automatically</label></div>
+					<div class="div_left sh"></div><div class="div_right bo"><input type="radio" name="ppp_gw" id="INPUT_PPP_DefaultGw_F" value="1" onClick="onclkPppAddr()" /> <label for="INPUT_PPP_DefaultGw_F">Use the following default gateway :</label></div>
+					<!-- PPP Address1 -->
+					<div id="ppp_addr1">
+					<div class="div_left">Use Remote WAN IP Address :</div><div class="div_right"><input type="radio" name="ppp_ipaddr" id="INPUT_RemoteIpAddr_PPP" value="0" onClick="onclkGwPpp()" checked/> <input type="text" id="INPUT_IpAddr_PPP" maxlength="15" /></div>
+					</div>
+					<!-- PPP Address2 -->
+					<div id="ppp_addr2">
+					<div class="div_left">Use WAN Interface :</div><div class="div_right"><input type="radio" name="ppp_ipaddr"  id="INPUT_WanIpAddr_PPP" value="1" onClick="onclkGwPpp()"/> <select id="SELECT_WanIntf_PPP"><option> </option></select></div>
+					</div>
+				</div>
+				</div>
+				</div>
+				<!-- Static -->
+				<div id="static">
+				<p class="do bk_black" id = "lang_ip_config">WAN IP Settings</p>
+				<div class="div_black">
+					<!--  -->
+					<div id="IPoA_MER">
+						<!-- IP Address1 -->
+						<div id="ip_addr1">
+							<div class="div_left" id = "lang_ip_ip">WAN IP Address :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_WanIpAddr_IP" style="width:160px"/>
+							</div>
+							<div class="div_left" id = "lang_ip_mask">WAN Subnet Mask :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_WanMark_IP" style="width:160px"/>
+							</div>
+						</div>
+						<!-- IP Address2 -->
+						<div id="ip_addr2">
+							<div class="div_left" id = "lang_ip_gw">Default gateway :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_IpAddr_IP" style="width:160px"/>
+							</div>
+						</div>
+						<!-- IP Address3 -->
+						<div id="ip_addr3" style="display:none; ">
+							<div class="div_left">Use WAN Interface :</div>
+							<div class="div_right">
+								<input type="radio" name="INPUT_RemoteIpAddr_IP" value="1" onClick="onclkIpAddr_3()"/> 
+								<select id="SELECT_WanInf_IP"><option> </option></select>
+							</div>
+						</div>
+						<!-- IP Address4  -->
+						<div id="ip_addr4">
+							<div class="div_left" id = "lang_ip_dns1">Preferred DNS server :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_DnsServer_P" style="width:160px"/>
+							</div>
+							<div class="div_left" id = "lang_ip_dns2">Alternate DNS server :</div>
+							<div class="div_right">
+								<input type="text" id="INPUT_DnsServer_A" style="width:160px"/>
+							</div>
+						</div>
+						<!-- IP Address for ipv6-->
+						<?if eq $var:G_IPv6Enable 1	
+						`
+							<div id="ip_addr_ipv6" style="display:none; ">
+								<div class="div_left" id = "lang_ip6_ip">WAN IP6 Address :</div>
+								<div class="div_right"><input type="text" id="INPUT_WanIpAddr_IP6" /></div>
+								<div class="div_left" id = "lang_ip6_prefix">WAN IP6 Address Prefix length :</div>
+								<div class="div_right"><input type="text" id="INPUT_WanPrefix_IP6" /></div>
+								<div class="div_left" id = "lang_ip6_gateway">WAN IP6 Gateway :</div>
+								<div class="div_right"><input type="text" id="INPUT_IPv6_DefGateway" /></div>
+								<div class="div_left" id = "lang_ip6_prefix">WAN IP6 Prefix :</div>
+								<div class="div_right"><input type="text" id="INPUT_IPv6_Prefix" /></div>
+								<div class="div_left" id = "lang_ip6_prefix_len">WAN IP6 Prefix length :</div>
+								<div class="div_right"><input type="text" id="INPUT_IPv6_PrefixLen" /></div>
+								<div class="div_left" id = "lang_ip6_DNS1">Preferred IP6 DNS server :</div>
+								<div class="div_right"><input type="text" id="INPUT_IPv6_DnsServer_P" /></div>
+								<div class="div_left" id = "lang_ip6_DNS2">Alternate IP6 DNS server :</div>
+								<div class="div_right"><input type="text" id="INPUT_IPv6_DnsServer_A" /></div>
+							</div>
+						`?>
+					</div>
+				</div>
+				</div>
+			<?if eq $var:G_IPv6Enable 1	
+			`
+				<div id="IPV6_CFG">
+					<p class="do bk_black">IPV6 SETTINGS</p>
+					<div class="div_black">
+						<!-- Prefix Delegation -->
+						<div id="div_ipv6Prefix">
+							<div class="div_left">Prefix Delegation :</div>				
+							<div class="div_right"><input type="checkbox" id="INPUT_IPv6PrefixDelegationEnabled" checked/></div>			
+						</div>
+						<!-- IANA -->
+						<div id="div_ipv6Iada">
+							<div class="div_left">IANA :</div>    				
+							<div class="div_right"><input type="checkbox" id="INPUT_IPv6IANAEnabled" checked/></div>			
+						</div>            			
+					</div>	
+				</div>
+			`?>		
+				<!-- Network -->
+				<p class="do bk_black" id = "lang_net_config">Network Address Translation Settings</p>
+				<div class="div_black">
+					<!-- PPPoA/PPPoE/IPoA/MER -->
+					<div id="non-bridge">
+					<div class="div_left" id = "lang_nat_enable">Enable NAT :</div>
+                           <div class="div_right"><input type="checkbox" id="INPUT_EnableNat" onClick="onclkNatEnabled()"/></div>
+    					<div class="div_left" id = "lang_nat_type">NAT Type :</div>
+                           <div class="div_right"><select name="SELECT_Nat" id="SELECT_Nat" style="width:160px">
+			            																 <option value="symmetric">Symmetric Nat</option>
+			            																 <option value="full cone">Full Cone Nat</option>
+ 			        															 </select>
+ 			        	</div>
+					<div class="div_left" id = "lang_WAN_service">Enable WAN Service :</div><div class="div_right"><input type="checkbox" id="INPUT_EnableWanSv" /></div>
+					</div>
+					<!-- Bridge -->
+					<div id="is-bridge">
+					<div class="div_left" id = "lang_bridge_enable">Enable Bridge Service :</div><div class="div_right"><input type="checkbox" id="INPUT_EnableBridgeSv" onClick="uiSynaEnable()"/></div>
+					</div>
+					<div class="div_left" id = "lang_service_name">Service Name :</div><div class="div_right"><input type="text" id="INPUT_ServiceName" style="width:160px" readonly/></div>
+				</div>
+				<div class="div_button"><input type="button" id = "Apply" value="Apply" onClick="uiSubmit()"/> <input type="button" id = "Cancel" value="Cancel" onClick="backtowancfg()"/></div>
+			</div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5 id = "lang_help_hint">Helpful Hints...</h5>
+				<p id = "lang_help1">
+					When configuring the router to access the Internet, select the correct <b>Connection Type</b>  from the list.
+				</p>
+				<p id = "lang_help2">
+					Note that the  <b>username</b> and <b>password</b> are case-sensitive.  Most connection issues are caused by incorrect  <b>user name</b> or <b>password</b> combinations.				
+				</p>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>

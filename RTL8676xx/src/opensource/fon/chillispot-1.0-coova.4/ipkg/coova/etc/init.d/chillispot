@@ -1,0 +1,219 @@
+#!/bin/sh /etc/rc.common
+TMP_C=/tmp/chilli.conf
+ETC_C=/etc/chilli.conf
+PID_F=/var/run/chilli.pid
+PID_LOOP_F=/var/run/chilli_loop.pid
+LOG_LOOP_F=/var/log/chilli_loop.log
+LOOP=true
+WHITELIST=/etc/fon/whitelist.dnsmasq
+
+DEVICE=$(cat /etc/fon_device)
+VERSION=$(cat /etc/fon_version)
+REVISION=$(cat /etc/fon_revision)
+
+RADIUSSERVER1=radconfig01.fon.com
+RADIUSSERVER2=radconfig02.fon.com
+RADIUSSECRET=garrafon
+RADIUSADMUSR=FON02-${DEVICE}-${VERSION}.${REVISION}
+RADIUSADMPWD=chillispot
+
+
+quit()
+{
+	LOOP="false"
+	circular_log $LOG_LOOP_F "Signal caught. Exiting..."
+}
+
+circular_log() {
+	echo "chillispot $(date) $2" >> $1
+	tail -24 $1 > $1.tmp
+	mv $1.tmp $1
+}
+
+is_alive() {
+	if [ ! -f $PID_F ]; then
+		echo "dead"
+		return 0
+	fi
+
+	TEST_PID=$(cat $PID_F)
+
+	if [ ! -d /proc/$TEST_PID ]; then
+		rm $PID_F
+		echo "dead"
+		return 0
+	fi
+
+	CANDIDATE=$(cat /proc/$TEST_PID/status | grep Name: | awk '{ print $2 }')
+
+	if [ "$CANDIDATE" = "chilli" ]; then
+		echo "alive"
+		return 0
+	else
+		rm $PID_F
+		echo "dead"
+		return 0
+	fi
+}
+
+parse_whitelist() {
+        if [ -s $TMP_C ]; then
+                awk '/newdomain/ { print $2 }' $TMP_C |
+                awk -F. '/[a-zA-Z0-9\-\_]/ { print }' |
+                sed s/,/\\n/g > $WHITELIST
+		# Remove IPs that may have skipped the validation
+		cat $WHITELIST | grep -v [0-9]$ > $WHITELIST
+
+                sed /^newdomain/d -i $TMP_C
+        fi
+}
+
+radconfig() {
+	/usr/sbin/chilli_radconfig \
+		-c /dev/null \
+		--radiusserver1="$RADIUSSERVER1" \
+		--radiusserver2="$RADIUSSERVER2" \
+		--radiussecret="$RADIUSSECRET" \
+		--adminuser="$RADIUSADMUSR" \
+		--adminpasswd="$RADIUSADMPWD" \
+		--radiusnasid="$MAC" \
+		--dhcpif $wifi_ifname \
+		--wwwbin=/bin/true \
+		--ipup=/bin/true \
+		--ipdown=/bin/true \
+		> $TMP_C
+	
+	parse_whitelist
+
+	[ -n "$(cat $TMP_C)" ] && {
+		MD5SUM_TMP=$(md5sum $TMP_C | awk '{ print $1 }')
+		MD5SUM_ETC=$(md5sum $ETC_C | awk '{ print $1 }')
+		if [ ! "$MD5SUM_TMP" = "$MD5SUM_ETC" ]; then
+				rm $ETC_C
+				mv $TMP_C $ETC_C
+				circular_log $LOG_LOOP_F "RELOAD"
+				return 0
+		else
+				circular_log $LOG_LOOP_F "NO RELOAD"
+				return 1
+		fi
+		return 1
+	}
+
+	circular_log $LOG_LOOP_F "NO RELOAD"
+	return 1
+}
+
+get_info() {
+	. /lib/fon/config.sh
+
+	if [ "${DEVICE}" == "fonera20n" ]; then
+		MAC=$(ifconfig eth0.1 | grep HWaddr | awk -F "HWaddr " '{ print $2 }' | awk '{gsub(":","-",$1); print substr($0,0,17) }')
+	else
+		MAC=$(ifconfig ${wifi_ifname_mac:-wifi0} | grep HWaddr | awk -F "HWaddr " '{ print $2 }' | awk '{gsub(":","-",$1); print substr($0,0,17) }')
+	fi
+	MAC=${MAC:-fon}
+	#MAC="00-18-84-d0-08-7d"
+}
+
+do_start() {
+	get_info
+	ifconfig $wifi_ifname 0.0.0.0 down
+	WAN=`uci -P /var/state get fon.wan.mode`
+	DISABLE=`uci -P /var/state get fon.advanced.${WAN}`
+	[ "$DISABLE" == "1" ] && return 1 
+	SHARE=`uci get fon.advanced.sharewifi`
+	[ "$SHARE" == "0" ] && return 1 
+	if [ "${DEVICE}" == "fonera20n" ]; then
+		GPIO=`cat /proc/gpio_switch`
+		[ "$GPIO" == "1" ] && return
+	fi
+	radconfig
+
+	ifup hotspot
+
+	# insert a rule to drop handling of traffic that comes in from the wifi interface directly. this interferes with QoS
+	iptables -t mangle -D PREROUTING -i "$wifi_ifname" -j DROP 2>/dev/null >/dev/null
+	iptables -t mangle -I PREROUTING 1 -i "$wifi_ifname" -j DROP
+
+	# enable the wifi interface ssid
+	ifconfig $wifi_ifname down
+	config_get ssid public essid
+	if [ "${DEVICE}" == "fonera20n" ]; then
+		echo iwpriv "$wifi_ifname" set SSID="FON_$ssid"	
+	else
+		iwconfig "$wifi_ifname" essid "FON_$ssid"
+	fi
+
+	ifconfig $wifi_ifname 0.0.0.0 up # deconfigure the wifi interface
+
+	/usr/sbin/chilli \
+		--dns1="192.168.182.1" \
+		--dns2="192.168.182.1" \
+		--radiusnasid="$MAC" \
+		--dhcpif $wifi_ifname \
+		--papalwaysok \
+		--pidfile=$PID_F \
+		--localusers=/etc/fon/localusers \
+		--wwwbin=/bin/true \
+		--ipup=/bin/true \
+		--ipdown=/bin/true \
+		--conup="fs -l hotspot_inccount" \
+		--condown="fs -l hotspot_decount"
+
+	[ $? == 0 ] && return 0
+	return 1
+}
+
+start() {
+	
+	[ alive = "$(is_alive)" ] && return 0
+	do_start
+	# amazing automonitoring system.
+	[ $? == 0 ] && fs -l hotspot_wdt_start
+}
+
+restart() {
+	fs -l hotspot_wdt_stop
+	killall chilli > /dev/null 2>&1
+	rm -f /var/run/chilli.pid
+	do_start
+	[ $? == 0 ] && fs -l hotspot_wdt_start 
+}
+
+stop() {
+	get_info
+
+	fs -l hotspot_wdt_stop
+
+	[ alive = "$(is_alive)" ] || {
+		echo ERROR: chillispot is not running
+		[ -f $PID_LOOP_F ] && kill $(cat $PID_LOOP_F) > /dev/null 2>&1
+			rm -f $PID_LOOP_F > /dev/null 2>&1
+			exit 0
+	}
+
+	[ -f $PID_F ] && kill $(cat $PID_F) >/dev/null 2>&1
+	rm -f $PID_F
+	[ -f $PID_LOOP_F ] && kill $(cat $PID_LOOP_F) > /dev/null 2>&1
+	rm -f $PID_LOOP_F
+	# disable the wifi interface ssid
+	ifconfig "$wifi_ifname" down
+	circular_log $LOG_LOOP_F "STOP"
+}
+
+alive() {
+	ALIVE=$(is_alive)
+	echo "chillispot is $ALIVE"
+	if [ $ALIVE = "alive" ]; then
+		exit 1
+	fi
+
+	exit 0
+}
+
+reload() {
+	get_info
+	radconfig
+	killall -HUP chilli
+}

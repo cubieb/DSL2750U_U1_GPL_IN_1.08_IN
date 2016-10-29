@@ -1,0 +1,81 @@
+menuconfig VENDOR_REALTEK 
+  bool "Realtek Applications"
+  depends on VENDOR
+  default n
+
+config REALTEK_AUTH_APP
+	bool 'Realtek Auth app'
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek Auth app
+
+config REALTEK_FLASH_TOOLS
+	bool 'Realtek Flash Tools'
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek Flash Tools
+		
+config USER_WIRELESS_TOOLS_AUTH
+	bool 'Realtek wireless tools'
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek wireless tools
+
+config REALTEK_ADSL_APP
+	bool "Realtek adsl config tool"
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek adsl app
+
+config REALTEK_SAR_APP
+	bool "Realtek sar config tool"
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek sar configuration application
+
+config REALTEK_ATM_APP
+	bool "Realtek atm(br2684) config tool(EOA and IPOA)"
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek atm app
+
+config REALTEK_ADSL_START 
+	bool "start rtl8672 adsl"
+	default y
+	depends on VENDOR_REALTEK
+	help
+		start rtl8672 adsl pid
+		
+config REALTEK_WPS_APP
+	bool "Realtek WPS config tool"
+	default y
+	depends on VENDOR_REALTEK && APPS_LOGIC_WPS
+	help
+		Realtek WSC
+		
+config REALTEK_WPS2X_APP
+	bool "Realtek WPS2X config tool"
+	default y
+	depends on VENDOR_REALTEK && APPS_LOGIC_WPS
+	help
+		Realtek WSC_2.0
+		
+config REALTEK_NET_LOGGER
+	bool "Realtek netlogger"
+	default y
+	depends on VENDOR_REALTEK
+	help
+		Realtek netlogger
+
+config REALTEK_USB_TEST
+	bool "Realtek USB test tool"
+	default n
+	depends on VENDOR_REALTEK
+	help
+		Realtek USB test tool

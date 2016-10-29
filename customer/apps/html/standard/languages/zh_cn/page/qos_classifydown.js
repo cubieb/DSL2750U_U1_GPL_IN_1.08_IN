@@ -1,0 +1,66 @@
+var data_language = {
+
+	innerHTML : {
+		lang_QoSlassifyConfiguration : 'QOS 下行配置',
+		lang_dsc1 : '该页面用于QOS下行配置',
+		lang_Lists : '列表',
+		lang_ClassificationResul : '分类结果',
+		lang_ClassName : '分类名',
+		lang_AssociatedQueue : '关联队列',
+		lang_DSCPMark : 'DSCP 标记',
+		lang_Mark : '802.1P 标记',
+		lang_state : '状态',
+		lang_Details : '更多信息',
+		lang_QoSClassifyConfiguration : 'QOS分类设置',
+		lang_TrafficClassName : '分类名：',
+		lang_Enable : '启用分类：',
+		lang_discription_1 : '指定分类规则',
+		lang_class_mode_choose : '分类类型：',
+		lang_phy_port : '物理LAN端口：',
+		lang_src_mac_addr : '源MAC地址：',
+		lang_src_mac_mask : '源MAC掩码：',
+		lang_dst_mac_addr : '目的MAC地址：',
+		lang_dst_mac_mask : '目的MAC掩码：',
+		lang_ethernetType : '选择协议：',
+		lang_ethernetType_match : '802.1q 优先级：',
+		lang_src_ip_addr : '源IP地址：',
+		lang_src_ip_mask : '源子网掩码：',
+		lang_dst_ip_addr : '目的IP地址：',
+		lang_dst_ip_mask : '目的子网掩码：',
+		lang_dscp_check : 'DSCP 检查：',
+		lang_protocol : '协议：',
+		lang_src_port : '源端口：',
+		lang_dst_port : '目的端口：',
+		lang_portorpor1 : '（端口 或则 端口：端口）',
+		lang_portoror2 : '（端口 或则 端口：端口）',
+		lang_discription_2 : '指定分类结果',
+		lang_assign_queue : '指定分类队列：',
+		lang_dscp_mark : ' 标记 DSCP：',
+		lang_ethernetType_mark : '802.1q标记优先级：',
+		lang_help : '帮助...',
+		lang_help_dsc1 : '点击下拉条框，查看事先定义的各应用名。',
+		lang_help_dsc2 : '您可以为你的分类指定您需要的条件，这些条件被分成了两类：L1&L2 and L3&L4，只有一个能生效。',
+		lang_help_dsc3 : '您可以要么将分类和一个队列绑定，要么作为一个标记。',
+		lang_More : '更多...'
+	},	
+	value : {
+		add : '添加',
+		edit : '编辑',
+		'delete' : '删除',
+		apply : '应用',
+		cancle : '取消'
+	},
+	 option_text:{
+     select_c_ethernet_type : ['任意','IPv4','X25','ARP','FR_ARP','BPQ','DEC','DNA_DL','DNA_RC','DNA_RT','LAT','DIAG','CUST','SCA','TEB','RAW_FR','AARP','ATALK','802_1Q','IPX','NetBEUI','IPv6','PPP','ATMMPOA','PPP_DISC','PPP_SES','ATMFATE','LOOP'],
+	 select_c_8021q_match : ['不匹配','0','1','2','3','4','5','6','7'],
+	 select_c_dscp_check : ['任意','默认','AF13(001110)','AF12(001100)','AF11(001010)','CS1(001000)','AF23(010110)','AF22(010100)','AF21(010010)','CS2(010000)','AF33(011110)','AF32(011100)','AF31(011010)','CS3(011000)','AF43(100110)','AF42(100100)','AF41(100010)','CS4(100000)','EF(101110)','CS5(101000)','CS6(110000)','CS7(111000)'],
+	 select_c_protocol : ['任意','TCP/UDP','TCP','UDP','ICMP'],
+	 select_c_dscp_mark : ['不指定','默认','AF13(001110)','AF12(001100)','AF11(001010)','CS1(001000)','AF23(010110)','AF22(010100)','AF21(010010)','CS2(010000)','AF33(011110)','AF32(011100)','AF31(011010)','CS3(011000)','AF43(100110)','AF42(100100)','AF41(100010)','CS4(100000)','EF(101110)','CS5(101000)','CS6(110000)','CS7(111000)'],
+	 select_c_8021q_mark : ['不指定','0','1','2','3','4','5','6','7']
+    },
+	dynamic : {
+        noassign : '不指定',
+		view  : '查看',
+		any   : '任意'
+    }	
+}

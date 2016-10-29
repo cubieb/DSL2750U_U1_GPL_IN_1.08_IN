@@ -1,0 +1,162 @@
+<div class="dialog_faq dialog_faq_app" ></div>
+<div class="applications">
+  <div class="applications_top">	
+	<div class="applications_left">
+		<span class="trad" key="APPLICATIONS_LIST">Lista de aplicaciones</span>
+		<div id="applications_list"></div>											
+		<div class="applications_controls">
+			<div class="controls_left">
+				<div class="plus_icon" id= "plus"></div>
+				<div class='minus_icon' id='minus_icon'></div>
+			</div>
+			<div class="controls_right">
+				<div class="page_numbers right hand" id="page_number3">3</div>
+				<div class="line right" id= "lineRight"></div>
+				<div class="page_numbers right hand" id="page_number2">2</div>				
+				<div class="line right"></div>
+				<div class="page_numbers right hand" id="page_number1">1</div>
+			</div>	
+		</div>				
+	</div>
+	<div class="applications_divider"></div>
+	<div class="applications_right">
+		<div class="left hand" id="divNameApp">
+			<span class="application_name" id="application_name"></span>
+			<div class="edit_iconLittle"  id="edit_icon" style='margin-top: 0;'></div>
+		</div>
+		<div class="rules_title">
+			<div class="title_grey" ><span class="trad" key="APPLICATIONS_RULES_LIST">Reglas que se aplican</span></div>
+			<div id="plus_icon">
+				<span class="plus_icon_txt" class="trad" key="APPLICATIONS_ADD_RULE">Añadir regla</span>
+				<div class="plus_icon"></div>
+			</div>			
+		</div>
+		<div class="line_grey"></div>
+		<!-- Div para añadir el formulario para crear reglas y las ya creadas -->  		
+		<div class="scroll_applications">
+			<div id="rules_list"></div>	
+		</div>			
+		<div class="application_device" id="application_device">						
+		</div>	
+	</div>
+  </div>
+</div>	
+<div class="line_grey"></div>
+<div class="centred">
+	<div id="cancel" name="cancel" class="cancel hand">
+		<div class="cancel_icon"></div>			
+		<span class="trad cancel_txt" key="COMMON_CANCEL">Cancelar</span>
+	</div>
+	<div id="acceptApp" class="accept buttons_space hand">
+		<div class="accept_icon"></div>			
+		<span class="trad accept_txt" key="APPLICATIONS_ACCEPT">Aceptar</span>
+	</div>
+</div>
+
+<div id="sample_rule" style="display: none">
+	<div id="ruleN" class='rule' idRule='-1' >
+		<div class="css_sized_container">
+			<span class="trad" key="APPLICATIONS_RULES_OPEN">Abrir</span>
+			<input type="checkbox" id="checkPortsN">
+		</div>
+		<div style='width: 200px;float:left'>
+			<div class="fromField">
+				<span id='fromN' style="width: 42px;text-align:right" class='trad' key='APPLICATIONS_RULES_FROM'>Desde</span>
+				<input type='text' id='ruleStartWanN' maxlength='5' onkeyup="changeFlag();" onblur="checkPort(this);" onkeypress="checkNumbers(event);" >
+			</div>
+			<div id='untilN' class="untilField">
+				<span style="width: 38px;text-align:right" class='trad' key='APPLICATIONS_RULES_UNTIL'>Hasta</span>
+				<input type='text' id='ruleEndWanN' maxlength='5' onkeyup="changeFlag();" onblur="checkPort(this);"  onkeypress="checkNumbers(event);"  >
+			</div>
+		</div>
+		<div class='css_sized_container'>
+			<span class='trad' key='APPLICATIONS_RULES_TRAFFIC'>Para tráfico</span>
+			<select id='select_trafficN' onchange="changeFlag();">
+				<option value='ANY' class='trad' key='APPLICATIONS_RULES_ANY'>TCP y UDP</option>
+				<option value='TCP'> TCP </option>
+				<option value='UDP'> UDP </option>
+			</select>
+		</div>
+		<div class='minus_icon' ></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/networkMap/applications.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){	
+	loadDevicesList();
+	loadCreateRuleForm();
+	loadNameNewApplication();
+	infoApplications(showApplicationsList);
+	
+	$('#plus_icon').click(function() {
+		loadCreateRuleForm();
+		load_some_iphone_butons($("#rules_list input[type=checkbox]"));
+	});
+	$('#plus').click(function() {
+		loadNewApplication();
+	});
+	$('#minus_icon').click(function() {
+		deleteApplicationSelected();
+	});
+	$('#page_number1').click(function() {
+		showPageApplicationsList(1);
+	});
+	$('#page_number2').click(function() {
+		showPageApplicationsList(2);
+	});
+	$('#page_number3').click(function() {
+		showPageApplicationsList(3);
+	});
+		
+	$('#acceptApp').click(function() {
+		createNewApplication();
+	});
+	$('#dialog').dialog({
+		beforeclose: function(event, ui) {
+			if(flagChange){
+				showInfoDialog(_("APPLICATIONS_CONFIRM_LOSE_CHANGES"), false, true, function (resp){
+					if (resp == false){
+						flagChange=false;
+						closeDialog();
+						return;
+					}
+					
+					if (!validateForm()) {
+						renoveSession();
+						return;
+					}
+						
+					applicationJSON = createApplicationJSON();
+					if (applicationJSON == false) {
+						renoveSession();
+						return;
+					}
+					
+					if (flagModify) {
+						modifyApplication(applicationJSON, reloadList);
+					}
+					else {
+						newApplication(applicationJSON, reloadList);
+					}
+					flagChange = false;
+					closeDialog();
+					
+					renoveSession();
+				});	
+				return false;
+			}
+		}
+	})
+	effectHover('plus_icon', 'plus_icon');
+	effectHover('divNameApp', 'edit_iconLittle');	
+	renoveSession();	
+	
+	$('.dialog_faq_app').click(function() {		
+		loadHelpDialog(_("HELP_TITLE"), function() { linkContent(6,5); });		
+	});
+	
+	flagChange = false;
+});
+</script>
+

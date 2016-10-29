@@ -1,0 +1,898 @@
+2002-08-29  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* NEWS, README, configure.ac:
+	Version 0.4
+
+	* .cvsignore:
+	Added compile-test dir
+
+	* test/Makefile.am:
+	Added test/compile-test
+
+	* test/compile-test:
+	initial checkin
+
+	* src/cfg.h, src/dhcp.h:
+	Don't include <config.h> in headers anymore
+
+	* contrib/dhcp-fwd.init:
+	Use /bin/bash as interpreter
+
+	* contrib/dhcp-fwd.init:
+	fixed 'restart' command
+
+	* m4/changelog.am:
+	rcs2log will be called with '-l 0' now
+	made Makefile a dependency of ChangeLog
+
+	* src/main.c:
+	Fixed reverted logic in alloca()-errordetection
+
+	* README:
+	Updated memory-footprint numbers and documented how they were achieved
+
+	* README:
+	Removed missing documentation from buglist; we have a man-page
+
+	* README:
+	Removed resource-limits paragraph from buglist; they can be configured
+	at runtime
+
+	* src/wrappers.h:
+	Removed Ealloca() function; it makes no sense to write an error-wrapper
+	around alloca()
+
+	* src/main.c:
+	FIX: fixed broken usage of alloca()
+	fixed compiler warning
+
+	* src/logging.c:
+	Fixed potential fault when giving out exactly 256 chars
+
+	* src/dhcp.h:
+	Including <assert.h> now
+
+	* etc/dhcp-fwd.cfg:
+	Local adaptations
+
+	* m4/ensc_diet.m4:
+	Fixed broken evaluation of the --enable-dietlibc value
+
+	* compat/if_packet.h, m4/ensc_compat.m4:
+	Do not try to autodetect L2-protocol includes; just use the way suggested
+	in packet(7).
+
+2002-08-28  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* NEWS, configure.ac:
+	Version 0.3.2
+
+	* Makefile.am:
+	Added compat/if_packet.h
+
+	* src/main.c:
+	Using compatibility-wrapper for <netpacket/packet.h> now
+
+	* src/wrappers.h:
+	Added setsid() wrapper
+
+	* src/cfg.c:
+	- Added code to write pid-file when using -n option
+	- Cleaned up initialization-code by splitting it into smaller functions
+	- setsid() will now be called after forking; reported by Michal Pokrywka
+
+	* src/cfg.h:
+	- Write pid-file also when using '-n' option
+	- Cleaned up initialization-code by splitting it into smaller functions
+
+	* m4/ensc_compat.m4:
+	Added check for <netpacket/packet.h>
+
+	* compat/if_packet.h, contrib/dhcp-fwd.sysconfig:
+	initial checkin
+
+	* Makefile.am, contrib/dhcp-fwd.init, dhcp-forwarder.spec.in:
+	Added /etc/sysconfig/dhcp-fwd
+
+	* doc/dhcp-fwd.man:
+	Documented '-n' switch
+
+2002-08-27  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* src/cfg.c:
+	- Used getopt() to parse cmdline
+	- Added '-n' option to prevent fork (is currently just an alias of the
+	  already existing '-d' option)
+
+	* m4/ensc_developing.m4:
+	Made NDEBUG evaluate to true
+	Fixed Typo
+
+	* contrib/dhcp-fwd.conf:
+	Added note about dietlibc and non-files NSS
+
+	* src/dhcp.h:
+	minor formatting changes
+
+	* src/cfg.c, src/cfg.h, src/parser.c:
+	Allowed non-ethernet interfaces on server-side; thanks to
+	Michal Pokrywka for reporting this
+
+2002-08-06  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* src/main.c:
+	Remove agent-id option by moving memory; WinNT is complaining when
+	padding it with cdPAD
+
+	* src/dhcp.h:
+	Added DHCP_removeOption() function
+
+2002-07-12  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* dhcp-forwarder.spec.in, NEWS, README, configure.ac:
+	Version 0.3
+
+	* src/cfg.c, src/output.c, src/wrappers.h:
+	Fixed mode of newly created files
+
+	* Makefile.am, README, contrib/dhcp-fwd.conf, dhcp-forwarder.spec.in:
+	Renamed dhcpfwd to dhcp-fwd
+
+	* README:
+	Fixed some IPs... just to be correctly...
+
+2002-07-11  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* dhcp-forwarder.spec.in:
+	Typos
+	Added PreReq's
+
+	* contrib/dhcp-fwd.init:
+	Added config: tag
+
+	* NEWS, configure.ac, src/logging.c:
+	Version 0.2.5
+
+	* test/data/parse-test1.out, test/data/parse-test2.out, test/parseTest.c:
+	Typo
+
+	* src/wrappers.h:
+	Reworked broken *etrlimit() prototype hack
+
+	* src/output.c:
+	Fixed formating bug in writeMsgTimestamp()
+	Fixed assigning of logfile-fd
+
+	* contrib/dhcp-fwd.conf, doc/dhcp-fwd.man:
+	Documented 'logfile' option
+
+	* Makefile.am:
+	Rearranged sources to prevent calling splint with duplicate filenames
+
+	* m4/ensc_compat.m4:
+	Added test for broken set*limit() headers
+
+	* contrib/dhcp-fwd.conf:
+	Added sample configuration for 'ulimit' option
+
+	* src/logging.c, src/logging.h, src/main.c, src/recvfromflags.c, src/recvfromflags.h:
+	Applied changes of the logging-mechanism
+
+	* src/output.c, src/output.h:
+	Added logfile support
+
+	* src/parser.c:
+	Put single assert() into a block to make g++ silent
+
+	* src/wrappers.h:
+	Added Edup*() and Eopen() wrappers
+	Added workaround for broken glibc setrlimit() prototypes
+
+	* test/parseTest.c:
+	Added missing <stdlib.h> include
+	Detect calling without arguments
+
+	* src/dhcp.h:
+	Fixed cast in DHCP_zeroOption()
+
+	* src/cfg.c:
+	Removed @bounds*@ annotations; they are not supported yet...
+	Added logfile-support
+
+	* doc/dhcp-fwd.man:
+	Added documentation for 'ulimit' config-option
+
+	* src/cfg.c, src/wrappers.h:
+	SECFIX: Drop supplemental groups also
+
+	* NEWS, configure.ac:
+	Version 0.2.4
+
+	* test/Makefile.am:
+	Use ..src/* objects directly
+
+	* test/data/parse-test1.out, test/parseTest.c:
+	Fixed handling of RLIM_INFINITY
+
+2002-07-10  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* src/logging.c:
+	Added missing '#include <stdarg.h>'
+
+	* src/assertions.h, src/compat.h, src/dhcp.h, src/inet.h, src/logging.c, src/logging.h, src/main.c, src/output.c, src/output.h, src/parser.h, src/recvfromflags.h, src/splint.h, src/splint_compat.h, src/util.h, src/wrappers.h:
+	Refined splint annotations to allow -strict checking
+
+	* src/parser.c:
+	Made ulimits configurably at runtime
+	Made parsing more robust
+	Extended integer parsing
+	Refined splint annotations to allow -strict checking
+
+	* src/cfg.c, src/cfg.h:
+	Made ulimits configurably at runtime
+	Refined splint annotations to allow -strict checking
+
+	* test/cmpout-script, test/.cvsignore, test/Makefile.am, test/data/parse-test1.in, test/data/parse-test1.out, test/data/parse-test2.in, test/data/parse-test2.out, test/data/write.out, test/parseTest.c, test/writeTest.c, src/ulimit_codes.h:
+	Initial checkin
+
+	* m4/ensc_developing.m4:
+	Made NDEBUG really a boolean...
+
+	* splint.conf:
+	Adjusted settings to our needs
+
+	* configure.ac:
+	Added testsuite files
+	Refined splint options in config.h
+
+	* Makefile.am:
+	Added src/ulimit_codes.h
+
+2002-07-05  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_compat.m4:
+	Added '-pedantic' to cover some more broken cases...
+
+	* src/cfg.c:
+	Made syslimits struct static
+
+	* splint.conf:
+	Define RLIMIT_LOCKS to prevent preprocessor warning
+
+	* src/cfg.c:
+	Made syslimits global
+
+	* configure.ac, m4/ensc_compat.m4, src/cfg.c, src/compat.h, src/main.c, src/recvfromflags.c:
+	Fixes to compile with egcs-1.1.2
+
+	* m4/ensc_compat.m4:
+	Initial checkin
+
+	* src/.cvsignore:
+	Added .*.swp files
+
+	* Makefile.m4.am, m4/ensc_diet.m4, src/compat.h:
+	in_addr_t related fixes to compile with borken libc's
+
+	* m4/changelog.am:
+	Adopted to behavior of recent rcs2log
+
+	* NEWS, configure.ac, dhcp-forwarder.spec.in:
+	Version 0.2.3
+
+	* README:
+	Updated memory-footprints
+
+	* contrib/dhcp-fwd.conf:
+	Documented 'ip' field
+	Fixed bad server ip
+
+	* .cvsignore, src/.cvsignore:
+	Added some splint-related files
+
+	* README:
+	Minor fixes
+
+	* src/splint_compat.h:
+	Added vsnprintf() prototype
+
+	* src/logging.c:
+	Added lot of (probably unnecessary) code to make buffer-overflows
+	impossible
+
+	* src/dhcp.h:
+	Added splint annotations
+
+	* src/main.c:
+	use if_real_ip instead of if_ip in lookupFD()
+
+	* src/cfg.h:
+	- Added if_real_ip field to struct InterfaceInfo to work correctly
+	  with modified 'giaddr' (IP_PKTINFO returns the real ip and not the
+	  ip the packet was sent to)
+
+	* src/cfg.c:
+	- Added if_real_ip field to struct InterfaceInfo to work correctly
+	  with modified 'giaddr' (IP_PKTINFO returns the real ip and not the
+	  ip the packet was sent to)
+	- Removed FSIZE and NPROC limits since they break logging and fork()
+	  on some systems
+	- Added diagnostic on failed fork
+	- limit resources in child only; workarounds some problems with fork()
+
+	* NEWS, configure.ac:
+	Version 0.2.2
+
+	* Makefile.am:
+	Added splint-rules
+
+	* README:
+	Added some documentation regarding user and chroot setup
+	Added resource-limits to the test-list
+	Added sample configuration
+
+	* doc/dhcp-fwd.man:
+	Documented 'ip' option
+
+	* m4/ensc_diet.m4:
+	Added ENSC_DIET_CHECK_IN_ADDR_T macro to check existence of in_addr_t
+	type
+
+	* src/wrappers.h:
+	Added Esetrlimit() wrapper
+
+	* src/splint_compat.h:
+	Added RLIMIT_* and INADDR_NONE constants
+
+	* src/recvfromflags.c:
+	Fixed msg.msg_iovlen (commited inadvertently a splint-testcase)
+
+	* src/parser.c:
+	Added support for 'ip' config option
+
+	* src/main.c:
+	Changed fd_set -> fdset paramname to fixed some compilation issues
+	Fixed acADD_ID case
+	Fixed handling of packet with our giaddr
+
+	* src/logging.c:
+	Fixed length-calculation
+	Using strn* functions now
+
+	* src/dhcp.h:
+	Fixed bad endianess for bcast-flags
+	Fixed broken and server-killing recursion in DHCP_nextSingleOptionConst
+
+	* src/compat.h:
+	Fixed in_addr_t detection
+
+	* src/cfg.h:
+	Fixed include for PATH_MAX
+
+	* src/cfg.c:
+	Added support for setting giaddr
+	Calling setrlimit() after initialization
+
+2002-07-04  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* configure.ac:
+	Added include-guards in config.h
+	Added check for splint
+
+	* splint.conf:
+	Fixed params
+
+	* src/logging.c:
+	Fixed bad format-specifier in printf()
+
+	* src/main.c, src/parser.c:
+	Added/corrected/changed lot of splint annotations
+	Renamed config.* to cfg.*
+
+	* src/assertions.h, src/compat.h, src/dhcp.h, src/inet.h, src/parser.h, src/recvfromflags.c, src/recvfromflags.h, src/splint.h, src/splint_compat.h, src/wrappers.h:
+	Added/corrected/changed lot of splint annotations
+
+	* src/cfg.c, src/cfg.h, src/config.c, src/config.h:
+	Renamed config.* to cfg.*; prevents naming conflicts in splint
+	Added/corrected/changed lot of splint annotations
+
+	* src/splint.h:
+	Initial checkin
+
+	* src/splint_compat.h:
+	Added a lot of functions, macros and typedefs being erroneously in
+	lib/unix.h
+
+	* src/util.h:
+	Removed bool-typedef (now in compat.h)
+
+	* src/wrappers.h, src/recvfromflags.h, src/recvfromflags.c:
+	Splint related fixes and annotations
+
+	* src/parser.h:
+	Fixed splint annotations
+
+	* src/parser.c:
+	Splint related fixes and annotations
+
+	* src/main.c, src/output.c:
+	FIX: remove agent-info in REPLY's
+	Adapted changes in the dhcp.flags field
+	Splint related fixes and added annotations
+	Minor code cleanups
+
+	* src/logging.c:
+	Fixed bad behavior when packet is neither a REPLY nor REQUEST
+	Added some error-handling to satisfy splint
+	Splint related fixes and added annotations
+
+	* src/inet.h:
+	Splint related fixes and added annotations
+
+	* src/dhcp.h:
+	- Removed difficult bitfield construct of the dhcp.flags field; it makes
+	  too much work to cover any endianess...
+	- Added DHCP_zeroOption() function
+	- Splint related fixes and added annotations
+
+	* src/config.h:
+	Splint related fixes and added annotations
+
+	* src/config.c:
+	Closing fd 0 now
+	Splint related fixes
+	Minor code cleanups
+
+	* src/compat.h:
+	Splint related fixes
+
+	* m4/substrule.am:
+	s!substrule!substvar!
+
+	* m4/ensc_developing.m4:
+	Make NDEBUG a boolean ('(!0)')to make splint quiet
+
+	* configure.ac:
+	Minor cosmetical changes
+
+	* Makefile.m4.am:
+	Added substrule.am
+
+	* Makefile.am:
+	Added splint-rules
+
+	* INSTALL:
+	Updated to text of automake-1.6.2
+
+2002-06-28  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* src/parser.c:
+	FIX: closing cfg-file after parsing it
+
+2002-06-17  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* dhcp-forwarder.spec.in:
+	Added full URL to Source0
+	Call 'service ... restart' in %postun
+	Added some doc regarding the homedir
+
+	* Makefile.am, m4/substrule.am:
+	Generalized and outsourced the sed-substitution stuff
+
+	* configure.ac:
+	Added some tests suggested by 'autoscan'
+
+2002-06-14  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* NEWS, configure.ac:
+	Version 0.2
+
+	* dhcp-forwarder.spec.in:
+	Added mandir
+
+	* README:
+	Updated
+
+	* Makefile.am:
+	Added man-page
+
+	* doc/.cvsignore, doc/dhcp-fwd.man:
+	Initial checkin
+
+	* NEWS, configure.ac:
+	Version 0.1.3
+
+	* .cvsignore:
+	Added config.cache
+
+	* INSTALL:
+	Added hint about README
+
+	* README:
+	Updated memory footprints
+	Added and corrected doc
+
+	* m4/ensc_diet.m4:
+	Do not cache ensc_use_dietlibc anymore
+	Cache setting of the DIET environment variable
+	Autodetect dietlibc
+
+	* .cvsignore:
+	Added temporary www-files
+
+	* configure.ac:
+	Requires automake-1.6 now
+	Fixed '--disable-dietlibc' case
+
+	* README:
+	Added INSTALLATION section
+	Beautified
+
+	* Makefile.am:
+	Added www-distribution stuff
+
+	* ChangeLog.sed:
+	Added me
+
+2002-06-13  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* configure.ac:
+	Version 0.1
+
+	* dhcp-forwarder.spec.in:
+	Added '--without dietlibc' option
+	Added description
+
+	* Makefile.m4.am, Makefile.am:
+	Added gpgsig.am
+
+	* m4/diet.am, m4/ensc_diet.m4:
+	Fixed usage of DIET so 'gcc' instead of ' gcc' will be executed when
+	disabling dietlibc
+
+	* m4/gpgsig.am:
+	initial checkin
+
+2002-06-12  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* src/parser.c:
+	Fixed EXITFATAL not to show trailing '\0' in messages
+
+	* src/output.c:
+	Minor code cleanups
+
+	* src/config.c:
+	Added showHelp()/showVersion() functions
+	Fixed broken pidfile stuff
+
+	* README:
+	Added some doc
+
+	* src/.cvsignore:
+	Initial checkin
+
+	* src/main.c:
+	Fixed hwtype recognition (again...)
+
+	* src/config.c:
+	Beautified
+
+	* .cvsignore:
+	Added ./compile
+
+	* src/logging.c:
+	Initial checkin
+
+	* src/wrappers.h:
+	Made code more deterministic
+	Added local variables
+
+	* src/recvfromflags.h:
+	Beautified code
+	Added local variables
+
+	* src/recvfromflags.c:
+	Added some doc
+	Beautified code
+	Added local variables
+
+	* src/main.c:
+	Fixed logging
+	Added check if BOOTREPLY comes from an interface with servers
+	Added some doc
+	Removed printf()'s
+	Fixed hwtype-check
+	Removed unnecessary (and probably wrong) compiler hints
+
+	* src/logging.h:
+	Added local variables
+	Added logDHCPPackage() prototype
+
+	* src/dhcp.h:
+	Added local variables
+	Fixed #include's
+
+	* src/compat.h, src/util.h:
+	Added local variables
+	Moved in_addr_t typedef from util.h to compat.h
+
+	* src/assertions.h, src/config.h, src/inet.h, src/output.c, src/output.h, src/parser.h, src/splint_compat.h:
+	Added local variables
+
+	* m4/ensc_diet.m4:
+	Corrected namespace of variables
+
+	* contrib/dhcp-fwd.conf:
+	Added documentation
+
+	* Makefile.am:
+	Added '--enable-logging' support
+	Added sample-configuration to EXTRA_DIST
+
+	* README:
+	Added some notes
+
+	* dhcp-forwarder.spec.in:
+	Generalized
+
+	* configure.ac:
+	Added '--enable-logging' option
+	Added fixes for dietlibc
+
+	* src/wrappers.c:
+	Obsoleted; removed
+
+2002-06-06  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* src/main.c:
+	Major enhancements
+	... should now work ...
+
+	* src/wrappers.h:
+	Fixed some casts
+
+	* src/util.h:
+	Made 'false' and 'true' enums
+
+	* src/parser.c:
+	Fixed diagnostic
+	Added some explicit casts
+
+	* src/inet.h:
+	Made const int's enum's
+
+	* src/dhcp.h:
+	Fixed mbz field
+	Made const int's enum's
+
+	* src/config.c:
+	Fixed diagnostic-output
+	Added some inline's
+
+	* src/wrappers.c:
+	Initial checkin
+
+	* Makefile.am:
+	Cleanups
+	Use m4/diet.am
+	Added output.c
+
+	* AUTHORS:
+	Added me
+
+2002-06-04  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* Makefile.m4.am:
+	Added some files to the MACRO_FILES list
+
+	* configure.ac:
+	Moved diet-check into own .m4 file
+	Added ENSC_RELEASE
+
+	* dhcp-forwarder.spec.in:
+	Made it ready for distribution...
+
+	* src/config.c, src/config.h, src/main.c, src/parser.c, src/parser.h, src/wrappers.h:
+	Addded major enhancements
+
+	* src/assertions.h:
+	Added prototypes for non-existing test-functions
+	Disable check if NDEBUG is set
+
+	* contrib/dhcp-fwd.conf, contrib/dhcp-fwd.init, m4/diet.am, m4/ensc_diet.m4, src/logging.h, src/output.c, src/output.h:
+	Initial checkin
+
+2002-06-01  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* configure.ac:
+	Added dist-bzip2
+	Added ENSC_STANDARD_TOOLS
+	Added m4/Makefile & spec-file
+
+	* Makefile.am:
+	Added SUBDIRS tags
+	Added ACLOCAL_AMFLAGS
+	Added EXTRA_DIST
+	Added validate & changelog plugins
+
+	* ChangeLog.sed, Makefile.m4.am, dhcp-forwarder.spec.in:
+	Initial checkin
+
+	* .cvsignore:
+	Added validation-file
+	Generalized package-names
+
+	* src/recvfromflags.c, src/recvfromflags.h, src/splint_compat.h, src/util.h, src/wrappers.h, .cvsignore, AUTHORS, COPYING, INSTALL, Makefile.am, NEWS, README, THANKS, configure.ac, etc/dhcp-fwd.cfg, splint.conf, src/assertions.h, src/compat.h, src/config.c, src/config.h, src/dhcp.h, src/inet.h, src/main.c, src/parser.c, src/parser.h:
+	initial checkin
+
+2002-05-04  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_developing.m4:
+	Corrected help-string
+
+2002-05-03  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_ldapcxx.m4:
+	initial checkin
+
+	* m4/ensc_enscdebug.m4:
+	Use '-L... -l...' instead of '.../...'
+
+	* m4/ensc_db.m4:
+	Fixed case when first tested version is not found
+
+2002-05-01  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/changelog.am:
+	Fixed 'distcheck'
+
+2002-04-26  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/changelog.am, m4/ensc_rdtscll.m4:
+	Initial checkin
+
+2002-04-25  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_db.m4:
+	Added check for MINOR-version
+	Added DB_LTLIBS
+
+	* m4/ensc_db.m4:
+	s!DB_CFLAGS!DB_CXXFLAGS!
+
+2002-04-24  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_db.m4:
+	initial checkin
+
+2002-04-22  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/doxygen.am:
+	Fixed bad s!{...}!(...)!
+
+	* m4/validate.am:
+	s!{...}!(...)!
+	Made it work without calling ENSC_STANDARD_TOOLS
+	Added install-data-local & install-exec-local targets
+
+	* m4/pkgconfig.am, m4/doxygen.am:
+	s!{...}!(...)!
+	Made it work without calling ENSC_STANDARD_TOOLS
+
+2002-04-16  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_enscdebug.m4:
+	Applied changes of the enscdebug include-strategy
+
+	* m4/ensc_flexlexer.m4:
+	Remove lex.yy.o also
+
+2002-04-13  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_flexlexer.m4:
+	Initial checkin
+
+	* m4/pkgconfig.am:
+	- Added substitutions for include/lib-flags which do not contain
+	  standard-paths
+	- Added pkgconf_LIBFLAGS, pkgconf_INCFLAGS, pkgconf_PKGINCFLAGS
+	  variables to provide own values
+	- Added BAD_INC_PATHS and BAD_LIB_PATHS variables containing standard
+	  search-paths for include-files/libraries; these vars can/should be
+	  overridden when calling 'make'
+
+2002-03-29  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/doxygen.am:
+	Added DOXYTARGET support
+
+	* m4/doxygen.am:
+	Initial checkin
+
+	* m4/validate.am:
+	Added copyright
+	Added distclean-* rules
+
+	* m4/pkgconfig.am:
+	Fixed dist-pkgconfig target
+
+2002-03-28  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_developing.m4:
+	Made the usage of __USE_MALLOC selectable by '--disable-stl-malloc'
+
+2002-03-22  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_developing.m4:
+	Added __USE_MALLOC macro
+
+2002-03-20  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_enscdebug.m4:
+	Initial checkin
+
+	* m4/ensc_developing.m4:
+	Added lot of developing-flags
+
+	* m4/ensc_developing.m4:
+	Splitted ENSC_RELEASE into a __ENSC_RELEASE defun to enable its usage
+	in AC_REQUIRE()
+
+2002-03-19  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/pkgconfig.am, m4/validate.am:
+	Initial checkin
+
+	* m4/Makefile.am:
+	Make usage of the automake 'include' feature
+
+	* m4/ensc_tools.m4:
+	Added CP_P macro
+
+2002-02-11  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_developing.m4:
+	Added ENSC_RELEASE
+	Added CXXFLAGS for development
+
+2002-01-09  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/Makefile.am:
+	Made it more generally...
+
+2001-11-27  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_tools.m4:
+	Added doxygen, SGML_TOOLS and GRAPH_TOOLS
+
+2001-11-15  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/Makefile.am:
+	Removed Makefile.am from project repository; it's project specific
+
+2001-11-01  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_tools.m4:
+	Added some standard tools
+	Added ENSC_TEX_TOOLS macro
+
+	* m4/Makefile.am:
+	Removed include'ing of global Makefile
+
+2001-10-26  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/ensc_python.m4:
+	Quoted ${PYTHON}
+
+	* m4/Makefile.am, m4/ensc_database.m4, m4/ensc_developing.m4, m4/ensc_isdn.m4, m4/ensc_tools.m4:
+	Minor fix in the $Id: ChangeLog,v 1.1.1.1 2003/11/25 22:14:04 jharrell Exp $ string
+
+	* m4/ensc_python.m4:
+	Quoted ${PYTHON}
+	Added ENSC_PYCHECKER
+
+2001-10-25  Enrico Scholz  <enrico.scholz@informatik.tu-chemnitz.de>
+
+	* m4/Makefile.am, m4/ensc_database.m4, m4/ensc_developing.m4, m4/ensc_isdn.m4, m4/ensc_python.m4, m4/ensc_tools.m4:
+	Initial checkin
+

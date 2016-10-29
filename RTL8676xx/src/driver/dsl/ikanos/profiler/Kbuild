@@ -1,0 +1,5 @@
+PROFILE_OBJ :=  perftimer.o
+obj-m = profiler.o
+profiler-objs := $(PROFILE_OBJ)
+
+

@@ -1,0 +1,38 @@
+
+<!-- config -->
+    <td>
+		<div class="config2">
+			<p class="bk_orange" id = "lang_config">Services</p>
+			<div class="div_orange">
+				<p id = "lang_introduction">
+				You can set a service control list (SCL) to enable or disable services from being used.
+                </p>
+			</div>
+			<p class="do bk_black" id = "lang_config1">Access Control -- Services </p>
+			<div class="div_black">
+			   <div class="div_left"><span id = "lang_Connection">Interface</span></div><div class="div_right">&nbsp;<select name="SELECT_ConnList" id="SELECT_ConnList" onChange="onChgLanIntf(this)"><option> </option></select></div>
+
+				<table class="td_table_s" id="td_vlan">
+					<tr>
+						<td id = "lang_service"> Service</td>
+						<td id  = "lang_enable">Enable</td>
+		    				<td id  = "lang_WAN_AccessPort"> Source Host(IP / Mask) :(Dst Port)</td>
+					</tr>
+				</table><br>
+			</div>
+			 <div class="SecLevel div_button do"><input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit()">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="refresh" id="cancel" value="Cancel" onClick="uiPageRefresh()"></div>
+	</td>
+		<!-- help -->
+		<td class="td_help">
+			<div class="help">
+				<h5><span id = "lang_help_hint">Helpful Hints...</span></h5>
+				<div>
+				<p id = "lang_help">
+					If you wish to log in and manage your router from another Internet device, you can set the router to accept such commands from the Internet port. This option can be useful when your network administrator is not on site or the technical support requests such access.
+				</p>
+				</div>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>
+	</tr>
+</table>		

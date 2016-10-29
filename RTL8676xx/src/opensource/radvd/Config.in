@@ -1,0 +1,13 @@
+#####################
+config OPENSOURCE_RADVD
+	bool 'radvd'
+	depends on OPENSOURCE
+  	help 
+      Router Advertisement Daemon for IPv6 Stateless Address Autoconfiguration
+
+config OPENSOURCE_RADVDUMP
+	bool 'radvdump'
+	depends on OPENSOURCE_RADVD
+	help
+	  dump router advertisements
+	  

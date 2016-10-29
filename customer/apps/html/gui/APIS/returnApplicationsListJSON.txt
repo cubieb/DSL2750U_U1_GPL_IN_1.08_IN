@@ -1,0 +1,60 @@
+{
+	"RETURN":{
+		"success": true
+	},
+	"APPLICATION_LIST":[
+	<?objget :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications. "IdApplication NameApplication IpAssigned IdIcon"
+	`
+
+		<? if eq "<?echo $var:typeApp?>" "Free"
+		`
+			<? if eq "<?echo $33?>" "0"
+			`
+				<?if eq "<?echo $var:needComma?>" "1" `,` ?>
+
+				{
+					"idApplication":"<?echo $31?>",
+					"nameApplication":"<?echo $32?>",
+					"ipAssigned":"<?if eq "<?echo $43?>" "0" `false` `<?echo $43?>`?>",
+					"idIcon":"<?if eq "<?echo 44?>" "0" `false` `<?echo 44?>`?>",
+					"macAssigned":""
+				}
+
+				<?setvaronce var:needComma 1?>
+			`?>
+		`?>
+		
+		<? if eq "<?echo $var:typeApp?>" "Assigned"
+                `
+			<? if eq "<?get :InternetGatewayDevice.X_TWSZ-COM_Device_list.Customer_Device.<?echo $var:idDevice?>.IPAddress?>" "<?echo $33?>"
+			`
+				<?if eq "<?echo $var:needComma?>" "1" `,` ?>
+
+	                        {
+        	                        "idApplication":"<?echo $31?>",
+                	                "nameApplication":"<?echo $32?>",
+                        	        "ipAssigned":"<?echo $33?>",
+                                	"idIcon":"<?if eq "<?echo 44?>" "0" `false` `<?echo 44?>`?>",
+	                                "macAssigned":""
+        	                }
+
+				<?setvaronce var:needComma 1?>
+			`?>
+                `?>
+
+		<? if eq "<?echo $var:typeApp?>" "All"
+                `
+			<?if eq "<?echo $var:needComma?>" "1" `,` ?>
+
+                        {
+       	                        "idApplication":"<?echo $21?>",
+               	                "nameApplication":"<?echo $22?>",
+				"ipAssigned":"<?if eq "<?echo $33?>" "0" `false` `<?echo $33?>`?>",
+                                "idIcon":"<?if eq "<?echo 34?>" "0" `false` `<?echo 34?>`?>",
+                                "macAssigned":""
+       	                }
+
+			<?setvaronce var:needComma 1?>
+                `?>
+	`?>]
+}

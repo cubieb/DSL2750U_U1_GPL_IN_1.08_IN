@@ -1,0 +1,53 @@
+<!-- config -->
+<style type="text/css">
+.div_left { width:300px;}
+</style>
+<td>
+	<div class="config2">
+		<p class="bk_orange">IGMP</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">Transmission of identical content, such as multimedia, from a source to a number of recipients.</p></div>
+		<p class="do bk_black" id = "lang_config">IGMP SETUP</p>
+		<div class="div_black">
+			
+			<div class="div_left"><span id="lang_Enable">Enabled :</span></div>
+			<div class="div_right">
+			<input type="checkbox" id="Enabled" name="Enabled" checked/></div>
+			<div class="div_left"><span id="lang_AgeEnable">AgeEnabled :</span></div>
+			<div class="div_right">
+			<input type="checkbox" id="AgeEnabled" name="AgeEnabled" checked/></div>
+			<div class="div_left"><span id="lang_QueryInterval">LastMemberQueryInterval :</span></div>
+			<div class="div_right">
+			<input type="text" id="LastMemberQueryInterval" name="LastMemberQueryInterval" /></div>
+			<div class="div_left"><span id="lang_HostTimeout">HostTimeout :</span></div>
+			<div class="div_right">
+			<input type="text" id="HostTimeout" name="HostTimeout" /></div>
+			<div class="div_left"><span id="lang_MrouterTimeout">MrouterTimeout :</span></div>
+			<div class="div_right">
+			<input type="text" id="MrouterTimeout" name="MrouterTimeout" /></div>
+			<div class="div_left"><span id="lang_LeaveTimeout">LeaveTimeout :</span></div>
+			<div class="div_right">
+			<input type="text" id="LeaveTimeout" name="LeaveTimeout" /></div>
+			<div class="div_left"><span id="lang_MaxGroups">MaxGroups :</span></div>
+			<div class="div_right">
+			<input type="text" id="MaxGroups" name="MaxGroups" /></div>
+			
+		</div>
+		<div class="div_button">
+			<input type="button" name="submit" id="submit" value="Apply" onClick="uiSubmit();"/> 
+			<input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+		<p id = "lang_help">
+			If IGMP snooping is enabled, the device (L2 switch) can perform intelligent multicast forwarding (only) toward those hosts, such as IPSTBs, which request to join (as members of) a specific multicast group, such as an IPTV channel, within the broadcast domain (same PVC/VLAN). As a result, it significantly reduces traffic flooding upon interfaces that are not registered as receivers of the specific multicast group.
+		</p></div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>
+

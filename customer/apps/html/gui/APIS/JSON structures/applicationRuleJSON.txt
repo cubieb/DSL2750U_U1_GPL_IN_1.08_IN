@@ -1,0 +1,11 @@
+{
+"APPLICATION_RULE": {
+		"idRule":"rule1",
+       	"protocol":"ANY",
+       	"startWan":"4662",
+       	"endWan":"4662",
+       	"startLan":"4662",
+       	"endLan":"4662"
+      }
+	
+}

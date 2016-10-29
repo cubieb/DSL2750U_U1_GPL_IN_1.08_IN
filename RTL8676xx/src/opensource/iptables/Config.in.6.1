@@ -1,0 +1,188 @@
+comment "ip6tables extension matchs"
+
+config OPENSOURCE_IP6T_AH
+	bool "AH match support"
+	default n
+	help
+
+
+
+config OPENSOURCE_IP6T_DST
+	bool "\"dst\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_ESP
+	bool "\"esp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_EUI64
+	bool "\"eui64\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_FL
+    bool "\"fl(flow label)\" match support"
+    default n
+    help
+
+config OPENSOURCE_IP6T_FRAG
+    bool "\"frag\" match support"
+    default n
+    help
+
+config OPENSOURCE_IP6T_HASHLIMIT
+	bool "\"hashlimit\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_HBH
+	bool "\"hbh\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_HL
+	bool "\"hl\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_ICMP6
+	bool "\"icmp6\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_IPV6HEADER
+	bool "\"ipv6header\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_LENGTH
+	bool "\"length\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_LIMIT
+	bool "\"limit\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_MAC
+	bool "\"mac\" match support"
+	default n
+	help
+
+
+config OPENSOURCE_IP6T_MH
+	bool "\"mh\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_MULTIPORT
+	bool "\"multiport\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_OWNER
+	bool "\"owner\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_PHYSDEV
+	bool "\"physdev\" match support"
+	default n
+	help
+	
+config OPENSOURCE_IP6T_REALDEV
+	bool "\"realdev\" match support"
+	default n
+	help
+	
+config OPENSOURCE_IP6T_POLICY
+	bool "\"policy\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_RT
+	bool "\"rt\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_SCTP
+	bool "\"sctp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_STATE
+	bool "\"state\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_TCP
+	bool "\"tcp\" match support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_UDP
+	bool "\"udp\" match support"
+	default n
+	help
+
+#########################################
+comment "ip6tables extension targets"
+
+config OPENSOURCE_IP6T_CLASSIFY
+    bool "\"CLASSIFY\" target support"
+    default n
+    help
+
+config OPENSOURCE_IP6T_CONNMARK_T
+	bool "\"CONNMARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_CONNSECMARK
+	bool "\"CONNSECMARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_DSCP_T
+    bool "\"DSCP\" target support"
+    default n
+    help
+
+config OPENSOURCE_IP6T_LOG
+	bool "\"LOG\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_MARK_T
+	bool "\"MARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_NFLOG
+	bool "\"NFLOG\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_NFQUEUE
+	bool "\"NFQUEUE\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_REJECT
+	bool "\"REJECT\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_SECMARK
+	bool "\"SECMARK\" target support"
+	default n
+	help
+
+config OPENSOURCE_IP6T_TCPMSS_T
+	bool "\"TCPMSS\" target support"
+	default n
+	help
+

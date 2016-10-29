@@ -1,0 +1,42 @@
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_Device_list type="object" Standard="0" Writable="0">
+		<ExternelUrl type="string(64)"></ExternelUrl>
+		<FirstPerform type="boolean">1</FirstPerform>
+		<AquiPerform type="boolean">0</AquiPerform>
+		<ForcePortalUrl type="string(64)">192.168.1.1</ForcePortalUrl>
+		<Customer_Device type="object">
+			<i type="object">
+			    <IdDevice type="unsignedInt" Writable="0"></IdDevice>
+				<NameDevice type="string(64)"></NameDevice>
+				<SerialNumber type="string(64)" ></SerialNumber>
+				<IdIcon type="string(64)" ></IdIcon>
+				<Interfacetype type="string" Writable="0"></Interfacetype>
+				<Type type="string" Writable="0"></Type>
+				<IPAddress type="string" Writable="0"></IPAddress>
+				<MACAddress type="string" Writable="0"></MACAddress>
+				<Connected type="string" Writable="0"></Connected>
+				<Blacklisted type="string" Writable="0"></Blacklisted>		
+			</i>
+		</Customer_Device>
+		<Applications type="object">
+			<i  type="object">
+				<IdApplication type="unsignedInt"></IdApplication>
+				<Enable type="boolean" Writable="0">0</Enable>
+				<NameApplication type="string(64)"></NameApplication>
+				<IpAssigned type="string(64)">0</IpAssigned>
+				<MacAssigned type="string(64)"></MacAssigned>
+				<IdIcon type="string(64)">0</IdIcon>					
+				<Rules type="object">
+					<i type="object">
+						<IdRule type="string(64)"></IdRule>
+						<Protocol type="string(64)"></Protocol>
+						<StartWan type="string(64)"></StartWan>
+						<EndWan type="string(64)"></EndWan>
+						<StartLan type="string(64)"></StartLan>
+						<EndLan type="string(64)"></EndLan>
+					</i>
+				</Rules>
+			</i>
+		</Applications>
+	</X_TWSZ-COM_Device_list>
+</InternetGatewayDevice>

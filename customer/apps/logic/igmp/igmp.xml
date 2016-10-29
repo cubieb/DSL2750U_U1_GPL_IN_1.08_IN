@@ -1,0 +1,37 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_IGMP type="object" Writable="0" Standard="0">
+		<Snooping type="object">
+			<Enable type="boolean" Standard="0" Writable="1">0</Enable>
+			<ForbidPhyPort1 type="boolean" Standard="0" Writable="1">0</ForbidPhyPort1>
+			<ForbidPhyPort2 type="boolean" Standard="0" Writable="1">0</ForbidPhyPort2>
+			<ForbidPhyPort3 type="boolean" Standard="0" Writable="1">0</ForbidPhyPort3>
+			<ForbidPhyPort4 type="boolean" Standard="0" Writable="1">0</ForbidPhyPort4>
+		</Snooping>
+		<Proxy type="object">
+			<Enable type="boolean" Standard="0" Writable="1">0</Enable>
+			<WANPathName type="string" Standard="0" Writable="1"></WANPathName>
+			<LANPathName type="string" Standard="0" Writable="1"></LANPathName>
+			<Enable_PassThrough type="unsignedInt">0</Enable_PassThrough>
+			<Enable_FastLeaving type="unsignedInt">0</Enable_FastLeaving>
+			<GQ_Interval	type="unsignedInt">120</GQ_Interval>
+			<GQ_Response_Interval	type="unsignedInt">1</GQ_Response_Interval>
+			<MQ_Interval	type="unsignedInt">125</MQ_Interval>
+			<MQ_Response_Interval	type="unsignedInt">1</MQ_Response_Interval>
+			<MQ_Count	type="unsignedInt">3</MQ_Count>
+			<LQ_Interval	type="unsignedInt">1</LQ_Interval>
+			<LQ_Count	type="unsignedInt">2</LQ_Count>
+		</Proxy>
+		<MaxGroupEntries type="unsignedInt" Writable="0">16</MaxGroupEntries>
+		<GroupNumberOfEntries type="unsignedInt" Writable="1">0</GroupNumberOfEntries>
+		<StaticGroup type="object" MaxNode="MaxGroupEntries" CurNode="GroupNumberOfEntries">
+			<i type="object">
+				<ServiceName type="string(15)"></ServiceName>
+				<MulticastGroupIP type="string"></MulticastGroupIP>
+				<STBClientIP type="string"></STBClientIP>
+				<STBClientMac type="string"></STBClientMac>
+				<LocalPort type="string(10)"></LocalPort>
+			</i>
+		</StaticGroup>
+	</X_TWSZ-COM_IGMP>
+</InternetGatewayDevice>

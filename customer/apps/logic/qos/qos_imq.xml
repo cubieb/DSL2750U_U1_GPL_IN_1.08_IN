@@ -1,0 +1,320 @@
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_QoS type="object" Writable="0" Standard="0">
+		<Enable type="boolean" Writable="0">1</Enable>
+		<MaxInterfaceEntries type="unsignedInt" Writable="0">2</MaxInterfaceEntries>
+		<MaxQueueEntries type="unsignedInt" Writable="0">12</MaxQueueEntries>
+		<MaxClassificationEntries type="unsignedInt" Writable="0">16</MaxClassificationEntries>
+		<MaxAppEntries type="unsignedInt" Wirtable="0">3</MaxAppEntries>
+		<InterfaceNumberOfEntries type="unsignedInt" Writable="0">2</InterfaceNumberOfEntries>
+		<QueueNumberOfEntries type="unsignedInt" Writable="0">12</QueueNumberOfEntries>
+		<ClassificationNumberOfEntries type="unsignedInt" Writable="0">0</ClassificationNumberOfEntries>
+		<AppNumberOfEntries type="unsignedInt" Writable="0">0</AppNumberOfEntries>
+		<UpClsNumOfEntries type="unsignedInt" Writable="0">0</UpClsNumOfEntries>
+		<DownClsNumOfEntries type="unsignedInt" Writable="0">0</DownClsNumOfEntries>
+		<SynchronizedStatus type="boolean" Writable="0">0</SynchronizedStatus>
+		<Interface type="object" MaxNode="MaxInterfaceEntries" CurNode="InterfaceNumberOfEntries" Writable="0">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<InterfacePath type="string" Writable="0"></InterfacePath>
+				<InterfaceName type="string" Writable="0"></InterfaceName>
+				<Attribute type="string" Writable="0"></Attribute>
+				<UpStreamShapingRate type="int">0</UpStreamShapingRate>
+				<DownStreamShapingRate type="int">0</DownStreamShapingRate>
+				<CommittedRate type="unsignedInt">0</CommittedRate>
+				<PeakRate type="unsignedInt">0</PeakRate>
+				<BurstSize type="unsignedInt">0</BurstSize>
+				<SchedulerType type="string">SP</SchedulerType>
+				<EnableDSCPMark type="boolean">0</EnableDSCPMark>
+				<EnableCOSMark type="boolean">0</EnableCOSMark>
+				<InterfaceState type="boolean" NeedSave="0">1</InterfaceState>
+			</i>
+		</Interface>
+		<Queue type="object" MaxNode="MaxQueueEntries" CurNode="QueueNumberOfEntries" Writable="0">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<QueueInterface type="int">-1</QueueInterface>
+				<QueueLength type="unsignedInt">10</QueueLength>
+				<QueueLengthType type="string">packet</QueueLengthType>
+				<QueueWeight type="unsignedInt">0</QueueWeight>
+				<EnableForceWeight type="boolean">1</EnableForceWeight>
+				<QueuePrecedence type="unsignedInt">1</QueuePrecedence>
+				<QueueCAR type="unsignedInt">0</QueueCAR>
+				<DropAlgorithm type="string">DT</DropAlgorithm>
+			</i>
+		</Queue>
+		<Classification type="object" MaxNode="MaxClassificationEntries" CurNode="ClassificationNumberOfEntries">
+			<i type="object">
+				<Enable type="boolean">0</Enable>
+				<Direction type="string"></Direction>
+				<IpProtocolType type="string">IPv4</IpProtocolType>
+				<ClassInterface type="string"></ClassInterface>
+				<EgressInterface type="string"></EgressInterface>
+				<SourceMACAddress type="string"></SourceMACAddress>
+				<SourceMACMask type="string"></SourceMACMask>
+				<DestMACAddress type="string"></DestMACAddress>
+				<DestMACMask type="string"></DestMACMask>
+				<Ethertype type="int">-1</Ethertype>
+				<EthernetPriorityCheck type="int">-1</EthernetPriorityCheck>
+				<EthernetPriorityMark type="int">-1</EthernetPriorityMark>
+				<VLANIDCheck type="int">-1</VLANIDCheck>
+				<SourceIP type="string"></SourceIP>
+				<SourceIPMax type="string"></SourceIPMax>
+				<SourceMask type="string"></SourceMask>
+				<SourcePrefixLength type="int">-1</SourcePrefixLength>
+				<DestIP type="string"></DestIP>
+				<DestIPMax type="string"></DestIPMax>
+				<DestMask type="string"></DestMask>
+				<DestPrefixLength type="int">-1</DestPrefixLength>
+				<IPLengthMin type="int">-1</IPLengthMin>
+				<IPLengthMax type="int">-1</IPLengthMax>
+				<FlowLabelCheck type="int">-1</FlowLabelCheck>
+				<FlowLabelMark type="int">-1</FlowLabelMark>
+				<DSCPCheck type="int">-1</DSCPCheck>
+				<DSCPMark type="int">-1</DSCPMark>
+				<TOSCheck  type="int">-1</TOSCheck>
+				<TrafficClassCheck type="int">-1</TrafficClassCheck>
+				<TrafficClassMark type="int">-1</TrafficClassMark>
+				<Protocol type="int">-1</Protocol>
+				<SourcePort type="int">-1</SourcePort>
+				<SourcePortRangeMax type="int">-1</SourcePortRangeMax>
+				<DestPort type="int">-1</DestPort>
+				<DestPortRangeMax type="int">-1</DestPortRangeMax>
+				<ClassQueue type="int">-1</ClassQueue>
+				<ClassResultState type="unsignedInt" NeedSave="0">0</ClassResultState>
+				<NfMark type="unsignedInt" NeedSave="0">0</NfMark>
+			</i>
+		</Classification>
+		<App type="object" MaxNode="MaxAppEntries" CurNode="AppNumberOfEntries">
+	            <i type="object">
+				<Enable   type="boolean">0</Enable>
+                		<AppName  type="string"></AppName>
+                		<AppQueue type="int">-1</AppQueue>
+				<DSCPMark type="int">-1</DSCPMark>
+				<COSMark  type="int">-1</COSMark>
+				<AppRuleState type="boolean" NeedSave="0">0</AppRuleState>
+				<AppResultState type="unsignedInt" NeedSave="0">0</AppResultState>
+            		</i>
+		</App>
+	</X_TWSZ-COM_QoS> 
+	<QueueManagement type="object" Writable="0" Standard="0">
+		<Enable type="boolean" Writable="1">1</Enable>
+		<MaxQueues type="unsignedInt" Writable="0">0</MaxQueues>
+		<MaxClassificationEntries type="unsignedInt" Writable="0">16</MaxClassificationEntries>
+		<ClassificationNumberOfEntries type="unsignedInt" Writable="0">0</ClassificationNumberOfEntries>		
+		<MaxAppEntries type="unsignedInt" Wirtable="0">3</MaxAppEntries>
+		<AppNumberOfEntries type="unsignedInt" Writable="0">0</AppNumberOfEntries>
+		<MaxFlowEntries type="unsignedInt" Writable="0">0</MaxFlowEntries>
+		<FlowNumberOfEntries type="unsignedInt" Writable="0">0</FlowNumberOfEntries>
+		<MaxPolicerEntries type="unsignedInt" Writable="0">0</MaxPolicerEntries>
+		<PolicerNumberOfEntries type="unsignedInt" Writable="0">0</PolicerNumberOfEntries>
+		<MaxQueueEntries type="unsignedInt" Writable="0">2</MaxQueueEntries>
+		<QueueNumberOfEntries type="unsignedInt" Writable="0">12</QueueNumberOfEntries>
+		<QueueStatsNumberOfEntries type="unsignedInt" Writable="0">12</QueueStatsNumberOfEntries>
+		<DefaultForwardingPolicy type="unsignedInt" Writable="1">0</DefaultForwardingPolicy>
+		<DefaultTrafficClass type="int[-1:]" Writable="1"></DefaultTrafficClass>
+		<DefaultPolicer type="int[-1:]" Writable="1"></DefaultPolicer>
+		<DefaultQueue type="unsignedInt" Writable="1">0</DefaultQueue>
+		<DefaultDSCPMark type="int[-2:]" Writable="1"></DefaultDSCPMark>
+		<DefaultEthernetPriorityMark type="int[-2:]" Writable="1"></DefaultEthernetPriorityMark>
+		<AvailableAppList type="string(1024)" Writable="0"></AvailableAppList>
+		<Classification type="object" MaxNode="MaxClassificationEntries" CurNode="ClassificationNumberOfEntries" Writable="1">
+			<i type="object">
+				<ClassificationKey type="unsignedInt" Writable="0"></ClassificationKey>
+				<ClassificationEnable type="boolean" Writable="1">0</ClassificationEnable>
+				<ClassificationStatus type="string" Writable="0">Disabled</ClassificationStatus>
+				<ClassificationOrder type="unsignedInt[1:]" Writable="1"></ClassificationOrder>
+				<ClassInterface type="string(256)" Writable="1"></ClassInterface>
+				<DestIP type="string" Writable="1"></DestIP>
+				<DestMask type="string" Writable="1"></DestMask>
+				<DestIPExclude type="boolean" Writable="1">0</DestIPExclude>
+				<SourceIP type="string" Writable="1"></SourceIP>
+				<SourceMask type="string" Writable="1"></SourceMask>
+				<SourceIPExclude type="boolean" Writable="1">0</SourceIPExclude>
+				<IPLengthMin type="int">-1</IPLengthMin>
+				<IPLengthMax type="int">-1</IPLengthMax>
+				<SourcePrefixLength type="int">-1</SourcePrefixLength>
+				<DestPrefixLength type="int">-1</DestPrefixLength>
+				<FlowLabelCheck type="int">-1</FlowLabelCheck>
+				<FlowLabelMark type="int">-1</FlowLabelMark>
+				<TrafficClassCheck type="int">-1</TrafficClassCheck>
+				<TrafficClassMark type="int">-1</TrafficClassMark>
+				<Protocol type="int[-1:]" Writable="1">-1</Protocol>
+				<ProtocolExclude type="boolean" Writable="1">0</ProtocolExclude>
+				<X_TWSZ-COM_IpProtocolType type="string">IPv4</X_TWSZ-COM_IpProtocolType>
+				<DestPort type="int[-1]" Writable="1">-1</DestPort>
+				<DestPortRangeMax type="int[-1]" Writable="1">-1</DestPortRangeMax>
+				<DestPortExclude type="boolean" Writable="1">0</DestPortExclude>
+				<SourcePort type="int[-1:]" Writable="1">-1</SourcePort>
+				<SourcePortRangeMax type="int[-1:]" Writable="1">-1</SourcePortRangeMax>
+				<SourcePortExclude type="boolean" Writable="1">0</SourcePortExclude>
+				<SourceMACAddress type="string" Writable="1"></SourceMACAddress>
+				<SourceMACMask type="string" Writable="1"></SourceMACMask>
+				<SourceMACExclude type="boolean" Writable="1">0</SourceMACExclude>
+				<DestMACAddress type="string" Writable="1"></DestMACAddress>
+				<DestMACMask type="string" Writable="1"></DestMACMask>
+				<DestMACExclude type="boolean" Writable="1">0</DestMACExclude>
+				<Ethertype type="int[-1:]" Writable="1">-1</Ethertype>
+				<EthertypeExclude type="boolean" Writable="1">0</EthertypeExclude>
+				<SSAP type="int[-1:]" Writable="1">-1</SSAP>
+				<SSAPExclude type="boolean" Writable="1">0</SSAPExclude>
+				<DSAP type="int[-1:]" Writable="1">-1</DSAP>
+				<DSAPExclude type="boolean" Writable="1">0</DSAPExclude>
+				<LLCControl type="int[-1:]" Writable="1">-1</LLCControl>
+				<LLCControlExclude type="boolean" Writable="1">0</LLCControlExclude>
+				<SNAPOUI type="int[-1:]" Writable="1">-1</SNAPOUI>
+				<SNAPOUIExclude type="boolean" Writable="1">0</SNAPOUIExclude>
+				<SourceVendorClassID type="string(256)" Writable="1"></SourceVendorClassID>
+				<SourceVendorClassIDExclude type="boolean" Writable="1">0</SourceVendorClassIDExclude>
+				<SourceVendorClassIDMode type="string" Writable="1">Exact</SourceVendorClassIDMode>
+				<DestVendorClassID type="string(256)" Writable="1"></DestVendorClassID>
+				<DestVendorClassIDExclude type="boolean" Writable="1">0</DestVendorClassIDExclude>
+				<DestVendorClassIDMode type="string" Writable="1">Exact</DestVendorClassIDMode>
+				<SourceClientID type="string(256)" Writable="1"></SourceClientID>
+				<SourceClientIDExclude type="boolean" Writable="1">0</SourceClientIDExclude>
+				<DestClientID type="string(256)" Writable="1"></DestClientID>
+				<DestClientIDExclude type="boolean" Writable="1">0</DestClientIDExclude>
+				<SourceUserClassID type="string(256)" Writable="1"></SourceUserClassID>
+				<SourceUserClassIDExclude type="boolean" Writable="1">0</SourceUserClassIDExclude>
+				<DestUserClassID type="string(256)" Writable="1"></DestUserClassID>
+				<DestUserClassIDExclude type="boolean" Writable="1">0</DestUserClassIDExclude>
+				<SourceVendorSpecificInfo type="string(256)" Writable="1"></SourceVendorSpecificInfo>
+				<SourceVendorSpecificInfoExclude type="boolean" Writable="1">0</SourceVendorSpecificInfoExclude>
+				<SourceVendorSpecificInfoEnterprise type="unsignedInt" Writable="1">0</SourceVendorSpecificInfoEnterprise>
+				<SourceVendorSpecificInfoSubOption type="int[0:255]" Writable="1"></SourceVendorSpecificInfoSubOption>
+				<SourceVendorSpecificInfoMode type="string" Writable="1">Exact</SourceVendorSpecificInfoMode>
+				<DestVendorSpecificInfo type="string(256)" Writable="1"></DestVendorSpecificInfo>
+				<DestVendorSpecificInfoExclude type="boolean" Writable="1">0</DestVendorSpecificInfoExclude>
+				<DestVendorSpecificInfoEnterprise type="unsignedInt" Writable="1">0</DestVendorSpecificInfoEnterprise>
+				<DestVendorSpecificInfoSubOption type="int[0:255]" Writable="1">0</DestVendorSpecificInfoSubOption>
+				<DestVendorSpecificInfoMode type="string" Writable="1">Exact</DestVendorSpecificInfoMode>
+				<TCPACK type="boolean" Writable="1">0</TCPACK>
+				<TCPACKExclude type="boolean" Writable="1">0</TCPACKExclude>
+				<IPLengthMin type="unsignedInt" Writable="1">0</IPLengthMin>
+				<IPLengthMax type="unsignedInt" Writable="1">0</IPLengthMax>
+				<IPLengthExclude type="boolean" Writable="1">0</IPLengthExclude>							
+				<DSCPCheck type="int[-1:]" Writable="1">-1</DSCPCheck>
+				<DSCPExclude type="boolean" Writable="1">0</DSCPExclude>
+				<DSCPMark type="int[-2:]" Writable="1">-1</DSCPMark>
+				<EthernetPriorityCheck type="int[-1:]" Writable="1">-1</EthernetPriorityCheck>
+				<EthernetPriorityExclude type="boolean" Writable="1">0</EthernetPriorityExclude>				
+				<EthernetPriorityMark type="int[-2:]" Writable="1">-1</EthernetPriorityMark>
+				<OutOfBandInfo type="int[-1:]" Writable="1">-1</OutOfBandInfo>
+				<VLANIDCheck type="int[-1:]" Writable="1">-1</VLANIDCheck>
+				<VLANIDExclude type="boolean" Writable="1">0</VLANIDExclude>
+				<ForwardingPolicy type="unsignedInt" Writable="1">0</ForwardingPolicy>
+				<X_TWSZ-COM_TrafficClassCheck type="int">-1</X_TWSZ-COM_TrafficClassCheck>
+				<TrafficClass type="int[-1:]" Writable="1">-1</TrafficClass>
+				<ClassPolicer type="int[-1:]" Writable="1">-1</ClassPolicer>
+				<ClassQueue type="int[-1:]" Writable="1">-1</ClassQueue>	
+				<ClassApp type="int[-1:]" Writable="1">-1</ClassApp>
+				<X_TWSZ-COM_ClassResultState type="unsignedInt" NeedSave="0">0</X_TWSZ-COM_ClassResultState>
+				<X_TWSZ-COM_NfMark type="unsignedInt" NeedSave="0">0</X_TWSZ-COM_NfMark>
+			</i>
+		</Classification>
+		<App type="object" MaxNode="MaxAppEntries" CurNode="AppNumberOfEntries" Writable="1">
+			<i type="object">
+				<AppKey type="unsignedInt" Writable="0"></AppKey>
+				<AppEnable type="boolean" Writable="1">0</AppEnable>
+				<AppStatus type="string" Writable="0">Disabled</AppStatus>
+				<ProtocolIdentifier type="string(256)" Writable="1"></ProtocolIdentifier>
+				<AppName type="string(64)" Writable="1"></AppName>
+				<AppDefaultForwardingPolicy type="unsignedInt" Writable="1">0</AppDefaultForwardingPolicy>
+				<AppDefaultTrafficClass type="int[-1:]" Writable="1">-1</AppDefaultTrafficClass>
+				<AppDefaultPolicer type="int[-1:]" Writable="1">-1</AppDefaultPolicer>
+				<AppDefaultQueue type="int[-1:]" Writable="1">-1</AppDefaultQueue>
+				<AppDefaultDSCPMark type="int[-2:]" Writable="1">-1</AppDefaultDSCPMark>
+				<AppDefaultEthernetPriorityMark type="int[-2:]" Writable="1">-1</AppDefaultEthernetPriorityMark>
+				<X_TWSZ-COM_AppRuleState type="boolean" NeedSave="0">0</X_TWSZ-COM_AppRuleState>
+				<X_TWSZ-COM_AppResultState type="unsignedInt" NeedSave="0">0</X_TWSZ-COM_AppResultState>
+			</i>
+		</App>
+		<Flow type="object" MaxNode="MaxFlowEntries" CurNode="FlowNumberOfEntries" Writable="1">
+			<i type="object">
+				<FlowKey type="unsignedInt" Writable="0"></FlowKey>
+				<FlowEnable type="boolean" Writable="1">0</FlowEnable>
+				<FlowStatus type="string" Writable="0">Disabled</FlowStatus>
+				<FlowType type="string(256)" Writable="1"></FlowType>
+				<FlowTypeParameters type="string(256)" Writable="1"></FlowTypeParameters>
+				<FlowName type="string(64)" Writable="1"></FlowName>
+				<AppIdentifier type="int[-1:]" Writable="1">-1</AppIdentifier>
+				<FlowForwardingPolicy type="unsignedInt" Writable="1">0</FlowForwardingPolicy>
+				<FlowTrafficClass type="int[-1:]" Writable="1">-1</FlowTrafficClass>
+				<FlowPolicer type="int[-1:]" Writable="1">-1</FlowPolicer>
+				<FlowQueue type="int[-1:]" Writable="1">-1</FlowQueue>
+				<FlowDSCPMark type="int[-2:]" Writable="1">-1</FlowDSCPMark>
+				<FlowEthernetPriorityMark type="int[-2:]" Writable="1">-1</FlowEthernetPriorityMark>
+			</i>
+		</Flow>
+		<Policer type="object" MaxNode="MaxPolicerEntries" CurNode="PolicerNumberOfEntries" Writable="1">
+			<i type="object">
+				<PolicerKey type="unsignedInt" Writable="0"></PolicerKey>
+				<PolicerEnable type="boolean" Writable="1">0</PolicerEnable>
+				<PolicerStatus type="string" Writable="0">Disabled</PolicerStatus>
+				<CommittedRate type="unsignedInt" Writable="1">0</CommittedRate>
+				<CommittedBurstSize type="unsignedInt" Writable="1">0</CommittedBurstSize>
+				<ExcessBurstSize type="unsignedInt" Writable="1">0</ExcessBurstSize>
+				<PeakRate type="unsignedInt" Writable="1">0</PeakRate>
+				<PeakBurstSize type="unsignedInt" Writable="1">0</PeakBurstSize>
+				<MeterType type="string" Writable="1">Simple-Token-Bucket</MeterType>
+				<PossibleMeterTypes type="string" Writable="0"></PossibleMeterTypes>
+				<ConformingAction type="string" Writable="1">Null</ConformingAction>
+				<PartialConformingAction type="string" Writable="1">Drop</PartialConformingAction>
+				<NonConformingAction type="string" Writable="1">Drop</NonConformingAction>
+				<CountedPackets type="unsignedInt" Writable="0">0</CountedPackets>
+				<CountedBytes type="unsignedInt" Writable="0">0</CountedBytes>
+				<TotalCountedPackets type="unsignedInt" Writable="0">0</TotalCountedPackets>				
+				<TotalCountedBytes type="unsignedInt" Writable="0">0</TotalCountedBytes>
+				<ConformingCountedPackets type="unsignedInt" Writable="0">0</ConformingCountedPackets>
+				<ConformingCountedBytes type="unsignedInt" Writable="0">0</ConformingCountedBytes>
+				<PartiallyConformingCountedPackets type="unsignedInt" Writable="0">0</PartiallyConformingCountedPackets>
+				<PartiallyConformingCountedBytes type="unsignedInt" Writable="0">0</PartiallyConformingCountedBytes>
+				<NonConformingCountedPackets type="unsignedInt" Writable="0">0</NonConformingCountedPackets>
+				<NonConformingCountedBytes type="unsignedInt" Writable="0">0</NonConformingCountedBytes>
+			</i>
+		</Policer>
+		<Queue type="object" MaxNode="MaxQueueEntries" CurNode="QueueNumberOfEntries" Writable="1">
+			<i type="object">
+				<QueueKey type="unsignedInt" Writable="0"></QueueKey>
+				<QueueEnable type="boolean" Writable="1">0</QueueEnable>
+				<QueueStatus type="string" Writable="0">Disabled</QueueStatus>
+				<TrafficClasses type="string(256)" Writable="1"></TrafficClasses>
+				<QueueInterface type="string(256)" Writable="1"></QueueInterface>
+				<QueueBufferLength type="unsignedInt" Writable="0">5</QueueBufferLength>
+				<X_TWSZ-COM_QueueLengthType type="string">packet</X_TWSZ-COM_QueueLengthType>
+				<X_TWSZ-COM_EnableForceWeight type="boolean">1</X_TWSZ-COM_EnableForceWeight>
+				<QueueWeight type="unsignedInt" Writable="1">0</QueueWeight>
+				<QueuePrecedence type="unsignedInt[1:]" Writable="1">4</QueuePrecedence>
+				<X_TWSZ-COM_QueueCAR type="unsignedInt">0</X_TWSZ-COM_QueueCAR>
+				<REDThreshold type="unsignedInt[0:100]" Writable="1">0</REDThreshold>
+				<REDPercentage type="unsignedInt[0:100]" Writable="1">0</REDPercentage>
+				<DropAlgorithm type="string" Writable="1">DT</DropAlgorithm>
+				<SchedulerAlgorithm type="string" Writable="1">SP</SchedulerAlgorithm>
+				<ShapingRate type="int[-1:]" Writable="1">-1</ShapingRate>
+				<ShapingBurstSize type="unsignedInt" Writable="1"></ShapingBurstSize>
+				<X_TWSZ-COM_PeakRate type="unsignedInt">0</X_TWSZ-COM_PeakRate>
+				<X_TWSZ-COM_EnableDSCPMark type="boolean">0</X_TWSZ-COM_EnableDSCPMark>
+				<X_TWSZ-COM_EnableCOSMark type="boolean">0</X_TWSZ-COM_EnableCOSMark>
+			</i>
+		</Queue>
+		<QueueStats type="object" MaxNode="MaxQueueEntries" CurNode="QueueStatsNumberOfEntries" Writable="1">
+			<i type="object">
+				<Enable type="boolean" Writable="1">0</Enable>
+				<Status type="string" Writable="0">Disabled</Status>
+				<Queue type="unsignedInt" Writable="1">0</Queue>
+				<Interface type="string(256)" Writable="1"></Interface>
+				<OutputPackets type="unsignedInt" Writable="0">0</OutputPackets>
+				<OutputBytes type="unsignedInt" Writable="0">0</OutputBytes>
+				<DroppedPackets type="unsignedInt" Writable="0">0</DroppedPackets>
+				<DroppedBytes type="unsignedInt" Writable="0">0</DroppedBytes>
+				<QueueOccupancyPackets type="unsignedInt" Writable="0">0</QueueOccupancyPackets>
+				<QueueOccupancyPercentage type="unsignedInt[0:100]" Writable="0">0</QueueOccupancyPercentage>
+			</i>
+		</QueueStats>
+		
+	</QueueManagement>
+</InternetGatewayDevice>
+
+
+
+
+

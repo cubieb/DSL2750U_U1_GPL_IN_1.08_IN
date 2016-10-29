@@ -1,0 +1,16 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_UPNP type="object" Writable="0" Standard="0">
+		<Enable type="boolean" Standard="0">0</Enable>
+		<WANPathName type="string" Standard="0" Writable="1"></WANPathName>
+		<LANPathName type="string" Standard="0" Writable="1"></LANPathName>
+		<MaxBlacklistNumberOfEntries type="unsignedInt" Standard="0" Writable="0">20</MaxBlacklistNumberOfEntries>
+		<BlacklistNumberOfEntries type="unsignedInt" Standard="0" Writable="0">0</BlacklistNumberOfEntries>
+		<Blacklist type="object" CurNode="BlacklistNumberOfEntries" MaxNode="MaxBlacklistNumberOfEntries">
+			<i type="object">
+				<Enable type="boolean" Standard="0">0</Enable>
+				<SrcIP type="string" Standard="0">10.10.10.10</SrcIP>
+			</i>
+		</Blacklist>
+	</X_TWSZ-COM_UPNP>
+</InternetGatewayDevice>

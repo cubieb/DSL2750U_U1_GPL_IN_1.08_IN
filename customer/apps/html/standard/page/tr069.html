@@ -1,0 +1,59 @@
+<!-- config -->
+<style type="text/css">
+<!--
+.div_left { width:280px;}
+-->
+</style>
+<td>
+	<div class="config2">
+		<p class="bk_orange">TR-069 </p>
+		<div class="div_orange">
+			<p id = "lang_introduction">WAN management protocol (TR-069) enables an auto-configuration server (ACS) to perform auto-configuration, provision, collection, and diagnostics on the device.</p>
+			<p id = "lang_introduction1">Set the appropriate values and click "Apply" to save the settings of TR-069 client.</p>
+		</div>
+		<p class="do bk_black" id = "lang_config">TR-069 client -- Configuration</p>
+		<div class="div_black">
+			<div id="inputarea">
+				<div class="div_left" id = "lang_cwmp">Cwmp: </div>
+				<div class="div_right"><input type="radio" name="CwmpEnable" id="disableCwmp" value="0" ><span id = "lang_disable1">Disabled</span> &nbsp;&nbsp;
+										<input type="radio" name="CwmpEnable" id="enableCwmp" value="1" ><span id = "lang_enable1">Enabled</span>
+				</div>
+				<div class="div_left" id = "lang_inform">Inform: </div>
+				<div class="div_right"><input type="radio" name="InfromEnable" id="disableInfrom" value="0" onClick="ChangeInfromInterval(0)"><span id = "lang_disable1">Disabled</span> &nbsp;&nbsp;
+										<input type="radio" name="InfromEnable" id="enableInfrom" value="1" onClick="ChangeInfromInterval(1)"><span id = "lang_enable1">Enabled</span>
+				</div>
+				<div class="div_left" id = "lang_interval">Inform Interval: </div><div class="div_right">
+					<input type="text" id="INPUT_PeriodicInformInterval" name="INPUT_PeriodicInformInterval">
+				</div>
+				<div class="div_left" id= "lang_AcsUrl">ACS URL: </div><div class="div_right"><input type="text" id="INPUT_URL" name="INPUT_URL"></div>
+				<div class="div_left" id = "lang_username">ACS User Name: </div><div class="div_right"><input type="text" id="INPUT_Username" name="INPUT_Username"></div>
+				<div class="div_left" id = "lang_password">ACS Password: </div><div class="div_right"><input type="password" id="INPUT_Password" name="INPUT_Password"></div>
+				<div class="div_left"><input type="checkbox" id="Enable_Request_Auth" name="Enable_Request_Auth" onClick="EnableAuth()"></div>
+				<div class="div_right" id = "lang_auth">Connection Request Authentication</div>
+				
+				<div id="conn_auth" style="display:none">
+					<div class="div_left" id = "lang_request_name">Connection Request User Name:</div><div class="div_right">
+						<input type="text" id="INPUT_ConnectionRequestUsername" name="INPUT_ConnectionRequestUsername">
+					</div>
+				<div class="div_left" id = "lang_request_password">Connection Request Password:</div>
+				<div class="div_right"><input type="password" id="INPUT_ConnectionRequestPassword" name="INPUT_ConnectionRequestPassword"></div>
+				</div>
+			</div>
+		</div>
+		<div class="div_button"><!--input type='button' id='addSched' name='addSched' onClick='AddEntry()' value='GetRPCMethods'-->
+			<input type="button" id="submit" name="submit"  onClick="uiSubmit()" value=" Apply ">
+			<input type="button" id="CancleSet" name="CancleSet" onClick="CancleEntry()" value=" Cancel">
+		</div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+			<p id = "lang_help">Provides a means to monitor status and performance as well as set configuration parameters from WAN side.
+			</p>
+		</div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>

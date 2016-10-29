@@ -1,0 +1,22 @@
+{
+	"CONFIG": {
+		"Implementation":"api_fake",
+		"DefaultLanguage":"es",		
+		"LANGUAGES": [
+			{"file":"language.en.json", "shortName":"en"},
+			{"file":"language.es.json", "shortName":"es"}
+		],
+		"Branding": "telefonica",
+		"SessionMaxTime": 600, 
+		"SessionWarning": false,
+		"UpdateStep": 10,
+		"Country":"CH",
+		"VENDORCONFIGURATION":{
+			"Availability":false,
+			"Link":"http://movistar.es"
+		},
+		"LanConfEnabled":true,
+		"Supported3G": true,
+		"ManualPPPoE": true
+	}
+}

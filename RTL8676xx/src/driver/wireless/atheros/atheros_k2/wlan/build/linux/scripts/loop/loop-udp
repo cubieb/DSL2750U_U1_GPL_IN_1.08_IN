@@ -1,0 +1,15 @@
+#!/bin/sh
+
+dmesg -n 2
+ifconfig sn0 up
+brctl addif br0 sn0
+brctl delif br0 eth1
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "Run this on host machine Based on OS"
+echo " LINUX: arp -s 192.168.0.50 00:53:4e:55:4c:31"
+echo " WINDOWS: arp -s 192.168.0.50 00-53-4e-55-4c-31"
+echo " and start the IPERF from the host to this IP"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+sleep 3
+dmesg -n 5
+

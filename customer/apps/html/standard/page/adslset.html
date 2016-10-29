@@ -1,0 +1,79 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_config">ADSL Settings</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">
+			In this page, you can configure the ADSL settings of the DSL router.
+			Before changing the ADSL mode, you need to disable DSL.
+			</p>
+		</div>
+		<p class="do bk_black" id = "lang_config1">ADSL Settings</p>
+		<div class="div_black">
+			<table>
+				<tr>
+					<td><input type="checkbox" id="EnableDSL" name="EnableDSL"><b><span id = "lang_EnableDSL">Enable DSL</span></b></td>
+				</tr>
+				<tr><td>&nbsp;&nbsp;</td></tr>
+				<tr>
+					<td>
+						<input type="radio" name="adslmode" id="all" value="1" onClick="Changeadslmode(1)">
+							<span id = "lang_all">All</span> &nbsp;&nbsp;
+						<input type="radio" name="adslmode" id="multimode" value="0" onClick="Changeadslmode(0)">
+							<span id = "lang_multimode">Multimode</span>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="G.992.1_Annex_A" name="G.Dmt"><b><span id = "lang_gdmt">G.Dmt Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="G.992.2" name="G.Lite"><b><span id = "lang_glite">G.Lite Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="G.998.4" name="G.Inp"><b><span id = "lang_ginp">G.Inp Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="T1.413" name="T1.413"><b><span id = "lang_t1413">T1.413 Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="G.992.3_Annex_A" name="ADSL2"><b><span id = "lang_adsl2">ADSL2 Enabled</span></b></td>
+				</tr>					
+				<tr>
+					<td><input type="checkbox" id="G.992.3_Annex_L" name="AnnexL"><b><span id = "lang_annexl">AnnexL Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="G.992.5_Annex_A" name="ADSL2+"><b><span id = "lang_adls2plus">ADSL2+ Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="G.992.3_Annex_M,G.992.5_Annex_M" name="AnnexM"><b>
+						<span id = "lang_annexm">AnnexM Enabled</span></b></td>
+				</tr>
+				<tr>
+					<td><b>&nbsp;<span id = "lang_capability">Capability</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="bitswap" name="bitswap"><b><span id = "lang_bitswap">Bitswap Enable</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="sra" name="sra"><b><span id = "lang_SRA">SRA Enable</span></b></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="bit1" name="bit1"><b><span id = "lang_bit1">1 bit Constellation Modulation Enable</span></b></td>
+				</tr>
+			</table>	
+		</div>
+		<div class="div_button do"><input type="button" name="submit" id="submit" value="Apply" onclick="uiSubmit()"></div>
+	</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5><span id = "lang_help_hint">Helpful Hints...</span></h5>
+		<div>
+			<p id = "lang_help">
+				Do not modify the settings unless you are directed by your ISP.
+			</p>
+		</div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>

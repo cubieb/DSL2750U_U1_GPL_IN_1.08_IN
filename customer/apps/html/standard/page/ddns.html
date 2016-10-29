@@ -1,0 +1,134 @@
+<style type="text/css">
+	.div_left { width:230px;}
+</style>
+<td>
+
+<div class="config2">
+       <p class="bk_orange" id="lang_DynamicDNS">Dynamic DNS </p>
+	   <div class="div_orange">
+		   <p id="lang_dsc">The dynamic DNS (DDNS) feature enables you to host a server (such as Web, FTP, game server) using a domain name that you have purchased (www.xxx.com) with the dynamic (changing) IP address assigned by the broadband Internet service provider. Using a DDNS service, your friends can enter your host name to connect to your game server without knowing your IP address.</p>
+
+	  </div>
+	  <p class="do bk_black" id="lang_DynamicDNS1">Dynamic DNS </p>
+	  <div class="div_black">
+	       <table class="td_table_s" id="td_ddnsList">
+		       <tr class="tr_bold">
+           	      <td></td>
+				  <td id="lang_Hostname4"> Hostname </td>
+				  <td id="lang_Username4"> Username </td>
+				  <td id="lang_Service4"> Service</td>
+				  <td id="lang_Interface4"> Interface </td>
+			   </tr>
+        </table>	  
+	 </div>
+    <div class="SecLevel div_button">
+       <input name="button" type="button"    id="input_ddnsadd"  onclick=" Addmenu()"  value="Add"/>
+       <input name="button3" type="button"   id="input_ddnsedit"    onclick=" Editmenu()"  value="Edit"/>
+       <input name="button2" type="button"   id="input_ddnsdelet"  onclick=" DeleteClick()"  value="Delete"/>
+    </div>
+	<div id="EntryInfo" style="display:none">
+        <p class="do bk_black" id="lang_AdddynamicDNS3">Add dynamic DNS  </p>
+	    <div class="div_black">
+        <div class="div_left" id="lang_DDNSprovid3">DDNS provider :</div> 
+			 <div class="div_right">
+			     <select id="SELECT_DDNSService" onChange="chooseDDNSProvider() " style="width:110px">
+				     <option> </option>
+				 </select>
+		</div>
+        <!-- hostname need by all provider but www.oray.cn -->
+		<div id = "hostname">
+		    <div class="div_left" id="lang_Hostname3"> Hostname :</div> 
+		    <div class="div_right"><input type="text" id="INPUT_HostName" style="width:100px"></div>
+		</div>
+            
+        <!-- Interface id -->
+		<div class="div_left" id="lang_Interface3">Interface :</div> 
+		<div class="div_right">
+		    <select id="SELECT_BindWanConns" style="width:110px">
+			    <option> </option>
+			</select>
+        </div>
+
+		<!-- DynDNS.org block --> 
+		<div id="DynDNS.org" style="display:none;">
+		    <div class="div_left" id="lang_Username2"> Username :</div> 
+		    <div class="div_right"><input type="text" id="INPUT_UserName" style="width:100px"></div>
+		    <div class="div_left" id="lang_Password2"> Password :</div> 
+		    <div class="div_right"><input type="password" id="INPUT_Password" style="width:100px"></div>
+		</div>
+            
+        <!-- 3322.org block --> 
+		<div id="3322.org" style="display:none;">
+		    <div class="div_left" id="lang_Username_3322"> Username :</div> 
+		    <div class="div_right"><input type="text" id="INPUT_UserName_3322" style="width:100px"></div>
+		    <div class="div_left" id="lang_Password_3322"> Password :</div> 
+		    <div class="div_right"><input type="password" id="INPUT_Password_3322" style="width:100px"></div>
+		</div>
+            
+        <!-- freedns.afraid.org block --> 
+		<div id="freedns.afraid.org" style="display:none;">
+            <div class="div_left" id="lang_Key_freedns"> HashKey:</div>
+            <div class="div_right"><input type="text" id="INPUT_HashKey_freedns"  style="width:100px"></div>
+		</div>
+			
+        <!-- TZO block -->
+    	<div id="TZO" style="display:none;">
+            <div class="div_left" id="lang_Email2"> Email :</div> 
+            <div class="div_right"><input type="text" id="INPUT_Email" style="width:100px"></div>
+            <div class="div_left" id="lang_Key2"> Key :</div> 
+			<div class="div_right"><input type="password" id="INPUT_Key" style="width:100px"></div>  
+	    </div>
+            
+        <!-- GnuDIP block-->
+        <div id="GnuDIP" style="display:none;">
+		    <div class="div_left" id="lang_DDNSServe1"> DDNS Server :</div> 
+		    <div class="div_right"><input type="text" id="INPUT_DdnsHostGnudip" style="width:100px"></div>
+		    <div class="div_left" id="lang_Username1"> Username :</div>
+            <div class="div_right"><input type="text" id="INPUT_UserNameGnudip" style="width:100px"></div>
+		    <div class="div_left" id="lang_Password1"> Password :</div> 
+            <div class="div_right"><input type="password" id="INPUT_PasswordGnudip" style="width:100px"></div>	
+        </div>
+            
+        <!-- www.oray.cn block -->
+		<div id="www.oray.cn" style="display:none;">
+            <div class="div_left" id="lang_Username5"> Username :</div> 
+		    <div class="div_right"><input type="text" id="Peanuthull_UserName" style="width:100px"></div>
+			<div class="div_left" id="lang_Password5"> Password :</div>
+            <div class="div_right"><input type="password" id="Peanuthull_Password" style="width:100px"></div>
+	    </div>
+		
+	<!-- dlinkddns.com block --> 
+	<div id="dlinkddns.com" style="display:none;">
+		    <div class="div_left" id="lang_Usernamedlink"> Username :</div> 
+		    <div class="div_right"><input type="text" id="INPUT_UserNamedlink" style="width:100px"></div>
+		    <div class="div_left" id="lang_Passworddlink"> Password :</div> 
+		    <div class="div_right"><input type="password" id="INPUT_Passworddlink" style="width:100px"></div>
+	</div>
+	
+	<!-- www.noip.com  block --> 
+	<div id="www.noip.com" style="display:none;">
+		    <div class="div_left" id="lang_Usernamenoip"> Username :</div> 
+		    <div class="div_right"><input type="text" id="INPUT_UserNamenoip" style="width:100px"></div>
+		    <div class="div_left" id="lang_Passwordnoip"> Password :</div> 
+		    <div class="div_right"><input type="password" id="INPUT_Passwordnoip" style="width:100px"></div>
+	</div>	  	     
+    </div>
+    <div class="div_button">
+	    <input type="button" id="submit" value="Apply" onClick="uiSubmit()">
+	    <input type="button" id="refresh" value="Cancel" onClick="uiPageRefresh()">
+    </div> 
+</div>
+  
+	  <form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</div>
+</td>
+  <td  class="td_help">
+     <div class="help" >
+        <h5 id="lang_help">Helpful Hints... </h5>
+		<p id="lang_helpdsc1">DDNS - Dynamic DNS.
+         Users can enter a static host name to access a dynamic IP address from anywhere in the world.</p>
+		<p id="lang_helpdsc2">To use this feature, you must apply a dynamic DNS account from one of the providers in the drop-down list.</p>
+		<p id="lang_helpdsc3">Note: In some cases, DDNS service requires enabling the WAN HTTP service. The navigation path is as follows: Maintenance -> Access Control -> Services.</p>
+		<h5> <a href="#" ><span id="lang_help_more">More...</span></a></h5>
+	 </div>	
+</td>

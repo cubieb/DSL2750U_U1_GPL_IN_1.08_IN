@@ -1,0 +1,396 @@
+<td>
+<div class="config2">
+	<p class="bk_orange" id="lang_BlockWebsite">IP Filter </p>
+	<div class="div_orange">
+		<p id="lang_dsc">In this page, you can specify a filter name and at least one condition to create a filter for identify incoming IP traffic. 
+All the specified conditions take effect simultaneously. Click "Apply" to save the filter and enable it.</p>
+	</div>
+	<div id="FilterSetting">
+	<p class="do bk_black" id="lang_BlockWebsite1">Firewall </p>
+	<div class="div_black">
+		<table class="td_table_s" id="td_IPList">
+			<tr class="tr_bold">
+				<td></td>
+				<td id="lang_Name">Name</td>
+				<td id="lang_Inter">Interface</td>
+				<td id="lang_In">In/Out</td>
+				<td id="lang_Default">Default action</td>
+				<td id="lang_Bytes">Bytes</td>
+				<td id="lang_Pkts">Pkts</td>
+	                     <td id="lang_Local">Local/Forward</td>
+			</tr>
+		</table>
+	</div>
+		<div class="SecLevel div_button"><input type='button' id='addFilterEntry' name='addFilterEntry' onClick='AddFilterEntry()' value=' Add Filter'>
+		    <!--input type='button' id='addRuleEntry' name='addRuleEntry' onClick='AddRuleEntry()' value=' Add Rule'-->
+			<input type="button" id="editFilterEntry" name="editFilterEntry"  onClick="EditFilterEntry()" value=" Edit Filter">
+			<input type="submit" id="removeFilterEntry" name="removeFilterEntry" onClick="RemoveFilterEntry()" value=" Delete Filter">
+	</div>
+	</div>
+	
+	<div id="FilterEntryInfo" style="display:none">
+	<!--div id="FilterEntryInfo"-->
+	<p class="do bk_black" id="lang_Info">Filter Info</p>
+		<div class="div_black">
+			<div class="div_left"><label for="INPUT_EntryName" id="lang_Name1">Name:</label></div>
+			<div class="div_right"><input type="text" id="INPUT_EntryName" name="INPUT_EntryName">
+			</div>
+
+			<div class="div_left"><label for="SELECT_Interface" id="lang_Inter1">Interface:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Interface" >
+			</SELECT>
+			</div>
+
+			<div class="div_left"><label for="SELECT_Type" id="lang_In1">In/Out:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Type">
+				<OPTION selected value=In id="lang_In11">In</OPTION>
+				<OPTION value=Out id="lang_Out">Out</OPTION>
+				<OPTION value=Both id="lang_Both">Both</OPTION>
+			</SELECT>
+			</div>
+
+			<div class="div_left"><label for="SELECT_Action" id="lang_Default1">Default action:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Action" >
+				<OPTION selected value=Permit id="lang_Permit">Permit</OPTION>
+				<OPTION value=Drop id="lang_Drop">Drop</OPTION>
+			</SELECT>
+			</div>
+
+			<div class="div_left"><label for="SELECT_Chain" id="lang_Local1">Local/Forward:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Chain" >
+				<OPTION selected value=Local id="">Local</OPTION>
+				<OPTION value=Forward id="">Forward</OPTION>
+				<OPTION value=Both id="">Both</OPTION>
+			</SELECT>
+			</div>
+		</div>
+		<div class="SecLevel div_button">
+		            <input type="button" id="submit" value="Apply" onClick="uiFilterSumbit();">
+					<input type='button'  id="Cancel"value="Cancel" onClick='uiPageRefresh()'>
+		</div>
+	</div>
+
+    <div id="RuleSetting">
+	<p class="do bk_black" id="lang_Rule">Rule </p>
+	<div class="div_black">
+		<table class="td_table_s" id="td_RuleList">
+			<tr class="tr_bold">
+				<td></td>
+				<td id="lang_Enabled">Enabled</td>
+				<td id="lang_Protocol">Protocol</td>
+				<td id="lang_IPVersionType">IP Version Type</td>
+				<td id="lang_Action">Action</td>
+				<td id="lang_RejectType">RejectType</td>
+				<td id="lang_IcmpType">IcmpType</td>
+				<td id="lang_OrigIP">OrigIP/ Mask</td>
+				<td id="lang_OrigPort">OrigPort</td>
+				<td id="lang_DestIP">DestIP/ Mask</td>
+				<td id="lang_DestPort">DestPort</td>
+				<td id="lang_Bytes">Bytes</td>
+				<td id="lang_Pkts">Pkts</td>
+			</tr>
+		</table>
+	</div>
+		<div class="SecLevel div_button">
+		    <input type='button' id='addRuleEntry' name='addRuleEntry' onClick='AddRuleEntry()' value=' Add Rule'>
+			<input type="button" id="editRuleEntry" name="editRuleEntry"  onClick="EditRuleEntry()" value=" Edit Rule">
+			<input type="submit" id="removeRuleEntry" name="removeRuleEntry" onClick="RemoveRuleEntry()" value=" Delete Rule">
+	</div>
+	</div>
+
+	<div id="RuleEntryInfo" style="display:none">
+	<p class="do bk_black" id="lang_RuleInfo">Rule Info</p>
+		<div class="div_black">
+		    <p id="lang_dsc1">Notes: </p>
+		    <p id="lang_dsc2">1.When Protocol is 'ICMP',one of IcmpType to be selected; </p>
+		    <p id="lang_dsc3">2.When Action is 'Reject',one of RejectType to be selected; </p>
+		    <p id="lang_dsc4">3.When the "IP Version Type" is Ipv4,Please enter the IPv4 address and mask of the corresponding;</p>
+		    <p id="lang_dsc5">4.When the "IP Version Type" is Ipv6,Please enter the IPv6 address and prefix length of the corresponding;</p>
+			<div class="div_left"><label for="INPUT_Enabled" id="lang_Enabled1">Enabled:</label></div>
+			<div class="div_right"><input type="checkbox" id="INPUT_Enabled" name="INPUT_Enabled">
+			</div>
+
+			<div class="div_left"><label for="SELECT_Protocol" id="lang_Protocol1">Protocol:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Protocol" onChange="dynamicElementSwith()">
+                <OPTION value='all'>ALL</OPTION>
+		   <OPTION value='UDP'>UDP</OPTION>
+		   <OPTION value='TCP'>TCP</OPTION>
+		   <OPTION value='ICMP'>ICMP</OPTION>
+                <OPTION value='eigrp'>EIGRP</OPTION>
+                <OPTION value='gre'>GRE</OPTION>
+                <OPTION value='ipip'>IPinIP</OPTION>
+                <OPTION value='ospf'>OSPF</OPTION>
+			</SELECT>
+			</div>
+			<div class="div_left"><label for="SELECT_IPProtocolVersionType" id="lang_IPVersionType1">IP Version Type:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_IPProtocolVersionType" onchange="dynamicElementSwith()">
+				<OPTION value="IPv4">IPv4</OPTION>
+				<?if eq $var:G_IPv6Enable 1
+				`
+				<option value="IPv6">IPv6</option>
+				`?>
+			</SELECT>
+			</div>
+
+			<div class="div_left"><label for="SELECT_Action_Rule" id="lang_Action1">Action:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Action_Rule" onchange="dynamicElementSwith()">
+				<OPTION value=Permit>Permit</OPTION>
+				<OPTION value=Drop>Drop</OPTION>
+				<OPTION value=Reject>Reject</OPTION>
+			</SELECT>
+			</div>
+
+			<div id="IPv4RejectType">
+			<div class="div_left"><label for="SELECT_IPv4RejectType" id="lang_ipv4r">RejectType for IPv4:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_IPv4RejectType"> 
+			        <OPTION selected></OPTION>
+                    <OPTION value=icmp-net-unreachable>icmp-net-unreachable</OPTION>
+                    <OPTION value=icmp-host-unreachable>icmp-host-unreachable</OPTION>
+                    <OPTION value=icmp-port-unreachable>icmp-port-unreachable</OPTION>
+                    <OPTION value=icmp-proto-unreachable>icmp-proto-unreachable</OPTION>
+                    <OPTION value=icmp-net-prohibited>icmp-net-prohibited</OPTION>
+                    <OPTION value=icmp-host-prohibited>icmp-host-prohibited</OPTION>
+                    <OPTION value=icmp-admin-prohibited>icmp-admin-prohibited</OPTION>
+                    <OPTION value=tcp-reset>tcp-reset</OPTION>
+            </SELECT>
+			</div>
+            </div><!-- end of  <div id="IPv4RejectType"> -->
+
+			<div id="IPv6RejectType">
+			<div class="div_left"><label for="SELECT_IPv6RejectType" id="lang_ipv6r">RejectType for IPv6:</label></div>
+			<div class="div_right">
+            <SELECT id="SELECT_IPv6RejectType">
+                    <OPTION value=Null selected></OPTION>
+                    <OPTION value=icmpv6-no-route-to-destination>icmpv6-no-route-to-destination</OPTION> 
+                    <OPTION value=icmpv6-administratively-prohibited>icmpv6-administratively-prohibited</OPTION> 
+                    <OPTION value=icmpv6-address-unreachable>icmpv6-address-unreachable</OPTION> 
+                    <OPTION value=icmpv6-port-unreachable>icmpv6-port-unreachable</OPTION> 
+                    <OPTION value=icmpv6-source-address-failed>icmpv6-source-address-failed</OPTION> 
+                    <OPTION value=icmpv6-reject-route-to-destination>icmpv6-reject-route-to-destination</OPTION> 
+                    <OPTION value=tcp-reset>tcp-reset</OPTION>
+            </SELECT> 
+			</div>
+            </div><!-- end of  <div id="IPv6RejectType"> -->
+            
+            <div id="ICMPType">
+                <div class="div_left"><label for="SELECT_IcmpType" id="lang_ipv4">ICMP Type for IPv4:</label></div>
+    			<div class="div_right"><SELECT id="SELECT_IcmpType" selected>
+				 <OPTION></OPTION>
+    				<OPTION value=any>any</OPTION>
+	    			<OPTION value=echo-reply>echo-reply</OPTION>
+	    			<OPTION value=destination-unreachable>destination-unreachable</OPTION>
+	    			<OPTION value=network-unreachable>network-unreachable</OPTION>
+    				<OPTION value=host-unreachable>host-unreachable</OPTION>
+	    			<OPTION value=protocol-unreachable>protocol-unreachable</OPTION>
+	    			<OPTION value=port-unreachable>port-unreachable</OPTION>
+	    			<OPTION value=fragmentation-needed>fragmentation-needed</OPTION>
+	    			<OPTION value=source-route-failed>source-route-failed</OPTION>
+	    			<OPTION value=network-unknown>network-unknown</OPTION>
+	    			<OPTION value=host-unknown>host-unknown</OPTION>
+	    			<OPTION value=network-prohibited>network-prohibited</OPTION>
+	    			<OPTION value=host-prohibited>host-prohibited</OPTION>
+	    			<OPTION value=TOS-network-unreachable>TOS-network-unreachable</OPTION>
+	    			<OPTION value=TOS-host-unreachable>TOS-host-unreachable</OPTION>
+	    			<OPTION value=communication-prohibited>communication-prohibited</OPTION>
+	    			<OPTION value=host-precedence-violation>host-precedence-violation</OPTION>
+	    			<OPTION value=precedence-cutoff>precedence-cutoff</OPTION>
+	    			<OPTION value=source-quench>source-quench</OPTION>
+	    			<OPTION value=redirect>redirect</OPTION>
+	    			<OPTION value=network-redirect>network-redirect</OPTION>
+	    			<OPTION value=host-redirect>host-redirect</OPTION>
+	    			<OPTION value=TOS-network-redirect>TOS-network-redirect</OPTION>
+	    			<OPTION value=TOS-host-redirect>TOS-host-redirect</OPTION>
+	    			<OPTION value=echo-request>echo-request</OPTION>
+	    			<OPTION value=router-advertisement>router-advertisement</OPTION>
+	    			<OPTION value=router-solicitation>router-solicitation</OPTION>
+	    			<OPTION value=time-exceeded>time-exceeded</OPTION>
+	    			<OPTION value=ttl-zero-during-transit>ttl-zero-during-transit</OPTION>
+	    			<OPTION value=ttl-zero-during-reassembly>ttl-zero-during-reassembly</OPTION>
+	    			<OPTION value=parameter-problem>parameter-problem</OPTION>
+	    			<OPTION value=ip-header-bad>ip-header-bad</OPTION>
+	    			<OPTION value=required-option-missing>required-option-missing</OPTION>
+	       		<OPTION value=timestamp-request>timestamp-request</OPTION>
+	    			<OPTION value=timestamp-reply>timestamp-reply</OPTION>
+	    			<OPTION value=address-mask-request>address-mask-request</OPTION>
+	    			<OPTION value=address-mask-reply>address-mask-reply</OPTION>      
+	    		</SELECT>
+                </div>
+            </div>
+            <div id="ICMPTypev6">
+            <div class="div_left"><label for="SELECT_Icmpv6Type" id="lang_ipv6">ICMP Type for IPv6:</label></div>
+			<div class="div_right">
+			<SELECT id="SELECT_Icmpv6Type" selected>
+				<OPTION></OPTION>
+				<OPTION value=destination-unreachable>destination-unreachable</OPTION>
+				<OPTION value=no-route>no-route</OPTION>
+				<OPTION value=communication-prohibited>communication-prohibited</OPTION>
+				<OPTION value=address-unreachable>address-unreachable</OPTION>
+				<OPTION value=port-unreachable>port-unreachable</OPTION>
+				<OPTION value=packet-too-big>packet-too-big</OPTION>
+				<OPTION value=time-exceeded>time-exceeded</OPTION>
+				<OPTION value=ttl-exceeded>ttl-exceeded</OPTION>
+				<OPTION value=ttl-zero-during-transit>ttl-zero-during-transit</OPTION>
+				<OPTION value=ttl-zero-during-reassembly>ttl-zero-during-reassembly</OPTION>
+				<OPTION value=parameter-problem>parameter-problem</OPTION>
+				<OPTION value=bad-header>bad-header</OPTION>
+				<OPTION value=unknown-header-type>unknown-header-type</OPTION>
+				<OPTION value=unknown-option>unknown-option</OPTION>
+				<OPTION value=echo-request>echo-request</OPTION>
+				<OPTION value=ping>ping</OPTION>
+				<OPTION value=echo-reply>echo-reply</OPTION>
+				<OPTION value=pong>pong</OPTION>
+				<OPTION value=router-solicitation>router-solicitation</OPTION>
+				<OPTION value=router-advertisement>router-advertisement</OPTION>
+				<OPTION value=neighbour-solicitation>neighbour-solicitation</OPTION>
+				<OPTION value=neighbor-solicitation>neighbor-solicitation</OPTION>
+				<OPTION value=neighbour-advertisement>neighbour-advertisement</OPTION>
+				<OPTION value=neighbor-advertisement>neighbor-advertisement</OPTION>
+				<OPTION value=redirect>redirect</OPTION>
+			</SELECT>
+			</div>
+            </div><!-- end of <div id="ICMP_IcmpType"> -->
+            
+            <div id="SetOfALG">
+                <div class="div_left" id="lang_ALG">ALG:</div>
+                <div class="div_right"><input type="checkbox" id="INPUT_ALG_Enable" onclick="dynamicElementSwith()" >Enable</div>
+                <div id="ALGOptions">
+                    <div class="div_left"></div>
+                    <div class="div_right">
+                        <input type="checkbox" id="INPUT_ALG_FTP"   value="ftp">FTP
+                        <input type="checkbox" id="INPUT_ALG_TFTP"  value="tftp">TFTP
+                        <input type="checkbox" id="INPUT_ALG_PPTP"  value="pptp">PPTP
+                        <input type="checkbox" id="INPUT_ALG_SIP"   value="sip">SIP
+                        <input type="checkbox" id="INPUT_ALG_RTSP"  value="rtsp">RTSP   
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="selectAllALG" onClick="selectAllALGClick()" >Select All
+                    </div>
+                </div>
+            </div>
+            
+            <div id="SetOfDSCP">
+                 <div class="div_left"><label for="INPUT_DSCP">DSCP:</div>
+                 <div class="div_right">
+                 <SELECT id="INPUT_DSCP" selected>
+				<OPTION></OPTION>
+				<OPTION value=10>AF11(001010)</OPTION>
+				<OPTION value=12>AF12(001100)</OPTION>
+				<OPTION value=14>AF13(001110)</OPTION>
+				<OPTION value=18>AF21(010010)</OPTION>
+				<OPTION value=20>AF22(010100)</OPTION>
+				<OPTION value=22>AF23(010110)</OPTION>
+				<OPTION value=26>AF31(011010)</OPTION>
+				<OPTION value=28>AF32(011100)</OPTION>
+				<OPTION value=30>AF33(011110)</OPTION>
+				<OPTION value=34>AF41(100010)</OPTION>
+				<OPTION value=36>AF42(100100)</OPTION>
+				<OPTION value=38>AF43(100110)</OPTION>
+				<OPTION value=8>CS1(001000)</OPTION>
+				<OPTION value=16>CS2(010000)</OPTION>
+				<OPTION value=24>CS3(011000)</OPTION>
+				<OPTION value=32>CS4(100000)</OPTION>
+				<OPTION value=40>CS5(101000)</OPTION>
+				<OPTION value=48>CS6(110000)</OPTION>
+				<OPTION value=56>CS7(111000)</OPTION>
+				<OPTION value=46>EF(101110)</OPTION>
+				<OPTION value=0>Default</OPTION>
+			</SELECT>
+                 </div>
+            </div>
+
+            <div id="SetOfTC">
+                 <div class="div_left"><label for="INPUT_TC">TC:</div>
+                 <div class="div_right"><input type="text" id="INPUT_TC" name="INPUT_TC">(0~255)</div>
+            </div>
+            
+            <div id="SetOfPacketLength">
+                <div class="div_left" id="lang_PL">Packet Length:</div>
+                <div class="div_right"><input type="text" maxlength="5" style="width:40px;" id="INPUT_packetLengthMin" name="INPUT_packetLengthMin">-
+                                       <input type="text" maxlength="5" style="width:40px;" id="INPUT_packetLengthMax" name="INPUT_packetLengthMax">(1~65535)
+                </div>
+            </div>
+
+            <div id="SetOfTcpFlags">
+                <div class="div_left" id="lang_TcpF">Tcp Flags:</div>
+                <div class="div_right">
+                    <input type="checkbox" id="INPUT_TCP_SYN" value="SYN" >SYN
+                    <input type="checkbox" id="INPUT_TCP_ACK" value="ACK" >ACK
+                    <input type="checkbox" id="INPUT_TCP_FIN" value="FIN" >FIN         
+                    <input type="checkbox" id="INPUT_TCP_RST" value="RST" >RST
+                    <input type="checkbox" id="INPUT_TCP_URG" value="URG" >URG
+                    <input type="checkbox" id="INPUT_TCP_PSH" value="PSH" >PSH
+                </div>
+            </div>
+            
+            <p class="bk_black" id="lang_Setting"> Source Setting </p><br>
+			<div class="div_left"><label for="INPUT_origIPAddress" id="lang_IPA">IP Address:</label></div>
+			<div class="div_right"><input type="text" id="INPUT_origIPAddress" name="INPUT_origIPAddress"></div>
+			<div id="hide-origmask">
+			<div class="div_left"><label for="INPUT_origMask" id="lang_PM">PrefixLength/Mask:</label></div>
+			<div class="div_right"><input type="text" id="INPUT_origMask" name="INPUT_origMask"></div>
+			</div>
+            <div id="SetOfOrigPort">
+			    <div class="div_left"><label for="INPUT_origStartPort" id="lang_SP">Start Port:</label></div>
+			    <div class="div_right"><input type="text" id="INPUT_origStartPort" name="INPUT_origStartPort"></div>
+
+    			<div class="div_left"><label for="INPUT_origEndPort" id="lang_EP">End Port:</label></div>
+	    		<div class="div_right"><input type="text" id="INPUT_origEndPort" name="INPUT_origEndPort"></div>
+            </div>
+            <div id = "SetOfDest">
+            <p class="bk_black" id="lang_DS"> Destination Setting </p><br>
+            <div class="div_left" id="lang_FQDN">FQDN Enabled</div>
+            <div class="div_right"><input type="checkbox" id="INPUT_FQDNEnable" name="INPUT_FQDNEnable" onclick="dynamicElementSwith()"></div>
+            <div id="SetOfFQDN">
+            <div class="div_left"><label for="INPUT_FQDN" id="lang_FQDN1">FQDN:</label></div>
+			<div class="div_right"><input type="text" id="INPUT_FQDN" name="INPUT_FQDN"></div>
+            </div>
+            <div id="SetOfDestIP">
+			<div class="div_left"><label for="INPUT_destIPAddress" id="lang_IPA1">IP Address:</label></div>
+			<div class="div_right"><input type="text" id="INPUT_destIPAddress" name="INPUT_destIPAddress"></div>
+            </div>
+            <div id="hide-destmask">
+			    <div class="div_left"><label for="INPUT_destMask" id="lang_PM1">PrefixLength/Mask:</label></div>
+			    <div class="div_right"><input type="text" id="INPUT_destMask" name="INPUT_destMask"></div>
+       		</div>
+            <div id="SetOfDestPort">
+			    <div class="div_left"><label for="INPUT_destStartPort" id="lang_SP1">Start Port:</label></div>
+			    <div class="div_right"><input type="text" id="INPUT_destStartPort" name="INPUT_destStartPort"></div>
+
+			    <div class="div_left"><label for="INPUT_destEndPort" id="lang_EP1">End Port:</label></div>
+			    <div class="div_right"><input type="text" id="INPUT_destEndPort" name="INPUT_destEndPort"></div>	
+            </div>
+            </div>
+			
+		</div>
+		<div class="div_button">
+		            <input type="button" id="lang_submit1" value="Apply" onClick="uiRuleSubmit()">
+					<input type='button' id="lang_cancel1" value="Cancel" onClick='uiRuleCancle()'>
+		</div>
+	</div>
+
+    
+	
+</div>
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc1">Create a list of websites that you would like devices on your network to be either allowed or refused to access.</p>
+			<p id="lang_helpdsc2">Select a time schedule for enabling the rule. If the list of schedules does not include your desired schedule, you can create one. The navigation path is as follows: 
+			<a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=advanced&var:page=schedules" > Advanced -> Schedules</a>
+			</p>
+		</div>
+		<h5 ><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+</td>
+
+		

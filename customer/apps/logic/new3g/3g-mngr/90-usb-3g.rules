@@ -1,0 +1,7 @@
+#add by shen chang ban at 2011-8-29
+#This file need by PC, it is need to copy to /etc/udev/rules.d/ for doing hotplug
+SUBSYSTEM=="scsi_device", ACTION=="add", RUN="/bin/3g-mngr usbswitch -s"
+KERNEL=="ttyUSB[0-9]*", ACTION=="add", RUN="/bin/3g-mngr hotplug"
+KERNEL=="ttyACM[0-9]*", ACTION=="add", RUN="/bin/3g-mngr hotplug"
+KERNEL=="ttyUSB[0-9]*", ACTION=="remove", RUN="/bin/3g-mngr hotunplug"
+KERNEL=="ttyACM[0-9]*", ACTION=="remove", RUN="/bin/3g-mngr hotunplug"

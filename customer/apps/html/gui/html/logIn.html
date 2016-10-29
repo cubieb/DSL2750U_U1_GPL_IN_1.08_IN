@@ -1,0 +1,40 @@
+<div class="dialog_faq dialog_faq_login"></div>
+<div class="login">
+	<div>
+		<span class="trad" key="LOGIN_TEXT_1"></span>
+	</div>
+	<div id="divLogin">
+	</div>
+	
+	<div class="password_form">
+		<div class="password_txt"><span class="trad" key="LOGIN_PASS_CONFIG"></span></div>
+		<input id="pass" name="pass" type="password">	
+	</div>
+	<!-- Mostrar / Ocultar con javascript si se ha cambiado la contraseña -->
+	<div class="password_settings">
+		<span ><a href="javascript:void(0);" class="password_settings_a" id="forgetQuestion"></a></span>
+	</div>	
+</div>
+<br>
+<div class="line_grey"></div>
+<div class="centred">
+	<div id="cancel" class="cancel hand">
+		<div class="cancel_icon"></div>			
+		<span class="trad cancel_txt" key="COMMON_CANCEL"></span>
+	</div>
+	<div id="acceptLogin" class="accept buttons_space hand">
+		<div class="accept_icon"></div>			
+		<span class="trad accept_txt" key="COMMON_ACCEPT"></span>
+	</div>
+</div>
+<div id="forget">
+	
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {		
+		$('.dialog_faq_login').click(function() {		
+			loadHelpDialog(_("HELP_TITLE"), function() { linkContent("3","2"); });		
+		});
+	});
+</script>

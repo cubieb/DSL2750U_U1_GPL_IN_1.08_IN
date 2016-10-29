@@ -1,0 +1,11 @@
+menuconfig DRIVERS_WLAN_RALINK_RT288x
+	bool 'RT288x AP/STA'
+	default n
+	depends on DRIVERS_WLAN_RALINK
+  	help 
+      		Ralink wireless ap/sta driver
+
+source "driver/wireless/ralink/RT288x_SDK_3.2/rt2860v2_ap/Kconfig"
+source "driver/wireless/ralink/RT288x_SDK_3.2/rt2860v2_sta/Kconfig"
+
+

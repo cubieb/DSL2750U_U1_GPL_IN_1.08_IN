@@ -1,0 +1,287 @@
+.PHONY: all build clean distclean 
+SRC_DIR=$(shell pwd)/openssl-0.9.7m
+#export PATH:=$(TOOLCHAINS_PATH)/../${TARGET}/bin:$(PATH)
+ifdef CONFIG_OPENSOURCE_OPENSSL_097_EAPTLS 
+SSL_OBJS_TO_REMOVE =    bio_ssl.o \
+						kssl.o \
+						ssl_asn1.o \
+						ssl_txt.o
+
+CRYPTO_OBJS_TO_REMOVE = 			a_meth.o \
+						aes_ctr.o \
+						aes_misc.o \
+						b_sock.o \
+						bf_nbio.o \
+						bf_null.o \
+						bio_b64.o \
+						bio_cb.o \
+						bio_enc.o \
+						bio_md.o \
+						bio_ok.o \
+						bn_exp2.o \
+						bn_kron.o \
+						bn_mpi.o \
+						bn_prime.o \
+						bn_sqrt.o \
+						bss_acpt.o \
+						bss_bio.o \
+						bss_conn.o \
+						bss_fd.o \
+						bss_log.o \
+						bss_null.o \
+						c_rle.o \
+						c_zlib.o \
+						comp_err.o \
+						dh_check.o \
+						dh_gen.o \
+						dso_dl.o \
+						dso_null.o \
+						dso_vms.o \
+						dso_win32.o \
+						e_bf.o \
+						e_cast.o \
+						e_rc2.o \
+						e_rc5.o \
+						ebcdic.o \
+						ec_cvt.o \
+						ec_lib.o \
+						ec_mult.o \
+						ecp_mont.o \
+						ecp_nist.o \
+						ecp_recp.o \
+						ecp_smpl.o \
+						eng_openssl.o \
+						f_enum.o \
+						hw_cryptodev.o \
+						krb5_asn.o \
+						lh_stats.o \
+						m_dss.o \
+						m_dss1.o \
+						m_null.o \
+						md2_one.o \
+						md5_one.o \
+						n_pkey.o \
+						ocsp_cl.o \
+						ocsp_ext.o \
+						ocsp_ht.o \
+						ocsp_lib.o \
+						ocsp_prn.o \
+						ocsp_srv.o \
+						ocsp_vfy.o \
+						p12_crt.o \
+						p12_init.o \
+						p12_npas.o \
+						p_dec.o \
+						p_enc.o \
+						p_open.o \
+						p_seal.o \
+						pem_pk8.o \
+						pem_seal.o \
+						pem_sign.o \
+						pk7_attr.o \
+						pk7_doit.o \
+						pk7_mime.o \
+						pk7_smime.o \
+						rand_os2.o \
+						rand_win.o \
+						rsa_chk.o \
+						rsa_gen.o \
+						rsa_null.o \
+						t_bitst.o \
+						t_crl.o \
+						t_req.o \
+						t_spki.o \
+						tb_dsa.o \
+						tmdiff.o \
+						txt_db.o \
+						ui_compat.o \
+						x509_r2x.o \
+						x509_set.o \
+						x509cset.o \
+						x509spki.o
+else
+SSL_OBJS_TO_REMOVE =    bio_ssl.o \
+						kssl.o \
+						ssl_asn1.o \
+						ssl_txt.o
+
+CRYPTO_OBJS_TO_REMOVE = a_hdr.o \
+						a_meth.o \
+						aes_ctr.o \
+						aes_misc.o \
+						asn_moid.o \
+						b_sock.o \
+						bf_nbio.o \
+						bf_null.o \
+						bio_b64.o \
+						bio_cb.o \
+						bio_enc.o \
+						bio_md.o \
+						bio_ok.o \
+						bn_exp2.o \
+						bn_kron.o \
+						bn_mpi.o \
+						bn_prime.o \
+						bn_sqrt.o \
+						bss_acpt.o \
+						bss_bio.o \
+						bss_conn.o \
+						bss_fd.o \
+						bss_log.o \
+						bss_mem.o \
+						bss_null.o \
+						c_allc.o \
+						c_alld.o \
+						c_rle.o \
+						c_zlib.o \
+						comp_err.o \
+						conf_mall.o \
+						conf_mod.o \
+						conf_sap.o \
+						dh_check.o \
+						dh_gen.o \
+						dso_dl.o \
+						dso_dlfcn.o \
+						dso_lib.o \
+						dso_null.o \
+						dso_openssl.o \
+						dso_vms.o \
+						dso_win32.o \
+						e_bf.o \
+						e_cast.o \
+						e_rc2.o \
+						e_rc5.o \
+						e_xcbc_d.o \
+						ebcdic.o \
+						ec_cvt.o \
+						ec_lib.o \
+						ec_mult.o \
+						ecp_mont.o \
+						ecp_nist.o \
+						ecp_recp.o \
+						ecp_smpl.o \
+						eng_all.o \
+						eng_cnf.o \
+						eng_ctrl.o \
+						eng_dyn.o \
+						eng_fat.o \
+						eng_openssl.o \
+						eng_pkey.o \
+						evp_acnf.o \
+						f_enum.o \
+						hw_4758_cca.o \
+						hw_aep.o \
+						hw_atalla.o \
+						hw_cryptodev.o \
+						hw_cswift.o \
+						hw_ncipher.o \
+						hw_nuron.o \
+						hw_sureware.o \
+						hw_ubsec.o \
+						krb5_asn.o \
+						lh_stats.o \
+						m_dss.o \
+						m_dss1.o \
+						m_md4.o \
+						m_mdc2.o \
+						m_null.o \
+						m_ripemd.o \
+						m_sha.o \
+						md2_one.o \
+						md4_dgst.o \
+						md4_one.o \
+						md5_one.o \
+						n_pkey.o \
+						ocsp_cl.o \
+						ocsp_ext.o \
+						ocsp_ht.o \
+						ocsp_lib.o \
+						ocsp_prn.o \
+						ocsp_srv.o \
+						ocsp_vfy.o \
+						p12_add.o \
+						p12_asn.o \
+						p12_attr.o \
+						p12_crpt.o \
+						p12_crt.o \
+						p12_init.o \
+						p12_key.o \
+						p12_kiss.o \
+						p12_mutl.o \
+						p12_npas.o \
+						p12_p8e.o \
+						p5_crpt.o \
+						p5_crpt2.o \
+						p5_pbe.o \
+						p5_pbev2.o \
+						p_dec.o \
+						p_enc.o \
+						p_open.o \
+						p_seal.o \
+						pem_pk8.o \
+						pem_seal.o \
+						pem_sign.o \
+						pk7_attr.o \
+						pk7_doit.o \
+						pk7_lib.o \
+						pk7_mime.o \
+						pk7_smime.o \
+						rand_os2.o \
+						rand_win.o \
+						rmd_dgst.o \
+						rmd_one.o \
+						rsa_chk.o \
+						rsa_gen.o \
+						rsa_null.o \
+						rsa_saos.o \
+						sha1_one.o \
+						sha_dgst.o \
+						sha_one.o \
+						t_bitst.o \
+						t_crl.o \
+						t_req.o \
+						t_spki.o \
+						tb_dsa.o \
+						tmdiff.o \
+						txt_db.o \
+						ui_compat.o \
+						x509_r2x.o \
+						x509_set.o \
+						x509cset.o \
+						x509spki.o
+endif
+
+all: prepare_dir build install
+
+zlib:
+	make -C ${ROOTDIR} zlib
+
+#$(SRC_DIR):distclean
+
+prepare_dir:
+	if [ -d $(SRC_DIR) ]; then rm -rf $(SRC_DIR); fi
+	tar jxf openssl-0.9.7m.tar.bz2
+	cd $(SRC_DIR); \
+	if [ ! -d $(TOOLCHAINS_PATH)/../${TARGET}/bin ]; then \
+	  echo "Directory \"$(TOOLCHAINS_PATH)/../${TARGET}/bin\" not exists! "; \
+	  exit 1;  \
+	fi; \
+	./Configure --prefix=$(TMPDISTDIR) shared zlib-dynamic $(EXTRAFLAGS) -I$(TMPDISTDIR)/include -L$(TMPDISTDIR)/lib no-threads no-bf no-cast no-pqueue no-store no-dsa no-rc2 no-rc5 no-ssl2 no-err no-engine linux-mips; 
+
+build:
+	make -C $(SRC_DIR) SSL_OBJS_TO_REMOVE="${SSL_OBJS_TO_REMOVE}" CRYPTO_OBJS_TO_REMOVE="${CRYPTO_OBJS_TO_REMOVE}"
+
+clean:
+	rm -f $(FSROOT)/lib/lib{ssl,crypto}.so*
+	rm -f $(TMPDISTDIR)/lib/lib{ssl,crypto}.so*
+	rm -rf $(SRC_DIR)
+
+distclean: clean
+	
+install:
+	make -C $(SRC_DIR) install SSL_OBJS_TO_REMOVE="${SSL_OBJS_TO_REMOVE}" CRYPTO_OBJS_TO_REMOVE="${CRYPTO_OBJS_TO_REMOVE}"
+	if [ ! -d $(FSROOT)/lib ]; then mkdir -p $(FSROOT)/lib; fi
+	cp -Pf $(TMPDISTDIR)/lib/lib{ssl,crypto}.so* $(FSROOT)/lib
+	chmod u+w $(FSROOT)/lib/lib{ssl,crypto}.so*
+	$(STRIP)  $(FSROOT)/lib/lib{ssl,crypto}.so*
+

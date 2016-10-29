@@ -1,0 +1,68 @@
+﻿var data_language = {
+	title : 'QoS流量分类配置',
+	innerHTML : {
+		lang_Enable 			: '启用',
+		lang_ClassifyType		: '分类方向',
+		lang_ClassCondition  	: '分类匹配条件',
+		lang_lanInterface  		: '流入接口',
+		lang_sourceMacAddress  	: '源MAC地址',
+		lang_sourceMacMask  	: '源MAC掩码',
+		lang_destiMacAddress  	: '目的MAC地址',
+		lang_destiMacMask  		: '目的MAC掩码',
+		lang_ethernetType  		: '以太网类型',
+		lang_ethernetPriority  	: '以太网优先级',
+		lang_sourceIpAddress  	: '源IP地址',
+		lang_sourceMask  		: '源子网掩码',
+		lang_destiIpAddress  	: '目的IP地址',
+		lang_destiMask  		: '目的子网掩码',
+		lang_ipLengthMax  		: 'IP包长度最小值',
+		lang_ipLengthMin  		: 'IP包长度最大值',
+		lang_dscpCheck  		: 'DSCP值',
+		lang_protocol  			: '协议类型',
+		lang_sourcePortStart  	: '源端口起止值',
+		lang_sourcePortMax  	: '源端口最大值',
+		lang_destiPortStart  	: '目的端口起止值',
+		lang_destiPortMax  		: '目的端口最大值',
+		lang_ClassResult  		: '分类匹配结果',
+		lang_wmmMarkEnable  	: '启用WMM标记',
+		lang_markEthernetPriority  : '标记以太网优先级',
+		lang_wmmMark  			: 'WMM标记',
+		lang_dscpMark  			: 'DSCP标记',
+		lang_cosMark            : 'COS标记',
+		lang_classQueue  		: '分类队列',
+		lang_upFlowClassify		: '上行流量分类',
+		lang_downFlowClassify	: '下行流量分类',
+		lang_IpProtocolType		: 'IP协议类型',
+		lang_inputInterface		: '输入接口',
+		lang_outputInterface	: '输出接口',
+		lang_TrafficClassCheck	: 'TC值',
+		lang_FlowLabelValue		: 'Flow Label值',
+		lang_TrafficClassMark	: 'TC标记',
+		lang_title : 'QoS流量分类配置'
+	},
+	value : {
+		submit : '提交',
+		refresh : '刷新'
+	},
+	option_text : {
+		SELECT_ClassifyType 		: ['物理层及MAC层', '传输层及IP层'],
+		SELECT_EthnetType 			: ['不匹配'],
+		SELECT_EthnetPriority 		: ['不匹配','0(最低)','1','2','3','4','5','6','7(最高)'],
+		SELECT_Protocol 			: ['不匹配'],
+		SELECT_EthnetPriorityMark 	: ['不匹配','0(最低)','1','2','3','4','5','6','7(最高)']
+	},
+	dynamic : {
+		lang_notMark   			: '不标记',
+		lang_notMatch   		: '不匹配',
+		lang_NotBinding 		: '未绑定',
+		lang_srcIpv4address		: '源IPv4地址',
+		lang_dstIpv4address		: '目的IPv4地址',
+		lang_srcMask			: '源子网掩码',
+		lang_dstMask			: '目的子网掩码',
+		lang_srcIpv6address		: '源IPv6地址',
+		lang_dstIpv6address		: '目的IPv6地址',
+		lang_srcIpPrefixLength	: '源IP前缀长度',
+		lang_dstIpPrefixLength	: '目的IP前缀长度'
+	}
+}
+

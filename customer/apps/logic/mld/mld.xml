@@ -1,0 +1,11 @@
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_MLD type="object" Writable="0" Standard="0">
+		<Snooping type="object">
+			<Enable type="boolean">0</Enable>
+		</Snooping>
+		<Proxy type="object">
+			<Enable type="boolean">0</Enable>
+			<AssociatedWANConnection type="string" Standard="0" Writable="1"></AssociatedWANConnection>
+		</Proxy>
+	</X_TWSZ-COM_MLD>
+</InternetGatewayDevice>

@@ -1,0 +1,53 @@
+
+<InternetGatewayDevice type="object">
+	<LANDeviceNumberOfEntries type="unsignedInt" Writable="0">0</LANDeviceNumberOfEntries>
+	<LANDevice type="object" Writable="1" CurNode="LANDeviceNumberOfEntries">
+		<i type="object">
+			<X_TWSZ-COM_DeviceName type="string" Writable="0">br0</X_TWSZ-COM_DeviceName>
+			<X_TWSZ-COM_MacAddress type="string" Writable="0"></X_TWSZ-COM_MacAddress>
+			<X_TWSZ-COM_ProxyArp type="boolean">0</X_TWSZ-COM_ProxyArp>
+			<LANHostConfigManagement type="object">
+				<MACAddress type="string" Writable="0"></MACAddress>
+				<DHCPServerConfigurable type="boolean" Writable="1">1</DHCPServerConfigurable>
+				<AllowedMACAddresses type="string(512)"></AllowedMACAddresses>
+				<IPInterfaceNumberOfEntries type="unsignedInt" Writable="0">0</IPInterfaceNumberOfEntries>
+				<IPInterface type="object" CurNode="IPInterfaceNumberOfEntries">
+					<i type="object">
+						<Enable type="boolean">1</Enable>
+						<IPInterfaceIPAddress type="string">0.0.0.0</IPInterfaceIPAddress>
+						<IPInterfaceSubnetMask type="string">255.255.255.0</IPInterfaceSubnetMask>
+						<IPInterfaceAddressingType type="string">DHCP</IPInterfaceAddressingType>
+						<X_TWSZ-COM_IPv6InterfaceAddress type="string"></X_TWSZ-COM_IPv6InterfaceAddress>
+						<X_TWSZ-COM_IPv6PrefixLength type="string">64</X_TWSZ-COM_IPv6PrefixLength>
+						<X_TWSZ-COM_IPv6InterfaceAddressScope type="string">LinkLocal</X_TWSZ-COM_IPv6InterfaceAddressScope>
+						<X_TELEFONICA-ES_IPv6InterfaceAddressingType type="object">
+							<StaticDelegated type="boolean" Writable="0">0</StaticDelegated>
+						</X_TELEFONICA-ES_IPv6InterfaceAddressingType>
+						<X_TELEFONICA-ES_IPv6LanIntfAddress type="object">
+							<UniqueLocalAddress type="string"></UniqueLocalAddress>
+							<DelegatedAddressNumberOfEntries type="unsignedInt" Writable="0">0</DelegatedAddressNumberOfEntries>
+							<DelegatedAddress type="object" CurNode="DelegatedAddressNumberOfEntries">
+								<i type="object">
+									<Mode type="string">WANDelegated</Mode>
+									<DelegatedConnection type="string"></DelegatedConnection>
+									<IPv6InterfaceAddress type="string"></IPv6InterfaceAddress>
+									<IPv6PrefixAddress type="string"></IPv6PrefixAddress>
+									<IPv6PrefixLength type="unsignedInt"></IPv6PrefixLength>
+								</i>
+							</DelegatedAddress>
+						</X_TELEFONICA-ES_IPv6LanIntfAddress>
+					</i>
+				</IPInterface>
+				<X_TWSZ-COM_ARPTable type="object">
+                    <LANARPTableNumberOfEntries type="unsignedInt" Writable="0">0</LANARPTableNumberOfEntries>
+					<Arptable type="object" Writable="0" CurNode="LANARPTableNumberOfEntries">
+					    <i type="object">
+						    <MACAddress type="string" Writable="0"></MACAddress>
+						    <IPAddress type="string" Writable="0"></IPAddress>
+					    </i>
+					</Arptable>
+			    </X_TWSZ-COM_ARPTable>
+			</LANHostConfigManagement>
+		</i>
+	</LANDevice>
+</InternetGatewayDevice>

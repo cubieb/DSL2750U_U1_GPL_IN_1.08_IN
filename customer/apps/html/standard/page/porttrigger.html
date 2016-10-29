@@ -1,0 +1,113 @@
+	<style type="text/css"><!--
+		.div_left { padding-left:150px; width:105px;}
+		.koo { padding-left:20px; width:150px;}
+		.doo { font-size:12px;}
+	--></style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_PortTrigger">Port Trigger</p>
+		<div class="div_orange">
+			<p  id = "lang_PortTrigger_explain">
+				Port Trigger let the device to open TCP or UDP port to access the connection from remote host when the specified port has been opened by lanside connection according to the rule. Usually the port which has been opened is different from the port which will be opened by the device.  A maximum of 32 entries can be configured.
+			</p>
+			<p  id = "lang_PortTrigger_explain1">
+				Select the service name, and fill the blanks of trigger port and new opened port. Rule can be enable or disable separately.
+			</p>
+			<div class="div_left koo"></div>
+			<div class="div_right doo">
+				<input type="checkbox" >
+				<b id="INPUT_PortTriggerEnable">Enable Port Trigger</b>
+			</div>
+		</div>
+		<div class="div_button">
+			<input type="button" id = "uiSubmit" onClick="uiSubmit()" value="Apply">
+			<input type="button" id = "Cancel" onClick="uiPageRefresh()" value="Cancel">
+		</div>
+
+		<p class="do bk_black" id = "lang_PortTrigger_Setup">Port Trigger Setup</p>
+		<div class="div_black">
+			<table class="td_table_s" id='PortTriggerList'>
+				<tr class="tr_bold">
+					<td>&nbsp;</td>
+					<td id = "lang_PortTrigger_Name">Service Name</td>
+					<td id = "lang_PortTrigger_Protocol">Trigger Protocol</td>
+					<td id = "lang_PortTrigger_Port">Trigger Port Range</td>
+					<td id = "lang_PortTrigger_OpenProtocol">Open Protocol</td>
+					<td id = "lang_PortTrigger_OpenPort">Open Port Range</td>
+					<td id = "lang_PortTrigger_status">status</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button">
+			<input type="button" value="Add" id="lang_add" onClick="uiAdd()" /> 
+			<input type="button" value="Edit" id="lang_edit" onClick="uiEdit()" />
+			<input type="button" value="Delete" id="lang_delete" onClick="uiDelete()" />
+		</div>
+
+		<div id="port_setup" style="display:none">
+			<p class="do bk_black" id = "lang_PortTrigger_Setup1" >Port Trigger Setup</p>
+			<div class="div_black">
+				<P id="remainPart" style="display:none">
+					<b id = "lang_PortTrigger_num">Remaining number of entries that can be configured:</b>
+					&nbsp;<span id="remain_num"></span>
+				</P>
+				<div class="div_left"  id = "lang_PortTrigger_Service">Service Name :</div>
+				<div class="div_right"><input type='text' size="45"  maxlength="15" id="INPUT_ServiceName"></div>
+
+				<div class="div_left" id = "lang_PortTrigger_Rule">Rule status :</div>
+				<div class="div_right">
+					<select name="ruleStatus" id="ruleStatus" style="font-size:12px;">
+						<option id = "lang_PortTrigger_Enable1" value="1">Enable</option>
+						<option id = "lang_PortTrigger_Disable" value="0">Disable</option>
+					</select>
+				</div>
+			
+				<table class="td_table_s">
+					<tr class="tr_bold">
+						<td id = "lang_PortTrigger_PortStart">Trigger Port Start</td>
+						<td id = "lang_PortTrigger_PortEnd">Trigger Port End</td>
+						<td id = "lang_PortTrigger_Protocol1">Trigger Protocol</td>
+						<td id = "lang_PortTrigger_OpenStart">Open Port Start</td>
+						<td id = "lang_PortTrigger_PortEnd1">Open Port End</td>
+						<td id = "lang_PortTrigger_OpenProtocol1">Open Protocol</td>
+					</tr>
+					<tr>
+						<td><input type="text" maxlength="5" name="triStart" id="triStart" style="width:30px"></td>
+						<td><input type="text" maxlength="5" name="triEnd" id="triEnd" style="width:30px"></td>
+						<td><select name="triProto" id="triProto">
+							<option value="TCP" selected>TCP
+							<option value="UDP">UDP
+						</select></td>
+						<td><input type="text" maxlength="5" name="opStart" id="opStart" style="width:30px"></td>
+						<td><input type="text" maxlength="5" name="opEnd" id="opEnd" style="width:30px"></td>
+						<td><select name="opProto" id="opProto">
+							<option value="TCP" selected>TCP
+							<option value="UDP">UDP
+						</select></td>
+					</tr>
+				</table>
+				<input type="hidden" id="portTriggerNodePath" value="">
+			</div>
+			<div class="div_button">
+				<input type="button" value="Apply" name="apply" id="lang_apply" onClick="btnApply()" /> 
+				<input type="button" value="Cancel" name="cancle" id="lang_cancle" onClick="uiPageRefresh()" />
+			</div>
+		</div>
+	</div>
+</td>
+
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_PortTrigger_Help">Helpful Hints...</h5>
+		<div>
+			<p id = "lang_PortTrigger_Helpinfo">
+				Config the rule to let device open referenced Internet transmit port.
+			</p>
+			<p id = "lang_PortTrigger_Helpinfo1">
+				Rule can be enable or disable separately.
+			</p>
+		</div>
+		<h5><a href="/cgi-bin/webproc?getpage=html/index.html&var:menu=help&var:page=helpadv">More...</a></h5>
+	</div>
+</td>

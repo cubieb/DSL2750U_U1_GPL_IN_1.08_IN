@@ -1,0 +1,19 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_DDNS type="object" Standard="0">
+		<i type="object">
+			<DDNSProvider type="string"> </DDNSProvider>
+			<Hostname type="string(64)">myhostname</Hostname>
+			<WANConnectionID type="string(256)"> </WANConnectionID>
+			<WANInterfaceState type="string" Writable="0" NeedSave="0">Disconnected</WANInterfaceState>
+			<Username type="string(64)">User</Username>
+			<Password type="string(64)">Pass</Password>
+			<Method type="string(16)" Writable="0">http</Method>
+			<CgiPath type="string(128)" Writable="0">/gnudip/cgi-bin/gdipupdt.cgi</CgiPath>
+			<DdnsHost type="string(256)">ns1.cammail.net</DdnsHost>
+			<Email type="string(64)">Email</Email>
+			<Key type="string(64)">Key</Key>
+			<DDNSState type="string" Writable="0" NeedSave="0">Unconfigure</DDNSState>
+		</i>
+	</X_TWSZ-COM_DDNS>
+</InternetGatewayDevice>

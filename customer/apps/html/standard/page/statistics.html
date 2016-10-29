@@ -1,0 +1,198 @@
+<style type="text/css"><!--
+	.td_bold { font-weight:bold;}
+	.td_table_s td { text-align:left;}
+ --></style>
+<td>
+			<div class="config2">
+				<p class="bk_orange"  id="deviceinfo">Statistics</p>
+				<div class="div_orange">
+						<p id="mationreflects">It indicates the current status of all the connections.</p>
+				</div>
+			
+		<p class="do bk_black" id="LocalNetwork">Local Network & Wireless</p>
+		<div class="div_black">
+			<table class="td_table_s" id='interface_info_table'>
+				<tr>
+					<td class="td_bold" id="interface5">interface</td>
+					<td class="td_bold"  colspan="4" id="Received5">Received</td>
+					<td class="td_bold"  colspan="4" id="Transmitted5">Transmitted</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td class="td_bold" id="Bytes3">Data</td>
+					<td class="td_bold" id="Pkts3">Pkts</td>
+					<td class="td_bold" id="Errs3">Errs</td>
+					<td class="td_bold" id="Rxdrop3">Rx drop</td>
+					<td class="td_bold" id="Bytes2">Data</td>
+					<td class="td_bold" id="Pkts2">Pkts</td>
+					<td class="td_bold" id="Errs2">Errs</td>
+					<td class="td_bold" id="Rxdrop2">Tx drop</td>
+				</tr>
+			</table>
+		</div> 
+		
+		<p class="do bk_black" id="Internet">Internet</p>
+		<div class="div_black">
+			<table class="td_table_s" id='interface_statistics_table'>
+			<tr class="tr_bold">
+				<td id="Service">Service</td>
+				<td id="VPIVCI">VPI/VCI</td>
+				<td id="Protocol">Protocol</td>
+				<td colspan="4" id="Received">Received</td>
+				<td colspan="4" id="Transmitted">Transmitted</td>
+			</tr>
+			<tr class="tr_bold">
+				<td></td><td></td><td></td>
+				<td id="Bytes1">Data</td>
+				<td id="Pkts1">Pkts</td>
+				<td id="Errs1">Errs</td>
+				<td id="Drops1">Drops</td>
+				<td id="Bytes">Data</td>
+				<td id="Pkts">Pkts</td>
+				<td id="Errs">Errs</td>
+				<td id="Drops">Drops</td>
+			</tr>
+			</table>
+		</div>	
+		
+		<div id = "dsl_info">
+		<p class="do bk_black" id="ADSL">ADSL</p>
+		<div class="div_black">
+			<table class="td_table_s" id='adsl_info_table'>
+				<tr>
+					<td class="td_bold" colspan = "2" id="Mode">Mode:</td>
+					<td id="adsl_mode"><td>
+				</tr>
+				<tr>
+					<td class="td_bold" colspan = "2" id="Type">Type:</td>
+					<td id = "adsl_type">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" colspan = "2" id="LineCoding">Line Coding:</td>
+					<td id = "adsl_line_coding">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" colspan = "2" id="Status">Status:</td>
+					<td id = "adsl_status">&nbsp;</td>
+				</tr>	
+				<tr>
+					<td class="td_bold" colspan = "2" id="UpTime">Up Time:</td>
+					<td id = "adsl_uptime">&nbsp;</td>
+				</tr>					
+				<tr><td colspan="3">&nbsp;</td></tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td class="td_bold" id="Downstream">Downstream</td>
+					<td class="td_bold" id="Upstream">Upstream</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="SNRMargindB">SNR Margin (0.1dB):</td>
+					<td id = "down_snr_margin">&nbsp;</td>
+					<td id = "up_snr_margin">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="Attenuation">Attenuation (0.1dB):</td>
+					<td id = "down_Attenuation">&nbsp;</td>
+					<td id = "up_Attenuation">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="OutputPowerdBm">Output Power (dBm):</td>
+					<td id = "down_output_power">&nbsp;</td>
+					<td id = "up_output_power">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="AttainableRate">Attainable Rate (Kbps):</td>
+					<td id = "down_attainable_rate">&nbsp;</td>
+					<td id = "up_attainable_rate">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="RateKbps">Rate (Kbps):</td>
+					<td id = "down_rate">&nbsp;</td>
+					<td id = "up_rate">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="Dinterleaverdepth">D (interleave depth):</td>
+					<td id = "down_interleaver_depth">&nbsp;</td>
+					<td id = "up_interleaver_depth">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="Delaymsec">Delay (msec):</td>
+					<td id = "down_delay">&nbsp;</td>
+					<td id = "up_delay">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="DataCounter">Data Counter:</td>
+
+					<td id = "down_blocks1">
+					<div id = "down_blocks" class="div_left"></div>
+					<div id = "down_button1">
+					  <input type="button" id="clear_down" style="width:50px" onclick="Clear_Down_Blocks()">
+					</div>
+					</td>
+
+					<td id = "up_blocks1">
+					<div id = "up_blocks" class="div_left"></div>
+                     <div id = "up_button">
+					  <input type="button" id="clear_up" style="width:50px"  onclick="Clear_Up_Blocks()">
+					</div>
+					</td>
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				<tr>
+					<td class="td_bold" id="HECErrors">HEC Errors:</td>
+					<td id = "down_hhc_errors">&nbsp;</td>
+					<td id = "up_hhc_errors">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="OCDErrors">OCD Errors:</td>
+					<td id = "down_ocd_errors">&nbsp;</td>
+					<td id = "up_ocd_errors">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="LCDErrors">LCD Errors:</td>
+					<td id = "down_lcd_errors">&nbsp;</td>
+					<td id = "up_lcd_errors">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="CRCErrors">CRC Errors:</td>
+					<td id = "down_crc_errors">&nbsp;</td>
+					<td id = "up_crc_errors">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td_bold" id="FECErrors">FEC Errors:</td>
+					<td id = "down_fec_errors">&nbsp;</td>
+					<td id = "up_fec_errors">&nbsp;</td>
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				<tr>
+					<td class="td_bold" id="TotalES">Total ES</td>
+					<td id = "down_total_es">&nbsp;</td>
+					<td id = "up_total_es">&nbsp;</td>
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				<tr>
+					<td class="td_bold" id="TotalFrames">Total Frames</td>
+					<td id = "down_total_frames">&nbsp;</td>
+					<td id = "up_total_frames">&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</div>			
+							
+</td>
+		
+		<td class="td_help">
+			<div class="help">
+				<h5 id="lang_help">Helpful Hints...</h5>
+				<div>
+				<p id="lang_helpdec">
+Helpful Hints... 
+It shows the number of packets that have been transmitted between WAN and LAN since the router was last initialized.
+More...
+				</p></div>
+				<h5><a href="#" id="lang_more">More...</a></h5>
+			</div>
+		</td>
+
+

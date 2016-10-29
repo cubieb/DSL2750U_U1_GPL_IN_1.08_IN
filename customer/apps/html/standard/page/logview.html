@@ -1,0 +1,34 @@
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<td>
+
+
+<div class="config2">
+     <p class="bk_orange" id="lang_logs">Logs </p>
+	 <div class="div_orange">
+     <p id="lang_logdsc">This page allows you to view system logs.</p>
+	 </div>
+	 <p class="do bk_black" id="lang_Slogs">System Log</p>
+	 <div class="div_black">
+	     <table class="td_table" id="td_modelLogLevel">
+					<tr>
+						<textarea name="textarea" cols="76" rows="20" readonly="readonly" id="INPUT_LogText"></textarea>
+					</tr>
+				</table>
+	 </div>
+	 <div class="div_button">
+	      <input type="button" name="refresh" id="refresh" value="Refresh" onClick="uiPageRefresh()">
+	 </div>
+		<!-- 用于查看日志 -->
+		<form name="uiShowLog" id="uiShowLog" method="post" action="webupg">
+			<input type="hidden" name="name" value="ShowSysEvtLogFile" />
+		</form>
+
+</div>
+</td>
+  <td  class="td_help">
+     <div  class="help">
+      <h5 id="lang_helph1">Helpful Hints... </h5>
+	  <p id="lang_helpp1">The system log records activities on the router. Only a limited number of log entries can be saved, depending on the log details and the memory of the router.</p>
+	  <h5 ><a href="#" id="lang_helph2">More...</a></h5>
+	 </div> 
+  </td>

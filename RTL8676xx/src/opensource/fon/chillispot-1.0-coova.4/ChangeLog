@@ -1,0 +1,70 @@
+
+== ChangeLog (Coova Chilli current svn revision) ==
+
+== ChangeLog (Coova Chilli v1.0.4 svn revision 51) ==
+
+* Merged a version of the ''Any IP'' patch as option ''uamanyip''
+* Fixed issue with userurl being truncated (no query string)
+* Improved userurl handling and sending to uamhomepage and/or uamserver
+* Wait for local content script to exit and ensure a clean socket shutdown (by Christian Loitsch; needed for IE7 and embedded portal)
+* Fixed session-id not in access-request for UAM login bug
+* Experimenting with new option ''usetap'' to use a TAP instead of TUN
+
+== ChangeLog (Coova Chilli v1.0.3 svn revision 39) ==
+
+* The [http://www.gnu.org/software/gengetopt/gengetopt.html gengetopt] project accepted our changes to allow 'include <file>' in config files. The new cmdline.c is generated with gengetopt v2.19 or higher
+* Added the ''wpaguests'' option to allow anonymous WPA access w/captive-portal
+* Added option for ''localusers'' file to authenticate users from a local file (inspired by FON)
+* Commented out the use of clearenv() as it is not on all platforms and not wanted 
+* Look for Acct-Session-ID in addition to User-Name in Disconnect-Request - if given, only that specific session is disconnected (thanks to Jeremy Childs for patch)
+* Added option ''uamlogoutip'' (default 1.1.1.1) whereby any HTTP request to this address will result in the auto-logout of the associated session
+* Support for CoARequest RADIUS requests to reconfigure session parameters (session-timeout, data/bandwidth limits, etc)
+* New optional flag ''macallowlocal'' which when turned on results in the macallowed list being auto-logged in with any RADIUS (local "authentication")
+* Port and protocol allowed in the ''uamallowed'' to allow for a more specific definition of the walled-garden
+* Add option for ''uamuiport'' which is an alternate port for embedded local content (where as uamlisten/uamport is also used to grab the initial redirect)
+* The option ''wwwbin'' which, when configured, is the program used to deliver local content (in the ''wwwdir'') with the extention ".chi" (perfect for haserl)
+* The option ''wwwui'' which when used with ''uamuiport'' is the alternate program to use for local content
+* The ''chilli_response'' binary taking 3 arguments <hex-challenge> <uamsecret> <password> and returning the appropriate response
+* New options ''postauthproxy'' and ''postauthproxyport'' to configure an upstream transparent proxy to use post-authentication for http traffic
+* Option ''papalwaysok'' to allow back-ward compatibility with UAM back-end's using PAP authentication (with ''password'') even when configured with a ''uamsecret''
+
+== ChangeLog (Coova Chilli v1.0.2 svn revision 17) ==
+
+* Configurable TX queue length (option ''txqlen'') on the tun/tap tunnel (Linux only)
+* Added option ''swapoctets'' to swap the meaning of input/output octets/packets 
+* Added option ''logfacility'' to change the syslog logging facility (default LOG_LOCAL6) [note: should probably change the name of debugfacility as it is really logpriority]
+* Patches from the ChilliSpot CVS 1.1 version
+** Added option ''conup'' defining a script for session/connection-up
+** Added option ''condown'' defining a script for session/connection-down
+* Patches contributed by WeSea (see: [http://chillispot.wesea.com/ their page])
+** Added option "usestatusfile" to turn on the use of the status file
+** Traffic to UAM interface not counted in leaky buckets
+** Some tweaks to allow a Flash browser-based UAM solution
+* Applied patch for OpenBSD and NetBSD found in ChilliSpot mailing-list
+* Renamed and swapped meaning of config param ''uamwispr'' (mentioned below) to ''nouamwispr'' which defaults to ''off'' for compatibility - turn on this option to ''not'' have chilli send WISPr XML, but rather assume the UAM server is taking care of that.
+* Renamed and swapped meaning of config param ''uamsuccess'' (mentioned below) to ''nouamsuccess'' which defaults to ''off'' for compatibility - turn on this feature to ''not'' return the user to the UAM server on login, but their original url instead.
+
+== ChangeLog (Coova Chilli v1.0.1 svn revision 2) ==
+
+* Added the ability to use ''include <filename>'' in configuration files to include others. Using gengetopt version 2.16 and a patch is applied to the generated source.
+* A ''chilli_radconfig'' utility to perform a NAS Administrative-User RADIUS login in order to collect configurations (using the new ChilliSpot-Config VSA).
+* A ''chilli_query'' utility to interface directly with the chilli server (via a UNIX socket) and retrieve the status of all DHCP leases and sessions. Also, the utility can be used to instruct chilli to release a DHCP lease (and logout the user).
+* Added the configuration parameters ''adminuser'' and ''adminpasswd'' which are used by ''chilli_radconfig'' in combination with the other RADIUS (server, secret, port) parameters.
+* Fixed the handling of the originally requested URL and the forwarding of said in the UAM initial redirect query string (parameter ''userurl'').
+* Passing query string argument ''loginurl'' to ''uamhomepage'' noting the URL to follow to login -- also making the redirect return WISPr directions to use the uamserver URL instead.
+* Added the configuration parameter ''wwwdir'' which defines a directory which will serve local files for URLs of format: ''http://<uamlisten>:<uamport>/www/<filename>'' - only supports ''.html'', ''.gif'', and ''.jpg'' extensions.
+* Added the configuration parameters ''dhcpstart'', and ''dhcpend'' which define the DHCP ippool range.
+* Added the sending of ''hisip'' in the UAM initial redirect query string.
+* Added the configuration parameter ''cmdsocket'' which is the path of the UNIX socket to use for chilli_query.
+* Added the configuration parameter ''ssid'' which gets added to the UAM initial redirect query string.
+* Added the configuration parameter ''vlan'' which gets added to the UAM initial redirect query string.
+* Added the configuration parameter ''nasip'' which gets used in the RADIUS NAS-IP-Address attribute (the listen IP is used if not set).
+* Added the configuration parameter ''nasmac'' which gets sent to the UAM server in the initial redirect query string as called.
+* Added the configuration parameter ''uamwispr'' which turns off and on chilli's internal support for WISPr XML (turned off by default as it is assumed the back-office is driving the XML).
+* Added the configuration parameter ''uamsuccess'' which turns off and on whether or not chilli will send the user back to the UAM server (instead of their original URL) once authenticated.
+* Swapped input/output octets/packets in RADIUS to be more in-line with other WiFi gateways.
+* Allocates "app connections" on demand instead of in bulk to reduce memory usage.
+* Rearranged some code to improve the building process and reduce the memory footprint of the additional utilities.
+* (Re)Configuration memory leak fixed. 
+
+	

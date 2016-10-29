@@ -1,0 +1,57 @@
+
+<InternetGatewayDevice type="object">
+	<X_TELEFONICA-ES_Firewall type="object">
+	    <Enabled type="boolean">1</Enabled>
+		<FirewallNumberOfEntries type="unsignedInt" Writable="0">0</FirewallNumberOfEntries>
+		<Firewall type="object" CurNode="FirewallNumberOfEntries">
+			<i type="object">
+				<Name type="string"></Name>
+				<Interface type="string"></Interface>
+				<Type type="string">In</Type>
+				<DefaultAction type="string">Permit</DefaultAction>
+				<DefaultChain type="string">Both</DefaultChain>
+				<RuleNumberOfEntries type="unsignedInt" Writable="0">0</RuleNumberOfEntries>
+				<stats type="object">
+					<Packets type="unsignedInt" Writable="0">0</Packets>
+					<Bytes type="unsignedInt" Writable="0">0</Bytes>
+				</stats>		              
+				<Rule type="object" CurNode="RuleNumberOfEntries">
+					<i type="object">
+						<Enabled type="boolean">0</Enabled>
+						<Protocol type="string">UDP</Protocol>
+						<IPProtocolVersionType type="string">IPv4</IPProtocolVersionType>
+						<Action type="string">Permit</Action>
+						<RejectType type="string"></RejectType>
+						<IcmpType type="string"></IcmpType>
+						<AlgEnable type="boolean">0</AlgEnable>
+						<Alg type="string"></Alg>
+						<DSCP type="string"></DSCP>
+						<PacketLengthMin type="string"></PacketLengthMin>
+						<PacketLengthMax type="string"></PacketLengthMax>
+						<TcpFlags type="string"></TcpFlags>
+						<Origin type="object">
+							<IPAddress type="string"></IPAddress>
+							<Mask type="string"></Mask>
+							<StartPort type="string">0</StartPort>
+							<EndPort type="string">0</EndPort>
+						</Origin>
+						<Destination type="object">
+							<FQDNEnable type="boolean">0</FQDNEnable>
+							<FQDN type="string"></FQDN>
+							<IPAddress type="string"></IPAddress>
+							<Mask type="string"></Mask>
+							<StartPort type="string">0</StartPort>
+							<EndPort type="string">0</EndPort>
+						</Destination>
+						<stats type="object">
+							<Packets type="unsignedInt" Writable="0">0</Packets>
+							<Bytes type="unsignedInt" Writable="0">0</Bytes>
+						</stats>
+						
+					</i>
+				</Rule>
+			</i>
+		</Firewall>
+	</X_TELEFONICA-ES_Firewall>
+</InternetGatewayDevice>
+

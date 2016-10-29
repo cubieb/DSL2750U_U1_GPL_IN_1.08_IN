@@ -1,0 +1,118 @@
+<!-- config -->
+<style type="text/css"><!--
+	.div_left { width:270px;}
+--></style>
+<td>
+	<div class="config2">
+		<p class="bk_orange" id = "lang_config">ipv6 lan Settings</p>
+		<div class="div_orange">
+			<p id = "lang_introduction">Note: Stateful DHCPv6 is supported after the 16 bits of IPv6 address. For example: Interface ID ranges from 1 to ffff, and IPv6 address ranges from 2111:123:123:123::1 to 2111:123:123:123::ffff.</p>
+		</div>
+		<p class="do bk_black" id="lang_ipv6_interface">Static LAN IPv6 Address Configuration</p>
+
+		<!-- LAN IPv6 Address -->
+		<div class="div_black">
+			<div class="div_left" id="lang_interface_address">IPv6 Interface Address</div>
+			<div class="div_right">
+				<input type="text" id="INPUT_InterfaceAddress" />
+			</div>
+		</div>
+
+		<p class="do bk_black" id="lang_dhcpv6">DHCPv6 Configuration</p>
+
+		<div class="div_black">
+			<!-- Dhcpv6 Enable -->
+			<div class="div_left" id="lang_Enable_DHCPv6">Enable DHCPv6 Server</div>
+			<div class="div_right">
+				<input type="checkbox" id="INPUT_EnableDhcpv6" onChange="OnEnableDhcpv6Chg()">
+			</div>
+
+			<div class="div_left" id = "lang_config_mode">LAN address config mode</div>
+			<div class="div_right">
+				<input type="radio" name="RADIO_LanAddrDistributeType" onClick="onDistributeTypeChg()" value="1"/>Stateless&nbsp;&nbsp;<input type="radio" name="RADIO_LanAddrDistributeType" onClick="onDistributeTypeChg()" value="0"/>Statefull</span>
+			</div>
+
+			<!-- DHCPv6 Address Pool -->
+			<div id="Dhcpv6Pool">
+				<div class="div_left" id="lang_min_interface">Start Interface ID</div>
+				<div class="div_right">
+					<input type="text" id="INPUT_MinInterfaceID" />
+				</div>
+
+				<div class="div_left" id="lang_max_interface">End Interface ID</div>
+				<div class="div_right">
+					<input type="text" id="INPUT_MaxInterfaceID" />
+				</div>
+
+				<div class="div_left" id="lang_lease_time">DHCPv6 Lease Time</div>
+				<div class="div_right">
+					<input type="text" id="INPUT_Dhcpv6LeaseTime" />
+				</div>
+			</div>
+
+			<p id="lang_lan_dns_setting">Use the following DNS server addresses. </p>
+			<div class="div_left" id="lang_dhcp">Get DNS Servers from WAN</div>
+			<div class="div_right">
+				<input type="radio" name="IPv6_DNS_Mode" onClick="onDNSModeChg()" value="DHCP" />
+			</div>
+
+			<div class="div_left" id="lang_static">Static DNS Servers</div>
+			<div class="div_right">
+				<input type="radio" name="IPv6_DNS_Mode" onClick="onDNSModeChg()" value="Static" />
+			</div>
+
+			<div id="StaticDNS">
+				<div class="div_left" id="lang_dns_servers">Static IPv6 DNS Servers</div>
+				<div class="div_right">
+					<input type="text" id="INPUT_IPv6DNSServers" />
+				</div>
+			</div>
+		</div>
+
+		<p class="do bk_black" id="lang_radvd">Site Prefix Configuration</p>
+
+		<div class="div_black">
+			<!-- Radvd Enable -->
+			<div class="div_left" id="lang_Enable_RADVD">Enable RADVD</div>
+			<div class="div_right">
+				<input type="checkbox" id="INPUT_EnableRadvd" onChange="OnEnableRadvdChg()">
+			</div>
+
+			<div class="div_left" id = "lang_get_Prefix">Auto get prefix from WAN</div>
+			<div class="div_right">
+				<input type="radio" name="Enable" onClick="setEnable()" value="0"/>
+			</div>
+
+			<div class="div_left" id = "lang_Static">Static</div>
+			<div class="div_right">
+				<input type="radio" name="Enable" onClick="setEnable()" value="1"/>
+			</div>
+
+			<!-- Static -->
+			<div id="Static">
+				<div class="div_left" id = "lang_Site_Prefix">Site Prefix</div>
+				<div class="div_middle">&nbsp;
+					<input type="text" class="control" id="INPUT_SitePrefix">
+				</div>
+				<div class="div_right">&nbsp;</div>
+			</div>
+		</div>
+
+		<!-- End -->
+		<div class="SecLevel div_button">
+			<input type="submit" name="submit" id="submit" value="Apply" onClick="uiSubmit()">
+			<input type="button" name="refresh" id="refresh" value="Cancel" onClick="uiPageRefresh()">
+		</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+	</div>
+</td>
+
+<td class="td_help">
+	<div class="help">
+		<h5 id = "lang_help_hint">Helpful Hints...</h5>
+		<div>
+			<p id = "lang_help1">You can use printer server to print the information from LAN or WAN. To configure the network printer on your PC, copy the URL in this page to your printer.</p>
+		</div>
+		<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+	</div>
+</td>

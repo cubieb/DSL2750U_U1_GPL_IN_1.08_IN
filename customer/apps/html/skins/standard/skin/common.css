@@ -1,0 +1,102 @@
+/*+------------------------------  
+ * FileName: CSS Document
+ * Edition : R200
+ * Author  : 软件部TBS组
+ * Modify  : 2009-02-10 change new style Compatible in IE6.0/Firefox 2.0/Opera9.25/Chrom1.0
+--------------------------------+*/
+body { font:12px Tahoma,Helvetica,Geneva,Arial,sans-serif; margin:0px auto; width:918px; background:#fafafa; visibility:hidden;}
+a { text-decoration:none;}
+img { margin:0px; padding:0px; border:0px;}
+/* for firefox */
+input[type=text]{ border:1px solid #aaa; width:131px; height:20px; font-size:12px; padding:3px 5px 0px;}
+input[type=password]{ border:1px solid #aaa; width:131px; height:20px; font-size:12px; padding:3px 5px 0px;}
+/* for IE */
+input { width:expression((this.type=="text"||this.type=="password")?"129px":""); height:expression((this.type=="text"||this.type=="password")?"19px":"");padding:expression((this.type=="text"||this.type=="password")?"2px 5px 0px":""); font-size:expression((this.type=="text"||this.type=="password")?"12px":"");}
+/* header */
+#Header { margin:0px; padding:0px; height:85px; background:url("/html/skin/logo.jpg") no-repeat; min-width:800px;}
+	#Logo { height:45px;}
+		#Logo p { margin:0px;}
+		p#Logout { float:right; margin:8px 8px 0px 0px;}
+	#Navigation { height:40px; min-width:800px; width:expression((document.documentElement.clientWidth||document.body.clientWidth) < 800? "800px": "auto" );}
+		ul.M0 { margin:0px; padding-left:20.5%;}
+		ul.M0 li { float:left; list-style-type:none;}
+		.M0 a { background: url("/html/skin/bck.gif") no-repeat;}
+		.M0 a:link,.M0 a:visited{ float:left;background-position:left -66px;text-decoration: none; margin-left:1px; padding-right:0px;}
+		.M0 a:link span,.M0 a:visited span{ display:block; font:13px Arial, Helvetica, sans-serif; background: url("/html/skin/bck.gif") no-repeat; padding:11px 27px 6px 27px; color:#000; background-position:right -98px;}
+		.M0 a:hover,.M0 a:active{ background-position:left -130px;} 
+		.M0 a:hover span,.M0 a:active span{ background-position:right -162px;}  
+		.M0 .on a:link,.M0 .on a:visited{ background-position:left 2px;} 
+		.M0 .on a span,.M0 .on a:link span,.M0 .on a:visited span{ background-position:right -32px;color:#000; font-weight:bold;}
+/* maincontent */
+#Main { margin-top:3px; height:auto; min-width:800px; width:expression((document.documentElement.clientWidth||document.body.clientWidth) < 800? "800px": "auto" );}
+	/* left menu */
+	#Menu { margin:1px; border:1px solid #B1D3EC; width:20.5%; background:#fff; float:left; font-size:13px;}
+		#MenuTitle { margin:1px;background:url("/html/skin/MenuBar.gif") repeat-x; width:auto; height:27px;}
+			.Word { float:left; color:#0D6EB7; top:5px; left:10px; position:relative; width:auto; font-weight:bold; font-size:14px;}
+			#ShrinkMark { float:right; top:110px; left:16%; position:absolute;}
+		.M1 { margin:1px;}
+			.M1 p { margin:0px; border-bottom:1px solid #EEEEEE;}
+			.M1 a { color:gray; padding:8px 0px 8px 30px; display:block; }
+     	.M1 a:hover { background:url("/html/skin/MenuBar.gif");}
+			.M1 ul { margin:0px; padding:0px;}
+				.M1 ul li { margin:0px; padding:0px; border-bottom:1px solid #EEEEEE; list-style-type:none}
+				.M1 ul li a { padding-left:50px; }
+				#up a { color:#005B58; background:#e4e4e4;}
+                ul #up a { color:#6699cc; background:white; text-decoration:underline;}
+				#thirdup a { color:#005B58; background:#E4E4E4;}
+	/* content */
+	#Content { margin:0px; border:1px solid #B1D3EC; width:78%; background:#fff; float:right;}
+		.content { background:#F1F1F1; width:840px; border-collapse:collapse; display:block; border:1px solid white; border-top:1px solid #F1F1F1;}
+.content td { padding:0px; vertical-align:top;}
+	/* 1:<td> -> config1 */
+	.config1 { padding:8px; border:0px solid red;}
+	/* 2:<td> -> config2 */
+	.config2 { padding:8px; border:1px solid #F1F1F1;}
+		/* about p/div */
+		.bk_orange { padding:10px 10px; font-weight:bold; background:white; text-transform:uppercase; color: #6699cc; border-bottom: 4px solid #6699cc; }
+		.div_orange { padding:5px; line-height:16px; background:white;border-bottom: 4px solid #6699cc;}
+			.div_orange p { padding-bottom:5px;}
+		.bk_black { padding:5px 0px; font-weight:bold; background: white; color: #99ccff; text-transform:uppercase; border-bottom: 2px solid #99ccff; }
+		.div_black { padding:10px;  line-height:16px; background:white; border-bottom: 2px solid white;}
+			.div_black p { padding-bottom:5px;}
+			.div_left { padding:3px 4px 4px 0px; float:left; font-weight:bold; width:180px; text-align:right;}
+			.div_right { height:27px;}
+			.div_right2 { height:27px;margin:4px; }
+		.div_button { margin:10px 0px; text-align:center;}
+		p.bk_black{margin:0px;}
+		p.bk_orange{margin:0px;}
+		p.do { margin-top:24px;}
+		/* about talbe: short & long */
+		.td_table_s { border-collapse:separate; width:100%; background: #DFDFDF;}
+			.td_table_s td { border:1px solid white; text-align:center;}
+			 .td_table_s input {width:22px;}
+		.td_table_l { border-collapse:separate; width:100%; background:#DFDFDF;}
+			.td_table_l td { border:1px solid white; text-align:center;}
+		    /*.td_table_l input { width:80px;}*/
+		.td_table { margin-left:50px ; padding:0px; border:0px solid #aaa; border-collapse:collapse; border-spacing:0px; font-size:14px;}	
+		.tr_bold { font-weight:bold;}
+	/* 2:<td> -> help */
+	.td_help { background:#404343; display:none;}
+	.help { width:133px; color:#F1F1F1; font-size:11px; display:none;}
+.help_table ul{
+	font-size: 11px; list-style-type: disc; padding-left:40px
+}
+.help_table li{
+	font-size: 11px;
+}
+.help_table dt{
+	font-size: 11px; font-weight:bold; 
+}
+.help_table a{
+	 text-decoration:underline;
+}
+.help_example dl {
+	border-right: gray 1px solid; padding-right: 0px; border-top: gray 1px solid; padding-left: 4px; padding-bottom: 0px; border-left: gray 1px solid; padding-top: 0px;border-bottom: gray 1px solid; background-color: #dfdfdf
+}
+SPAN.button_ref {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 9px; PADDING-BOTTOM: 0px; MARGIN: 0px 2px; COLOR: #111111; LINE-HEIGHT: 12px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #99ccee
+}
+/* footer */
+.footer { background:#404343; border-left:1px solid white; border-right:1px solid white;}
+/* copyright */
+p#copyright { color:#F1F1F1; text-align:center; font-size:11px; margin:10px;}

@@ -1,0 +1,21 @@
+#####################
+config OPENSOURCE_HTTPD
+	bool 'HTTP Server(Web Server)'
+	default n
+	depends on OPENSOURCE
+	help 
+      	Enable external httpd
+
+config OPENSOURCE_HTTPD_SSL
+	bool 'Support SSL(https)'
+	default n
+	depends on (OPENSOURCE_HTTPD && OPENSOURCE_OPENSSL)
+	help 
+      	Enable HTTPS,need OPENSSL
+
+config OPENSOURCE_HTTPD_IPV6
+	bool 'Support IPV6'
+	default n
+	depends on OPENSOURCE_HTTPD
+	help
+		Enable mini-httpd to support IPV6

@@ -1,0 +1,20 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_Authentication type="object" Writable="0">
+		<SessionTimeout type="unsignedInt" Standard="0">300</SessionTimeout>
+		<MaxUserEntries type="unsignedInt" Writable="0" Standard="0">0</MaxUserEntries>
+		<UserNumberOfEntries type="unsignedInt" Writable="0" Standard="0">0</UserNumberOfEntries>
+        <X_TWSZ-COM_UserAdminPassword_FLAG type="unsignedInt" Writable="1" Standard="0">0</X_TWSZ-COM_UserAdminPassword_FLAG>
+		<UserList type="object" Writable="0" MaxNode="MaxUserEntries" CurNode="UserNumberOfEntries">
+			<i type="object">
+				<UserName type="string" Standard="0" Writable="1"></UserName>
+				<Password type="string" Standard="0" Writable="1"></Password>
+				<Used type="unsignedInt" Writable="0" Standard="0">0</Used>
+				<Level type="unsignedInt" Writable="0" Standard="0"></Level>
+			</i>
+		</UserList>
+	</X_TWSZ-COM_Authentication>
+	<LANConfigSecurity type="object">
+		<ConfigPassword type="string(64)" Standard="0" Writable="1"></ConfigPassword>
+	</LANConfigSecurity>
+</InternetGatewayDevice>

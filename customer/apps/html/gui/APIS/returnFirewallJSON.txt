@@ -1,0 +1,14 @@
+{
+	 "RETURN":{
+		"success": true
+      },
+      
+      "FIREWALL": {
+		"SelectedLevel":"Medium",
+   		"LEVELS": [
+       		 {"idLevel": "level1", "nameLevel":"Low", "description": "Allow all traffic", readOnly: true},
+       		 {"idLevel": "level2", "nameLevel":"Medium", "description": "Allow outgoing traffic", readOnly: true},
+        	 {"idLevel": "level3", "nameLevel":"High", "description": "Block all traffic", readOnly: true}
+   			]
+		}
+}

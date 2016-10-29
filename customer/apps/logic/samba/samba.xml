@@ -1,0 +1,11 @@
+
+<InternetGatewayDevice type="object">
+    <X_TWSZ-COM_SAMBA type="object" Standard="0">
+    <SambaEnable type="boolean" Standard="0" Writable="1">1</SambaEnable>
+    <Status type="int[0:3]" Writable="0" Standard="0">0</Status>
+    <Workgroup type="string" Standard="0" Writable="1">home</Workgroup>
+    <NetbiosName type="string" Standard="0" Wirtable="1">dsl_route</NetbiosName>
+    <Newpassword type="string" Standard="0" Wirtable="1">123456</Newpassword>
+    <USBEnable type="boolean" Standard="0" Writable="1">1</USBEnable>
+    </X_TWSZ-COM_SAMBA>
+</InternetGatewayDevice>

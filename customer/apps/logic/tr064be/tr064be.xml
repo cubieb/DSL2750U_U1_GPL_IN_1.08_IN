@@ -1,0 +1,7 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_TR064 type="object" Writable="0" Standard="0">
+		<Enable type="boolean" Writable="1" Standard="0">0</Enable>
+		<Status type="int[0:3]" Writable="0" Standard="0">0</Status>
+	</X_TWSZ-COM_TR064>
+</InternetGatewayDevice>

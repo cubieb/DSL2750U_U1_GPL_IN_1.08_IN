@@ -1,0 +1,70 @@
+
+menuconfig BUTTON_CLASS
+	bool "Buttons Support"
+	help
+	  Say Y to enable Buttons driver.
+
+if BUTTON_CLASS
+
+config TBS_BUTTON
+	boolean "TBS Buttons"
+	help
+	Say yes to enable TBS Button driver framwork.
+
+choice
+	prompt "Button Trigger Mode"
+	depends on TBS_BUTTON
+	default BUTTON_TRIGGER_INTERRUPT
+
+config BUTTON_TRIGGER_INTERRUPT
+	boolean "Interrupt Mode"
+	depends on TBS_BUTTON
+	help
+	Say yes if button device use interrupt mode
+
+config BUTTON_TRIGGER_TIMER
+        tristate "Polling Mode"
+        depends on TBS_BUTTON
+        help
+        This option enable button timer trigger function.
+endchoice
+
+comment "Button device"
+
+config BUTTON_AR7130
+	tristate "Button support for the AR7130"
+	depends on TBS_BUTTON && MACH_AR7100
+	help
+	  This option enables support for the buttons on AR7130.
+
+config BUTTON_AMAZON_SE
+	tristate "Button support for the Amazon-SE"
+	depends on TBS_BUTTON && AMAZON_SE
+	help
+	  This option enables support for the buttons on Infineon Amazon-SE.
+
+config BUTTON_RT3052
+	tristate "Button support for the RT3052"
+	depends on TBS_BUTTON && RALINK_RT3052
+	help
+	  This option enables support for the buttons on Ralink rt3052.
+
+config BUTTON_VX180
+	tristate "Button support for the VX180"
+	depends on TBS_BUTTON && FUSIV_VX180
+	help
+	  This option enables support for the buttons on IKANOS Vx180.
+
+config BUTTON_RTL8672
+	tristate "Button support for the RTL8672"
+	depends on TBS_BUTTON && RTL8672
+	help
+	  This option enables support for the buttons on Realtek RTL8672.
+
+config BUTTON_RTL8676
+	tristate "Button support for the RTL8676"
+	depends on TBS_BUTTON && RTL8676
+	help
+	  This option enables support for the buttons on Realtek RTL8672.
+
+endif

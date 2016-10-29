@@ -1,0 +1,12 @@
+menuconfig VENDOR_RALINK 
+  bool "Ralink Applications"
+  depends on VENDOR
+  default n
+
+config RALINK_RT2860APD_APP
+	bool 'Ralink rt2860apd app'
+	default y
+	depends on VENDOR_RALINK
+	help
+		Ralink rt2860adp app
+

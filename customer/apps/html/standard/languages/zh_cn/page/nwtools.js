@@ -1,0 +1,45 @@
+var data_language = {
+	innerHTML : {
+		lang_port_config : '网络工具--端口绑定',
+		lang_port_introduction : '端口绑定支持PVC与端口绑定成不同的组，各个组之间相互独立。',
+		lang_igmpproxy_config : '网络工具--IGMP代理',
+		lang_igmpproxy_introduction : '允许您从多播源发送相同的内容到多个接受者。',
+		lang_igmpsnooping_config : '网络工具--IGMP透传',
+		lang_igmpsnooping_introduction : '允许您从多播源发送相同的内容到多个接受者。',
+		lang_igmpstatic_config : '网络工具--静态IGMP',
+		lang_igmpstatic_introduction : '允许您从一个源发送相同的内容到多个接受者，例如多媒体。',
+		lang_queue_config1 : '网络工具--队列配置',
+		lang_queue_introduction : '允许您为QoS添加分类优先队列。',
+		lang_qos_config : '网络工具--QoS',
+		lang_qos_introduction : '允许您配置QoS规则。',
+		lang_upnp_config : '网络工具--UPNP',
+		lang_upnp_introduction : '允许您配置UPnP.',
+		lang_adsl_config : '网络工具--ADSL',
+		lang_adsl_introduction : '允许您配置ADSL。',
+		lang_snmp_config : '网络工具--SNMP',
+		lang_snmp_introduction : '允许您配置SNMP。',
+		lang_tr069_config : '网络工具--TR-069',
+		lang_tr069_introduction : '允许您配置TR-069.',
+		lang_tr064_config : '网络工具--TR-064',
+		lang_tr064_introduction : '允许您配置TR-064.',
+		lang_cer_configPrinter : '网络工具--打印机',
+		lang_cer_printer : '允许您使用或禁用打印机。',
+		lang_cer_config : '网络工具--证书',
+		lang_cer_introduction : '允许您管理TR-069证书。'
+	},
+
+	value : {
+		port : '端口绑定',
+		igmp_proxy : 'IGMP代理',
+		igmp_snnoping : 'IGMP透传',
+		igmp_static : '静态IGMP',
+		queue : '队列设置',
+		qos : 'QoS设置',
+		upnp : 'UPnP设置',
+		adsl : 'ADSL设置',
+		snmp : 'SNMP设置',
+		tr69 : 'TR-069设置',
+		cerprinter  : '打印机',
+		certificate : '证书设置'
+	}
+}

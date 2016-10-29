@@ -1,0 +1,45 @@
+include ../../TI_Build.make
+
+export PATH := $(TI_uclibc_path):$(shell echo -n $(PATH))
+export CROSS_COMPILE_PREFIX=$(TI_uclibc_base)
+export TI_uclibc_include
+all: clean build install
+
+updatedd_temp = $(TI_FILESYSTEM)/usr
+                                                                                                                            
+
+build:
+	#WCFLAGS="-Os -Wall -W -Wpointer-arith -Wbad-function-cast -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline" 
+
+	WCFLAGS="-O0 -DNDEBUG=0" ./configure --disable-dietlibc  --prefix=${updatedd_temp} --build=i386-linux --host=mipsel-linux
+	$(MAKE)
+
+install:
+	install -d $(TARGET_HOME)$(TI_libdir)/updatedd
+	install -m 0755 $(TARGET_HOME)/src/updatedd/src/updatedd $(TARGET_HOME)$(TI_sbindir)/updatedd
+	mips_fp_le-strip --strip-unneeded $(TARGET_HOME)$(TI_sbindir)/updatedd
+	install -m 0755 $(TARGET_HOME)/src/updatedd/src/plugins/dyndns.so $(TARGET_HOME)$(TI_libdir)/updatedd
+	mips_fp_le-strip --strip-unneeded $(TARGET_HOME)$(TI_libdir)/updatedd/dyndns.so
+	install -m 0755 $(TARGET_HOME)/src/updatedd/src/plugins/tzo.so $(TARGET_HOME)$(TI_libdir)/updatedd
+	mips_fp_le-strip --strip-unneeded $(TARGET_HOME)$(TI_libdir)/updatedd/tzo.so
+	install -m 0755 $(TARGET_HOME)/src/updatedd/src/plugins/gnudip.so $(TARGET_HOME)$(TI_libdir)/updatedd
+	mips_fp_le-strip --strip-unneeded $(TARGET_HOME)$(TI_libdir)/updatedd/gnudip.so
+
+
+#	install -m 0755 $(TARGET_HOME)/development/updatedd/usr/lib/plugins/dyndns.so $(TARGET_HOME)$(TI_libdir)/updatedd
+#	$(INSTALL) -d $(libdir)/updatedd
+#	$(INSTALL) -m 755 *.so $(libdir)/updatedd
+#	chmod 755 ./src/updatedd
+#	cp ./src/updatedd $(TARGET_HOME)$(TI_sbindir)/
+#	chmod 755 ./src/plugins/*.so
+#	cp ./src/plugins/*.so $(TARGE_HOME)/lib/
+clean:
+############Modify by zhc
+####Real clean
+#	@if [ -e $(TARGET_HOME)/src/updatedd/Makefile ]; then \
+#	$(MAKE) clean; \
+#	fi
+	@if [ -e $(TARGET_HOME)/src/updatedd/Makefile ]; then \
+	$(MAKE) distclean; \
+	fi
+############Modify end

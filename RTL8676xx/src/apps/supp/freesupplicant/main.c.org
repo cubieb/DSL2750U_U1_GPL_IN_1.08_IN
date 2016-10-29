@@ -1,0 +1,85 @@
+#include <sys/select.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include <signal.h>
+#include <errno.h>
+#include <string.h>
+#include "main.h"
+#include "statemachine.h"
+#include "cardif.h"
+
+struct config_data config_info;
+void init_config(int argc, char** argv){
+	if(argc!=3){
+		printf("invald args\n");
+		exit(0);
+	}
+	if(strlen(argv[1])>MAX_NAME_SIZE){
+		printf("name length too long\n");
+		exit(0);
+	}
+	if(strlen(argv[2])>MAX_PASSWD_SIZE){
+		printf("name length too long\n");
+		exit(0);
+	}
+	strcpy(config_info.name,argv[1]);
+	strcpy(config_info.passwd,argv[2]);
+	printf("config_info.name=%s\n",config_info.name);
+	printf("config_info.passwd=%s\n",config_info.passwd);
+	return;
+	
+}
+void logstart(){
+	if(state.eap_req==TRUE){
+		return;
+	}
+
+	if(state.start_count>=state.max_start){
+		return;
+	}
+	state.start_count++;
+	send_logstart_frame();
+	alarm(state.start_count*2);
+	return;
+		
+}
+void main(int argc, char** argv){
+	struct timeval t;
+	int ret,size;
+	fd_set fd;
+	int maxfd;
+	t.tv_sec=2;
+	t.tv_usec=0;
+#if 0
+	test_MD5();
+	return;
+#endif
+	init_config(argc, argv);
+	init_cardif();
+	init_statemachine();
+	init_crc32_table();
+	alarm(1);
+	signal(SIGALRM,logstart);
+	printf("freesupplicant running....\n");
+
+    system("ifconfig wlan0 down");    //ZLG
+    usleep(500);
+    printf("wlan0 down....\n");
+
+	while(1){
+		FD_ZERO(&fd);
+		FD_SET(cardif.sock,&fd);
+		maxfd=cardif.sock+1;
+		ret=select(maxfd,&fd,NULL,NULL,NULL);
+		if(ret<=0){
+			printf("bad select:errno=%d,%s\n",errno,strerror(errno));
+			continue;
+		}
+		if(FD_ISSET(cardif.sock,&fd)){
+			size=cardif_getframe();
+			run_statemachine();
+		}
+	}
+	return;
+	
+}

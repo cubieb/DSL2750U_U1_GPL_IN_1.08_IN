@@ -1,0 +1,69 @@
+#
+#
+#  Broadcom UPNP Library Make File. 
+#  X86 Version. 
+#
+
+BCUPNPLIB_STATIC = libbcupnp.a
+BCUPNPLIB_NAME = libbcupnp.so
+MAJORV=1
+MINORV=0
+BCLIB_SL=$(BCUPNPLIB_NAME).$(MAJORV)
+BCUPNPLIB=$(BCUPNPLIB_NAME).$(MAJORV).$(MINORV)
+
+CC = gcc
+ROOTDIR = ../../..
+LIBPATH = $(ROOTDIR)/dms/Dependencies/Libraries/Linux/X86/shared
+SRCPATH = $(ROOTDIR)/upnp/src
+
+#
+# ROOTDIR points to the parent of dms directory
+# We use that as base and define the paths 
+# accordingly.
+#
+
+INCLUDES = -I./ -I/usr/include
+INCLUDES += -I$(ROOTDIR)/upnp/src
+INCLUDES += -I$(ROOTDIR)/upnp/include
+
+CPPFLAGS = ${INCLUDES} 
+CPPFLAGS += -MD -DHAVE_DLNA -DLINUX -DDEBUG -D_GNU_SOURCE=1 
+CPPFLAGS += -O2 -g -Wall -fPIC  
+
+LDFLAGS = -shared -Wl,-soname,${BCUPNPLIB_NAME}
+LDFLAGS += -lpthread  
+
+SRCFILES =	$(SRCPATH)/action.c \
+		$(SRCPATH)/bsocket.c \
+		$(SRCPATH)/controlpoint.c \
+		$(SRCPATH)/cstring.c \
+		$(SRCPATH)/debug.c \
+		$(SRCPATH)/device.c \
+		$(SRCPATH)/gena.c \
+		$(SRCPATH)/http.c \
+		$(SRCPATH)/nanoxml.c \
+		$(SRCPATH)/linux/osl.c \
+		$(SRCPATH)/service.c \
+		$(SRCPATH)/soap.c \
+		$(SRCPATH)/ssdp.c \
+		$(SRCPATH)/subscription.c \
+		$(SRCPATH)/timer.c \
+		$(SRCPATH)/upnp.c \
+		$(SRCPATH)/url.c \
+		$(SRCPATH)/heap.c \
+		$(SRCPATH)/variable.c
+
+OBJFILES = ${SRCFILES:.c=.o}
+
+all:$(OBJFILES) 
+	ar -cvq $(BCUPNPLIB_STATIC) ${OBJFILES}
+	$(CC) $(CPPFLAGS) $(LDFLAGS) -v -o $(BCUPNPLIB_NAME) ${OBJFILES}
+
+
+.PHONY: clean
+clean:
+	rm -f $(BCUPNPLIB_STATIC)
+	rm -f $(BCUPNPLIB_NAME) $(OBJFILES)
+	rm -f *.map *.list
+
+

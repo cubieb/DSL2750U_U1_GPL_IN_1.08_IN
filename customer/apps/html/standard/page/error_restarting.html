@@ -1,0 +1,134 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!-- 
+  * { font:12px Arial, Helvetica, sans-serif;}
+  td { background:#FFFFFF; text-align:center;}
+  .title {font-size:14px; font-weight:bold;}
+-->
+</style>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+var arrLang = [];
+arrLang['en_us'] = {
+	lang_title 		: 'Upgrade fail! ',
+	lang_notice1 	: 'System is rebooting... Please wait for a moment',
+	lang_notice2 	: 'Please relogin after reboot'
+};
+
+arrLang['zh_cn'] = {
+	lang_title 		: '升级失败！',
+	lang_notice1 	: '系统重启中...请稍候片刻',
+	lang_notice2 	: '重启后请重新登录'
+};
+
+function uiOnload(){
+	var strLang = Cookie.Get('language');
+	strLang = (strLang == null) ? "en_us" : strLang;
+	var objLang = arrLang[strLang];
+
+	for (var attr in objLang){
+		try{
+			document.getElementById(attr).innerHTML = objLang[attr];
+		} catch(E) {
+		}
+	}
+	
+	//语言替换完后再显示页面
+	document.body.style.visibility = 'visible';
+	
+	uiProgress() ;
+}
+
+var bar = 0;
+var amount ="";
+var ajax = null;
+
+/* 刷新一格的时间间隔，总共110格 */
+var interval = 500; 
+
+function DoLogin() 
+{ 
+	window.location = "/";
+} 
+
+function uiProgress(){
+	if (bar>=110){ 
+		DoLogin(); 
+		return;
+	}
+
+	if (bar<110){ 
+		//if( bar > 10 )
+			//checkOnline();
+		setTimeout("uiProgress()", interval); 
+	} 
+	document.rebooting.chart.value=amount ;
+	document.rebooting.percent.value=Math.round(bar*100/110)+"%" ;
+	amount =amount + "|" ;
+	bar= bar+1;
+}
+
+function checkOnline()
+{
+	if (ajax != null)
+	{
+		ajax.abort();
+		ajax = null;
+	}
+
+	var _url = "/index.html";
+	ajax = Ajax.getInstance(_url, "", 0, processResult, processError);
+	ajax.get();
+}
+
+function processResult(responseText)
+{
+	bar = 110;
+	DoLogin();
+}
+
+function processError()
+{
+}
+
+window.onload = uiOnload;
+//]]>
+</script>
+</head>
+<body style="visibility:hidden;">
+<div id="Content">
+<table cellspacing=0 border=0 cellpadding=5 align=center width=600>
+	<tr>
+		<td>
+			<span id="lang_title" class="title">Upgrade fail!</span>
+			<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span id="lang_notice1">System is rebooting... Please wait for a moment</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span id="lang_notice2">Please relogin after reboot</span>
+		</td>
+	</tr>
+	<tr>
+	    <td>
+			<form name="rebooting">
+				<input type="text" name="chart" size="51" style="font-family:Arial; font-weight:bolder; color:#0000FF; background-color:#F0F0F0; padding:0px; border-style:none;">
+				<input type="text" name="percent" size="4" style="font-family:Arial; color:#000000;  background-color:white;text-align:right; border-width:medium; border-style:none;" class="unnamed1">
+			</form>
+	    </td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

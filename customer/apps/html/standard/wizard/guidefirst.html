@@ -1,0 +1,237 @@
+<html>
+<head>
+ <title>831II</title>
+  <!--meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="refresh" content="5">
+  <meta http-equiv="Pragma" content="no-cache">
+  <!-- hide
+  <meta http-equiv="refresh" content="2">
+  -->
+<style type="text/css">
+body { background:#081273;}
+</style>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript" src="/html/js/secboot.js"></script>
+<script language="javascript">
+<!-- hide
+var userLevel   = "1";
+removeListeners(TopSelfMenu);
+removeListeners(initSubMenu);
+
+<?mget :InternetGatewayDevice.DeviceInfo. "Manufacturer ManufacturerOUI ModelName Description SerialNumber HardwareVersion SoftwareVersion ModemFirmwareVersion UpTime"
+`	var G_Manufacturer 		    = "$01";
+	var G_ManufacturerOUI 		= "$02";
+	var G_ModelName 			= "$03";
+	var G_Descripstion 			= "$04";
+	var G_SerialNumber 			= "$05";
+	var G_HarewareVersion 		= "$06";
+	var G_SoftwareVersion 		= "$07";
+	var G_ModemFirmwareVersion 	= "$08";
+	var G_UpTime               = "$09";
+`?>
+var G_lan_mac = "<?get :InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.1.MACAddress ?>";
+var G_CurrentLocalTime      = "<?get :InternetGatewayDevice.Time.CurrentLocalTime?>";
+
+
+var G_wanConnction = [];
+var m = 0;
+<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice. "WANIPConnectionNumberOfEntries"
+`	<?if gt $11 0
+	`	<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice.$20.WANIPConnection. "ConnectionStatus Name Enable ConnectionType AddressingType ExternalIPAddress"
+		`	G_wanConnction[m] = [
+							 "$01"=="Disconnected" ? 'Conectando ADSL' : 'Conectado a Internet' ,   //ConnectionStatus
+							 "$02",    //name
+							 "$03",    //enalbe
+							 "$04",    //ConnectionType
+							 "$05",       //AddressingType
+							 "",		//  igmp
+							 "Enable",		// qos
+							 "$06",      //  ip addr 
+
+							 ];
+			++m;
+		`?>
+	`?>
+`?>	
+<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice. "WANPPPConnectionNumberOfEntries"
+`	<?if gt $11 0
+	`	<?objget :InternetGatewayDevice.WANDevice.1.WANConnectionDevice.$20.WANPPPConnection. "ConnectionStatus Name Enable ConnectionType ExternalIPAddress RemoteIPAddress"
+		`	G_wanConnction[m] = [
+							 "$01"=="Disconnected" ? 'Conectando ADSL' : 'Conectado a Internet' ,//ConnectionStatus
+							 "$02",//name;
+							 "$03",//Enable;
+							 "$04", ////ConnectionType
+							 "PPPoE", //address type
+							 "",       //  igmp
+							 "Enable",       //qos
+							 "$05",		// ip addr
+							 "$06" ,     // default gw
+							
+							 ];
+			++m;
+		`?>
+	`?>
+`?>
+
+
+function closeWin()
+{
+    if(window.confirm("Salir?")) {
+        top.close();
+    }
+}
+
+function uiToNextPage()
+{
+   	$H({
+		'getpage' : 'html/wizard/guidesecond.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function uiToLoginPage(){
+	//alert(1)
+	$H({
+		'getpage' : 'html/main.html',
+		'var:page' : '*',
+		'obj-action':'auth',
+		':username' :'user',
+		':password' :'user',
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	
+	$('uiPostForm').submit();
+}
+
+function uiOnload(){
+   var hasPPPoE=0;
+   setJSONValue({
+   	    'Marca1': G_Manufacturer,
+		'Modelo1' : G_ModelName,
+		'version1' : G_ModemFirmwareVersion,
+		'mac1' : G_lan_mac,
+		'date1': '2010.4.14'
+	});
+   //alert(G_wanConnction[2][4]);
+   //alert(G_wanConnction.length);
+   for(var k = 0,i = 0; k < G_wanConnction.length; k++){
+   	
+   if(G_wanConnction[k][4]=="PPPoE"){
+     // alert(G_wanConnction[k][0]);
+	  hasPPPoE=1;
+      setJSONValue({
+	  	'connectionType1': G_wanConnction[k][0],
+		'ip1': G_wanConnction[k][7]
+	});
+	break;
+   	}
+   	}
+   if(hasPPPoE==0){
+   	setJSONValue({
+	'connectionType1': 'Registrando usuario PPPoE'
+		    
+	});
+   	}
+}
+
+addListeners(uiOnload);
+
+// -->
+</script>
+</head>
+
+<body>
+<table width="100%">
+<tr><td width="178" height="90"><!--img src="/html/wizard/logo.jpg" width="178" height="90"--></td></tr>
+  <tr>
+    <td><strong><font Bienvenido</font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade></td>
+  </tr>
+</table>
+<table width="75%"  align="center">
+	<tr>
+	<td><font color=white size=4><b>A continuación podr?ingresar a configurar su modem ADSL. Pulse el botón Siguiente para configurar su cuenta de usuario y la red WI-FI o el botón “Configuración avanzada?para más opciones</b></font></td>
+	</tr>
+	<br>
+	<tr>
+	<td>
+	<br><br>
+	<center >
+	<input type="button" value="Siguiente"  onClick="uiToNextPage()" >
+	&nbsp;
+	<input type="button" value="Configuración avanzada" onClick="uiToLoginPage()">
+	&nbsp;
+	</center> 
+	</td>
+	</tr>
+	<br>
+</table>
+<table width="75%" height=10 align="center">
+	<tr>
+	<td>
+	<!--iframe src="guidestatus.html" frameBorder=0 scrolling=no height=50 TARGET="_self"--></iframe>
+	</td>
+	</tr>
+</table>
+<table width="75%"  align="center">
+    
+	<tr height="20">
+	<td width="23%">&nbsp;</td>
+	</tr>
+	<tr>
+	<td id = "connectionType"><font color=white>Estado de conexión a Internet:</font></td><td width="77%" style="color:white" id="connectionType1"></td>
+	</tr>
+	<tr>
+	<td id = "ip"><font color=white>IP:</font></td><td style="color:white" id="ip1"></td>
+	</tr>
+	<tr>
+	<td id = "Marca"><font color=white>Marca:</font></td><td style="color:white" id="Marca1"></td>
+	</tr>
+	<tr>
+	<td id = "Modelo"><font color=white>Modelo:</font></td><td style="color:white" id="Modelo1"></td>
+	</tr>
+	<tr>
+	<td id = "version"><font color=white>Versión de firmware:</font></td><td style="color:white" id="version1"></td>
+	</tr>
+	<tr>
+	<td id = "date"><font color=white>Fecha de firmware:</font></td><td style="color:white" id="date1"></td>
+	</tr>
+	<tr>
+	<td id = "mac"><font color=white>Dirección MAC: </font></td><td style="color:white" id="mac1"></td>
+	</tr>
+	<tr>
+	<script language="javascript">
+
+	</script>
+	</tr>
+</table>
+<table width="100%">
+<tr><td width="178" height="40"></td></tr>
+  <tr>
+    <td><strong><font Bienvenido></font></strong></td>
+  </tr>
+  <tr>
+    <td><hr align="center" noshade size=1></td>
+  </tr>
+</table>
+<table width="75%" align="center">
+  <tr>
+    <td><font Bienvenido color=white>Copyright @ 2010 All Right Reserved</font></td>
+  </tr>
+</table>
+<table id='Content'></table>
+<table id='Menu'></table>
+<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

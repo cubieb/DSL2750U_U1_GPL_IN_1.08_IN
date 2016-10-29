@@ -1,0 +1,14 @@
+#####################
+config OPENSOURCE_PPPD
+	bool 'PPP Daemom'
+	default y
+	depends on OPENSOURCE
+  	help 
+      	PPP Daemom
+
+config OPENSOURCE_PPPD_SUPPORT_IPV6
+	bool 'support ipv6cp'
+	default n
+	depends on OPENSOURCE_PPPD
+	help
+	

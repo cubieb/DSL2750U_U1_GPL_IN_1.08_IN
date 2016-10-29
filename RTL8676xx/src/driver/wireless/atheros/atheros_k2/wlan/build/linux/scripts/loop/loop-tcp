@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ifconfig sn0 up
+ifconfig sn1 up
+
+brctl addbr br1
+brctl delif br0 eth1
+
+brctl addif br0 sn0
+brctl addif br1 eth1
+brctl addif br1 sn1

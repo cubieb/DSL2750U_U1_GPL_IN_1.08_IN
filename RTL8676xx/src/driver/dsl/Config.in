@@ -1,0 +1,24 @@
+menuconfig	DRIVERS_DSL
+	bool 'Dsl Drivers'
+	default n
+	depends on DRIVERS
+	help
+		DSL device driver module
+
+config INFINEON_DSL_DRIVERS
+	bool 'Infineon dsl driver'
+	depends on DRIVERS_DSL && AMAZON_SE && AMAZON_SE_MEI_BSP
+	help
+		Infineon dsl driver
+
+config IKANOS_DSL_DRIVERS
+	bool 'IKANOS xDSL driver'
+	depends on DRIVERS_DSL && VX180
+	help
+		IKANOS xDSL driver
+
+config RTL8672_DSL_DRIVERS
+	bool 'RTL8672 xDSL driver'
+	depends on DRIVERS_DSL && RTL8672_BOARD
+	help
+		RTL8672 xDSL driver

@@ -1,0 +1,20 @@
+lowlevel_init.o: lowlevel_init.S \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include/config.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/configs/vrx288.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/sdram_layout.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/configs/../../../../autoconf.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/cmd_confdefs.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/version.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include2/asm/regdef.h \
+  ddr2/xrx200_ddr2_250M_settings.h
+cache.o: cache.S \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include/config.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/configs/vrx288.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/sdram_layout.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/configs/../../../../autoconf.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/cmd_confdefs.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/tbsboot/include/version.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include2/asm/regdef.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include2/asm/mipsregs.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include2/asm/addrspace.h \
+  /home/xiachaoren/lantiq/build.LANTIQ_VRX288/boot/build/include2/asm/cacheops.h

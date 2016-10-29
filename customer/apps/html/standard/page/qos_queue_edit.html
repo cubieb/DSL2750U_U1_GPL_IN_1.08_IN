@@ -1,0 +1,46 @@
+<td>
+	<div class="config2">
+		<p class="bk_orange"><span id="lang_title">QoS Business Classify Page</span></p>
+		<div class="div_black">
+			<!--<div class="div_left" id="lang_enable">分类方式</div>
+				<div class="div_right">
+					<input type="radio" name="INPUT_UpDownLink" checked><span id="lang_upLink">上行流</span>
+					<input type="radio" name="INPUT_UpDownLink" disabled><span id="lang_downLink">下行流</span>
+				</div>-->
+			
+			<p class="do bk_black" id="lang_matchCondition">Match Condition</p>
+			<div class="div_black">
+				<div class="div_left" id="lang_enable">Enable</div>
+				<div class="div_right">&nbsp;<input type="checkbox" id="INPUT_Enable"></div>
+				
+				<div class="div_left" id="lang_businessName">Business Name</div>
+				<div class="div_right">&nbsp;
+					<select id="SELECT_Interface"  style="width:100px"><option></option></select>
+				</div>
+			</div>
+			
+			<p class="do bk_black" id="lang_matchResult">Match Result</p>
+			<div class="div_black">
+				<div class="div_left" id="lang_classifyQueue">Classify Queue</div>
+				<div class="div_right">&nbsp;
+					<select id="SELECT_ClassifyQueue"  style="width:100px">
+						<option> </option>
+					</select>
+				</div>
+				
+				<div class="div_left" id="lang_dscpMark">DSCP Mark</div>
+				<div class="div_right">&nbsp;<select id="SELECT_DSCPMark"  style="width:100px"><option> </option></select></div>
+				
+				<div class="div_left" id="lang_cosMark">802.1P Mark</div>
+				<div class="div_right">&nbsp;
+					<select id="SELECT_COSMark"  style="width:100px"><option></option></select>
+				</div>
+			</div>
+			<div class="div_button">
+				<input type="submit" id="submit" value="提交" onClick="uiSubmit()">
+				<input type="button" id="refresh" value="刷新" onClick="uiPageRefresh()">
+			</div>
+		</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+	</div>
+</td>

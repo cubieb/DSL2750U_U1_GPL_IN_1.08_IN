@@ -1,0 +1,8 @@
+#!/bin/sh
+mount -t tmpfs tmpfs /mnt
+mount -t usbfs none /proc/bus/usb
+mount -t tmpfs tmpfs /dev/usb
+mkdir -p /dev/usb/sd
+mkdir -p /dev/usb/lp
+mkdir -p /var/run/usb
+mknod /dev/usb/lp/lp0 c 180 0

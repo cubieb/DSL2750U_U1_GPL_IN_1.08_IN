@@ -1,0 +1,6 @@
+config OPENSOURCE_QRENCODE
+	bool 'QrenCode'
+	default n
+	depends on OPENSOURCE
+	help
+	QrenCode

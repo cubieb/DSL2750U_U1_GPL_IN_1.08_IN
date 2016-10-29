@@ -1,0 +1,47 @@
+
+<InternetGatewayDevice type="object">
+	<LANDevice type="object" Writable="0" CurNode="LANDeviceNumberOfEntries">
+		<i type="object">
+			<LANHostConfigManagement type="object">
+				<DNSServers type="string(64)"></DNSServers>
+				<X_TWSZ-COM_WANDNSServers type="string(64)"></X_TWSZ-COM_WANDNSServers>
+				<X_TWSZ-COM_UseIPRoutersAsDNSServer type="boolean">0</X_TWSZ-COM_UseIPRoutersAsDNSServer>
+				<X_TWSZ-COM_DNSRelayEnable type="boolean" Standard="0" Writable="1">1</X_TWSZ-COM_DNSRelayEnable>
+			</LANHostConfigManagement>
+			<X_TELEFONICA-ES_IPv6LANHostConfigManagement type="object">
+				<IPv6DNSWanConnection type="string"></IPv6DNSWanConnection>
+				<ServerType type="object">
+					<StatefullDHCPv6 type="object">
+						<IPv6DNSConfigType type="string">DHCP</IPv6DNSConfigType>
+						<IPv6DNSServers type="string">2111:3c:123:0:c:135:9a:a15,2111:3c:123:0:3bc6:a:9cc:518</IPv6DNSServers>
+					</StatefullDHCPv6>
+				</ServerType>
+				<IPv6DNSRelayEnable type="boolean">1</IPv6DNSRelayEnable>
+			</X_TELEFONICA-ES_IPv6LANHostConfigManagement>
+		</i>
+	</LANDevice>
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnection type="object" CurNode="WANIPConnectionNumberOfEntries">
+						<i type="object">
+							<DNSEnabled type="boolean">1</DNSEnabled>
+							<DNSOverrideAllowed type="boolean">0</DNSOverrideAllowed>
+							<DNSServers type="string(64)"></DNSServers>
+							<X_TWSZ-COM_UsrDNSServers type="string" Standard="0"></X_TWSZ-COM_UsrDNSServers>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object">
+						<i type="object">
+							<DNSEnabled type="boolean"></DNSEnabled>
+							<DNSOverrideAllowed type="boolean">0</DNSOverrideAllowed>
+							<DNSServers type="string(64)" Writable="1"></DNSServers>
+							<X_TWSZ-COM_UsrDNSServers type="string" Standard="0"></X_TWSZ-COM_UsrDNSServers>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

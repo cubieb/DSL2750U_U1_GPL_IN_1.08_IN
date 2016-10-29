@@ -1,0 +1,23 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_Diagnostics type="object">
+		<DiagnosticsState type="string"></DiagnosticsState>
+		<Interface type="string(256)"></Interface>
+		<Status type="object">
+			<ADSLSynchronization type="string" Writable="0"></ADSLSynchronization>
+			<ATMF5SegmentLoopback type="string" Writable="0"></ATMF5SegmentLoopback>
+			<ATMF5EndToEndLoopback type="string" Writable="0"></ATMF5EndToEndLoopback>
+			<ATMF4SegmentLoopback type="string" Writable="0"></ATMF4SegmentLoopback>
+			<ATMF4EndToEndLoopback type="string" Writable="0"></ATMF4EndToEndLoopback>
+			<IPPingGateway type="string" Writable="0"></IPPingGateway>
+			<IPPingPrimaryDNS type="string" Writable="0"></IPPingPrimaryDNS>
+		</Status>
+		<AutoPVCSearch type="object">
+			<Enable type="boolean">0</Enable>
+			<SearchPVC type="string"></SearchPVC>
+			<FoundPVC type="string" Writable="0"></FoundPVC>
+			<DefaultPVCList type="string" Writable="0">0/35,8/35,0/33,0/43,0/51,0/59,8/43,8/51,8/59</DefaultPVCList>
+		</AutoPVCSearch>
+	</X_TWSZ-COM_Diagnostics>
+</InternetGatewayDevice>
+

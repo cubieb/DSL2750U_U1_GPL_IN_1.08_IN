@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ifconfig eth0 down
+ifconfig eth0 hw ether 00:11:22:33:44:66
+ifconfig eth0 up
+
+echo 0 > /proc/sys/net/bridge/bridge-nf-call-iptables
+echo 0 > /proc/sys/net/bridge/bridge-nf-call-ip6tables
+echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
+
+ethtool -m eth0 enable
+

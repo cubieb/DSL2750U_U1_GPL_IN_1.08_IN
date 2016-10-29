@@ -1,0 +1,66 @@
+######################################
+config APPS_LOGIC_NEW3G
+	bool 'NEW_3G_SUPPORT'
+	default n
+	depends on APPS
+  	help
+      	  This program is for 3G buckup function the same as  that one in brcm.
+
+menu	"3G Options"
+	depends on APPS_LOGIC_NEW3G
+
+#scb+ 2012-8-10
+config SUPPORT_3G_SHARP_INET_LED
+	bool 'SUPPORT_3G_SHARE_INET_LED'
+	default n
+  	help
+      	  select the ineternet led is share witch 3g
+      	  
+config SUPPORT_POP_ENTER_PIN_CODE_WEB
+	bool 'SUPPORT_POP_ENTER_PIN_CODE_WEB'
+	default n
+  	help
+      	  This function is let the 'pin enter; page poped automatly    	
+
+#scb+ 2012-6-11 for choice the driver config file
+choice
+	prompt "Driver file"
+	help
+	  Select the Driver file for different country.
+
+config DRIVER_None
+	bool "None"
+	
+config DRIVER_Pakistani
+	bool "Pakistani"
+
+config DRIVER_Chile
+	bool "Chile"
+
+endchoice
+
+config SUPPORT_ALLWAYS_CONNECTED
+	bool 'SUPPORT_ALLWAYS_CONNECTED'
+	default n
+  	help
+      	  select this result in dail again, when unlink by the peer.
+      	  
+config SUPPORT_MORE_DONGLE
+	bool 'SUPPORT_MORE_DONGLE'
+	default n
+	depends on APPS_LOGIC_NEW3G
+  	help
+      	  This function is for supporting more 3g dongle,but the pin function will wrong     	  
+      	  
+######################################
+menu	"Point Out SVN Path For 3G Source"
+	
+	config SVN_PATH_FOR_3G
+		string 'Enter 3G SVN Path:'
+		default "http://svn01-sz.gj.com:800/dsl/broadcom/BCM4.06/basic/trunk/4.06L.01/bcm963xx/userspace/public/apps/3g-mngr"
+	  	help
+	      	  	Enter the svn path.	 	
+endmenu
+
+endmenu
+####################################	    

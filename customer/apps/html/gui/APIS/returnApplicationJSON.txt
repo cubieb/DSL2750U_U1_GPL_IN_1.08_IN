@@ -1,0 +1,32 @@
+{
+	"RETURN":{
+		"success": <? if eq "<?error found?>" "0"  `true`  `false` ?>
+   	},
+   	
+	<?if eq "<?echo $var:idApplication?>" "-" `<?setvar var:idApplication <?echo $var:newobjindex?>?>`?>
+
+   	"APPLICATION":{
+		"idApplication": "<?get :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications.<?echo $var:idApplication?>.IdApplication?>",
+	  	"nameApplication": "<?get :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications.<?echo $var:idApplication?>.NameApplication?>",
+	  	"ipAssigned":"<?get :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications.<?echo $var:idApplication?>.IpAssigned?>",
+	  	"idIcon": "<?get :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications.<?echo $var:idApplication?>.IdIcon?>",
+      		"RULES":[
+		<?objget :InternetGatewayDevice.X_TWSZ-COM_Device_list.Applications.<?echo $var:idApplication?>.Rules. "IdRule Protocol StartWan EndWan StartLan EndLan"
+		`
+		
+		<?if eq "<?echo $var:needComma?>" "1" `,` ?>
+
+       		{
+			"idRule":"<?echo $11?>",
+	       		 "protocol":"<?echo $12?>",
+       			 "startWan":"<?echo $13?>",
+       			 "endWan":"<?echo $14?>",
+	       		 "startLan":"<?echo $15?>",
+       			 "endLan":"<?echo $16?>"
+      		}
+
+		<?setvaronce var:needComma 1?>
+		`?>
+       		]
+	}
+}

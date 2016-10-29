@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<top>
+   <suppress>
+      <attributelist>
+         <attribute name="name" value="DSL_Init"/>
+      </attributelist>
+      <attributelist>
+         <attribute name="name" value="DSL_Shutdown"/>
+      </attributelist>
+      <attributelist>
+         <attribute name="name" value="DSL_MessageDumpRegister"/>
+      </attributelist>
+      <attributelist>
+         <attribute name="name" value="DSL_debug_printf"/>
+      </attributelist>
+      <attributelist>
+         <attribute name="name" value="DSL_debug_printf_len"/>
+      </attributelist>
+   </suppress>
+   <rename>
+      <attributelist>
+         <attribute name="name" value="DSL_Init"/>
+         <attribute name="long" value="DSL_Init"/>
+         <attribute name="short" value="DSL_"/>
+      </attributelist>
+   </rename>
+</top>

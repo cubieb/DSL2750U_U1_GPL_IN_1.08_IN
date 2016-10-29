@@ -1,0 +1,116 @@
+#############################################################################
+#
+# NOTE : it is fairly important that changes to this file consider their
+#        effect on other platforms and default setups.  If you can, only
+#        add to the file,  changing the name of a variable will break
+#        many configurations.
+#
+#
+#############################################################################
+
+mainmenu "T&W Broadband System Configuration"
+
+#############################################################################
+
+comment 'TBS Board Configuration'
+choice
+	prompt "Chipset Type"
+config RTL8676_BOARD
+	bool "RTL8676(REALTEK)"
+	select MIPS
+	select ARCH_CPU_EB
+	select CPU_BIG_ENDIAN
+	select ARCH_32BIT
+	select SYS_SUPPORTS_32BIT_KERNEL
+	select CPU_SUPPORTS_32BIT_KERNEL
+	select 32BIT
+	select ARCH_CPU_RLX5281
+	select CPU_RLX5281
+	select RTL8676
+config VRX288
+	bool "VRX288(LANTIQ)"
+	select VR9
+config UML
+    	bool UML 
+config AR7130
+    	bool "AR7130(ATHEROS)"
+config	AMASON_SE 
+	bool "AMASON_SE(INFINEON)"
+config RT3052
+	bool "RT3052(RALINK)"
+config VX180
+	bool "Vx180(IKANOS)"
+config C1000 
+	bool "C1000(MindSpeed)"
+config RTL8672_BOARD
+        bool "RTL8672(REALTEK)"
+endchoice
+
+source BoardConfig.in      
+comment 'TBS Source Code Configuration'
+
+source apps/Config.debug.in
+
+config TBS_SUPPORT_SWITCH_VLAN
+    bool "TBS Support Switch Vlan"
+    default y
+    help
+      Setting TBS Support Switch Vlan
+
+config TBS_SUPPORT_IPV6
+	bool "TBS Support IPV6"
+	default n
+	select APPS_LOGIC_SUPPORT_IPV6
+	help
+	  Setting TBS whether or not to support ipv6
+
+config RTL8673
+    bool "TBS RTL8673"
+    default n
+    help
+      RTL8673 support
+	  
+config TBS_MASSIVE_UPGRADE
+        bool "TBS Massive upgrade tool support"
+	default n
+	help
+	  Setting TBS whether or not to support Massive upgrade. Enable this will cost more 6 seconds when boot.
+
+
+config TBS_APPS_SECURITY
+	bool 'TBS_APPS SECURITY'
+	default n
+    help
+	  TBS APPS Security.
+	  
+config APPS_TELNET_VERIFICATION
+	bool 'Telnet_Verification'
+	default n
+	depends on TBS_APPS_SECURITY
+    help
+	  Support Telnet verifictation.
+
+config APPS_WEB_DIRECTURL_ACCESS
+	bool 'WEB_DirectURL access'
+	default n
+	depends on TBS_APPS_SECURITY
+    help
+	  Support WEB_DirectURL access.	  
+	  	           
+config TBS_BACKUP_ENCRYPTION
+	bool 'TBS BACKUP ENCRYPTION'
+	default n
+	depends on TBS_APPS_SECURITY
+	help
+		Support backup encryption.	  
+	  
+#source hal/Config.in      
+#source boot/Config.in
+source apps/Config.in
+source opensource/Config.in
+source vendor/Config.in
+source driver/Config.in      
+comment 'Linux Kernel Configuration'
+source kernel/Config.in
+
+

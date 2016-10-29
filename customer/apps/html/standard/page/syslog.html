@@ -1,0 +1,76 @@
+ 
+<td> 
+ 
+ 
+     <div class="config2">
+			<p class="bk_orange"  id="lang_syslog">System Log</p>
+			<div class="div_orange">
+				<p id="lang_dsc1">If the log is enabled, the system starts to log all selected events. If the mode is set to "Remote", logs are sent to the specified IP address and UDP port of a remote syslog server. If the mode is set to "Local", logs are recorded in the local computer. If you set "Both", logs are saved in both the local computer and the remote syslog server.</p>
+				<p id="lang_dsc2">Set the appropriate values and click "Apply" to save the settings of system log.</p>
+				<p id="lang_log_note">Note: It does not work properly if the time on the modem is not properly set. In this case, please set the time of the modem in "Setup/Time and Date"."</p>
+			</div>
+			
+			<p class="do bk_black" id="lang_SlogCfg">System Log -- Configuration</p>
+				<div class="div_black">
+					<div class="div_left"><input type="checkbox" name="INPUT_logEnable" id="INPUT_logEnable" onClick="uiOnLogEnableClick()"/> </div> 
+					<div class="div_right"  id="lang_Enable" >Enable Log</div>
+					<div class="div_left" id="inputmode"   >Mode :</div>
+					<div class="div_right">				
+                          <select name="INPUT_logmode" id="INPUT_logmode"  onchange="modechange()" style="width:160px">
+					           <option  value="0">
+						            Local
+					         <option  value="1">
+							        Remote
+							 <option  value="2">
+							        Both
+							 </option>
+				       </select>
+					 </div>
+					 <div class="div_left"   id="serveripaddr">Server IP Address :</div> 
+					 <div class="div_right">
+					     <input type="text" maxlength='15' name="INPUT_RemoteHost" id="INPUT_RemoteHost" style="width:150px">
+					 </div>
+					 <div class="div_left"   id= "severudpport">Server UDP Port :</div>
+					 <div class="div_right">
+					    <input type="text" maxlength='15' name="INPUT_RemotePort" id="INPUT_RemotePort" style="width:150px">
+					 </div>					
+		         </div>
+				
+			      <div class="div_button">
+				     <input type="button" id="INPUT_cancel"  name="INPUT_cancel"  value="Apply"         onClick="uiSubmit()"/>
+				     <input type="button" id="INPUT_cance2"  name="INPUT_cancel"  value="Cancel"         onClick="uiPageRefresh()"/>
+				     <input type="button" id="INPUT_apply"   name="INPUT_apply"   value="View System Log" onclick="loggerviewlog()"/>
+				     <input type="button" id="INPUT_FIREWALL_apply" name="INPUT_FIREWALL_apply" value="View Firewall Log" onclick="firewallviewlog()"/>
+			      </div>	
+				  
+				 	<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+				 	
+		<!--	<div class = 'div_middle'>
+				<input type="button" id="INPUT_FIREWALL_apply" name="INPUT_FIREWALL_apply" value="View Firewall Log" onclick="firewallviewlog()"/>
+		       </div>
+		       -->
+        </div>
+
+</td>
+<!--
+<td>
+	<div>
+		<p class="bk_orange"  id="lang_firewalllog">Firewall Log</p>
+		<div class = 'div_middle'>
+			<input type="button" id="INPUT_FIREWALL_apply" name="INPUT_FIREWALL_apply" value="View Firewall Log" onclick="firewallviewlog()"/>
+		</div>
+
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+
+	</div>
+</td>
+-->
+	
+  <td  class="td_help">
+    <div   class="help">
+      <h5  id="lang_helph1">Helpful Hints... </h5>
+	  <p  id="lang_helpP">In this page, you can enable, configure, and view the system log of the router. The system log records activities on the router.
+Only a limited number of log entries can be saved, depending on the log details and the memory of the router. If you have an external SYSLOG server, you can configure external logging and all log entries are sent to the remote server.</p>
+	  <h5 ><a href="#" id="lang_helpH">More...</a></h5>
+	 </div> 
+  </td>

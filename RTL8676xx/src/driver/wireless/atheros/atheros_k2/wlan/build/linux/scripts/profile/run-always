@@ -1,0 +1,8 @@
+IP_ADDR=
+PROFILE_DIR=
+MOUNT_DIR=$PROFILE_DIR/oprofile
+
+mount $IP_ADDR:$MOUNT_DIR prof/
+mount -t oprofilefs nodev /dev/oprofile/
+mount >/etc/mtab
+mount >/root/prof/mtab

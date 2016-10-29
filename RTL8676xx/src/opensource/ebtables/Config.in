@@ -1,0 +1,29 @@
+
+menuconfig OPENSOURCE_EBTABLES
+	bool 'ebtables'
+	default y
+	depends on OPENSOURCE
+  	help
+        ebtables
+
+menuconfig OPENSOURCE_EB_2_0_6
+	bool 'ebtables version 2.0.6'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+		ebtables version 2.0.6
+
+if OPENSOURCE_EB_2_0_6=y
+source opensource/ebtables/Config.in.2.0.6
+endif
+
+menuconfig OPENSOURCE_EB_2_0_9
+ 	bool 'ebtables version 2.0.9-2'
+	default n
+	depends on OPENSOURCE_EBTABLES
+	help
+		ebtables version 2.0.9-2
+		
+if OPENSOURCE_EB_2_0_9=y
+source opensource/ebtables/Config.in.2.0.9
+endif

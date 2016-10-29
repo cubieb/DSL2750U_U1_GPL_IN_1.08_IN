@@ -1,0 +1,102 @@
+{
+	"RETURN":{
+		"success": <? if eq "<?error found?>" "0"  `true`  `false` ?>
+      },
+    
+    "WIFI": {
+		"status":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Enable?>",
+		"ssidName":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID?>",
+		"ssidVisibility":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSIDAdvertisementEnabled?>",
+		"channelMode":"<? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Channel?>" "0" `AUTO` `MANUAL`?>",
+		"channel":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Channel?>",
+		"SECURITY":{
+			"cipherAlgorithm":<?if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "Basic"
+                                           `  <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicEncryptionModes?>" "None"
+                                              `  "None"
+                                              `?>
+                                           `?>
+                                           <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "11i"
+                                           `"WPA2"
+                                           `?>
+                                           <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "WPA"
+                                           `"WPA"
+                                           `?>
+                                           <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "WPAand11i"
+                                           `"AUTO"
+                                           `?>										   
+                                           <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "Basic"
+                                           `  <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicEncryptionModes?>" "WEPEncryption"
+                                              `"WEP"
+                                              `?>
+                                           `?>,
+			"algVersion":<?if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "Basic"
+                                      `  <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicEncryptionModes?>" "None"
+                                         `  "None"
+                                         `?>
+                                      `?>
+                                      <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "11i"
+                                      `"WPA2"
+                                      `?>
+                                      <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "WPA"
+                                      `"WPA1"
+                                      `?>
+                                      <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "WPAand11i"
+                                      `"AUTO"
+                                      `?>									  
+                                      <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType?>" "Basic"
+                                      `  <? if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BasicEncryptionModes?>" "WEPEncryption"
+                                         ` <?if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WEPEncryptionLevel?>" "104-bit"
+                                           `"128"
+                                           `?>
+                                           <?if eq "<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WEPEncryptionLevel?>" "40-bit"
+                                           `"64"
+                                           `?>
+                                         `?>
+                                      `?>,
+			"passwordWEP":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WEPKey.1.WEPKey?>",
+			"passwordWPA":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PreSharedKey.1.KeyPassphrase?>",
+			"passwordWPA2":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PreSharedKey.1.KeyPassphrase?>",
+			"passwordAUTO":"<?get :InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PreSharedKey.1.KeyPassphrase?>"
+		}
+ 	 },
+ 	 
+  	"DHCP": {
+  		"status":"<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.DHCPServerEnable?>",
+  		"poolStart":"<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.MinAddress?>",
+  		"poolEnd":"<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.MaxAddress?>"
+  	},
+  	
+	<?setvaronce var:IPRouters <?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPRouters?>?>
+
+  	"LAN": {
+  		"ip":<?if eq "<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.DHCPServerEnable?>" "1"
+                     `
+                         <?if eq "<?echo $var:IPRouters?>" ""
+                         `
+                             "<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.IPInterfaceIPAddress?>"
+                         `
+                         `
+                            "<?echo $var:IPRouters?>"
+                         `?>
+                     `
+                     `
+                         "<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.IPInterfaceIPAddress?>"
+                     `?>,
+
+  		"mask":<?objget :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface. "IPInterfaceIPAddress IPInterfaceSubnetMask"
+		       `
+				<?if eq "<?echo $var:IPRouters?>" "<?echo $21?>" 
+                                `
+                                    <?if neq "<?echo $var:IPRouters?>" ""
+                                    `
+                                        <?setvaronce var:mask <?echo $42?>?>
+                                        <?setvaronce var:ipLeafPath InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.<?echo $40?>.IPInterfaceIPAddress?>
+                                    `?>
+                                `?>
+		       `?>
+			<?setvaronce var:mask <?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.IPInterfaceSubnetMask?>?>
+			<?setvaronce var:ipLeafPath InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.IPInterfaceIPAddress?>
+			"<?echo $var:mask?>",
+              "ipLeafPath":"<?echo $var:ipLeafPath?>"
+  	}
+}

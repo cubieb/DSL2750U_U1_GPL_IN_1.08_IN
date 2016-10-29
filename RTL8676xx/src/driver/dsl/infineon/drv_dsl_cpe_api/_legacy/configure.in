@@ -1,0 +1,264 @@
+
+AC_REVISION($Revision: 1.9 $)
+
+AC_INIT([DSL CPE API driver],[1.0.4],[],[drv_dsl_cpe_api])
+
+AC_CONFIG_SRCDIR(src/Makefile.am)
+AM_INIT_AUTOMAKE
+
+AC_CONFIG_HEADER(src/include/drv_dsl_cpe_api_config.h)
+
+#
+# save the configure arguments
+#
+CONFIGURE_OPTIONS="$ac_configure_args"
+AC_SUBST(CONFIGURE_OPTIONS)
+
+AC_PROG_CC
+AC_PROG_RANLIB
+
+dnl Enable debugging mode
+AC_ARG_ENABLE(debug,
+        AC_HELP_STRING([--enable-debug,Enable debug messages]),
+        CFLAGS="$CFLAGS -O1 -g3")
+
+dnl enable linux kernel 2.6.x support
+AM_CONDITIONAL(KERNEL_2_6, false)
+AC_ARG_ENABLE(linux-26,
+        AC_HELP_STRING(--enable-linux-26,Enable support for linux kernel 2.6.x),
+        [
+                AM_CONDITIONAL(KERNEL_2_6, true)
+                if test -z "$ARCH" ; then
+                        [ARCH=`$CC -dumpmachine | sed -e s'/-.*//' \
+                            -e 's/i[3-9]86/i386/' \
+                           -e 's/mipsel/mips/' \
+                           -e 's/powerpc/ppc/' \
+                           -e 's/sh[234]/sh/' \
+                        `]
+                fi
+                if test -n "$ARCH" ; then
+                        echo "Set the kernel architecture to $ARCH"
+                        AC_SUBST([KERNEL_ARCH],[$ARCH])
+                else
+                    AC_MSG_ERROR([Kernel architecture not set!])
+                fi
+        ]
+)
+
+dnl Set kernel include path
+AC_ARG_ENABLE(kernel-include,
+        AC_HELP_STRING(--enable-kernel-include=x,Set the target kernel include path),
+        [
+                if test -e $enableval/linux/config.h; then
+                        AC_SUBST([KERNEL_INCL_PATH],[$enableval])
+                else
+                        AC_MSG_ERROR([The kernel include directory is not valid!])
+                fi
+        ]
+)
+
+dnl Set kernel build path
+AC_ARG_ENABLE(kernelbuild,
+        AC_HELP_STRING(--enable-kernelbuild=x,Set the target kernel build path),
+        [
+                if test -e $enableval/include/linux/autoconf.h; then
+                        AC_SUBST([KERNEL_BUILD_PATH],[$enableval])
+                else
+                        AC_MSG_ERROR([The kernel build directory is not valid or not configured!])
+                fi
+        ],
+        [
+                if test -z $KERNEL_BUILD_PATH; then
+                        # assume kernel was build in source dir...
+                        AC_SUBST([KERNEL_BUILD_PATH],[$KERNEL_INCL_PATH/..])
+                fi
+        ]
+)
+
+dnl Set target driver cflags
+AM_CONDITIONAL(ADD_DRV_CFLAGS_SET, false)
+AC_ARG_ENABLE(add_drv_cflags,
+   AC_HELP_STRING(--enable-add-drv-cflags=x,Set add driver cflags),
+   [
+      if test -n "$enableval"; then
+         echo Set add drv cflags = $enableval
+         AM_CONDITIONAL(ADD_DRV_CFLAGS_SET, true)
+         AC_SUBST([ADD_DRV_CFLAGS],[$enableval])
+      fi
+   ]
+)
+
+dnl enable debug printouts
+AM_CONDITIONAL(INCLUDE_DSL_CPE_API_DEBUG, false)
+AC_ARG_ENABLE(debug-prints,
+   AC_HELP_STRING(
+      [--enable-debug-prints],[Enable debug printouts]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_DSL_CPE_API_DEBUG,,[Enable debug printouts])
+         AM_CONDITIONAL(INCLUDE_DSL_CPE_API_DEBUG, true)
+         AC_SUBST([INCLUDE_DSL_CPE_API_DEBUG],[yes])
+      else
+         AC_SUBST([INCLUDE_DSL_CPE_API_DEBUG],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_DSL_CPE_API_DEBUG],[no])
+   ]
+)
+
+dnl enable DANUBE support
+AM_CONDITIONAL(DRIVER_DANUBE, false)
+AC_ARG_ENABLE(danube,
+   AC_HELP_STRING(
+      [--enable-danube],[Add DANUBE support.]
+   ),
+   [
+      AC_DEFINE(INCLUDE_DSL_CPE_API_DANUBE,,[Add DANUBE support])
+      AM_CONDITIONAL(DRIVER_DANUBE, true)
+      AC_SUBST([DSL_DEVICE_NAME],[Danube])
+   ]
+)
+
+dnl enable ADSL MIB support
+AM_CONDITIONAL(INCLUDE_ADSL_MIB, false)
+AC_ARG_ENABLE(adsl-mib,
+   AC_HELP_STRING(
+      [--enable-adsl-mib],[Include ADSL MIB support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_ADSL_MIB,,[Include ADSL MIB support])
+         AM_CONDITIONAL(INCLUDE_ADSL_MIB, true)
+         AC_SUBST([INCLUDE_ADSL_MIB],[yes])
+      else
+         AC_SUBST([INCLUDE_ADSL_MIB],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_ADSL_MIB],[no])
+   ]
+)
+
+dnl enable ADSL LED support
+AM_CONDITIONAL(INCLUDE_ADSL_LED, false)
+AC_ARG_ENABLE(adsl-led,
+   AC_HELP_STRING(
+      [--enable-adsl-led],[Include ADSL LED support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_ADSL_LED,,[Include ADSL LED support])
+         AM_CONDITIONAL(INCLUDE_ADSL_LED, true)
+         AC_SUBST([INCLUDE_ADSL_LED],[yes])
+      else
+         AC_SUBST([INCLUDE_ADSL_LED],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_ADSL_LED],[no])
+   ]
+)
+
+dnl enable ADSL CEOC support
+AM_CONDITIONAL(INCLUDE_ADSL_CEOC, false)
+AC_ARG_ENABLE(adsl-ceoc,
+   AC_HELP_STRING(
+      [--enable-adsl-ceoc],[Include ADSL CEOC support]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_ADSL_CEOC,,[Include ADSL CEOC support])
+         AM_CONDITIONAL(INCLUDE_ADSL_CEOC, true)
+         AC_SUBST([INCLUDE_ADSL_CEOC],[yes])
+      else
+         AC_SUBST([INCLUDE_ADSL_CEOC],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_ADSL_CEOC],[no])
+   ]
+)
+
+dnl enable ADSL Wingost debug support
+AM_CONDITIONAL(INCLUDE_ADSL_WINHOST_DEBUG, false)
+AC_ARG_ENABLE(adsl-winhost-debug,
+   AC_HELP_STRING(
+      [--enable-adsl-winhost-debug],[Include ADSL Winhost support for debug purpose only!]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_ADSL_WINHOST_DEBUG,,[Include ADSL Winhost support for debug purpose only!])
+         AM_CONDITIONAL(INCLUDE_ADSL_WINHOST_DEBUG, true)
+         AC_SUBST([INCLUDE_ADSL_WINHOST_DEBUG],[yes])
+      else
+         AC_SUBST([INCLUDE_ADSL_WINHOST_DEBUG],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_ADSL_WINHOST_DEBUG],[no])
+   ]
+)
+
+dnl enable ADSL Autoboot support
+AM_CONDITIONAL(INCLUDE_ADSL_AUTOBOOT, false)
+AC_ARG_ENABLE(adsl-autoboot,
+   AC_HELP_STRING(
+      [--enable-adsl-autoboot],[Include ADSL autoboot handling in driver]
+   ),
+   [
+      if test "$enableval" = yes; then
+         AC_DEFINE(INCLUDE_ADSL_AUTOBOOT,,[Include ADSL autoboot handling in driver])
+         AM_CONDITIONAL(INCLUDE_ADSL_AUTOBOOT, true)
+         AC_SUBST([INCLUDE_ADSL_AUTOBOOT],[yes])
+      else
+         AC_SUBST([INCLUDE_ADSL_AUTOBOOT],[no])
+      fi
+   ],
+   [
+      AC_SUBST([INCLUDE_ADSL_AUTOBOOT],[no])
+   ]
+)
+
+dnl set DSL DRIVER driver include path
+DEFAULT_DSL_DRIVER_INCL_PATH='.'
+AC_ARG_ENABLE(driver-include,
+   AC_HELP_STRING(--enable-driver-include=-I/path/to/your/driver ,Set the DSL DRIVER driver include path
+   ),
+   [
+    if test -n "$enableval"; then
+       echo Set the DSL CE API driver include path to $enableval
+       AC_SUBST([DSL_DRIVER_INCL_PATH],[$enableval])
+    else
+       echo Set the default DSL DRIVER driver include path $DEFAULT_DSL_DRIVER_INCL_PATH
+       AC_SUBST([DSL_DRIVER_INCL_PATH],[$DEFAULT_DSL_DRIVER_INCL_PATH])
+    fi
+   ]
+)
+
+dnl Set the configure params for dist check
+
+AC_SUBST([DISTCHECK_CONFIGURE_PARAMS],[$CONFIGURE_OPTIONS])
+
+AC_CONFIG_COMMANDS_PRE([
+echo -e \
+"------------------------------------------------------------------------
+Configuration for drv_dsl_cpe_api:
+    Source code location:           ${srcdir}
+    Compiler:                       ${CC}
+    Compiler flags:                 ${CFLAGS}
+    Host System Type:               ${host}
+    Install path:                   ${prefix}
+    Linux kernel include path:      ${KERNEL_INCL_PATH}
+    Linux kernel build path:        ${KERNEL_BUILD_PATH}
+    Linux kernel architecture:      ${KERNEL_ARCH}
+    Driver Include Path             ${DSL_DRIVER_INCL_PATH}
+
+Settings:
+    Configure options:              ${CONFIGURE_OPTIONS}
+------------------------------------------------------------------------"
+])
+
+AC_CONFIG_FILES([Makefile src/Makefile])
+AC_OUTPUT

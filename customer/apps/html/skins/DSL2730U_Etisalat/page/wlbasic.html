@@ -1,0 +1,92 @@
+		<style type="text/css"><!-- 
+			.div_left { width:230px;}
+		 --></style>
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id="lang_wlBasic">Wireless Basic</p>
+				<div class="div_orange">
+					<p id = "lang_wlBasic_introduction">
+						Use this section to configure the wireless settings for your router. Please note that changes made in this section will also need to be duplicated to your wireless clients and PC.
+					</p>
+				</div>
+				<p class="do bk_black" id="lang_wlNetwork">Wireless Network Settings</p>
+				<div class="div_black">
+					<? if eq 1 $var:mod_QrenCode
+					` 
+					<div>
+						<img src="/html/picture/ssid.png" width="170px" height="170px" align="right"/>
+					</div>
+					`?>
+					<div class="div_left"><label for="INPUT_Enable"><span id = "lang_enable">Enable Wireless:</span></label></div>
+					<div class="div_right">
+					   <input name="checkbox" type="checkbox" id="INPUT_Enable" />
+					</div>
+					<div class="div_left"><label for="INPUT_EnableMultiAPIsolation"><span id = "lang_APisolationenable">Enable MultiAP Isolation:</span></label></div>
+					<div class="div_right">
+					    <input type="checkbox" id="INPUT_EnableMultiAPIsolation" />
+					</div>
+					<div class="div_left"><label for="INPUT_SSID"><span id = "lang_ssid">Wireless Network Name (SSID) :</span></label></div>
+					<div class="div_right"><input type="text" id="INPUT_SSID" maxlength="32" style="width:150px"/></div>
+					<div class="div_left"><label for="INPUT_Visible"><span id = "lang_visibility">Visibility Status :</span></label></div>
+					<div class="div_right">
+					       <input type="radio" name="vb_status" id="INPUT_Visible" value="1" /> <label for="INPUT_Visible"><span id = "lang_visible">Visible</span></label> 
+						   <input type="radio" name="vb_status" id="INPUT_Invisible" value="0" /> <label for="INPUT_Invisible"><span id = "lang_invisible">Invisible </span></label></div>
+					<div class="div_left"><label for="SELECT_Country"><span id = "lang_country">Country/Region :</span></label></div><div class="div_right">
+					   <select id="SELECT_Country" onChange="ctrlChannelOpt()" style="width:250px">
+						   <option> </option>
+					   </select>
+					</div>
+					<div class="div_left"><span id="lang_ControlSideband">Control Sideband:</span></div>
+					<div class="div_right">
+					    <select id="SELECT_ControlSideband" style="width:158px">
+						   <option value="Upper" selected>Upper</option>
+						   <option value="Lower">Lower</option>
+						</select>
+					</div>
+					<div class="div_left"><label for="SELECT_Channel"><span id = "lang_channel">Wireless Channel :</span></label></div>
+					<div class="div_right">
+					    <select id="SELECT_Channel" style="width:158px">
+						   <option>
+						    </option>
+						</select>
+					</div>
+					<div class="div_left"><label for="SELECT_Mode"><span id = "lang_mode">802.11 Mode :</span></label></div>
+					<div class="div_right">
+					     <select id="SELECT_Mode" onchange="OnBandWidthEnable();" style="width:158px">
+								<option value="b">802.11b </option>
+								<option value="g">802.11g </option>
+								<option value="n">802.11n </option>
+							    <option value="bg">802.11b/g</option>
+								<option value="ng">802.11n/g</option>
+								<option value="bgn">802.11b/g/n</option>
+					      </select>
+					</div>
+					<div class="div_left"><label for="SELECT_BandWidth"><span id = "lang_band">Band Width :</span></label></div><div class="div_right">
+					    <select id="SELECT_BandWidth" onchange="OnChangeBandWidth();" style="width:158px">
+					           <option selected="selected" value="20">20 M</option>
+								<!--<option value="40">40 M</option>
+								<option value="0">20M/40M</option>-->
+						</select>
+					</div>
+				</div>
+			</div>
+			<div style="color:red; padding:0px 9px;">
+				<span id = "lang_note">Remember your SSID as you will need to configure the same settings on your wireless devices and PC.</span>
+			</div>
+			<div class="SecLevel div_button"><input type="button" id="Apply" value="Apply" onClick="uiSubmit()" /> <input type="button" id="Cancel" value="Cancel" onClick="uiPageRefresh()" /></div>
+		</td>
+		<td class="td_help">
+			<div class="help">
+				<h5 id="lang_helpTitle">Helpful Hints...</h5>
+				<p id="lang_help3">
+					Changing the <b>Wireless Network Name (SSID)</b>  is the first step in securing your wireless network. Please change it into a name that is familiar to you and does not contain any personal information.
+				</p>
+				<p id = "lang_help1">
+					If you enable Auto Channel Scan, the router selects the best possible channel for your wireless network to operate on.
+				</p>
+				<p id = "lang_help2">
+					  Setting the <b>Visibility Status </b> to <b>Invisible</b>is another way of securing your network.  In the <b>Invisible</b> state,  wireless clients cannot detect your wireless network when they use the auto scan function. To connect your wireless devices to the router, manually enter the SSID on each device. Please save the information of your SSID properly.
+				</p>
+				<h5><a href="#"><span id = "lang_more">More...</span></a></h5>
+			</div>
+		</td>

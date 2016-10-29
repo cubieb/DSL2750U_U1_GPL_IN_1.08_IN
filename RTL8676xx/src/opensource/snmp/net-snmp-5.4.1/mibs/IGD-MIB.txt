@@ -1,0 +1,2264 @@
+IGD-MIB DEFINITIONS ::= BEGIN
+
+--
+-- Top-level infrastructure of the T&W project enterprise MIB tree
+--
+
+IMPORTS
+	MODULE-IDENTITY, enterprises FROM SNMPv2-SMI
+	RowStatus, DisplayString, TruthValue FROM SNMPv2-TC;
+
+twEnterprise MODULE-IDENTITY
+	LAST-UPDATED "200201300000Z"
+	ORGANIZATION "www.twsz.com"
+	CONTACT-INFO
+	"postal:	Shenzhen,
+			Guangdong,
+			China
+	email:    liuzhangping@twsz.com"
+	DESCRIPTION
+	"Top-level infrastructure of the T&W project enterprise
+	MIB tree"
+	REVISION     "200201300000Z"
+	DESCRIPTION
+	"First draft"
+	::= { enterprises 8073}
+
+
+--
+-- T&W enterprise-specific management objects
+--
+
+--
+-- Internet Gateway Device
+--
+igdMIB              OBJECT IDENTIFIER
+	::= {twEnterprise 1}
+
+
+
+--
+-- Subtrees of igdMIB.
+--
+
+device			OBJECT IDENTIFIER ::= {igdMIB 1 }
+wlan			OBJECT IDENTIFIER ::= {igdMIB 2 }
+wan			OBJECT IDENTIFIER ::= {igdMIB 3 }
+lan			OBJECT IDENTIFIER ::= {igdMIB 4 }
+ntp			OBJECT IDENTIFIER ::= {igdMIB 5 }
+vlan			OBJECT IDENTIFIER ::= {igdMIB 6 }
+firewall		OBJECT IDENTIFIER ::= {igdMIB 7 }
+igdNotifications	OBJECT IDENTIFIER ::= {igdMIB 200 }
+
+--
+-- sbutree of device
+--
+devFirmware	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Firmware version of this device."
+	::= { device 1 }
+
+devSoftware	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Software version running in the device."
+	::= { device 2 }
+
+devProductModel	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Product model of the device."
+	::= { device 3 }
+
+devHardware	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Hardware version of this device."
+	::= { device 4 }
+
+devSerNo	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Series number of this device."
+	::= { device 5 }
+
+devCode	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Code of this device."
+	::= { device 6 }
+
+devCpuOccupation	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Percent of CPU occupation."
+	::= { device 7 }
+
+devTemperature	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Device temperature."
+	::= { device 8 }
+
+devMemCapacity	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Capacity of memory, unit: Kb."
+	::= { device 9 }
+
+devMemFree	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Free space memory, unit: Kb."
+	::= { device 10 }
+
+devFlashCapacity	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Capacity of flash, unit: Kb."
+	::= { device 11 }
+
+devFlashFree	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Free space of flash, unit: Kb."
+	::= { device 12 }
+
+devCpuModel	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..128))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Processor model"
+	::= { device 13 }
+
+devCpuFrequence	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Processor frequence, unit: MHz"
+	::= { device 14 }
+
+devManagement	OBJECT IDENTIFIER
+	::= { device 15 }
+
+mgmtSaveConfig	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Set to true(1) to save current configuration, when
+			get this node, always returned false(2)."
+	::= { devManagement 1 }
+
+mgmtRecoverConfig	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Set to true(1) to recover current configuration,
+			when get this node, always returned false(2)."
+	::= { devManagement 2 }
+
+mgmtReboot	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Set to true(1) to reboot device, when
+			get this node, always returned false(2)."
+	::= { devManagement 3 }
+
+--
+-- sbutree of wlan
+--
+wlanBasicConfig		OBJECT IDENTIFIER ::= { wlan 1 }
+wlanAdvancedConfig	OBJECT IDENTIFIER ::= { wlan 2 }
+wlanVap			OBJECT IDENTIFIER ::= { wlan 3 }
+wlanStats    		OBJECT IDENTIFIER ::= { wlan 4 }
+
+--
+-- subtree of wlanBasicConfig
+--
+wlanEnable		OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables this interface."
+	::= {wlanBasicConfig 1}
+
+wlanStandard		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Indicates which IEEE 802.11 standard this instance
+			is configured for. Enumeration of:
+			'a', 'b', 'g' and 'n'.
+			Where each value indicates support for only the
+			indicated standard."
+	::= {wlanBasicConfig 2}
+
+wlanMaxBitRate		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..4))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Max upstream or downstream bit rate, Enumeration of:
+			'54' '48' '24' '18' '12' '11' '9' '6' '5.5' '2' '1'."
+	::= {wlanBasicConfig 3}
+
+wlanChannel		OBJECT-TYPE
+	SYNTAX		Unsigned32(0..255)
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The current radio channel used by the connection.
+			Note: There is currently no way of requesting
+			automatic selection of a channel."
+	::= {wlanBasicConfig 4}
+
+--
+-- subtree of wlanAdvancedConfig
+--
+wlanBeaconInterval	OBJECT-TYPE
+	SYNTAX		Unsigned32(20..1000)
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Beacon interval, unit: ms, from 20 to 1000."
+	::= {wlanAdvancedConfig 1}
+
+wlanPower		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Power percent of wireless."
+	::= {wlanAdvancedConfig 3}
+
+wlanDeviceName	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Wireless interface device name."
+	::= {wlanAdvancedConfig 4}
+
+wlanMtu		OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Wireless interface MTU."
+	::= {wlanAdvancedConfig 5}
+
+wlanMacAddress		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"MAC address of wireless interface."
+	::= {wlanAdvancedConfig 6}
+
+wlanStpEnabled		OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Is STP enabled?"
+	::= {wlanAdvancedConfig 7}
+
+
+--
+-- subtree of wlanVap
+--
+
+vapInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wlanVap 1 }
+vapInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"VAP instance slot, GET operation on this node will
+        		cause a new line create in wlanVapTable when
+        		vapInstanceIdSlotCreate is TRUE."
+        ::= { wlanVap 2 }
+vapRadInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wlanVap 3 }
+vapRadInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"VAP radius instance slot, GET operation on this node will
+        		cause a new line create in wlanRadTable when
+        		vapRadInstanceIdSlotCreate is TRUE."
+        ::= { wlanVap 4 }
+vapPskInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wlanVap 5 }
+vapPskInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"VAP PreShardKey instance slot, GET operation on this
+        		node will cause a new line create in wlanPskTable when
+        		vapPskInstanceIdSlotCreate is TRUE."
+        ::= { wlanVap 6 }
+vapWepInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wlanVap 7 }
+vapWepInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"WEP key instance slot, GET operation on this node will
+        		cause a new line create in wlanWepTable when
+        		vapWepInstanceIdSlotCreate is TRUE."
+        ::= { wlanVap 8 }
+wlanVapTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WlanVapEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"VAP config and statistics."
+	::= { wlanVap 9 }
+wlanRadTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WlanRadEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"RADIUS server's table."
+	::= { wlanVap 10 }
+wlanPskTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WlanPskEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"Preshared Key's table."
+	::= { wlanVap 11 }
+wlanWepTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WlanWepEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"WEP Key's table."
+	::= { wlanVap 12 }
+
+
+wlanVapEntry	OBJECT-TYPE
+	SYNTAX		WlanVapEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of wlanVapTable."
+	INDEX		{ vapInstanceId }
+	::= { wlanVapTable 1 }
+
+WlanVapEntry ::=
+	SEQUENCE {
+		vapInstanceId		Counter32,
+		vapSsid			DisplayString,
+		vapSsidHideEnabled	TruthValue,
+		vapPeerBSSID		DisplayString,
+		vapIsolate		TruthValue,
+		vapPowerSave		TruthValue,
+		vapAssociationCount	Counter32,
+		vapMaxStation		Counter32,
+		vapWmmEnabled		TruthValue,
+		vapRtsCtsThreshold	Unsigned32,
+		vapAccountEnable	TruthValue,
+		vapBeaconType	DisplayString,
+		vapBasicEncryptionModes	      DisplayString,
+		vapBasicAuthenticationModes		DisplayString,
+		vapWpaEncryptionModes	DisplayString,
+		vapWpaAuthenticationModes	DisplayString,
+		vapIeee11iEncryptionModes	DisplayString,
+		vapIeee11iAuthenticationModes	DisplayString,
+		vapWepKeyIndex	Unsigned32,
+		vapWepEncryptionLevel	DisplayString,
+		vapRxBytes		Counter32,
+		vapTxBytes		Counter32,
+		vapRxPkts		Counter32,
+		vapTxPkts		Counter32,
+		vapRowStatus		RowStatus
+	}
+
+vapInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Primary key of this instance."
+        ::= { wlanVapEntry 1 }
+
+vapSsid	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"The current service set identifier in use by the
+        		connection. The SSID is an identifier that is
+        		attached to packets sent over the wireless LAN that
+        		functions as a 'password' for joining a particular
+        		radio network (BSS)."
+        ::= { wlanVapEntry 2 }
+
+vapSsidHideEnabled	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enable or disable hide SSID."
+        ::= { wlanVapEntry 3 }
+
+vapPeerBSSID		OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"MAC address of the Peer in wireless repeater."
+        ::= { wlanVapEntry 4 }
+
+vapIsolate		OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enable or disable this VAP isolate."
+        ::= { wlanVapEntry 5 }
+
+vapPowerSave		OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enable or disable this VAP's power save."
+        ::= { wlanVapEntry 6 }
+
+vapAssociationCount	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Currently associated subscribers count."
+        ::= { wlanVapEntry 7 }
+
+vapMaxStation		OBJECT-TYPE
+        SYNTAX		Counter32(0..31)
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Max station of this VAP, from 0 to 31."
+        ::= { wlanVapEntry 8 }
+
+vapWmmEnabled		OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enable or disable WMM of this VAP."
+        ::= { wlanVapEntry 9 }
+
+vapRtsCtsThreshold	OBJECT-TYPE
+	SYNTAX		Unsigned32(256..2346)
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"RTS/CTS threashold, from 256 to 2346, default value
+			is 2346."
+	::= { wlanVapEntry 10 }
+
+vapAccountEnable	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Disable or enable account."
+        ::= { wlanVapEntry 11 }
+
+vapBeaconType	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of: 'None', 'Basic', 'WPA' and '11i'."
+        ::= { wlanVapEntry 12 }
+
+vapBasicEncryptionModes	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of: 'None', 'WEPEncryption'."
+        ::= { wlanVapEntry 13 }
+
+vapBasicAuthenticationModes	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of: 'None', 'SharedAuthentication'."
+        ::= { wlanVapEntry 14 }
+
+vapWpaEncryptionModes	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of: 'TKIPEncryption'."
+        ::= { wlanVapEntry 15 }
+
+vapWpaAuthenticationModes	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of:
+        		'PSKAuthentication'
+        		'EAPAuthentication'."
+        ::= { wlanVapEntry 16 }
+
+vapIeee11iEncryptionModes	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of:
+        		'AESEncryption'
+        		'TKIPEncryption'."
+        ::= { wlanVapEntry 17 }
+
+vapIeee11iAuthenticationModes	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Enumeration of:
+        		'PSKAuthentication'
+        		'EAPAuthentication'."
+        ::= { wlanVapEntry 18 }
+
+vapWepKeyIndex	OBJECT-TYPE
+        SYNTAX		Unsigned32(1..4)
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"The index of the default WEP key."
+        ::= { wlanVapEntry 19 }
+
+vapWepEncryptionLevel	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..64))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Comma-separated list of the supported key lengths.
+        		Each entry in the list is an enumeration of:
+        		'Disabled'
+        		'40-bit'
+        		'104-bit'
+        		Any additional vendor-specific values MUST start with
+        		the key length in bits. This parameter does not
+        		enforce a given encryption level but only indicates
+        		capabilities.  The WEP encryption level for a given
+        		key is inferred from the key length."
+        ::= { wlanVapEntry 20 }
+
+vapRxBytes		OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Number of bytes received on this VAP since startup."
+        ::= { wlanVapEntry 21 }
+
+vapTxBytes		OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Number of bytes sent on this VAP since startup."
+        ::= { wlanVapEntry 22 }
+
+vapRxPkts		OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Number of packets received on this VAP since startup."
+        ::= { wlanVapEntry 23 }
+
+vapTxPkts		OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Number of packets received on this VAP since startup."
+        ::= { wlanVapEntry 24 }
+
+vapRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wlanVapEntry 25 }
+
+
+
+
+wlanRadEntry	OBJECT-TYPE
+	SYNTAX		WlanRadEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of RADIUS server table."
+	INDEX		{ radVapInstanceId, radRadInstanceId }
+	::= { wlanRadTable 1 }
+
+WlanRadEntry ::=
+	SEQUENCE {
+		radVapInstanceId		Counter32,
+		radRadInstanceId		Counter32,
+		radIpAddress			DisplayString,
+		radPort				Unsigned32,
+		radSharedKey			DisplayString,
+		radRowStatus			RowStatus
+	}
+
+radVapInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"VAP instance id."
+        ::= { wlanRadEntry 1 }
+
+radRadInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Radius server instance id."
+        ::= { wlanRadEntry 2 }
+
+radIpAddress	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..32))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Radius server ipaddress."
+        ::= { wlanRadEntry 3 }
+
+radPort	OBJECT-TYPE
+        SYNTAX		Unsigned32(0..65535)
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Radius server port."
+        ::= { wlanRadEntry 4 }
+
+radSharedKey	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..64))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Radius server shared key."
+        ::= { wlanRadEntry 5 }
+
+radRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wlanRadEntry 6}
+
+
+
+
+
+--
+-- Pre Shared Key entry
+--
+wlanPskEntry	OBJECT-TYPE
+	SYNTAX		WlanPskEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of PreSharedKey table."
+	INDEX		{ pskVapInstanceId, pskPskInstanceId }
+	::= { wlanPskTable 1 }
+
+WlanPskEntry ::=
+	SEQUENCE {
+		pskVapInstanceId		Counter32,
+		pskPskInstanceId		Counter32,
+		pskPreSharedKey			DisplayString,
+		pskRowStatus			RowStatus
+	}
+
+pskVapInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"VAP instance id."
+        ::= { wlanPskEntry 1 }
+
+pskPskInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"PreSharedKey instance id."
+        ::= { wlanPskEntry 2 }
+
+pskPreSharedKey	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..64))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"A literal WPA PSK expressed as a hexadecimal
+        		string. The first table entry contains the default
+        		PreSharedKey. If KeyPassphrase is written, the PSK
+        		is immediately generated.  The ACS SHOULD NOT set
+        		the passphrase and also set the PSK directly (the
+        		result of doing this is undefined). When read, this
+        		parameter returns an empty string, regardless of the
+        		actual value.
+        		OR
+        		A passphrase from which the PSK is to be generated.
+        		If KeyPassphrase is written, the PSK is immediately
+        		generated.  The ACS SHOULD NOT set the passphrase and
+        		also set the PSK directly (the result of doing this
+        		is undefined). The key is generated as specified by
+        		WPA, which uses PBKDF2 from PKCS #5: Password-based
+        		Cryptography Specification Version 2.0 (RFC2898).
+        		When read, this parameter returns an empty string,
+        		regardless of the actual value."
+        ::= { wlanPskEntry 3 }
+
+pskRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wlanPskEntry 4}
+
+
+
+
+
+--
+-- WEP key entry
+--
+wlanWepEntry	OBJECT-TYPE
+	SYNTAX		WlanWepEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of WEPKey table."
+	INDEX		{ wepVapInstanceId, wepWepInstanceId }
+	::= { wlanWepTable 1 }
+
+WlanWepEntry ::=
+	SEQUENCE {
+		wepVapInstanceId		Counter32,
+		wepWepInstanceId		Counter32,
+		wepWepKey			DisplayString,
+		wepRowStatus			RowStatus
+	}
+
+wepVapInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"VAP instance id."
+        ::= { wlanWepEntry 1 }
+
+wepWepInstanceId	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"WEPKey instance identifier."
+        ::= { wlanWepEntry 2 }
+
+wepWepKey	OBJECT-TYPE
+        SYNTAX		DisplayString(SIZE(0..128))
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"A WEP key expressed as a hexadecimal string.
+        		The WEP encryption level for a given key is inferred
+        		from the key length, e.g. 10 characters for 40-bit
+        		encryption, or 26 characters for 104-bit encryption
+        		(keys do not all have to be of the same length,
+        		although they will be if the CPE uses KeyPassphrase
+        		to generate them). If KeyPassphrase is written, all
+        		four WEP keys are immediately generated.  The ACS
+        		SHOULD NOT set the passphrase and also set the WEP
+        		keys directly (the result of doing this is undefined).
+        		When read, this parameter returns an empty string,
+        		regardless of the actual value."
+        ::= { wlanWepEntry 3 }
+
+wepRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wlanWepEntry 4}
+
+
+
+--
+-- subtree of wlanStats
+--
+wlanTotalRxBytes	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total received bytes since startup."
+	::= {wlanStats 1}
+
+wlanTotalTxBytes	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total sent bytes since startup."
+	::= {wlanStats 2}
+
+wlanTotalRxPkts	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total received packets since startup."
+	::= {wlanStats 3}
+
+wlanTotalTxPkts	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total sent packets since startup."
+	::= {wlanStats 4}
+
+
+
+
+--
+-- sbutree of wan
+--
+wanConnDeviceInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wan 1 }
+wanConnDeviceInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"WAN connnection device instance slot, GET operation
+        		on this node will cause a new WAN connection device
+        		when wanConnDeviceInstanceIdSlotCreate is TRUE."
+        ::= { wan 2 }
+wanEthIf		OBJECT IDENTIFIER ::= { wan 3 }
+wanIpConnection		OBJECT IDENTIFIER ::= { wan 4 }
+wanPppConnection	OBJECT IDENTIFIER ::= { wan 5 }
+wanStats    		OBJECT IDENTIFIER ::= { wan 6 }
+wanConnDeviceTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WanConnDeviceEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"WAN connection device instance table."
+	::= { wan 7 }
+
+wanConnDeviceEntry	OBJECT-TYPE
+	SYNTAX		WanConnDeviceEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of WAN connection device table."
+	INDEX		{ wanConnDeviceId }
+	::= { wanConnDeviceTable 1 }
+
+WanConnDeviceEntry ::=
+	SEQUENCE {
+		wanConnDeviceId			Counter32,
+--		wanState			DisplayString,
+		wanDeviceName			DisplayString,
+		wanIpTableEntries		Counter32,
+		wanPppTableEntries		Counter32,
+		wanRowStatus			RowStatus
+	}
+
+wanConnDeviceId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"WAN connection device instance identifier."
+	::= {wanConnDeviceEntry 1}
+
+-- wanState	OBJECT-TYPE
+--	SYNTAX		DisplayString(SIZE(0..32))
+--	MAX-ACCESS	read-only
+--	STATUS		current
+--	DESCRIPTION	"State of WAN connection device."
+--	::= {wanConnDeviceEntry 2}
+
+wanDeviceName	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Interface device name."
+	::= {wanConnDeviceEntry 3}
+
+wanIpTableEntries	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Number of instance in wanIpTable."
+	::= {wanConnDeviceEntry 4}
+
+wanPppTableEntries	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Number of instance in wanPppTable."
+	::= {wanConnDeviceEntry 5}
+
+wanRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wanConnDeviceEntry 6}
+
+--
+-- WAN Ethernet interface
+--
+wanEthEnable 	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables this interface."
+	::= {wanEthIf 1}
+
+wanEthStatus 	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Indicates the status of this interface.
+			Enumeration of:
+			'Up'
+			'NoLink'
+			'Error' (OPTIONAL)
+			'Disabled'
+			The 'Error' value MAY be used by the CPE to
+			indicate a locally defined error condition."
+	::= {wanEthIf 2}
+
+wanEthMacAddr 	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The physical address of the interface."
+	::= {wanEthIf 3}
+
+wanEthMaxBitRate 	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The maximum upstream and downstream bit rate available
+			to this connection. Enumeration of: '10' '100' 'Auto'"
+	::= {wanEthIf 4}
+
+wanEthDuplexMode 	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The duplex mode available to this connection.
+			Enumeration of: 'Half' 'Full' 'Auto'"
+	::= {wanEthIf 5}
+
+--
+-- WAN IP connection config
+--
+wanIpInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wanIpConnection 1 }
+
+wanIpInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Get this node to create a new WAN IP connection
+        		instance, it's returns the new instance identifier."
+        ::= { wanIpConnection 2 }
+
+wanIpTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WanIpEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"WAN IP connection instance table."
+	::= { wanIpConnection 3 }
+
+wanIpEntry	OBJECT-TYPE
+	SYNTAX		WanIpEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of WAN IP connection table."
+	INDEX		{ wanIpConnDeviceId, wanIpInstanceId }
+	::= { wanIpTable 1 }
+
+WanIpEntry ::=
+	SEQUENCE {
+		wanIpConnDeviceId		Counter32,
+		wanIpInstanceId			Counter32,
+		wanIpEnable			TruthValue,
+		wanIpConnectionStatus		DisplayString,
+		wanIpConnectionType		DisplayString,
+		wanIpName			DisplayString,
+		wanIpUpTime			Counter32,
+		wanIpAddrType			DisplayString,
+		wanIpExternalAddr		DisplayString,
+		wanIpSubnetMask			DisplayString,
+		wanIpDefaultGateway		DisplayString,
+		wanIpDnsEnabled			TruthValue,
+		wanIpDnsServers			DisplayString,
+		wanIpMaxMtuSize			Integer32,
+		wanIpRowStatus			RowStatus
+	}
+
+wanIpConnDeviceId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"WAN connection device instance identifier."
+	::= {wanIpEntry 1}
+
+wanIpInstanceId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"WAN IP connection instance identifer."
+	::= {wanIpEntry 2}
+
+wanIpEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables the connection instance."
+	::= {wanIpEntry 3}
+
+wanIpConnectionStatus	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Current status of the connection.
+			Enumeration of:
+			'Unconfigured'
+			'Connecting'
+			'Connected'
+			'PendingDisconnect'
+			'Disconneting'
+			'Disconnected'"
+	::= {wanIpEntry 4}
+
+wanIpConnectionType	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Specifies the connection type of the connection
+			instance. Enumeration of:
+			'Unconfigured'
+			'IP_Routed'
+			'IP_Bridged'"
+	::= {wanIpEntry 5}
+
+wanIpName		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"User-readable name of this connection."
+	::= {wanIpEntry 6}
+
+wanIpUpTime		OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The time in seconds that this connection has been up."
+	::= {wanIpEntry 7}
+
+wanIpAddrType	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The method used to assign an address to the WAN
+			side interface of the CPE for this connection.
+			Enumeration of: 'DHCP' 'Static'"
+	::= {wanIpEntry 8}
+
+wanIpExternalAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"This is the external IP address used by NAT for
+			this connection. This parameter is configurable
+			only if the AddressingType is Static."
+	::= {wanIpEntry 9}
+
+wanIpSubnetMask		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Subnet mask of the WAN interface.  This parameter
+			is configurable only if the AddressingType is Static."
+	::= {wanIpEntry 10}
+
+wanIpDefaultGateway	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The IP address of the default gateway for this
+			connection. This parameter is configurable only if
+			the AddressingType is Static."
+	::= {wanIpEntry 11}
+
+wanIpDnsEnabled		OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Main DNS server IP addresses."
+	::= {wanIpEntry 12}
+
+wanIpDnsServers		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Second DNS server IP addresses."
+	::= {wanIpEntry 13}
+
+wanIpMaxMtuSize		OBJECT-TYPE
+	SYNTAX		Integer32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The maximum allowed size of an Ethernet frame
+			from LAN-side devices."
+	::= {wanIpEntry 14}
+
+wanIpRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wanIpEntry 15}
+
+
+--
+-- WAN PPP connection config
+--
+wanPppInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { wanPppConnection 1 }
+wanPppInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Get this node to create a new WAN PPPoE connection
+        		instance, it's returns the new instance identifier."
+        ::= { wanPppConnection 2 }
+
+wanPppTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF WanPppEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"WAN PPPoE connection instance table."
+	::= { wanPppConnection 3 }
+
+wanPppEntry	OBJECT-TYPE
+	SYNTAX		WanPppEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of PPPoE connection table."
+	INDEX		{
+				wanPppConnDeviceId,
+				wanPppInstanceId
+			}
+	::= { wanPppTable 1 }
+
+WanPppEntry ::=
+	SEQUENCE {
+		wanPppConnDeviceId		Counter32,
+		wanPppInstanceId		Counter32,
+		wanPppEnable			TruthValue,
+		wanPppConnectionStatus		DisplayString,
+		wanPppConnectionType		DisplayString,
+		wanPppName			DisplayString,
+		wanPppUpTime			Counter32,
+		wanPppLastConnectionError	DisplayString,
+		wanPppUsername			DisplayString,
+		wanPppPassword			DisplayString,
+		wanPppExternalIpAddr		DisplayString,
+		wanPppStaticIpAddr		DisplayString,
+		wanPppRemoteIpAddr		DisplayString,
+		wanPppMaxMruSize		Unsigned32,
+		wanPppCurMruSize		Unsigned32,
+		wanPppConnectionTrigger		DisplayString,
+		wanPppRowStatus			RowStatus
+	}
+
+wanPppConnDeviceId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"WAN connection device instance identifer."
+	::= {wanPppEntry 1}
+
+wanPppInstanceId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"WAN PPPoE connection instance identifer."
+	::= {wanPppEntry 2}
+
+wanPppEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables the connection instance."
+	::= {wanPppEntry 3}
+
+wanPppConnectionStatus	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Current status of the connection.
+			Enumeration of:
+			'Unconfigured'
+			'Connecting'
+			'Authenticating'
+			'Connected'
+			'PendingDisconnect'
+			'Disconnecting'
+			'Disconnected'"
+	::= {wanPppEntry 4}
+
+wanPppConnectionType	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Specifies the connection type of the connection
+			instance. Enumeration of:
+			'Unconfigured'
+			'IP_Routed'
+			'DHCP_Spoofed'
+			'PPPoE_Bridged'
+			'PPPoE_Relay'
+			'PPTP_Relay'
+			'L2TP_Relay'"
+	::= {wanPppEntry 5}
+
+wanPppName	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"User-readable name of this connection."
+	::= {wanPppEntry 6}
+
+wanPppUpTime	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The time in seconds that this connection has been up."
+	::= {wanPppEntry 7}
+
+wanPppLastConnectionError	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The cause of failure for the last connection setup
+			attempt. Enumeration of:
+			'ERROR_NONE'
+			'ERROR_ISP_TIME_OUT'
+			'ERROR_COMMAND_ABORTED'
+			'ERROR_NOT_ENABLED_FOR_INTERNET'
+			'ERROR_BAD_PHONE_NUMBER'
+			'ERROR_USER_DISCONNECT'
+			'ERROR_ISP_DISCONNECT'
+			'ERROR_IDLE_DISCONNECT'
+			'ERROR_FORCED_DISCONNECT'
+			'ERROR_SERVER_OUT_OF_RESOURCES'
+			'ERROR_RESTRICTED_LOGON_HOURS'
+			'ERROR_ACCOUNT_DISABLED'
+			'ERROR_ACCOUNT_EXPIRED'
+			'ERROR_PASSWORD_EXPIRED'
+			'ERROR_AUTHENTICATION_FAILURE'
+			'ERROR_NO_DIALTONE'
+			'ERROR_NO_CARRIER'
+			'ERROR_NO_ANSWER'
+			'ERROR_LINE_BUSY'
+			'ERROR_UNSUPPORTED_BITSPERSECOND'
+			'ERROR_TOO_MANY_LINE_ERRORS'
+			'ERROR_IP_CONFIGURATION'
+			'ERROR_UNKNOWN'"
+	::= {wanPppEntry 8}
+
+wanPppUsername	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Username to be used for authentication."
+	::= {wanPppEntry 9}
+
+wanPppPassword	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Password to be usef for authentication.
+			When read, this parameter returns an empty
+			string, regardless of the actual value."
+	::= {wanPppEntry 10}
+
+wanPppExternalIpAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"This is the external IP address used by NAT for this
+			connection."
+	::= {wanPppEntry 11}
+
+wanPppStaticIpAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Static IP address."
+	::= {wanPppEntry 12}
+
+wanPppRemoteIpAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The remote IP address for this connection."
+	::= {wanPppEntry 13}
+
+wanPppMaxMruSize	OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The maximum allowed size of frames sent from the
+			remote peer."
+	::= {wanPppEntry 14}
+
+wanPppCurMruSize	OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The current MRU in use over this connection."
+	::= {wanPppEntry 15}
+
+wanPppConnectionTrigger	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Trigger used to establish the PPP connection.
+			Enumeration of: 'OnDemand' 'AlwaysOn' 'Manual'
+			The above values are defined as follows:
+			OnDemand: If this PPP connection is disconnected
+			for any reason, it is to remain disconnected until
+			the CPE has one or more packets to communicate over
+			this connection, at which time the CPE automatically
+			attempts to reestablish the connection.
+			AlwaysOn: If this PPP connection is disconnected for
+			any reason, the CPE automatically attempts to
+			reestablish the connection (and continues to attempt
+			to reestablish the connection as long it remains
+			disconnected).
+			Manual: If this PPP connection is disconnected for
+			any reason, it is to remain disconnected until the
+			user of the CPE explicitly instructs the CPE to
+			reestablish the connection. Note that the reason for a
+			PPP connection becoming disconnected to begin with
+			might be either external to the CPE, such as
+			termination by the BRAS or momentary disconnection of
+			the physical interface, or internal to the CPE, such as
+			use of the IdleDisconnectTime and/or Auto-DisconnectTime
+			parameters in this object."
+	::= {wanPppEntry 16}
+
+wanPppRowStatus			OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {wanPppEntry 17}
+
+--
+-- WAN statistics
+--
+wanRxBytes	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total received bytes since startup."
+	::= {wanStats 1}
+
+wanTxBytes	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total sent bytes since startup."
+	::= {wanStats 2}
+
+wanRxPkts	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total received packets since startup."
+	::= {wanStats 3}
+
+wanTxPkts	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total sent packets since startup."
+	::= {wanStats 4}
+
+--
+-- subtree of lan
+--
+
+lanDeviceName		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Sets the domain name to provide to clients on
+			the LAN interface."
+	::= {lan 1}
+lanHostMgmt		OBJECT IDENTIFIER ::= { lan 2 }
+lanIpIf			OBJECT IDENTIFIER ::= { lan 3 }
+lanEthIf		OBJECT IDENTIFIER ::= { lan 4 }
+
+
+lanDhcpSvrEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables the DHCP server on the LAN
+			interface."
+	::= {lanHostMgmt 1}
+
+lanDhcpRelayEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables the DHCP relay on the LAN
+			interface."
+	::= {lanHostMgmt 2}
+
+lanDhcpRelayAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"DHCP relay IP address."
+	::= {lanHostMgmt 3}
+
+lanMinAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Specifies first address in the pool to be
+			assigned by the DHCP server on the LAN interface."
+	::= {lanHostMgmt 4}
+
+lanMaxAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Specifies last address in the pool to be assigned
+			by the DHCP server on the LAN interface."
+	::= {lanHostMgmt 5}
+
+lanSubnetMask	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Specifies the client¡¯s network subnet mask."
+	::= {lanHostMgmt 6}
+
+lanDnsSvrs	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Comma separated list of DNS servers offered to
+			DHCP clients."
+	::= {lanHostMgmt 7}
+
+lanDnsRelay	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enable or disable DNS relay on this interface."
+	::= {lanHostMgmt 8}
+
+lanDomainName		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Sets the domain name to provide to clients on
+			the LAN interface."
+	::= {lanHostMgmt 9}
+
+lanDefaultGateway	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Comma separated list of IP addresses of
+			routers on this subnet. Also known as default
+			gateway. "
+	::= {lanHostMgmt 10}
+
+lanDhcpLeaseTime	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Specifies the lease time in seconds of client
+			assigned addresses. A value of -1 indicates an
+			infinite lease. "
+	::= {lanHostMgmt 11}
+
+
+--
+-- LAN IP interface
+--
+lanIpIfInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { lanIpIf 1 }
+lanIpIfInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Get this node to create a new LAN IP interface
+        		instance, it's returns the new instance identifier."
+        ::= { lanIpIf 2 }
+lanIpIfNumberOfEntries	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Number of entries in lanIpIfTable."
+        ::= { lanIpIf 3 }
+
+
+
+lanIpIfTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF LanIpIfEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"LAN IP interface table."
+	::= { lanIpIf 4 }
+
+lanIpIfEntry	OBJECT-TYPE
+	SYNTAX		LanIpIfEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of LAN IP interface table."
+	INDEX		{ lanIpIfId }
+	::= { lanIpIfTable 1 }
+
+LanIpIfEntry ::=
+	SEQUENCE {
+		lanIpIfId			Counter32,
+		lanIpIfEnable			TruthValue,
+		lanIpIfIpAddr			DisplayString,
+		lanIpIfSubnetMask		DisplayString,
+		lanIpIfRowStatus		RowStatus
+	}
+
+lanIpIfId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"LAN IP interface instance identifier."
+	::= {lanIpIfEntry 1}
+
+lanIpIfEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables this entry.  On creation, an
+			entry is disabled by default."
+	::= {lanIpIfEntry 2}
+
+lanIpIfIpAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"IP address of the LAN-side interface of the CPE."
+	::= {lanIpIfEntry 3}
+
+lanIpIfSubnetMask	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Subnet mask of the LAN-side interface of the IGD."
+	::= {lanIpIfEntry 4}
+
+lanIpIfRowStatus	OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {lanIpIfEntry 5}
+
+
+
+
+
+
+--
+-- LAN ethernet interface
+--
+
+lanEthIfInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= { lanEthIf 1 }
+
+lanEthIfInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Get this node to create a new LAN ethernet interface
+        		instance, it's returns the new instance identifier."
+        ::= { lanEthIf 2 }
+
+lanEthIfNumberOfEntries	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-only
+        STATUS		current
+        DESCRIPTION	"Number of entries in lanEthIfTable."
+        ::= { lanEthIf 3 }
+
+lanEthIfTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF LanEthIfEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"LAN ethernet interface table."
+	::= { lanEthIf 4 }
+
+lanEthIfEntry	OBJECT-TYPE
+	SYNTAX		LanEthIfEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of LAN ethernet interface table."
+	INDEX		{ lanEthIfId }
+	::= { lanEthIfTable 1 }
+
+LanEthIfEntry ::=
+	SEQUENCE {
+		lanEthIfId		Counter32,
+		lanEthIfDeviceName	DisplayString,
+		lanEthIfEnable		TruthValue,
+		lanEthIfStatus		DisplayString,
+		lanEthIfMacAddr		DisplayString,
+		lanEthIfMacAddrCtlEnabled	TruthValue,
+		lanEthIfMaxBitRate	DisplayString,
+		lanEthIfDuplexMode	DisplayString,
+		lanEthIfTxBytes		Counter32,
+		lanEthIfRxBytes		Counter32,
+		lanEthIfTxPkts		Counter32,
+		lanEthIfRxPkts		Counter32,
+		lanEthIfRowStatus	RowStatus
+	}
+
+lanEthIfId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"LAN ethernet interface instance identifier."
+	::= {lanEthIfEntry 1}
+
+lanEthIfDeviceName	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"LAN ethernet interface name."
+	::= {lanEthIfEntry 2}
+
+lanEthIfEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enables or disables this entry.  On creation, an
+			entry is disabled by default."
+	::= {lanEthIfEntry 3}
+
+lanEthIfStatus	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Indicates the status of this interface.  Enumeration
+			of:
+			'Up'
+			'NoLink'
+			'Error' (OPTIONAL)
+			'Disabled'
+			The 'Error' value MAY be used by the CPE to indicate
+			a locally defined error condition."
+	::= {lanEthIfEntry 4}
+
+lanEthIfMacAddr	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"The physical address of the interface."
+	::= {lanEthIfEntry 5}
+
+lanEthIfMacAddrCtlEnabled	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Indicates whether MAC Address Control is enabled or
+			not on this interface.  MAC Address Control limits the
+			clients that connect to those that match a list of
+			allowed MAC addresses."
+	::= {lanEthIfEntry 6}
+
+lanEthIfMaxBitRate	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The maximum upstream and downstream bit rate
+			available to this connection. Enumeration of:
+			'10' '100' '1000' 'Auto'"
+	::= {lanEthIfEntry 7}
+
+lanEthIfDuplexMode	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"The duplex mode available to this connection.
+			Enumeration of: 'Half' 'Full' 'Auto'"
+	::= {lanEthIfEntry 8}
+
+lanEthIfTxBytes	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total number of bytes sent over the interface
+			since the CPE was last reset."
+	::= {lanEthIfEntry 9}
+
+lanEthIfRxBytes	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total number of bytes received over the interface
+			since the CPE was last reset."
+	::= {lanEthIfEntry 10}
+
+lanEthIfTxPkts	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total number of packets sent over the interface
+			since the CPE was last reset."
+	::= {lanEthIfEntry 11}
+
+lanEthIfRxPkts	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Total number of packets received over the interface
+			since the CPE was last reset."
+	::= {lanEthIfEntry 12}
+
+lanEthIfRowStatus	OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {lanEthIfEntry 13}
+
+
+
+
+
+
+
+
+
+--
+-- subtree of ntp
+--
+ntpEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enable or disable NTP."
+	::= {ntp 1}
+
+ntpTimeout	OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"NTP timeout."
+	::= {ntp 2}
+
+ntpServer1	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"First NTP/SNTP server, hostname or ipaddress."
+	::= {ntp 3}
+
+ntpServer2	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Second NTP/SNTP server, hostname or ipaddress."
+	::= {ntp 4}
+
+
+------------------------------------------------------------------------------
+--
+-- VLAN
+--
+------------------------------------------------------------------------------
+
+vlanEnable	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enable or disable VLAN."
+	::= {vlan 1}
+
+vlanDefault	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Default VLAN ID."
+	::= {vlan 2}
+
+vlanInstanceIdSlotCreate	OBJECT-TYPE
+        SYNTAX		TruthValue
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Set to TRUE to enable GET operation on following
+        		leaf-node to create a new insance. FALSE to disable
+        		creation."
+        ::= {vlan 3}
+
+vlanInstanceIdSlot	OBJECT-TYPE
+        SYNTAX		Counter32
+        MAX-ACCESS	read-write
+        STATUS		current
+        DESCRIPTION	"Get this node to create a new VLAN instance, it's
+        		returns the new instance identifier."
+        ::= {vlan 4}
+
+vlanMarkingTable	OBJECT-TYPE
+	SYNTAX     	SEQUENCE OF VlanMarkingEntry
+	MAX-ACCESS	not-accessible
+	STATUS     	current
+	DESCRIPTION
+	"LAN ethernet interface table."
+	::= { vlan 5 }
+
+vlanMarkingEntry	OBJECT-TYPE
+	SYNTAX		VlanMarkingEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"Entry of LAN ethernet interface table."
+	INDEX		{ vlanInstanceId }
+	::= { vlanMarkingTable 1 }
+
+VlanMarkingEntry ::=
+	SEQUENCE {
+		vlanInstanceId		Counter32,
+		vlanIdMark		INTEGER,
+		vlanIdUntag		TruthValue,
+		vlanSrcMacAddrFilterList	DisplayString,
+		vlanServiceType		DisplayString,
+		vlanInterfaceList	DisplayString,
+		vlanSsidList		DisplayString,
+		vlanEthPrioMark		INTEGER,
+		vlanRowStatus		RowStatus
+	}
+
+vlanInstanceId	OBJECT-TYPE
+	SYNTAX		Counter32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN instance identifer."
+	::= {vlanMarkingEntry 1}
+
+vlanIdMark	OBJECT-TYPE
+	SYNTAX		INTEGER(-1..4095)
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN ID mark."
+	::= {vlanMarkingEntry 2}
+
+vlanIdUntag	OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN ID untag."
+	::= {vlanMarkingEntry 3}
+
+vlanSrcMacAddrFilterList	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN source MAC address filter list, seperated by
+			','."
+	::= {vlanMarkingEntry 4}
+
+vlanServiceType		OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN service type, enumeration of (recently):
+			'Local'
+			'Tr069'
+			'Internet'
+			'Other'"
+	::= {vlanMarkingEntry 5}
+
+vlanInterfaceList	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..64))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN interface list, seperated by ','."
+	::= {vlanMarkingEntry 6}
+
+vlanSsidList	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..256))
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN interface list, seperated by ','."
+	::= {vlanMarkingEntry 7}
+
+vlanEthPrioMark	OBJECT-TYPE
+	SYNTAX		INTEGER(0..7)
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"VLAN ethernet priority mark, from 0 to 7."
+	::= {vlanMarkingEntry 8}
+
+vlanRowStatus	OBJECT-TYPE
+	SYNTAX		RowStatus
+	MAX-ACCESS	read-create
+	STATUS		current
+	DESCRIPTION	"Column for create new row or delete row."
+	DEFVAL		{active}
+	::= {vlanMarkingEntry 9}
+
+
+------------------------------------------------------------------------------
+--
+-- Firewall
+--
+------------------------------------------------------------------------------
+
+fwDosEnable		OBJECT-TYPE
+	SYNTAX		TruthValue
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Enable or disable firewall."
+	::= {firewall 1}
+
+--fwIpFilterEnable	OBJECT-TYPE
+--	SYNTAX		TruthValue
+--	MAX-ACCESS	read-write
+--	STATUS		current
+--	DESCRIPTION	"Enable or disable IP filter."
+--	::= {firewall 2}
+
+--fwSecurityLevel		OBJECT-TYPE
+--	SYNTAX		Unsigned32(0..3)
+--	MAX-ACCESS	read-write
+--	STATUS		current
+--	DESCRIPTION	"Security level, valid values:
+--			3 - High
+--			2 - Medium
+--			1 - Low
+--			0 - Custom."
+--	::= {firewall 3}
+
+--fwCurrentLanFilterTable	OBJECT-TYPE
+--	SYNTAX		Unsigned32
+--	MAX-ACCESS	read-write
+--	STATUS		current
+--	DESCRIPTION	"Current LAN filter table."
+--	::= {firewall 4}
+
+--fwCurrentWanFilterTable	OBJECT-TYPE
+--	SYNTAX		Unsigned32
+--	MAX-ACCESS	read-write
+--	STATUS		current
+--	DESCRIPTION	"Current WAN filter table."
+--	::= {firewall 5}
+
+--fwWanBlackFilterNumberOfEntries	OBJECT-TYPE
+--	SYNTAX		Unsigned32
+--	MAX-ACCESS	read-only
+--	STATUS		current
+--	DESCRIPTION	"Current WAN filter table."
+--	::= {firewall 6}
+
+--fwWanWhiteFilterNumberOfEntries	OBJECT-TYPE
+--	SYNTAX		Unsigned32
+--	MAX-ACCESS	read-only
+--	STATUS		current
+--	DESCRIPTION	"Current WAN filter table."
+--	::= {firewall 7}
+
+--fwLanBlackFilterNumberOfEntries	OBJECT-TYPE
+--	SYNTAX		Unsigned32
+--	MAX-ACCESS	read-only
+--	STATUS		current
+--	DESCRIPTION	"Current WAN filter table."
+--	::= {firewall 8}
+
+--fwLanWhiteFilterNumberOfEntries	OBJECT-TYPE
+--	SYNTAX		Unsigned32
+--	MAX-ACCESS	read-only
+--	STATUS		current
+--	DESCRIPTION	"Current WAN filter table."
+--	::= {firewall 9}
+
+
+------------------------------------------------------------------------------
+--
+-- Notification (trap)
+--
+------------------------------------------------------------------------------
+
+notificationControl	OBJECT IDENTIFIER ::= {igdNotifications 1 }
+devNotifications	OBJECT IDENTIFIER ::= {igdNotifications 2 }
+wanNotifications	OBJECT IDENTIFIER ::= {igdNotifications 3 }
+wlanNotifications	OBJECT IDENTIFIER ::= {igdNotifications 4 }
+
+
+--
+-- Notification control objects
+--
+
+notificationPollInterval	OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Second(s) between snmpagent update the status of
+			monitered objects, set to 0 to disable notifications."
+	::= {notificationControl 1}
+
+devCpuOccupAlarmContinuous	OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"If CPU occupation above value of
+			devCpuOccupAlarmThreshold and still there for
+			devCpuOccupAlarmContinuous second(s), the
+			devCpuOccupationTooHighAlarm will be send to manager,
+			till occupation back to below the threshold, the
+			'clear' arlarm will be send to manager.
+			Notes that this value shouldn't less than
+			notificationPollInterval."
+	::= {notificationControl 2}
+
+devCpuOccupAlarmThreshold	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Alarm threshold of CPU occupation, percent."
+	::= {notificationControl 3}
+
+devMemOccupAlarmContinuous	OBJECT-TYPE
+	SYNTAX		Unsigned32
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"If memory occupation above value of
+			devMemOccupAlarmThreshold and still there for
+			devMemOccupAlarmContinuous second(s), the
+			devMemOccupationTooHighAlarm will be send to manager,
+			till occupation back to below the threshold, the
+			'clear' arlarm will be send to manager.
+			Notes that this value shouldn't less than
+			notificationPollInterval."
+	::= {notificationControl 4}
+
+devMemOccupAlarmThreshold	OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-write
+	STATUS		current
+	DESCRIPTION	"Alarm threshold of memory occupation, percent."
+	::= {notificationControl 5}
+
+devMemOccupation		OBJECT-TYPE
+	SYNTAX		INTEGER
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Pecent of memory occupation."
+	::= {notificationControl 6}
+
+wanRecentIpAddress	OBJECT-TYPE
+	SYNTAX		DisplayString(SIZE(0..32))
+	MAX-ACCESS	read-only
+	STATUS		current
+	DESCRIPTION	"Recent WAN side IP address."
+	::= {notificationControl 7}
+
+
+
+
+--
+-- Notification objects
+--
+
+--
+-- Device trap
+--
+devCpuOccupationTooHighAlarm NOTIFICATION-TYPE
+    OBJECTS     { devCpuOccupation }
+    STATUS      current
+    DESCRIPTION
+        "CPU occupation notification."
+::= { devNotifications 1 }
+
+devCpuOccupationTooHighAlarmClear NOTIFICATION-TYPE
+    OBJECTS     { devCpuOccupation }
+    STATUS      current
+    DESCRIPTION
+        "CPU occupation notification clear."
+::= { devNotifications 2 }
+
+devMemOccupationTooHighAlarm NOTIFICATION-TYPE
+    OBJECTS     { devMemCapacity, devMemFree }
+    STATUS      current
+    DESCRIPTION
+        "Memory occupation notification."
+::= { devNotifications 3 }
+
+devMemOccupationTooHighAlarmClear NOTIFICATION-TYPE
+    OBJECTS     { devMemCapacity, devMemFree }
+    STATUS      current
+    DESCRIPTION
+        "Memory occupation notification clear."
+::= { devNotifications 4 }
+
+
+
+
+
+--
+-- WAN trap
+--
+wanIpChangedNotification	NOTIFICATION-TYPE
+    OBJECTS     {wanConnDeviceId, wanRecentIpAddress}
+    STATUS      current
+    DESCRIPTION
+        "IP address of WAN side changing notification."
+::= { wanNotifications 1 }
+
+
+
+
+--
+-- WLAN trap
+--
+wlanChannelChangedNotification	NOTIFICATION-TYPE
+    OBJECTS     { wlanChannel }
+    STATUS      current
+    DESCRIPTION
+        "Channel changed notification."
+::= { wlanNotifications 1 }
+
+wlanSsidChangedNotification	NOTIFICATION-TYPE
+    OBJECTS     {
+    	vapInstanceId,
+    	vapSsid}
+    STATUS      current
+    DESCRIPTION
+        "Encryption modes changed notification."
+::= { wlanNotifications 2 }
+
+wlanEncryptModeChangedNotification	NOTIFICATION-TYPE
+    OBJECTS     {
+    	vapInstanceId,
+    	vapSsid,
+    	vapBasicEncryptionModes}
+    STATUS      current
+    DESCRIPTION
+        "Encryption modes changed notification."
+::= { wlanNotifications 3 }
+
+wlanPskChangedNotification	NOTIFICATION-TYPE
+    OBJECTS     {
+   	vapInstanceId,
+    	vapSsid}
+    STATUS      current
+    DESCRIPTION
+        "Pre Shared Key changed notification."
+::= { wlanNotifications 4 }
+
+wlanStationExhaustAlarm		NOTIFICATION-TYPE
+    OBJECTS     {
+    	vapInstanceId,
+    	vapSsid,
+    	vapAssociationCount,
+    	vapMaxStation }
+    STATUS      current
+    DESCRIPTION
+        "Reached MaxStation alarm."
+::= { wlanNotifications 5 }
+
+wlanStationExhaustAlarmClear	NOTIFICATION-TYPE
+    OBJECTS     {
+    	vapInstanceId,
+    	vapSsid,
+    	vapAssociationCount,
+    	vapMaxStation }
+    STATUS      current
+    DESCRIPTION
+        "Reached MaxStation alarm clear."
+::= { wlanNotifications 6 }
+
+wlanVapCreateNotification	NOTIFICATION-TYPE
+    OBJECTS     {
+   	vapInstanceId,
+    	vapSsid}
+    STATUS      current
+    DESCRIPTION
+        "Creation of VAP notification."
+::= { wlanNotifications 7 }
+
+wlanVapDestroyNotification	NOTIFICATION-TYPE
+    OBJECTS     {
+   	vapInstanceId,
+    	vapSsid}
+    STATUS      current
+    DESCRIPTION
+        "Destroy of VAP notification."
+::= { wlanNotifications 8 }
+
+END

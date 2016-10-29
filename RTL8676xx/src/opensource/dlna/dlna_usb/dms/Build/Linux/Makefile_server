@@ -1,0 +1,80 @@
+#
+#
+#  Broadcom "Digital Media Server" Make File. 
+#  X86 Version. 
+#
+
+CC = gcc
+ROOTDIR = ../../../..
+LPATH = $(ROOTDIR)/dlna_usb/dms/Dependencies/Libraries/Linux/X86/shared
+SRCPATH = $(ROOTDIR)/dlna_usb/dms
+LIBDLNASRC = $(ROOTDIR)/dlna_usb/dms/Dependencies/LibDLNA
+
+#
+# ROOTDIR points to the parent of dms directory
+# We use that as base and define the paths 
+# accordingly.
+#
+
+INCLUDES = -I./ -I/usr/include
+#INCLUDES += -I$(ROOTDIR)/upnp/src
+#INCLUDES += -I$(ROOTDIR)/upnp/include
+INCLUDES += -I$(ROOTDIR)/dlna_usb/core/include
+INCLUDES += -I$(ROOTDIR)/dlna_usb/dms
+INCLUDES += -I$(ROOTDIR)/dlna_usb/dms/LinuxOSL
+INCLUDES += -I$(ROOTDIR)/dlna_usb/dms/Dependencies/LibDLNA
+INCLUDES += -I$(ROOTDIR)/dlna_usb/dms/Dependencies/AVCodecHeaders/libavcodec
+INCLUDES += -I$(ROOTDIR)/dlna_usb/dms/Dependencies/AVCodecHeaders/libavutil
+INCLUDES += -I$(ROOTDIR)/dlna_usb/dms/Dependencies/AVCodecHeaders/libavformat
+
+TARGET := bcmmserver
+
+CPPFLAGS = ${INCLUDES} -DHAVE_DLNA -DLINUX -D_GNU_SOURCE=1  -DCOMPILE_AS_EXECUTABLE
+#CPPFLAGS += -MD -g -Wall  
+
+LDFLAGS = -lpthread 
+LDFLAGS += -L . -lavformat -lavutil -lavcodec  
+
+SRC := 	$(LIBDLNASRC)/audio_aac.c \
+	$(LIBDLNASRC)/audio_ac3.c \
+	$(LIBDLNASRC)/audio_amr.c \
+	$(LIBDLNASRC)/audio_atrac3.c \
+	$(LIBDLNASRC)/audio_g726.c \
+	$(LIBDLNASRC)/audio_lpcm.c \
+	$(LIBDLNASRC)/audio_mp2.c \
+	$(LIBDLNASRC)/audio_mp3.c \
+	$(LIBDLNASRC)/audio_wma.c \
+	$(LIBDLNASRC)/av_mpeg1.c \
+	$(LIBDLNASRC)/av_mpeg2.c \
+	$(LIBDLNASRC)/av_mpeg4_part10.c \
+	$(LIBDLNASRC)/av_mpeg4_part2.c \
+	$(LIBDLNASRC)/av_wmv9.c \
+	$(LIBDLNASRC)/containers.c \
+	$(LIBDLNASRC)/image_jpeg.c \
+	$(LIBDLNASRC)/image_png.c \
+	$(LIBDLNASRC)/profiles.c \
+	$(SRCPATH)/buffer.c \
+	$(SRCPATH)/CDS.c \
+	$(SRCPATH)/CDS_Iface.c \
+	$(SRCPATH)/CMS.c \
+	$(SRCPATH)/CMS_Iface.c \
+	$(SRCPATH)/dirdbase.c \
+	$(SRCPATH)/DMS.c \
+	$(SRCPATH)/Http_streamer.c \
+	$(SRCPATH)/LinuxOSL/ScanDir.c \
+	$(SRCPATH)/supported_mimes.c \
+	$(SRCPATH)/trace.c 
+
+OBJFILES=${SRC:.c=.o}
+#all:    $(OBJFILES)
+
+all:    $(OBJFILES)
+	$(CC) $(CPPFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS) libbcupnp.a  
+
+.PHONY: clean
+clean:
+	rm -f *.o	
+	rm -f $(OBJFILES) $(TARGET)
+	rm -f *.map *.list
+
+

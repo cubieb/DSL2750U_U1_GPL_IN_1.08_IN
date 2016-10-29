@@ -1,0 +1,13 @@
+<InternetGatewayDevice type="object">
+	<X_TELEFONICA-ES_GreTunnel type="object">
+		<i type="object">
+			<TunnelName type="string"></TunnelName>
+			<AssociatedWanIfName type="string(256)"></AssociatedWanIfName>
+			<RemoteIpv4WanAddress type="string(256)"></RemoteIpv4WanAddress>
+			<PeerLocalAddress type="string(256)"></PeerLocalAddress>
+			<PeerRemoteAddress type="string(256)"></PeerRemoteAddress>
+			<PeerIPv4Address type="string(256)"></PeerIPv4Address>
+			<PeerIPv4MaskLen type="unsignedInt">0</PeerIPv4MaskLen>
+		</i>
+	</X_TELEFONICA-ES_GreTunnel>
+</InternetGatewayDevice>

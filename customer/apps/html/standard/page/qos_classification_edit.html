@@ -1,0 +1,198 @@
+<style type="text/css">
+<!--
+.div_left { width:225px;}
+-->
+</style>
+<td>
+	<div class="config2">
+		<p class="bk_orange"><span id="lang_title">QoS Flow Classify Config</span></p>
+		<div class="div_black">
+			<!-- 全局属�?-->
+		<div id="hideDirCl" style="display:none">
+			<div class="div_left" id="lang_ClassifyType">Classify Type</div>
+			<div class="div_right">&nbsp;
+				<input type="radio" name="INPUT_Classifition" id="INPUT_UpLink" value="Up" onClick="CreateIOoption();baseOnClassifyType();DynamicCreateOption();" checked><span id="lang_upFlowClassify">Uplink Flow Classify</span> 
+				<input type="radio" name="INPUT_Classifition" id="INPUT_DownLink" value="Down" onClick="CreateIOoption();baseOnClassifyType();DynamicCreateOption();"><span id="lang_downFlowClassify">Downlink Flow Classify</span>
+			</div>
+		</div> 
+			
+			<div class="div_left" id="lang_Enable">Enable</div>
+			<div class="div_right">&nbsp;<input type="checkbox" id="INPUT_ClassificationEnable" ></div>
+			
+			<p class="do bk_black" id="lang_ClassCondition">Classify conditions</p>
+			<div class="div_black">
+				<div id="InputIntf">
+					<div class="div_left" id="lang_IpProtocolType">Ip Protocol Type</div>
+					<div class="div_right">&nbsp;
+						<select id="SELECT_IpProtocolType" onChange="onChgIpProType();changIcmpVal(this.value);changeProtocolText();"  style="width:110px">
+							<option value="IPv4">IPv4</option>
+						 	<?if eq $var:G_IPv6Enable 1	
+							`	<option value="IPv6">IPv6</option> 
+					        `?>
+						</select>
+					</div>
+				
+					<div class="div_left" id="lang_inputInterface">Input Interface</div>
+					<div class="div_right">&nbsp;
+						<select id="SELECT_InputInterface"  style="width:110px"><option> </option></select></div>
+				</div>
+				
+				<div class="div_left" id="lang_outputInterface">Output Interface</div>
+				<div class="div_right" id="div_SELECT_OutputInterface">&nbsp;
+					<select id="SELECT_OutputInterface"  style="width:110px"><option> </option></select></div>
+				
+				<div class="div_left" id="lang_sourceMacAddress">Source MAC address</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_sourceMAC"  style="width:100px"></div>
+				
+				<div class="div_left" id="lang_sourceMacMask">Source MAC mask</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_sourceMask"  style="width:100px"></div>
+				
+				<!--
+				<div class="div_left" id="lang_destiMacAddress">目的MAC地址</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_destinationMAC"></div>
+				
+				<div class="div_left" id="lang_destiMacMask">目的MAC掩码</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_destiMask"></div>
+				
+				<div class="div_left" id="lang_ethernetType">以太网类�?/div>
+				<div class="div_right">&nbsp;
+					<select id="SELECT_EthnetType">
+						<option value="-1">不匹�?/option>
+						<option value='2048'>IPv4</option>
+						<option value='2053'>X25</option>
+						<option value='2054'>ARP</option>
+						<option value='2056'>FR_ARP</option>
+						<option value='2303'>BPQ</option>
+						<option value='24576'>DEC</option>
+						<option value='24577'>DNA_DL</option>
+						<option value='24578'>DNA_RC</option>
+						<option value='24579'>DNA_RT</option>
+						<option value='24580'>LAT</option>
+						<option value='24581'>DIAG</option>
+						<option value='24582'>CUST</option>
+						<option value='24583'>SCA</option>
+						<option value='25944'>TEB</option>
+						<option value='25945'>RAW_FR</option>
+						<option value='33011'>AARP</option>
+						<option value='32923'>ATALK</option>
+						<option value='33024'>802_1Q</option>
+						<option value='33079'>IPX</option>
+						<option value='33169'>NetBEUI</option>
+						<option value='34525'>IPv6</option>
+						<option value='34827'>PPP</option>
+						<option value='34892'>ATMMPOA</option>
+						<option value='34915'>PPP_DISC</option>
+						<option value='34916'>PPP_SES</option>
+						<option value='34948'>ATMFATE</option>
+						<option value='36864'>LOOP</option>
+					</select>
+				</div>
+				
+				<div class="div_left">VLANID</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_VLANID"></div>
+				-->
+				<div class="div_left">802.1P</div>
+				<div class="div_right">&nbsp;
+				  <select name="select" id="INPUT_802_1p"  style="width:110px">
+				    <option></option>
+			      </select>
+			    </div>
+				
+				<!-- 注意这里 -->
+				<!--<p class="SmallTittle" id="lang_downTips">以上的分类匹配条件只用于桥模式，以下的分类匹配条件适用于桥和路由模�?/p>-->
+				<div class="div_left" id="lang_sourceIpAddress">Source IP address</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_IPAddress"  style="width:100px"></div>
+				
+				<div class="div_left" id="lang_sourceMask">Source subnet mask</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_Mask"  style="width:100px"></div>
+				
+				<div class="div_left" id="lang_destiIpAddress">Destination IP address</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_DestinationIPAddress"  style="width:100px"></div>
+				
+				<div class="div_left" id="lang_destiMask">Destination subnet mask</div>
+				<div class="div_right">&nbsp;<input type="text" id="INPUT_DestinationMask"  style="width:100px"></div>
+				
+				<!-- IPv4/IPv6 -->
+				<div id="IPv4_DSCPCheck">
+					<div class="div_left" id="lang_dscpCheck">DSCP value</div>
+					<div class="div_right">&nbsp;
+						<select id="SELECT_DSCPCheck"  style="width:110px"><option>-</option></select></div>
+				</div>
+				
+				<div id="IPv6_TrafficClassCheck">
+					<div class="div_left" id="lang_TrafficClassCheck">Traffic Class value</div>
+					<div class="div_right">&nbsp;<input type="text" id="INPUT_TrafficClassCheck"  style="width:100px"> (0-255)</div>
+				</div>
+				
+				<!-- Flow Label�?-->
+				<div id="flow_label">
+					<div class="div_left" id="lang_FlowLabelValue">Flow Label value</div>
+					<div class="div_right">&nbsp;<input type="text" id="INPUT_FlowLabel"  style="width:100px"> (0 - 1048575)</div>
+				</div>
+				
+				<div class="div_left" id="lang_protocol">Protocol Type</div>
+				<div class="div_right">&nbsp;
+					<select id="SELECT_Protocol" onChange="baseOnProtocol()"  style="width:110px">
+						<option value="-1">Not Match</option>
+						<option value="6">TCP</option>
+						<option value="17">UDP</option>
+						<option value="0">TCP/UDP</option>
+						<option value="1000">RTP</option>
+						<option value="1">ICMP</option>
+						<option value="2">IGMP</option>
+					</select>
+				</div>
+				
+				<div class="div_left" id="lang_sourcePortStart">Source port range</div>
+				<div class="div_right">&nbsp;
+					<input type="text" id="INPUT_SourcePort"  style="width:100px"> - <input type="text" id="INPUT_SourcePortRangeMax"  style="width:100px">
+				</div>
+				
+				<div class="div_left" id="lang_destiPortStart">Destination port range</div>
+				<div class="div_right">&nbsp;
+					<input type="text" id="INPUT_DestPort"  style="width:100px"> - <input type="text" id="INPUT_DestPortRangeMax"  style="width:100px">
+				</div>
+			</div>
+			<div  id="error_id" value="error" name="error_id" ></div>
+			<!-- 分类匹配结果  -->
+			<p class="do bk_black" id="lang_ClassResult">Classify match result</p>
+			<div class="div_black">
+				<!-- 下行流量分类 -->
+				<div id="div_downLink">
+					<div class="div_left" id="lang_wmmMark">WMM Mark</div>
+					<div class="div_right">&nbsp;
+						<select id="SELECT_WmmMark"  style="width:110px"><option></option></select>
+					</div>
+				</div>
+				
+				<div class="div_left" id="lang_classQueue">Classify Queue</div>
+				<div class="div_right">&nbsp;<select id="SELECT_classQueue"  style="width:110px"><option> </option></select></div>
+				
+				<!-- 上行流量分类 -->
+				<div id="div_upLink">
+					<!-- IPv4/IPv6 -->
+					<div id="IPv4_DSCPMark">
+						<div class="div_left" id="lang_dscpMark">DSCP Mark</div>
+						<div class="div_right">&nbsp;
+							<select id="SELECT_DSCPMark"  style="width:110px"><option> </option></select></div>
+					</div>
+					
+					<div id="IPv6_TrafficClassMark">
+						<div class="div_left" id="lang_TrafficClassMark">Traffic Class Mark</div>
+						<div class="div_right">&nbsp;<input type="text" id="INPUT_TrafficClassMark"  style="width:100px"> (0-255)</div>
+					</div>
+					
+					<div class="div_left" id="lang_cosMark">COS Mark</div>
+					<div class="div_right">&nbsp;
+						<select id="SELECT_COSMark"><option></option></select>
+					</div>
+				</div>
+			</div>
+			<div class="div_button">
+				<input type="submit" id="submit" value="提交" onClick="uiSubmit()">
+				<input type="button" id="refresh" value="刷新" onClick="uiPageRefresh()">
+			</div>
+		</div>
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+	</div>
+</td>

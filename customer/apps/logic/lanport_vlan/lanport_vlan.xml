@@ -1,0 +1,17 @@
+
+<InternetGatewayDevice type="object">
+	<X_TWSZ-COM_LanPortVLAN type="object" Writable="0">
+			<MaxLanPortVLANEntries Writable="1" type="unsignedInt">0</MaxLanPortVLANEntries>
+			<LanPortVLANNumberOfEntries Writable="1" type="unsignedInt">0</LanPortVLANNumberOfEntries>
+			<VLAN type="object">
+				<i type="object">
+					<Enable Writable="1" type="boolean">0</Enable>
+					<PortPath Writable="1" type="string(256)"></PortPath>
+					<LinkType Writable="1" type="string"></LinkType>
+					<PVID Writable="1" type="unsignedInt[0:4094]">0</PVID>
+					<VLANIDList Writable="1" type="string(256)"></VLANIDList>
+					<UntagVLANIDList Writable="1" type="string(256)"></UntagVLANIDList>
+				</i>
+			</VLAN>
+	</X_TWSZ-COM_LanPortVLAN>
+</InternetGatewayDevice>

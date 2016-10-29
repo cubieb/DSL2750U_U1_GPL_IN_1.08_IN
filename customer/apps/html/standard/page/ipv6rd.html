@@ -1,0 +1,133 @@
+<td>
+	<div class="config2">
+		<p class="do bk_black" id="lang_tunnel_global">Ip Tunnel Configuration</p>
+		<div class="div_orange">
+		   <p>6rd is a mechanism to facilitate IPv6 rapid deployment across IPv4 infrastructures of Internet service providers.</p>
+			<p>It is derived from 6to4, a preexisting mechanism to transfer IPv6 packets over the IPv4 network, with the significant change that it operates entirely within the end-user's ISP's network, thus avoiding the major architectural problems inherent in the original design of 6to4.</p>
+	    </div>
+		<div id="TunnelSetting">
+		<p class="do bk_black" id="lang_TunnelSetting">IpTunnel</p>
+		<div class="div_black">
+			<table class="td_table_s" id="Iptunnel_table">
+				<tr class="tr_bold">
+					<td></td>
+					<td>Tunnel Name</td>
+					<td>Mode</td>
+					<td>Wan interface</td>
+					<td>Lan interface</td>
+					<td>Activated</td>
+					<td>Counter</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button"><input type='button' id='addTunnel' name='addTunnel' onClick='AddTunnel()' value=' Add '>
+			<input type="button" id="editTunnel" name="editTunnel"  onClick="EditTunnel()" value=" Edit ">
+			<input type="button" id="removeTunnel" name="removeTunnel" onClick="RemoveTunnel()" value=" Delete ">
+		</div>
+		</div>
+		
+		<div id="tunnel_setup" style="display:none">
+			<p class="do bk_black">Add Tunnel Items </p>
+			<div class="div_black">
+				<div class="div_left">Tunnel Name:</div>
+				<div class="div_right">
+					<input type="text" id="INPUT_TunnelName" style="width:100px">
+				</div>
+
+                <div class="div_left" >Tunnel Mode</div>
+				<div class="div_right">
+					<select id="SELECT_TunnelMode" style="width:110px"></select>
+				</div>
+
+                <div class="div_left">Wan Interface:</div>
+				<div class="div_right">
+					<select id="SELECT_WanInterface" style="width:110px"></select>
+				</div>
+				<div class="div_left">Lan Interface:</div>
+				<div class="div_right">
+					<select id="SELECT_LanInterface" style="width:110px"></select>
+				</div>
+			</div>
+			<div class="div_button">
+			     <input type="button" id="submit" value="Apply" onClick="uiTunnelSubmit()">
+				 <input type='button' value="Cancel" onClick='uiPageRefresh()' id="CancelEdit">
+			</div>
+		</div>
+
+<!--  Ipv6rd SET -->
+
+        <div id="Ipv6rdSetting">
+        <p class="do bk_black">IPv6 Rapid Deployment</p>
+        <div class="div_black">
+            <table class="td_table_s" id='Ipv6rdList'>
+                <tr class="tr_bold">
+				    <td></td>
+                    <td>Mechanism</td>
+                    <td>Dynamic</td>
+					<td>IPv4MaskLen</td>
+					<td>Prefix</td>
+                    <td>BorderRelayAddress</td>
+					<td>ConnStatus</td>
+					<td>Select </td>
+                </tr>
+            </table>
+        </div>
+        <div class="div_button">
+            <input type="button" value=" Add " id="addIpv6rd" onClick="uiAddIpv6rd()" />
+            <input type="button" value=" Edit " id="editIpv6rd" onClick="uiEditIpv6rd()" />
+            <input type="button" value=" Delete " id="deleteIpv6rd" onClick="uiDeleteIpv6rd()" />
+        </div>
+		</div>
+
+        <div id="Ipv6rd_setup" style="display:none">
+            <p class="do bk_black">IPv6 Rapid Deployment List</p>
+            <div class="div_black">
+                <div class="div_left" >Mechanism:</div>
+                <div class="div_right">
+                    <select id="SELECT_Ipv6rdMechanism" style="width:110px">
+                        <option value="Ipv6RapidDeployment">Ipv6RapidDeployment</option>
+                    </select>
+                </div>
+			    <div class="div_left">Dynamic:</div>
+                <div class="div_right">
+                    <select id="SELECT_Ipv6rdDynamic" onChange="onChgRelay()" style="width:110px">
+                        <option value="0">0</option>
+						<!--option value="1">1</option-->
+                        <!--<option value="DHCPv6">DHCPv6</option>-->
+                    </select>
+                </div>
+				<div id="div_ipv6rd_dynamic">
+				     <div class="div_left">IPv4MaskLen:</div>
+                     <div class="div_right">
+                         <input type="text" id="INPUT_IPv4MaskLen">
+                     </div>
+                     <div class="div_left" >Prefix:</div>
+                     <div class="div_right">
+                        <input type="text" id="INPUT_Prefix">
+                     </div>
+				     <div class="div_left">BorderRelayAddress:</div>
+                     <div class="div_right">
+                        <input type="text" id="INPUT_BorderRelayAddress">
+                     </div>
+				</div>
+            </div>
+            <div class="div_button">
+                <input type="button" value="Apply" name="apply" id="apply" onClick="btnApplyIpv6rd()" />
+                <input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+            </div>
+        </div>
+
+
+	</div>
+</td>
+
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+			<p id="lang_helpdsc0">this is a ip tunnel configuration.</p>
+		</div>
+		<h5 ><a href="#" id="lang_help_more">More...</a></h5>
+	</div>
+ </td>

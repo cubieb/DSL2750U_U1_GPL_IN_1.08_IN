@@ -1,0 +1,21 @@
+config OPENSOURCE_IPPD
+        bool 'IPP Daemon'
+        default n
+        depends on OPENSOURCE
+        help
+	USB Printing Server base on IPP Protocol.
+
+config OPENSOURCE_LP_FIRMWARE
+        tristate 'Printer Firmware'
+        default n
+        depends on OPENSOURCE
+        help
+	USB Printer Firmware.
+
+config OPENSOURCE_LP_FW_HP1020
+        bool "HP1020 Firmware(128,663 Bytes)"
+        depends on OPENSOURCE_LP_FIRMWARE
+
+config OPENSOURCE_LP_FW_HPP1008
+        bool "HPp1008 Firmware(222,571 Bytes)"
+        depends on OPENSOURCE_LP_FIRMWARE

@@ -1,0 +1,77 @@
+<!-- config -->
+<td>
+	<div class="config2">
+		<p class="bk_orange" id="lang_qos_queue_title">Qos Queue Config</p>
+		<div class="div_orange" >
+		<p  id="lang_qos_queue_discription">
+			In this page, you can configure queue precedence. Packets with high precedence will be transmitted earlier than packets with medium or low precedence.
+		</p>
+	
+		</div>
+		<p class="do bk_black"  id="lang_Lists">Lists</p>
+		<div class="div_black">
+			<table class="td_table_s" id='queue_table'>
+				<tr class="tr_bold">
+					<td>&nbsp;</td>
+					<td id="lang_QueueName">Queue Name</td>
+					<td id="lang_QueuePriority">Queue Priority/WRR</td>
+					<td id="lang_State">State</td>
+				</tr>
+			</table>
+		</div>
+		<div class="div_button">
+			<input type="button" value="Add" id="lang_add" onClick="uiAdd()" /> 
+			<input type="button" value="Edit" id="lang_edit" onClick="uiEdit()" />  	   	                    
+			<input type="button" value="Delete" id="lang_delete" onClick="uiDelete()" />				                
+		</div>
+		<div id="queue_config" style="display:none">
+			<p class="do bk_black"  id="lang_Qosueueonfig">Qos Queue Config</p>
+			<div class="div_black">
+			
+				<div class="div_left" id="lang_q_enable">Queue Enable :</div>
+				<div class="div_right"><input type="checkbox" name="input_q_enable" id="input_q_enable" /></div>
+				
+				<div class="div_left" id="lang_q_priority">Queue Priority :</div>
+				<div class="div_right"><select name="select_q_priority" id="select_q_priority" onchange="priority_change()">
+                        <option value="1">High</option>
+                        <option value="2">Medium</option>
+                        <option value="3"> Low</option>
+                        </select>
+				</div>
+				
+				<div class="div_left" id="lang_q_priority2">Queue weight :</div>
+				<div class="div_right"><input type="text" name="input_q_wrr" id="ipnut_c_wrr_weight" value=""  />(1-100)</div>
+				<div class="div_left" id="lang_q_interface">Associated Interface :</div>
+				<div class="div_right"><select name="select_q_interface" id="select_q_interface" onchange="interface_change()"></select>
+				</div>	
+			
+	<!--			<div class="div_left" id="lang_q_name">Queue Name :</div> -->
+				<div class="div_right" style="display:none"><input type="text" name="input_q_name" id="input_q_name"/></div>
+				<div class="div_button">
+					<input type="button" value="Apply" name="apply" id="apply" onClick="uiSubmit()" /> 
+					<input type="button" value="Cancel" name="cancle" id="cancle" onClick="uiPageRefresh()" />
+				</div>
+				
+			</div>	
+		</div>	
+	</div>
+	
+		<form name="uiPostForm" id="uiPostForm" method="post" action="webproc">
+		</form>	
+</td>
+<!-- help -->
+<td class="td_help">
+	<div class="help">
+		<h5 id="lang_help">Helpful Hints...</h5>
+		<div>
+		<p id="lang_help_dsc1">
+			Select the "Enable" check box to take the interface bandwidth control into effect.
+		</p>
+		<p id="lang_help_dsc2">
+			Set high, medium, or low precedence for you queue. Packets with high precedence will be transmitted as many as possible.
+		</p>
+		</div>
+		<h5><a href="#" id="lang_more">More...</a></h5>
+	</div>
+</td>
+</form>

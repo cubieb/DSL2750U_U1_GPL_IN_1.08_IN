@@ -1,0 +1,6 @@
+config OPENSOURCE_MLD
+	bool 'MLD Proxy & Snooping'
+	default y
+	depends on OPENSOURCE && TBS_SUPPORT_IPV6
+	help
+	mld proxy & Snooping daemon

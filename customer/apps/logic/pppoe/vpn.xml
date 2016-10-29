@@ -1,0 +1,19 @@
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANPPPConnectionNumberOfEntries type="unsignedInt" Writable="0">0</WANPPPConnectionNumberOfEntries>
+					<WANPPPConnection type="object">
+						<i type="object">
+							<X_TWSZ-COM_VPN_NETMASK type="string(64)" Standard="0"> </X_TWSZ-COM_VPN_NETMASK>
+							<X_TWSZ-COM_VPN_GATEWAY type="string(64)" Standard="0"> </X_TWSZ-COM_VPN_GATEWAY>
+							<X_TWSZ-COM_VPN_SERVER type="string(64)" Standard="0"> </X_TWSZ-COM_VPN_SERVER>
+							<X_TWSZ-COM_VPN_CLIENT type="string(64)" Standard="0"> </X_TWSZ-COM_VPN_CLIENT>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

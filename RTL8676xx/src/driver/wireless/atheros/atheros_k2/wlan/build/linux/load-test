@@ -1,0 +1,11 @@
+#!/bin/bash
+
+insmod ./adf-test.ko
+insmod ./apd-test.ko
+
+ifconfig sn0 192.168.0.1 up
+ifconfig sn1 192.168.1.2 up
+
+arp -s 192.168.0.2 00:53:4e:55:4c:31
+arp -s 192.168.1.1 00:53:4e:55:4c:30
+arp -n

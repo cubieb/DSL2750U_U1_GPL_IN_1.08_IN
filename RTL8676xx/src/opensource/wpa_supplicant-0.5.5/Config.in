@@ -1,0 +1,8 @@
+#####################
+config OPENSOURCE_SUPPLICANT
+	bool 'SUPPLICANT'
+	default y
+	depends on OPENSOURCE && APPS_LOGIC_WLAN
+	help 
+      	Enable wpa_supplicant related WLAN 
+

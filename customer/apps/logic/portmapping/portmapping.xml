@@ -1,0 +1,55 @@
+
+<InternetGatewayDevice type="object">
+	<WANDevice type="object" Writable="0" CurNode="WANDeviceNumberOfEntries">
+		<i type="object">
+			<WANConnectionDevice type="object" MaxNode="MAXWANConnectionNumberOfEntries" CurNode="WANConnectionNumberOfEntries">
+				<i type="object">
+					<WANIPConnection type="object">
+						<i type="object">
+							<X_TWSZ-COM_MaxPortMappingEntries type="unsignedInt" Standard="0" Writable="0">32</X_TWSZ-COM_MaxPortMappingEntries>
+							<PortMappingNumberOfEntries type="unsignedInt" Writable="0">0</PortMappingNumberOfEntries>
+							<PortMapping type="object" MaxNode="X_TWSZ-COM_MaxPortMappingEntries" CurNode="PortMappingNumberOfEntries">
+								<i type="object">
+									<PortMappingEnabled type="boolean">0</PortMappingEnabled>
+									<PortMappingLeaseDuration type="unsignedInt">0</PortMappingLeaseDuration>
+									<RemoteHost type="string"></RemoteHost>
+									<X_TWSZ-COM_RemoteMask type="string" Standard="0">255.255.255.255</X_TWSZ-COM_RemoteMask>
+									<ExternalPort type="unsignedInt">0</ExternalPort>
+									<ExternalPortEndRange type="unsignedInt">0</ExternalPortEndRange>
+									<InternalPort type="unsignedInt">0</InternalPort>
+									<PortMappingProtocol type="string">TCP</PortMappingProtocol>
+									<InternalClient type="string(256)"></InternalClient>
+									<PortMappingDescription type="string(256)"></PortMappingDescription>
+									<PortMappingTime type="string">Always</PortMappingTime>
+									<X_TWSZ-COM_Weight type="string" Standard="0" Writable="0">0</X_TWSZ-COM_Weight>
+								</i>
+							</PortMapping>
+						</i>
+					</WANIPConnection>
+					<WANPPPConnection type="object">
+						<i type="object">
+							<X_TWSZ-COM_MaxPortMappingEntries type="unsignedInt" Standard="0" Writable="0">32</X_TWSZ-COM_MaxPortMappingEntries>
+							<PortMappingNumberOfEntries type="unsignedInt" Writable="0">0</PortMappingNumberOfEntries>
+							<PortMapping type="object" MaxNode="X_TWSZ-COM_MaxPortMappingEntries" CurNode="PortMappingNumberOfEntries">
+								<i type="object">
+									<PortMappingEnabled type="boolean">0</PortMappingEnabled>
+									<PortMappingLeaseDuration type="unsignedInt">0</PortMappingLeaseDuration>
+									<RemoteHost type="string"></RemoteHost>
+									<X_TWSZ-COM_RemoteMask type="string" Standard="0">255.255.255.255</X_TWSZ-COM_RemoteMask>
+									<ExternalPort type="unsignedInt">0</ExternalPort>
+									<ExternalPortEndRange type="unsignedInt">0</ExternalPortEndRange>
+									<InternalPort type="unsignedInt">0</InternalPort>
+									<PortMappingProtocol type="string">TCP</PortMappingProtocol>
+									<InternalClient type="string(256)"></InternalClient>
+									<PortMappingDescription type="string(256)"></PortMappingDescription>
+									<PortMappingTime type="string">Always</PortMappingTime>
+									<X_TWSZ-COM_Weight type="string" Standard="0" Writable="0">0</X_TWSZ-COM_Weight>
+								</i>
+							</PortMapping>
+						</i>
+					</WANPPPConnection>
+				</i>
+			</WANConnectionDevice>
+		</i>
+	</WANDevice>
+</InternetGatewayDevice>

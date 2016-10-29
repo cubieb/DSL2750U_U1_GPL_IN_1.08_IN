@@ -1,0 +1,21 @@
+#!/bin/sh
+#add by scb to start 3g-mngr diald at boot 2011-8-29
+
+PATH_3G=/bin
+
+case	"$1" in
+	start)
+		$PATH_3G/3g-mngr diald&
+		;;
+	stop)
+		killall 3g-mngr
+		;;
+	restart)
+		killall 3g-mngr
+		$PATH_3G/3g-mngr diald&
+		;;
+	*)
+		exir 2
+		;;
+esac
+	exit 0

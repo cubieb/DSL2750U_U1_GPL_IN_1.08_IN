@@ -1,0 +1,56 @@
+#!/bin/sh
+#add by scb at 2011-8-29
+
+set -x
+
+PPP_INTF=ppp10
+
+PPP_SCRIPT_UP=/etc/ppp/ip-up.local
+PPP_SCRIPT_DOWN=/etc/ppp/ip-down.local
+
+DATE=$(date)
+
+UP_ACTION='[ "$1" == '"$PPP_INTF ] && 3g-mngr ipup"
+DOWN_ACTION='[ "$1" == '"$PPP_INTF ] && 3g-mngr ipdown"
+
+function add_head(){
+	FILE=$1
+	
+	echo "#!/bin/sh">$FILE
+	echo "#">>$FILE
+	echo "#Auto generated for 3g ppp. Created at $DATE">>$FILE
+	echo "">>$FILE
+}
+
+function add_tail(){
+	FILE=$1
+
+	echo "exit 0" >>$FILE
+}
+
+if [ ! -f $PPP_SCRIPT_UP ] ; then
+        #no script
+        add_head $PPP_SCRIPT_UP
+        echo "$UP_ACTION">>$PPP_SCRIPT_UP
+        add_tail $PPP_SCRIPT_UP
+else
+        #there is script, append to the script file
+        if [ -z "$(sed -n "/3g-mngr/p" $PPP_SCRIPT_UP)" ] ; then
+                sed -i "/^[ \t]*exit[ \t]*0/i$UP_ACTION" $PPP_SCRIPT_UP
+        fi
+fi
+
+if [ ! -f $PPP_SCRIPT_DOWN ] ; then
+        #no script
+        add_head $PPP_SCRIPT_DOWN
+        echo "$DOWN_ACTION">>$PPP_SCRIPT_DOWN
+        add_tail $PPP_SCRIPT_DOWN
+else
+        #there is script, append to the script file
+	if [ -z "$(sed -n "/3g-mngr/p" $PPP_SCRIPT_DOWN)" ] ; then
+	        sed -i "/^[ \t]*exit[ \t]*0/i$DOWN_ACTION" $PPP_SCRIPT_DOWN
+	fi
+fi
+
+chmod 777 $PPP_SCRIPT_UP $PPP_SCRIPT_DOWN
+exit 0

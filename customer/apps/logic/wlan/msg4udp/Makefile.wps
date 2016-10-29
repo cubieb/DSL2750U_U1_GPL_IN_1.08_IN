@@ -1,0 +1,46 @@
+
+TBS_DIR=$(shell pwd)/../../../../../..
+BUILDDIR=$(TBS_DIR)/build
+TMPDISTDIR=$(BUILDDIR)/tmpdist
+
+ifeq ("$(debug)","1")     # gcc
+    CROSS_COMPILER_PATH=
+    CROSS_COMPILER=
+else  # use cross gcc
+   CROSS_COMPILER_PATH=$(TBS_DIR)/crossc/mips.eb/bin
+   CROSS_COMPILER=$(CROSS_COMPILER_PATH)/mipseb-linux-uclibc-
+endif
+
+export CC=$(CROSS_COMPILER)gcc
+export STRIP=$(CROSS_COMPILER)strip
+export CXX = $(CROSS_COMPILER)g++
+export LD = $(CROSS_COMPILER)ld
+export AR = $(CROSS_COMPILER)ar
+export RANLIB = $(CROSS_COMPILER)ranlib
+
+
+PROG=msg4udp
+OBJ_FILES=udp_lib.o msg4udp.o 
+
+CFLAGS+=-Wall
+
+CFLAGS+= -I$(TBS_DIR)/src/alp/include -I$(TBS_DIR)/src/alp/ssap/msg -I../
+LDFLAGS=-L$(BUILDDIR)/alp/ssap/lib -L$(TMPDISTDIR)/lib  -lz -lssap -lexpat -lscew
+
+all: $(PROG)
+
+msg4udp:  $(OBJ_FILES) 
+	$(CC) $(LDFLAGS) -o $@ $^
+
+udp_lib.o: ../udp_lib.c
+	$(CC) $(CFLAGS) -c $<
+
+ 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f *.o  *.d  $(PROG)
+
+install:$(PROG)
+	cp -f $(PROG) /nfsroot/tbs/usr/sbin

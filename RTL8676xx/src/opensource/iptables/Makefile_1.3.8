@@ -1,0 +1,20 @@
+include $(ROOTDIR)/.config
+include $(ROOTDIR)/BaseVar.mk
+.PHONY: all build clean distclean 
+SRCDIR=$(CURDIR)/iptables-1.3.8
+all: build
+
+build:
+	make -C $(SRCDIR)
+
+clean:
+	cd $(SRCDIR); \
+	make clean
+distclean:	
+	cd $(SRCDIR); \
+	make distclean
+	rm -f configure
+	
+install:
+	cp $(SRCDIR)/iptables $(FSROOT)/sbin/iptables
+	$(STRIP) $(FSROOT)/sbin/iptables*

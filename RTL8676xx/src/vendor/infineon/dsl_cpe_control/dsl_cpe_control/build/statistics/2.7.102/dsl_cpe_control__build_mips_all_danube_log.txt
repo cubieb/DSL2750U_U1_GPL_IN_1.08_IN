@@ -1,0 +1,290 @@
+**************************************************************
+*                        lite build                          *
+**************************************************************
+Build configuration:
+-Os -G 0 -mlong-calls -finline-limit=100000 -mabi=32 -march=mips32 -Wa,-32 -Wa,-march=mips32 -Wa,-mips32 -Wa,--trap
+--inc-debug=0
+ --inc-debug-prints=0
+ --inc-debug-tool-interface=0
+ --channels=1
+ --inc-soap=0
+ --inc-cli=0
+ --inc-script=0
+ --inc-script-notification=0
+ --inc-dsl-pm=0
+ --inc-dsl-pm-total-counters=0
+ --inc-dsl-pm-showtime-counters=0
+ --inc-dsl-pm-history=0
+ --inc-dsl-pm-channel-counters=0
+ --inc-dsl-pm-datapath-counters=0
+ --inc-dsl-pm-line-counters=0
+ --inc-dsl-pm-channel-thresholds=0
+ --inc-dsl-pm-datapath-thresholds=0
+ --inc-dsl-pm-line-thresholds=0
+--------------------------------------------------------
+Size of generated objects:
+   text	   data	    bss	    dec	    hex	filename
+   8696	    928	     32	   9656	   25b8	../build_danube/src/dsl_cpe_control-dsl_cpe_control.o
+   1944	     80	      0	   2024	    7e8	../build_danube/src/dsl_cpe_control-dsl_cpe_debug.o
+     24	     64	      0	     88	     58	../build_danube/src/dsl_cpe_control-dsl_cpe_init_cfg.o
+   5768	      0	    112	   5880	   16f8	../build_danube/src/dsl_cpe_control-dsl_cpe_linux.o
+Total size of generated binary:
+   text	   data	    bss	    dec	    hex	filename
+  21596	   1556	    280	  23432	   5b88	../build_danube/src/dsl_cpe_control
+--------------------------------------------------------
+Checkstack:
+0x00402140 DSL_CPE_EventHandle:				472
+0x00403700 DSL_PipeOpen:				296
+0x00402620 main:					216
+0x004018f0 DSL_CPE_LoadFirmwareFromFile:		208
+0x00403914 DSL_SemaphoreGet:				208
+0x00401a3c DSL_CPE_DeviceInit:				184
+0x0040464c DSL_Echo:					184
+0x00403200 DSL_Select:					176
+0x004014a8 DSL_CPE_ArgParse:				136
+0x004048ec DSL_CMV_Read:				136
+0x00404b00 DSL_CMV_Write:				136
+0x0040206c DSL_CPE_Event_S_FeInventoryAvailableHandle:	128
+
+**************************************************************
+*                footprint optimized build                   *
+**************************************************************
+Build configuration:
+-Os -G 0 -mlong-calls -finline-limit=100000 -mabi=32 -march=mips32 -Wa,-32 -Wa,-march=mips32 -Wa,-mips32 -Wa,--trap
+--inc-debug=0
+ --inc-debug-prints=0
+ --inc-debug-tool-interface=0
+ --channels=1
+ --inc-soap=0
+ --inc-cli=0
+ --inc-script=0
+ --inc-script-notification=1
+ --inc-dsl-pm=1
+ --inc-dsl-pm-total-counters=0
+ --inc-dsl-pm-showtime-counters=1
+ --inc-dsl-pm-history=0
+ --inc-dsl-pm-channel-counters=1
+ --inc-dsl-pm-datapath-counters=1
+ --inc-dsl-pm-line-counters=1
+ --inc-dsl-pm-channel-thresholds=0
+ --inc-dsl-pm-datapath-thresholds=0
+ --inc-dsl-pm-line-thresholds=0
+--------------------------------------------------------
+Size of generated objects:
+   text	   data	    bss	    dec	    hex	filename
+  10456	   1008	     48	  11512	   2cf8	../build_danube/src/dsl_cpe_control-dsl_cpe_control.o
+   1944	     80	      0	   2024	    7e8	../build_danube/src/dsl_cpe_control-dsl_cpe_debug.o
+     24	     64	      0	     88	     58	../build_danube/src/dsl_cpe_control-dsl_cpe_init_cfg.o
+   5768	      0	    112	   5880	   16f8	../build_danube/src/dsl_cpe_control-dsl_cpe_linux.o
+Total size of generated binary:
+   text	   data	    bss	    dec	    hex	filename
+  23495	   1652	    296	  25443	   6363	../build_danube/src/dsl_cpe_control
+--------------------------------------------------------
+Checkstack:
+0x00402724 DSL_CPE_EventHandle:				472
+0x00403d40 DSL_PipeOpen:				296
+0x00402c34 main:					216
+0x00401a38 DSL_CPE_LoadFirmwareFromFile:		208
+0x00403f54 DSL_SemaphoreGet:				208
+0x00401b84 DSL_CPE_DeviceInit:				184
+0x00404c8c DSL_Echo:					184
+0x00403840 DSL_Select:					176
+0x00401528 DSL_CPE_ArgParse:				136
+0x00404f2c DSL_CMV_Read:				136
+0x00405140 DSL_CMV_Write:				136
+0x00402624 DSL_CPE_Event_S_FeInventoryAvailableHandle:	128
+
+**************************************************************
+*                       typical build                        *
+**************************************************************
+Build configuration:
+-Os -G 0 -mlong-calls -finline-limit=100000 -mabi=32 -march=mips32 -Wa,-32 -Wa,-march=mips32 -Wa,-mips32 -Wa,--trap
+--inc-debug=0
+ --inc-debug-prints=0
+ --inc-debug-tool-interface=0
+ --channels=1
+ --inc-soap=0
+ --inc-cli=1
+ --inc-script=0
+ --inc-script-notification=1
+ --inc-dsl-pm=1
+ --inc-dsl-pm-total-counters=1
+ --inc-dsl-pm-showtime-counters=0
+ --inc-dsl-pm-history=1
+ --inc-dsl-pm-channel-counters=1
+ --inc-dsl-pm-datapath-counters=1
+ --inc-dsl-pm-line-counters=1
+ --inc-dsl-pm-channel-thresholds=1
+ --inc-dsl-pm-datapath-thresholds=1
+ --inc-dsl-pm-line-thresholds=1
+--------------------------------------------------------------
+Size of generated objects:
+   text	   data	    bss	    dec	    hex	filename
+   7560	      0	     16	   7576	   1d98	../build_danube/src/dsl_cpe_control-dsl_cpe_cli.o
+  37960	     16	      0	  37976	   9458	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_access.o
+   2232	      0	      0	   2232	    8b8	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_console.o
+   2984	      0	      0	   2984	    ba8	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_danube.o
+   1912	      0	   1088	   3000	    bb8	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_pipe.o
+  16136	   1104	     48	  17288	   4388	../build_danube/src/dsl_cpe_control-dsl_cpe_control.o
+   1944	     80	      0	   2024	    7e8	../build_danube/src/dsl_cpe_control-dsl_cpe_debug.o
+     24	      0	      0	     24	     18	../build_danube/src/dsl_cpe_control-dsl_cpe_debug_danube.o
+     24	     64	      0	     88	     58	../build_danube/src/dsl_cpe_control-dsl_cpe_init_cfg.o
+   5768	      0	    112	   5880	   16f8	../build_danube/src/dsl_cpe_control-dsl_cpe_linux.o
+Total size of generated binary:
+   text	   data	    bss	    dec	    hex	filename
+  87474	   2212	  17400	 107086	  1a24e	../build_danube/src/dsl_cpe_control
+--------------------------------------------------------------
+Checkstack:
+0x00407fbc CLI_DSL_PrintHelp:				2080
+0x00409f0c CLI_DSL_AutobootLoadFirmware:		1104
+0x00408490 DSL_CLI_ExecuteScript:			1080
+0x00404b30 DSL_CPE_EventHandle:				480
+0x0040c830 CLI_DSL_G997_LineInventoryGet:		408
+0x0040cabc CLI_DSL_G997_LineInventoryStringGet:		408
+0x0040cd74 CLI_DSL_G997_LineInventorySet:		408
+0x004044d8 DSL_CPE_Event_S_FeInventoryAvailableHandle:	400
+0x0040800c DSL_CLI_CheckParamNumber:			320
+0x00406550 DSL_PipeOpen:				296
+0x00412690 CLI_DSL_DBG_DeviceMessageSend:		240
+0x004123e0 CLI_DSL_DBG_CmvWrite:			232
+0x004052a0 main:					224
+0x004129d4 CLI_DSL_VersionInformationGet:		224
+0x004033a8 DSL_CPE_LoadFirmwareFromFile:		208
+0x00406764 DSL_SemaphoreGet:				208
+0x004034f4 DSL_CPE_DeviceInit:				184
+0x0040749c DSL_Echo:					184
+0x004098c0 DSL_CPE_Pipe_Task:				184
+0x00406050 DSL_Select:					176
+0x004088a4 DSL_CLI_CommandAdd:				160
+0x0040f8e8 CLI_DSL_PM_DataPathCounters15MinGet:		144
+0x0040fa68 CLI_DSL_PM_DataPathCounters1DayGet:		144
+0x00402e80 DSL_CPE_ArgParse:				136
+0x0040773c DSL_CMV_Read:				136
+0x00407950 DSL_CMV_Write:				136
+0x0041051c CLI_DSL_PM_LineSecCounters15MinGet:		128
+0x0041067c CLI_DSL_PM_LineSecCounters1DayGet:		128
+0x0040eabc CLI_DSL_G997_XTUSystemEnablingConfigSet:	120
+0x0040fe58 CLI_DSL_PM_DataPathCountersTotalGet:		120
+0x00403f2c DSL_CPE_Event_S_ChannelDataRateHandle:	112
+0x004094dc DSL_CPE_Pipe_Init:				112
+0x0040f288 CLI_DSL_PM_ChannelCounters15MinGet:		112
+0x0040f3e0 CLI_DSL_PM_ChannelCounters1DayGet:		112
+0x0040a5f4 CLI_DSL_FramingParameterStatusGet:		104
+0x0040b940 CLI_DSL_G997_ChannelStatusGet:		104
+0x0040bbb8 CLI_DSL_G997_FramingParameterStatusGet:	104
+0x0040ffc0 CLI_DSL_PM_LineInitCounters15MinGet:		104
+0x004100fc CLI_DSL_PM_LineInitCounters1DayGet:		104
+0x004107dc CLI_DSL_PM_LineSecCountersTotalGet:		104
+0x004121bc CLI_DSL_DBG_CmvRead:				104
+
+**************************************************************
+*                         full build                         *
+**************************************************************
+Build configuration:
+-Os -G 0 -mlong-calls -finline-limit=100000 -mabi=32 -march=mips32 -Wa,-32 -Wa,-march=mips32 -Wa,-mips32 -Wa,--trap
+--inc-debug=1
+ --inc-debug-prints=1
+ --inc-debug-tool-interface=1
+ --channels=1
+ --inc-soap=1
+ --inc-cli=1
+ --inc-script=1
+ --inc-script-notification=1
+ --inc-dsl-pm=1
+ --inc-dsl-pm-total-counters=1
+ --inc-dsl-pm-showtime-counters=1
+ --inc-dsl-pm-history=1
+ --inc-dsl-pm-channel-counters=1
+ --inc-dsl-pm-datapath-counters=1
+ --inc-dsl-pm-line-counters=1
+ --inc-dsl-pm-channel-thresholds=1
+ --inc-dsl-pm-datapath-thresholds=1
+ --inc-dsl-pm-line-thresholds=1
+--------------------------------------------------------------
+Size of generated objects:
+   text	   data	    bss	    dec	    hex	filename
+   7640	      0	     16	   7656	   1de8	../build_danube/src/dsl_cpe_control-dsl_cpe_cli.o
+  68152	     16	      0	  68168	  10a48	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_access.o
+   2984	      0	      0	   2984	    ba8	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_console.o
+   3752	      0	      0	   3752	    ea8	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_danube.o
+   3544	      0	   1088	   4632	   1218	../build_danube/src/dsl_cpe_control-dsl_cpe_cli_pipe.o
+  25176	   1344	   1088	  27608	   6bd8	../build_danube/src/dsl_cpe_control-dsl_cpe_control.o
+  16152	    192	      0	  16344	   3fd8	../build_danube/src/dsl_cpe_control-dsl_cpe_debug.o
+   8264	      0	      0	   8264	   2048	../build_danube/src/dsl_cpe_control-dsl_cpe_debug_danube.o
+     24	     64	      0	     88	     58	../build_danube/src/dsl_cpe_control-dsl_cpe_init_cfg.o
+  10296	      0	    112	  10408	   28a8	../build_danube/src/dsl_cpe_control-dsl_cpe_linux.o
+   4200	  65632	 189376	 259208	  3f488	../build_danube/src/dsl_cpe_control-dsl_cpe_soap.o
+  25656	      0	      0	  25656	   6438	../build_danube/src/dsl_cpe_control-dsl_cpe_soap_C.o
+   2296	      0	      0	   2296	    8f8	../build_danube/src/dsl_cpe_control-dsl_cpe_soap_Client.o
+   2712	      0	      0	   2712	    a98	../build_danube/src/dsl_cpe_control-dsl_cpe_soap_Server.o
+ 130968	   1200	      0	 132168	  20448	../build_danube/src/dsl_cpe_control-stdsoap2.o
+Total size of generated binary:
+   text	   data	    bss	    dec	    hex	filename
+ 337686	  70780	 207816	 616282	  9675a	../build_danube/src/dsl_cpe_control
+--------------------------------------------------------------
+Checkstack:
+0x00429ae0 http_parse:					8264
+0x00436fe4 CLI_DSL_PrintHelp:				2088
+0x0042b6cc soap_connect_command:			1104
+0x004397d0 CLI_DSL_AutobootLoadFirmware:		1104
+0x00437500 DSL_CLI_ExecuteScript:			1080
+0x0040f97c DSL_CPE_TcpDebugMessageHandle:		928
+0x0040db3c DSL_ScriptExecute:				608
+0x00409388 DSL_CPE_EventHandle:				480
+0x0041735c soap_poll:					440
+0x0043c0f4 CLI_DSL_G997_LineInventoryGet:		408
+0x0043c380 CLI_DSL_G997_LineInventoryStringGet:		408
+0x0043c638 CLI_DSL_G997_LineInventorySet:		408
+0x00408cc4 DSL_CPE_Event_S_FeInventoryAvailableHandle:	400
+0x00411518 frecv:					344
+0x0042f0a8 ifx__DslCpeCliAccess:			344
+0x0042d964 soap_send_fault:				320
+0x0043707c DSL_CLI_CheckParamNumber:			320
+0x0040be7c DSL_PipeOpen:				304
+0x004395a4 CLI_DSL_DBG_DebugScriptExecute:		304
+0x00409ee4 main:					256
+0x00416258 tcp_connect:					248
+0x004176b4 soap_accept:					240
+0x00444110 CLI_DSL_DBG_DeviceMessageSend:		240
+0x00443e60 CLI_DSL_DBG_CmvWrite:			232
+0x00444454 CLI_DSL_VersionInformationGet:		224
+0x0044232c DSL_CPE_DANUBE_TcpMessageFirmwareDownload:	216
+0x00407664 DSL_CPE_LoadFirmwareFromFile:		208
+0x0040c3bc DSL_SemaphoreGet:				208
+0x00410d1c fsend:					208
+0x00438b48 DSL_CPE_Pipe_Task:				192
+0x00407884 DSL_CPE_DeviceInit:				184
+0x0040d47c DSL_Echo:					184
+0x0040b88c DSL_Select:					176
+0x00442dcc DSL_CPE_DANUBE_TcpMessageDceCommandHandle:	168
+0x00425608 soap_s2dateTime:				160
+0x00437914 DSL_CLI_CommandAdd:				160
+0x0043f304 CLI_DSL_PM_DataPathCounters15MinGet:		144
+0x0043f484 CLI_DSL_PM_DataPathCounters1DayGet:		144
+0x0043f9dc CLI_DSL_PM_DataPathCountersShowtimeGet:	144
+0x004069f4 DSL_CPE_ArgParse:				136
+0x0040d71c DSL_CMV_Read:				136
+0x0040d930 DSL_CMV_Write:				136
+0x00443a74 DSL_CPE_DEV_TcpMessageHandle:		136
+0x00412c5c soap_get_pi:					128
+0x004401f4 CLI_DSL_PM_LineSecCounters15MinGet:		128
+0x00440354 CLI_DSL_PM_LineSecCountersShowtimeGet:	128
+0x004404b4 CLI_DSL_PM_LineSecCounters1DayGet:		128
+0x0043e380 CLI_DSL_G997_XTUSystemEnablingConfigSet:	120
+0x0043f874 CLI_DSL_PM_DataPathCountersTotalGet:		120
+0x00408420 DSL_CPE_Event_S_ChannelDataRateHandle:	112
+0x0043121c soap_in_SOAP_ENV__Fault:			112
+0x0043854c DSL_CPE_Pipe_Init:				112
+0x0043eb4c CLI_DSL_PM_ChannelCounters15MinGet:		112
+0x0043eca4 CLI_DSL_PM_ChannelCounters1DayGet:		112
+0x0043f1ac CLI_DSL_PM_ChannelCountersShowtimeGet:	112
+0x00425308 soap_timegm:					104
+0x00439eb8 CLI_DSL_FramingParameterStatusGet:		104
+0x0043b204 CLI_DSL_G997_ChannelStatusGet:		104
+0x0043b47c CLI_DSL_G997_FramingParameterStatusGet:	104
+0x0043fb5c CLI_DSL_PM_LineInitCounters15MinGet:		104
+0x0043fc98 CLI_DSL_PM_LineInitCounters1DayGet:		104
+0x0043fed0 CLI_DSL_PM_LineInitCountersShowtimeGet:	104
+0x00440614 CLI_DSL_PM_LineSecCountersTotalGet:		104
+0x00443c3c CLI_DSL_DBG_CmvRead:				104
+

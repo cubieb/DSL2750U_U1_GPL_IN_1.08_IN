@@ -1,0 +1,22 @@
+//  Gnu C/C++, -si4 -sp4,
+//  Standard lint options
+
+co-gnu3.lnt
+
+// define size of short/int/long/pointer
+-ss2 -si4 -sl4 -sp4
+
+-D__STDC__
+
++libclass(angle)
+
+//-D__BIG_ENDIAN=1
+//-D__LITTLE_ENDIAN=2
+//-D__BYTE_ORDER=__LITTLE_ENDIAN
+-D__MIPSEL__
+
+//-vf -D__BYTE_ORDER=__LITTLE_ENDIAN
+
+options.lnt
+
+-wlib(0) // No messages (when processing library code.)

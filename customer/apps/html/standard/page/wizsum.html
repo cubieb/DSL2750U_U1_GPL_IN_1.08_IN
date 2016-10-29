@@ -1,0 +1,152 @@
+<style type="text/css"><!-- 
+.div_left { width:300px;}
+.fix { width:300px;}
+--></style>
+<script type="text/javascript" src="/html/js/ajax.js"></script>
+<td width="840">
+<div class="config1" style="margin:0px auto;">
+	<div id = "display_all">
+		<!-- **********************************************class1 start****************************************-->
+		<p class="bk_orange"><font color="white"></font><span id ="lang_config">Step 5: Completed and Restart</span></p>
+		<div class="div_orange">
+			<p id = "lang_introduction">The setup is complete. Click "Back" to review or modify the settings.</p>
+			<p id = "lang_introduction1">If the Internet connection does not work, try the Setup Wizard again with alternative settings, 
+											or use manual setup instead if you have the Internet connection details provided by your ISP.</p>
+		</div>
+		<!-- **********************************************class1 end****************************************-->
+	
+		<!-- **********************************************class2 start****************************************-->
+		<p class="do bk_black" id = "lang_config1">Setup Summary</p>
+		<div class="div_black">
+			<p id = "lang_introduction2">The following shows a detailed summary of your settings.
+			Please print this page out or write the information on a piece of paper, and save it,
+			so you can correctly configure the settings on your wireless client adapters later based on the information in this page.</p>
+			<!-- SNTP -->
+			<table class="td_table_l">
+			<tr>
+				<td class="fix" id = "lang_time_1">Time Settings :</td><td id="td_time_setting"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_ntp1">NTP Server 1 :</td><td id="td_ntp_server1"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_ntp2">NTP Server 2 :</td><td id="td_ntp_server2"></td>
+			</tr>
+			<tr class="Time_manual">
+				<td class="fix" id = "lang_time_manual">Time :</td><td id="td_time"></td>
+			</tr>
+			<tr class="Time_Zone">
+				<td class="fix" id = "lang_timezone">Time Zone :</td><td id="td_time_zone"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_daylight">Daylight Saving Time :</td><td id="td_daylight"></td>
+			</tr>
+			<tr class="Daylight">
+				<td class="fix" id = "lang_daylight_start">Daylight start :</td><td id="td_daylight_start"></td>
+			</tr>
+			<tr class="Daylight">
+				<td class="fix" id = "lang_daylight_end">Daylight end :</td><td id="td_daylight_end"></td>
+			</tr>
+			</table>
+			<!-- WAN -->
+			<table class="do td_table_l">
+			<tr>
+				<td class="fix" id = "lang_wan_type" >wan_type</td><td id="td_wan_type"></td>
+			</tr>	
+			<tr>
+				<td class="fix">VPI / VCI :</td><td id="td_pvc"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_protocol">Protocol :</td><td id="td_protocol"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_encap">Connection Type :</td><td id="td_conn_type"></td>
+			</tr>
+			<tr class="ppp">
+				<td class="fix" id = "lang_username">Username :</td><td id="td_username"></td>
+			</tr>
+			<tr class="ppp">
+				<td class="fix" id = "lang_password">Password :</td><td id="td_password"></td>
+			</tr>
+			<tr class="ip">
+				<td class="fix" id = "lang_IP">IP Address :</td><td id="td_ip_address"></td>
+			</tr>
+			<tr class="ip">
+				<td class="fix" id = "lang_mask">Subnet Mask :</td><td id="td_subnet_mask"></td>
+			</tr>
+			<tr class="ip">
+				<td class="fix" id = "lang_defaultgw">Default Gateway :</td><td id="td_default_gw"></td>
+			</tr>
+			<tr class="ip">
+				<td class="fix" id = "lang_dns">Primary DNS Server :</td><td id="td_dns_server"></td>
+			</tr>
+			</table>
+			<!-- wireless -->
+			<table class="do td_table_l">
+			<tr>
+				<td class="fix" id = "lang_ssid">Wireless Network Name (SSID) :</td><td id="td_wlan_ssid"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_visibility">Visibility Status :</td><td id="td_vb_status"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_encry">Encryption :</td><td id="td_encryption"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_shard_key">Pre-Shared Key :</td><td id="td_share_key"></td>
+			</tr>
+			<tr>
+				<td class="fix" id = "lang_wep_key">WEP Key :</td><td id="td_wep_key"></td>
+			</tr>
+			<tr class="newpsd">
+				<td class="fix" id = "lang_newpsd">New passward:</td><td id="td_newpsd"></td>
+			</tr>
+			</table>
+		
+		</div>
+		<!-- **********************************************class2 end****************************************-->
+		<div class="div_button">
+			<input type="button" id="back" value="Back" onClick="uiBack()" /> 
+			<input type="submit" id="submit" value="Apply" onClick="uiApply()" /> 
+			<input type="button" id="cancle" value="Cancel" onClick="uiCancle()" /> 
+		</div>
+	</div>
+	
+	<div id="display_process" style= "display:none" >
+			<table border=1 width=400 align=center cellspacing=0 cellpadding=4 bgcolor=#FFFFFF height=87>
+				<tr><td id="lang_display_process" bgcolor=#FFFFFF height=16 align=center ><b>Set in......., please wait for the process</b></td></tr>
+				<tr>
+					<td>
+						<marquee style='border:1px solid #000000' direction=right width=400 scrollamount=20 scrolldelay=0 bgcolor=#FFFFFF>
+							<table cellspacing=1 cellpadding=0><tr height=16><td bgcolor=#ff7700 width=50></td></tr></table>
+						</marquee>
+					</td>
+				</tr>
+			</table>
+	</div>
+	
+	<div class="div_button" id="display_process_stop" style= "display:none">
+			<table border=1 width=400 align=center cellspacing=0 cellpadding=4 bgcolor=#FFFFFF height=87>
+				<tr><td id="lang_display_process_stop" bgcolor=#FFFFFF height=16 align=center><b>Set in......., please wait for the process</b></td></tr>
+				<tr>
+					<td>
+						<marquee style='border:1px solid #000000' direction=right width=400 scrollamount=20 scrolldelay=0 bgcolor=#FFFFFF>
+						</marquee>
+					</td>
+				</tr>
+			</table>
+	</div>
+	<div class="div_button" id="display_process_error" style= "display:none">
+			<table border=1 width=400 align=center cellspacing=0 cellpadding=4 bgcolor=#FFFFFF height=87>
+				<tr><td id="lang_display_process_error" bgcolor=#FFFFFF height=16 align=center><b>Restore settings......., please wait for the process</b></td></tr>
+				<tr>
+					<td>
+						<marquee style='border:1px solid #000000' direction=left width=400 scrollamount=20 scrolldelay=0 bgcolor=#FFFFFF>
+						<table cellspacing=1 cellpadding=0><tr height=16><td bgcolor=#ff7700 width=50></td></tr></table>
+						</marquee>
+					</td>
+				</tr>
+			</table>
+	</div>
+</div>
+</td>

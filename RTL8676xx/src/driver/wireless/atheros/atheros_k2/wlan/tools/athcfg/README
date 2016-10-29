@@ -1,0 +1,740 @@
+
+INTRODUCTION           
+============
+
+Athcfg stands for Atheros Configuration, this tool is responsible for configuring the wireless interface as per the requirement. The document explains all the configurations supported by athcfg and also all the possible inputs and outputs while configuring for any specific wireless extension.
+
+
+ATHCFG USAGE DOCUMENT
+=====================
+Note:- Considering the main wireless interface created as wifi0 and the  VAP interface created as ath0.
+
+Virtual interface supported commands.
+
+1.  Essid --  Get/Set essid.
+    ----------------------
+    athcfg ath0 ssid set ssid_name.
+        ssid_name --  any string <= 32.
+    ath0 ssid get.
+        SSID --  ssid_name.
+
+2.  RTS -- Threshold Get/Set RTS Threshold.
+    ---------------------------------------
+    athcfg ath0 rts set value. 
+        value  --  off 
+               --  short int  
+    athcfg ath0 rts get.
+        RTS Threshold --  the threshold value in ath0.
+
+3.  Fragment -- Threshold Get/Set Frag Threshold.
+    ---------------------------------------------
+    athcfg ath0 fragthres set value.
+        value  --  off 
+               --  short int  
+    athcfg ath0 fragthres get.
+    Fragment Threshold --  the threshold value in ath0.
+
+4.  BSSID   Get/Set Bssid. 
+    ----------------------
+    athcfg ath0 bssid set value. /* Only for Station */
+        value --  6 bytes Mac address
+                      00:00:00:00:00:00
+    athcfg ath0 bssid get. 
+        BSSID --  The bssid value of ath0.             
+
+5.  Nickname --  Get/Set Nickname.
+    ----------------------------
+    athcfg ath0 nickname set nick_name.
+        nick_name --  any string <= 32
+    
+    athcfg ath0 nickname get.
+        Nickname --  the nick name of ath0.
+
+6.  Frequency --  Get/Set Frequency.
+    ------------------------------
+    athcfg aht0 freq set value1 value2
+        value1 --  the channel number to set depending on the mode (11Na, 11NG .......).
+        value2 --  0.
+    
+    athcfg ath0 freq get.
+        Frequency --  the frequency of device in interface ath0.
+
+7.  Transmit Power --  Get/Set Tx power.
+    ----------------------------------
+    athcfg ath0 txpower set value.
+        value --   off 
+                 auto 
+                 on 
+                 fixed 
+                xxdBm /* interger value */
+                xxmW  /* integer value */   
+
+    athcfg ath0 txpower get.
+        Transmit Power --  the transmit power of interface ath0.
+
+8.  Scanning --  Get/Set Scan.
+    ------------------------
+    athcfg ath0 scan set.
+
+    athcfg ath0 scan get. /* Driver need to be updated */
+        Scan Result for interface ath0 is as below --
+
+9.  Mode --  Get/Set Phy-Mode.
+    ------------------------
+    athcfg ath0 mode set Value.
+        value --   11AST  |   5
+                 AUTO   |   0
+                 11A    |   1
+                 11B    |   2
+                 11G    |   3
+                 11NA   |   6
+                 11NG   |   7
+                 FH     |   4 
+
+    athcfg ath0 mode get.
+        Mode --  the phy-mode for interface ath0.
+
+10. Get/Set Param.
+    --------------
+    athcfg ath0 param set param_id value.
+        param_id  --       turbo 
+                         phy-mode 
+                         auth-mode 
+                         prot-mode 
+                         multi-chiper 
+                         multikey-len 
+                         uni-chipers 
+                         uni-chiper 
+                         unikey-len 
+                         wpa-mode 
+                         roaming 
+                         privacy 
+                         counter-measures 
+                         drop-unencry 
+                         driver-caps 
+                         mac-cmd 
+                         wmm-mode 
+                         hide-ssid 
+                         ap-bridge 
+                         key-algo 
+                         rsn-caps 
+                         stainact-timeout 
+                         staauth-inacttimeout 
+                         stainit-inacttimeout 
+                         ath-caps 
+                         dtim-period 
+                         beacon-intv 
+                         11h-mode 
+                         currchan-power 
+                         gen-reassoc 
+                         compress
+                         fast-frame         
+                         xr-supp 
+                         burst 
+                         pure-11g 
+                         ar-supp 
+                         wds-enable 
+                         bg-scan 
+                         bgscan-thres 
+                         bgscan-intv 
+                         multi-txrate 
+                         cove-class 
+                         countryie-enable 
+                         scancash-thres 
+                         rssithres-11a 
+                         rssithres-11b 
+                         rssithres-11g 
+                         txrate-11a 
+                         txrate-11b 
+                         txrate-11g 
+                         qos-info 
+                         sleep 
+                         qos-sleep 
+                         pspoll 
+                         eospdrop 
+                         markdfs-chan 
+                         regclass 
+                         chan-bandwidth 
+                         aggr-mode 
+                         shortprmble 
+                         dfs-chan 
+                         cwm-mode 
+                         ext-chan 
+                         extchan-protmode 
+                         extchan-protspace 
+                         cwmstate-enable 
+                         extchan-busythres 
+                         cwmh 
+                         half-gi 
+                         fast-chanchange 
+                         11n-ampdu 
+                         ampdu-limit 
+                         ampdu-density 
+                         ampdu-subfram 
+                         amsdu-supp 
+                         amsdu-length 
+                         country-code 
+                         txchan-mask 
+                         rxchan-mask 
+                         rts-rate 
+                         ht-prot 
+                         reset-once 
+                         set-addba 
+                         txchanmask-legacy 
+                         11n-rate 
+                         11n-retries 
+                         wds-autodetect 
+                         rb-inout 
+                         rb-detect 
+                         rbskip-thres 
+                         rb-timeout 
+                         htie-stat 
+                         MAXSTA                                                
+        value --  integer value.
+
+    athcfg ath0 param get param_id.
+        PARAM_ID --  value of the variable.
+
+11. OPT-IE --  Ge/Set opt-ie. /* Hostapd implementation */
+    ----------------------------------------------------
+    athcfg ath0 optie set value1 value2 value3.
+        value1 --  mac address.
+        value2 --  ie len.
+        value3 --  ie data.
+    
+    athcfg ath0 optie get. 
+        OPT-IE --  the opt-ie value for interface ath0.
+
+12. APP-IE-BUF --  Get/Set app-ie-buf. /* Hostapd implementation */
+    -------------------------------------------------------------
+    athcfg ath0 appie set value1 value2 value3.
+        value1 --  frame type_id.
+        value2 --  ie len.
+        value3 --  ie data.
+
+    athcfg ath0 appie get.
+        APP-IE --  the app-ie value for interface ath0.
+
+13. Key --  Get/Set Key.
+    ------------------
+    athcfg ath0 key set value1 value2 value3 value4 value5. 
+        value1 (key Index) -- 1|2|3|4 
+        value2 (key type)  --  wep 
+                           --  none       
+        value3 (encryption type) --  open 
+                                 --  restricted 
+        value3 (key data) --  .2.4.6.8.21 | vwxyz  
+                          -- 1234567890 | 0102030405060708090a0b0c0d        
+        value4 (mac)      -- the mac of interface.
+                    
+    athcfg ath0 key get 
+        Key -- 
+
+    Set the default key.
+    athcfg ath0 key set value1
+        value1 -- 1|2|3|4
+
+14. Channel list --  Get/Set channel list.
+    ------------------------------------
+    athcfg ath0 chanlist set value.
+        value --  an array of integers.
+
+    athcfg ath0 chanlist get.
+        Chanlist --  the channel list.
+
+15. WMM-Param --  Get/Set wmm-param.
+    ------------------------------
+    athcfg ath0 wmmparam set wmmparam_id value1 value2 value3.
+        wmmparam_id --   cwmin 
+                       cwmax 
+                       aifs 
+                       txop-limit 
+                       acm 
+                       noack-policy 
+        value1 --  integer value.
+        value2 --  integer value.
+        value3 --  integer value.
+
+    athcfg ath0 wmmparam get variable_name.
+        variable_name --  value1,valu2,value3 of the variable.
+
+16. Name --  Get name.
+    ----------------
+    athcfg ath0 name get.
+        Name --  name set for the interface.
+
+17. IC-Caps --  Get ic-caps./* Driver handler not present */
+    ----------------------
+    athcfg ath0 iccaps get.
+        IC-CAPS --  Integer value set for interface ath0.
+
+18  Retries --  Get retries.
+    ----------------------
+    athcfg ath0 retries get value.
+        value --   min 
+                 max 
+                 limit 
+                 lifetime 
+                xxu /* Interger value */
+                xxm/* integer value */
+        Retries --  value for retries set for interface ath0.
+
+19. WAP-LIST --  Get wap-list.
+    ------------------------
+    athcfg ath0 waplist get.
+        WAP-LIST --  value for waplist in interface ath0.
+
+20. Addba-Status --  Get addba-status. /* only for station */
+    -------------------------------------------------------
+    athcfg ath0 addbastat get.
+        Addba-aid --  value for aid. /* Association ID, can get by running command athcfg stainfo get */
+        Addba-tid --  value for tid. /* Vary from 0 to 7, as per the requirement */
+
+21. Channel info --  Get channel info.
+    --------------------------------
+    athcfg ath0 chaninfo get.
+        Chan-Freq           --  channel frequency.
+        Chan-Flags          --  channel flags.
+        Chan-IEEE           --  channel ieee value.
+        Chan-Maxregpower    --  channel maxreg power.
+        Chan-Minpower       --  channel minimum power.
+        Chan-RegClassid     --  channel class ID.
+        Chan-Number         --  channel number.
+
+22. WPA-IE --  Get wpa-ie.
+    --------------------
+    athcfg ath0 wpaie get./* Hostapd implementation */
+        WPA-IE-MAC --  the wpa-ie for interface ath0.
+        WPA-IE --  the wpa-ie for interface ath0.
+
+23. WSC-IE --  Get wsc-ie. /* Hostapd implementation */
+    -------------------------------------------------
+    athcfg ath0 wscie get.
+        WSC-IE-MAC --  the wsc-ie-mac value for interface ath0.
+        WSC-IE --  the wsc-ie value for interface ath0.
+
+24. Transmit Power Limit --  Set tx-power-limit.
+    ------------------------------------------
+    athcfg ath0 txpowlimit set value.
+        value --  the transmit power limit need to set.
+
+25. Turbo --  Set turbo.
+    ------------------
+    athcfg ath0 turbo set value.
+        value --  the turbo value need to set.
+
+26. Filter --  Set filter.
+    --------------------
+    athcfg ath0 filter set value.
+        value --   beacon .
+                 probe-req .
+                 probe-resp .
+                 assoc-req .
+                 assoc-resp .
+                 auth .
+                 deauth .
+                 disassoc .
+                 all .
+
+27. Addba-Response --  Set addba-resp.
+    --------------------------------
+    athcfg ath0 addbaresp set value1 value2 value3. 
+        value1 - aid /* Association ID, can get by running command athcfg ath0 stainfo get */
+        value2 - tid /* Vary from 0 to 7, as per the requirement */
+        value3 - reason /* The valid reason code are listed below */
+                         -- unspecify
+                         -- auth-expire
+                         -- auth-leave
+                         -- assoc-expire
+                         -- assoc-tomany
+                         -- not-authed
+                         -- rsn-req
+                         -- rsn-inconsis
+                         -- ie-inval
+                         -- mic-fail
+                         -- stat-succ
+                         -- stat-unspe
+                         -- stat-capinfo
+                         -- nstat-not-assoc
+                         -- stat-other
+                         -- stat-alg
+                         -- stat-seq
+                         -- stat-chall
+                         -- stat-timeout
+                         -- stat-toomany
+                         -- stat-basic-rate
+                         -- stat-sp-req
+                         -- stat-pbcc-req
+                         -- stat-ca-req
+                         -- stat-tomany-sta
+                         -- stat-rates
+                         -- stat-shotlist-req
+                         -- stat-dssofdm-req
+                         -- stat-refuse
+                         -- stat-inval-param
+
+28. MLME --  Set mlme. /* Hostapd Implementation (Mac level management entity) */
+    ---------------------------------------------------------------------------
+    athcfg ath0 mlme set value1 value2 value3.
+        value1 --  numerical value
+        value2 --   assoc 
+                  disassoc 
+                  deauth 
+                  authorize 
+                  unauthorize                          
+        value3 --  Mac of the interface.
+
+29. Send-Addba --  set send-addba.
+    ----------------------------
+    athcfg ath0 sendaddba set value1 value2 value3.
+        value - aid /* Association ID, can get by running command athcfg ath0 stainfo get */
+        value - tid /* Vary from 0 to 7, as per the requirement */
+        value - size /* Vary from 2 - 64 bytes, as per the requirement */
+
+30  Send Delba --  Set send-delba.
+    ----------------------------
+    athcfg ath0 senddelba set value1 value2 value3 value4.
+    value1 - aid /* Association ID, can get by running command athcfg ath0 stainfo get */
+    value2 - tid /* Vary from 0 to 7, as per the requirement */
+    value3 - identifier /* Boolean value 0/1,idetifies if the delba is send by the initiator or not */
+    value3 - reason /* The valid reason code are listed below */
+                         -- unspecify
+                         -- auth-expire
+                         -- auth-leave
+                         -- assoc-expire
+                         -- assoc-tomany
+                         -- not-authed
+                         -- rsn-req
+                         -- rsn-inconsis
+                         -- ie-inval
+                         -- mic-fail
+                         -- stat-succ
+                         -- stat-unspe
+                         -- stat-capinfo
+                         -- nstat-not-assoc
+                         -- stat-other
+                         -- stat-alg
+                         -- stat-seq
+                         -- stat-chall
+                         -- stat-timeout
+                         -- stat-toomany
+                         -- stat-basic-rate
+                         -- stat-sp-req
+                         -- stat-pbcc-req
+                         -- stat-ca-req
+                         -- stat-tomany-sta
+                         -- stat-rates
+                         -- stat-shotlist-req
+                         -- stat-dssofdm-req
+                         -- stat-refuse
+                         -- stat-inval-param
+
+
+31. Delete Key --  Set del-key.
+    -------------------------
+    athcfg ath0 delkey set value1 value2. 
+        value1 --  key Index.
+        value2 --  Mac address of the interface.
+
+/* Add/Delete mac address in access control list */
+/* So need to load wlan_acl.ko */
+
+32. Delete Mac --  Set del-mac. /* Used for maintainig the ACL (Access Control List) */
+    ---------------------------------------------------------------------------------
+    athcfg ath0 delmac set value.
+        value --  mac to delete.
+
+33. Add Mac --  Set add-mac.
+    ----------------------
+    athcfg ath0 addmac set value. /* Used for maintaining the ACL (Access Control List) */
+         value --  mac address.
+
+34. Status --  Get status.
+    --------------------
+    athcfg ath0 stats get. 
+        STATUS for interface ath0 are as below --
+
+35. MTU --  Set mtu.
+    --------------
+    athcfg ath0 mtu set value.
+        value --  integer value.
+
+36. Operational Mode --  Set/Get op-mode.
+    -----------------------------------
+    athcfg ath0 opmode set value.
+        value --   hostapd .
+                 monitor .
+                 adhoc .
+                 wds .
+                 station .
+                 max-opmode .
+
+    athcfg ath0 opmode get. /* kernel panic (ieee80211_media_status)*/
+        Operating mode --  the mode for the interface ath0.
+
+37. Station Status --  Get sta-stats.
+    -------------------------------
+    athcdf ath0 stastats  get value.
+        value --  Mac address of the station.
+        STATION-STATS for interface ath0 is as below --
+
+38. Stats-Info --  Get stats-info.
+    ----------------------------
+    athcfg ath0 statsinfo get.
+        STATS-INFO for the interface ath0 is as below --
+
+39. Sta-Info --  Get sta-info.
+    ------------------------
+    athcfg ath0 stainfo get.
+        STATION-INFO for the interface ath0 is as below --
+
+40. Range --  Get range. /* Driver need to be updated */
+    --------------------------------------------------
+    athcfg ath0 getrange get
+        Range value for interface [ath0] is as below --
+
+41. Vaplist - get Vaplist. /* Driver returning NULL */
+    --------------------------------------------------
+    athcfg ath0 waplist get
+        Vaplist for interface athX --
+    
+/** IOCTL's Implemented in ATH **/
+
+42. Ath Transmit Timeout --  Set tx-timeout.
+    --------------------------------------
+    athcfg wifi0 txtimeout set 
+                          
+43. Ath Mode INIT --  Set mode-init.
+    ------------------------------
+    athcfg wifi0 modeinit set.
+
+44. Ath Status --  Get status.
+    ------------------------
+    athcfg wifi0 athstats get. 
+        ATH STATUS for interface wifi0 are as below --
+
+45. Ath Status Clear --  Get status-clear.
+    ------------------------------------
+    athcfg wifi0 statsclear get.
+        
+46. Ath Dialog --  Get ath-dialog. /* need to verify the input */
+    -----------------------------------------------------------
+    athcfg wifi0 athdiag get. 
+        Diag-Name --
+        Diag-ID --
+        Diag-In-Size --
+        Diag-In-Data -- 
+        Diag-Out-Data --
+        Diag-Out-Size --
+47. Ath Phyerr --  Get ath-phyerr, /* DFS (dynamic channel selection module) needed */
+    --------------------------------------------------------------------------------
+    athcfg wifi0 phyerr get.
+        Phyerr-Name --
+        Phyerr-Id --
+        Phyerr-In-Size --
+        Phyerr-In-Data --
+        Phyerr-Out-Data --
+        Phyerr-Out-Size --
+
+48  Ath CWM --  Get ath-cwm. 
+    ----------------------
+    athcfg wifi0 athcwm get value1 value2 value3.
+        value1 --  cwm-info 
+                   cwm-dbg 
+
+        if ( value1 == cwm-dbg )
+            value2 -  cwm-event 
+                      cwm-ctl 
+
+        if ( value2 == cwm-event )
+            value3 -  tx-timeout 
+                      ext-chclear 
+                      ext-chbusy 
+                      extchstop 
+                      extchresume 
+                      destcw20 
+                      destcw40 
+        if ( value2 == cwm-ctl )
+            value3 -  enable 
+                      disable 
+    
+49. Ath Ethtool --  Get ath-ethool. 
+    -----------------------------
+    athcfg wifi0 ethtool get.
+        Ethtool-cmd --
+        Ethtool-Driver --
+        Ethtool-Version --
+        Ethtool-Firmware-ver --
+
+50  Ath Mac --  Set ath-mac. /* ioctl success but mac not gettig set */
+    -----------------------------------------------------------------
+    athcfg wifi0 athmac set value1 
+        value1 --  mac address.
+        
+51. Ath VapCreate --  Set vapcreate.
+    ------------------------------
+    athcfg wifi0 vapcreate set device_name opmode flags
+        device_name -- ath0.
+        Opmode --   infra-sta .
+                  ibss-adhoc .
+                  ahdemo .
+                  hostap .
+                  monitor .
+                  wds .
+        Flags --  the flags value.
+
+/** IOCTL's for SYSCTL in wifi0 **/
+
+52. EIFS-MASK --  Set/Get eifs-mask.
+    ------------------------------
+    athcfg wifi0 eifs-mask set value.
+        value --  integer value.
+
+    athcfg wifi0 eifs-mask get.
+        EIFS-MASK --  value set.
+
+53. EIFS-DUR --  Set/Get eifs-dur.
+    ----------------------------
+    athcfg wifi0 eifs-dur set value.
+        value --  integer value.
+
+    athcfg wifi0 eifs-dur get.
+        EIFS-DUR --  value set.
+
+54. Slot-time --  Set/Get slot-time.
+    ------------------------------
+    athcfg wifi0 slot-time set value.
+        value --  integer value.
+
+    athcfg wifi0 slot-time get.
+        SLOT-TIME --  value set.
+
+55. Acknowledge Timeout --  Set/Get ack-timeout.
+    ------------------------------------------
+    athcfg wifi0 ack-timeout set value.
+        value --  integer value.
+
+    athcfg wifi0 ack-timeout get.
+        ACK-TIMEOUT --  value set.
+
+56. CTS-Timeout --  Set/Get cts-timeout.
+    ----------------------------------
+    athcfg wifi0 cts-timeout set value.
+        value --  integer value.
+
+    athcfg wifi0 cts-timeout get.
+        CST-TIMEOUT --  value set.
+
+57. Soft-Led --  Set/Get soft-led.
+    ----------------------------
+    athcfg wifi0 soft-led set value.
+        value --  integer value.
+
+    athcfg wifi0 soft-led get.
+        SOFT-LED --  value set.
+
+58. Led-Pin --  Set/Get led-pin.
+    --------------------------
+    athcfg wifi0 led-pin set value.
+        value --  integer value.
+
+    athcfg wifi0 led-pin get.
+        LED-PIN --  value set.
+
+59. Debug --  Set/Get debug.
+    ----------------------
+    athcfg wifi0 debug set value.
+        value --  integer value.
+
+    athcfg wifi0 debug get.
+        DEBUG --  value set.
+
+60. Transmit Antenna --  Set/Get tx-antenna.
+    --------------------------------------
+    athcfg wifi0 tx-antenna set value.
+        value --  integer value.
+    
+    athcfg wifi0 tx-antenna get.
+        Tx-Antenna --  value set.
+
+61. Recieve Antenna --  Set/Get rx-antenna.
+    -------------------------------------
+    athcfg wifi0 rx-antenna set value.
+        value --  integer value.
+
+    athcfg wifi0 tx-antenna get.
+        Rx-Antenna --  value set.
+
+62. Diversity --  Get/Set diversity.
+    ------------------------------
+    athcfg wifi0 diversity set value.
+        value --  integer value.
+
+    athcfg wifi0 diversity get.
+        Diversity --  value set.
+
+63. Tx-Intr-Period --  Set/Get txintr-period.
+    ---------------------------------------
+    athcfg wifi0 tx-intr-period set value.
+        value  - integer value.
+
+    athcfg wifi0 tx-intr-period get.
+        Tx-Intr-Period --  value set.
+
+64. FF-Txq-Min --  Set/Get txq-min.
+    -----------------------------
+    athcfg wifi0 fftxq-min set value.
+        value --  integer value.
+
+    athcfg wifi0 fftxq-min get.
+        Fast-Frame-Txq-Min --  value set.
+
+65  Tkip-Mic --  Set/Get tkip-mic.
+    ----------------------------
+    athcfg wifi0 tkip-mic set value.
+        value --  integer value.
+
+    athcfg wifi0 tkip-mic get.
+        Tkip-Mic --  value set.
+
+66. Global-Transmit-Timeout --  Set/Get glbal-tx-timeout.
+    ---------------------------------------------------
+    athcfg wifi0 glob-tx-timeout set value.
+        value --  integer value.
+    
+    athcfg wifi0 glob-tx-timeout get.
+        Global_Tx-Timeout --  value set.
+
+67. SW-WSC-Button --  Set/Get wsc-button.
+    -----------------------------------
+    athcfg wifi0 sw-wsc-button set value.
+        value --  integer value.
+
+    athcfg wifi0 sw-wsc-button get.
+        WSC-Button --  value set.
+
+68. Country-Code --  Get country-code.
+    --------------------------------
+    athcfg wifi0 country-code get.
+        Country-Code --  value set.
+
+69. Region-Domain --  Get reg-domain.
+    -------------------------------
+    athcfg wifi0 reg-domain get.   
+        Region-Domain --  value set.
+
+
+Exit Codes
+==========
+/*
+ * Detailed documentation about what exit codes mean.
+ */
+
+
+Limitations/Bugs
+================
+/*
+ * Any limitations of the utility.
+ */
+
+

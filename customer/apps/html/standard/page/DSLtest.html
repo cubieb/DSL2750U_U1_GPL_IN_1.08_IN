@@ -1,0 +1,109 @@
+<style type="text/css">
+<!--
+	.td_bold { font-weight:bold; width:300px}
+	.td_table_s td { text-align:left; font-weight:bold;}
+-->
+</style>
+
+		<td>
+			<div class="config2">
+				<p class="bk_orange" id="lang_Diagnostics">Diagnostics</p>
+				<div class="div_orange">
+					<p id="lang_dsc">The DSL router can test your DSL connection through the following test items.
+	                     If a test item displays "Fail", click "Run Diagnostic Test" again to confirm the fail state.</p>
+                    <div id="first_test">
+					     <div class="div_left" id="lang_WANConnection_first">WAN Connection</div>
+					     <div class="div_right">
+						    <select id="select_wan_interface"></select>
+						    <input id="first_test_start" type=submit value="Run Diagnostic Tests" onClick="uiSubmit()"/>
+					     </div>
+					</div>
+					<div id="again_test">
+					    <div class="div_left" id="lang_WANConnection_again">WAN Connection</div>
+					    <div class="div_right">
+						    <select id="select_wan_interface_again"></select>
+						    <input id="again_test_start" type=submit value="Run Diagnostic Tests again" onClick="uiSubmit_again()"/>
+					    </div>
+					</div>
+					<p></p>
+				</div>
+				
+				<div id="div_test">
+					
+					<div id="div_test_lan">
+						<p class="do bk_black" id="lang_Testtheconnection3">Test the connection to your local network</p>
+						<div class="div_black">
+							<table class="td_table_s" id='test_lan_table'>
+								<tr>
+									<td class="td_bold" id="lang_LAN1">Test your LAN 1 Connection</td><td id="test_lan1">&nbsp;</td>
+								</tr>
+								<tr>
+									<td class="td_bold" id="lang_LAN2">Test your LAN 2 Connection</td><td id="test_lan2">&nbsp;</td>
+								</tr>
+								<tr>	
+									<td class="td_bold" id="lang_LAN3">Test your LAN 3 Connection</td><td id="test_lan3">&nbsp;</td>
+								</tr>
+								<tr id="TR_Show_Adsl_Only" >	
+									<td class="td_bold" id="lang_LAN4">Test your LAN 4 Connection</td><td id="test_lan4">&nbsp;</td>
+								</tr>
+								<tr>	
+									<td class="td_bold" id="lang_WirelessConnection">Test your Wireless Connection</td><td id="test_wlan">&nbsp;</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					
+					<div id="div_test_dsl">
+						<p class="do bk_black" id="lang_Testtheconnection2">Test the connection to your DSL Service Provider</p>
+						<div class="div_black">
+							<table class="td_table_s" id='test_dsl_table'>
+								<tr>
+									<td class="td_bold" id="lang_Synchronization">Test ADSL Synchronization</td><td id="test_adslsyn">&nbsp;</td>
+								</tr>
+								
+								<tr>
+									<td class="td_bold" id="lang_Segment5">Test ATM OAM F5 Segment Loopback</td><td id="test_atmf5seg">&nbsp;</td>
+								</tr>
+								<tr>	
+									<td class="td_bold" id="lang_Endtoend5">Test ATM OAM F5 End-to-end Loopback</td><td id="test_atmf5end">&nbsp;</td>
+								</tr>
+								<tr>	
+									<td class="td_bold" id="lang_Segment4">Test ATM OAM F4 Segment Loopback</td><td id="test_atmf4seg">&nbsp;</td>
+								</tr>
+								<tr>	
+									<td class="td_bold" id="lang_Endtoend4 ">Test ATM OAM F4 End-to-end Loopback</td><td id="test_atmf4end">&nbsp;</td>
+								</tr>
+								
+							</table>
+						</div>
+					</div>
+					
+					<div id="div_test_wan">
+						<p class="do bk_black" id="lang_Testtheconnection1">Test the connection to your Internet Service Provider</p>
+						<div class="div_black">
+							<table class="td_table_s" id='test_wan_table'>
+								<tr>
+									<td class="td_bold" id="lang_PingDefault">Ping Default Gateway</td><td id="test_pinggw">&nbsp;</td>
+								</tr>
+								<tr>
+									<td class="td_bold" id="lang_PingPrimary">Ping Primary Domain Name Server</td><td id="test_pingdns">&nbsp;</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+		</td>
+		
+		<td class="td_help">
+			<div class="help">
+				<h5 id="lang_help">Helpful Hints...</h5>
+				<div>
+					<p id="lang_help_dsc">
+						This page shows the diagnostic results of your router and the connection status. The Internet connectivity status displays PASS only when the Internet connection is properly configured and your router is online.
+					</p>
+				</div>
+				<h5><a href="#" id="lang_help_more">More...</a></h5>
+			</div>
+		</td>
+
+

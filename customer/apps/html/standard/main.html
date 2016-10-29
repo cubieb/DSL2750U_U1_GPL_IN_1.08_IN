@@ -1,0 +1,389 @@
+﻿<?setvaronce var:language zh_cn?>
+<?setvaronce var:menu setup?>
+<?setvaronce var:page wizard?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><?get :InternetGatewayDevice.DeviceInfo.Manufacturer?></title>
+<style type="text/css">
+<!-- 
+   body { margin:1px auto; padding:3px; font:12px Tahoma,Helvetica,Geneva,Arial,sans-serif; background:white;}
+  * { font:14px Arial, Helvetica, sans-serif;}
+  #headbar { font:Arial 10px; background-color:#dddddd;}
+  .uspw { font-weight:600; text-align:right; padding-right:20px; }
+  #uspw { font-weight:600; text-align:left; padding-right:20px; color:#6699cc; font-size:16px}
+  #allContent { background-color:#cecece;}
+  .shuru input {width:140px;height:20px;}
+  
+-->
+</style>
+</head>
+<script type="text/javascript" src="/html/languages/<?echo $var:language?>/main.js"></script>
+<script type="text/javascript" src="/html/languages/<?echo $var:language?>/error.js"></script>
+<script type="text/javascript" src="/html/js/boot.js"></script>
+<script type="text/javascript">
+<!-- 
+/*---- Global variable define -----*/
+var G_Error	    = "<?error found?>"; 
+var G_Status	= "<?error status?>"; 
+var G_Error_Msg	= "<?error message?>";
+
+//系统支持的语言
+var G_SupportLang = "<?echo $var:sys_SupportLangs?>";
+
+//默认语言
+var G_DefaultLang = "<?echo $var:language?>";
+
+
+//get user info
+var G_UserInfo = new Array();
+var m = 0;
+<?objget :InternetGatewayDevice.X_TWSZ-COM_Authentication.UserList. "UserName Password Level"
+	`	G_UserInfo[m] = new Array();
+		G_UserInfo[m][0] = "$01"; //UserName
+		G_UserInfo[m][2] = "$03"; //Level
+		G_UserInfo[m][3] = "$00"; //Index
+		m++;
+	`?>
+
+	//加载语言列表
+function createLangsOptions(){
+	var _text  = [], _value = [];
+	var split_lang = G_SupportLang.split(";");
+	for(var i = 0; i < split_lang.length; i++){
+		if(split_lang[i] == 'en_us'){
+			_text.push('English');
+		} else if(split_lang[i] == 'zh_cn'){
+			_text.push('简体中文');
+		} else if(split_lang[i] == 'es_es'){
+			_text.push('español')
+		}
+		_value.push(split_lang[i]);
+	}
+	
+	$S('SELECT_Language', _text, _value);
+}
+
+function getNetwork(ip, submask){
+
+var c = new Array(4);
+
+var a = ip.split('.');
+
+var b = submask.split('.');
+
+ 
+
+c[0] = a[0]&b[0];
+
+c[1] = a[1]&b[1];
+
+c[2] = a[2]&b[2];
+
+c[3] = a[3]&b[3];
+
+ 
+
+var d = c[0] + '.' + c[1] + '.' + c[2] + '.' + c[3]; //ַ
+
+return d;
+
+}
+
+function checkLanNetwork(formIp,fromNetwork, ipInstance, num){
+
+var i=0;
+var IpRange1;
+var fromNetwork2;;
+    
+for(i; i<num; i++)
+{
+	if (ipInstance[i][1] == '1' )
+	{
+	   IpRange1 = getNetwork(ipInstance[i][2], ipInstance[i][3]);
+	   fromNetwork2 = getNetwork(formIp, ipInstance[i][3]);
+	   if(fromNetwork==IpRange1 || fromNetwork2==IpRange1)
+	   {
+		   return 1;
+	   }
+   }
+}
+
+return 0;
+
+}
+	
+function uiOnload(){
+	//search language
+	Cookie.Set('language',G_DefaultLang);
+	chg_language(data_language);
+	//create user option
+	createUserOpt();
+	
+	createLangsOptions();
+	
+	$("SELECT_Language").value = G_DefaultLang;
+	
+	if ('-' == '<?echo $var:sys_UserName?>')
+		$('SELECT_UserName').value = G_UserInfo[0][0];
+	else
+		$('SELECT_UserName').value = '<?echo $var:sys_UserName?>';
+	var Psd = Cookie.Get('TBSPASSWORD');
+		
+	if(Psd){
+		Form.Checkbox('INPUT_Remember', '1');
+		$('INPUT_Psd').value = Psd;
+	}
+	$('INPUT_Psd').focus();
+	
+	dealWithError();
+}
+
+function createUserOpt(){
+
+         var _text = [], _value = [];
+
+         var formIp = '<?echo $var:sys_RemoteAddr?>';
+
+ 
+
+         var fromMask = '<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.SubnetMask?>';
+
+		<?setvaronce var:IPIntfNum <?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterfaceNumberOfEntries?>?>
+		<? if lt 0 `<?echo $var:IPIntfNum?>`
+		` <?mget :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1. "Enable IPInterfaceIPAddress IPInterfaceSubnetMask "
+		`       var Ip1En  = "$01"; 
+				var Ip1  = "$02";
+				var Mask1 = "$03";
+		`?>
+		`
+		`		var Ip1En  = "0"; 
+				var Ip1  = "0.0.0.0";
+				var Mask1 = "255.255.255.255";
+		`?>
+
+		var G_NextAddress = new Array();
+        var x = 0;
+<?objget :InternetGatewayDevice.LANDevice. ""
+		` <?mget :InternetGatewayDevice.LANDevice.$10.LANHostConfigManagement.IPInterface.1. "Enable IPInterfaceIPAddress IPInterfaceSubnetMask "
+		`  G_NextAddress[x] = new Array();   
+		    G_NextAddress[x] [0]= "";
+		    G_NextAddress[x] [1]= "$01";
+		    G_NextAddress[x] [2]= "$02";
+		    G_NextAddress[x] [3]= "$03";
+		        x++;
+		`?>
+
+`?>
+
+		var G_NextAddress1 = new Array();
+        var y = 0;
+<?objget :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface. ""
+		`<?mget :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.$10. "Enable IPInterfaceIPAddress IPInterfaceSubnetMask "
+		`  G_NextAddress1[y] = new Array();   
+		    G_NextAddress1[y] [0]= "";
+		    G_NextAddress1[y] [1]= "$01";
+		    G_NextAddress1[y] [2]= "$02";
+		    G_NextAddress1[y] [3]= "$03";
+		        y++;
+		`?>
+`?>
+         var Ip6 = '<?get :InternetGatewayDevice.LANDevice.1.LANHostConfigManagement.IPInterface.1.X_TWSZ-COM_IPv6InterfaceAddress?>';
+
+         var fromNetwork = getNetwork(formIp,fromMask);
+
+         var IpRange1 = getNetwork(Ip1,Mask1);
+
+         if((G_NextAddress[0][0] != "")&&(G_NextAddress[1][2] != "")&&(G_NextAddress[1][3] != ""))
+         {
+             var IpRange2 = getNetwork(G_NextAddress[1][2],G_NextAddress[1][3]);
+         }
+         else
+         {
+             var IpRange2 = "0.0.0.0";
+         }
+         
+         var Ip6Link = Ip6.split(":",1);
+
+         var fromNetwork2 = getNetwork(formIp,Mask1);
+
+         if((fromNetwork == IpRange1) || (fromNetwork == IpRange2) || (fromNetwork2 == IpRange1) || (formIp.indexOf(Ip6Link)>-1)){
+
+              _text = [G_UserInfo[0][0],G_UserInfo[1][0]], _value = [G_UserInfo[0][0],G_UserInfo[1][0]];
+
+         } else {
+
+             if(checkLanNetwork(formIp, fromNetwork, G_NextAddress, x))
+                _text = [G_UserInfo[0][0],G_UserInfo[1][0]], _value = [G_UserInfo[0][0],G_UserInfo[1][0]];
+             else if(checkLanNetwork(formIp, fromNetwork, G_NextAddress1, y))
+				_text = [G_UserInfo[0][0],G_UserInfo[1][0]], _value = [G_UserInfo[0][0],G_UserInfo[1][0]];
+			 else
+              _text = [G_UserInfo[1][0],G_UserInfo[2][0]], _value = [G_UserInfo[1][0],G_UserInfo[2][0]];
+
+         }
+
+         $S('SELECT_UserName', _text, _value);
+
+}
+
+
+function uipostLogin(){
+	if($('INPUT_Psd').value == ''){
+		return false;
+	}
+	//record password
+	recordPsd();
+	//record level
+    Cookie.Set('sys_UserName', $('SELECT_UserName').value);
+	Cookie.Set('language', $("SELECT_Language").value);
+	$H({
+		'getpage'   :'html/index.html',
+		'errorpage' :'html/main.html',
+		'var:menu'  :'setup',
+		'var:page'  :'wizard',
+		'obj-action':'auth',
+		':username' :$('SELECT_UserName').value,
+		':password' :$("INPUT_Psd").value,
+		':action'   :'login',
+		':sessionid':'<?echo $var:sessionid?>'
+	},true);
+	$('uiPostForm').submit();
+}
+
+function recordPsd(){
+	if(Form.Checkbox('INPUT_Remember')){ //checked = true;
+		Cookie.Set('TBSPASSWORD', $('INPUT_Psd').value, 720);
+	} else if(!Form.Checkbox('INPUT_Remember')){ //checked = false;
+		Cookie.Delete('TBSPASSWORD');
+	}
+}
+
+/* 更换main.html语言 */
+function onChgLang(){
+    //setCookie('language',$('SELECT_Language').value);
+	Cookie.Set('language', $("SELECT_Language").value);
+	document.location.href = '/cgi-bin/webproc';
+}
+
+/* 
+对错误码的处理 
+错误码的格式:节点名=错误码
+*/
+function dealErrorMsg(arrayNode, errorMsg){
+	if (typeof errorMsg != 'string') 
+	    return;
+	    
+	//将错误信息一分为二：前段寻找错误码对应的节点；后段寻找错误码对应的提示；
+	var errorFragment = errorMsg.split('=');
+	var errorCode, errorString, leafNode;
+	
+	//寻找错误码对应的节点;
+	if (errorFragment != null && errorFragment.length > 0){
+		var _fragment = errorFragment[0].split('.');
+		leafNode = _fragment[_fragment.length - 1];
+		leafNode = arrayNode[leafNode];
+	}
+	    
+	//在获取错误码后，立即寻找相应的错误码。
+	if (errorFragment[1] != null){
+		errorCode = errorFragment[1].match(/^[0-9]{4}/)[0];
+	} else {
+		if (errorMsg.match(/^[0-9]{4}/) == null){
+            leafNode = arrayNode["result"];
+			
+			if($(leafNode)){
+				$(leafNode).innerHTML = errorMsg;				
+			}
+            return false;
+	    }
+	    errorCode = errorMsg.match(/^[0-9]{4}/)[0];
+	}
+	
+	if(UEcode[errorCode] !== undefined){
+		errorString = UEcode[errorCode];
+	} else if (SEcode[errorCode] !== undefined ) {
+		errorString = SEcode[errorCode];
+	} else {
+		errorString = SEcode[1000];
+	}
+	
+	//选择两种不同的错误提示方式：1、将错误准确打印在对应的输入框之后；2、对于未知错误，以告警框来提示；
+	if (leafNode != undefined){
+		$(leafNode).innerHTML = errorString;
+	} else {
+		alert(errorString + "!");
+	}
+}
+
+function dealWithError(){
+	if(G_Error != 1){
+		return false;
+	}
+	
+	var arrayHint = [];
+		
+	dealErrorMsg(arrayHint, G_Error_Msg);
+}
+
+window.onload = uiOnload;
+
+function keyDown(key){
+    if (navigator.appName != "Microsoft Internet Explorer")
+    {
+        var keycode = key.which;
+        if (keycode == 13)
+        {
+            uipostLogin();
+        }
+    }
+}
+document.onkeydown = keyDown;
+
+
+-->
+</script>
+<body>
+  <div >
+	<table width="648" height="25" align="center" cellpadding="0" cellspacing="0" background="/html/skin/login.jpg" style="margin-top:12%; border:2px solid #B1D3EC;">
+		<tr><td height="220"></td></tr>
+		<tr id="tr_lang" >
+			<td > &nbsp;&nbsp;&nbsp;&nbsp; <span id="uspw"> Input username and password</span> </td>
+			<td height="30" id="DIV_Lang"  style="display:none;">Remember login info.</td>
+			<td   style="display:none;">
+				<input type="checkbox" id="INPUT_Remember" />			</td>
+		</tr>
+		<tr style="border:1px solid red;">
+			<td></td>
+			<td class="uspw" height="30" id="DIV_Language">Language&nbsp;&nbsp;:</td>
+			<td class="shuru"><select name="select" id="SELECT_Language" onchange="onChgLang()" style="width:100px">
+            </select></td>
+		</tr>
+		<tr>
+			<td width="300"></td>
+			<td height="30" class="uspw" id="DIV_UserName">UserName&nbsp;&nbsp;:</td>
+			<td class="shuru"><select id="SELECT_UserName" style="width:100px"><option> </option></select></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td height="30" class="uspw" id="DIV_Password">Password&nbsp;&nbsp;:</td>
+			<td class="shuru"><input type="password" id="INPUT_Psd" maxlength="255" style="width:100px"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td id="login"><input type="submit" id="submit" value="Login" onclick="uipostLogin()"/>&nbsp;&nbsp;</td>
+		</tr>
+		<tr>
+			<td height="90"></td>
+			<td></td>
+			<td><span id="uipostErrorMessage" style="color:red;"></span></td>
+		</tr>
+	</table>	
+ </div>
+ <div >  
+     <p  font align="center" >Copyright © <?get :InternetGatewayDevice.DeviceInfo.Manufacturer?> Systems, Inc.</p>
+ </div>
+	<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+#for Hostapd 0.4.8
+
+interface=ath0
+bridge=br0
+#
+driver=atheros
+
+logger_syslog=0
+logger_syslog_level=0
+logger_stdout=0
+logger_stdout_level=0
+
+# Debugging: 0 = no, 1 = minimal, 2 = verbose, 3 = msg dumps, 4 = excessive
+debug=4
+
+# Dump file for state information (on SIGUSR1)
+#dump_file=/tmp/hostapd.dump
+
+#wsc_auth_mode bit0:open bit1:wpa-psk bit2:wep
+wsc_auth_mode=0
+ieee8021x=1
+
+# Use integrated EAP server instead of external RADIUS authentication
+# server. This is also needed if hostapd is configured to act as a RADIUS
+# authentication server.
+eap_server=0
+
+# The own IP address of the access point (used as NAS-IP-Address)
+own_ip_addr=127.0.0.1
+
+# RADIUS authentication server
+auth_server_addr=192.168.2.100
+auth_server_port=1812
+auth_server_shared_secret=freeradiusx
+
+wpa=2
+#wpa_passphrase=12345678
+wpa_key_mgmt=WPA-EAP
+wpa_pairwise=CCMP
